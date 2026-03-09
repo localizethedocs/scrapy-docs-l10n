@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/commands.rst:7
 msgid "Command line tool"
-msgstr ""
+msgstr "命令行工具"
 
 #: ../../../topics/commands.rst:9
 msgid ""
@@ -969,7 +969,7 @@ msgstr ""
 
 #: ../../../topics/commands.rst:641
 msgid "Example:"
-msgstr ""
+msgstr "範例："
 
 #: ../../../topics/commands.rst:643
 msgid "COMMANDS_MODULE = \"mybot.commands\""

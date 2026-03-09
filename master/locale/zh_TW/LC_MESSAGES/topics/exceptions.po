@@ -41,7 +41,7 @@ msgstr ""
 
 #: ../../../topics/exceptions.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/exceptions.rst:26
 msgid "the reason for closing"

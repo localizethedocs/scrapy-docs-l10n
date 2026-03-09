@@ -614,7 +614,7 @@ msgstr ""
 
 #: ../../../topics/logging.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../../scrapy/utils/log.py:docstring of
 #: scrapy.utils.log.configure_logging:3

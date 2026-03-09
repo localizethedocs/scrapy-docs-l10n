@@ -545,7 +545,7 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../../scrapy/extensions/feedexport.py:docstring of
 #: scrapy.extensions.feedexport.ItemFilter:4
@@ -738,7 +738,7 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:400
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 #: ../../../topics/feed-exports.rst:402
 msgid "These are the settings used for configuring the feed exports:"
@@ -1025,7 +1025,7 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:567
 msgid "Default: ``True``"
-msgstr ""
+msgstr "預設值：``True``"
 
 #: ../../../topics/feed-exports.rst:569
 msgid ""

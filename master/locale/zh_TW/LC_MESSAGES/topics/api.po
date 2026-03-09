@@ -299,7 +299,7 @@ msgstr ""
 
 #: ../../../topics/api.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerRunner.crawl:13
@@ -506,7 +506,7 @@ msgstr ""
 
 #: ../../../topics/api.rst:129
 msgid "Settings API"
-msgstr ""
+msgstr "設定 API"
 
 #: ../../../topics/api.rst:136
 msgid ""

@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:5
 msgid "Items"
-msgstr ""
+msgstr "項目"
 
 #: ../../../topics/items.rst:10
 msgid ""
@@ -50,7 +50,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:33
 msgid "Dictionaries"
-msgstr ""
+msgstr "字典"
 
 #: ../../../topics/items.rst:35
 msgid "As an item type, :class:`dict` is convenient and familiar."
@@ -143,7 +143,7 @@ msgstr ""
 #: ../../../topics/items.rst:67 ../../../topics/items.rst:94
 #: ../../../topics/items.rst:126 ../../../topics/items.rst:164
 msgid "Example:"
-msgstr ""
+msgstr "範例："
 
 #: ../../../topics/items.rst:69
 msgid ""
@@ -329,7 +329,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:212
 msgid "Declaring fields"
-msgstr ""
+msgstr "宣告欄位"
 
 #: ../../../topics/items.rst:214
 msgid ""
@@ -388,7 +388,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:259
 msgid "Creating items"
-msgstr ""
+msgstr "建立項目"
 
 #: ../../../topics/items.rst:261
 msgid ""

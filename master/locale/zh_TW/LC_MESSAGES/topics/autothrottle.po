@@ -199,7 +199,7 @@ msgstr ""
 
 #: ../../../topics/autothrottle.rst:114
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 #: ../../../topics/autothrottle.rst:116
 msgid "The settings used to control the AutoThrottle extension are:"

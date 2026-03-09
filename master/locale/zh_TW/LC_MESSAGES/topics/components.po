@@ -141,7 +141,7 @@ msgstr ""
 
 #: ../../../topics/components.rst:76
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 #: ../../../topics/components.rst:78
 msgid "Components can be configured through :ref:`settings <topics-settings>`."

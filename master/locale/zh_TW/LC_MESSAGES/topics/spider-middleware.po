@@ -167,7 +167,7 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/spider-middleware.rst:116
 #: ../../../../scrapy/spidermiddlewares/base.py:docstring of
@@ -484,7 +484,7 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:301
 msgid "RefererMiddleware"
-msgstr ""
+msgstr "RefererMiddleware"
 
 #: ../../../topics/spider-middleware.rst:308
 msgid ""
@@ -494,7 +494,7 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:312
 msgid "RefererMiddleware settings"
-msgstr ""
+msgstr "RefererMiddleware 設定"
 
 #: ../../../topics/spider-middleware.rst:317
 msgid "REFERER_ENABLED"
@@ -502,7 +502,7 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:319
 msgid "Default: ``True``"
-msgstr ""
+msgstr "預設值：``True``"
 
 #: ../../../topics/spider-middleware.rst:321
 msgid "Whether to enable referer middleware."

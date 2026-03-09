@@ -149,7 +149,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:100 ../../../topics/exporters.rst:125
 msgid "Example:"
-msgstr ""
+msgstr "範例："
 
 #: ../../../topics/exporters.rst:102
 msgid ""
@@ -250,7 +250,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/exporters.rst:181
 msgid ""

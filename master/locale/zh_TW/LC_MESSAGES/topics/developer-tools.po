@@ -435,7 +435,7 @@ msgstr ""
 
 #: ../../../topics/developer-tools.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../../scrapy/utils/curl.py:docstring of
 #: scrapy.utils.curl.curl_to_request_kwargs:3

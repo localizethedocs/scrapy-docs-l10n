@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:5
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 #: ../../../topics/settings.rst:7
 msgid ""
@@ -928,7 +928,7 @@ msgstr ""
 #: ../../../topics/settings.rst:1946 ../../../topics/settings.rst:1968
 #: ../../../topics/settings.rst:2131
 msgid "Default: ``True``"
-msgstr ""
+msgstr "預設值：``True``"
 
 #: ../../../topics/settings.rst:652
 msgid "Whether to enable DNS in-memory cache."
@@ -1783,7 +1783,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:1341 ../../../topics/settings.rst:1925
 msgid "Example:"
-msgstr ""
+msgstr "範例："
 
 #: ../../../topics/settings.rst:1343
 msgid ""

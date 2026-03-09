@@ -86,7 +86,7 @@ msgstr ""
 
 #: ../../../topics/email.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/email.rst:59
 msgid ""

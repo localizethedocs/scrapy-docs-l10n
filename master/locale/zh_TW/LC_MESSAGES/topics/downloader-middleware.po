@@ -159,7 +159,7 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/downloader-middleware.rst:103
 msgid "the request being processed"
@@ -356,7 +356,7 @@ msgstr ""
 #: ../../../topics/downloader-middleware.rst:908
 #: ../../../topics/downloader-middleware.rst:976
 msgid "Default: ``True``"
-msgstr ""
+msgstr "預設值：``True``"
 
 #: ../../../topics/downloader-middleware.rst:239
 msgid ""
@@ -480,7 +480,7 @@ msgstr ""
 #: ../../../topics/downloader-middleware.rst:329
 #: ../../../topics/downloader-middleware.rst:429
 msgid "Example:"
-msgstr ""
+msgstr "範例："
 
 #: ../../../topics/downloader-middleware.rst:331
 msgid ""
@@ -1014,7 +1014,7 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:706
 msgid "HttpCompressionMiddleware Settings"
-msgstr ""
+msgstr "HttpCompressionMiddleware 設定"
 
 #: ../../../topics/downloader-middleware.rst:711
 msgid "COMPRESSION_ENABLED"
@@ -1447,7 +1447,7 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:969
 msgid "RetryMiddleware Settings"
-msgstr ""
+msgstr "RetryMiddleware 設定"
 
 #: ../../../topics/downloader-middleware.rst:974
 msgid "RETRY_ENABLED"

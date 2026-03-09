@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../news.rst:4
 msgid "Release notes"
-msgstr ""
+msgstr "發行備註"
 
 #: ../../../news.rst:7
 msgid "Scrapy VERSION (unreleased)"
@@ -14472,7 +14472,7 @@ msgstr ""
 
 #: ../../../news.rst:8151
 msgid "Command-line tool changes"
-msgstr ""
+msgstr "命令行工具變更"
 
 #: ../../../news.rst:8153
 msgid ""

@@ -880,7 +880,7 @@ msgstr ""
 
 #: ../../../topics/selectors.rst:632 ../../../topics/selectors.rst:690
 msgid "Example:"
-msgstr ""
+msgstr "範例："
 
 #: ../../../topics/selectors.rst:634
 msgid ""

@@ -296,7 +296,7 @@ msgstr ""
 
 #: ../../../topics/telnetconsole.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/telnetconsole.rst:164
 msgid "the dict of telnet variables"

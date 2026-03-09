@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../intro/install.rst:5
 msgid "Installation guide"
-msgstr ""
+msgstr "安裝指南"
 
 #: ../../../intro/install.rst:10
 msgid "Supported Python versions"

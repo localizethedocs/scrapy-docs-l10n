@@ -102,7 +102,7 @@ msgstr ""
 #: ../../../../scrapy/core/scheduler.py:docstring of
 #: scrapy.core.scheduler.Scheduler:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../../scrapy/core/scheduler.py:docstring of
 #: scrapy.core.scheduler.BaseScheduler.close:4

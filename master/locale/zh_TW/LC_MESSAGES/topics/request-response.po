@@ -56,7 +56,7 @@ msgstr ""
 
 #: ../../../topics/request-response.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/request-response.rst:29
 msgid ""
@@ -630,7 +630,7 @@ msgstr ""
 
 #: ../../../topics/request-response.rst:266
 msgid "Example:"
-msgstr ""
+msgstr "範例："
 
 #: ../../../topics/request-response.rst:268
 msgid ""
