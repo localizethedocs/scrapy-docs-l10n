@@ -1,0 +1,478 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2008-2013, Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy 0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-09 06:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/webservice.rst:5
+msgid "Web Service"
+msgstr ""
+
+#: ../../../topics/webservice.rst:7
+msgid ""
+"Scrapy comes with a built-in web service for monitoring and controlling a "
+"running crawler. The service exposes most resources using the `JSON-RPC "
+"2.0`_ protocol, but there are also other (read-only) resources which just "
+"output JSON data."
+msgstr ""
+
+#: ../../../topics/webservice.rst:12
+msgid ""
+"Provides an extensible web service for managing a Scrapy process. It's "
+"enabled by the :setting:`WEBSERVICE_ENABLED` setting. The web server will "
+"listen in the port specified in :setting:`WEBSERVICE_PORT`, and will log to "
+"the file specified in :setting:`WEBSERVICE_LOGFILE`."
+msgstr ""
+
+#: ../../../topics/webservice.rst:17
+msgid ""
+"The web service is a :ref:`built-in Scrapy extension <topics-extensions-"
+"ref>` which comes enabled by default, but you can also disable it if you're "
+"running tight on memory."
+msgstr ""
+
+#: ../../../topics/webservice.rst:24
+msgid "Web service resources"
+msgstr ""
+
+#: ../../../topics/webservice.rst:26
+msgid ""
+"The web service contains several resources, defined in the :setting:"
+"`WEBSERVICE_RESOURCES` setting. Each resource provides a different "
+"functionality. See :ref:`topics-webservice-resources-ref` for a list of "
+"resources available by default."
+msgstr ""
+
+#: ../../../topics/webservice.rst:31
+msgid ""
+"Although you can implement your own resources using any protocol, there are "
+"two kinds of resources bundled with Scrapy:"
+msgstr ""
+
+#: ../../../topics/webservice.rst:34
+msgid "Simple JSON resources - which are read-only and just output JSON data"
+msgstr ""
+
+#: ../../../topics/webservice.rst:35
+msgid ""
+"JSON-RPC resources - which provide direct access to certain Scrapy objects "
+"using the `JSON-RPC 2.0`_ protocol"
+msgstr ""
+
+#: ../../../topics/webservice.rst:44
+msgid "Available JSON-RPC resources"
+msgstr ""
+
+#: ../../../topics/webservice.rst:46
+msgid "These are the JSON-RPC resources available by default in Scrapy:"
+msgstr ""
+
+#: ../../../topics/webservice.rst:51
+msgid "Crawler JSON-RPC resource"
+msgstr ""
+
+#: ../../../topics/webservice.rst:58
+msgid ""
+"Provides access to the main Crawler object that controls the Scrapy process."
+msgstr ""
+
+#: ../../../topics/webservice.rst:61
+msgid "Available by default at: http://localhost:6080/crawler"
+msgstr ""
+
+#: ../../../topics/webservice.rst:64
+msgid "Stats Collector JSON-RPC resource"
+msgstr ""
+
+#: ../../../topics/webservice.rst:71
+msgid "Provides access to the Stats Collector used by the crawler."
+msgstr ""
+
+#: ../../../topics/webservice.rst:73
+msgid "Available by default at: http://localhost:6080/stats"
+msgstr ""
+
+#: ../../../topics/webservice.rst:76
+msgid "Spider Manager JSON-RPC resource"
+msgstr ""
+
+#: ../../../topics/webservice.rst:78
+msgid ""
+"You can access the spider manager JSON-RPC resource through the :ref:`topics-"
+"webservice-crawler` at: http://localhost:6080/crawler/spiders"
+msgstr ""
+
+#: ../../../topics/webservice.rst:82
+msgid "Extension Manager JSON-RPC resource"
+msgstr ""
+
+#: ../../../topics/webservice.rst:84
+msgid ""
+"You can access the extension manager JSON-RPC resource through the :ref:"
+"`topics-webservice-crawler` at: http://localhost:6080/crawler/spiders"
+msgstr ""
+
+#: ../../../topics/webservice.rst:88
+msgid "Available JSON resources"
+msgstr ""
+
+#: ../../../topics/webservice.rst:90
+msgid "These are the JSON resources available by default:"
+msgstr ""
+
+#: ../../../topics/webservice.rst:93
+msgid "Engine status JSON resource"
+msgstr ""
+
+#: ../../../topics/webservice.rst:100
+msgid "Provides access to engine status metrics."
+msgstr ""
+
+#: ../../../topics/webservice.rst:102
+msgid "Available by default at: http://localhost:6080/enginestatus"
+msgstr ""
+
+#: ../../../topics/webservice.rst:105
+msgid "Web service settings"
+msgstr ""
+
+#: ../../../topics/webservice.rst:107
+msgid "These are the settings that control the web service behaviour:"
+msgstr ""
+
+#: ../../../topics/webservice.rst:112
+msgid "WEBSERVICE_ENABLED"
+msgstr ""
+
+#: ../../../topics/webservice.rst:114
+msgid "Default: ``True``"
+msgstr ""
+
+#: ../../../topics/webservice.rst:116
+msgid ""
+"A boolean which specifies if the web service will be enabled (provided its "
+"extension is also enabled)."
+msgstr ""
+
+#: ../../../topics/webservice.rst:122
+msgid "WEBSERVICE_LOGFILE"
+msgstr ""
+
+#: ../../../topics/webservice.rst:124
+msgid "Default: ``None``"
+msgstr ""
+
+#: ../../../topics/webservice.rst:126
+msgid ""
+"A file to use for logging HTTP requests made to the web service. If unset "
+"web the log is sent to standard scrapy log."
+msgstr ""
+
+#: ../../../topics/webservice.rst:132
+msgid "WEBSERVICE_PORT"
+msgstr ""
+
+#: ../../../topics/webservice.rst:134
+msgid "Default: ``[6080, 7030]``"
+msgstr ""
+
+#: ../../../topics/webservice.rst:136
+msgid ""
+"The port range to use for the web service. If set to ``None`` or ``0``, a "
+"dynamically assigned port is used."
+msgstr ""
+
+#: ../../../topics/webservice.rst:142
+msgid "WEBSERVICE_HOST"
+msgstr ""
+
+#: ../../../topics/webservice.rst:144
+msgid "Default: ``'127.0.0.1'``"
+msgstr ""
+
+#: ../../../topics/webservice.rst:146
+msgid "The interface the web service should listen on"
+msgstr ""
+
+#: ../../../topics/webservice.rst:149
+msgid "WEBSERVICE_RESOURCES"
+msgstr ""
+
+#: ../../../topics/webservice.rst:151
+msgid "Default: ``{}``"
+msgstr ""
+
+#: ../../../topics/webservice.rst:153
+msgid ""
+"The list of web service resources enabled for your project. See :ref:`topics-"
+"webservice-resources`. These are added to the ones available by default in "
+"Scrapy, defined in the :setting:`WEBSERVICE_RESOURCES_BASE` setting."
+msgstr ""
+
+#: ../../../topics/webservice.rst:158
+msgid "WEBSERVICE_RESOURCES_BASE"
+msgstr ""
+
+#: ../../../topics/webservice.rst:160
+msgid "Default::"
+msgstr ""
+
+#: ../../../topics/webservice.rst:162
+msgid ""
+"{\n"
+"    'scrapy.contrib.webservice.crawler.CrawlerResource': 1,\n"
+"    'scrapy.contrib.webservice.enginestatus.EngineStatusResource': 1,\n"
+"    'scrapy.contrib.webservice.stats.StatsResource': 1,\n"
+"}"
+msgstr ""
+
+#: ../../../topics/webservice.rst:168
+msgid ""
+"The list of web service resources available by default in Scrapy. You "
+"shouldn't change this setting in your project, change :setting:"
+"`WEBSERVICE_RESOURCES` instead. If you want to disable some resource set its "
+"value to ``None`` in :setting:`WEBSERVICE_RESOURCES`."
+msgstr ""
+
+#: ../../../topics/webservice.rst:174
+msgid "Writing a web service resource"
+msgstr ""
+
+#: ../../../topics/webservice.rst:176
+msgid ""
+"Web service resources are implemented using the Twisted Web API. See this "
+"`Twisted Web guide`_ for more information on Twisted web and Twisted web "
+"resources."
+msgstr ""
+
+#: ../../../topics/webservice.rst:180
+msgid ""
+"To write a web service resource you should subclass the :class:"
+"`JsonResource` or :class:`JsonRpcResource` classes and implement the :class:"
+"`renderGET` method."
+msgstr ""
+
+#: ../../../topics/webservice.rst:185
+msgid ""
+"A subclass of `twisted.web.resource.Resource`_ that implements a JSON web "
+"service resource. See"
+msgstr ""
+
+#: ../../../topics/webservice.rst:190
+msgid ""
+"The name by which the Scrapy web service will known this resource, and also "
+"the path where this resource will listen. For example, assuming Scrapy web "
+"service is listening on http://localhost:6080/ and the ``ws_name`` is "
+"``'resource1'`` the URL for that resource will be:"
+msgstr ""
+
+#: ../../../topics/webservice.rst:195
+msgid "http://localhost:6080/resource1/"
+msgstr ""
+
+#: ../../../topics/webservice.rst:199
+msgid ""
+"This is a subclass of :class:`JsonResource` for implementing JSON-RPC "
+"resources. JSON-RPC resources wrap Python (Scrapy) objects around a JSON-RPC "
+"API. The resource wrapped must be returned by the :meth:`get_target` method, "
+"which returns the target passed in the constructor by default"
+msgstr ""
+
+#: ../../../topics/webservice.rst:207
+msgid ""
+"Return the object wrapped by this JSON-RPC resource. By default, it returns "
+"the object passed on the constructor."
+msgstr ""
+
+#: ../../../topics/webservice.rst:211
+msgid "Examples of web service resources"
+msgstr ""
+
+#: ../../../topics/webservice.rst:214
+msgid "StatsResource (JSON-RPC resource)"
+msgstr ""
+
+#: ../../../topics/webservice.rst:216
+msgid ""
+"from scrapy.webservice import JsonRpcResource\n"
+"\n"
+"class StatsResource(JsonRpcResource):\n"
+"\n"
+"    ws_name = 'stats'\n"
+"\n"
+"    def __init__(self, crawler):\n"
+"        JsonRpcResource.__init__(self, crawler, crawler.stats)\n"
+msgstr ""
+
+#: ../../../topics/webservice.rst:219
+msgid "EngineStatusResource (JSON resource)"
+msgstr ""
+
+#: ../../../topics/webservice.rst:221
+msgid ""
+"from scrapy.webservice import JsonResource\n"
+"from scrapy.utils.engine import get_engine_status\n"
+"\n"
+"class EngineStatusResource(JsonResource):\n"
+"\n"
+"    ws_name = 'enginestatus'\n"
+"\n"
+"    def __init__(self, crawler, spider_name=None):\n"
+"        JsonResource.__init__(self, crawler)\n"
+"        self._spider_name = spider_name\n"
+"        self.isLeaf = spider_name is not None\n"
+"\n"
+"    def render_GET(self, txrequest):\n"
+"        status = get_engine_status(self.crawler.engine)\n"
+"        if self._spider_name is None:\n"
+"            return status\n"
+"        for sp, st in status['spiders'].items():\n"
+"            if sp.name == self._spider_name:\n"
+"                return st\n"
+"\n"
+"    def getChild(self, name, txrequest):\n"
+"        return EngineStatusResource(name, self.crawler)\n"
+msgstr ""
+
+#: ../../../topics/webservice.rst:224
+msgid "Example of web service client"
+msgstr ""
+
+#: ../../../topics/webservice.rst:227
+msgid "scrapy-ws.py script"
+msgstr ""
+
+#: ../../../topics/webservice.rst:229
+msgid ""
+"#!/usr/bin/env python\n"
+"\"\"\"\n"
+"Example script to control a Scrapy server using its JSON-RPC web service.\n"
+"\n"
+"It only provides a reduced functionality as its main purpose is to "
+"illustrate\n"
+"how to write a web service client. Feel free to improve or write you own.\n"
+"\n"
+"Also, keep in mind that the JSON-RPC API is not stable. The recommended way "
+"for\n"
+"controlling a Scrapy server is through the execution queue (see the "
+"\"queue\"\n"
+"command).\n"
+"\n"
+"\"\"\"\n"
+"\n"
+"from __future__ import print_function\n"
+"import sys, optparse, urllib, json\n"
+"from urlparse import urljoin\n"
+"\n"
+"from scrapy.utils.jsonrpc import jsonrpc_client_call, JsonRpcError\n"
+"\n"
+"def get_commands():\n"
+"    return {\n"
+"        'help': cmd_help,\n"
+"        'stop': cmd_stop,\n"
+"        'list-available': cmd_list_available,\n"
+"        'list-running': cmd_list_running,\n"
+"        'list-resources': cmd_list_resources,\n"
+"        'get-global-stats': cmd_get_global_stats,\n"
+"        'get-spider-stats': cmd_get_spider_stats,\n"
+"    }\n"
+"\n"
+"def cmd_help(args, opts):\n"
+"    \"\"\"help - list available commands\"\"\"\n"
+"    print(\"Available commands:\")\n"
+"    for _, func in sorted(get_commands().items()):\n"
+"        print(\"  \", func.__doc__)\n"
+"\n"
+"def cmd_stop(args, opts):\n"
+"    \"\"\"stop <spider> - stop a running spider\"\"\"\n"
+"    jsonrpc_call(opts, 'crawler/engine', 'close_spider', args[0])\n"
+"\n"
+"def cmd_list_running(args, opts):\n"
+"    \"\"\"list-running - list running spiders\"\"\"\n"
+"    for x in json_get(opts, 'crawler/engine/open_spiders'):\n"
+"        print(x)\n"
+"\n"
+"def cmd_list_available(args, opts):\n"
+"    \"\"\"list-available - list name of available spiders\"\"\"\n"
+"    for x in jsonrpc_call(opts, 'crawler/spiders', 'list'):\n"
+"        print(x)\n"
+"\n"
+"def cmd_list_resources(args, opts):\n"
+"    \"\"\"list-resources - list available web service resources\"\"\"\n"
+"    for x in json_get(opts, '')['resources']:\n"
+"        print(x)\n"
+"\n"
+"def cmd_get_spider_stats(args, opts):\n"
+"    \"\"\"get-spider-stats <spider> - get stats of a running spider\"\"\"\n"
+"    stats = jsonrpc_call(opts, 'stats', 'get_stats', args[0])\n"
+"    for name, value in stats.items():\n"
+"        print(\"%-40s %s\" % (name, value))\n"
+"\n"
+"def cmd_get_global_stats(args, opts):\n"
+"    \"\"\"get-global-stats - get global stats\"\"\"\n"
+"    stats = jsonrpc_call(opts, 'stats', 'get_stats')\n"
+"    for name, value in stats.items():\n"
+"        print(\"%-40s %s\" % (name, value))\n"
+"\n"
+"def get_wsurl(opts, path):\n"
+"    return urljoin(\"http://%s:%s/\"% (opts.host, opts.port), path)\n"
+"\n"
+"def jsonrpc_call(opts, path, method, *args, **kwargs):\n"
+"    url = get_wsurl(opts, path)\n"
+"    return jsonrpc_client_call(url, method, *args, **kwargs)\n"
+"\n"
+"def json_get(opts, path):\n"
+"    url = get_wsurl(opts, path)\n"
+"    return json.loads(urllib.urlopen(url).read())\n"
+"\n"
+"def parse_opts():\n"
+"    usage = \"%prog [options] <command> [arg] ...\"\n"
+"    description = \"Scrapy web service control script. Use '%prog help' \" "
+"\\\n"
+"        \"to see the list of available commands.\"\n"
+"    op = optparse.OptionParser(usage=usage, description=description)\n"
+"    op.add_option(\"-H\", dest=\"host\", default=\"localhost\", \\\n"
+"        help=\"Scrapy host to connect to\")\n"
+"    op.add_option(\"-P\", dest=\"port\", type=\"int\", default=6080, \\\n"
+"        help=\"Scrapy port to connect to\")\n"
+"    opts, args = op.parse_args()\n"
+"    if not args:\n"
+"        op.print_help()\n"
+"        sys.exit(2)\n"
+"    cmdname, cmdargs, opts = args[0], args[1:], opts\n"
+"    commands = get_commands()\n"
+"    if cmdname not in commands:\n"
+"        sys.stderr.write(\"Unknown command: %s\\n\\n\" % cmdname)\n"
+"        cmd_help(None, None)\n"
+"        sys.exit(1)\n"
+"    return commands[cmdname], cmdargs, opts\n"
+"\n"
+"def main():\n"
+"    cmd, args, opts = parse_opts()\n"
+"    try:\n"
+"        cmd(args, opts)\n"
+"    except IndexError:\n"
+"        print(cmd.__doc__)\n"
+"    except JsonRpcError as e:\n"
+"        print(str(e))\n"
+"        if e.data:\n"
+"            print(\"Server Traceback below:\")\n"
+"            print(e.data)\n"
+"\n"
+"\n"
+"if __name__ == '__main__':\n"
+"    main()\n"
+msgstr ""

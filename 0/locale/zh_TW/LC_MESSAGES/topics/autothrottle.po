@@ -1,0 +1,181 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2008-2013, Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy 0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-09 06:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/autothrottle.rst:3
+msgid "AutoThrottle extension"
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:5
+msgid ""
+"This is an extension for automatically throttling crawling speed based on "
+"load of both the Scrapy server and the website you are crawling."
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:9
+msgid "Design goals"
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:11
+msgid "be nicer to sites instead of using default download delay of zero"
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:12
+msgid ""
+"automatically adjust scrapy to the optimum crawling speed, so the user "
+"doesn't have to tune the download delays and concurrent requests to find the "
+"optimum one. the user only needs to specify the maximum concurrent requests "
+"it allows, and the extension does the rest."
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:18
+msgid "How it works"
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:20
+msgid ""
+"In Scrapy, the download latency is measured as the time elapsed between "
+"establishing the TCP connection and receiving the HTTP headers."
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:23
+msgid ""
+"Note that these latencies are very hard to measure accurately in a "
+"cooperative multitasking environment because Scrapy may be busy processing a "
+"spider callback, for example, and unable to attend downloads. However, these "
+"latencies should still give a reasonable estimate of how busy Scrapy (and "
+"ultimately, the server) is, and this extension builds on that premise."
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:32
+msgid "Throttling algorithm"
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:34
+msgid ""
+"This adjusts download delays and concurrency based on the following rules:"
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:36
+msgid ""
+"spiders always start with one concurrent request and a download delay of :"
+"setting:`AUTOTHROTTLE_START_DELAY`"
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:38
+msgid ""
+"when a response is received, the download delay is adjusted to the average "
+"of previous download delay and the latency of the response."
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:41
+msgid ""
+"The AutoThrottle extension honours the standard Scrapy settings for "
+"concurrency and delay. This means that it will never set a download delay "
+"lower than :setting:`DOWNLOAD_DELAY` or a concurrency higher than :setting:"
+"`CONCURRENT_REQUESTS_PER_DOMAIN` (or :setting:`CONCURRENT_REQUESTS_PER_IP`, "
+"depending on which one you use)."
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:48
+msgid "Settings"
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:50
+msgid "The settings used to control the AutoThrottle extension are:"
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:52
+msgid ":setting:`AUTOTHROTTLE_ENABLED`"
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:53
+msgid ":setting:`AUTOTHROTTLE_START_DELAY`"
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:54
+msgid ":setting:`AUTOTHROTTLE_MAX_DELAY`"
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:55
+msgid ":setting:`AUTOTHROTTLE_DEBUG`"
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:56
+msgid ":setting:`CONCURRENT_REQUESTS_PER_DOMAIN`"
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:57
+msgid ":setting:`CONCURRENT_REQUESTS_PER_IP`"
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:58
+msgid ":setting:`DOWNLOAD_DELAY`"
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:60
+msgid "For more information see :ref:`autothrottle-algorithm`."
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:65
+msgid "AUTOTHROTTLE_ENABLED"
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:67 ../../../topics/autothrottle.rst:94
+msgid "Default: ``False``"
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:69
+msgid "Enables the AutoThrottle extension."
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:74
+msgid "AUTOTHROTTLE_START_DELAY"
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:76
+msgid "Default: ``5.0``"
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:78
+msgid "The initial download delay (in seconds)."
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:83
+msgid "AUTOTHROTTLE_MAX_DELAY"
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:85
+msgid "Default: ``60.0``"
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:87
+msgid ""
+"The maximum download delay (in seconds) to be set in case of high latencies."
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:92
+msgid "AUTOTHROTTLE_DEBUG"
+msgstr ""
+
+#: ../../../topics/autothrottle.rst:96
+msgid ""
+"Enable AutoThrottle debug mode which will display stats on every response "
+"received, so you can see how the throttling parameters are being adjusted in "
+"real time."
+msgstr ""

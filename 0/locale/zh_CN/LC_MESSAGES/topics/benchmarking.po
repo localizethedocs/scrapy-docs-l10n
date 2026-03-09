@@ -1,0 +1,107 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2008-2013, Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy 0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-09 06:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/benchmarking.rst:5
+msgid "Benchmarking"
+msgstr ""
+
+#: ../../../topics/benchmarking.rst:9
+msgid ""
+"Scrapy comes with a simple benchmarking suite that spawns a local HTTP "
+"server and crawls it at the maximum possible speed. The goal of this "
+"benchmarking is to get an idea of how Scrapy performs in your hardware, in "
+"order to have a common baseline for comparisons. It uses a simple spider "
+"that does nothing and just follows links."
+msgstr ""
+
+#: ../../../topics/benchmarking.rst:15
+msgid "To run it use::"
+msgstr ""
+
+#: ../../../topics/benchmarking.rst:17
+msgid "scrapy bench"
+msgstr ""
+
+#: ../../../topics/benchmarking.rst:19
+msgid "You should see an output like this::"
+msgstr ""
+
+#: ../../../topics/benchmarking.rst:21
+msgid ""
+"2013-05-16 13:08:46-0300 [scrapy] INFO: Scrapy 0.17.0 started (bot: "
+"scrapybot)\n"
+"2013-05-16 13:08:47-0300 [follow] INFO: Spider opened\n"
+"2013-05-16 13:08:47-0300 [follow] INFO: Crawled 0 pages (at 0 pages/min), "
+"scraped 0 items (at 0 items/min)\n"
+"2013-05-16 13:08:48-0300 [follow] INFO: Crawled 74 pages (at 4440 pages/"
+"min), scraped 0 items (at 0 items/min)\n"
+"2013-05-16 13:08:49-0300 [follow] INFO: Crawled 143 pages (at 4140 pages/"
+"min), scraped 0 items (at 0 items/min)\n"
+"2013-05-16 13:08:50-0300 [follow] INFO: Crawled 210 pages (at 4020 pages/"
+"min), scraped 0 items (at 0 items/min)\n"
+"2013-05-16 13:08:51-0300 [follow] INFO: Crawled 274 pages (at 3840 pages/"
+"min), scraped 0 items (at 0 items/min)\n"
+"2013-05-16 13:08:52-0300 [follow] INFO: Crawled 343 pages (at 4140 pages/"
+"min), scraped 0 items (at 0 items/min)\n"
+"2013-05-16 13:08:53-0300 [follow] INFO: Crawled 410 pages (at 4020 pages/"
+"min), scraped 0 items (at 0 items/min)\n"
+"2013-05-16 13:08:54-0300 [follow] INFO: Crawled 474 pages (at 3840 pages/"
+"min), scraped 0 items (at 0 items/min)\n"
+"2013-05-16 13:08:55-0300 [follow] INFO: Crawled 538 pages (at 3840 pages/"
+"min), scraped 0 items (at 0 items/min)\n"
+"2013-05-16 13:08:56-0300 [follow] INFO: Crawled 602 pages (at 3840 pages/"
+"min), scraped 0 items (at 0 items/min)\n"
+"2013-05-16 13:08:57-0300 [follow] INFO: Closing spider "
+"(closespider_timeout)\n"
+"2013-05-16 13:08:57-0300 [follow] INFO: Crawled 666 pages (at 3840 pages/"
+"min), scraped 0 items (at 0 items/min)\n"
+"2013-05-16 13:08:57-0300 [follow] INFO: Dumping Scrapy stats:\n"
+"    {'downloader/request_bytes': 231508,\n"
+"     'downloader/request_count': 682,\n"
+"     'downloader/request_method_count/GET': 682,\n"
+"     'downloader/response_bytes': 1172802,\n"
+"     'downloader/response_count': 682,\n"
+"     'downloader/response_status_count/200': 682,\n"
+"     'finish_reason': 'closespider_timeout',\n"
+"     'finish_time': datetime.datetime(2013, 5, 16, 16, 8, 57, 985539),\n"
+"     'log_count/INFO': 14,\n"
+"     'request_depth_max': 34,\n"
+"     'response_received_count': 682,\n"
+"     'scheduler/dequeued': 682,\n"
+"     'scheduler/dequeued/memory': 682,\n"
+"     'scheduler/enqueued': 12767,\n"
+"     'scheduler/enqueued/memory': 12767,\n"
+"     'start_time': datetime.datetime(2013, 5, 16, 16, 8, 47, 676539)}\n"
+"2013-05-16 13:08:57-0300 [follow] INFO: Spider closed (closespider_timeout)"
+msgstr ""
+
+#: ../../../topics/benchmarking.rst:54
+msgid ""
+"That tells you that Scrapy is able to crawl about 3900 pages per minute in "
+"the hardware where you run it. Note that this is a very simple spider "
+"intended to follow links, any custom spider you write will probably do more "
+"stuff which results in slower crawl rates. How slower depends on how much "
+"your spider does and how well it's written."
+msgstr ""
+
+#: ../../../topics/benchmarking.rst:60
+msgid ""
+"In the future, more cases will be added to the benchmarking suite to cover "
+"other common scenarios."
+msgstr ""

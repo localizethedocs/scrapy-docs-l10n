@@ -1,0 +1,86 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2008-2013, Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy 0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-09 06:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../versioning.rst:5
+msgid "Versioning and API Stability"
+msgstr ""
+
+#: ../../../versioning.rst:8
+msgid "Versioning"
+msgstr ""
+
+#: ../../../versioning.rst:10
+msgid "Scrapy uses the `odd-numbered versions for development releases`_."
+msgstr ""
+
+#: ../../../versioning.rst:12
+msgid "There are 3 numbers in a Scrapy version: *A.B.C*"
+msgstr ""
+
+#: ../../../versioning.rst:14
+msgid ""
+"*A* is the major version. This will rarely change and will signify very "
+"large changes. So far, only zero is available for *A* as Scrapy hasn't yet "
+"reached 1.0."
+msgstr ""
+
+#: ../../../versioning.rst:17
+msgid ""
+"*B* is the release number. This will include many changes including features "
+"and things that possibly break backwards compatibility. Even Bs will be "
+"stable branches, and odd Bs will be development."
+msgstr ""
+
+#: ../../../versioning.rst:20
+msgid "*C* is the bugfix release number."
+msgstr ""
+
+#: ../../../versioning.rst:22
+msgid "For example:"
+msgstr ""
+
+#: ../../../versioning.rst:24
+msgid ""
+"*0.14.1* is the first bugfix release of the *0.14* series (safe to use in "
+"production)"
+msgstr ""
+
+#: ../../../versioning.rst:28
+msgid "API Stability"
+msgstr ""
+
+#: ../../../versioning.rst:30
+msgid ""
+"API stability is one of Scrapy major goals for the *1.0* release, which "
+"doesn't have a due date scheduled yet."
+msgstr ""
+
+#: ../../../versioning.rst:33
+msgid ""
+"Methods or functions that start with a single dash (``_``) are private and "
+"should never be relied as stable. Besides those, the plan is to stabilize "
+"and document the entire API, as we approach the 1.0 release."
+msgstr ""
+
+#: ../../../versioning.rst:37
+msgid ""
+"Also, keep in mind that stable doesn't mean complete: stable APIs could grow "
+"new methods or functionality but the existing methods should keep working "
+"the same way."
+msgstr ""
