@@ -1,0 +1,271 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/debug.rst:5
+msgid "Debugging Spiders"
+msgstr ""
+
+#: ../../../topics/debug.rst:7
+msgid ""
+"This document explains the most common techniques for debugging spiders. "
+"Consider the following Scrapy spider below:"
+msgstr ""
+
+#: ../../../topics/debug.rst:11
+msgid ""
+"import scrapy\n"
+"from myproject.items import MyItem\n"
+"\n"
+"\n"
+"class MySpider(scrapy.Spider):\n"
+"    name = \"myspider\"\n"
+"    start_urls = (\n"
+"        \"http://example.com/page1\",\n"
+"        \"http://example.com/page2\",\n"
+"    )\n"
+"\n"
+"    def parse(self, response):\n"
+"        # <processing code not shown>\n"
+"        # collect `item_urls`\n"
+"        for item_url in item_urls:\n"
+"            yield scrapy.Request(item_url, self.parse_item)\n"
+"\n"
+"    def parse_item(self, response):\n"
+"        # <processing code not shown>\n"
+"        item = MyItem()\n"
+"        # populate `item` fields\n"
+"        # and extract item_details_url\n"
+"        yield scrapy.Request(\n"
+"            item_details_url, self.parse_details, cb_kwargs={\"item\": "
+"item}\n"
+"        )\n"
+"\n"
+"    def parse_details(self, response, item):\n"
+"        # populate more `item` fields\n"
+"        return item"
+msgstr ""
+
+#: ../../../topics/debug.rst:43
+msgid ""
+"Basically this is a simple spider which parses two pages of items (the "
+"start_urls). Items also have a details page with additional information, so "
+"we use the ``cb_kwargs`` functionality of :class:`~scrapy.Request` to pass a "
+"partially populated item."
+msgstr ""
+
+#: ../../../topics/debug.rst:50
+msgid "Parse Command"
+msgstr ""
+
+#: ../../../topics/debug.rst:52
+msgid ""
+"The most basic way of checking the output of your spider is to use the :"
+"command:`parse` command. It allows to check the behaviour of different parts "
+"of the spider at the method level. It has the advantage of being flexible "
+"and simple to use, but does not allow debugging code inside a method."
+msgstr ""
+
+#: ../../../topics/debug.rst:61
+msgid "In order to see the item scraped from a specific url::"
+msgstr ""
+
+#: ../../../topics/debug.rst:63
+msgid ""
+"$ scrapy parse --spider=myspider -c parse_item -d 2 <item_url>\n"
+"[ ... scrapy log lines crawling example.com spider ... ]\n"
+"\n"
+">>> STATUS DEPTH LEVEL 2 <<<\n"
+"# Scraped Items  "
+"------------------------------------------------------------\n"
+"[{'url': <item_url>}]\n"
+"\n"
+"# Requests  "
+"-----------------------------------------------------------------\n"
+"[]"
+msgstr ""
+
+#: ../../../topics/debug.rst:73
+msgid ""
+"Using the ``--verbose`` or ``-v`` option we can see the status at each depth "
+"level::"
+msgstr ""
+
+#: ../../../topics/debug.rst:75
+msgid ""
+"$ scrapy parse --spider=myspider -c parse_item -d 2 -v <item_url>\n"
+"[ ... scrapy log lines crawling example.com spider ... ]\n"
+"\n"
+">>> DEPTH LEVEL: 1 <<<\n"
+"# Scraped Items  "
+"------------------------------------------------------------\n"
+"[]\n"
+"\n"
+"# Requests  "
+"-----------------------------------------------------------------\n"
+"[<GET item_details_url>]\n"
+"\n"
+"\n"
+">>> DEPTH LEVEL: 2 <<<\n"
+"# Scraped Items  "
+"------------------------------------------------------------\n"
+"[{'url': <item_url>}]\n"
+"\n"
+"# Requests  "
+"-----------------------------------------------------------------\n"
+"[]"
+msgstr ""
+
+#: ../../../topics/debug.rst:93
+msgid ""
+"Checking items scraped from a single start_url, can also be easily achieved "
+"using::"
+msgstr ""
+
+#: ../../../topics/debug.rst:96
+msgid "$ scrapy parse --spider=myspider -d 3 'http://example.com/page1'"
+msgstr ""
+
+#: ../../../topics/debug.rst:102
+msgid "Scrapy Shell"
+msgstr ""
+
+#: ../../../topics/debug.rst:104
+msgid ""
+"While the :command:`parse` command is very useful for checking behaviour of "
+"a spider, it is of little help to check what happens inside a callback, "
+"besides showing the response received and the output. How to debug the "
+"situation when ``parse_details`` sometimes receives no item?"
+msgstr ""
+
+#: ../../../topics/debug.rst:111
+msgid ""
+"Fortunately, the :command:`shell` is your bread and butter in this case "
+"(see :ref:`topics-shell-inspect-response`):"
+msgstr ""
+
+#: ../../../topics/debug.rst:114
+msgid ""
+"from scrapy.shell import inspect_response\n"
+"\n"
+"\n"
+"def parse_details(self, response, item=None):\n"
+"    if item:\n"
+"        # populate more `item` fields\n"
+"        return item\n"
+"    else:\n"
+"        inspect_response(response, self)"
+msgstr ""
+
+#: ../../../topics/debug.rst:126
+msgid "See also: :ref:`topics-shell-inspect-response`."
+msgstr ""
+
+#: ../../../topics/debug.rst:130
+msgid "Open in browser"
+msgstr ""
+
+#: ../../../topics/debug.rst:132
+msgid ""
+"Sometimes you just want to see how a certain response looks in a browser, "
+"you can use the :func:`~scrapy.utils.response.open_in_browser` function for "
+"that:"
+msgstr ""
+
+#: ../../../../scrapy/utils/response.py:docstring of
+#: scrapy.utils.response.open_in_browser:1
+msgid ""
+"Open *response* in a local web browser, adjusting the `base tag`_ for "
+"external links to work, e.g. so that images and styles are displayed."
+msgstr ""
+
+#: ../../../../scrapy/utils/response.py:docstring of
+#: scrapy.utils.response.open_in_browser:6
+msgid "For example:"
+msgstr ""
+
+#: ../../../../scrapy/utils/response.py:docstring of
+#: scrapy.utils.response.open_in_browser:8
+msgid ""
+"from scrapy.utils.response import open_in_browser\n"
+"\n"
+"\n"
+"def parse_details(self, response):\n"
+"    if \"item name\" not in response.body:\n"
+"        open_in_browser(response)"
+msgstr ""
+
+#: ../../../topics/debug.rst:139
+msgid "Logging"
+msgstr ""
+
+#: ../../../topics/debug.rst:141
+msgid ""
+"Logging is another useful option for getting information about your spider "
+"run. Although not as convenient, it comes with the advantage that the logs "
+"will be available in all future runs should they be necessary again:"
+msgstr ""
+
+#: ../../../topics/debug.rst:145
+msgid ""
+"def parse_details(self, response, item=None):\n"
+"    if item:\n"
+"        # populate more `item` fields\n"
+"        return item\n"
+"    else:\n"
+"        self.logger.warning(\"No item received for %s\", response.url)"
+msgstr ""
+
+#: ../../../topics/debug.rst:154
+msgid "For more information, check the :ref:`topics-logging` section."
+msgstr ""
+
+#: ../../../topics/debug.rst:159
+msgid "Visual Studio Code"
+msgstr ""
+
+#: ../../../topics/debug.rst:163
+msgid ""
+"To debug spiders with Visual Studio Code you can use the following ``launch."
+"json``::"
+msgstr ""
+
+#: ../../../topics/debug.rst:165
+msgid ""
+"{\n"
+"    \"version\": \"0.1.0\",\n"
+"    \"configurations\": [\n"
+"        {\n"
+"            \"name\": \"Python: Launch Scrapy Spider\",\n"
+"            \"type\": \"python\",\n"
+"            \"request\": \"launch\",\n"
+"            \"module\": \"scrapy\",\n"
+"            \"args\": [\n"
+"                \"runspider\",\n"
+"                \"${file}\"\n"
+"            ],\n"
+"            \"console\": \"integratedTerminal\"\n"
+"        }\n"
+"    ]\n"
+"}"
+msgstr ""
+
+#: ../../../topics/debug.rst:183
+msgid ""
+"Also, make sure you enable \"User Uncaught Exceptions\", to catch exceptions "
+"in your Scrapy spider."
+msgstr ""
