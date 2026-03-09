@@ -14,10 +14,10 @@ var CONFIG_OPTIONS = {
     ["0",       "Release 0.x"],
   ],
   CONFIG_PROJECTS: [
-    ["Index",   "https://projects.ltdorgtest.org"],
-    ["Crowdin", "https://ltdorgtest.crowdin.com/scrapy-docs-l10n"],
-    ["GitHub",  "https://github.com/ltdorgtest/scrapy-docs-l10n"],
-    ["AtomGit", "https://atomgit.com/ltdorgtest/scrapy-docs-l10n"],
-    ["GitFlic", "https://gitflic.ru/project/ltdorgtest/scrapy-docs-l10n"],
+    ["Index",   "https://projects.localizethedocs.org"],
+    ["Crowdin", "https://localizethedocs.crowdin.com/scrapy-docs-l10n"],
+    ["GitHub",  "https://github.com/localizethedocs/scrapy-docs-l10n"],
+    ["AtomGit", "https://atomgit.com/localizethedocs/scrapy-docs-l10n"],
+    ["GitFlic", "https://gitflic.ru/project/localizethedocs/scrapy-docs-l10n"],
   ]
 };
