@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../index.rst:5
 msgid "Scrapy |version| documentation"
-msgstr ""
+msgstr "Scrapy |version| 文件"
 
 #: ../../../index.rst:7
 msgid "This documentation contains everything you need to know about Scrapy."
@@ -94,7 +94,7 @@ msgstr ""
 
 #: ../../../index.rst:53
 msgid "Basic concepts"
-msgstr ""
+msgstr "基礎概念"
 
 #: ../../../index.rst:69 ../../../index.rst:232
 msgid ":doc:`topics/commands`"
@@ -434,7 +434,7 @@ msgstr ""
 
 #: ../../../index.rst:251
 msgid "All the rest"
-msgstr ""
+msgstr "所有測試"
 
 #: ../../../index.rst:262
 msgid ":doc:`news`"
