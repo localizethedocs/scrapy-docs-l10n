@@ -1,0 +1,67 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2008-2013, Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy 0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-09 06:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../experimental/index.rst:4
+msgid "Experimental features"
+msgstr ""
+
+#: ../../../experimental/index.rst:6
+msgid ""
+"This section documents experimental Scrapy features that may become stable "
+"in future releases, but whose API is not yet stable. Use them with caution, "
+"and subscribe to the `mailing lists <http://scrapy.org/community/>`_ to get "
+"notified of any changes."
+msgstr ""
+
+#: ../../../experimental/index.rst:11
+msgid ""
+"Since it's not revised so frequently, this section may contain documentation "
+"which is outdated, incomplete or overlapping with stable documentation "
+"(until it's properly merged) . Use at your own risk."
+msgstr ""
+
+#: ../../../experimental/index.rst:17
+msgid "This documentation is a work in progress. Use at your own risk."
+msgstr ""
+
+#: ../../../experimental/index.rst:20
+msgid "Add commands using external libraries"
+msgstr ""
+
+#: ../../../experimental/index.rst:22
+msgid ""
+"You can also add Scrapy commands from an external library by adding `scrapy."
+"commands` section into entry_points in the `setup.py`."
+msgstr ""
+
+#: ../../../experimental/index.rst:24
+msgid "The following example adds `my_command` command::"
+msgstr ""
+
+#: ../../../experimental/index.rst:26
+msgid ""
+"from setuptools import setup, find_packages\n"
+"\n"
+"setup(name='scrapy-mymodule',\n"
+"  entry_points={\n"
+"    'scrapy.commands': [\n"
+"      'my_command=my_scrapy_module.commands:MyCommand',\n"
+"    ],\n"
+"  },\n"
+" )"
+msgstr ""

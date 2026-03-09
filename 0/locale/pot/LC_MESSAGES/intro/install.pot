@@ -1,0 +1,184 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2008-2013, Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy 0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-09 06:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../intro/install.rst:5
+msgid "Installation guide"
+msgstr ""
+
+#: ../../../intro/install.rst:8
+msgid "Pre-requisites"
+msgstr ""
+
+#: ../../../intro/install.rst:10
+msgid ""
+"The installation steps assume that you have the following things installed:"
+msgstr ""
+
+#: ../../../intro/install.rst:12
+msgid "`Python`_ 2.7"
+msgstr ""
+
+#: ../../../intro/install.rst:13
+msgid ""
+"`lxml`_. Most Linux distributions ships prepackaged versions of lxml. "
+"Otherwise refer to http://lxml.de/installation.html"
+msgstr ""
+
+#: ../../../intro/install.rst:14
+msgid ""
+"`OpenSSL`_. This comes preinstalled in all operating systems except Windows "
+"(see :ref:`intro-install-platform-notes`)"
+msgstr ""
+
+#: ../../../intro/install.rst:15
+msgid "`pip`_ or `easy_install`_ Python package managers"
+msgstr ""
+
+#: ../../../intro/install.rst:18
+msgid "Installing Scrapy"
+msgstr ""
+
+#: ../../../intro/install.rst:20
+msgid ""
+"You can install Scrapy using easy_install or pip (which is the canonical way "
+"to distribute and install Python packages)."
+msgstr ""
+
+#: ../../../intro/install.rst:23
+msgid "Check :ref:`intro-install-platform-notes` first."
+msgstr ""
+
+#: ../../../intro/install.rst:25
+msgid "To install using pip::"
+msgstr ""
+
+#: ../../../intro/install.rst:27
+msgid "pip install Scrapy"
+msgstr ""
+
+#: ../../../intro/install.rst:29
+msgid "To install using easy_install::"
+msgstr ""
+
+#: ../../../intro/install.rst:31
+msgid "easy_install Scrapy"
+msgstr ""
+
+#: ../../../intro/install.rst:36
+msgid "Platform specific installation notes"
+msgstr ""
+
+#: ../../../intro/install.rst:39
+msgid "Windows"
+msgstr ""
+
+#: ../../../intro/install.rst:41
+msgid "After installing Python, follow these steps before installing Scrapy:"
+msgstr ""
+
+#: ../../../intro/install.rst:43
+msgid ""
+"add the ``C:\\python27\\Scripts`` and ``C:\\python27`` folders to the system "
+"path by adding those directories to the ``PATH`` environment variable from "
+"the `Control Panel`_."
+msgstr ""
+
+#: ../../../intro/install.rst:47
+msgid "install OpenSSL by following these steps:"
+msgstr ""
+
+#: ../../../intro/install.rst:49
+msgid ""
+"go to `Win32 OpenSSL page <http://slproweb.com/products/Win32OpenSSL.html>`_"
+msgstr ""
+
+#: ../../../intro/install.rst:51
+msgid ""
+"download Visual C++ 2008 redistributables for your Windows and architecture"
+msgstr ""
+
+#: ../../../intro/install.rst:53
+msgid ""
+"download OpenSSL for your Windows and architecture (the regular version, not "
+"the light one)"
+msgstr ""
+
+#: ../../../intro/install.rst:55
+msgid ""
+"add the ``c:\\openssl-win32\\bin`` (or similar) directory to your ``PATH``, "
+"the same way you added ``python27`` in the first step`` in the first step"
+msgstr ""
+
+#: ../../../intro/install.rst:57
+msgid ""
+"some binary packages that Scrapy depends on (like Twisted, lxml and "
+"pyOpenSSL) require a compiler available to install, and fail if you don't "
+"have Visual Studio installed. You can find Windows installers for those in "
+"the following links. Make sure you respect your Python version and Windows "
+"architecture."
+msgstr ""
+
+#: ../../../intro/install.rst:59
+msgid "pywin32: http://sourceforge.net/projects/pywin32/files/"
+msgstr ""
+
+#: ../../../intro/install.rst:60
+msgid "Twisted: http://twistedmatrix.com/trac/wiki/Downloads"
+msgstr ""
+
+#: ../../../intro/install.rst:61
+msgid ""
+"zope.interface: download the egg from `zope.interface pypi page <http://pypi."
+"python.org/pypi/zope.interface>`_ and install it by running ``easy_install "
+"file.egg``"
+msgstr ""
+
+#: ../../../intro/install.rst:62
+msgid "lxml: http://pypi.python.org/pypi/lxml/"
+msgstr ""
+
+#: ../../../intro/install.rst:63
+msgid "pyOpenSSL: https://launchpad.net/pyopenssl"
+msgstr ""
+
+#: ../../../intro/install.rst:65
+msgid ""
+"Finally, this page contains many precompiled Python binary libraries, which "
+"may come handy to fulfill Scrapy dependencies:"
+msgstr ""
+
+#: ../../../intro/install.rst:68
+msgid "http://www.lfd.uci.edu/~gohlke/pythonlibs/"
+msgstr ""
+
+#: ../../../intro/install.rst:71
+msgid "Ubuntu 9.10 or above"
+msgstr ""
+
+#: ../../../intro/install.rst:73
+msgid ""
+"**Don't** use the ``python-scrapy`` package provided by Ubuntu, they are "
+"typically too old and slow to catch up with latest Scrapy."
+msgstr ""
+
+#: ../../../intro/install.rst:76
+msgid ""
+"Instead, use the official :ref:`Ubuntu Packages <topics-ubuntu>`, which "
+"already solve all dependencies for you and are continuously updated with the "
+"latest bug fixes."
+msgstr ""

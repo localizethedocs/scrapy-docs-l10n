@@ -1,0 +1,759 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2008-2013, Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy 0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-09 06:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../intro/tutorial.rst:5
+msgid "Scrapy Tutorial"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:7
+msgid ""
+"In this tutorial, we'll assume that Scrapy is already installed on your "
+"system. If that's not the case, see :ref:`intro-install`."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:10
+msgid ""
+"We are going to use `Open directory project (dmoz) <http://www.dmoz.org/>`_ "
+"as our example domain to scrape."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:13
+msgid "This tutorial will walk you through these tasks:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:15
+msgid "Creating a new Scrapy project"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:16
+msgid "Defining the Items you will extract"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:17
+msgid ""
+"Writing a :ref:`spider <topics-spiders>` to crawl a site and extract :ref:"
+"`Items <topics-items>`"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:19
+msgid ""
+"Writing an :ref:`Item Pipeline <topics-item-pipeline>` to store the "
+"extracted Items"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:22
+msgid ""
+"Scrapy is written in Python_. If you're new to the language you might want "
+"to start by getting an idea of what the language is like, to get the most "
+"out of Scrapy.  If you're already familiar with other languages, and want to "
+"learn Python quickly, we recommend `Learn Python The Hard Way`_.  If you're "
+"new to programming and want to start with Python, take a look at `this list "
+"of Python resources for non-programmers`_."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:34
+msgid "Creating a project"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:36
+msgid ""
+"Before you start scraping, you will have set up a new Scrapy project. Enter "
+"a directory where you'd like to store your code and then run::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:39
+msgid "scrapy startproject tutorial"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:41
+msgid "This will create a ``tutorial`` directory with the following contents::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:43
+msgid ""
+"tutorial/\n"
+"    scrapy.cfg\n"
+"    tutorial/\n"
+"        __init__.py\n"
+"        items.py\n"
+"        pipelines.py\n"
+"        settings.py\n"
+"        spiders/\n"
+"            __init__.py\n"
+"            ..."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:54
+msgid "These are basically:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:56
+msgid "``scrapy.cfg``: the project configuration file"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:57
+msgid ""
+"``tutorial/``: the project's python module, you'll later import your code "
+"from here."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:59
+msgid "``tutorial/items.py``: the project's items file."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:60
+msgid "``tutorial/pipelines.py``: the project's pipelines file."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:61
+msgid "``tutorial/settings.py``: the project's settings file."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:62
+msgid "``tutorial/spiders/``: a directory where you'll later put your spiders."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:65
+msgid "Defining our Item"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:67
+msgid ""
+"`Items` are containers that will be loaded with the scraped data; they work "
+"like simple python dicts but provide additional protection against "
+"populating undeclared fields, to prevent typos."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:71
+msgid ""
+"They are declared by creating a :class:`scrapy.Item <scrapy.item.Item>` "
+"class and defining its attributes as :class:`scrapy.Field <scrapy.item."
+"Field>` objects, like you will in an ORM (don't worry if you're not familiar "
+"with ORMs, you will see that this is an easy task)."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:76
+msgid ""
+"We begin by modeling the item that we will use to hold the sites data "
+"obtained from dmoz.org, as we want to capture the name, url and description "
+"of the sites, we define fields for each of these three attributes. To do "
+"that, we edit ``items.py``, found in the ``tutorial`` directory. Our Item "
+"class looks like this::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:81
+msgid ""
+"import scrapy\n"
+"\n"
+"class DmozItem(scrapy.Item):\n"
+"    title = scrapy.Field()\n"
+"    link = scrapy.Field()\n"
+"    desc = scrapy.Field()"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:88
+msgid ""
+"This may seem complicated at first, but defining the item allows you to use "
+"other handy components of Scrapy that need to know how your item looks."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:92
+msgid "Our first Spider"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:94
+msgid ""
+"Spiders are user-written classes used to scrape information from a domain "
+"(or group of domains)."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:97
+msgid ""
+"They define an initial list of URLs to download, how to follow links, and "
+"how to parse the contents of those pages to extract :ref:`items <topics-"
+"items>`."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:100
+msgid ""
+"To create a Spider, you must subclass :class:`scrapy.Spider <scrapy.spider."
+"Spider>` and define the three main mandatory attributes:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:103
+msgid ""
+":attr:`~scrapy.spider.Spider.name`: identifies the Spider. It must be "
+"unique, that is, you can't set the same name for different Spiders."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:106
+msgid ""
+":attr:`~scrapy.spider.Spider.start_urls`: is a list of URLs where the Spider "
+"will begin to crawl from.  So, the first pages downloaded will be those "
+"listed here. The subsequent URLs will be generated successively from data "
+"contained in the start URLs."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:111
+msgid ""
+":meth:`~scrapy.spider.Spider.parse` is a method of the spider, which will be "
+"called with the downloaded :class:`~scrapy.http.Response` object of each "
+"start URL. The response is passed to the method as the first and only "
+"argument."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:116
+msgid ""
+"This method is responsible for parsing the response data and extracting "
+"scraped data (as scraped items) and more URLs to follow."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:119
+msgid ""
+"The :meth:`~scrapy.spider.Spider.parse` method is in charge of processing "
+"the response and returning scraped data (as :class:`~scrapy.item.Item` "
+"objects) and more URLs to follow (as :class:`~scrapy.http.Request` objects)."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:123
+msgid ""
+"This is the code for our first Spider; save it in a file named ``dmoz_spider."
+"py`` under the ``tutorial/spiders`` directory::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:126
+msgid ""
+"import scrapy\n"
+"\n"
+"class DmozSpider(scrapy.Spider):\n"
+"    name = \"dmoz\"\n"
+"    allowed_domains = [\"dmoz.org\"]\n"
+"    start_urls = [\n"
+"        \"http://www.dmoz.org/Computers/Programming/Languages/Python/Books/"
+"\",\n"
+"        \"http://www.dmoz.org/Computers/Programming/Languages/Python/"
+"Resources/\"\n"
+"    ]\n"
+"\n"
+"    def parse(self, response):\n"
+"        filename = response.url.split(\"/\")[-2]\n"
+"        with open(filename, 'wb') as f:\n"
+"            f.write(response.body)"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:142
+msgid "Crawling"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:144
+msgid ""
+"To put our spider to work, go to the project's top level directory and run::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:146 ../../../intro/tutorial.rst:371
+msgid "scrapy crawl dmoz"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:148
+msgid ""
+"The ``crawl dmoz`` command runs the spider for the ``dmoz.org`` domain. You "
+"will get an output similar to this::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:151
+msgid ""
+"2014-01-23 18:13:07-0400 [scrapy] INFO: Scrapy started (bot: tutorial)\n"
+"2014-01-23 18:13:07-0400 [scrapy] INFO: Optional features available: ...\n"
+"2014-01-23 18:13:07-0400 [scrapy] INFO: Overridden settings: {}\n"
+"2014-01-23 18:13:07-0400 [scrapy] INFO: Enabled extensions: ...\n"
+"2014-01-23 18:13:07-0400 [scrapy] INFO: Enabled downloader middlewares: ...\n"
+"2014-01-23 18:13:07-0400 [scrapy] INFO: Enabled spider middlewares: ...\n"
+"2014-01-23 18:13:07-0400 [scrapy] INFO: Enabled item pipelines: ...\n"
+"2014-01-23 18:13:07-0400 [dmoz] INFO: Spider opened\n"
+"2014-01-23 18:13:08-0400 [dmoz] DEBUG: Crawled (200) <GET http://www.dmoz."
+"org/Computers/Programming/Languages/Python/Resources/> (referer: None)\n"
+"2014-01-23 18:13:09-0400 [dmoz] DEBUG: Crawled (200) <GET http://www.dmoz."
+"org/Computers/Programming/Languages/Python/Books/> (referer: None)\n"
+"2014-01-23 18:13:09-0400 [dmoz] INFO: Closing spider (finished)"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:163
+msgid ""
+"Pay attention to the lines containing ``[dmoz]``, which corresponds to our "
+"spider. You can see a log line for each URL defined in ``start_urls``. "
+"Because these URLs are the starting ones, they have no referrers, which is "
+"shown at the end of the log line, where it says ``(referer: None)``."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:168
+msgid ""
+"But more interesting, as our ``parse`` method instructs, two files have been "
+"created: *Books* and *Resources*, with the content of both URLs."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:172
+msgid "What just happened under the hood?"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:174
+msgid ""
+"Scrapy creates :class:`scrapy.Request <scrapy.http.Request>` objects for "
+"each URL in the ``start_urls`` attribute of the Spider, and assigns them the "
+"``parse`` method of the spider as their callback function."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:178
+msgid ""
+"These Requests are scheduled, then executed, and :class:`scrapy.http."
+"Response` objects are returned and then fed back to the spider, through the :"
+"meth:`~scrapy.spider.Spider.parse` method."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:183
+msgid "Extracting Items"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:186
+msgid "Introduction to Selectors"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:188
+msgid ""
+"There are several ways to extract data from web pages. Scrapy uses a "
+"mechanism based on `XPath`_ or `CSS`_ expressions called :ref:`Scrapy "
+"Selectors <topics-selectors>`.  For more information about selectors and "
+"other extraction mechanisms see the :ref:`Selectors documentation <topics-"
+"selectors>`."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:196
+msgid "Here are some examples of XPath expressions and their meanings:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:198
+msgid ""
+"``/html/head/title``: selects the ``<title>`` element, inside the ``<head>`` "
+"element of a HTML document"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:201
+msgid ""
+"``/html/head/title/text()``: selects the text inside the aforementioned "
+"``<title>`` element."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:204
+msgid "``//td``: selects all the ``<td>`` elements"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:206
+msgid ""
+"``//div[@class=\"mine\"]``: selects all ``div`` elements which contain an "
+"attribute ``class=\"mine\"``"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:209
+msgid ""
+"These are just a couple of simple examples of what you can do with XPath, "
+"but XPath expressions are indeed much more powerful. To learn more about "
+"XPath we recommend `this XPath tutorial <http://www.w3schools.com/XPath/"
+"default.asp>`_."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:213
+msgid ""
+"For working with XPaths, Scrapy provides :class:`~scrapy.selector.Selector` "
+"class and convenient shortcuts to avoid instantiating selectors yourself "
+"everytime you need to select something from a response."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:217
+msgid ""
+"You can see selectors as objects that represent nodes in the document "
+"structure. So, the first instantiated selectors are associated with the root "
+"node, or the entire document."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:221
+msgid ""
+"Selectors have four basic methods (click on the method to see the complete "
+"API documentation):"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:224
+msgid ""
+":meth:`~scrapy.selector.Selector.xpath`: returns a list of selectors, each "
+"of them representing the nodes selected by the xpath expression given as "
+"argument."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:228
+msgid ""
+":meth:`~scrapy.selector.Selector.css`: returns a list of selectors, each of "
+"them representing the nodes selected by the CSS expression given as argument."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:231
+msgid ""
+":meth:`~scrapy.selector.Selector.extract`: returns a unicode string with the "
+"selected data."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:234
+msgid ""
+":meth:`~scrapy.selector.Selector.re`: returns a list of unicode strings "
+"extracted by applying the regular expression given as argument."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:239
+msgid "Trying Selectors in the Shell"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:241
+msgid ""
+"To illustrate the use of Selectors we're going to use the built-in :ref:"
+"`Scrapy shell <topics-shell>`, which also requires IPython (an extended "
+"Python console) installed on your system."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:245
+msgid ""
+"To start a shell, you must go to the project's top level directory and run::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:247
+msgid ""
+"scrapy shell \"http://www.dmoz.org/Computers/Programming/Languages/Python/"
+"Books/\""
+msgstr ""
+
+#: ../../../intro/tutorial.rst:251
+msgid ""
+"Remember to always enclose urls with quotes when running Scrapy shell from "
+"command-line, otherwise urls containing arguments (ie. ``&`` character) will "
+"not work."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:255
+msgid "This is what the shell looks like::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:257
+msgid ""
+"[ ... Scrapy log here ... ]\n"
+"\n"
+"2014-01-23 17:11:42-0400 [default] DEBUG: Crawled (200) <GET http://www.dmoz."
+"org/Computers/Programming/Languages/Python/Books/> (referer: None)\n"
+"[s] Available Scrapy objects:\n"
+"[s]   crawler    <scrapy.crawler.Crawler object at 0x3636b50>\n"
+"[s]   item       {}\n"
+"[s]   request    <GET http://www.dmoz.org/Computers/Programming/Languages/"
+"Python/Books/>\n"
+"[s]   response   <200 http://www.dmoz.org/Computers/Programming/Languages/"
+"Python/Books/>\n"
+"[s]   settings   <scrapy.settings.Settings object at 0x3fadc50>\n"
+"[s]   spider     <Spider 'default' at 0x3cebf50>\n"
+"[s] Useful shortcuts:\n"
+"[s]   shelp()           Shell help (print this help)\n"
+"[s]   fetch(req_or_url) Fetch request (or URL) and update local objects\n"
+"[s]   view(response)    View response in a browser\n"
+"\n"
+"In [1]:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:274
+msgid ""
+"After the shell loads, you will have the response fetched in a local "
+"``response`` variable, so if you type ``response.body`` you will see the "
+"body of the response, or you can type ``response.headers`` to see its "
+"headers."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:278
+msgid ""
+"More important, if you type ``response.selector`` you will access a selector "
+"object you can use to query the response, and convenient shortcuts like "
+"``response.xpath()`` and ``response.css()`` mapping to ``response.selector."
+"xpath()`` and ``response.selector.css()``"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:284
+msgid "So let's try it::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:286
+msgid ""
+"In [1]: response.xpath('//title')\n"
+"Out[1]: [<Selector xpath='//title' data=u'<title>Open Directory - Computers: "
+"Progr'>]\n"
+"\n"
+"In [2]: response.xpath('//title').extract()\n"
+"Out[2]: [u'<title>Open Directory - Computers: Programming: Languages: "
+"Python: Books</title>']\n"
+"\n"
+"In [3]: response.xpath('//title/text()')\n"
+"Out[3]: [<Selector xpath='//title/text()' data=u'Open Directory - Computers: "
+"Programming:'>]\n"
+"\n"
+"In [4]: response.xpath('//title/text()').extract()\n"
+"Out[4]: [u'Open Directory - Computers: Programming: Languages: Python: "
+"Books']\n"
+"\n"
+"In [5]: response.xpath('//title/text()').re('(\\w+):')\n"
+"Out[5]: [u'Computers', u'Programming', u'Languages', u'Python']"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:302
+msgid "Extracting the data"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:304
+msgid "Now, let's try to extract some real information from those pages."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:306
+msgid ""
+"You could type ``response.body`` in the console, and inspect the source code "
+"to figure out the XPaths you need to use. However, inspecting the raw HTML "
+"code there could become a very tedious task. To make this an easier task, "
+"you can use some Firefox extensions like Firebug. For more information see :"
+"ref:`topics-firebug` and :ref:`topics-firefox`."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:312
+msgid ""
+"After inspecting the page source, you'll find that the web sites information "
+"is inside a ``<ul>`` element, in fact the *second* ``<ul>`` element."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:315
+msgid ""
+"So we can select each ``<li>`` element belonging to the sites list with this "
+"code::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:318
+msgid "sel.xpath('//ul/li')"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:320
+msgid "And from them, the sites descriptions::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:322
+msgid "sel.xpath('//ul/li/text()').extract()"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:324
+msgid "The sites titles::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:326
+msgid "sel.xpath('//ul/li/a/text()').extract()"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:328
+msgid "And the sites links::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:330
+msgid "sel.xpath('//ul/li/a/@href').extract()"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:332
+msgid ""
+"As we've said before, each ``.xpath()`` call returns a list of selectors, so "
+"we can concatenate further ``.xpath()`` calls to dig deeper into a node. We "
+"are going to use that property here, so::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:336
+msgid ""
+"for sel in response.xpath('//ul/li'):\n"
+"    title = sel.xpath('a/text()').extract()\n"
+"    link = sel.xpath('a/@href').extract()\n"
+"    desc = sel.xpath('text()').extract()\n"
+"    print title, link, desc"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:344
+msgid ""
+"For a more detailed description of using nested selectors, see :ref:`topics-"
+"selectors-nesting-selectors` and :ref:`topics-selectors-relative-xpaths` in "
+"the :ref:`topics-selectors` documentation"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:349
+msgid "Let's add this code to our spider::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:351
+msgid ""
+"import scrapy\n"
+"\n"
+"class DmozSpider(scrapy.Spider):\n"
+"    name = \"dmoz\"\n"
+"    allowed_domains = [\"dmoz.org\"]\n"
+"    start_urls = [\n"
+"        \"http://www.dmoz.org/Computers/Programming/Languages/Python/Books/"
+"\",\n"
+"        \"http://www.dmoz.org/Computers/Programming/Languages/Python/"
+"Resources/\"\n"
+"    ]\n"
+"\n"
+"    def parse(self, response):\n"
+"        for sel in response.xpath('//ul/li'):\n"
+"            title = sel.xpath('a/text()').extract()\n"
+"            link = sel.xpath('a/@href').extract()\n"
+"            desc = sel.xpath('text()').extract()\n"
+"            print title, link, desc"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:368
+msgid ""
+"Now try crawling the dmoz.org domain again and you'll see sites being "
+"printed in your output, run::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:374
+msgid "Using our item"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:376
+msgid ""
+":class:`~scrapy.item.Item` objects are custom python dicts; you can access "
+"the values of their fields (attributes of the class we defined earlier) "
+"using the standard dict syntax like::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:380
+msgid ""
+">>> item = DmozItem()\n"
+">>> item['title'] = 'Example title'\n"
+">>> item['title']\n"
+"'Example title'"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:385
+msgid ""
+"Spiders are expected to return their scraped data inside :class:`~scrapy."
+"item.Item` objects. So, in order to return the data we've scraped so far, "
+"the final code for our Spider would be like this::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:389
+msgid ""
+"import scrapy\n"
+"\n"
+"from tutorial.items import DmozItem\n"
+"\n"
+"class DmozSpider(scrapy.Spider):\n"
+"    name = \"dmoz\"\n"
+"    allowed_domains = [\"dmoz.org\"]\n"
+"    start_urls = [\n"
+"        \"http://www.dmoz.org/Computers/Programming/Languages/Python/Books/"
+"\",\n"
+"        \"http://www.dmoz.org/Computers/Programming/Languages/Python/"
+"Resources/\"\n"
+"    ]\n"
+"\n"
+"    def parse(self, response):\n"
+"        for sel in response.xpath('//ul/li'):\n"
+"            item = DmozItem()\n"
+"            item['title'] = sel.xpath('a/text()').extract()\n"
+"            item['link'] = sel.xpath('a/@href').extract()\n"
+"            item['desc'] = sel.xpath('text()').extract()\n"
+"            yield item"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:409
+msgid ""
+"You can find a fully-functional variant of this spider in the dirbot_ "
+"project available at https://github.com/scrapy/dirbot"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:412
+msgid "Now doing a crawl on the dmoz.org domain yields ``DmozItem`` objects::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:414
+msgid ""
+"[dmoz] DEBUG: Scraped from <200 http://www.dmoz.org/Computers/Programming/"
+"Languages/Python/Books/>\n"
+"     {'desc': [u' - By David Mertz; Addison Wesley. Book in progress, full "
+"text, ASCII format. Asks for feedback. [author website, Gnosis Software, Inc."
+"\\n],\n"
+"      'link': [u'http://gnosis.cx/TPiP/'],\n"
+"      'title': [u'Text Processing in Python']}\n"
+"[dmoz] DEBUG: Scraped from <200 http://www.dmoz.org/Computers/Programming/"
+"Languages/Python/Books/>\n"
+"     {'desc': [u' - By Sean McGrath; Prentice Hall PTR, 2000, ISBN "
+"0130211192, has CD-ROM. Methods to build XML applications fast, Python "
+"tutorial, DOM and SAX, new Pyxie open source XML processing library. "
+"[Prentice Hall PTR]\\n'],\n"
+"      'link': [u'http://www.informit.com/store/product.aspx?"
+"isbn=0130211192'],\n"
+"      'title': [u'XML Processing with Python']}"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:424
+msgid "Storing the scraped data"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:426
+msgid ""
+"The simplest way to store the scraped data is by using the :ref:`Feed "
+"exports <topics-feed-exports>`, with the following command::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:429
+msgid "scrapy crawl dmoz -o items.json"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:431
+msgid ""
+"That will generate a ``items.json`` file containing all scraped items, "
+"serialized in `JSON`_."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:434
+msgid ""
+"In small projects (like the one in this tutorial), that should be enough. "
+"However, if you want to perform more complex things with the scraped items, "
+"you can write an :ref:`Item Pipeline <topics-item-pipeline>`. As with Items, "
+"a placeholder file for Item Pipelines has been set up for you when the "
+"project is created, in ``tutorial/pipelines.py``. Though you don't need to "
+"implement any item pipelines if you just want to store the scraped items."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:442
+msgid "Next steps"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:444
+msgid ""
+"This tutorial covers only the basics of Scrapy, but there's a lot of other "
+"features not mentioned here. Check the :ref:`topics-whatelse` section in :"
+"ref:`intro-overview` chapter for a quick overview of the most important ones."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:448
+msgid ""
+"Then, we recommend you continue by playing with an example project (see :ref:"
+"`intro-examples`), and then continue with the section :ref:`section-basics`."
+msgstr ""
