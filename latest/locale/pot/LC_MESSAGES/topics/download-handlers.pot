@@ -1,0 +1,311 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/download-handlers.rst:5
+msgid "Download handlers"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:7
+msgid ""
+"Download handlers are Scrapy :ref:`components <topics-components>` used to "
+"download :ref:`requests <topics-request-response>` and produce responses "
+"from them."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:12
+msgid "Using download handlers"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:14
+msgid ""
+"The :setting:`DOWNLOAD_HANDLERS_BASE` and :setting:`DOWNLOAD_HANDLERS` "
+"settings tell Scrapy which handler is responsible for a given URL scheme. "
+"Their values are merged into a mapping from scheme names to handler classes. "
+"When Scrapy initializes it creates instances of all configured download "
+"handlers (except for :ref:`lazy ones <lazy-download-handlers>`) and stores "
+"them in a similar mapping. When Scrapy needs to download a request it "
+"extracts the scheme from its URL, finds the handler for this scheme, passes "
+"the request to it and gets a response from it.  If there is no handler for "
+"the scheme, the request is not downloaded and a :exc:`~scrapy.exceptions."
+"NotSupported` exception is raised."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:24
+msgid ""
+"The :setting:`DOWNLOAD_HANDLERS_BASE` setting contains the default mapping "
+"of handlers. You can use the :setting:`DOWNLOAD_HANDLERS` setting to add "
+"handlers for additional schemes and to replace or disable default ones:"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:28
+msgid ""
+"DOWNLOAD_HANDLERS = {\n"
+"    # disable support for ftp:// requests\n"
+"    \"ftp\": None,\n"
+"    # replace the default one for http://\n"
+"    \"http\": \"my.download_handlers.HttpHandler\",\n"
+"    # http:// and https:// are different schemes,\n"
+"    # even though they may use the same handler\n"
+"    \"https\": \"my.download_handlers.HttpHandler\",\n"
+"    # support for any custom scheme can be added\n"
+"    \"sftp\": \"my.download_handlers.SftpHandler\",\n"
+"}"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:43
+msgid "Replacing HTTP(S) download handlers"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:45
+msgid ""
+"While Scrapy provides a default handler for ``http`` and ``https`` schemes, "
+"users may want to use a different handler, provided by Scrapy or by some 3rd-"
+"party package. There are several considerations to keep in mind related to "
+"this."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:50
+msgid ""
+"First of all, as ``http`` and ``https`` are separate schemes, they need "
+"separate entries in the :setting:`DOWNLOAD_HANDLERS` setting, even though "
+"it's likely that the same handler class will be used for both schemes."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:54
+msgid ""
+"Additionally, some of the Scrapy settings, like :setting:`DOWNLOAD_MAXSIZE`, "
+"are honored by the default HTTP(S) handler but not necessarily by "
+"alternative ones. The same may apply to other Scrapy features, e.g. the :"
+"signal:`bytes_received` and :signal:`headers_received` signals."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:62
+msgid "Lazy instantiation of download handlers"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:64
+msgid ""
+"A download handler can be marked as \"lazy\" by setting its ``lazy`` class "
+"attribute to ``True``. Such handlers are only instantiated when they need to "
+"download their first request. This may be useful when the instantiation is "
+"slow or requires dependencies that are not always available, and the handler "
+"is not needed on every spider run. For example, :class:`the built-in S3 "
+"handler <.S3DownloadHandler>` is lazy."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:72
+msgid "Writing your own download handler"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:74
+msgid ""
+"A download handler is a :ref:`component <topics-components>` that defines "
+"the following API:"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:82
+msgid ""
+"If ``False``, the handler will be instantiated when Scrapy is initialized."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:85
+msgid ""
+"If ``True``, the handler will only be instantiated when the first request "
+"handled by it needs to be downloaded."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:91
+msgid "Download the given request and return a response."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:96
+msgid "Clean up any resources used by the handler."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:98
+msgid "An optional base class for custom handlers is provided:"
+msgstr ""
+
+#: ../../../../scrapy/core/downloader/handlers/base.py:docstring of
+#: scrapy.core.downloader.handlers.base.BaseDownloadHandler:1
+msgid "Optional base class for download handlers."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:108
+msgid "Built-in download handlers reference"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:111
+msgid "DataURIDownloadHandler"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:115
+msgid "Supported scheme: ``data``."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:116
+#: ../../../topics/download-handlers.rst:126
+#: ../../../topics/download-handlers.rst:137
+#: ../../../topics/download-handlers.rst:202
+msgid "Lazy: no."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:118
+msgid "This handler supports RFC 2397 ``data:content/type;base64,`` data URIs."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:121
+msgid "FileDownloadHandler"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:125
+msgid "Supported scheme: ``file``."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:128
+msgid ""
+"This handler supports ``file:///path`` local file URIs. It doesn't support "
+"remote files."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:132
+msgid "FTPDownloadHandler"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:136
+msgid "Supported scheme: ``ftp``."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:139
+msgid "This handler supports ``ftp://host/path`` FTP URIs."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:141
+msgid "It's implemented using :mod:`twisted.protocols.ftp`."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:146
+msgid "H2DownloadHandler"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:150
+msgid "Supported scheme: ``https``."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:151
+#: ../../../topics/download-handlers.rst:215
+msgid "Lazy: yes."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:153
+msgid ""
+"This handler supports ``https://host/path`` URLs and uses the HTTP/2 "
+"protocol for them."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:156
+msgid ""
+"It's implemented using :mod:`twisted.web.client` and the ``h2`` library."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:158
+msgid ""
+"For this handler to work you need to install the ``Twisted[http2]`` extra "
+"dependency."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:161
+msgid ""
+"If you want to use this handler you need to replace the default one for the "
+"``https`` scheme:"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:164
+msgid ""
+"DOWNLOAD_HANDLERS = {\n"
+"    \"https\": \"scrapy.core.downloader.handlers.http2.H2DownloadHandler\",\n"
+"}"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:172
+msgid ""
+"This handler is experimental, and not yet recommended for production "
+"environments. Future Scrapy versions may introduce related changes without a "
+"deprecation period or warning."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:178
+msgid "Known limitations of the HTTP/2 implementation in this handler include:"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:180
+msgid ""
+"No support for HTTP/2 Cleartext (h2c), since no major browser supports "
+"HTTP/2 unencrypted (refer `http2 faq`_)."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:183
+msgid ""
+"No setting to specify a maximum `frame size`_ larger than the default value, "
+"16384. Connections to servers that send a larger frame will fail."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:187
+msgid "No support for `server pushes`_, which are ignored."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:189
+msgid ""
+"No support for the :signal:`bytes_received` and :signal:`headers_received` "
+"signals."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:197
+msgid "HTTP11DownloadHandler"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:201
+msgid "Supported schemes: ``http``, ``https``."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:204
+msgid ""
+"This handler supports ``http://host/path`` and ``https://host/path`` URLs "
+"and uses the HTTP/1.1 protocol for them."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:207
+msgid "It's implemented using :mod:`twisted.web.client`."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:210
+msgid "S3DownloadHandler"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:214
+msgid "Supported scheme: ``s3``."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:217
+msgid "This handler supports ``s3://bucket/path`` S3 URIs."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:219
+msgid ""
+"It's implemented using the ``botocore`` library and needs it to be installed."
+msgstr ""
