@@ -1,0 +1,1183 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy 2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-09 06:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../intro/tutorial.rst:5
+msgid "Scrapy Tutorial"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:7
+msgid ""
+"In this tutorial, we'll assume that Scrapy is already installed on your "
+"system. If that's not the case, see :ref:`intro-install`."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:10
+msgid ""
+"We are going to scrape `quotes.toscrape.com <https://quotes.toscrape.com/"
+">`_, a website that lists quotes from famous authors."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:13
+msgid "This tutorial will walk you through these tasks:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:15
+msgid "Creating a new Scrapy project"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:16
+msgid ""
+"Writing a :ref:`spider <topics-spiders>` to crawl a site and extract data"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:17
+msgid "Exporting the scraped data using the command line"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:18
+msgid "Changing spider to recursively follow links"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:19 ../../../intro/tutorial.rst:776
+msgid "Using spider arguments"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:21
+msgid ""
+"Scrapy is written in Python_. The more you learn about Python, the more you "
+"can get out of Scrapy."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:24
+msgid ""
+"If you're already familiar with other languages and want to learn Python "
+"quickly, the `Python Tutorial`_ is a good resource."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:27
+msgid ""
+"If you're new to programming and want to start with Python, the following "
+"books may be useful to you:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:30
+msgid "`Automate the Boring Stuff With Python`_"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:32
+msgid "`How To Think Like a Computer Scientist`_"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:34
+msgid "`Learn Python 3 The Hard Way`_"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:36
+msgid ""
+"You can also take a look at `this list of Python resources for non-"
+"programmers`_, as well as the `suggested resources in the learnpython-"
+"subreddit`_."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:49
+msgid "Creating a project"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:51
+msgid ""
+"Before you start scraping, you will have to set up a new Scrapy project. "
+"Enter a directory where you'd like to store your code and run::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:54
+msgid "scrapy startproject tutorial"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:56
+msgid "This will create a ``tutorial`` directory with the following contents::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:58
+msgid ""
+"tutorial/\n"
+"    scrapy.cfg            # deploy configuration file\n"
+"\n"
+"    tutorial/             # project's Python module, you'll import your code "
+"from here\n"
+"        __init__.py\n"
+"\n"
+"        items.py          # project items definition file\n"
+"\n"
+"        middlewares.py    # project middlewares file\n"
+"\n"
+"        pipelines.py      # project pipelines file\n"
+"\n"
+"        settings.py       # project settings file\n"
+"\n"
+"        spiders/          # a directory where you'll later put your spiders\n"
+"            __init__.py"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:77
+msgid "Our first Spider"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:79
+msgid ""
+"Spiders are classes that you define and that Scrapy uses to scrape "
+"information from a website (or a group of websites). They must subclass :"
+"class:`~scrapy.Spider` and define the initial requests to be made, and "
+"optionally, how to follow links in pages and parse the downloaded page "
+"content to extract data."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:84
+msgid ""
+"This is the code for our first Spider. Save it in a file named "
+"``quotes_spider.py`` under the ``tutorial/spiders`` directory in your "
+"project:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:87
+msgid ""
+"from pathlib import Path\n"
+"\n"
+"import scrapy\n"
+"\n"
+"\n"
+"class QuotesSpider(scrapy.Spider):\n"
+"    name = \"quotes\"\n"
+"\n"
+"    async def start(self):\n"
+"        urls = [\n"
+"            \"https://quotes.toscrape.com/page/1/\",\n"
+"            \"https://quotes.toscrape.com/page/2/\",\n"
+"        ]\n"
+"        for url in urls:\n"
+"            yield scrapy.Request(url=url, callback=self.parse)\n"
+"\n"
+"    def parse(self, response):\n"
+"        page = response.url.split(\"/\")[-2]\n"
+"        filename = f\"quotes-{page}.html\"\n"
+"        Path(filename).write_bytes(response.body)\n"
+"        self.log(f\"Saved file {filename}\")"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:112
+msgid ""
+"As you can see, our Spider subclasses :class:`scrapy.Spider <scrapy.Spider>` "
+"and defines some attributes and methods:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:115
+msgid ""
+":attr:`~scrapy.Spider.name`: identifies the Spider. It must be unique within "
+"a project, that is, you can't set the same name for different Spiders."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:119
+msgid ""
+":meth:`~scrapy.Spider.start`: must be an asynchronous generator that yields "
+"requests (and, optionally, items) for the spider to start crawling. "
+"Subsequent requests will be generated successively from these initial "
+"requests."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:124
+msgid ""
+":meth:`~scrapy.Spider.parse`: a method that will be called to handle the "
+"response downloaded for each of the requests made. The response parameter is "
+"an instance of :class:`~scrapy.http.TextResponse` that holds the page "
+"content and has further helpful methods to handle it."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:129
+msgid ""
+"The :meth:`~scrapy.Spider.parse` method usually parses the response, "
+"extracting the scraped data as dicts and also finding new URLs to follow and "
+"creating new requests (:class:`~scrapy.Request`) from them."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:134
+msgid "How to run our spider"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:136
+msgid ""
+"To put our spider to work, go to the project's top level directory and run::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:138 ../../../intro/tutorial.rst:502
+msgid "scrapy crawl quotes"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:140
+msgid ""
+"This command runs the spider named ``quotes`` that we've just added, that "
+"will send some requests for the ``quotes.toscrape.com`` domain. You will get "
+"an output similar to this::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:144
+msgid ""
+"... (omitted for brevity)\n"
+"2016-12-16 21:24:05 [scrapy.core.engine] INFO: Spider opened\n"
+"2016-12-16 21:24:05 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 "
+"pages/min), scraped 0 items (at 0 items/min)\n"
+"2016-12-16 21:24:05 [scrapy.extensions.telnet] DEBUG: Telnet console "
+"listening on 127.0.0.1:6023\n"
+"2016-12-16 21:24:05 [scrapy.core.engine] DEBUG: Crawled (404) <GET https://"
+"quotes.toscrape.com/robots.txt> (referer: None)\n"
+"2016-12-16 21:24:05 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://"
+"quotes.toscrape.com/page/1/> (referer: None)\n"
+"2016-12-16 21:24:05 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://"
+"quotes.toscrape.com/page/2/> (referer: None)\n"
+"2016-12-16 21:24:05 [quotes] DEBUG: Saved file quotes-1.html\n"
+"2016-12-16 21:24:05 [quotes] DEBUG: Saved file quotes-2.html\n"
+"2016-12-16 21:24:05 [scrapy.core.engine] INFO: Closing spider (finished)\n"
+"..."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:156
+msgid ""
+"Now, check the files in the current directory. You should notice that two "
+"new files have been created: *quotes-1.html* and *quotes-2.html*, with the "
+"content for the respective URLs, as our ``parse`` method instructs."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:160
+msgid ""
+"If you are wondering why we haven't parsed the HTML yet, hold on, we will "
+"cover that soon."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:165
+msgid "What just happened under the hood?"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:167
+msgid ""
+"Scrapy sends the first :class:`scrapy.Request <scrapy.Request>` objects "
+"yielded by the :meth:`~scrapy.Spider.start` spider method. Upon receiving a "
+"response for each one, Scrapy calls the callback method associated with the "
+"request (in this case, the ``parse`` method) with a :class:`~scrapy.http."
+"Response` object."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:175
+msgid "A shortcut to the ``start`` method"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:177
+msgid ""
+"Instead of implementing a :meth:`~scrapy.Spider.start` method that yields :"
+"class:`~scrapy.Request` objects from URLs, you can define a :attr:`~scrapy."
+"Spider.start_urls` class attribute with a list of URLs. This list will then "
+"be used by the default implementation of :meth:`~scrapy.Spider.start` to "
+"create the initial requests for your spider."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:184
+msgid ""
+"from pathlib import Path\n"
+"\n"
+"import scrapy\n"
+"\n"
+"\n"
+"class QuotesSpider(scrapy.Spider):\n"
+"    name = \"quotes\"\n"
+"    start_urls = [\n"
+"        \"https://quotes.toscrape.com/page/1/\",\n"
+"        \"https://quotes.toscrape.com/page/2/\",\n"
+"    ]\n"
+"\n"
+"    def parse(self, response):\n"
+"        page = response.url.split(\"/\")[-2]\n"
+"        filename = f\"quotes-{page}.html\"\n"
+"        Path(filename).write_bytes(response.body)"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:203
+msgid ""
+"The :meth:`~scrapy.Spider.parse` method will be called to handle each of the "
+"requests for those URLs, even though we haven't explicitly told Scrapy to do "
+"so. This happens because :meth:`~scrapy.Spider.parse` is Scrapy's default "
+"callback method, which is called for requests without an explicitly assigned "
+"callback."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:211
+msgid "Extracting data"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:213
+msgid ""
+"The best way to learn how to extract data with Scrapy is trying selectors "
+"using the :ref:`Scrapy shell <topics-shell>`. Run::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:216
+msgid "scrapy shell 'https://quotes.toscrape.com/page/1/'"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:220
+msgid ""
+"Remember to always enclose URLs in quotes when running Scrapy shell from the "
+"command line, otherwise URLs containing arguments (i.e. ``&`` character) "
+"will not work."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:224
+msgid "On Windows, use double quotes instead::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:226
+msgid "scrapy shell \"https://quotes.toscrape.com/page/1/\""
+msgstr ""
+
+#: ../../../intro/tutorial.rst:228
+msgid "You will see something like::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:230
+msgid ""
+"[ ... Scrapy log here ... ]\n"
+"2016-09-19 12:09:27 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://"
+"quotes.toscrape.com/page/1/> (referer: None)\n"
+"[s] Available Scrapy objects:\n"
+"[s]   scrapy     scrapy module (contains scrapy.Request, scrapy.Selector, "
+"etc)\n"
+"[s]   crawler    <scrapy.crawler.Crawler object at 0x7fa91d888c90>\n"
+"[s]   item       {}\n"
+"[s]   request    <GET https://quotes.toscrape.com/page/1/>\n"
+"[s]   response   <200 https://quotes.toscrape.com/page/1/>\n"
+"[s]   settings   <scrapy.settings.Settings object at 0x7fa91d888c10>\n"
+"[s]   spider     <DefaultSpider 'default' at 0x7fa91c8af990>\n"
+"[s] Useful shortcuts:\n"
+"[s]   shelp()           Shell help (print this help)\n"
+"[s]   fetch(req_or_url) Fetch request (or URL) and update local objects\n"
+"[s]   view(response)    View response in a browser"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:245
+msgid ""
+"Using the shell, you can try selecting elements using `CSS`_ with the "
+"response object:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:252
+msgid ""
+">>> response.css(\"title\")\n"
+"[<Selector query='descendant-or-self::title' data='<title>Quotes to Scrape</"
+"title>'>]"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:257
+msgid ""
+"The result of running ``response.css('title')`` is a list-like object "
+"called :class:`~scrapy.selector.SelectorList`, which represents a list of :"
+"class:`~scrapy.Selector` objects that wrap around XML/HTML elements and "
+"allow you to run further queries to refine the selection or extract the data."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:263
+msgid "To extract the text from the title above, you can do:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:265
+msgid ""
+">>> response.css(\"title::text\").getall()\n"
+"['Quotes to Scrape']"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:270
+msgid ""
+"There are two things to note here: one is that we've added ``::text`` to the "
+"CSS query, to mean we want to select only the text elements directly inside "
+"``<title>`` element.  If we don't specify ``::text``, we'd get the full "
+"title element, including its tags:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:275
+msgid ""
+">>> response.css(\"title\").getall()\n"
+"['<title>Quotes to Scrape</title>']"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:280
+msgid ""
+"The other thing is that the result of calling ``.getall()`` is a list: it is "
+"possible that a selector returns more than one result, so we extract them "
+"all. When you know you just want the first result, as in this case, you can "
+"do:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:284
+msgid ""
+">>> response.css(\"title::text\").get()\n"
+"'Quotes to Scrape'"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:289
+msgid "As an alternative, you could've written:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:291
+msgid ""
+">>> response.css(\"title::text\")[0].get()\n"
+"'Quotes to Scrape'"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:296
+msgid ""
+"Accessing an index on a :class:`~scrapy.selector.SelectorList` instance will "
+"raise an :exc:`IndexError` exception if there are no results:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:299
+msgid ""
+">>> response.css(\"noelement\")[0].get()\n"
+"Traceback (most recent call last):\n"
+"...\n"
+"IndexError: list index out of range"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:306
+msgid ""
+"You might want to use ``.get()`` directly on the :class:`~scrapy.selector."
+"SelectorList` instance instead, which returns ``None`` if there are no "
+"results:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:310
+msgid ">>> response.css(\"noelement\").get()"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:314
+msgid ""
+"There's a lesson here: for most scraping code, you want it to be resilient "
+"to errors due to things not being found on a page, so that even if some "
+"parts fail to be scraped, you can at least get **some** data."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:318
+msgid ""
+"Besides the :meth:`~scrapy.selector.SelectorList.getall` and :meth:`~scrapy."
+"selector.SelectorList.get` methods, you can also use the :meth:`~scrapy."
+"selector.SelectorList.re` method to extract using :doc:`regular expressions "
+"<library/re>`:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:323
+msgid ""
+">>> response.css(\"title::text\").re(r\"Quotes.*\")\n"
+"['Quotes to Scrape']\n"
+">>> response.css(\"title::text\").re(r\"Q\\w+\")\n"
+"['Quotes']\n"
+">>> response.css(\"title::text\").re(r\"(\\w+) to (\\w+)\")\n"
+"['Quotes', 'Scrape']"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:332
+msgid ""
+"In order to find the proper CSS selectors to use, you might find it useful "
+"to open the response page from the shell in your web browser using "
+"``view(response)``. You can use your browser's developer tools to inspect "
+"the HTML and come up with a selector (see :ref:`topics-developer-tools`)."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:337
+msgid ""
+"`Selector Gadget`_ is also a nice tool to quickly find CSS selector for "
+"visually selected elements, which works in many browsers."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:344
+msgid "XPath: a brief intro"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:346
+msgid ""
+"Besides `CSS`_, Scrapy selectors also support using `XPath`_ expressions:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:348
+msgid ""
+">>> response.xpath(\"//title\")\n"
+"[<Selector query='//title' data='<title>Quotes to Scrape</title>'>]\n"
+">>> response.xpath(\"//title/text()\").get()\n"
+"'Quotes to Scrape'"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:355
+msgid ""
+"XPath expressions are very powerful, and are the foundation of Scrapy "
+"Selectors. In fact, CSS selectors are converted to XPath under-the-hood. You "
+"can see that if you read the text representation of the selector objects in "
+"the shell closely."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:360
+msgid ""
+"While perhaps not as popular as CSS selectors, XPath expressions offer more "
+"power because besides navigating the structure, it can also look at the "
+"content. Using XPath, you're able to select things like: *the link that "
+"contains the text \"Next Page\"*. This makes XPath very fitting to the task "
+"of scraping, and we encourage you to learn XPath even if you already know "
+"how to construct CSS selectors, it will make scraping much easier."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:367
+msgid ""
+"We won't cover much of XPath here, but you can read more about :ref:`using "
+"XPath with Scrapy Selectors here <topics-selectors>`. To learn more about "
+"XPath, we recommend `this tutorial to learn XPath through examples <http://"
+"zvon.org/comp/r/tut-XPath_1.html>`_, and `this tutorial to learn \"how to "
+"think in XPath\" <http://plasmasturm.org/log/xpath101/>`_."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:377
+msgid "Extracting quotes and authors"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:379
+msgid ""
+"Now that you know a bit about selection and extraction, let's complete our "
+"spider by writing the code to extract the quotes from the web page."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:382
+msgid ""
+"Each quote in https://quotes.toscrape.com is represented by HTML elements "
+"that look like this:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:385
+msgid ""
+"<div class=\"quote\">\n"
+"    <span class=\"text\">“The world as we have created it is a process of "
+"our\n"
+"    thinking. It cannot be changed without changing our thinking.”</span>\n"
+"    <span>\n"
+"        by <small class=\"author\">Albert Einstein</small>\n"
+"        <a href=\"/author/Albert-Einstein\">(about)</a>\n"
+"    </span>\n"
+"    <div class=\"tags\">\n"
+"        Tags:\n"
+"        <a class=\"tag\" href=\"/tag/change/page/1/\">change</a>\n"
+"        <a class=\"tag\" href=\"/tag/deep-thoughts/page/1/\">deep-thoughts</"
+"a>\n"
+"        <a class=\"tag\" href=\"/tag/thinking/page/1/\">thinking</a>\n"
+"        <a class=\"tag\" href=\"/tag/world/page/1/\">world</a>\n"
+"    </div>\n"
+"</div>"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:403
+msgid ""
+"Let's open up scrapy shell and play a bit to find out how to extract the "
+"data we want::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:406
+msgid "scrapy shell 'https://quotes.toscrape.com'"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:408
+msgid "We get a list of selectors for the quote HTML elements with:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:410
+msgid ""
+">>> response.css(\"div.quote\")\n"
+"[<Selector query=\"descendant-or-self::div[@class and contains(concat(' ', "
+"normalize-space(@class), ' '), ' quote ')]\" data='<div class=\"quote\" "
+"itemscope itemtype...'>,\n"
+"<Selector query=\"descendant-or-self::div[@class and contains(concat(' ', "
+"normalize-space(@class), ' '), ' quote ')]\" data='<div class=\"quote\" "
+"itemscope itemtype...'>,\n"
+"...]"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:417
+msgid ""
+"Each of the selectors returned by the query above allows us to run further "
+"queries over their sub-elements. Let's assign the first selector to a "
+"variable, so that we can run our CSS selectors directly on a particular "
+"quote:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:421
+msgid ">>> quote = response.css(\"div.quote\")[0]"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:425
+msgid ""
+"Now, let's extract the ``text``, ``author`` and ``tags`` from that quote "
+"using the ``quote`` object we just created:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:428
+msgid ""
+">>> text = quote.css(\"span.text::text\").get()\n"
+">>> text\n"
+"'“The world as we have created it is a process of our thinking. It cannot be "
+"changed without changing our thinking.”'\n"
+">>> author = quote.css(\"small.author::text\").get()\n"
+">>> author\n"
+"'Albert Einstein'"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:437
+msgid ""
+"Given that the tags are a list of strings, we can use the ``.getall()`` "
+"method to get all of them:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:440
+msgid ""
+">>> tags = quote.css(\"div.tags a.tag::text\").getall()\n"
+">>> tags\n"
+"['change', 'deep-thoughts', 'thinking', 'world']"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:450
+msgid ""
+"Having figured out how to extract each bit, we can now iterate over all the "
+"quote elements and put them together into a Python dictionary:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:453
+msgid ""
+">>> for quote in response.css(\"div.quote\"):\n"
+"...     text = quote.css(\"span.text::text\").get()\n"
+"...     author = quote.css(\"small.author::text\").get()\n"
+"...     tags = quote.css(\"div.tags a.tag::text\").getall()\n"
+"...     print(dict(text=text, author=author, tags=tags))\n"
+"...\n"
+"{'text': '“The world as we have created it is a process of our thinking. It "
+"cannot be changed without changing our thinking.”', 'author': 'Albert "
+"Einstein', 'tags': ['change', 'deep-thoughts', 'thinking', 'world']}\n"
+"{'text': '“It is our choices, Harry, that show what we truly are, far more "
+"than our abilities.”', 'author': 'J.K. Rowling', 'tags': ['abilities', "
+"'choices']}\n"
+"..."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:466
+msgid "Extracting data in our spider"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:468
+msgid ""
+"Let's get back to our spider. Until now, it hasn't extracted any data in "
+"particular, just saving the whole HTML page to a local file. Let's integrate "
+"the extraction logic above into our spider."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:472
+msgid ""
+"A Scrapy spider typically generates many dictionaries containing the data "
+"extracted from the page. To do that, we use the ``yield`` Python keyword in "
+"the callback, as you can see below:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:476
+msgid ""
+"import scrapy\n"
+"\n"
+"\n"
+"class QuotesSpider(scrapy.Spider):\n"
+"    name = \"quotes\"\n"
+"    start_urls = [\n"
+"        \"https://quotes.toscrape.com/page/1/\",\n"
+"        \"https://quotes.toscrape.com/page/2/\",\n"
+"    ]\n"
+"\n"
+"    def parse(self, response):\n"
+"        for quote in response.css(\"div.quote\"):\n"
+"            yield {\n"
+"                \"text\": quote.css(\"span.text::text\").get(),\n"
+"                \"author\": quote.css(\"small.author::text\").get(),\n"
+"                \"tags\": quote.css(\"div.tags a.tag::text\").getall(),\n"
+"            }"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:496
+msgid "To run this spider, exit the scrapy shell by entering::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:498
+msgid "quit()"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:500
+msgid "Then, run::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:504
+msgid "Now, it should output the extracted data with the log::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:506
+msgid ""
+"2016-09-19 18:57:19 [scrapy.core.scraper] DEBUG: Scraped from <200 https://"
+"quotes.toscrape.com/page/1/>\n"
+"{'tags': ['life', 'love'], 'author': 'André Gide', 'text': '“It is better to "
+"be hated for what you are than to be loved for what you are not.”'}\n"
+"2016-09-19 18:57:19 [scrapy.core.scraper] DEBUG: Scraped from <200 https://"
+"quotes.toscrape.com/page/1/>\n"
+"{'tags': ['edison', 'failure', 'inspirational', 'paraphrased'], 'author': "
+"'Thomas A. Edison', 'text': \"“I have not failed. I've just found 10,000 "
+"ways that won't work.”\"}"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:515
+msgid "Storing the scraped data"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:517
+msgid ""
+"The simplest way to store the scraped data is by using :ref:`Feed exports "
+"<topics-feed-exports>`, with the following command::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:520
+msgid "scrapy crawl quotes -O quotes.json"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:522
+msgid ""
+"That will generate a ``quotes.json`` file containing all scraped items, "
+"serialized in `JSON`_."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:525
+msgid ""
+"The ``-O`` command-line switch overwrites any existing file; use ``-o`` "
+"instead to append new content to any existing file. However, appending to a "
+"JSON file makes the file contents invalid JSON. When appending to a file, "
+"consider using a different serialization format, such as `JSON Lines`_::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:530
+msgid "scrapy crawl quotes -o quotes.jsonl"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:532
+msgid ""
+"The `JSON Lines`_ format is useful because it's stream-like, so you can "
+"easily append new records to it. It doesn't have the same problem as JSON "
+"when you run twice. Also, as each record is a separate line, you can process "
+"big files without having to fit everything in memory, there are tools like "
+"`JQ`_ to help do that at the command-line."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:538
+msgid ""
+"In small projects (like the one in this tutorial), that should be enough. "
+"However, if you want to perform more complex things with the scraped items, "
+"you can write an :ref:`Item Pipeline <topics-item-pipeline>`. A placeholder "
+"file for Item Pipelines has been set up for you when the project is created, "
+"in ``tutorial/pipelines.py``. Though you don't need to implement any item "
+"pipelines if you just want to store the scraped items."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:550
+msgid "Following links"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:552
+msgid ""
+"Let's say, instead of just scraping the stuff from the first two pages from "
+"https://quotes.toscrape.com, you want quotes from all the pages in the "
+"website."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:555
+msgid ""
+"Now that you know how to extract data from pages, let's see how to follow "
+"links from them."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:558
+msgid ""
+"The first thing to do is extract the link to the page we want to follow.  "
+"Examining our page, we can see there is a link to the next page with the "
+"following markup:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:562
+msgid ""
+"<ul class=\"pager\">\n"
+"    <li class=\"next\">\n"
+"        <a href=\"/page/2/\">Next <span aria-hidden=\"true\">&rarr;</span></"
+"a>\n"
+"    </li>\n"
+"</ul>"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:570
+msgid "We can try extracting it in the shell:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:575
+msgid ""
+"This gets the anchor element, but we want the attribute ``href``. For that, "
+"Scrapy supports a CSS extension that lets you select the attribute contents, "
+"like this:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:579
+msgid ""
+">>> response.css(\"li.next a::attr(href)\").get()\n"
+"'/page/2/'"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:584
+msgid ""
+"There is also an ``attrib`` property available (see :ref:`selecting-"
+"attributes` for more):"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:587
+msgid ""
+">>> response.css(\"li.next a\").attrib[\"href\"]\n"
+"'/page/2/'"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:592
+msgid ""
+"Now let's see our spider, modified to recursively follow the link to the "
+"next page, extracting data from it:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:595
+msgid ""
+"import scrapy\n"
+"\n"
+"\n"
+"class QuotesSpider(scrapy.Spider):\n"
+"    name = \"quotes\"\n"
+"    start_urls = [\n"
+"        \"https://quotes.toscrape.com/page/1/\",\n"
+"    ]\n"
+"\n"
+"    def parse(self, response):\n"
+"        for quote in response.css(\"div.quote\"):\n"
+"            yield {\n"
+"                \"text\": quote.css(\"span.text::text\").get(),\n"
+"                \"author\": quote.css(\"small.author::text\").get(),\n"
+"                \"tags\": quote.css(\"div.tags a.tag::text\").getall(),\n"
+"            }\n"
+"\n"
+"        next_page = response.css(\"li.next a::attr(href)\").get()\n"
+"        if next_page is not None:\n"
+"            next_page = response.urljoin(next_page)\n"
+"            yield scrapy.Request(next_page, callback=self.parse)"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:620
+msgid ""
+"Now, after extracting the data, the ``parse()`` method looks for the link to "
+"the next page, builds a full absolute URL using the :meth:`~scrapy.http."
+"Response.urljoin` method (since the links can be relative) and yields a new "
+"request to the next page, registering itself as callback to handle the data "
+"extraction for the next page and to keep the crawling going through all the "
+"pages."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:627
+msgid ""
+"What you see here is Scrapy's mechanism of following links: when you yield a "
+"Request in a callback method, Scrapy will schedule that request to be sent "
+"and register a callback method to be executed when that request finishes."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:631
+msgid ""
+"Using this, you can build complex crawlers that follow links according to "
+"rules you define, and extract different kinds of data depending on the page "
+"it's visiting."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:635
+msgid ""
+"In our example, it creates a sort of loop, following all the links to the "
+"next page until it doesn't find one -- handy for crawling blogs, forums and "
+"other sites with pagination."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:643
+msgid "A shortcut for creating Requests"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:645
+msgid ""
+"As a shortcut for creating Request objects you can use :meth:`response."
+"follow <scrapy.http.TextResponse.follow>`:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:648
+msgid ""
+"import scrapy\n"
+"\n"
+"\n"
+"class QuotesSpider(scrapy.Spider):\n"
+"    name = \"quotes\"\n"
+"    start_urls = [\n"
+"        \"https://quotes.toscrape.com/page/1/\",\n"
+"    ]\n"
+"\n"
+"    def parse(self, response):\n"
+"        for quote in response.css(\"div.quote\"):\n"
+"            yield {\n"
+"                \"text\": quote.css(\"span.text::text\").get(),\n"
+"                \"author\": quote.css(\"span small::text\").get(),\n"
+"                \"tags\": quote.css(\"div.tags a.tag::text\").getall(),\n"
+"            }\n"
+"\n"
+"        next_page = response.css(\"li.next a::attr(href)\").get()\n"
+"        if next_page is not None:\n"
+"            yield response.follow(next_page, callback=self.parse)"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:671
+msgid ""
+"Unlike scrapy.Request, ``response.follow`` supports relative URLs directly - "
+"no need to call urljoin. Note that ``response.follow`` just returns a "
+"Request instance; you still have to yield this Request."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:677
+msgid ""
+"You can also pass a selector to ``response.follow`` instead of a string; "
+"this selector should extract necessary attributes:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:680
+msgid ""
+"for href in response.css(\"ul.pager a::attr(href)\"):\n"
+"    yield response.follow(href, callback=self.parse)"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:685
+msgid ""
+"For ``<a>`` elements there is a shortcut: ``response.follow`` uses their "
+"href attribute automatically. So the code can be shortened further:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:688
+msgid ""
+"for a in response.css(\"ul.pager a\"):\n"
+"    yield response.follow(a, callback=self.parse)"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:693
+msgid ""
+"To create multiple requests from an iterable, you can use :meth:`response."
+"follow_all <scrapy.http.TextResponse.follow_all>` instead:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:696
+msgid ""
+"anchors = response.css(\"ul.pager a\")\n"
+"yield from response.follow_all(anchors, callback=self.parse)"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:701
+msgid "or, shortening it further:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:703
+msgid "yield from response.follow_all(css=\"ul.pager a\", callback=self.parse)"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:711
+msgid "More examples and patterns"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:713
+msgid ""
+"Here is another spider that illustrates callbacks and following links, this "
+"time for scraping author information:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:716
+msgid ""
+"import scrapy\n"
+"\n"
+"\n"
+"class AuthorSpider(scrapy.Spider):\n"
+"    name = \"author\"\n"
+"\n"
+"    start_urls = [\"https://quotes.toscrape.com/\"]\n"
+"\n"
+"    def parse(self, response):\n"
+"        author_page_links = response.css(\".author + a\")\n"
+"        yield from response.follow_all(author_page_links, self."
+"parse_author)\n"
+"\n"
+"        pagination_links = response.css(\"li.next a\")\n"
+"        yield from response.follow_all(pagination_links, self.parse)\n"
+"\n"
+"    def parse_author(self, response):\n"
+"        def extract_with_css(query):\n"
+"            return response.css(query).get(default=\"\").strip()\n"
+"\n"
+"        yield {\n"
+"            \"name\": extract_with_css(\"h3.author-title::text\"),\n"
+"            \"birthdate\": extract_with_css(\".author-born-date::text\"),\n"
+"            \"bio\": extract_with_css(\".author-description::text\"),\n"
+"        }"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:743
+msgid ""
+"This spider will start from the main page, it will follow all the links to "
+"the authors pages calling the ``parse_author`` callback for each of them, "
+"and also the pagination links with the ``parse`` callback as we saw before."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:747
+msgid ""
+"Here we're passing callbacks to :meth:`response.follow_all <scrapy.http."
+"TextResponse.follow_all>` as positional arguments to make the code shorter; "
+"it also works for :class:`~scrapy.Request`."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:752
+msgid ""
+"The ``parse_author`` callback defines a helper function to extract and "
+"cleanup the data from a CSS query and yields the Python dict with the author "
+"data."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:755
+msgid ""
+"Another interesting thing this spider demonstrates is that, even if there "
+"are many quotes from the same author, we don't need to worry about visiting "
+"the same author page multiple times. By default, Scrapy filters out "
+"duplicated requests to URLs already visited, avoiding the problem of hitting "
+"servers too much because of a programming mistake. This can be configured in "
+"the :setting:`DUPEFILTER_CLASS` setting."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:762
+msgid ""
+"Hopefully by now you have a good understanding of how to use the mechanism "
+"of following links and callbacks with Scrapy."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:765
+msgid ""
+"As yet another example spider that leverages the mechanism of following "
+"links, check out the :class:`~scrapy.spiders.CrawlSpider` class for a "
+"generic spider that implements a small rules engine that you can use to "
+"write your crawlers on top of it."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:770
+msgid ""
+"Also, a common pattern is to build an item with data from more than one "
+"page, using a :ref:`trick to pass additional data to the callbacks <topics-"
+"request-response-ref-request-callback-arguments>`."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:778
+msgid ""
+"You can provide command line arguments to your spiders by using the ``-a`` "
+"option when running them::"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:781
+msgid "scrapy crawl quotes -O quotes-humor.json -a tag=humor"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:783
+msgid ""
+"These arguments are passed to the Spider's ``__init__`` method and become "
+"spider attributes by default."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:786
+msgid ""
+"In this example, the value provided for the ``tag`` argument will be "
+"available via ``self.tag``. You can use this to make your spider fetch only "
+"quotes with a specific tag, building the URL based on the argument:"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:790
+msgid ""
+"import scrapy\n"
+"\n"
+"\n"
+"class QuotesSpider(scrapy.Spider):\n"
+"    name = \"quotes\"\n"
+"\n"
+"    async def start(self):\n"
+"        url = \"https://quotes.toscrape.com/\"\n"
+"        tag = getattr(self, \"tag\", None)\n"
+"        if tag is not None:\n"
+"            url = url + \"tag/\" + tag\n"
+"        yield scrapy.Request(url, self.parse)\n"
+"\n"
+"    def parse(self, response):\n"
+"        for quote in response.css(\"div.quote\"):\n"
+"            yield {\n"
+"                \"text\": quote.css(\"span.text::text\").get(),\n"
+"                \"author\": quote.css(\"small.author::text\").get(),\n"
+"            }\n"
+"\n"
+"        next_page = response.css(\"li.next a::attr(href)\").get()\n"
+"        if next_page is not None:\n"
+"            yield response.follow(next_page, self.parse)"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:817
+msgid ""
+"If you pass the ``tag=humor`` argument to this spider, you'll notice that it "
+"will only visit URLs from the ``humor`` tag, such as ``https://quotes."
+"toscrape.com/tag/humor``."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:821
+msgid ""
+"You can :ref:`learn more about handling spider arguments here <spiderargs>`."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:824
+msgid "Next steps"
+msgstr ""
+
+#: ../../../intro/tutorial.rst:826
+msgid ""
+"This tutorial covered only the basics of Scrapy, but there's a lot of other "
+"features not mentioned here. Check the :ref:`topics-whatelse` section in "
+"the :ref:`intro-overview` chapter for a quick overview of the most important "
+"ones."
+msgstr ""
+
+#: ../../../intro/tutorial.rst:830
+msgid ""
+"You can continue from the section :ref:`section-basics` to know more about "
+"the command-line tool, spiders, selectors and other things the tutorial "
+"hasn't covered like modeling the scraped data. If you'd prefer to play with "
+"an example project, check the :ref:`intro-examples` section."
+msgstr ""

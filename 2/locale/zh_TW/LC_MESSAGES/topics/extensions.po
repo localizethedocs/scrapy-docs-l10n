@@ -1,0 +1,722 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy 2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-09 06:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/extensions.rst:5
+msgid "Extensions"
+msgstr ""
+
+#: ../../../topics/extensions.rst:7
+msgid ""
+"Extensions are :ref:`components <topics-components>` that allow inserting "
+"your own custom functionality into Scrapy."
+msgstr ""
+
+#: ../../../topics/extensions.rst:10
+msgid ""
+"Unlike other components, extensions do not have a specific role in Scrapy. "
+"They are “wildcard” components that can be used for anything that does not "
+"fit the role of any other type of component."
+msgstr ""
+
+#: ../../../topics/extensions.rst:15
+msgid "Loading and activating extensions"
+msgstr ""
+
+#: ../../../topics/extensions.rst:17
+msgid ""
+"Extensions are loaded at startup by creating a single instance of the "
+"extension class per spider being run."
+msgstr ""
+
+#: ../../../topics/extensions.rst:20
+msgid ""
+"To enable an extension, add it to the :setting:`EXTENSIONS` setting. For "
+"example:"
+msgstr ""
+
+#: ../../../topics/extensions.rst:23
+msgid ""
+"EXTENSIONS = {\n"
+"    \"scrapy.extensions.corestats.CoreStats\": 500,\n"
+"    \"scrapy.extensions.telnet.TelnetConsole\": 500,\n"
+"}"
+msgstr ""
+
+#: ../../../topics/extensions.rst:30
+msgid ""
+":setting:`EXTENSIONS` is merged with :setting:`EXTENSIONS_BASE` (not meant "
+"to be overridden), and the priorities in the resulting value determine the "
+"*loading* order."
+msgstr ""
+
+#: ../../../topics/extensions.rst:34
+msgid ""
+"As extensions typically do not depend on each other, their loading order is "
+"irrelevant in most cases. This is why the :setting:`EXTENSIONS_BASE` setting "
+"defines all extensions with the same order (``0``). However, you may need to "
+"carefully use priorities if you add an extension that depends on other "
+"extensions being already loaded."
+msgstr ""
+
+#: ../../../topics/extensions.rst:41
+msgid "Writing your own extension"
+msgstr ""
+
+#: ../../../topics/extensions.rst:43
+msgid "Each extension is a :ref:`component <topics-components>`."
+msgstr ""
+
+#: ../../../topics/extensions.rst:45
+msgid ""
+"Typically, extensions connect to :ref:`signals <topics-signals>` and perform "
+"tasks triggered by them."
+msgstr ""
+
+#: ../../../topics/extensions.rst:49
+msgid "Sample extension"
+msgstr ""
+
+#: ../../../topics/extensions.rst:51
+msgid ""
+"Here we will implement a simple extension to illustrate the concepts "
+"described in the previous section. This extension will log a message every "
+"time:"
+msgstr ""
+
+#: ../../../topics/extensions.rst:54
+msgid "a spider is opened"
+msgstr ""
+
+#: ../../../topics/extensions.rst:55
+msgid "a spider is closed"
+msgstr ""
+
+#: ../../../topics/extensions.rst:56
+msgid "a specific number of items are scraped"
+msgstr ""
+
+#: ../../../topics/extensions.rst:58
+msgid ""
+"The extension will be enabled through the ``MYEXT_ENABLED`` setting and the "
+"number of items will be specified through the ``MYEXT_ITEMCOUNT`` setting."
+msgstr ""
+
+#: ../../../topics/extensions.rst:61
+msgid "Here is the code of such extension:"
+msgstr ""
+
+#: ../../../topics/extensions.rst:63
+msgid ""
+"import logging\n"
+"from scrapy import signals\n"
+"from scrapy.exceptions import NotConfigured\n"
+"\n"
+"logger = logging.getLogger(__name__)\n"
+"\n"
+"\n"
+"class SpiderOpenCloseLogging:\n"
+"    def __init__(self, item_count):\n"
+"        self.item_count = item_count\n"
+"        self.items_scraped = 0\n"
+"\n"
+"    @classmethod\n"
+"    def from_crawler(cls, crawler):\n"
+"        # first check if the extension should be enabled and raise\n"
+"        # NotConfigured otherwise\n"
+"        if not crawler.settings.getbool(\"MYEXT_ENABLED\"):\n"
+"            raise NotConfigured\n"
+"\n"
+"        # get the number of items from settings\n"
+"        item_count = crawler.settings.getint(\"MYEXT_ITEMCOUNT\", 1000)\n"
+"\n"
+"        # instantiate the extension object\n"
+"        ext = cls(item_count)\n"
+"\n"
+"        # connect the extension object to signals\n"
+"        crawler.signals.connect(ext.spider_opened, signal=signals."
+"spider_opened)\n"
+"        crawler.signals.connect(ext.spider_closed, signal=signals."
+"spider_closed)\n"
+"        crawler.signals.connect(ext.item_scraped, signal=signals."
+"item_scraped)\n"
+"\n"
+"        # return the extension object\n"
+"        return ext\n"
+"\n"
+"    def spider_opened(self, spider):\n"
+"        logger.info(\"opened spider %s\", spider.name)\n"
+"\n"
+"    def spider_closed(self, spider):\n"
+"        logger.info(\"closed spider %s\", spider.name)\n"
+"\n"
+"    def item_scraped(self, item, spider):\n"
+"        self.items_scraped += 1\n"
+"        if self.items_scraped % self.item_count == 0:\n"
+"            logger.info(\"scraped %d items\", self.items_scraped)"
+msgstr ""
+
+#: ../../../topics/extensions.rst:113
+msgid "Built-in extensions reference"
+msgstr ""
+
+#: ../../../topics/extensions.rst:116
+msgid "General purpose extensions"
+msgstr ""
+
+#: ../../../topics/extensions.rst:119
+msgid "Log Stats extension"
+msgstr ""
+
+#: ../../../topics/extensions.rst:126
+msgid "Log basic stats like crawled pages and scraped items."
+msgstr ""
+
+#: ../../../topics/extensions.rst:129
+msgid "Core Stats extension"
+msgstr ""
+
+#: ../../../topics/extensions.rst:136
+msgid ""
+"Enable the collection of core statistics, provided the stats collection is "
+"enabled (see :ref:`topics-stats`)."
+msgstr ""
+
+#: ../../../topics/extensions.rst:142
+msgid "Log Count extension"
+msgstr ""
+
+#: ../../../../scrapy/extensions/logcount.py:docstring of
+#: scrapy.extensions.logcount.LogCount:1
+msgid "Install a log handler that counts log messages by level."
+msgstr ""
+
+#: ../../../../scrapy/extensions/logcount.py:docstring of
+#: scrapy.extensions.logcount.LogCount:3
+msgid ""
+"The handler installed is :class:`scrapy.utils.log.LogCounterHandler`. The "
+"counts are stored in stats as ``log_count/<level>``."
+msgstr ""
+
+#: ../../../topics/extensions.rst:150
+msgid "Telnet console extension"
+msgstr ""
+
+#: ../../../topics/extensions.rst:157
+msgid ""
+"Provides a telnet console for getting into a Python interpreter inside the "
+"currently running Scrapy process, which can be very useful for debugging."
+msgstr ""
+
+#: ../../../topics/extensions.rst:160
+msgid ""
+"The telnet console must be enabled by the :setting:`TELNETCONSOLE_ENABLED` "
+"setting, and the server will listen in the port specified in :setting:"
+"`TELNETCONSOLE_PORT`."
+msgstr ""
+
+#: ../../../topics/extensions.rst:167
+msgid "Memory usage extension"
+msgstr ""
+
+#: ../../../topics/extensions.rst:174
+msgid "This extension does not work in Windows."
+msgstr ""
+
+#: ../../../topics/extensions.rst:176
+msgid ""
+"Monitors the memory used by the Scrapy process that runs the spider and:"
+msgstr ""
+
+#: ../../../topics/extensions.rst:178
+msgid "sends a notification e-mail when it exceeds a certain value"
+msgstr ""
+
+#: ../../../topics/extensions.rst:179
+msgid "closes the spider when it exceeds a certain value"
+msgstr ""
+
+#: ../../../topics/extensions.rst:181
+msgid ""
+"The notification e-mails can be triggered when a certain warning value is "
+"reached (:setting:`MEMUSAGE_WARNING_MB`) and when the maximum value is "
+"reached (:setting:`MEMUSAGE_LIMIT_MB`) which will also cause the spider to "
+"be closed and the Scrapy process to be terminated."
+msgstr ""
+
+#: ../../../topics/extensions.rst:186
+msgid ""
+"This extension is enabled by the :setting:`MEMUSAGE_ENABLED` setting and can "
+"be configured with the following settings:"
+msgstr ""
+
+#: ../../../topics/extensions.rst:189
+msgid ":setting:`MEMUSAGE_LIMIT_MB`"
+msgstr ""
+
+#: ../../../topics/extensions.rst:190
+msgid ":setting:`MEMUSAGE_WARNING_MB`"
+msgstr ""
+
+#: ../../../topics/extensions.rst:191
+msgid ":setting:`MEMUSAGE_NOTIFY_MAIL`"
+msgstr ""
+
+#: ../../../topics/extensions.rst:192
+msgid ":setting:`MEMUSAGE_CHECK_INTERVAL_SECONDS`"
+msgstr ""
+
+#: ../../../topics/extensions.rst:195
+msgid "Memory debugger extension"
+msgstr ""
+
+#: ../../../topics/extensions.rst:202
+msgid "An extension for debugging memory usage. It collects information about:"
+msgstr ""
+
+#: ../../../topics/extensions.rst:204
+msgid "objects uncollected by the Python garbage collector"
+msgstr ""
+
+#: ../../../topics/extensions.rst:205
+msgid ""
+"objects left alive that shouldn't. For more info, see :ref:`topics-leaks-"
+"trackrefs`"
+msgstr ""
+
+#: ../../../topics/extensions.rst:207
+msgid ""
+"To enable this extension, turn on the :setting:`MEMDEBUG_ENABLED` setting. "
+"The info will be stored in the stats."
+msgstr ""
+
+#: ../../../topics/extensions.rst:213
+msgid "Spider state extension"
+msgstr ""
+
+#: ../../../topics/extensions.rst:220
+msgid ""
+"Manages spider state data by loading it before a crawl and saving it after."
+msgstr ""
+
+#: ../../../topics/extensions.rst:222
+msgid ""
+"Give a value to the :setting:`JOBDIR` setting to enable this extension. When "
+"enabled, this extension manages the :attr:`~scrapy.Spider.state` attribute "
+"of your :class:`~scrapy.Spider` instance:"
+msgstr ""
+
+#: ../../../topics/extensions.rst:226
+msgid ""
+"When your spider closes (:signal:`spider_closed`), the contents of its :attr:"
+"`~scrapy.Spider.state` attribute are serialized into a file named ``spider."
+"state`` in the :setting:`JOBDIR` folder."
+msgstr ""
+
+#: ../../../topics/extensions.rst:229
+msgid ""
+"When your spider opens (:signal:`spider_opened`), if a previously-generated "
+"``spider.state`` file exists in the :setting:`JOBDIR` folder, it is loaded "
+"into the :attr:`~scrapy.Spider.state` attribute."
+msgstr ""
+
+#: ../../../topics/extensions.rst:234
+msgid ""
+"For an example, see :ref:`topics-keeping-persistent-state-between-batches`."
+msgstr ""
+
+#: ../../../topics/extensions.rst:237
+msgid "Close spider extension"
+msgstr ""
+
+#: ../../../topics/extensions.rst:244
+msgid ""
+"Closes a spider automatically when some conditions are met, using a specific "
+"closing reason for each condition."
+msgstr ""
+
+#: ../../../topics/extensions.rst:247
+msgid ""
+"The conditions for closing a spider can be configured through the following "
+"settings:"
+msgstr ""
+
+#: ../../../topics/extensions.rst:250
+msgid ":setting:`CLOSESPIDER_TIMEOUT`"
+msgstr ""
+
+#: ../../../topics/extensions.rst:251
+msgid ":setting:`CLOSESPIDER_TIMEOUT_NO_ITEM`"
+msgstr ""
+
+#: ../../../topics/extensions.rst:252
+msgid ":setting:`CLOSESPIDER_ITEMCOUNT`"
+msgstr ""
+
+#: ../../../topics/extensions.rst:253
+msgid ":setting:`CLOSESPIDER_PAGECOUNT`"
+msgstr ""
+
+#: ../../../topics/extensions.rst:254
+msgid ":setting:`CLOSESPIDER_ERRORCOUNT`"
+msgstr ""
+
+#: ../../../topics/extensions.rst:258
+msgid ""
+"When a certain closing condition is met, requests which are currently in the "
+"downloader queue (up to :setting:`CONCURRENT_REQUESTS` requests) are still "
+"processed."
+msgstr ""
+
+#: ../../../topics/extensions.rst:265
+msgid "CLOSESPIDER_TIMEOUT"
+msgstr ""
+
+#: ../../../topics/extensions.rst:267 ../../../topics/extensions.rst:279
+#: ../../../topics/extensions.rst:291 ../../../topics/extensions.rst:303
+#: ../../../topics/extensions.rst:315 ../../../topics/extensions.rst:328
+msgid "Default: ``0``"
+msgstr ""
+
+#: ../../../topics/extensions.rst:269
+msgid ""
+"An integer which specifies a number of seconds. If the spider remains open "
+"for more than that number of seconds, it will be automatically closed with "
+"the reason ``closespider_timeout``. If zero (or non set), spiders won't be "
+"closed by timeout."
+msgstr ""
+
+#: ../../../topics/extensions.rst:277
+msgid "CLOSESPIDER_TIMEOUT_NO_ITEM"
+msgstr ""
+
+#: ../../../topics/extensions.rst:281
+msgid ""
+"An integer which specifies a number of seconds. If the spider has not "
+"produced any items in the last number of seconds, it will be closed with the "
+"reason ``closespider_timeout_no_item``. If zero (or non set), spiders won't "
+"be closed regardless if it hasn't produced any items."
+msgstr ""
+
+#: ../../../topics/extensions.rst:289
+msgid "CLOSESPIDER_ITEMCOUNT"
+msgstr ""
+
+#: ../../../topics/extensions.rst:293
+msgid ""
+"An integer which specifies a number of items. If the spider scrapes more "
+"than that amount and those items are passed by the item pipeline, the spider "
+"will be closed with the reason ``closespider_itemcount``. If zero (or non "
+"set), spiders won't be closed by number of passed items."
+msgstr ""
+
+#: ../../../topics/extensions.rst:301
+msgid "CLOSESPIDER_PAGECOUNT"
+msgstr ""
+
+#: ../../../topics/extensions.rst:305
+msgid ""
+"An integer which specifies the maximum number of responses to crawl. If the "
+"spider crawls more than that, the spider will be closed with the reason "
+"``closespider_pagecount``. If zero (or non set), spiders won't be closed by "
+"number of crawled responses."
+msgstr ""
+
+#: ../../../topics/extensions.rst:313
+msgid "CLOSESPIDER_PAGECOUNT_NO_ITEM"
+msgstr ""
+
+#: ../../../topics/extensions.rst:317
+msgid ""
+"An integer which specifies the maximum number of consecutive responses to "
+"crawl without items scraped. If the spider crawls more consecutive responses "
+"than that and no items are scraped in the meantime, the spider will be "
+"closed with the reason ``closespider_pagecount_no_item``. If zero (or not "
+"set), spiders won't be closed by number of crawled responses with no items."
+msgstr ""
+
+#: ../../../topics/extensions.rst:326
+msgid "CLOSESPIDER_ERRORCOUNT"
+msgstr ""
+
+#: ../../../topics/extensions.rst:330
+msgid ""
+"An integer which specifies the maximum number of errors to receive before "
+"closing the spider. If the spider generates more than that number of errors, "
+"it will be closed with the reason ``closespider_errorcount``. If zero (or "
+"non set), spiders won't be closed by number of errors."
+msgstr ""
+
+#: ../../../topics/extensions.rst:336
+msgid "StatsMailer extension"
+msgstr ""
+
+#: ../../../topics/extensions.rst:343
+msgid ""
+"This simple extension can be used to send a notification e-mail every time a "
+"domain has finished scraping, including the Scrapy stats collected. The "
+"email will be sent to all recipients specified in the :setting:"
+"`STATSMAILER_RCPTS` setting."
+msgstr ""
+
+#: ../../../topics/extensions.rst:348
+msgid ""
+"Emails can be sent using the :class:`~scrapy.mail.MailSender` class. To see "
+"a full list of parameters, including examples on how to instantiate :class:"
+"`~scrapy.mail.MailSender` and use mail settings, see :ref:`topics-email`."
+msgstr ""
+
+#: ../../../topics/extensions.rst:360
+msgid "Periodic log extension"
+msgstr ""
+
+#: ../../../topics/extensions.rst:364
+msgid "This extension periodically logs rich stat data as a JSON object::"
+msgstr ""
+
+#: ../../../topics/extensions.rst:366
+msgid ""
+"2023-08-04 02:30:57 [scrapy.extensions.logstats] INFO: Crawled 976 pages (at "
+"162 pages/min), scraped 925 items (at 161 items/min)\n"
+"2023-08-04 02:30:57 [scrapy.extensions.periodic_log] INFO: {\n"
+"    \"delta\": {\n"
+"        \"downloader/request_bytes\": 55582,\n"
+"        \"downloader/request_count\": 162,\n"
+"        \"downloader/request_method_count/GET\": 162,\n"
+"        \"downloader/response_bytes\": 618133,\n"
+"        \"downloader/response_count\": 162,\n"
+"        \"downloader/response_status_count/200\": 162,\n"
+"        \"item_scraped_count\": 161\n"
+"    },\n"
+"    \"stats\": {\n"
+"        \"downloader/request_bytes\": 338243,\n"
+"        \"downloader/request_count\": 992,\n"
+"        \"downloader/request_method_count/GET\": 992,\n"
+"        \"downloader/response_bytes\": 3836736,\n"
+"        \"downloader/response_count\": 976,\n"
+"        \"downloader/response_status_count/200\": 976,\n"
+"        \"item_scraped_count\": 925,\n"
+"        \"log_count/INFO\": 21,\n"
+"        \"log_count/WARNING\": 1,\n"
+"        \"scheduler/dequeued\": 992,\n"
+"        \"scheduler/dequeued/memory\": 992,\n"
+"        \"scheduler/enqueued\": 1050,\n"
+"        \"scheduler/enqueued/memory\": 1050\n"
+"    },\n"
+"    \"time\": {\n"
+"        \"elapsed\": 360.008903,\n"
+"        \"log_interval\": 60.0,\n"
+"        \"log_interval_real\": 60.006694,\n"
+"        \"start_time\": \"2023-08-03 23:24:57\",\n"
+"        \"utcnow\": \"2023-08-03 23:30:57\"\n"
+"    }\n"
+"}"
+msgstr ""
+
+#: ../../../topics/extensions.rst:401
+msgid "This extension logs the following configurable sections:"
+msgstr ""
+
+#: ../../../topics/extensions.rst:403
+msgid ""
+"``\"delta\"`` shows how some numeric stats have changed since the last stats "
+"log message."
+msgstr ""
+
+#: ../../../topics/extensions.rst:406
+msgid ""
+"The :setting:`PERIODIC_LOG_DELTA` setting determines the target stats. They "
+"must have ``int`` or ``float`` values."
+msgstr ""
+
+#: ../../../topics/extensions.rst:409
+msgid "``\"stats\"`` shows the current value of some stats."
+msgstr ""
+
+#: ../../../topics/extensions.rst:411
+msgid "The :setting:`PERIODIC_LOG_STATS` setting determines the target stats."
+msgstr ""
+
+#: ../../../topics/extensions.rst:413
+msgid "``\"time\"`` shows detailed timing data."
+msgstr ""
+
+#: ../../../topics/extensions.rst:415
+msgid ""
+"The :setting:`PERIODIC_LOG_TIMING_ENABLED` setting determines whether or not "
+"to show this section."
+msgstr ""
+
+#: ../../../topics/extensions.rst:418
+msgid ""
+"This extension logs data at the start, then on a fixed time interval "
+"configurable through the :setting:`LOGSTATS_INTERVAL` setting, and finally "
+"right before the crawl ends."
+msgstr ""
+
+#: ../../../topics/extensions.rst:423
+msgid "Example extension configuration:"
+msgstr ""
+
+#: ../../../topics/extensions.rst:425
+msgid ""
+"custom_settings = {\n"
+"    \"LOG_LEVEL\": \"INFO\",\n"
+"    \"PERIODIC_LOG_STATS\": {\n"
+"        \"include\": [\"downloader/\", \"scheduler/\", \"log_count/\", "
+"\"item_scraped_count/\"],\n"
+"    },\n"
+"    \"PERIODIC_LOG_DELTA\": {\"include\": [\"downloader/\"]},\n"
+"    \"PERIODIC_LOG_TIMING_ENABLED\": True,\n"
+"    \"EXTENSIONS\": {\n"
+"        \"scrapy.extensions.periodic_log.PeriodicLog\": 0,\n"
+"    },\n"
+"}"
+msgstr ""
+
+#: ../../../topics/extensions.rst:442
+msgid "PERIODIC_LOG_DELTA"
+msgstr ""
+
+#: ../../../topics/extensions.rst:444 ../../../topics/extensions.rst:455
+msgid "Default: ``None``"
+msgstr ""
+
+#: ../../../topics/extensions.rst:446
+msgid ""
+"``\"PERIODIC_LOG_DELTA\": True`` - show deltas for all ``int`` and ``float`` "
+"stat values."
+msgstr ""
+
+#: ../../../topics/extensions.rst:447
+msgid ""
+"``\"PERIODIC_LOG_DELTA\": {\"include\": [\"downloader/\", \"scheduler/\"]}`` "
+"- show deltas for stats with names containing any configured substring."
+msgstr ""
+
+#: ../../../topics/extensions.rst:448
+msgid ""
+"``\"PERIODIC_LOG_DELTA\": {\"exclude\": [\"downloader/\"]}`` - show deltas "
+"for all stats with names not containing any configured substring."
+msgstr ""
+
+#: ../../../topics/extensions.rst:453
+msgid "PERIODIC_LOG_STATS"
+msgstr ""
+
+#: ../../../topics/extensions.rst:457
+msgid "``\"PERIODIC_LOG_STATS\": True`` - show the current value of all stats."
+msgstr ""
+
+#: ../../../topics/extensions.rst:458
+msgid ""
+"``\"PERIODIC_LOG_STATS\": {\"include\": [\"downloader/\", \"scheduler/\"]}`` "
+"- show current values for stats with names containing any configured "
+"substring."
+msgstr ""
+
+#: ../../../topics/extensions.rst:459
+msgid ""
+"``\"PERIODIC_LOG_STATS\": {\"exclude\": [\"downloader/\"]}`` - show current "
+"values for all stats with names not containing any configured substring."
+msgstr ""
+
+#: ../../../topics/extensions.rst:465
+msgid "PERIODIC_LOG_TIMING_ENABLED"
+msgstr ""
+
+#: ../../../topics/extensions.rst:467
+msgid "Default: ``False``"
+msgstr ""
+
+#: ../../../topics/extensions.rst:469
+msgid ""
+"``True`` enables logging of timing data (i.e. the ``\"time\"`` section)."
+msgstr ""
+
+#: ../../../topics/extensions.rst:473
+msgid "Debugging extensions"
+msgstr ""
+
+#: ../../../topics/extensions.rst:476
+msgid "Stack trace dump extension"
+msgstr ""
+
+#: ../../../topics/extensions.rst:480
+msgid ""
+"Dumps information about the running process when a `SIGQUIT`_ or `SIGUSR2`_ "
+"signal is received. The information dumped is the following:"
+msgstr ""
+
+#: ../../../topics/extensions.rst:483
+msgid "engine status (using ``scrapy.utils.engine.get_engine_status()``)"
+msgstr ""
+
+#: ../../../topics/extensions.rst:484
+msgid "live references (see :ref:`topics-leaks-trackrefs`)"
+msgstr ""
+
+#: ../../../topics/extensions.rst:485
+msgid "stack trace of all threads"
+msgstr ""
+
+#: ../../../topics/extensions.rst:487
+msgid ""
+"After the stack trace and engine status is dumped, the Scrapy process "
+"continues running normally."
+msgstr ""
+
+#: ../../../topics/extensions.rst:490
+msgid ""
+"This extension only works on POSIX-compliant platforms (i.e. not Windows), "
+"because the `SIGQUIT`_ and `SIGUSR2`_ signals are not available on Windows."
+msgstr ""
+
+#: ../../../topics/extensions.rst:493
+msgid "There are at least two ways to send Scrapy the `SIGQUIT`_ signal:"
+msgstr ""
+
+#: ../../../topics/extensions.rst:495
+msgid "By pressing Ctrl-\\ while a Scrapy process is running (Linux only?)"
+msgstr ""
+
+#: ../../../topics/extensions.rst:496
+msgid ""
+"By running this command (assuming ``<pid>`` is the process id of the Scrapy "
+"process)::"
+msgstr ""
+
+#: ../../../topics/extensions.rst:499
+msgid "kill -QUIT <pid>"
+msgstr ""
+
+#: ../../../topics/extensions.rst:505
+msgid "Debugger extension"
+msgstr ""
+
+#: ../../../topics/extensions.rst:509
+msgid ""
+"Invokes a :doc:`Python debugger <library/pdb>` inside a running Scrapy "
+"process when a `SIGUSR2`_ signal is received. After the debugger is exited, "
+"the Scrapy process continues running normally."
+msgstr ""
+
+#: ../../../topics/extensions.rst:513
+msgid ""
+"This extension only works on POSIX-compliant platforms (i.e. not Windows)."
+msgstr ""
