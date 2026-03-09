@@ -1,0 +1,488 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2008-2013, Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy 0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-09 06:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/images.rst:5
+msgid "Downloading Item Images"
+msgstr ""
+
+#: ../../../topics/images.rst:9
+msgid ""
+"Scrapy provides an :doc:`item pipeline </topics/item-pipeline>` for "
+"downloading images attached to a particular item, for example, when you "
+"scrape products and also want to download their images locally."
+msgstr ""
+
+#: ../../../topics/images.rst:13
+msgid ""
+"This pipeline, called the Images Pipeline and implemented in the :class:"
+"`ImagesPipeline` class, provides a convenient way for downloading and "
+"storing images locally with some additional features:"
+msgstr ""
+
+#: ../../../topics/images.rst:17
+msgid "Convert all downloaded images to a common format (JPG) and mode (RGB)"
+msgstr ""
+
+#: ../../../topics/images.rst:18
+msgid "Avoid re-downloading images which were downloaded recently"
+msgstr ""
+
+#: ../../../topics/images.rst:19 ../../../topics/images.rst:152
+msgid "Thumbnail generation"
+msgstr ""
+
+#: ../../../topics/images.rst:20
+msgid "Check images width/height to make sure they meet a minimum constraint"
+msgstr ""
+
+#: ../../../topics/images.rst:22
+msgid ""
+"This pipeline also keeps an internal queue of those images which are "
+"currently being scheduled for download, and connects those items that arrive "
+"containing the same image, to that queue. This avoids downloading the same "
+"image more than once when it's shared by several items."
+msgstr ""
+
+#: ../../../topics/images.rst:27
+msgid ""
+"`Pillow`_ is used for thumbnailing and normalizing images to JPEG/RGB "
+"format, so you need to install this library in order to use the images "
+"pipeline. `Python Imaging Library`_ (PIL) should also work in most cases, "
+"but it is known to cause troubles in some setups, so we recommend to use "
+"`Pillow`_ instead of `PIL <Python Imaging Library>`_."
+msgstr ""
+
+#: ../../../topics/images.rst:37
+msgid "Using the Images Pipeline"
+msgstr ""
+
+#: ../../../topics/images.rst:39
+msgid ""
+"The typical workflow, when using the :class:`ImagesPipeline` goes like this:"
+msgstr ""
+
+#: ../../../topics/images.rst:42
+msgid ""
+"In a Spider, you scrape an item and put the URLs of its images into a "
+"``image_urls`` field."
+msgstr ""
+
+#: ../../../topics/images.rst:45
+msgid "The item is returned from the spider and goes to the item pipeline."
+msgstr ""
+
+#: ../../../topics/images.rst:47
+msgid ""
+"When the item reaches the :class:`ImagesPipeline`, the URLs in the "
+"``image_urls`` field are scheduled for download using the standard Scrapy "
+"scheduler and downloader (which means the scheduler and downloader "
+"middlewares are reused), but with a higher priority, processing them before "
+"other pages are scraped. The item remains \"locked\" at that particular "
+"pipeline stage until the images have finish downloading (or fail for some "
+"reason)."
+msgstr ""
+
+#: ../../../topics/images.rst:54
+msgid ""
+"When the images are downloaded another field (``images``) will be populated "
+"with the results. This field will contain a list of dicts with information "
+"about the images downloaded, such as the downloaded path, the original "
+"scraped url (taken from the ``image_urls`` field) , and the image checksum. "
+"The images in the list of the ``images`` field will retain the same order of "
+"the original ``image_urls`` field. If some image failed downloading, an "
+"error will be logged and the image won't be present in the ``images`` field."
+msgstr ""
+
+#: ../../../topics/images.rst:64
+msgid "Usage example"
+msgstr ""
+
+#: ../../../topics/images.rst:66
+msgid ""
+"In order to use the image pipeline you just need to :ref:`enable it <topics-"
+"images-enabling>` and define an item with the ``image_urls`` and ``images`` "
+"fields::"
+msgstr ""
+
+#: ../../../topics/images.rst:70
+msgid ""
+"import scrapy\n"
+"\n"
+"class MyItem(scrapy.Item):\n"
+"\n"
+"    # ... other item fields ...\n"
+"    image_urls = scrapy.Field()\n"
+"    images = scrapy.Field()"
+msgstr ""
+
+#: ../../../topics/images.rst:78
+msgid ""
+"If you need something more complex and want to override the custom images "
+"pipeline behaviour, see :ref:`topics-images-override`."
+msgstr ""
+
+#: ../../../topics/images.rst:84
+msgid "Enabling your Images Pipeline"
+msgstr ""
+
+#: ../../../topics/images.rst:88
+msgid ""
+"To enable your images pipeline you must first add it to your project :"
+"setting:`ITEM_PIPELINES` setting::"
+msgstr ""
+
+#: ../../../topics/images.rst:91
+msgid "ITEM_PIPELINES = {'scrapy.contrib.pipeline.images.ImagesPipeline': 1}"
+msgstr ""
+
+#: ../../../topics/images.rst:93
+msgid ""
+"And set the :setting:`IMAGES_STORE` setting to a valid directory that will "
+"be used for storing the downloaded images. Otherwise the pipeline will "
+"remain disabled, even if you include it in the :setting:`ITEM_PIPELINES` "
+"setting."
+msgstr ""
+
+#: ../../../topics/images.rst:97 ../../../topics/images.rst:162
+#: ../../../topics/images.rst:201
+msgid "For example::"
+msgstr ""
+
+#: ../../../topics/images.rst:99
+msgid "IMAGES_STORE = '/path/to/valid/dir'"
+msgstr ""
+
+#: ../../../topics/images.rst:102
+msgid "Images Storage"
+msgstr ""
+
+#: ../../../topics/images.rst:104
+msgid ""
+"File system is currently the only officially supported storage, but there is "
+"also (undocumented) support for `Amazon S3`_."
+msgstr ""
+
+#: ../../../topics/images.rst:110
+msgid "File system storage"
+msgstr ""
+
+#: ../../../topics/images.rst:112
+msgid ""
+"The images are stored in files (one per image), using a `SHA1 hash`_ of "
+"their URLs for the file names."
+msgstr ""
+
+#: ../../../topics/images.rst:115
+msgid "For example, the following image URL::"
+msgstr ""
+
+#: ../../../topics/images.rst:117
+msgid "http://www.example.com/image.jpg"
+msgstr ""
+
+#: ../../../topics/images.rst:119
+msgid "Whose `SHA1 hash` is::"
+msgstr ""
+
+#: ../../../topics/images.rst:121
+msgid "3afec3b4765f8f0a07b78f98c07b83f013567a0a"
+msgstr ""
+
+#: ../../../topics/images.rst:123
+msgid "Will be downloaded and stored in the following file::"
+msgstr ""
+
+#: ../../../topics/images.rst:125
+msgid "<IMAGES_STORE>/full/3afec3b4765f8f0a07b78f98c07b83f013567a0a.jpg"
+msgstr ""
+
+#: ../../../topics/images.rst:127 ../../../topics/images.rst:174
+msgid "Where:"
+msgstr ""
+
+#: ../../../topics/images.rst:129
+msgid ""
+"``<IMAGES_STORE>`` is the directory defined in :setting:`IMAGES_STORE` "
+"setting"
+msgstr ""
+
+#: ../../../topics/images.rst:131
+msgid ""
+"``full`` is a sub-directory to separate full images from thumbnails (if "
+"used). For more info see :ref:`topics-images-thumbnails`."
+msgstr ""
+
+#: ../../../topics/images.rst:135
+msgid "Additional features"
+msgstr ""
+
+#: ../../../topics/images.rst:138
+msgid "Image expiration"
+msgstr ""
+
+#: ../../../topics/images.rst:142
+msgid ""
+"The Image Pipeline avoids downloading images that were downloaded recently. "
+"To adjust this retention delay use the :setting:`IMAGES_EXPIRES` setting, "
+"which specifies the delay in number of days::"
+msgstr ""
+
+#: ../../../topics/images.rst:146
+msgid ""
+"# 90 days of delay for image expiration\n"
+"IMAGES_EXPIRES = 90"
+msgstr ""
+
+#: ../../../topics/images.rst:154
+msgid ""
+"The Images Pipeline can automatically create thumbnails of the downloaded "
+"images."
+msgstr ""
+
+#: ../../../topics/images.rst:159
+msgid ""
+"In order use this feature, you must set :setting:`IMAGES_THUMBS` to a "
+"dictionary where the keys are the thumbnail names and the values are their "
+"dimensions."
+msgstr ""
+
+#: ../../../topics/images.rst:164
+msgid ""
+"IMAGES_THUMBS = {\n"
+"    'small': (50, 50),\n"
+"    'big': (270, 270),\n"
+"}"
+msgstr ""
+
+#: ../../../topics/images.rst:169
+msgid ""
+"When you use this feature, the Images Pipeline will create thumbnails of the "
+"each specified size with this format::"
+msgstr ""
+
+#: ../../../topics/images.rst:172
+msgid "<IMAGES_STORE>/thumbs/<size_name>/<image_id>.jpg"
+msgstr ""
+
+#: ../../../topics/images.rst:176
+msgid ""
+"``<size_name>`` is the one specified in the :setting:`IMAGES_THUMBS` "
+"dictionary keys (``small``, ``big``, etc)"
+msgstr ""
+
+#: ../../../topics/images.rst:179
+msgid "``<image_id>`` is the `SHA1 hash`_ of the image url"
+msgstr ""
+
+#: ../../../topics/images.rst:183
+msgid ""
+"Example of image files stored using ``small`` and ``big`` thumbnail names::"
+msgstr ""
+
+#: ../../../topics/images.rst:185
+msgid ""
+"<IMAGES_STORE>/full/63bbfea82b8880ed33cdb762aa11fab722a90a24.jpg\n"
+"<IMAGES_STORE>/thumbs/small/63bbfea82b8880ed33cdb762aa11fab722a90a24.jpg\n"
+"<IMAGES_STORE>/thumbs/big/63bbfea82b8880ed33cdb762aa11fab722a90a24.jpg"
+msgstr ""
+
+#: ../../../topics/images.rst:189
+msgid "The first one is the full image, as downloaded from the site."
+msgstr ""
+
+#: ../../../topics/images.rst:192
+msgid "Filtering out small images"
+msgstr ""
+
+#: ../../../topics/images.rst:198
+msgid ""
+"You can drop images which are too small, by specifying the minimum allowed "
+"size in the :setting:`IMAGES_MIN_HEIGHT` and :setting:`IMAGES_MIN_WIDTH` "
+"settings."
+msgstr ""
+
+#: ../../../topics/images.rst:203
+msgid ""
+"IMAGES_MIN_HEIGHT = 110\n"
+"IMAGES_MIN_WIDTH = 110"
+msgstr ""
+
+#: ../../../topics/images.rst:206
+msgid "Note: these size constraints don't affect thumbnail generation at all."
+msgstr ""
+
+#: ../../../topics/images.rst:208
+msgid "By default, there are no size constraints, so all images are processed."
+msgstr ""
+
+#: ../../../topics/images.rst:213
+msgid "Implementing your custom Images Pipeline"
+msgstr ""
+
+#: ../../../topics/images.rst:218
+msgid ""
+"Here are the methods that you should override in your custom Images Pipeline:"
+msgstr ""
+
+#: ../../../topics/images.rst:224
+msgid ""
+"As seen on the workflow, the pipeline will get the URLs of the images to "
+"download from the item. In order to do this, you must override the :meth:"
+"`~get_media_requests` method and return a Request for each image URL::"
+msgstr ""
+
+#: ../../../topics/images.rst:229
+msgid ""
+"def get_media_requests(self, item, info):\n"
+"    for image_url in item['image_urls']:\n"
+"        yield scrapy.Request(image_url)"
+msgstr ""
+
+#: ../../../topics/images.rst:233
+msgid ""
+"Those requests will be processed by the pipeline and, when they have "
+"finished downloading, the results will be sent to the :meth:"
+"`~item_completed` method, as a list of 2-element tuples. Each tuple will "
+"contain ``(success, image_info_or_failure)`` where:"
+msgstr ""
+
+#: ../../../topics/images.rst:238
+msgid ""
+"``success`` is a boolean which is ``True`` if the image was downloaded "
+"successfully or ``False`` if it failed for some reason"
+msgstr ""
+
+#: ../../../topics/images.rst:241
+msgid ""
+"``image_info_or_error`` is a dict containing the following keys (if success "
+"is ``True``) or a `Twisted Failure`_ if there was a problem."
+msgstr ""
+
+#: ../../../topics/images.rst:244
+msgid ""
+"``url`` - the url where the image was downloaded from. This is the url of "
+"the request returned from the :meth:`~get_media_requests` method."
+msgstr ""
+
+#: ../../../topics/images.rst:248
+msgid ""
+"``path`` - the path (relative to :setting:`IMAGES_STORE`) where the image "
+"was stored"
+msgstr ""
+
+#: ../../../topics/images.rst:251
+msgid "``checksum`` - a `MD5 hash`_ of the image contents"
+msgstr ""
+
+#: ../../../topics/images.rst:253
+msgid ""
+"The list of tuples received by :meth:`~item_completed` is guaranteed to "
+"retain the same order of the requests returned from the :meth:"
+"`~get_media_requests` method."
+msgstr ""
+
+#: ../../../topics/images.rst:257
+msgid "Here's a typical value of the ``results`` argument::"
+msgstr ""
+
+#: ../../../topics/images.rst:259
+msgid ""
+"[(True,\n"
+"  {'checksum': '2b00042f7481c7b056c4b410d28f33cf',\n"
+"   'path': 'full/7d97e98f8af710c7e7fe703abc8f639e0ee507c4.jpg',\n"
+"   'url': 'http://www.example.com/images/product1.jpg'}),\n"
+" (True,\n"
+"  {'checksum': 'b9628c4ab9b595f72f280b90c4fd093d',\n"
+"   'path': 'full/1ca5879492b8fd606df1964ea3c1e2f4520f076f.jpg',\n"
+"   'url': 'http://www.example.com/images/product2.jpg'}),\n"
+" (False,\n"
+"  Failure(...))]"
+msgstr ""
+
+#: ../../../topics/images.rst:270
+msgid ""
+"By default the :meth:`get_media_requests` method returns ``None`` which "
+"means there are no images to download for the item."
+msgstr ""
+
+#: ../../../topics/images.rst:275
+msgid ""
+"The :meth:`ImagesPipeline.item_completed` method called when all image "
+"requests for a single item have completed (either finished downloading, or "
+"failed for some reason)."
+msgstr ""
+
+#: ../../../topics/images.rst:279
+msgid ""
+"The :meth:`~item_completed` method must return the output that will be sent "
+"to subsequent item pipeline stages, so you must return (or drop) the item, "
+"as you would in any pipeline."
+msgstr ""
+
+#: ../../../topics/images.rst:283
+msgid ""
+"Here is an example of the :meth:`~item_completed` method where we store the "
+"downloaded image paths (passed in results) in the ``image_paths`` item "
+"field, and we drop the item if it doesn't contain any images::"
+msgstr ""
+
+#: ../../../topics/images.rst:287
+msgid ""
+"from scrapy.exceptions import DropItem\n"
+"\n"
+"def item_completed(self, results, item, info):\n"
+"    image_paths = [x['path'] for ok, x in results if ok]\n"
+"    if not image_paths:\n"
+"        raise DropItem(\"Item contains no images\")\n"
+"    item['image_paths'] = image_paths\n"
+"    return item"
+msgstr ""
+
+#: ../../../topics/images.rst:296
+msgid "By default, the :meth:`item_completed` method returns the item."
+msgstr ""
+
+#: ../../../topics/images.rst:300
+msgid "Custom Images pipeline example"
+msgstr ""
+
+#: ../../../topics/images.rst:302
+msgid ""
+"Here is a full example of the Images Pipeline whose methods are examplified "
+"above::"
+msgstr ""
+
+#: ../../../topics/images.rst:305
+msgid ""
+"import scrapy\n"
+"from scrapy.contrib.pipeline.images import ImagesPipeline\n"
+"from scrapy.exceptions import DropItem\n"
+"\n"
+"class MyImagesPipeline(ImagesPipeline):\n"
+"\n"
+"    def get_media_requests(self, item, info):\n"
+"        for image_url in item['image_urls']:\n"
+"            yield scrapy.Request(image_url)\n"
+"\n"
+"    def item_completed(self, results, item, info):\n"
+"        image_paths = [x['path'] for ok, x in results if ok]\n"
+"        if not image_paths:\n"
+"            raise DropItem(\"Item contains no images\")\n"
+"        item['image_paths'] = image_paths\n"
+"        return item"
+msgstr ""
