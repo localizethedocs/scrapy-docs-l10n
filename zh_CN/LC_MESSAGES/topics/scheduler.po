@@ -1,0 +1,643 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/scheduler.rst:5
+msgid "Scheduler"
+msgstr ""
+
+#: ../../../topics/scheduler.rst:9
+msgid ""
+"The scheduler component receives requests from the :ref:`engine <component-"
+"engine>` and stores them into persistent and/or non-persistent data "
+"structures. It also gets those requests and feeds them back to the engine "
+"when it asks for a next request to be downloaded."
+msgstr ""
+
+#: ../../../topics/scheduler.rst:16
+msgid "Overriding the default scheduler"
+msgstr ""
+
+#: ../../../topics/scheduler.rst:18
+msgid ""
+"You can use your own custom scheduler class by supplying its full Python "
+"path in the :setting:`SCHEDULER` setting."
+msgstr ""
+
+#: ../../../topics/scheduler.rst:23
+msgid "Minimal scheduler interface"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.BaseScheduler:1
+msgid ""
+"The scheduler component is responsible for storing requests received from "
+"the engine, and feeding them back upon request (also to the engine)."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.BaseScheduler:4
+msgid "The original sources of said requests are:"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.BaseScheduler:6
+msgid ""
+"Spider: ``start`` method, requests created for URLs in the ``start_urls`` "
+"attribute, request callbacks"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.BaseScheduler:7
+msgid ""
+"Spider middleware: ``process_spider_output`` and "
+"``process_spider_exception`` methods"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.BaseScheduler:8
+msgid ""
+"Downloader middleware: ``process_request``, ``process_response`` and "
+"``process_exception`` methods"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.BaseScheduler:10
+msgid ""
+"The order in which the scheduler returns its stored requests (via the "
+"``next_request`` method) plays a great part in determining the order in "
+"which those requests are downloaded. See :ref:`request-order`."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.BaseScheduler:13
+msgid ""
+"The methods defined in this class constitute the minimal interface that the "
+"Scrapy engine will interact with."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.BaseScheduler.close:1
+msgid ""
+"Called when the spider is closed by the engine. It receives the reason why "
+"the crawl finished as argument and it's useful to execute cleaning code."
+msgstr ""
+
+#: ../../../topics/scheduler.rst:0
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.BaseScheduler.close:4
+msgid "a string which describes the reason why the spider was closed"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.BaseScheduler.enqueue_request:1
+msgid "Process a request received by the engine."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.BaseScheduler.enqueue_request:3
+msgid ""
+"Return ``True`` if the request is stored correctly, ``False`` otherwise."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.BaseScheduler.enqueue_request:5
+msgid ""
+"If ``False``, the engine will fire a ``request_dropped`` signal, and will "
+"not make further attempts to schedule the request at a later time. For "
+"reference, the default Scrapy scheduler returns ``False`` when the request "
+"is rejected by the dupefilter."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.BaseScheduler.from_crawler:1
+#: scrapy.core.scheduler.Scheduler.from_crawler:1
+msgid ""
+"Factory method which receives the current :class:`~scrapy.crawler.Crawler` "
+"object as argument."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.BaseScheduler.has_pending_requests:1
+#: scrapy.core.scheduler.Scheduler.has_pending_requests:1
+msgid "``True`` if the scheduler has enqueued requests, ``False`` otherwise"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.BaseScheduler.next_request:1
+msgid ""
+"Return the next :class:`~scrapy.Request` to be processed, or ``None`` to "
+"indicate that there are no requests to be considered ready at the moment."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.BaseScheduler.next_request:4
+msgid ""
+"Returning ``None`` implies that no request from the scheduler will be sent "
+"to the downloader in the current reactor cycle. The engine will continue "
+"calling ``next_request`` until ``has_pending_requests`` is ``False``."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.BaseScheduler.open:1
+msgid ""
+"Called when the spider is opened by the engine. It receives the spider "
+"instance as argument and it's useful to execute initialization code."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.BaseScheduler.open:4
+msgid "the spider object for the current crawl"
+msgstr ""
+
+#: ../../../topics/scheduler.rst:30
+msgid "Default scheduler"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:1
+msgid "Default scheduler."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:3
+msgid ""
+"Requests are stored into priority queues (:setting:"
+"`SCHEDULER_PRIORITY_QUEUE`) that sort requests by :attr:`~scrapy.http."
+"Request.priority`."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:7
+msgid ""
+"By default, a single, memory-based priority queue is used for all requests. "
+"When using :setting:`JOBDIR`, a disk-based priority queue is also created, "
+"and only unserializable requests are stored in the memory-based priority "
+"queue. For a given priority value, requests in memory take precedence over "
+"requests in disk."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:13
+msgid ""
+"Each priority queue stores requests in separate internal queues, one per "
+"priority value. The memory priority queue uses :setting:"
+"`SCHEDULER_MEMORY_QUEUE` queues, while the disk priority queue uses :setting:"
+"`SCHEDULER_DISK_QUEUE` queues. The internal queues determine :ref:`request "
+"order <request-order>` when requests have the same priority. :ref:`Start "
+"requests <start-requests>` are stored into separate internal queues by "
+"default, and :ref:`ordered differently <start-request-order>`."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:21
+msgid ""
+"Duplicate requests are filtered out with an instance of :setting:"
+"`DUPEFILTER_CLASS`."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:27
+msgid "Request order"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:29
+msgid ""
+"With default settings, pending requests are stored in a LIFO_ queue (:ref:"
+"`except for start requests <start-request-order>`). As a result, crawling "
+"happens in `DFO order`_, which is usually the most convenient crawl order. "
+"However, you can enforce :ref:`BFO <bfo>` or :ref:`a custom order <custom-"
+"request-order>` (:ref:`except for the first few requests <concurrency-v-"
+"order>`)."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:42
+msgid "Start request order"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:44
+msgid ""
+":ref:`Start requests <start-requests>` are sent in the order they are "
+"yielded from :meth:`~scrapy.Spider.start`, and given the same :attr:`~scrapy."
+"http.Request.priority`, other requests take precedence over start requests."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:49
+msgid ""
+"You can set :setting:`SCHEDULER_START_MEMORY_QUEUE` and :setting:"
+"`SCHEDULER_START_DISK_QUEUE` to ``None`` to handle start requests the same "
+"as other requests when it comes to order and priority."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:57
+msgid "Crawling in BFO order"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:59
+msgid ""
+"If you do want to crawl in `BFO order`_, you can do it by setting the "
+"following :ref:`settings <topics-settings>`:"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:62
+msgid ":setting:`DEPTH_PRIORITY` = ``1``"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:64
+msgid ""
+":setting:`SCHEDULER_DISK_QUEUE` = ``\"scrapy.squeues.PickleFifoDiskQueue\"``"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:65
+msgid ""
+":setting:`SCHEDULER_MEMORY_QUEUE` = ``\"scrapy.squeues.FifoMemoryQueue\"``"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:73
+msgid "Crawling in a custom order"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:75
+msgid ""
+"You can manually set :attr:`~scrapy.http.Request.priority` on requests to "
+"force a specific request order."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:82
+msgid "Concurrency affects order"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:84
+msgid ""
+"While pending requests are below the configured values of :setting:"
+"`CONCURRENT_REQUESTS`, :setting:`CONCURRENT_REQUESTS_PER_DOMAIN` or :setting:"
+"`CONCURRENT_REQUESTS_PER_IP`, those requests are sent concurrently."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:89
+msgid ""
+"As a result, the first few requests of a crawl may not follow the desired "
+"order. Lowering those settings to ``1`` enforces the desired order except "
+"for the very first request, but it significantly slows down the crawl as a "
+"whole."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:95
+msgid "Job directory contents"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:97
+msgid ""
+"The files that this class generates in the :ref:`job directory <job-dir>` "
+"are an implementation detail, and may change without a warning in a future "
+"version of Scrapy. Do not rely on the following information for anything "
+"other than debugging purposes."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:102
+msgid "When using :setting:`JOBDIR`, this scheduler class:"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:104
+msgid ""
+"Creates a directory named ``requests.queue`` inside the :ref:`job directory "
+"<job-dir>`, meant to keep track of all requests stored in the scheduler (i."
+"e. not downloaded yet)."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:108
+msgid ""
+"Generates inside that directory an ``active.json`` file with a JSON "
+"representation of the state (``startprios``) of :setting:"
+"`SCHEDULER_PRIORITY_QUEUE`."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:112
+msgid ""
+"The file is generated whenever the job stops (cleanly) and is loaded when "
+"resuming the job."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:115
+msgid ""
+"Instantiates the configured :setting:`SCHEDULER_PRIORITY_QUEUE` with "
+"``requests.queue/`` as persistence directory (*key*) and :setting:"
+"`SCHEDULER_DISK_QUEUE` as *downstream_queue_cls*. The priority queue may "
+"create additional files and directories inside that directory, directly or "
+"though instances of :setting:`SCHEDULER_DISK_QUEUE`."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler:122
+msgid ""
+"This scheduler class also uses the configured :setting:`DUPEFILTER_CLASS`, "
+"which may also write data inside the job directory."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler.__init__:1
+msgid "Initialize the scheduler."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler.__init__:3
+msgid ""
+"An object responsible for checking and filtering duplicate requests. The "
+"value for the :setting:`DUPEFILTER_CLASS` setting is used by default."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler.__init__:8
+msgid ""
+"The path of a directory to be used for persisting the crawl's state. The "
+"value for the :setting:`JOBDIR` setting is used by default. See :ref:`topics-"
+"jobs`."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler.__init__:13
+msgid ""
+"A class to be used as persistent request queue. The value for the :setting:"
+"`SCHEDULER_DISK_QUEUE` setting is used by default."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler.__init__:17
+msgid ""
+"A class to be used as non-persistent request queue. The value for the :"
+"setting:`SCHEDULER_MEMORY_QUEUE` setting is used by default."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler.__init__:21
+msgid ""
+"A boolean that indicates whether or not unserializable requests should be "
+"logged. The value for the :setting:`SCHEDULER_DEBUG` setting is used by "
+"default."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler.__init__:25
+msgid ""
+"A stats collector object to record stats about the request scheduling "
+"process. The value for the :setting:`STATS_CLASS` setting is used by default."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler.__init__:30
+msgid ""
+"A class to be used as priority queue for requests. The value for the :"
+"setting:`SCHEDULER_PRIORITY_QUEUE` setting is used by default."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler.__init__:34
+msgid "The crawler object corresponding to the current crawl."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler.__len__:1
+msgid "Return the total amount of enqueued requests"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler.close:1
+msgid "dump pending requests to disk if there is a disk queue"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler.close:2
+msgid "return the result of the dupefilter's ``close`` method"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler.enqueue_request:1
+msgid ""
+"Unless the received request is filtered out by the Dupefilter, attempt to "
+"push it into the disk queue, falling back to pushing it into the memory "
+"queue."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler.enqueue_request:4
+msgid ""
+"Increment the appropriate stats, such as: ``scheduler/enqueued``, "
+"``scheduler/enqueued/disk``, ``scheduler/enqueued/memory``."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler.enqueue_request:7
+msgid ""
+"Return ``True`` if the request was stored successfully, ``False`` otherwise."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler.next_request:1
+msgid ""
+"Return a :class:`~scrapy.Request` object from the memory queue, falling back "
+"to the disk queue if the memory queue is empty. Return ``None`` if there are "
+"no more enqueued requests."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler.next_request:5
+msgid ""
+"Increment the appropriate stats, such as: ``scheduler/dequeued``, "
+"``scheduler/dequeued/disk``, ``scheduler/dequeued/memory``."
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler.open:1
+msgid "initialize the memory queue"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler.open:2
+msgid ""
+"initialize the disk queue if the ``jobdir`` attribute is a valid directory"
+msgstr ""
+
+#: ../../../../scrapy/core/scheduler.py:docstring of
+#: scrapy.core.scheduler.Scheduler.open:3
+msgid "return the result of the dupefilter's ``open`` method"
+msgstr ""
+
+#: ../../../topics/scheduler.rst:38
+msgid "Priority queues"
+msgstr ""
+
+#: ../../../../scrapy/pqueues.py:docstring of
+#: scrapy.pqueues.DownloaderAwarePriorityQueue:1
+msgid ""
+"PriorityQueue which takes Downloader activity into account: domains (slots) "
+"with the least amount of active downloads are dequeued first."
+msgstr ""
+
+#: ../../../../scrapy/pqueues.py:docstring of
+#: scrapy.pqueues.DownloaderAwarePriorityQueue:6
+#: scrapy.pqueues.ScrapyPriorityQueue:26
+msgid "Disk persistence"
+msgstr ""
+
+#: ../../../../scrapy/pqueues.py:docstring of
+#: scrapy.pqueues.DownloaderAwarePriorityQueue:8
+#: scrapy.pqueues.ScrapyPriorityQueue:28
+msgid ""
+"The files that this class generates on disk are an implementation detail, "
+"and may change without a warning in a future version of Scrapy. Do not rely "
+"on the following information for anything other than debugging purposes."
+msgstr ""
+
+#: ../../../../scrapy/pqueues.py:docstring of
+#: scrapy.pqueues.DownloaderAwarePriorityQueue:13
+msgid ""
+"When a component instantiates this class with a non-empty *key* argument, "
+"*key* is used as a persistence directory, and inside that directory this "
+"class creates a subdirectory per download slot (domain)."
+msgstr ""
+
+#: ../../../../scrapy/pqueues.py:docstring of
+#: scrapy.pqueues.DownloaderAwarePriorityQueue:17
+msgid ""
+"Those subdirectories are named after the corresponding download slot, with "
+"path-unsafe characters replaced by underscores and an MD5 hash suffix to "
+"avoid collisions."
+msgstr ""
+
+#: ../../../../scrapy/pqueues.py:docstring of
+#: scrapy.pqueues.DownloaderAwarePriorityQueue:21
+msgid ""
+"For each download slot, this class creates an instance of :class:"
+"`ScrapyPriorityQueue` with the download slot subdirectory as *key* and its "
+"own *downstream_queue_cls*."
+msgstr ""
+
+#: ../../../../scrapy/pqueues.py:docstring of
+#: scrapy.pqueues.ScrapyPriorityQueue:1
+msgid ""
+"A priority queue implemented using multiple internal queues (typically, FIFO "
+"queues). It uses one internal queue for each priority value. The internal "
+"queue must implement the following methods:"
+msgstr ""
+
+#: ../../../../scrapy/pqueues.py:docstring of
+#: scrapy.pqueues.ScrapyPriorityQueue:5
+msgid "push(obj)"
+msgstr ""
+
+#: ../../../../scrapy/pqueues.py:docstring of
+#: scrapy.pqueues.ScrapyPriorityQueue:6
+msgid "pop()"
+msgstr ""
+
+#: ../../../../scrapy/pqueues.py:docstring of
+#: scrapy.pqueues.ScrapyPriorityQueue:7
+msgid "close()"
+msgstr ""
+
+#: ../../../../scrapy/pqueues.py:docstring of
+#: scrapy.pqueues.ScrapyPriorityQueue:8
+msgid "__len__()"
+msgstr ""
+
+#: ../../../../scrapy/pqueues.py:docstring of
+#: scrapy.pqueues.ScrapyPriorityQueue:10
+msgid ""
+"Optionally, the queue could provide a ``peek`` method, that should return "
+"the next object to be returned by ``pop``, but without removing it from the "
+"queue."
+msgstr ""
+
+#: ../../../../scrapy/pqueues.py:docstring of
+#: scrapy.pqueues.ScrapyPriorityQueue:14
+msgid ""
+"``__init__`` method of ScrapyPriorityQueue receives a downstream_queue_cls "
+"argument, which is a class used to instantiate a new (internal) queue when a "
+"new priority is allocated."
+msgstr ""
+
+#: ../../../../scrapy/pqueues.py:docstring of
+#: scrapy.pqueues.ScrapyPriorityQueue:18
+msgid ""
+"Only integer priorities should be used. Lower numbers are higher priorities."
+msgstr ""
+
+#: ../../../../scrapy/pqueues.py:docstring of
+#: scrapy.pqueues.ScrapyPriorityQueue:21
+msgid ""
+"startprios is a sequence of priorities to start with. If the queue was "
+"previously closed leaving some priority buckets non-empty, those priorities "
+"should be passed in startprios."
+msgstr ""
+
+#: ../../../../scrapy/pqueues.py:docstring of
+#: scrapy.pqueues.ScrapyPriorityQueue:33
+msgid ""
+"When a component instantiates this class with a non-empty *key* argument, "
+"*key* is used as a persistence directory."
+msgstr ""
+
+#: ../../../../scrapy/pqueues.py:docstring of
+#: scrapy.pqueues.ScrapyPriorityQueue:36
+msgid "For every request enqueued, this class checks:"
+msgstr ""
+
+#: ../../../../scrapy/pqueues.py:docstring of
+#: scrapy.pqueues.ScrapyPriorityQueue:38
+msgid "Whether the request is a :ref:`start request <start-requests>` or not."
+msgstr ""
+
+#: ../../../../scrapy/pqueues.py:docstring of
+#: scrapy.pqueues.ScrapyPriorityQueue:40
+msgid "The :data:`~scrapy.Request.priority` of the request."
+msgstr ""
+
+#: ../../../../scrapy/pqueues.py:docstring of
+#: scrapy.pqueues.ScrapyPriorityQueue:42
+msgid ""
+"For each combination of the above seen, this class creates an instance of "
+"*downstream_queue_cls* with *key* set to a subdirectory of the persistence "
+"directory, named as the request priority (e.g. ``1``), with an ``s`` suffix "
+"in case of a start request (e.g. ``1s``)."
+msgstr ""
