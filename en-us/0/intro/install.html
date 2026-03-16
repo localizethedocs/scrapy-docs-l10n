@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en-US" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation guide &mdash; Scrapy 0.25.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="canonical" href="https://projects.localizethedocs.org/scrapy-docs-l10n/intro/install.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Scrapy Tutorial" href="tutorial.html" />
+    <link rel="prev" title="Scrapy at a glance" href="overview.html" />
+ 
+<script type="text/javascript" src="../ltd-provenance.js"></script>
+<script type="text/javascript" src="../ltd-current.js"></script>
+<script type="text/javascript" src="../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Scrapy
+          </a>
+              <div class="version">
+                0.25
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Scrapy at a glance</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pre-requisites">Pre-requisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-scrapy">Installing Scrapy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#platform-specific-installation-notes">Platform specific installation notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ubuntu-9-10-or-above">Ubuntu 9.10 or above</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Scrapy Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../topics/commands.html">Command line tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/items.html">Items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/spiders.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/selectors.html">Selectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/loaders.html">Item Loaders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/shell.html">Scrapy shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/item-pipeline.html">Item Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/feed-exports.html">Feed exports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/link-extractors.html">Link Extractors</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../topics/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/stats.html">Stats Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/email.html">Sending e-mail</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/telnetconsole.html">Telnet Console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/webservice.html">Web Service</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/debug.html">Debugging Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/contracts.html">Spiders Contracts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/practices.html">Common Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/broad-crawls.html">Broad Crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/firefox.html">Using Firefox for scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/firebug.html">Using Firebug for scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/leaks.html">Debugging memory leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/images.html">Downloading Item Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/ubuntu.html">Ubuntu packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/scrapyd.html">Scrapyd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/autothrottle.html">AutoThrottle extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/jobs.html">Jobs: pausing and resuming crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/djangoitem.html">DjangoItem</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../topics/architecture.html">Architecture overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/downloader-middleware.html">Downloader Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/spider-middleware.html">Spider Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/api.html">Core API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../topics/request-response.html">Requests and Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/exceptions.html">Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../topics/exporters.html">Item Exporters</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to Scrapy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../versioning.html">Versioning and API Stability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experimental/index.html">Experimental features</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Scrapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Installation guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/intro/install.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation-guide">
+<span id="intro-install"></span><h1>Installation guide<a class="headerlink" href="#installation-guide" title="Permalink to this heading"></a></h1>
+<section id="pre-requisites">
+<h2>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this heading"></a></h2>
+<p>The installation steps assume that you have the following things installed:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.python.org">Python</a> 2.7</p></li>
+<li><p><a class="reference external" href="http://lxml.de/">lxml</a>. Most Linux distributions ships prepackaged versions of lxml. Otherwise refer to <a class="reference external" href="http://lxml.de/installation.html">http://lxml.de/installation.html</a></p></li>
+<li><p><a class="reference external" href="https://pypi.python.org/pypi/pyOpenSSL">OpenSSL</a>. This comes preinstalled in all operating systems except Windows (see <a class="reference internal" href="#intro-install-platform-notes"><span class="std std-ref">Platform specific installation notes</span></a>)</p></li>
+<li><p><a class="reference external" href="http://www.pip-installer.org/en/latest/installing.html">pip</a> or <a class="reference external" href="http://pypi.python.org/pypi/setuptools">easy_install</a> Python package managers</p></li>
+</ul>
+</section>
+<section id="installing-scrapy">
+<h2>Installing Scrapy<a class="headerlink" href="#installing-scrapy" title="Permalink to this heading"></a></h2>
+<p>You can install Scrapy using easy_install or pip (which is the canonical way to
+distribute and install Python packages).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check <a class="reference internal" href="#intro-install-platform-notes"><span class="std std-ref">Platform specific installation notes</span></a> first.</p>
+</div>
+<p>To install using pip:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">Scrapy</span>
+</pre></div>
+</div>
+<p>To install using easy_install:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">easy_install</span> <span class="n">Scrapy</span>
+</pre></div>
+</div>
+</section>
+<section id="platform-specific-installation-notes">
+<span id="intro-install-platform-notes"></span><h2>Platform specific installation notes<a class="headerlink" href="#platform-specific-installation-notes" title="Permalink to this heading"></a></h2>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this heading"></a></h3>
+<p>After installing Python, follow these steps before installing Scrapy:</p>
+<ul class="simple">
+<li><p>add the <code class="docutils literal notranslate"><span class="pre">C:\python27\Scripts</span></code> and <code class="docutils literal notranslate"><span class="pre">C:\python27</span></code> folders to the system
+path by adding those directories to the <code class="docutils literal notranslate"><span class="pre">PATH</span></code> environment variable from
+the <a class="reference external" href="http://www.microsoft.com/resources/documentation/windows/xp/all/proddocs/en-us/sysdm_advancd_environmnt_addchange_variable.mspx">Control Panel</a>.</p></li>
+<li><p>install OpenSSL by following these steps:</p>
+<ol class="arabic simple">
+<li><p>go to <a class="reference external" href="http://slproweb.com/products/Win32OpenSSL.html">Win32 OpenSSL page</a></p></li>
+<li><p>download Visual C++ 2008 redistributables for your Windows and architecture</p></li>
+<li><p>download OpenSSL for your Windows and architecture (the regular version, not the light one)</p></li>
+<li><p>add the <code class="docutils literal notranslate"><span class="pre">c:\openssl-win32\bin</span></code> (or similar) directory to your <code class="docutils literal notranslate"><span class="pre">PATH</span></code>, the same way you added <code class="docutils literal notranslate"><span class="pre">python27</span></code> in the first step`` in the first step</p></li>
+</ol>
+</li>
+<li><p>some binary packages that Scrapy depends on (like Twisted, lxml and pyOpenSSL) require a compiler available to install, and fail if you don’t have Visual Studio installed. You can find Windows installers for those in the following links. Make sure you respect your Python version and Windows architecture.</p>
+<ul>
+<li><p>pywin32: <a class="reference external" href="http://sourceforge.net/projects/pywin32/files/">http://sourceforge.net/projects/pywin32/files/</a></p></li>
+<li><p>Twisted: <a class="reference external" href="http://twistedmatrix.com/trac/wiki/Downloads">http://twistedmatrix.com/trac/wiki/Downloads</a></p></li>
+<li><p>zope.interface: download the egg from <a class="reference external" href="http://pypi.python.org/pypi/zope.interface">zope.interface pypi page</a> and install it by running <code class="docutils literal notranslate"><span class="pre">easy_install</span> <span class="pre">file.egg</span></code></p></li>
+<li><p>lxml: <a class="reference external" href="http://pypi.python.org/pypi/lxml/">http://pypi.python.org/pypi/lxml/</a></p></li>
+<li><p>pyOpenSSL: <a class="reference external" href="https://launchpad.net/pyopenssl">https://launchpad.net/pyopenssl</a></p></li>
+</ul>
+</li>
+</ul>
+<p>Finally, this page contains many precompiled Python binary libraries, which may
+come handy to fulfill Scrapy dependencies:</p>
+<blockquote>
+<div><p><a class="reference external" href="http://www.lfd.uci.edu/~gohlke/pythonlibs/">http://www.lfd.uci.edu/~gohlke/pythonlibs/</a></p>
+</div></blockquote>
+<section id="ubuntu-9-10-or-above">
+<h4>Ubuntu 9.10 or above<a class="headerlink" href="#ubuntu-9-10-or-above" title="Permalink to this heading"></a></h4>
+<p><strong>Don’t</strong> use the <code class="docutils literal notranslate"><span class="pre">python-scrapy</span></code> package provided by Ubuntu, they are
+typically too old and slow to catch up with latest Scrapy.</p>
+<p>Instead, use the official <a class="reference internal" href="../topics/ubuntu.html#topics-ubuntu"><span class="std std-ref">Ubuntu Packages</span></a>, which already
+solve all dependencies for you and are continuously updated with the latest bug
+fixes.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="overview.html" class="btn btn-neutral float-left" title="Scrapy at a glance" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial.html" class="btn btn-neutral float-right" title="Scrapy Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2008-2013, Scrapy developers.
+      <span class="lastupdated">Last updated on Mar 16, 2026.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

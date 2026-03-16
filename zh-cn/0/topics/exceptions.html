@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exceptions &mdash; Scrapy 0.25.1 文档</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="canonical" href="https://projects.localizethedocs.org/scrapy-docs-l10n/topics/exceptions.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Item Exporters" href="exporters.html" />
+    <link rel="prev" title="Signals" href="signals.html" />
+ 
+<script type="text/javascript" src="../ltd-provenance.js"></script>
+<script type="text/javascript" src="../ltd-current.js"></script>
+<script type="text/javascript" src="../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Scrapy
+          </a>
+              <div class="version">
+                0.25
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/overview.html">Scrapy at a glance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/tutorial.html">Scrapy Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/examples.html">Examples</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Command line tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="items.html">Items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spiders.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selectors.html">Selectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loaders.html">Item Loaders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell.html">Scrapy shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="item-pipeline.html">Item Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feed-exports.html">Feed exports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="link-extractors.html">Link Extractors</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">Stats Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="email.html">Sending e-mail</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telnetconsole.html">Telnet Console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webservice.html">Web Service</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debug.html">Debugging Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contracts.html">Spiders Contracts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practices.html">Common Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="broad-crawls.html">Broad Crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="firefox.html">Using Firefox for scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="firebug.html">Using Firebug for scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leaks.html">Debugging memory leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="images.html">Downloading Item Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ubuntu.html">Ubuntu packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scrapyd.html">Scrapyd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autothrottle.html">AutoThrottle extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jobs.html">Jobs: pausing and resuming crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="djangoitem.html">DjangoItem</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="downloader-middleware.html">Downloader Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spider-middleware.html">Spider Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Core API</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="request-response.html">Requests and Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Exceptions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#built-in-exceptions-reference">Built-in Exceptions reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dropitem">DropItem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#closespider">CloseSpider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ignorerequest">IgnoreRequest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notconfigured">NotConfigured</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notsupported">NotSupported</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exporters.html">Item Exporters</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to Scrapy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../versioning.html">Versioning and API Stability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experimental/index.html">Experimental features</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Scrapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Exceptions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/topics/exceptions.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-scrapy.exceptions">
+<span id="exceptions"></span><span id="topics-exceptions"></span><h1>Exceptions<a class="headerlink" href="#module-scrapy.exceptions" title="Permalink to this heading"></a></h1>
+<section id="built-in-exceptions-reference">
+<span id="topics-exceptions-ref"></span><h2>Built-in Exceptions reference<a class="headerlink" href="#built-in-exceptions-reference" title="Permalink to this heading"></a></h2>
+<p>Here’s a list of all exceptions included in Scrapy and their usage.</p>
+<section id="dropitem">
+<h3>DropItem<a class="headerlink" href="#dropitem" title="Permalink to this heading"></a></h3>
+<dl class="py exception">
+<dt class="sig sig-object py" id="scrapy.exceptions.DropItem">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scrapy.exceptions.</span></span><span class="sig-name descname"><span class="pre">DropItem</span></span><a class="headerlink" href="#scrapy.exceptions.DropItem" title="永久链接至目标"></a></dt>
+<dd></dd></dl>
+
+<p>The exception that must be raised by item pipeline stages to stop processing an
+Item. For more information see <a class="reference internal" href="item-pipeline.html#topics-item-pipeline"><span class="std std-ref">Item Pipeline</span></a>.</p>
+</section>
+<section id="closespider">
+<h3>CloseSpider<a class="headerlink" href="#closespider" title="Permalink to this heading"></a></h3>
+<dl class="py exception">
+<dt class="sig sig-object py" id="scrapy.exceptions.CloseSpider">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scrapy.exceptions.</span></span><span class="sig-name descname"><span class="pre">CloseSpider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reason</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cancelled'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scrapy.exceptions.CloseSpider" title="永久链接至目标"></a></dt>
+<dd><p>This exception can be raised from a spider callback to request the spider to be
+closed/stopped. Supported arguments:</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>reason</strong> (<em>str</em>) – the reason for closing</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">parse_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s1">&#39;Bandwidth exceeded&#39;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">body</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">CloseSpider</span><span class="p">(</span><span class="s1">&#39;bandwidth_exceeded&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="ignorerequest">
+<h3>IgnoreRequest<a class="headerlink" href="#ignorerequest" title="Permalink to this heading"></a></h3>
+<dl class="py exception">
+<dt class="sig sig-object py" id="scrapy.exceptions.IgnoreRequest">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scrapy.exceptions.</span></span><span class="sig-name descname"><span class="pre">IgnoreRequest</span></span><a class="headerlink" href="#scrapy.exceptions.IgnoreRequest" title="永久链接至目标"></a></dt>
+<dd></dd></dl>
+
+<p>This exception can be raised by the Scheduler or any downloader middleware to
+indicate that the request should be ignored.</p>
+</section>
+<section id="notconfigured">
+<h3>NotConfigured<a class="headerlink" href="#notconfigured" title="Permalink to this heading"></a></h3>
+<dl class="py exception">
+<dt class="sig sig-object py" id="scrapy.exceptions.NotConfigured">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scrapy.exceptions.</span></span><span class="sig-name descname"><span class="pre">NotConfigured</span></span><a class="headerlink" href="#scrapy.exceptions.NotConfigured" title="永久链接至目标"></a></dt>
+<dd></dd></dl>
+
+<p>This exception can be raised by some components to indicate that they will
+remain disabled. Those components include:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Extensions</p></li>
+<li><p>Item pipelines</p></li>
+<li><p>Downloader middlwares</p></li>
+<li><p>Spider middlewares</p></li>
+</ul>
+</div></blockquote>
+<p>The exception must be raised in the component constructor.</p>
+</section>
+<section id="notsupported">
+<h3>NotSupported<a class="headerlink" href="#notsupported" title="Permalink to this heading"></a></h3>
+<dl class="py exception">
+<dt class="sig sig-object py" id="scrapy.exceptions.NotSupported">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scrapy.exceptions.</span></span><span class="sig-name descname"><span class="pre">NotSupported</span></span><a class="headerlink" href="#scrapy.exceptions.NotSupported" title="永久链接至目标"></a></dt>
+<dd></dd></dl>
+
+<p>This exception is raised to indicate an unsupported feature.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="signals.html" class="btn btn-neutral float-left" title="Signals" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="exporters.html" class="btn btn-neutral float-right" title="Item Exporters" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2008-2013, Scrapy developers.
+      <span class="lastupdated">最后更新于 3月 16, 2026.
+      </span></p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

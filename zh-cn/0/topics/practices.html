@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Common Practices &mdash; Scrapy 0.25.1 文档</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="canonical" href="https://projects.localizethedocs.org/scrapy-docs-l10n/topics/practices.html" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Broad Crawls" href="broad-crawls.html" />
+    <link rel="prev" title="Spiders Contracts" href="contracts.html" />
+ 
+<script type="text/javascript" src="../ltd-provenance.js"></script>
+<script type="text/javascript" src="../ltd-current.js"></script>
+<script type="text/javascript" src="../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Scrapy
+          </a>
+              <div class="version">
+                0.25
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/overview.html">Scrapy at a glance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/tutorial.html">Scrapy Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/examples.html">Examples</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Command line tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="items.html">Items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spiders.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selectors.html">Selectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loaders.html">Item Loaders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell.html">Scrapy shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="item-pipeline.html">Item Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feed-exports.html">Feed exports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="link-extractors.html">Link Extractors</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">Stats Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="email.html">Sending e-mail</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telnetconsole.html">Telnet Console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webservice.html">Web Service</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debug.html">Debugging Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contracts.html">Spiders Contracts</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Common Practices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#run-scrapy-from-a-script">Run Scrapy from a script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-multiple-spiders-in-the-same-process">Running multiple spiders in the same process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#distributed-crawls">Distributed crawls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#avoiding-getting-banned">Avoiding getting banned</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dynamic-creation-of-item-classes">Dynamic Creation of Item Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="broad-crawls.html">Broad Crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="firefox.html">Using Firefox for scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="firebug.html">Using Firebug for scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leaks.html">Debugging memory leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="images.html">Downloading Item Images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ubuntu.html">Ubuntu packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scrapyd.html">Scrapyd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autothrottle.html">AutoThrottle extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jobs.html">Jobs: pausing and resuming crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="djangoitem.html">DjangoItem</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="downloader-middleware.html">Downloader Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spider-middleware.html">Spider Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Core API</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="request-response.html">Requests and Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exporters.html">Item Exporters</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to Scrapy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../versioning.html">Versioning and API Stability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experimental/index.html">Experimental features</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Scrapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Common Practices</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/topics/practices.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="common-practices">
+<span id="topics-practices"></span><h1>Common Practices<a class="headerlink" href="#common-practices" title="Permalink to this heading"></a></h1>
+<p>This section documents common practices when using Scrapy. These are things
+that cover many topics and don’t often fall into any other specific section.</p>
+<section id="run-scrapy-from-a-script">
+<span id="run-from-script"></span><h2>Run Scrapy from a script<a class="headerlink" href="#run-scrapy-from-a-script" title="Permalink to this heading"></a></h2>
+<p>You can use the <a class="reference internal" href="api.html#topics-api"><span class="std std-ref">API</span></a> to run Scrapy from a script, instead of
+the typical way of running Scrapy via <code class="docutils literal notranslate"><span class="pre">scrapy</span> <span class="pre">crawl</span></code>.</p>
+<p>Remember that Scrapy is built on top of the Twisted
+asynchronous networking library, so you need to run it inside the Twisted reactor.</p>
+<p>Note that you will also have to shutdown the Twisted reactor yourself after the
+spider is finished. This can be achieved by connecting a handler to the
+<code class="docutils literal notranslate"><span class="pre">signals.spider_closed</span></code> signal.</p>
+<p>What follows is a working example of how to do that, using the <a class="reference external" href="https://github.com/scrapinghub/testspiders">testspiders</a>
+project as example.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">twisted.internet</span><span class="w"> </span><span class="kn">import</span> <span class="n">reactor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.crawler</span><span class="w"> </span><span class="kn">import</span> <span class="n">Crawler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy</span><span class="w"> </span><span class="kn">import</span> <span class="n">log</span><span class="p">,</span> <span class="n">signals</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">testspiders.spiders.followall</span><span class="w"> </span><span class="kn">import</span> <span class="n">FollowAllSpider</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.utils.project</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_project_settings</span>
+
+<span class="n">spider</span> <span class="o">=</span> <span class="n">FollowAllSpider</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="s1">&#39;scrapinghub.com&#39;</span><span class="p">)</span>
+<span class="n">settings</span> <span class="o">=</span> <span class="n">get_project_settings</span><span class="p">()</span>
+<span class="n">crawler</span> <span class="o">=</span> <span class="n">Crawler</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
+<span class="n">crawler</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">reactor</span><span class="o">.</span><span class="n">stop</span><span class="p">,</span> <span class="n">signal</span><span class="o">=</span><span class="n">signals</span><span class="o">.</span><span class="n">spider_closed</span><span class="p">)</span>
+<span class="n">crawler</span><span class="o">.</span><span class="n">configure</span><span class="p">()</span>
+<span class="n">crawler</span><span class="o">.</span><span class="n">crawl</span><span class="p">(</span><span class="n">spider</span><span class="p">)</span>
+<span class="n">crawler</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">log</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">reactor</span><span class="o">.</span><span class="n">run</span><span class="p">()</span> <span class="c1"># the script will block here until the spider_closed signal was sent</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">参见</p>
+<p><a class="reference external" href="http://twistedmatrix.com/documents/current/core/howto/reactor-basics.html">Twisted Reactor Overview</a>.</p>
+</div>
+</section>
+<section id="running-multiple-spiders-in-the-same-process">
+<h2>Running multiple spiders in the same process<a class="headerlink" href="#running-multiple-spiders-in-the-same-process" title="Permalink to this heading"></a></h2>
+<p>By default, Scrapy runs a single spider per process when you run <code class="docutils literal notranslate"><span class="pre">scrapy</span>
+<span class="pre">crawl</span></code>. However, Scrapy supports running multiple spiders per process using
+the <a class="reference internal" href="api.html#topics-api"><span class="std std-ref">internal API</span></a>.</p>
+<p>Here is an example, using the <a class="reference external" href="https://github.com/scrapinghub/testspiders">testspiders</a> project:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">twisted.internet</span><span class="w"> </span><span class="kn">import</span> <span class="n">reactor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.crawler</span><span class="w"> </span><span class="kn">import</span> <span class="n">Crawler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy</span><span class="w"> </span><span class="kn">import</span> <span class="n">log</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">testspiders.spiders.followall</span><span class="w"> </span><span class="kn">import</span> <span class="n">FollowAllSpider</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.utils.project</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_project_settings</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">setup_crawler</span><span class="p">(</span><span class="n">domain</span><span class="p">):</span>
+    <span class="n">spider</span> <span class="o">=</span> <span class="n">FollowAllSpider</span><span class="p">(</span><span class="n">domain</span><span class="o">=</span><span class="n">domain</span><span class="p">)</span>
+    <span class="n">settings</span> <span class="o">=</span> <span class="n">get_project_settings</span><span class="p">()</span>
+    <span class="n">crawler</span> <span class="o">=</span> <span class="n">Crawler</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
+    <span class="n">crawler</span><span class="o">.</span><span class="n">configure</span><span class="p">()</span>
+    <span class="n">crawler</span><span class="o">.</span><span class="n">crawl</span><span class="p">(</span><span class="n">spider</span><span class="p">)</span>
+    <span class="n">crawler</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;scrapinghub.com&#39;</span><span class="p">,</span> <span class="s1">&#39;insophia.com&#39;</span><span class="p">]:</span>
+    <span class="n">setup_crawler</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span>
+<span class="n">log</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="n">reactor</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">参见</p>
+<p><a class="reference internal" href="#run-from-script"><span class="std std-ref">Run Scrapy from a script</span></a>.</p>
+</div>
+</section>
+<section id="distributed-crawls">
+<span id="id1"></span><h2>Distributed crawls<a class="headerlink" href="#distributed-crawls" title="Permalink to this heading"></a></h2>
+<p>Scrapy doesn’t provide any built-in facility for running crawls in a distribute
+(multi-server) manner. However, there are some ways to distribute crawls, which
+vary depending on how you plan to distribute them.</p>
+<p>If you have many spiders, the obvious way to distribute the load is to setup
+many Scrapyd instances and distribute spider runs among those.</p>
+<p>If you instead want to run a single (big) spider through many machines, what
+you usually do is partition the urls to crawl and send them to each separate
+spider. Here is a concrete example:</p>
+<p>First, you prepare the list of urls to crawl and put them into separate
+files/urls:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">somedomain</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">urls</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">crawl</span><span class="o">/</span><span class="n">spider1</span><span class="o">/</span><span class="n">part1</span><span class="o">.</span><span class="n">list</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">somedomain</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">urls</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">crawl</span><span class="o">/</span><span class="n">spider1</span><span class="o">/</span><span class="n">part2</span><span class="o">.</span><span class="n">list</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">somedomain</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">urls</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">crawl</span><span class="o">/</span><span class="n">spider1</span><span class="o">/</span><span class="n">part3</span><span class="o">.</span><span class="n">list</span>
+</pre></div>
+</div>
+<p>Then you fire a spider run on 3 different Scrapyd servers. The spider would
+receive a (spider) argument <code class="docutils literal notranslate"><span class="pre">part</span></code> with the number of the partition to
+crawl:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">scrapy1</span><span class="o">.</span><span class="n">mycompany</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="mi">6800</span><span class="o">/</span><span class="n">schedule</span><span class="o">.</span><span class="n">json</span> <span class="o">-</span><span class="n">d</span> <span class="n">project</span><span class="o">=</span><span class="n">myproject</span> <span class="o">-</span><span class="n">d</span> <span class="n">spider</span><span class="o">=</span><span class="n">spider1</span> <span class="o">-</span><span class="n">d</span> <span class="n">part</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">curl</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">scrapy2</span><span class="o">.</span><span class="n">mycompany</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="mi">6800</span><span class="o">/</span><span class="n">schedule</span><span class="o">.</span><span class="n">json</span> <span class="o">-</span><span class="n">d</span> <span class="n">project</span><span class="o">=</span><span class="n">myproject</span> <span class="o">-</span><span class="n">d</span> <span class="n">spider</span><span class="o">=</span><span class="n">spider1</span> <span class="o">-</span><span class="n">d</span> <span class="n">part</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">curl</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">scrapy3</span><span class="o">.</span><span class="n">mycompany</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="mi">6800</span><span class="o">/</span><span class="n">schedule</span><span class="o">.</span><span class="n">json</span> <span class="o">-</span><span class="n">d</span> <span class="n">project</span><span class="o">=</span><span class="n">myproject</span> <span class="o">-</span><span class="n">d</span> <span class="n">spider</span><span class="o">=</span><span class="n">spider1</span> <span class="o">-</span><span class="n">d</span> <span class="n">part</span><span class="o">=</span><span class="mi">3</span>
+</pre></div>
+</div>
+</section>
+<section id="avoiding-getting-banned">
+<span id="bans"></span><h2>Avoiding getting banned<a class="headerlink" href="#avoiding-getting-banned" title="Permalink to this heading"></a></h2>
+<p>Some websites implement certain measures to prevent bots from crawling them,
+with varying degrees of sophistication. Getting around those measures can be
+difficult and tricky, and may sometimes require special infrastructure. Please
+consider contacting <a class="reference external" href="http://scrapy.org/support/">commercial support</a> if in doubt.</p>
+<p>Here are some tips to keep in mind when dealing with these kind of sites:</p>
+<ul class="simple">
+<li><p>rotate your user agent from a pool of well-known ones from browsers (google
+around to get a list of them)</p></li>
+<li><p>disable cookies (see <a class="reference internal" href="downloader-middleware.html#std-setting-COOKIES_ENABLED"><code class="xref std std-setting docutils literal notranslate"><span class="pre">COOKIES_ENABLED</span></code></a>) as some sites may use
+cookies to spot bot behaviour</p></li>
+<li><p>use download delays (2 or higher). See <a class="reference internal" href="settings.html#std-setting-DOWNLOAD_DELAY"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOAD_DELAY</span></code></a> setting.</p></li>
+<li><p>if possible, use <a class="reference external" href="http://www.googleguide.com/cached_pages.html">Google cache</a> to fetch pages, instead of hitting the sites
+directly</p></li>
+<li><p>use a pool of rotating IPs. For example, the free <a class="reference external" href="https://www.torproject.org/">Tor project</a> or paid
+services like <a class="reference external" href="http://proxymesh.com/">ProxyMesh</a></p></li>
+<li><p>use a highly distributed downloader that circumvents bans internally, so you
+can just focus on parsing clean pages. One example of such downloaders is
+<a class="reference external" href="http://crawlera.com">Crawlera</a></p></li>
+</ul>
+<p>If you are still unable to prevent your bot getting banned, consider contacting
+<a class="reference external" href="http://scrapy.org/support/">commercial support</a>.</p>
+</section>
+<section id="dynamic-creation-of-item-classes">
+<span id="dynamic-item-classes"></span><h2>Dynamic Creation of Item Classes<a class="headerlink" href="#dynamic-creation-of-item-classes" title="Permalink to this heading"></a></h2>
+<p>For applications in which the structure of item class is to be determined by
+user input, or other changing conditions, you can dynamically create item
+classes instead of manually coding them.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.item</span><span class="w"> </span><span class="kn">import</span> <span class="n">DictItem</span><span class="p">,</span> <span class="n">Field</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_item_class</span><span class="p">(</span><span class="n">class_name</span><span class="p">,</span> <span class="n">field_list</span><span class="p">):</span>
+    <span class="n">field_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">field_name</span> <span class="ow">in</span> <span class="n">field_list</span><span class="p">:</span>
+        <span class="n">field_dict</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">class_name</span><span class="p">,</span> <span class="p">(</span><span class="n">DictItem</span><span class="p">,),</span> <span class="n">field_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="contracts.html" class="btn btn-neutral float-left" title="Spiders Contracts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="broad-crawls.html" class="btn btn-neutral float-right" title="Broad Crawls" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2008-2013, Scrapy developers.
+      <span class="lastupdated">最后更新于 3月 16, 2026.
+      </span></p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
