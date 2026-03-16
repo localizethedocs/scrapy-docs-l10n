@@ -111,7 +111,7 @@ msgstr ""
 
 #: ../../../topics/logging.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/logging.rst:61
 msgid ""
@@ -183,15 +183,15 @@ msgstr ""
 
 #: ../../../topics/logging.rst:117
 msgid ":setting:`LOG_ENABLED`"
-msgstr ""
+msgstr ":setting:`LOG_ENABLED`"
 
 #: ../../../topics/logging.rst:118
 msgid ":setting:`LOG_ENCODING`"
-msgstr ""
+msgstr ":setting:`LOG_ENCODING`"
 
 #: ../../../topics/logging.rst:119
 msgid ":setting:`LOG_FILE`"
-msgstr ""
+msgstr ":setting:`LOG_FILE`"
 
 #: ../../../topics/logging.rst:120
 msgid ":setting:`LOG_LEVEL`"

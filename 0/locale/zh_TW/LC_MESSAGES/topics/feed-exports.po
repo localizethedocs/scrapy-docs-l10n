@@ -315,11 +315,11 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:180
 msgid ":setting:`AWS_ACCESS_KEY_ID`"
-msgstr ""
+msgstr ":setting:`AWS_ACCESS_KEY_ID`"
 
 #: ../../../topics/feed-exports.rst:181
 msgid ":setting:`AWS_SECRET_ACCESS_KEY`"
-msgstr ""
+msgstr ":setting:`AWS_SECRET_ACCESS_KEY`"
 
 #: ../../../topics/feed-exports.rst:186
 msgid "Standard output"
@@ -339,7 +339,7 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:196
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 #: ../../../topics/feed-exports.rst:198
 msgid "These are the settings used for configuring the feed exports:"
@@ -355,15 +355,15 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:202
 msgid ":setting:`FEED_STORAGES`"
-msgstr ""
+msgstr ":setting:`FEED_STORAGES`"
 
 #: ../../../topics/feed-exports.rst:203
 msgid ":setting:`FEED_EXPORTERS`"
-msgstr ""
+msgstr ":setting:`FEED_EXPORTERS`"
 
 #: ../../../topics/feed-exports.rst:204
 msgid ":setting:`FEED_STORE_EMPTY`"
-msgstr ""
+msgstr ":setting:`FEED_STORE_EMPTY`"
 
 #: ../../../topics/feed-exports.rst:211
 msgid "FEED_URI"
@@ -371,7 +371,7 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:213
 msgid "Default: ``None``"
-msgstr ""
+msgstr "預設值：``None``"
 
 #: ../../../topics/feed-exports.rst:215
 msgid ""
@@ -399,7 +399,7 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:233
 msgid "Default: ``False``"
-msgstr ""
+msgstr "預設值：``False``"
 
 #: ../../../topics/feed-exports.rst:235
 msgid "Whether to export empty feeds (ie. feeds with no items)."

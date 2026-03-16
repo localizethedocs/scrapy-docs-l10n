@@ -103,7 +103,7 @@ msgstr ""
 
 #: ../../../topics/signals.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/signals.rst:73
 msgid "the item scraped"

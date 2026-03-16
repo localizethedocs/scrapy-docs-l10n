@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/commands.rst:5
 msgid "Command line tool"
-msgstr ""
+msgstr "命令行工具"
 
 #: ../../../topics/commands.rst:9
 msgid ""

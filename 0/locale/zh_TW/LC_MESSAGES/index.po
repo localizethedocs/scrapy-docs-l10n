@@ -31,7 +31,7 @@ msgstr ""
 
 #: ../../../index.rst:12
 msgid "Having trouble? We'd like to help!"
-msgstr ""
+msgstr "遇到困難了嗎？我們很樂意提供幫助！"
 
 #: ../../../index.rst:14
 msgid "Try the :doc:`FAQ <faq>` -- it's got answers to some common questions."
@@ -74,7 +74,7 @@ msgstr ""
 
 #: ../../../index.rst:42
 msgid "Get Scrapy installed on your computer."
-msgstr ""
+msgstr "在您的電腦上安裝 Scrapy。"
 
 #: ../../../index.rst:45
 msgid ":doc:`intro/tutorial`"
@@ -82,7 +82,7 @@ msgstr ""
 
 #: ../../../index.rst:45
 msgid "Write your first Scrapy project."
-msgstr ""
+msgstr "編寫您的第一個 Scrapy 專案。"
 
 #: ../../../index.rst:48
 msgid ":doc:`intro/examples`"
@@ -102,7 +102,7 @@ msgstr ""
 
 #: ../../../index.rst:69
 msgid "Learn about the command-line tool used to manage your Scrapy project."
-msgstr ""
+msgstr "了解用於管理您的 Scrapy 專案的命令行工具。"
 
 #: ../../../index.rst:72
 msgid ":doc:`topics/items`"
@@ -170,7 +170,7 @@ msgstr ""
 
 #: ../../../index.rst:96
 msgid "Built-in services"
-msgstr ""
+msgstr "內建服務"
 
 #: ../../../index.rst:108
 msgid ":doc:`topics/logging`"
@@ -214,7 +214,7 @@ msgstr ""
 
 #: ../../../index.rst:124
 msgid "Solving specific problems"
-msgstr ""
+msgstr "解決特定問題"
 
 #: ../../../index.rst:146
 msgid ":doc:`faq`"

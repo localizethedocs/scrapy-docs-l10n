@@ -277,7 +277,7 @@ msgstr ""
 
 #: ../../../topics/spiders.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/spiders.rst:189
 msgid "the response to parse"
@@ -819,7 +819,7 @@ msgstr ""
 
 #: ../../../topics/spiders.rst:586
 msgid "SitemapSpider examples"
-msgstr ""
+msgstr "SitemapSpider 範例"
 
 #: ../../../topics/spiders.rst:588
 msgid ""

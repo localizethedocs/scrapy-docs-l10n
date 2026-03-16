@@ -51,7 +51,7 @@ msgstr ""
 
 #: ../../../topics/exceptions.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/exceptions.rst:33
 msgid "the reason for closing"
@@ -94,7 +94,7 @@ msgstr ""
 
 #: ../../../topics/exceptions.rst:59
 msgid "Item pipelines"
-msgstr ""
+msgstr "項目管線"
 
 #: ../../../topics/exceptions.rst:60
 msgid "Downloader middlwares"

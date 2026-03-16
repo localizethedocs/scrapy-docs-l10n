@@ -123,7 +123,7 @@ msgstr ""
 
 #: ../../../topics/contracts.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/contracts.rst:79
 msgid "callback function to which the contract is associated"

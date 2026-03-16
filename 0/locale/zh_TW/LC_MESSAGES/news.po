@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../news.rst:4
 msgid "Release notes"
-msgstr ""
+msgstr "發行備註"
 
 #: ../../../news.rst:7
 msgid "0.24.2 (2014-07-08)"
@@ -2366,7 +2366,7 @@ msgstr ""
 
 #: ../../../news.rst:701
 msgid "Command-line tool changes"
-msgstr ""
+msgstr "命令行工具變更"
 
 #: ../../../news.rst:703
 msgid ""

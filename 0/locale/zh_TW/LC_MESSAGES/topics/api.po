@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/api.rst:5
 msgid "Core API"
-msgstr ""
+msgstr "核心 API"
 
 #: ../../../topics/api.rst:9
 msgid ""
@@ -158,7 +158,7 @@ msgstr ""
 
 #: ../../../topics/api.rst:109
 msgid "Settings API"
-msgstr ""
+msgstr "設定 API"
 
 #: ../../../topics/api.rst:116
 msgid ""
@@ -234,7 +234,7 @@ msgstr ""
 
 #: ../../../topics/api.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/api.rst:168 ../../../topics/api.rst:212
 #: ../../../topics/api.rst:227 ../../../topics/api.rst:237

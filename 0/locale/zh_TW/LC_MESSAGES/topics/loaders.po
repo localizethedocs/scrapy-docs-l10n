@@ -420,7 +420,7 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/loaders.rst:267
 msgid ""

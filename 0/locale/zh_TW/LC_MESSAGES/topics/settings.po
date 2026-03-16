@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:5
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 #: ../../../topics/settings.rst:7
 msgid ""
@@ -222,7 +222,7 @@ msgstr ""
 #: ../../../topics/settings.rst:131 ../../../topics/settings.rst:141
 #: ../../../topics/settings.rst:538
 msgid "Default: ``None``"
-msgstr ""
+msgstr "預設值：``None``"
 
 #: ../../../topics/settings.rst:133
 msgid ""
@@ -269,7 +269,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:165 ../../../topics/settings.rst:708
 msgid "Default: ``100``"
-msgstr ""
+msgstr "預設值：``100``"
 
 #: ../../../topics/settings.rst:167
 msgid ""
@@ -314,7 +314,7 @@ msgstr ""
 #: ../../../topics/settings.rst:249 ../../../topics/settings.rst:345
 #: ../../../topics/settings.rst:607 ../../../topics/settings.rst:651
 msgid "Default: ``0``"
-msgstr ""
+msgstr "預設值：``0``"
 
 #: ../../../topics/settings.rst:198
 msgid ""
@@ -404,7 +404,7 @@ msgstr ""
 #: ../../../topics/settings.rst:676 ../../../topics/settings.rst:829
 #: ../../../topics/settings.rst:851
 msgid "Default: ``True``"
-msgstr ""
+msgstr "預設值：``True``"
 
 #: ../../../topics/settings.rst:262
 msgid "Whether to collect maximum depth stats."
@@ -419,7 +419,7 @@ msgstr ""
 #: ../../../topics/settings.rst:592 ../../../topics/settings.rst:621
 #: ../../../topics/settings.rst:638 ../../../topics/settings.rst:728
 msgid "Default: ``False``"
-msgstr ""
+msgstr "預設值：``False``"
 
 #: ../../../topics/settings.rst:271
 msgid ""
@@ -806,7 +806,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:577 ../../../topics/settings.rst:806
 msgid "Default: ``[]``"
-msgstr ""
+msgstr "預設值：``[]``"
 
 #: ../../../topics/settings.rst:579
 msgid ""

@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../intro/install.rst:5
 msgid "Installation guide"
-msgstr ""
+msgstr "安裝指南"
 
 #: ../../../intro/install.rst:8
 msgid "Pre-requisites"
@@ -52,7 +52,7 @@ msgstr ""
 
 #: ../../../intro/install.rst:18
 msgid "Installing Scrapy"
-msgstr ""
+msgstr "安裝 Scrapy"
 
 #: ../../../intro/install.rst:20
 msgid ""
@@ -70,7 +70,7 @@ msgstr ""
 
 #: ../../../intro/install.rst:27
 msgid "pip install Scrapy"
-msgstr ""
+msgstr "pip install Scrapy"
 
 #: ../../../intro/install.rst:29
 msgid "To install using easy_install::"

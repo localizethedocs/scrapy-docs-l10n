@@ -298,7 +298,7 @@ msgstr ""
 
 #: ../../../topics/leaks.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/leaks.rst:175
 msgid ""

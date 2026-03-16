@@ -110,7 +110,7 @@ msgstr ""
 #: ../../../topics/spider-middleware.rst:67
 msgid ""
 ":meth:`process_spider_input` should return ``None`` or raise an exception."
-msgstr ""
+msgstr ":meth:`process_spider_input` 應該回傳 ``None`` 或引發例外狀況。"
 
 #: ../../../topics/spider-middleware.rst:70
 msgid ""
@@ -130,7 +130,7 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/spider-middleware.rst:80
 msgid "the response being processed"
@@ -275,6 +275,8 @@ msgid ""
 ":setting:`DEPTH_LIMIT` - The maximum depth that will be allowed to crawl for "
 "any site. If zero, no limit will be imposed."
 msgstr ""
+":setting:`DEPTH_LIMIT` - 允許對任何網站進行爬取的最大深度。若設為零，則不施加"
+"任何限制。"
 
 #: ../../../topics/spider-middleware.rst:194
 msgid ":setting:`DEPTH_STATS` - Whether to collect depth stats."
@@ -284,7 +286,7 @@ msgstr ""
 msgid ""
 ":setting:`DEPTH_PRIORITY` - Whether to prioritize the requests based on "
 "their depth."
-msgstr ""
+msgstr ":setting:`DEPTH_PRIORITY` - 是否根據請求的深度來決定其優先順序。"
 
 #: ../../../topics/spider-middleware.rst:199
 msgid "HttpErrorMiddleware"
@@ -342,15 +344,15 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:240
 msgid "HttpErrorMiddleware settings"
-msgstr ""
+msgstr "HttpErrorMiddleware 設定"
 
 #: ../../../topics/spider-middleware.rst:245
 msgid "HTTPERROR_ALLOWED_CODES"
-msgstr ""
+msgstr "HTTPERROR_ALLOWED_CODES"
 
 #: ../../../topics/spider-middleware.rst:247
 msgid "Default: ``[]``"
-msgstr ""
+msgstr "預設值：``[]``"
 
 #: ../../../topics/spider-middleware.rst:249
 msgid "Pass all responses with non-200 status codes contained in this list."
@@ -362,7 +364,7 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:256
 msgid "Default: ``False``"
-msgstr ""
+msgstr "預設值：``False``"
 
 #: ../../../topics/spider-middleware.rst:258
 msgid "Pass all responses, regardless of its status code."
@@ -421,7 +423,7 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:295
 msgid "RefererMiddleware"
-msgstr ""
+msgstr "RefererMiddleware"
 
 #: ../../../topics/spider-middleware.rst:302
 msgid ""
@@ -431,7 +433,7 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:306
 msgid "RefererMiddleware settings"
-msgstr ""
+msgstr "RefererMiddleware 設定"
 
 #: ../../../topics/spider-middleware.rst:311
 msgid "REFERER_ENABLED"
@@ -439,7 +441,7 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:315
 msgid "Default: ``True``"
-msgstr ""
+msgstr "預設值：``True``"
 
 #: ../../../topics/spider-middleware.rst:317
 msgid "Whether to enable referer middleware."
@@ -463,4 +465,4 @@ msgstr ""
 msgid ""
 ":setting:`URLLENGTH_LIMIT` - The maximum URL length to allow for crawled "
 "URLs."
-msgstr ""
+msgstr ":setting:`URLLENGTH_LIMIT` - 允許爬取的 URL 的最大長度。"

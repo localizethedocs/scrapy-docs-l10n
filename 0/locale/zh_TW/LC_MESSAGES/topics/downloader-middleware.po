@@ -150,7 +150,7 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/downloader-middleware.rst:90
 msgid "the request being processed"
@@ -284,11 +284,11 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:184
 msgid ":setting:`COOKIES_ENABLED`"
-msgstr ""
+msgstr ":setting:`COOKIES_ENABLED`"
 
 #: ../../../topics/downloader-middleware.rst:185
 msgid ":setting:`COOKIES_DEBUG`"
-msgstr ""
+msgstr ":setting:`COOKIES_DEBUG`"
 
 #: ../../../topics/downloader-middleware.rst:190
 msgid "Multiple cookie sessions per spider"
@@ -337,7 +337,7 @@ msgstr ""
 #: ../../../topics/downloader-middleware.rst:691
 #: ../../../topics/downloader-middleware.rst:748
 msgid "Default: ``True``"
-msgstr ""
+msgstr "預設值：``True``"
 
 #: ../../../topics/downloader-middleware.rst:220
 msgid ""
@@ -354,7 +354,7 @@ msgstr ""
 #: ../../../topics/downloader-middleware.rst:509
 #: ../../../topics/downloader-middleware.rst:851
 msgid "Default: ``False``"
-msgstr ""
+msgstr "預設值：``False``"
 
 #: ../../../topics/downloader-middleware.rst:230
 msgid ""
@@ -452,11 +452,11 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:310
 msgid ":ref:`httpcache-storage-fs`"
-msgstr ""
+msgstr ":ref:`httpcache-storage-fs`"
 
 #: ../../../topics/downloader-middleware.rst:311
 msgid ":ref:`httpcache-storage-dbm`"
-msgstr ""
+msgstr ":ref:`httpcache-storage-dbm`"
 
 #: ../../../topics/downloader-middleware.rst:313
 msgid ""
@@ -629,11 +629,11 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:393
 msgid "``request_body`` - the plain request body"
-msgstr ""
+msgstr "``request_body`` - 純文字請求正文"
 
 #: ../../../topics/downloader-middleware.rst:394
 msgid "``request_headers`` - the request headers (in raw HTTP format)"
-msgstr ""
+msgstr "``request_headers`` - 請求標頭（以原始 HTTP 格式）"
 
 #: ../../../topics/downloader-middleware.rst:395
 msgid "``response_body`` - the plain response body"
@@ -729,7 +729,7 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:456
 msgid "HTTPCACHE_ENABLED"
-msgstr ""
+msgstr "HTTPCACHE_ENABLED"
 
 #: ../../../topics/downloader-middleware.rst:462
 msgid "Whether the HTTP cache will be enabled."
@@ -745,7 +745,7 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:472
 msgid "Default: ``0``"
-msgstr ""
+msgstr "預設值：``0``"
 
 #: ../../../topics/downloader-middleware.rst:474
 msgid "Expiration time for cached requests, in seconds."
@@ -763,11 +763,11 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:485
 msgid "HTTPCACHE_DIR"
-msgstr ""
+msgstr "HTTPCACHE_DIR"
 
 #: ../../../topics/downloader-middleware.rst:487
 msgid "Default: ``'httpcache'``"
-msgstr ""
+msgstr "預設值：``'httpcache'``"
 
 #: ../../../topics/downloader-middleware.rst:489
 msgid ""
@@ -782,7 +782,7 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:500
 msgid "Default: ``[]``"
-msgstr ""
+msgstr "預設值：``[]``"
 
 #: ../../../topics/downloader-middleware.rst:502
 msgid "Don't cache response with these HTTP codes."
@@ -790,7 +790,7 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:507
 msgid "HTTPCACHE_IGNORE_MISSING"
-msgstr ""
+msgstr "HTTPCACHE_IGNORE_MISSING"
 
 #: ../../../topics/downloader-middleware.rst:511
 msgid ""
@@ -804,7 +804,7 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:520
 msgid "Default: ``['file']``"
-msgstr ""
+msgstr "預設值：``['file']``"
 
 #: ../../../topics/downloader-middleware.rst:522
 msgid "Don't cache responses with these URI schemes."
@@ -824,7 +824,7 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:536
 msgid "HTTPCACHE_DBM_MODULE"
-msgstr ""
+msgstr "HTTPCACHE_DBM_MODULE"
 
 #: ../../../topics/downloader-middleware.rst:540
 msgid "Default: ``'anydbm'``"
@@ -838,7 +838,7 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:548
 msgid "HTTPCACHE_POLICY"
-msgstr ""
+msgstr "HTTPCACHE_POLICY"
 
 #: ../../../topics/downloader-middleware.rst:552
 msgid "Default: ``'scrapy.contrib.httpcache.DummyPolicy'``"
@@ -860,7 +860,7 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:569
 msgid "HttpCompressionMiddleware Settings"
-msgstr ""
+msgstr "HttpCompressionMiddleware 設定"
 
 #: ../../../topics/downloader-middleware.rst:574
 msgid "COMPRESSION_ENABLED"
@@ -1000,11 +1000,11 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:682
 msgid "MetaRefreshMiddleware settings"
-msgstr ""
+msgstr "MetaRefreshMiddleware 設定"
 
 #: ../../../topics/downloader-middleware.rst:687
 msgid "METAREFRESH_ENABLED"
-msgstr ""
+msgstr "METAREFRESH_ENABLED"
 
 #: ../../../topics/downloader-middleware.rst:693
 msgid "Whether the Meta Refresh middleware will be enabled."
@@ -1016,7 +1016,7 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:700
 msgid "Default: ``100``"
-msgstr ""
+msgstr "預設值：``100``"
 
 #: ../../../topics/downloader-middleware.rst:702
 msgid "The maximum meta-refresh delay (in seconds) to follow the redirection."
@@ -1048,15 +1048,15 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:723
 msgid ":setting:`RETRY_ENABLED`"
-msgstr ""
+msgstr ":setting:`RETRY_ENABLED`"
 
 #: ../../../topics/downloader-middleware.rst:724
 msgid ":setting:`RETRY_TIMES`"
-msgstr ""
+msgstr ":setting:`RETRY_TIMES`"
 
 #: ../../../topics/downloader-middleware.rst:725
 msgid ":setting:`RETRY_HTTP_CODES`"
-msgstr ""
+msgstr ":setting:`RETRY_HTTP_CODES`"
 
 #: ../../../topics/downloader-middleware.rst:727
 msgid "About HTTP errors to consider:"
@@ -1077,7 +1077,7 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:739
 msgid "RetryMiddleware Settings"
-msgstr ""
+msgstr "RetryMiddleware 設定"
 
 #: ../../../topics/downloader-middleware.rst:744
 msgid "RETRY_ENABLED"
@@ -1089,11 +1089,11 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:755
 msgid "RETRY_TIMES"
-msgstr ""
+msgstr "RETRY_TIMES"
 
 #: ../../../topics/downloader-middleware.rst:757
 msgid "Default: ``2``"
-msgstr ""
+msgstr "預設值：``2``"
 
 #: ../../../topics/downloader-middleware.rst:759
 msgid "Maximum number of times to retry, in addition to the first download."

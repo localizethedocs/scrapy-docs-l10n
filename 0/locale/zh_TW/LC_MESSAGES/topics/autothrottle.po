@@ -94,7 +94,7 @@ msgstr ""
 
 #: ../../../topics/autothrottle.rst:48
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 #: ../../../topics/autothrottle.rst:50
 msgid "The settings used to control the AutoThrottle extension are:"
@@ -102,23 +102,23 @@ msgstr ""
 
 #: ../../../topics/autothrottle.rst:52
 msgid ":setting:`AUTOTHROTTLE_ENABLED`"
-msgstr ""
+msgstr ":setting:`AUTOTHROTTLE_ENABLED`"
 
 #: ../../../topics/autothrottle.rst:53
 msgid ":setting:`AUTOTHROTTLE_START_DELAY`"
-msgstr ""
+msgstr ":setting:`AUTOTHROTTLE_START_DELAY`"
 
 #: ../../../topics/autothrottle.rst:54
 msgid ":setting:`AUTOTHROTTLE_MAX_DELAY`"
-msgstr ""
+msgstr ":setting:`AUTOTHROTTLE_MAX_DELAY`"
 
 #: ../../../topics/autothrottle.rst:55
 msgid ":setting:`AUTOTHROTTLE_DEBUG`"
-msgstr ""
+msgstr ":setting:`AUTOTHROTTLE_DEBUG`"
 
 #: ../../../topics/autothrottle.rst:56
 msgid ":setting:`CONCURRENT_REQUESTS_PER_DOMAIN`"
-msgstr ""
+msgstr ":setting:`CONCURRENT_REQUESTS_PER_DOMAIN`"
 
 #: ../../../topics/autothrottle.rst:57
 msgid ":setting:`CONCURRENT_REQUESTS_PER_IP`"
@@ -126,7 +126,7 @@ msgstr ""
 
 #: ../../../topics/autothrottle.rst:58
 msgid ":setting:`DOWNLOAD_DELAY`"
-msgstr ""
+msgstr ":setting:`DOWNLOAD_DELAY`"
 
 #: ../../../topics/autothrottle.rst:60
 msgid "For more information see :ref:`autothrottle-algorithm`."
@@ -138,7 +138,7 @@ msgstr ""
 
 #: ../../../topics/autothrottle.rst:67 ../../../topics/autothrottle.rst:94
 msgid "Default: ``False``"
-msgstr ""
+msgstr "預設值：``False``"
 
 #: ../../../topics/autothrottle.rst:69
 msgid "Enables the AutoThrottle extension."

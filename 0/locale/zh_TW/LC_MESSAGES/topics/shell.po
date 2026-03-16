@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/shell.rst:5
 msgid "Scrapy shell"
-msgstr ""
+msgstr "Scrapy 外殼"
 
 #: ../../../topics/shell.rst:7
 msgid ""
@@ -59,7 +59,7 @@ msgstr ""
 
 #: ../../../topics/shell.rst:32
 msgid "Launch the shell"
-msgstr ""
+msgstr "啟動外殼"
 
 #: ../../../topics/shell.rst:34
 msgid ""
@@ -73,7 +73,7 @@ msgstr ""
 
 #: ../../../topics/shell.rst:39
 msgid "Where the ``<url>`` is the URL you want to scrape."
-msgstr ""
+msgstr "其中 `<url>` 是您想要擷取的網址。"
 
 #: ../../../topics/shell.rst:42
 msgid "Using the shell"
@@ -112,7 +112,7 @@ msgstr ""
 
 #: ../../../topics/shell.rst:65
 msgid "Available Scrapy objects"
-msgstr ""
+msgstr "可用的 Scrapy 物件"
 
 #: ../../../topics/shell.rst:67
 msgid ""

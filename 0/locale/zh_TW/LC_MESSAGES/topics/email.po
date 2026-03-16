@@ -79,7 +79,7 @@ msgstr ""
 
 #: ../../../topics/email.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/email.rst:46
 msgid ""
@@ -207,7 +207,7 @@ msgstr ""
 
 #: ../../../topics/email.rst:147 ../../../topics/email.rst:157
 msgid "Default: ``None``"
-msgstr ""
+msgstr "預設值：``None``"
 
 #: ../../../topics/email.rst:149
 msgid ""
@@ -230,7 +230,7 @@ msgstr ""
 
 #: ../../../topics/email.rst:166 ../../../topics/email.rst:175
 msgid "Default: ``False``"
-msgstr ""
+msgstr "預設值：``False``"
 
 #: ../../../topics/email.rst:168
 msgid ""
