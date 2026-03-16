@@ -1,0 +1,221 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2008-2013, Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy 0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-09 06:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/architecture.rst:5
+msgid "Architecture overview"
+msgstr ""
+
+#: ../../../topics/architecture.rst:7
+msgid ""
+"This document describes the architecture of Scrapy and how its components "
+"interact."
+msgstr ""
+
+#: ../../../topics/architecture.rst:11
+msgid "Overview"
+msgstr ""
+
+#: ../../../topics/architecture.rst:13
+msgid ""
+"The following diagram shows an overview of the Scrapy architecture with its "
+"components and an outline of the data flow that takes place inside the "
+"system (shown by the green arrows). A brief description of the components is "
+"included below with links for more detailed information about them. The data "
+"flow is also described below."
+msgstr ""
+
+#: ../../../topics/architecture.rst:-1
+msgid "Scrapy architecture"
+msgstr ""
+
+#: ../../../topics/architecture.rst:25
+msgid "Components"
+msgstr ""
+
+#: ../../../topics/architecture.rst:28
+msgid "Scrapy Engine"
+msgstr ""
+
+#: ../../../topics/architecture.rst:30
+msgid ""
+"The engine is responsible for controlling the data flow between all "
+"components of the system, and triggering events when certain actions occur. "
+"See the Data Flow section below for more details."
+msgstr ""
+
+#: ../../../topics/architecture.rst:35
+msgid "Scheduler"
+msgstr ""
+
+#: ../../../topics/architecture.rst:37
+msgid ""
+"The Scheduler receives requests from the engine and enqueues them for "
+"feeding them later (also to the engine) when the engine requests them."
+msgstr ""
+
+#: ../../../topics/architecture.rst:41
+msgid "Downloader"
+msgstr ""
+
+#: ../../../topics/architecture.rst:43
+msgid ""
+"The Downloader is responsible for fetching web pages and feeding them to the "
+"engine which, in turn, feeds them to the spiders."
+msgstr ""
+
+#: ../../../topics/architecture.rst:47
+msgid "Spiders"
+msgstr ""
+
+#: ../../../topics/architecture.rst:49
+msgid ""
+"Spiders are custom classes written by Scrapy users to parse responses and "
+"extract items (aka scraped items) from them or additional URLs (requests) to "
+"follow. Each spider is able to handle a specific domain (or group of "
+"domains). For more information see :ref:`topics-spiders`."
+msgstr ""
+
+#: ../../../topics/architecture.rst:55
+msgid "Item Pipeline"
+msgstr ""
+
+#: ../../../topics/architecture.rst:57
+msgid ""
+"The Item Pipeline is responsible for processing the items once they have "
+"been extracted (or scraped) by the spiders. Typical tasks include cleansing, "
+"validation and persistence (like storing the item in a database). For more "
+"information see :ref:`topics-item-pipeline`."
+msgstr ""
+
+#: ../../../topics/architecture.rst:63
+msgid "Downloader middlewares"
+msgstr ""
+
+#: ../../../topics/architecture.rst:65
+msgid ""
+"Downloader middlewares are specific hooks that sit between the Engine and "
+"the Downloader and process requests when they pass from the Engine to the "
+"Downloader, and responses that pass from Downloader to the Engine. They "
+"provide a convenient mechanism for extending Scrapy functionality by "
+"plugging custom code. For more information see :ref:`topics-downloader-"
+"middleware`."
+msgstr ""
+
+#: ../../../topics/architecture.rst:72
+msgid "Spider middlewares"
+msgstr ""
+
+#: ../../../topics/architecture.rst:74
+msgid ""
+"Spider middlewares are specific hooks that sit between the Engine and the "
+"Spiders and are able to process spider input (responses) and output (items "
+"and requests). They provide a convenient mechanism for extending Scrapy "
+"functionality by plugging custom code. For more information see :ref:`topics-"
+"spider-middleware`."
+msgstr ""
+
+#: ../../../topics/architecture.rst:81
+msgid "Data flow"
+msgstr ""
+
+#: ../../../topics/architecture.rst:83
+msgid ""
+"The data flow in Scrapy is controlled by the execution engine, and goes like "
+"this:"
+msgstr ""
+
+#: ../../../topics/architecture.rst:86
+msgid ""
+"The Engine opens a domain, locates the Spider that handles that domain, and "
+"asks the spider for the first URLs to crawl."
+msgstr ""
+
+#: ../../../topics/architecture.rst:89
+msgid ""
+"The Engine gets the first URLs to crawl from the Spider and schedules them "
+"in the Scheduler, as Requests."
+msgstr ""
+
+#: ../../../topics/architecture.rst:92
+msgid "The Engine asks the Scheduler for the next URLs to crawl."
+msgstr ""
+
+#: ../../../topics/architecture.rst:94
+msgid ""
+"The Scheduler returns the next URLs to crawl to the Engine and the Engine "
+"sends them to the Downloader, passing through the Downloader Middleware "
+"(request direction)."
+msgstr ""
+
+#: ../../../topics/architecture.rst:98
+msgid ""
+"Once the page finishes downloading the Downloader generates a Response (with "
+"that page) and sends it to the Engine, passing through the Downloader "
+"Middleware (response direction)."
+msgstr ""
+
+#: ../../../topics/architecture.rst:102
+msgid ""
+"The Engine receives the Response from the Downloader and sends it to the "
+"Spider for processing, passing through the Spider Middleware (input "
+"direction)."
+msgstr ""
+
+#: ../../../topics/architecture.rst:105
+msgid ""
+"The Spider processes the Response and returns scraped Items and new Requests "
+"(to follow) to the Engine."
+msgstr ""
+
+#: ../../../topics/architecture.rst:108
+msgid ""
+"The Engine sends scraped Items (returned by the Spider) to the Item Pipeline "
+"and Requests (returned by spider) to the Scheduler"
+msgstr ""
+
+#: ../../../topics/architecture.rst:111
+msgid ""
+"The process repeats (from step 2) until there are no more requests from the "
+"Scheduler, and the Engine closes the domain."
+msgstr ""
+
+#: ../../../topics/architecture.rst:115
+msgid "Event-driven networking"
+msgstr ""
+
+#: ../../../topics/architecture.rst:117
+msgid ""
+"Scrapy is written with `Twisted`_, a popular event-driven networking "
+"framework for Python. Thus, it's implemented using a non-blocking (aka "
+"asynchronous) code for concurrency."
+msgstr ""
+
+#: ../../../topics/architecture.rst:121
+msgid ""
+"For more information about asynchronous programming and Twisted see these "
+"links:"
+msgstr ""
+
+#: ../../../topics/architecture.rst:124
+msgid "`Introduction to Deferreds in Twisted`_"
+msgstr ""
+
+#: ../../../topics/architecture.rst:125
+msgid "`Twisted - hello, asynchronous programming`_"
+msgstr ""
