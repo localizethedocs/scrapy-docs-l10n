@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:5
 msgid "Scrapy Tutorial"
-msgstr ""
+msgstr "Scrapy 教學"
 
 #: ../../../intro/tutorial.rst:7
 msgid ""
@@ -39,7 +39,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:15
 msgid "Creating a new Scrapy project"
-msgstr ""
+msgstr "建立新的 Scrapy 專案"
 
 #: ../../../intro/tutorial.rst:16
 msgid ""
@@ -107,7 +107,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:54
 msgid "scrapy startproject tutorial"
-msgstr ""
+msgstr "scrapy startproject tutorial"
 
 #: ../../../intro/tutorial.rst:56
 msgid "This will create a ``tutorial`` directory with the following contents::"
@@ -324,7 +324,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:211
 msgid "Extracting data"
-msgstr ""
+msgstr "提取資料"
 
 #: ../../../intro/tutorial.rst:213
 msgid ""
@@ -334,7 +334,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:216
 msgid "scrapy shell 'https://quotes.toscrape.com/page/1/'"
-msgstr ""
+msgstr "scrapy shell 'https://quotes.toscrape.com/page/1/'"
 
 #: ../../../intro/tutorial.rst:220
 msgid ""
@@ -349,7 +349,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:226
 msgid "scrapy shell \"https://quotes.toscrape.com/page/1/\""
-msgstr ""
+msgstr "scrapy shell \"https://quotes.toscrape.com/page/1/\""
 
 #: ../../../intro/tutorial.rst:228
 msgid "You will see something like::"
@@ -374,6 +374,22 @@ msgid ""
 "[s]   fetch(req_or_url) Fetch request (or URL) and update local objects\n"
 "[s]   view(response)    View response in a browser"
 msgstr ""
+"[ ... Scrapy log here ... ]\n"
+"2016-09-19 12:09:27 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://"
+"quotes.toscrape.com/page/1/> (referer: None)\n"
+"[s] Available Scrapy objects:\n"
+"[s]   scrapy     scrapy module (contains scrapy.Request, scrapy.Selector, "
+"etc)\n"
+"[s]   crawler    <scrapy.crawler.Crawler object at 0x7fa91d888c90>\n"
+"[s]   item       {}\n"
+"[s]   request    <GET https://quotes.toscrape.com/page/1/>\n"
+"[s]   response   <200 https://quotes.toscrape.com/page/1/>\n"
+"[s]   settings   <scrapy.settings.Settings object at 0x7fa91d888c10>\n"
+"[s]   spider     <DefaultSpider 'default' at 0x7fa91c8af990>\n"
+"[s] Useful shortcuts:\n"
+"[s]   shelp()           Shell help (print this help)\n"
+"[s]   fetch(req_or_url) Fetch request (or URL) and update local objects\n"
+"[s]   view(response)    View response in a browser"
 
 #: ../../../intro/tutorial.rst:245
 msgid ""
@@ -387,6 +403,9 @@ msgid ""
 "[<Selector query='descendant-or-self::title' data='<title>Quotes to Scrape</"
 "title>'>]"
 msgstr ""
+">>> response.css(\"title\")\n"
+"[<Selector query='descendant-or-self::title' data='<title>Quotes to Scrape</"
+"title>'>]"
 
 #: ../../../intro/tutorial.rst:257
 msgid ""
@@ -405,6 +424,8 @@ msgid ""
 ">>> response.css(\"title::text\").getall()\n"
 "['Quotes to Scrape']"
 msgstr ""
+">>> response.css(\"title::text\").getall()\n"
+"['Quotes to Scrape']"
 
 #: ../../../intro/tutorial.rst:270
 msgid ""
@@ -419,6 +440,8 @@ msgid ""
 ">>> response.css(\"title\").getall()\n"
 "['<title>Quotes to Scrape</title>']"
 msgstr ""
+">>> response.css(\"title\").getall()\n"
+"['<title>Quotes to Scrape</title>']"
 
 #: ../../../intro/tutorial.rst:280
 msgid ""
@@ -433,6 +456,8 @@ msgid ""
 ">>> response.css(\"title::text\").get()\n"
 "'Quotes to Scrape'"
 msgstr ""
+">>> response.css(\"title::text\").get()\n"
+"'Quotes to Scrape'"
 
 #: ../../../intro/tutorial.rst:289
 msgid "As an alternative, you could've written:"
@@ -443,6 +468,8 @@ msgid ""
 ">>> response.css(\"title::text\")[0].get()\n"
 "'Quotes to Scrape'"
 msgstr ""
+">>> response.css(\"title::text\")[0].get()\n"
+"'Quotes to Scrape'"
 
 #: ../../../intro/tutorial.rst:296
 msgid ""
@@ -493,6 +520,12 @@ msgid ""
 ">>> response.css(\"title::text\").re(r\"(\\w+) to (\\w+)\")\n"
 "['Quotes', 'Scrape']"
 msgstr ""
+">>> response.css(\"title::text\").re(r\"Quotes.*\")\n"
+"['Quotes to Scrape']\n"
+">>> response.css(\"title::text\").re(r\"Q\\w+\")\n"
+"['Quotes']\n"
+">>> response.css(\"title::text\").re(r\"(\\w+) to (\\w+)\")\n"
+"['Quotes', 'Scrape']"
 
 #: ../../../intro/tutorial.rst:332
 msgid ""
@@ -597,7 +630,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:406
 msgid "scrapy shell 'https://quotes.toscrape.com'"
-msgstr ""
+msgstr "scrapy shell 'https://quotes.toscrape.com'"
 
 #: ../../../intro/tutorial.rst:408
 msgid "We get a list of selectors for the quote HTML elements with:"
@@ -614,6 +647,14 @@ msgid ""
 "itemscope itemtype...'>,\n"
 "...]"
 msgstr ""
+">>> response.css(\"div.quote\")\n"
+"[<Selector query=\"descendant-or-self::div[@class and contains(concat(' ', "
+"normalize-space(@class), ' '), ' quote ')]\" data='<div class=\"quote\" "
+"itemscope itemtype...'>,\n"
+"<Selector query=\"descendant-or-self::div[@class and contains(concat(' ', "
+"normalize-space(@class), ' '), ' quote ')]\" data='<div class=\"quote\" "
+"itemscope itemtype...'>,\n"
+"...]"
 
 #: ../../../intro/tutorial.rst:417
 msgid ""
@@ -747,6 +788,15 @@ msgid ""
 "'Thomas A. Edison', 'text': \"“I have not failed. I've just found 10,000 "
 "ways that won't work.”\"}"
 msgstr ""
+"2016-09-19 18:57:19 [scrapy.core.scraper] DEBUG: Scraped from <200 https://"
+"quotes.toscrape.com/page/1/>\n"
+"{'tags': ['life', 'love'], 'author': 'André Gide', 'text': '“It is better to "
+"be hated for what you are than to be loved for what you are not.”'}\n"
+"2016-09-19 18:57:19 [scrapy.core.scraper] DEBUG: Scraped from <200 https://"
+"quotes.toscrape.com/page/1/>\n"
+"{'tags': ['edison', 'failure', 'inspirational', 'paraphrased'], 'author': "
+"'Thomas A. Edison', 'text': \"“I have not failed. I've just found 10,000 "
+"ways that won't work.”\"}"
 
 #: ../../../intro/tutorial.rst:515
 msgid "Storing the scraped data"
@@ -760,7 +810,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:520
 msgid "scrapy crawl quotes -O quotes.json"
-msgstr ""
+msgstr "scrapy crawl quotes -O quotes.json"
 
 #: ../../../intro/tutorial.rst:522
 msgid ""
@@ -778,7 +828,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:530
 msgid "scrapy crawl quotes -o quotes.jsonl"
-msgstr ""
+msgstr "scrapy crawl quotes -o quotes.jsonl"
 
 #: ../../../intro/tutorial.rst:532
 msgid ""
@@ -849,6 +899,8 @@ msgid ""
 ">>> response.css(\"li.next a::attr(href)\").get()\n"
 "'/page/2/'"
 msgstr ""
+">>> response.css(\"li.next a::attr(href)\").get()\n"
+"'/page/2/'"
 
 #: ../../../intro/tutorial.rst:584
 msgid ""
@@ -892,6 +944,27 @@ msgid ""
 "            next_page = response.urljoin(next_page)\n"
 "            yield scrapy.Request(next_page, callback=self.parse)"
 msgstr ""
+"import scrapy\n"
+"\n"
+"\n"
+"class QuotesSpider(scrapy.Spider):\n"
+"    name = \"quotes\"\n"
+"    start_urls = [\n"
+"        \"https://quotes.toscrape.com/page/1/\",\n"
+"    ]\n"
+"\n"
+"    def parse(self, response):\n"
+"        for quote in response.css(\"div.quote\"):\n"
+"            yield {\n"
+"                \"text\": quote.css(\"span.text::text\").get(),\n"
+"                \"author\": quote.css(\"small.author::text\").get(),\n"
+"                \"tags\": quote.css(\"div.tags a.tag::text\").getall(),\n"
+"            }\n"
+"\n"
+"        next_page = response.css(\"li.next a::attr(href)\").get()\n"
+"        if next_page is not None:\n"
+"            next_page = response.urljoin(next_page)\n"
+"            yield scrapy.Request(next_page, callback=self.parse)"
 
 #: ../../../intro/tutorial.rst:620
 msgid ""
@@ -1047,6 +1120,31 @@ msgid ""
 "            \"bio\": extract_with_css(\".author-description::text\"),\n"
 "        }"
 msgstr ""
+"import scrapy\n"
+"\n"
+"\n"
+"class AuthorSpider(scrapy.Spider):\n"
+"    name = \"author\"\n"
+"\n"
+"    start_urls = [\"https://quotes.toscrape.com/\"]\n"
+"\n"
+"    def parse(self, response):\n"
+"        author_page_links = response.css(\".author + a\")\n"
+"        yield from response.follow_all(author_page_links, self."
+"parse_author)\n"
+"\n"
+"        pagination_links = response.css(\"li.next a\")\n"
+"        yield from response.follow_all(pagination_links, self.parse)\n"
+"\n"
+"    def parse_author(self, response):\n"
+"        def extract_with_css(query):\n"
+"            return response.css(query).get(default=\"\").strip()\n"
+"\n"
+"        yield {\n"
+"            \"name\": extract_with_css(\"h3.author-title::text\"),\n"
+"            \"birthdate\": extract_with_css(\".author-born-date::text\"),\n"
+"            \"bio\": extract_with_css(\".author-description::text\"),\n"
+"        }"
 
 #: ../../../intro/tutorial.rst:743
 msgid ""
@@ -1108,7 +1206,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:781
 msgid "scrapy crawl quotes -O quotes-humor.json -a tag=humor"
-msgstr ""
+msgstr "scrapy crawl quotes -O quotes-humor.json -a tag=humor"
 
 #: ../../../intro/tutorial.rst:783
 msgid ""

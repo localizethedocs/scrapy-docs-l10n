@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/benchmarking.rst:5
 msgid "Benchmarking"
-msgstr ""
+msgstr "基準測試"
 
 #: ../../../topics/benchmarking.rst:7
 msgid ""

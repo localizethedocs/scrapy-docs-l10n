@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../intro/overview.rst:5
 msgid "Scrapy at a glance"
-msgstr ""
+msgstr "Scrapy 速覽"
 
 #: ../../../intro/overview.rst:7
 msgid ""
@@ -28,6 +28,8 @@ msgid ""
 "applications, like data mining, information processing or historical "
 "archival."
 msgstr ""
+"Scrapy (/ˈskreɪpaɪ/) 是一個用於爬取網站並提取結構化資料的應用程式框架，這些資"
+"料可廣泛應用於多種實用場景，例如資料探勘、資訊處理或歷史封存。"
 
 #: ../../../intro/overview.rst:11
 msgid ""
@@ -104,10 +106,19 @@ msgid ""
 "garage can make you a car.\\u201d\"}\n"
 "..."
 msgstr ""
+"{\"author\": \"Jane Austen\", \"text\": \"\\u201cThe person, be it gentleman "
+"or lady, who has not pleasure in a good novel, must be intolerably stupid."
+"\\u201d\"}\n"
+"{\"author\": \"Steve Martin\", \"text\": \"\\u201cA day without sunshine is "
+"like, you know, night.\\u201d\"}\n"
+"{\"author\": \"Garrison Keillor\", \"text\": \"\\u201cAnyone who thinks "
+"sitting in church can make you a Christian must also think that sitting in a "
+"garage can make you a car.\\u201d\"}\n"
+"..."
 
 #: ../../../intro/overview.rst:62
 msgid "What just happened?"
-msgstr ""
+msgstr "剛剛發生什麼事了？"
 
 #: ../../../intro/overview.rst:64
 msgid ""
@@ -159,7 +170,7 @@ msgstr ""
 
 #: ../../../intro/overview.rst:101
 msgid "What else?"
-msgstr ""
+msgstr "還有什麼？"
 
 #: ../../../intro/overview.rst:103
 msgid ""
@@ -225,7 +236,7 @@ msgstr ""
 
 #: ../../../intro/overview.rst:133
 msgid "crawl depth restriction"
-msgstr ""
+msgstr "爬取深度限制"
 
 #: ../../../intro/overview.rst:134
 msgid "and more"

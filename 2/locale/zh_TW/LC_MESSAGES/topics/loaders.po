@@ -485,7 +485,7 @@ msgstr ""
 #: itemloaders.ItemLoader.get_jmes:0 itemloaders.ItemLoader.get_value:0
 #: itemloaders.ItemLoader.get_xpath:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../../scrapy/loader/__init__.py:docstring of
 #: scrapy.loader.ItemLoader:6
@@ -911,7 +911,7 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:357 ../../../topics/loaders.rst:372
 msgid "Example:"
-msgstr ""
+msgstr "範例："
 
 #: ../../../topics/loaders.rst:360
 msgid ""

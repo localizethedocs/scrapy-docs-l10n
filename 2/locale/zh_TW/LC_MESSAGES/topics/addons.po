@@ -81,7 +81,7 @@ msgstr ""
 
 #: ../../../topics/addons.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/addons.rst:46 ../../../topics/addons.rst:55
 msgid "The settings object storing Scrapy/component configuration"

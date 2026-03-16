@@ -56,7 +56,7 @@ msgstr ""
 
 #: ../../../topics/request-response.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/request-response.rst:29
 msgid ""
@@ -344,7 +344,7 @@ msgstr ""
 
 #: ../../../docstring of scrapy.Request.priority:1
 msgid "Default: ``0``"
-msgstr ""
+msgstr "預設值：``0``"
 
 #: ../../../docstring of scrapy.Request.priority:3
 msgid ""
@@ -568,7 +568,7 @@ msgstr ""
 #: ../../../../scrapy/http/request/__init__.py:docstring of
 #: scrapy.http.request.NO_CALLBACK:5
 msgid "For example:"
-msgstr ""
+msgstr "例如："
 
 #: ../../../../scrapy/http/request/__init__.py:docstring of
 #: scrapy.http.request.NO_CALLBACK:7
@@ -610,7 +610,7 @@ msgstr ""
 
 #: ../../../topics/request-response.rst:266
 msgid "Example:"
-msgstr ""
+msgstr "範例："
 
 #: ../../../topics/request-response.rst:268
 msgid ""

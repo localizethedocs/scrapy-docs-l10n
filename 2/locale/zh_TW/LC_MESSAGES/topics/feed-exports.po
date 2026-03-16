@@ -371,11 +371,11 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:212
 msgid ":setting:`AWS_ACCESS_KEY_ID`"
-msgstr ""
+msgstr ":setting:`AWS_ACCESS_KEY_ID`"
 
 #: ../../../topics/feed-exports.rst:213
 msgid ":setting:`AWS_SECRET_ACCESS_KEY`"
-msgstr ""
+msgstr ":setting:`AWS_SECRET_ACCESS_KEY`"
 
 #: ../../../topics/feed-exports.rst:214
 msgid ""
@@ -391,15 +391,15 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:221 ../../../topics/feed-exports.rst:411
 msgid ":setting:`FEED_STORAGE_S3_ACL`"
-msgstr ""
+msgstr ":setting:`FEED_STORAGE_S3_ACL`"
 
 #: ../../../topics/feed-exports.rst:222
 msgid ":setting:`AWS_ENDPOINT_URL`"
-msgstr ""
+msgstr ":setting:`AWS_ENDPOINT_URL`"
 
 #: ../../../topics/feed-exports.rst:223
 msgid ":setting:`AWS_REGION_NAME`"
-msgstr ""
+msgstr ":setting:`AWS_REGION_NAME`"
 
 #: ../../../topics/feed-exports.rst:237
 msgid "Google Cloud Storage (GCS)"
@@ -435,11 +435,11 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:253
 msgid ":setting:`FEED_STORAGE_GCS_ACL`"
-msgstr ""
+msgstr ":setting:`FEED_STORAGE_GCS_ACL`"
 
 #: ../../../topics/feed-exports.rst:254
 msgid ":setting:`GCS_PROJECT_ID`"
-msgstr ""
+msgstr ":setting:`GCS_PROJECT_ID`"
 
 #: ../../../topics/feed-exports.rst:270
 msgid "Standard output"
@@ -545,7 +545,7 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../../scrapy/extensions/feedexport.py:docstring of
 #: scrapy.extensions.feedexport.ItemFilter:4
@@ -738,7 +738,7 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:400
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 #: ../../../topics/feed-exports.rst:402
 msgid "These are the settings used for configuring the feed exports:"
@@ -750,35 +750,35 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:405
 msgid ":setting:`FEED_EXPORT_ENCODING`"
-msgstr ""
+msgstr ":setting:`FEED_EXPORT_ENCODING`"
 
 #: ../../../topics/feed-exports.rst:406
 msgid ":setting:`FEED_STORE_EMPTY`"
-msgstr ""
+msgstr ":setting:`FEED_STORE_EMPTY`"
 
 #: ../../../topics/feed-exports.rst:407
 msgid ":setting:`FEED_EXPORT_FIELDS`"
-msgstr ""
+msgstr ":setting:`FEED_EXPORT_FIELDS`"
 
 #: ../../../topics/feed-exports.rst:408
 msgid ":setting:`FEED_EXPORT_INDENT`"
-msgstr ""
+msgstr ":setting:`FEED_EXPORT_INDENT`"
 
 #: ../../../topics/feed-exports.rst:409
 msgid ":setting:`FEED_STORAGES`"
-msgstr ""
+msgstr ":setting:`FEED_STORAGES`"
 
 #: ../../../topics/feed-exports.rst:410
 msgid ":setting:`FEED_STORAGE_FTP_ACTIVE`"
-msgstr ""
+msgstr ":setting:`FEED_STORAGE_FTP_ACTIVE`"
 
 #: ../../../topics/feed-exports.rst:412
 msgid ":setting:`FEED_EXPORTERS`"
-msgstr ""
+msgstr ":setting:`FEED_EXPORTERS`"
 
 #: ../../../topics/feed-exports.rst:413
 msgid ":setting:`FEED_EXPORT_BATCH_ITEM_COUNT`"
-msgstr ""
+msgstr ":setting:`FEED_EXPORT_BATCH_ITEM_COUNT`"
 
 #: ../../../topics/feed-exports.rst:420
 msgid "FEEDS"
@@ -986,7 +986,7 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:540 ../../../topics/feed-exports.rst:729
 msgid "Default: ``None``"
-msgstr ""
+msgstr "預設值：``None``"
 
 #: ../../../topics/feed-exports.rst:542
 msgid ""
@@ -1001,7 +1001,7 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:551 ../../../topics/feed-exports.rst:683
 msgid "Default: ``0``"
-msgstr ""
+msgstr "預設值：``0``"
 
 #: ../../../topics/feed-exports.rst:553
 msgid ""
@@ -1025,7 +1025,7 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:567
 msgid "Default: ``True``"
-msgstr ""
+msgstr "預設值：``True``"
 
 #: ../../../topics/feed-exports.rst:569
 msgid ""
@@ -1052,7 +1052,7 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:589
 msgid "Default: ``False``"
-msgstr ""
+msgstr "預設值：``False``"
 
 #: ../../../topics/feed-exports.rst:591
 msgid ""
@@ -1093,7 +1093,7 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:613 ../../../topics/feed-exports.rst:651
 msgid "Default:"
-msgstr ""
+msgstr "預設值："
 
 #: ../../../topics/feed-exports.rst:615
 msgid ""
