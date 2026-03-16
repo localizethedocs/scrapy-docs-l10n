@@ -253,19 +253,19 @@ msgstr ""
 
 #: ../../../topics/logging.rst:164
 msgid ":setting:`LOG_FILE`"
-msgstr ""
+msgstr ":setting:`LOG_FILE`"
 
 #: ../../../topics/logging.rst:165
 msgid ":setting:`LOG_FILE_APPEND`"
-msgstr ""
+msgstr ":setting:`LOG_FILE_APPEND`"
 
 #: ../../../topics/logging.rst:166
 msgid ":setting:`LOG_ENABLED`"
-msgstr ""
+msgstr ":setting:`LOG_ENABLED`"
 
 #: ../../../topics/logging.rst:167
 msgid ":setting:`LOG_ENCODING`"
-msgstr ""
+msgstr ":setting:`LOG_ENCODING`"
 
 #: ../../../topics/logging.rst:168
 msgid ":setting:`LOG_LEVEL`"

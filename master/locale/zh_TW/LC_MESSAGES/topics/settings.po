@@ -300,7 +300,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:192
 msgid "For example:"
-msgstr ""
+msgstr "例如："
 
 #: ../../../topics/settings.rst:195
 msgid ""
@@ -577,7 +577,7 @@ msgstr ""
 #: ../../../topics/settings.rst:1326 ../../../topics/settings.rst:1366
 #: ../../../topics/settings.rst:1395 ../../../topics/settings.rst:1693
 msgid "Default: ``None``"
-msgstr ""
+msgstr "預設值：``None``"
 
 #: ../../../topics/settings.rst:390
 msgid ""
@@ -711,7 +711,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:498
 msgid "Default: ``100``"
-msgstr ""
+msgstr "預設值：``100``"
 
 #: ../../../topics/settings.rst:500
 msgid ""
@@ -821,7 +821,7 @@ msgstr ""
 #: ../../../topics/settings.rst:917 ../../../topics/settings.rst:1204
 #: ../../../topics/settings.rst:1840 ../../../topics/settings.rst:1901
 msgid "Default:"
-msgstr ""
+msgstr "預設值："
 
 #: ../../../topics/settings.rst:577
 msgid ""
@@ -854,7 +854,7 @@ msgstr ""
 #: ../../../topics/settings.rst:597 ../../../topics/settings.rst:609
 #: ../../../topics/settings.rst:1547 ../../../topics/settings.rst:1596
 msgid "Default: ``0``"
-msgstr ""
+msgstr "預設值：``0``"
 
 #: ../../../topics/settings.rst:599 ../../../topics/settings.rst:611
 #: ../../../topics/settings.rst:640
@@ -909,7 +909,7 @@ msgstr ""
 #: ../../../topics/settings.rst:1506 ../../../topics/settings.rst:1579
 #: ../../../topics/settings.rst:1715 ../../../topics/settings.rst:1879
 msgid "Default: ``False``"
-msgstr ""
+msgstr "預設值：``False``"
 
 #: ../../../topics/settings.rst:642
 msgid ""
@@ -1996,7 +1996,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:1515
 msgid "Default: ``[]``"
-msgstr ""
+msgstr "預設值：``[]``"
 
 #: ../../../topics/settings.rst:1517
 msgid ""

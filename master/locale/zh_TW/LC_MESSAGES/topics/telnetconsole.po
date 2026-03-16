@@ -354,7 +354,7 @@ msgstr ""
 
 #: ../../../topics/telnetconsole.rst:208
 msgid "Default: ``None``"
-msgstr ""
+msgstr "預設值：``None``"
 
 #: ../../../topics/telnetconsole.rst:210
 msgid ""

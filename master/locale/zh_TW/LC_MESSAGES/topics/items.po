@@ -38,7 +38,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:22
 msgid "Item Types"
-msgstr ""
+msgstr "項目型別"
 
 #: ../../../topics/items.rst:24
 msgid ""
@@ -58,7 +58,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:40
 msgid "Item objects"
-msgstr ""
+msgstr "項目物件"
 
 #: ../../../topics/items.rst:42
 msgid ""
@@ -238,7 +238,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:142
 msgid "Pydantic models"
-msgstr ""
+msgstr "Pydantic 模型"
 
 #: ../../../topics/items.rst:144
 msgid ""
@@ -319,6 +319,15 @@ msgid ""
 "    tags = scrapy.Field()\n"
 "    last_updated = scrapy.Field(serializer=str)"
 msgstr ""
+"import scrapy\n"
+"\n"
+"\n"
+"class Product(scrapy.Item):\n"
+"    name = scrapy.Field()\n"
+"    price = scrapy.Field()\n"
+"    stock = scrapy.Field()\n"
+"    tags = scrapy.Field()\n"
+"    last_updated = scrapy.Field(serializer=str)"
 
 #: ../../../topics/items.rst:201
 msgid ""
@@ -396,10 +405,13 @@ msgid ""
 ">>> print(product)\n"
 "Product(name='Desktop PC', price=1000)"
 msgstr ""
+">>> product = Product(name=\"Desktop PC\", price=1000)\n"
+">>> print(product)\n"
+"Product(name='Desktop PC', price=1000)"
 
 #: ../../../topics/items.rst:269
 msgid "Getting field values"
-msgstr ""
+msgstr "獲取欄位值"
 
 #: ../../../topics/items.rst:271
 msgid ""
@@ -439,10 +451,45 @@ msgid ""
 ">>> \"lala\" in product.fields  # is lala a declared field?\n"
 "False"
 msgstr ""
+">>> product[\"name\"]\n"
+"Desktop PC\n"
+">>> product.get(\"name\")\n"
+"Desktop PC\n"
+"\n"
+">>> product[\"price\"]\n"
+"1000\n"
+"\n"
+">>> product[\"last_updated\"]\n"
+"Traceback (most recent call last):\n"
+"    ...\n"
+"KeyError: 'last_updated'\n"
+"\n"
+">>> product.get(\"last_updated\", \"not set\")\n"
+"not set\n"
+"\n"
+">>> product[\"lala\"]  # getting unknown field\n"
+"Traceback (most recent call last):\n"
+"    ...\n"
+"KeyError: 'lala'\n"
+"\n"
+">>> product.get(\"lala\", \"unknown field\")\n"
+"'unknown field'\n"
+"\n"
+">>> \"name\" in product  # is name field populated?\n"
+"True\n"
+"\n"
+">>> \"last_updated\" in product  # is last_updated populated?\n"
+"False\n"
+"\n"
+">>> \"last_updated\" in product.fields  # is last_updated a declared field?\n"
+"True\n"
+"\n"
+">>> \"lala\" in product.fields  # is lala a declared field?\n"
+"False"
 
 #: ../../../topics/items.rst:311
 msgid "Setting field values"
-msgstr ""
+msgstr "設定欄位值"
 
 #: ../../../topics/items.rst:313
 msgid ""
@@ -455,6 +502,14 @@ msgid ""
 "    ...\n"
 "KeyError: 'Product does not support field: lala'"
 msgstr ""
+">>> product[\"last_updated\"] = \"today\"\n"
+">>> product[\"last_updated\"]\n"
+"today\n"
+"\n"
+">>> product[\"lala\"] = \"test\"  # setting unknown field\n"
+"Traceback (most recent call last):\n"
+"    ...\n"
+"KeyError: 'Product does not support field: lala'"
 
 #: ../../../topics/items.rst:326
 msgid "Accessing all populated values"
@@ -472,10 +527,15 @@ msgid ""
 ">>> product.items()\n"
 "[('price', 1000), ('name', 'Desktop PC')]"
 msgstr ""
+">>> product.keys()\n"
+"['price', 'name']\n"
+"\n"
+">>> product.items()\n"
+"[('price', 1000), ('name', 'Desktop PC')]"
 
 #: ../../../topics/items.rst:342
 msgid "Copying items"
-msgstr ""
+msgstr "複製項目"
 
 #: ../../../topics/items.rst:344
 msgid ""
@@ -556,7 +616,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:396
 msgid "For example:"
-msgstr ""
+msgstr "例如："
 
 #: ../../../topics/items.rst:398
 msgid ""
@@ -585,7 +645,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:421
 msgid "Supporting All Item Types"
-msgstr ""
+msgstr "支援所有項目型別"
 
 #: ../../../topics/items.rst:423
 msgid ""

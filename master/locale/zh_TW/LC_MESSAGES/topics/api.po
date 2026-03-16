@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/api.rst:5
 msgid "Core API"
-msgstr ""
+msgstr "核心 API"
 
 #: ../../../topics/api.rst:7
 msgid ""
@@ -533,6 +533,14 @@ msgid ""
 "    \"cmdline\": 40,\n"
 "}"
 msgstr ""
+"SETTINGS_PRIORITIES = {\n"
+"    \"default\": 0,\n"
+"    \"command\": 10,\n"
+"    \"addon\": 15,\n"
+"    \"project\": 20,\n"
+"    \"spider\": 30,\n"
+"    \"cmdline\": 40,\n"
+"}"
 
 #: ../../../topics/api.rst:155
 msgid ""
@@ -1205,7 +1213,7 @@ msgstr ""
 
 #: ../../../topics/api.rst:293
 msgid "Engine API"
-msgstr ""
+msgstr "引擎 API"
 
 #: ../../../../scrapy/core/engine.py:docstring of
 #: scrapy.core.engine.ExecutionEngine.needs_backout:1

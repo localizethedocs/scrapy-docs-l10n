@@ -27,11 +27,11 @@ msgstr "基礎概念"
 
 #: ../../../index.rst:123 ../../../index.rst:125
 msgid "Built-in services"
-msgstr ""
+msgstr "內建服務"
 
 #: ../../../index.rst:148 ../../../index.rst:150
 msgid "Solving specific problems"
-msgstr ""
+msgstr "解決特定問題"
 
 #: ../../../index.rst:218 ../../../index.rst:220
 msgid "Extending Scrapy"

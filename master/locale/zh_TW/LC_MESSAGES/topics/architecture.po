@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/architecture.rst:5
 msgid "Architecture overview"
-msgstr ""
+msgstr "架構概覽"
 
 #: ../../../topics/architecture.rst:7
 msgid ""
@@ -29,7 +29,7 @@ msgstr ""
 
 #: ../../../topics/architecture.rst:11
 msgid "Overview"
-msgstr ""
+msgstr "概覽"
 
 #: ../../../topics/architecture.rst:13
 msgid ""

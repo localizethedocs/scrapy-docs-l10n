@@ -50,6 +50,9 @@ msgid ""
 "    \"myproject.middlewares.CustomSpiderMiddleware\": 543,\n"
 "}"
 msgstr ""
+"SPIDER_MIDDLEWARES = {\n"
+"    \"myproject.middlewares.CustomSpiderMiddleware\": 543,\n"
+"}"
 
 #: ../../../topics/spider-middleware.rst:29
 msgid ""
@@ -119,6 +122,9 @@ msgid ""
 "    async for item_or_request in start:\n"
 "        yield item_or_request"
 msgstr ""
+"async def process_start(self, start):\n"
+"    async for item_or_request in start:\n"
+"        yield item_or_request"
 
 #: ../../../topics/spider-middleware.rst:86
 msgid "You may yield the same type of objects as :meth:`~scrapy.Spider.start`."
@@ -146,7 +152,7 @@ msgstr ""
 #: ../../../topics/spider-middleware.rst:102
 msgid ""
 ":meth:`process_spider_input` should return ``None`` or raise an exception."
-msgstr ""
+msgstr ":meth:`process_spider_input` 應該回傳 ``None`` 或引發例外狀況。"
 
 #: ../../../topics/spider-middleware.rst:105
 msgid ""
@@ -329,7 +335,7 @@ msgstr ""
 #: ../../../../scrapy/spidermiddlewares/base.py:docstring of
 #: scrapy.spidermiddlewares.base.BaseSpiderMiddleware.get_processed_request:7
 msgid "the input request"
-msgstr ""
+msgstr "輸入請求"
 
 #: ../../../../scrapy/spidermiddlewares/base.py:docstring of
 #: scrapy.spidermiddlewares.base.BaseSpiderMiddleware.get_processed_request:14
@@ -383,18 +389,20 @@ msgid ""
 ":setting:`DEPTH_LIMIT` - The maximum depth that will be allowed to crawl for "
 "any site. If zero, no limit will be imposed."
 msgstr ""
+":setting:`DEPTH_LIMIT` - 允許對任何網站進行爬取的最大深度。若設為零，則不施加"
+"任何限制。"
 
 #: ../../../topics/spider-middleware.rst:223
 msgid ""
 ":setting:`DEPTH_STATS_VERBOSE` - Whether to collect the number of requests "
 "for each depth."
-msgstr ""
+msgstr ":setting:`DEPTH_STATS_VERBOSE` - 是否收集每個深度層級的請求數量。"
 
 #: ../../../topics/spider-middleware.rst:225
 msgid ""
 ":setting:`DEPTH_PRIORITY` - Whether to prioritize the requests based on "
 "their depth."
-msgstr ""
+msgstr ":setting:`DEPTH_PRIORITY` - 是否根據請求的深度來決定其優先順序。"
 
 #: ../../../topics/spider-middleware.rst:229
 msgid "HttpErrorMiddleware"
@@ -456,15 +464,15 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:279
 msgid "HttpErrorMiddleware settings"
-msgstr ""
+msgstr "HttpErrorMiddleware 設定"
 
 #: ../../../topics/spider-middleware.rst:284
 msgid "HTTPERROR_ALLOWED_CODES"
-msgstr ""
+msgstr "HTTPERROR_ALLOWED_CODES"
 
 #: ../../../topics/spider-middleware.rst:286
 msgid "Default: ``[]``"
-msgstr ""
+msgstr "預設值：``[]``"
 
 #: ../../../topics/spider-middleware.rst:288
 msgid "Pass all responses with non-200 status codes contained in this list."
@@ -476,7 +484,7 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:295
 msgid "Default: ``False``"
-msgstr ""
+msgstr "預設值：``False``"
 
 #: ../../../topics/spider-middleware.rst:297
 msgid "Pass all responses, regardless of its status code."
@@ -514,7 +522,7 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:328
 msgid "Default: ``'scrapy.spidermiddlewares.referer.DefaultReferrerPolicy'``"
-msgstr ""
+msgstr "預設值：``'scrapy.spidermiddlewares.referer.DefaultReferrerPolicy'``"
 
 #: ../../../topics/spider-middleware.rst:332
 msgid "`Referrer Policy`_ to apply when populating Request \"Referer\" header."
@@ -547,7 +555,7 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:348
 msgid "String value"
-msgstr ""
+msgstr "字串值"
 
 #: ../../../topics/spider-middleware.rst:348
 msgid "Class name (as a string)"
@@ -745,7 +753,7 @@ msgstr ""
 #: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
 #: scrapy.spidermiddlewares.referer.StrictOriginPolicy:1
 msgid "https://www.w3.org/TR/referrer-policy/#referrer-policy-strict-origin"
-msgstr ""
+msgstr "https://www.w3.org/TR/referrer-policy/#referrer-policy-strict-origin"
 
 #: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
 #: scrapy.spidermiddlewares.referer.StrictOriginPolicy:3
@@ -852,12 +860,12 @@ msgstr ""
 #: ../../../../scrapy/spidermiddlewares/start.py:docstring of
 #: scrapy.spidermiddlewares.start.StartSpiderMiddleware:1
 msgid "Set :reqmeta:`is_start_request`."
-msgstr ""
+msgstr "設定 :reqmeta:`is_start_request`。"
 
 #: ../../../../scrapy/spidermiddlewares/start.py:docstring of
 #: scrapy.spidermiddlewares.start.StartSpiderMiddleware:6
 msgid "is_start_request"
-msgstr ""
+msgstr "is_start_request"
 
 #: ../../../../scrapy/spidermiddlewares/start.py:docstring of
 #: scrapy.spidermiddlewares.start.StartSpiderMiddleware:8
@@ -886,4 +894,4 @@ msgstr ""
 msgid ""
 ":setting:`URLLENGTH_LIMIT` - The maximum URL length to allow for crawled "
 "URLs."
-msgstr ""
+msgstr ":setting:`URLLENGTH_LIMIT` - 允許爬取的 URL 的最大長度。"

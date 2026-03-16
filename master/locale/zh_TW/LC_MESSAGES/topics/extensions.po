@@ -267,19 +267,19 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:189
 msgid ":setting:`MEMUSAGE_LIMIT_MB`"
-msgstr ""
+msgstr ":setting:`MEMUSAGE_LIMIT_MB`"
 
 #: ../../../topics/extensions.rst:190
 msgid ":setting:`MEMUSAGE_WARNING_MB`"
-msgstr ""
+msgstr ":setting:`MEMUSAGE_WARNING_MB`"
 
 #: ../../../topics/extensions.rst:191
 msgid ":setting:`MEMUSAGE_NOTIFY_MAIL`"
-msgstr ""
+msgstr ":setting:`MEMUSAGE_NOTIFY_MAIL`"
 
 #: ../../../topics/extensions.rst:192
 msgid ":setting:`MEMUSAGE_CHECK_INTERVAL_SECONDS`"
-msgstr ""
+msgstr ":setting:`MEMUSAGE_CHECK_INTERVAL_SECONDS`"
 
 #: ../../../topics/extensions.rst:195
 msgid "Memory debugger extension"
@@ -358,23 +358,23 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:250
 msgid ":setting:`CLOSESPIDER_TIMEOUT`"
-msgstr ""
+msgstr ":setting:`CLOSESPIDER_TIMEOUT`"
 
 #: ../../../topics/extensions.rst:251
 msgid ":setting:`CLOSESPIDER_TIMEOUT_NO_ITEM`"
-msgstr ""
+msgstr ":setting:`CLOSESPIDER_TIMEOUT_NO_ITEM`"
 
 #: ../../../topics/extensions.rst:252
 msgid ":setting:`CLOSESPIDER_ITEMCOUNT`"
-msgstr ""
+msgstr ":setting:`CLOSESPIDER_ITEMCOUNT`"
 
 #: ../../../topics/extensions.rst:253
 msgid ":setting:`CLOSESPIDER_PAGECOUNT`"
-msgstr ""
+msgstr ":setting:`CLOSESPIDER_PAGECOUNT`"
 
 #: ../../../topics/extensions.rst:254
 msgid ":setting:`CLOSESPIDER_ERRORCOUNT`"
-msgstr ""
+msgstr ":setting:`CLOSESPIDER_ERRORCOUNT`"
 
 #: ../../../topics/extensions.rst:258
 msgid ""
@@ -385,13 +385,13 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:265
 msgid "CLOSESPIDER_TIMEOUT"
-msgstr ""
+msgstr "CLOSESPIDER_TIMEOUT"
 
 #: ../../../topics/extensions.rst:267 ../../../topics/extensions.rst:279
 #: ../../../topics/extensions.rst:291 ../../../topics/extensions.rst:303
 #: ../../../topics/extensions.rst:315 ../../../topics/extensions.rst:328
 msgid "Default: ``0``"
-msgstr ""
+msgstr "預設值：``0``"
 
 #: ../../../topics/extensions.rst:269
 msgid ""
@@ -427,7 +427,7 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:301
 msgid "CLOSESPIDER_PAGECOUNT"
-msgstr ""
+msgstr "CLOSESPIDER_PAGECOUNT"
 
 #: ../../../topics/extensions.rst:305
 msgid ""
@@ -588,14 +588,26 @@ msgid ""
 "    },\n"
 "}"
 msgstr ""
+"custom_settings = {\n"
+"    \"LOG_LEVEL\": \"INFO\",\n"
+"    \"PERIODIC_LOG_STATS\": {\n"
+"        \"include\": [\"downloader/\", \"scheduler/\", \"log_count/\", "
+"\"item_scraped_count/\"],\n"
+"    },\n"
+"    \"PERIODIC_LOG_DELTA\": {\"include\": [\"downloader/\"]},\n"
+"    \"PERIODIC_LOG_TIMING_ENABLED\": True,\n"
+"    \"EXTENSIONS\": {\n"
+"        \"scrapy.extensions.periodic_log.PeriodicLog\": 0,\n"
+"    },\n"
+"}"
 
 #: ../../../topics/extensions.rst:442
 msgid "PERIODIC_LOG_DELTA"
-msgstr ""
+msgstr "PERIODIC_LOG_DELTA"
 
 #: ../../../topics/extensions.rst:444 ../../../topics/extensions.rst:455
 msgid "Default: ``None``"
-msgstr ""
+msgstr "預設值：``None``"
 
 #: ../../../topics/extensions.rst:446
 msgid ""
@@ -642,7 +654,7 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:467
 msgid "Default: ``False``"
-msgstr ""
+msgstr "預設值：``False``"
 
 #: ../../../topics/extensions.rst:469
 msgid ""

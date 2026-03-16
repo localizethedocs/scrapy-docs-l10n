@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/developer-tools.rst:5
 msgid "Using your browser's Developer Tools for scraping"
-msgstr ""
+msgstr "使用您的瀏覽器開發者工具進行網頁擷取"
 
 #: ../../../topics/developer-tools.rst:7
 msgid ""

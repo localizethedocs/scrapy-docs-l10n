@@ -212,7 +212,7 @@ msgstr ""
 
 #: ../../../topics/email.rst:155 ../../../topics/email.rst:165
 msgid "Default: ``None``"
-msgstr ""
+msgstr "預設值：``None``"
 
 #: ../../../topics/email.rst:157
 msgid ""
@@ -235,7 +235,7 @@ msgstr ""
 
 #: ../../../topics/email.rst:174 ../../../topics/email.rst:183
 msgid "Default: ``False``"
-msgstr ""
+msgstr "預設值：``False``"
 
 #: ../../../topics/email.rst:176
 msgid ""

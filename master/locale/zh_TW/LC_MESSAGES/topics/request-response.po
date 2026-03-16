@@ -344,7 +344,7 @@ msgstr ""
 
 #: ../../../docstring of scrapy.Request.priority:1
 msgid "Default: ``0``"
-msgstr ""
+msgstr "預設值：``0``"
 
 #: ../../../docstring of scrapy.Request.priority:3
 msgid ""
@@ -588,7 +588,7 @@ msgstr ""
 #: ../../../../scrapy/http/request/__init__.py:docstring of
 #: scrapy.http.request.NO_CALLBACK:5
 msgid "For example:"
-msgstr ""
+msgstr "例如："
 
 #: ../../../../scrapy/http/request/__init__.py:docstring of
 #: scrapy.http.request.NO_CALLBACK:7

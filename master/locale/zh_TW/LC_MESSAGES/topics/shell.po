@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/shell.rst:5
 msgid "Scrapy shell"
-msgstr ""
+msgstr "Scrapy 外殼"
 
 #: ../../../topics/shell.rst:7
 msgid ""
@@ -45,7 +45,7 @@ msgstr ""
 
 #: ../../../topics/shell.rst:21
 msgid "Configuring the shell"
-msgstr ""
+msgstr "組態外殼"
 
 #: ../../../topics/shell.rst:23
 msgid ""
@@ -81,10 +81,12 @@ msgid ""
 "[settings]\n"
 "shell = bpython"
 msgstr ""
+"[settings]\n"
+"shell = bpython"
 
 #: ../../../topics/shell.rst:47
 msgid "Launch the shell"
-msgstr ""
+msgstr "啟動外殼"
 
 #: ../../../topics/shell.rst:49
 msgid ""
@@ -98,7 +100,7 @@ msgstr ""
 
 #: ../../../topics/shell.rst:54
 msgid "Where the ``<url>`` is the URL you want to scrape."
-msgstr ""
+msgstr "其中 `<url>` 是您想要擷取的網址。"
 
 #: ../../../topics/shell.rst:56
 msgid ""
@@ -192,7 +194,7 @@ msgstr ""
 
 #: ../../../topics/shell.rst:117
 msgid "Available Scrapy objects"
-msgstr ""
+msgstr "可用的 Scrapy 物件"
 
 #: ../../../topics/shell.rst:119
 msgid ""
@@ -356,6 +358,50 @@ msgid ""
 "'X-Ua-Compatible': ['IE=edge'],\n"
 "'X-Xss-Protection': ['1; mode=block']}"
 msgstr ""
+">>> response.xpath(\"//title/text()\").get()\n"
+"'Scrapy | A Fast and Powerful Scraping and Web Crawling Framework'\n"
+"\n"
+">>> fetch(\"https://old.reddit.com/\")\n"
+"\n"
+">>> response.xpath(\"//title/text()\").get()\n"
+"'reddit: the front page of the internet'\n"
+"\n"
+">>> request = request.replace(method=\"POST\")\n"
+"\n"
+">>> fetch(request)\n"
+"\n"
+">>> response.status\n"
+"404\n"
+"\n"
+">>> from pprint import pprint\n"
+"\n"
+">>> pprint(response.headers)\n"
+"{'Accept-Ranges': ['bytes'],\n"
+"'Cache-Control': ['max-age=0, must-revalidate'],\n"
+"'Content-Type': ['text/html; charset=UTF-8'],\n"
+"'Date': ['Thu, 08 Dec 2016 16:21:19 GMT'],\n"
+"'Server': ['snooserv'],\n"
+"'Set-Cookie': ['loid=KqNLou0V9SKMX4qb4n; Domain=reddit.com; Max-"
+"Age=63071999; Path=/; expires=Sat, 08-Dec-2018 16:21:19 GMT; secure',\n"
+"                'loidcreated=2016-12-08T16%3A21%3A19.445Z; Domain=reddit."
+"com; Max-Age=63071999; Path=/; expires=Sat, 08-Dec-2018 16:21:19 GMT; "
+"secure',\n"
+"                'loid=vi0ZVe4NkxNWdlH7r7; Domain=reddit.com; Max-"
+"Age=63071999; Path=/; expires=Sat, 08-Dec-2018 16:21:19 GMT; secure',\n"
+"                'loidcreated=2016-12-08T16%3A21%3A19.459Z; Domain=reddit."
+"com; Max-Age=63071999; Path=/; expires=Sat, 08-Dec-2018 16:21:19 GMT; "
+"secure'],\n"
+"'Vary': ['accept-encoding'],\n"
+"'Via': ['1.1 varnish'],\n"
+"'X-Cache': ['MISS'],\n"
+"'X-Cache-Hits': ['0'],\n"
+"'X-Content-Type-Options': ['nosniff'],\n"
+"'X-Frame-Options': ['SAMEORIGIN'],\n"
+"'X-Moose': ['majestic'],\n"
+"'X-Served-By': ['cache-cdg8730-CDG'],\n"
+"'X-Timer': ['S1481214079.394283,VS0,VE159'],\n"
+"'X-Ua-Compatible': ['IE=edge'],\n"
+"'X-Xss-Protection': ['1; mode=block']}"
 
 #: ../../../topics/shell.rst:243
 msgid "Invoking the shell from spiders to inspect responses"
@@ -453,6 +499,10 @@ msgid ""
 "http://example.net> (referer: None)\n"
 "..."
 msgstr ""
+">>> ^D\n"
+"2014-01-23 17:50:03-0400 [scrapy.core.engine] DEBUG: Crawled (200) <GET "
+"http://example.net> (referer: None)\n"
+"..."
 
 #: ../../../topics/shell.rst:312
 msgid ""

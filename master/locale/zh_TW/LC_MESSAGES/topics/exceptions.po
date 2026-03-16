@@ -49,7 +49,7 @@ msgstr ""
 
 #: ../../../topics/exceptions.rst:29
 msgid "For example:"
-msgstr ""
+msgstr "例如："
 
 #: ../../../topics/exceptions.rst:31
 msgid ""
@@ -104,7 +104,7 @@ msgstr ""
 
 #: ../../../topics/exceptions.rst:70
 msgid "Item pipelines"
-msgstr ""
+msgstr "項目管線"
 
 #: ../../../topics/exceptions.rst:71
 msgid "Downloader middlewares"

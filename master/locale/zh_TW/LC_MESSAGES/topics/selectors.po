@@ -433,7 +433,7 @@ msgstr ""
 
 #: ../../../topics/selectors.rst:300
 msgid "Examples:"
-msgstr ""
+msgstr "範例："
 
 #: ../../../topics/selectors.rst:302
 msgid ""
@@ -1804,7 +1804,7 @@ msgstr ""
 
 #: ../../../topics/selectors.rst:1123
 msgid "Examples"
-msgstr ""
+msgstr "範例"
 
 #: ../../../topics/selectors.rst:1128
 msgid "Selector examples on HTML response"

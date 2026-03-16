@@ -324,7 +324,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:211
 msgid "Extracting data"
-msgstr ""
+msgstr "提取資料"
 
 #: ../../../intro/tutorial.rst:213
 msgid ""
@@ -349,7 +349,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:226
 msgid "scrapy shell \"https://quotes.toscrape.com/page/1/\""
-msgstr ""
+msgstr "scrapy shell \"https://quotes.toscrape.com/page/1/\""
 
 #: ../../../intro/tutorial.rst:228
 msgid "You will see something like::"
@@ -403,6 +403,9 @@ msgid ""
 "[<Selector query='descendant-or-self::title' data='<title>Quotes to Scrape</"
 "title>'>]"
 msgstr ""
+">>> response.css(\"title\")\n"
+"[<Selector query='descendant-or-self::title' data='<title>Quotes to Scrape</"
+"title>'>]"
 
 #: ../../../intro/tutorial.rst:257
 msgid ""
@@ -421,6 +424,8 @@ msgid ""
 ">>> response.css(\"title::text\").getall()\n"
 "['Quotes to Scrape']"
 msgstr ""
+">>> response.css(\"title::text\").getall()\n"
+"['Quotes to Scrape']"
 
 #: ../../../intro/tutorial.rst:270
 msgid ""
@@ -435,6 +440,8 @@ msgid ""
 ">>> response.css(\"title\").getall()\n"
 "['<title>Quotes to Scrape</title>']"
 msgstr ""
+">>> response.css(\"title\").getall()\n"
+"['<title>Quotes to Scrape</title>']"
 
 #: ../../../intro/tutorial.rst:280
 msgid ""
@@ -449,6 +456,8 @@ msgid ""
 ">>> response.css(\"title::text\").get()\n"
 "'Quotes to Scrape'"
 msgstr ""
+">>> response.css(\"title::text\").get()\n"
+"'Quotes to Scrape'"
 
 #: ../../../intro/tutorial.rst:289
 msgid "As an alternative, you could've written:"
@@ -459,6 +468,8 @@ msgid ""
 ">>> response.css(\"title::text\")[0].get()\n"
 "'Quotes to Scrape'"
 msgstr ""
+">>> response.css(\"title::text\")[0].get()\n"
+"'Quotes to Scrape'"
 
 #: ../../../intro/tutorial.rst:296
 msgid ""
@@ -509,6 +520,12 @@ msgid ""
 ">>> response.css(\"title::text\").re(r\"(\\w+) to (\\w+)\")\n"
 "['Quotes', 'Scrape']"
 msgstr ""
+">>> response.css(\"title::text\").re(r\"Quotes.*\")\n"
+"['Quotes to Scrape']\n"
+">>> response.css(\"title::text\").re(r\"Q\\w+\")\n"
+"['Quotes']\n"
+">>> response.css(\"title::text\").re(r\"(\\w+) to (\\w+)\")\n"
+"['Quotes', 'Scrape']"
 
 #: ../../../intro/tutorial.rst:332
 msgid ""
@@ -630,6 +647,14 @@ msgid ""
 "itemscope itemtype...'>,\n"
 "...]"
 msgstr ""
+">>> response.css(\"div.quote\")\n"
+"[<Selector query=\"descendant-or-self::div[@class and contains(concat(' ', "
+"normalize-space(@class), ' '), ' quote ')]\" data='<div class=\"quote\" "
+"itemscope itemtype...'>,\n"
+"<Selector query=\"descendant-or-self::div[@class and contains(concat(' ', "
+"normalize-space(@class), ' '), ' quote ')]\" data='<div class=\"quote\" "
+"itemscope itemtype...'>,\n"
+"...]"
 
 #: ../../../intro/tutorial.rst:417
 msgid ""
@@ -874,6 +899,8 @@ msgid ""
 ">>> response.css(\"li.next a::attr(href)\").get()\n"
 "'/page/2/'"
 msgstr ""
+">>> response.css(\"li.next a::attr(href)\").get()\n"
+"'/page/2/'"
 
 #: ../../../intro/tutorial.rst:584
 msgid ""
@@ -1179,7 +1206,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:781
 msgid "scrapy crawl quotes -O quotes-humor.json -a tag=humor"
-msgstr ""
+msgstr "scrapy crawl quotes -O quotes-humor.json -a tag=humor"
 
 #: ../../../intro/tutorial.rst:783
 msgid ""

@@ -268,7 +268,7 @@ msgstr ""
 #: ../../../../scrapy/core/scheduler.py:docstring of
 #: scrapy.core.scheduler.Scheduler:62
 msgid ":setting:`DEPTH_PRIORITY` = ``1``"
-msgstr ""
+msgstr ":setting:`DEPTH_PRIORITY` = ``1``"
 
 #: ../../../../scrapy/core/scheduler.py:docstring of
 #: scrapy.core.scheduler.Scheduler:64
