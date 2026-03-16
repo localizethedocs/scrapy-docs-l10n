@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/shell.rst:5
 msgid "Scrapy shell"
-msgstr ""
+msgstr "Scrapy 外殼"
 
 #: ../../../topics/shell.rst:7
 msgid ""
@@ -45,7 +45,7 @@ msgstr ""
 
 #: ../../../topics/shell.rst:21
 msgid "Configuring the shell"
-msgstr ""
+msgstr "組態外殼"
 
 #: ../../../topics/shell.rst:23
 msgid ""
@@ -81,10 +81,12 @@ msgid ""
 "[settings]\n"
 "shell = bpython"
 msgstr ""
+"[settings]\n"
+"shell = bpython"
 
 #: ../../../topics/shell.rst:47
 msgid "Launch the shell"
-msgstr ""
+msgstr "啟動外殼"
 
 #: ../../../topics/shell.rst:49
 msgid ""
@@ -98,7 +100,7 @@ msgstr ""
 
 #: ../../../topics/shell.rst:54
 msgid "Where the ``<url>`` is the URL you want to scrape."
-msgstr ""
+msgstr "其中 `<url>` 是您想要擷取的網址。"
 
 #: ../../../topics/shell.rst:56
 msgid ""
@@ -192,7 +194,7 @@ msgstr ""
 
 #: ../../../topics/shell.rst:116
 msgid "Available Scrapy objects"
-msgstr ""
+msgstr "可用的 Scrapy 物件"
 
 #: ../../../topics/shell.rst:118
 msgid ""
@@ -440,6 +442,10 @@ msgid ""
 "http://example.net> (referer: None)\n"
 "..."
 msgstr ""
+">>> ^D\n"
+"2014-01-23 17:50:03-0400 [scrapy.core.engine] DEBUG: Crawled (200) <GET "
+"http://example.net> (referer: None)\n"
+"..."
 
 #: ../../../topics/shell.rst:284
 msgid ""

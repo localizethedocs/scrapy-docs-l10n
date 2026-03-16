@@ -421,7 +421,7 @@ msgstr ""
 
 #: ../../../topics/selectors.rst:260
 msgid "Examples:"
-msgstr ""
+msgstr "範例："
 
 #: ../../../topics/selectors.rst:262
 msgid ""
@@ -1754,7 +1754,7 @@ msgstr ""
 
 #: ../../../topics/selectors.rst:978
 msgid "Examples"
-msgstr ""
+msgstr "範例"
 
 #: ../../../topics/selectors.rst:983
 msgid "Selector examples on HTML response"

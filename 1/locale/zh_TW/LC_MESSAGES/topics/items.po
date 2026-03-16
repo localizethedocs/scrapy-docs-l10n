@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:5
 msgid "Items"
-msgstr ""
+msgstr "項目"
 
 #: ../../../topics/items.rst:10
 msgid ""
@@ -120,7 +120,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:85
 msgid "Creating items"
-msgstr ""
+msgstr "建立項目"
 
 #: ../../../topics/items.rst:89
 msgid ""
@@ -131,7 +131,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:94
 msgid "Getting field values"
-msgstr ""
+msgstr "獲取欄位值"
 
 #: ../../../topics/items.rst:98
 msgid ""
@@ -174,7 +174,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:135
 msgid "Setting field values"
-msgstr ""
+msgstr "設定欄位值"
 
 #: ../../../topics/items.rst:139
 msgid ""
@@ -204,10 +204,15 @@ msgid ""
 ">>> product.items()\n"
 "[('price', 1000), ('name', 'Desktop PC')]"
 msgstr ""
+">>> product.keys()\n"
+"['price', 'name']\n"
+"\n"
+">>> product.items()\n"
+"[('price', 1000), ('name', 'Desktop PC')]"
 
 #: ../../../topics/items.rst:163
 msgid "Copying items"
-msgstr ""
+msgstr "複製項目"
 
 #: ../../../topics/items.rst:165
 msgid ""
@@ -323,7 +328,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:234
 msgid "Item objects"
-msgstr ""
+msgstr "項目物件"
 
 #: ../../../topics/items.rst:238
 msgid "Return a new Item optionally initialized from the given argument."

@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:5
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 #: ../../../topics/settings.rst:7
 msgid ""
@@ -275,7 +275,7 @@ msgstr ""
 #: ../../../topics/settings.rst:209 ../../../topics/settings.rst:219
 #: ../../../topics/settings.rst:881 ../../../topics/settings.rst:1170
 msgid "Default: ``None``"
-msgstr ""
+msgstr "預設值：``None``"
 
 #: ../../../topics/settings.rst:170
 msgid ""
@@ -362,7 +362,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:242
 msgid "Default: ``100``"
-msgstr ""
+msgstr "預設值：``100``"
 
 #: ../../../topics/settings.rst:244
 msgid ""
@@ -413,7 +413,7 @@ msgstr ""
 #: ../../../topics/settings.rst:331 ../../../topics/settings.rst:560
 #: ../../../topics/settings.rst:1006 ../../../topics/settings.rst:1057
 msgid "Default: ``0``"
-msgstr ""
+msgstr "預設值：``0``"
 
 #: ../../../topics/settings.rst:278
 msgid ""
@@ -528,7 +528,7 @@ msgstr ""
 #: ../../../topics/settings.rst:1040 ../../../topics/settings.rst:1142
 #: ../../../topics/settings.rst:1191 ../../../topics/settings.rst:1290
 msgid "Default: ``False``"
-msgstr ""
+msgstr "預設值：``False``"
 
 #: ../../../topics/settings.rst:361
 msgid ""
@@ -546,7 +546,7 @@ msgstr ""
 #: ../../../topics/settings.rst:1082 ../../../topics/settings.rst:1363
 #: ../../../topics/settings.rst:1385
 msgid "Default: ``True``"
-msgstr ""
+msgstr "預設值：``True``"
 
 #: ../../../topics/settings.rst:371
 msgid "Whether to enable DNS in-memory cache."
@@ -1317,7 +1317,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:974 ../../../topics/settings.rst:1340
 msgid "Default: ``[]``"
-msgstr ""
+msgstr "預設值：``[]``"
 
 #: ../../../topics/settings.rst:976
 msgid ""

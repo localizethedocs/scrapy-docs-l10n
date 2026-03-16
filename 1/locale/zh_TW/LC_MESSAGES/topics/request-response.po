@@ -60,7 +60,7 @@ msgstr ""
 #: ../../../../scrapy/http/response/__init__.py:docstring
 #: scrapy.http.response.Response:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/request-response.rst:33
 msgid "the URL of this request"

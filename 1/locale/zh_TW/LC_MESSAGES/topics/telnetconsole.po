@@ -305,7 +305,7 @@ msgstr ""
 
 #: ../../../topics/telnetconsole.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/telnetconsole.rst:163
 msgid "the dict of telnet variables"
@@ -363,7 +363,7 @@ msgstr ""
 
 #: ../../../topics/telnetconsole.rst:207
 msgid "Default: ``None``"
-msgstr ""
+msgstr "預設值：``None``"
 
 #: ../../../topics/telnetconsole.rst:209
 msgid ""

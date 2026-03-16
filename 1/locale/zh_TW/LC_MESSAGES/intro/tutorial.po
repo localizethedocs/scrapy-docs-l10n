@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:5
 msgid "Scrapy Tutorial"
-msgstr ""
+msgstr "Scrapy 教學"
 
 #: ../../../intro/tutorial.rst:7
 msgid ""
@@ -39,7 +39,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:15
 msgid "Creating a new Scrapy project"
-msgstr ""
+msgstr "建立新的 Scrapy 專案"
 
 #: ../../../intro/tutorial.rst:16
 msgid ""
@@ -108,7 +108,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:54
 msgid "scrapy startproject tutorial"
-msgstr ""
+msgstr "scrapy startproject tutorial"
 
 #: ../../../intro/tutorial.rst:56
 msgid "This will create a ``tutorial`` directory with the following contents::"
@@ -325,7 +325,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:205
 msgid "Extracting data"
-msgstr ""
+msgstr "提取資料"
 
 #: ../../../intro/tutorial.rst:207
 msgid ""

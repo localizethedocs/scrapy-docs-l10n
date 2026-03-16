@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:5
 msgid "Item Exporters"
-msgstr ""
+msgstr "項目匯出器"
 
 #: ../../../topics/exporters.rst:10
 msgid ""
@@ -36,7 +36,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:18
 msgid "Using Item Exporters"
-msgstr ""
+msgstr "使用項目匯出器"
 
 #: ../../../topics/exporters.rst:20
 msgid ""
@@ -111,7 +111,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:73
 msgid "Serialization of item fields"
-msgstr ""
+msgstr "項目欄位的序列化"
 
 #: ../../../topics/exporters.rst:75
 msgid ""
@@ -205,7 +205,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:138
 msgid "BaseItemExporter"
-msgstr ""
+msgstr "BaseItemExporter"
 
 #: ../../../topics/exporters.rst:142
 msgid ""
@@ -245,7 +245,7 @@ msgstr ""
 #: ../../../topics/exporters.rst:0 ../../../../scrapy/exporters.py:docstring of
 #: scrapy.exporters.MarshalItemExporter:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/exporters.rst:167
 msgid ""
@@ -533,6 +533,8 @@ msgid ""
 "[{\"name\": \"Color TV\", \"price\": \"1200\"},\n"
 "{\"name\": \"DVD player\", \"price\": \"200\"}]"
 msgstr ""
+"[{\"name\": \"Color TV\", \"price\": \"1200\"},\n"
+"{\"name\": \"DVD player\", \"price\": \"200\"}]"
 
 #: ../../../topics/exporters.rst:385
 msgid ""

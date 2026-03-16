@@ -197,7 +197,7 @@ msgstr ""
 
 #: ../../../topics/spiders.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/spiders.rst:138
 msgid "crawler to which the spider will be bound"
@@ -1037,7 +1037,7 @@ msgstr ""
 
 #: ../../../topics/spiders.rst:739
 msgid "SitemapSpider examples"
-msgstr ""
+msgstr "SitemapSpider 範例"
 
 #: ../../../topics/spiders.rst:741
 msgid ""

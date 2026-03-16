@@ -77,7 +77,7 @@ msgstr ""
 
 #: ../../../topics/item-pipeline.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/item-pipeline.rst:36
 msgid "the item scraped"

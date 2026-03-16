@@ -27,11 +27,11 @@ msgstr "基礎概念"
 
 #: ../../../index.rst:120 ../../../index.rst:122
 msgid "Built-in services"
-msgstr ""
+msgstr "內建服務"
 
 #: ../../../index.rst:149 ../../../index.rst:151
 msgid "Solving specific problems"
-msgstr ""
+msgstr "解決特定問題"
 
 #: ../../../index.rst:211 ../../../index.rst:213
 msgid "Extending Scrapy"
@@ -52,6 +52,9 @@ msgid ""
 "be used for a wide range of purposes, from data mining to monitoring and "
 "automated testing."
 msgstr ""
+"Scrapy 是一個快速的高階\\ `網頁爬取 <web crawling_>`_\\ 與\\ `網頁擷取 <web "
+"scraping_>`_\\ 框架，用於爬取網站並從網頁中提取結構化資料。它的應用範圍廣泛，"
+"從資料探勘到監控以及自動化測試皆可適用。"
 
 #: ../../../index.rst:16
 msgid "Getting help"
@@ -59,7 +62,7 @@ msgstr ""
 
 #: ../../../index.rst:18
 msgid "Having trouble? We'd like to help!"
-msgstr ""
+msgstr "遇到困難了嗎？我們很樂意提供幫助！"
 
 #: ../../../index.rst:20
 msgid "Try the :doc:`FAQ <faq>` -- it's got answers to some common questions."
@@ -105,7 +108,7 @@ msgstr ""
 
 #: ../../../index.rst:51
 msgid "Get Scrapy installed on your computer."
-msgstr ""
+msgstr "在您的電腦上安裝 Scrapy。"
 
 #: ../../../index.rst:54
 msgid ":doc:`intro/tutorial`"
@@ -113,7 +116,7 @@ msgstr ""
 
 #: ../../../index.rst:54
 msgid "Write your first Scrapy project."
-msgstr ""
+msgstr "編寫您的第一個 Scrapy 專案。"
 
 #: ../../../index.rst:57
 msgid ":doc:`intro/examples`"
@@ -129,7 +132,7 @@ msgstr ""
 
 #: ../../../index.rst:83
 msgid "Learn about the command-line tool used to manage your Scrapy project."
-msgstr ""
+msgstr "了解用於管理您的 Scrapy 專案的命令行工具。"
 
 #: ../../../index.rst:86
 msgid ":doc:`topics/spiders`"

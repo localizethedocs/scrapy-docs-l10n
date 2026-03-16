@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../intro/overview.rst:5
 msgid "Scrapy at a glance"
-msgstr ""
+msgstr "Scrapy 速覽"
 
 #: ../../../intro/overview.rst:7
 msgid ""
@@ -113,7 +113,7 @@ msgstr ""
 
 #: ../../../intro/overview.rst:72
 msgid "What just happened?"
-msgstr ""
+msgstr "剛剛發生什麼事了？"
 
 #: ../../../intro/overview.rst:74
 msgid ""
@@ -165,7 +165,7 @@ msgstr ""
 
 #: ../../../intro/overview.rst:111
 msgid "What else?"
-msgstr ""
+msgstr "還有什麼？"
 
 #: ../../../intro/overview.rst:113
 msgid ""
@@ -231,7 +231,7 @@ msgstr ""
 
 #: ../../../intro/overview.rst:143
 msgid "crawl depth restriction"
-msgstr ""
+msgstr "爬取深度限制"
 
 #: ../../../intro/overview.rst:144
 msgid "and more"

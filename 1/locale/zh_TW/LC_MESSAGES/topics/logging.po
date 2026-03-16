@@ -251,15 +251,15 @@ msgstr ""
 
 #: ../../../topics/logging.rst:146
 msgid ":setting:`LOG_FILE`"
-msgstr ""
+msgstr ":setting:`LOG_FILE`"
 
 #: ../../../topics/logging.rst:147
 msgid ":setting:`LOG_ENABLED`"
-msgstr ""
+msgstr ":setting:`LOG_ENABLED`"
 
 #: ../../../topics/logging.rst:148
 msgid ":setting:`LOG_ENCODING`"
-msgstr ""
+msgstr ":setting:`LOG_ENCODING`"
 
 #: ../../../topics/logging.rst:149
 msgid ":setting:`LOG_LEVEL`"
@@ -530,7 +530,7 @@ msgstr ""
 
 #: ../../../topics/logging.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../../scrapy/utils/log.py:docstring of
 #: scrapy.utils.log.configure_logging:3

@@ -315,19 +315,19 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:220
 msgid ":setting:`MEMUSAGE_LIMIT_MB`"
-msgstr ""
+msgstr ":setting:`MEMUSAGE_LIMIT_MB`"
 
 #: ../../../topics/extensions.rst:221
 msgid ":setting:`MEMUSAGE_WARNING_MB`"
-msgstr ""
+msgstr ":setting:`MEMUSAGE_WARNING_MB`"
 
 #: ../../../topics/extensions.rst:222
 msgid ":setting:`MEMUSAGE_NOTIFY_MAIL`"
-msgstr ""
+msgstr ":setting:`MEMUSAGE_NOTIFY_MAIL`"
 
 #: ../../../topics/extensions.rst:223
 msgid ":setting:`MEMUSAGE_CHECK_INTERVAL_SECONDS`"
-msgstr ""
+msgstr ":setting:`MEMUSAGE_CHECK_INTERVAL_SECONDS`"
 
 #: ../../../topics/extensions.rst:226
 msgid "Memory debugger extension"
@@ -371,28 +371,28 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:255
 msgid ":setting:`CLOSESPIDER_TIMEOUT`"
-msgstr ""
+msgstr ":setting:`CLOSESPIDER_TIMEOUT`"
 
 #: ../../../topics/extensions.rst:256
 msgid ":setting:`CLOSESPIDER_ITEMCOUNT`"
-msgstr ""
+msgstr ":setting:`CLOSESPIDER_ITEMCOUNT`"
 
 #: ../../../topics/extensions.rst:257
 msgid ":setting:`CLOSESPIDER_PAGECOUNT`"
-msgstr ""
+msgstr ":setting:`CLOSESPIDER_PAGECOUNT`"
 
 #: ../../../topics/extensions.rst:258
 msgid ":setting:`CLOSESPIDER_ERRORCOUNT`"
-msgstr ""
+msgstr ":setting:`CLOSESPIDER_ERRORCOUNT`"
 
 #: ../../../topics/extensions.rst:263
 msgid "CLOSESPIDER_TIMEOUT"
-msgstr ""
+msgstr "CLOSESPIDER_TIMEOUT"
 
 #: ../../../topics/extensions.rst:265 ../../../topics/extensions.rst:277
 #: ../../../topics/extensions.rst:293 ../../../topics/extensions.rst:307
 msgid "Default: ``0``"
-msgstr ""
+msgstr "預設值：``0``"
 
 #: ../../../topics/extensions.rst:267
 msgid ""
@@ -418,7 +418,7 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:289
 msgid "CLOSESPIDER_PAGECOUNT"
-msgstr ""
+msgstr "CLOSESPIDER_PAGECOUNT"
 
 #: ../../../topics/extensions.rst:295
 msgid ""

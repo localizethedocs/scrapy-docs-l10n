@@ -1904,7 +1904,7 @@ msgstr ""
 #: sphinx/domains/c.py:3346 sphinx/domains/cpp.py:7453
 #: sphinx/domains/python.py:674 sphinx/ext/napoleon/docstring.py:755
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: sphinx/domains/c.py:3349 sphinx/domains/cpp.py:7459
 msgid "Return values"
@@ -3103,7 +3103,7 @@ msgstr ""
 
 #: sphinx/ext/napoleon/docstring.py:677
 msgid "Examples"
-msgstr ""
+msgstr "範例"
 
 #: sphinx/ext/napoleon/docstring.py:737
 msgid "Notes"
