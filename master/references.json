@@ -37,9 +37,9 @@
     "branch" : "master",
     "commit" : 
     {
-      "date" : "2026-03-02 15:47:23 +0500",
-      "hash" : "e02ad08672a5946f659acf4874c4a315e7886346",
-      "title" : "Move to mypy --strict with exceptions. (#7300)"
+      "date" : "2026-03-13 10:30:25 +0100",
+      "hash" : "584d99af30b8b0ac35e0b913401e04d5bed2881f",
+      "title" : "Split long test files (#7329)"
     }
   },
   "type" : "branch",
