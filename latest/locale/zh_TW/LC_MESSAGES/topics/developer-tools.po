@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/developer-tools.rst:5
 msgid "Using your browser's Developer Tools for scraping"
-msgstr ""
+msgstr "使用您的瀏覽器開發者工具進行網頁擷取"
 
 #: ../../../topics/developer-tools.rst:7
 msgid ""
@@ -435,7 +435,7 @@ msgstr ""
 
 #: ../../../topics/developer-tools.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../../scrapy/utils/curl.py:docstring of
 #: scrapy.utils.curl.curl_to_request_kwargs:3

@@ -34,7 +34,7 @@ msgstr ""
 
 #: ../../../topics/components.rst:12
 msgid ":setting:`ADDONS`"
-msgstr ""
+msgstr ":setting:`ADDONS`"
 
 #: ../../../topics/components.rst:14
 msgid ":setting:`DNS_RESOLVER`"
@@ -86,19 +86,19 @@ msgstr ""
 
 #: ../../../topics/components.rst:38
 msgid ":setting:`SCHEDULER_PRIORITY_QUEUE`"
-msgstr ""
+msgstr ":setting:`SCHEDULER_PRIORITY_QUEUE`"
 
 #: ../../../topics/components.rst:40
 msgid ":setting:`SCHEDULER_START_DISK_QUEUE`"
-msgstr ""
+msgstr ":setting:`SCHEDULER_START_DISK_QUEUE`"
 
 #: ../../../topics/components.rst:42
 msgid ":setting:`SCHEDULER_START_MEMORY_QUEUE`"
-msgstr ""
+msgstr ":setting:`SCHEDULER_START_MEMORY_QUEUE`"
 
 #: ../../../topics/components.rst:44
 msgid ":setting:`SPIDER_MIDDLEWARES`"
-msgstr ""
+msgstr ":setting:`SPIDER_MIDDLEWARES`"
 
 #: ../../../topics/components.rst:46
 msgid ""
@@ -141,7 +141,7 @@ msgstr ""
 
 #: ../../../topics/components.rst:76
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 #: ../../../topics/components.rst:78
 msgid "Components can be configured through :ref:`settings <topics-settings>`."
@@ -157,7 +157,7 @@ msgstr ""
 
 #: ../../../topics/components.rst:85
 msgid "For example:"
-msgstr ""
+msgstr "例如："
 
 #: ../../../topics/components.rst:87
 msgid ""

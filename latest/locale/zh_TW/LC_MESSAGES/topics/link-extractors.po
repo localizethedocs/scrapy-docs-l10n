@@ -82,7 +82,7 @@ msgstr ""
 
 #: ../../../topics/link-extractors.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "參數"
 
 #: ../../../topics/link-extractors.rst:55
 msgid ""

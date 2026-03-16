@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../news.rst:4
 msgid "Release notes"
-msgstr ""
+msgstr "發行備註"
 
 #: ../../../news.rst:9
 msgid "Scrapy 2.14.1 (2026-01-12)"
@@ -14461,7 +14461,7 @@ msgstr ""
 
 #: ../../../news.rst:8140
 msgid "Command-line tool changes"
-msgstr ""
+msgstr "命令行工具變更"
 
 #: ../../../news.rst:8142
 msgid ""

@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:5
 msgid "Settings"
-msgstr ""
+msgstr "設定"
 
 #: ../../../topics/settings.rst:7
 msgid ""
@@ -300,7 +300,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:192
 msgid "For example:"
-msgstr ""
+msgstr "例如："
 
 #: ../../../topics/settings.rst:195
 msgid ""
@@ -577,7 +577,7 @@ msgstr ""
 #: ../../../topics/settings.rst:1325 ../../../topics/settings.rst:1365
 #: ../../../topics/settings.rst:1394 ../../../topics/settings.rst:1692
 msgid "Default: ``None``"
-msgstr ""
+msgstr "預設值：``None``"
 
 #: ../../../topics/settings.rst:390
 msgid ""
@@ -711,7 +711,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:498
 msgid "Default: ``100``"
-msgstr ""
+msgstr "預設值：``100``"
 
 #: ../../../topics/settings.rst:500
 msgid ""
@@ -821,7 +821,7 @@ msgstr ""
 #: ../../../topics/settings.rst:917 ../../../topics/settings.rst:1203
 #: ../../../topics/settings.rst:1837 ../../../topics/settings.rst:1898
 msgid "Default:"
-msgstr ""
+msgstr "預設值："
 
 #: ../../../topics/settings.rst:577
 msgid ""
@@ -854,7 +854,7 @@ msgstr ""
 #: ../../../topics/settings.rst:597 ../../../topics/settings.rst:609
 #: ../../../topics/settings.rst:1546 ../../../topics/settings.rst:1595
 msgid "Default: ``0``"
-msgstr ""
+msgstr "預設值：``0``"
 
 #: ../../../topics/settings.rst:599 ../../../topics/settings.rst:611
 #: ../../../topics/settings.rst:640
@@ -909,7 +909,7 @@ msgstr ""
 #: ../../../topics/settings.rst:1505 ../../../topics/settings.rst:1578
 #: ../../../topics/settings.rst:1714 ../../../topics/settings.rst:1876
 msgid "Default: ``False``"
-msgstr ""
+msgstr "預設值：``False``"
 
 #: ../../../topics/settings.rst:642
 msgid ""
@@ -928,7 +928,7 @@ msgstr ""
 #: ../../../topics/settings.rst:1943 ../../../topics/settings.rst:1965
 #: ../../../topics/settings.rst:2128
 msgid "Default: ``True``"
-msgstr ""
+msgstr "預設值：``True``"
 
 #: ../../../topics/settings.rst:652
 msgid "Whether to enable DNS in-memory cache."
@@ -1760,7 +1760,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:1340 ../../../topics/settings.rst:1922
 msgid "Example:"
-msgstr ""
+msgstr "範例："
 
 #: ../../../topics/settings.rst:1342
 msgid ""
@@ -1973,7 +1973,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:1514
 msgid "Default: ``[]``"
-msgstr ""
+msgstr "預設值：``[]``"
 
 #: ../../../topics/settings.rst:1516
 msgid ""
