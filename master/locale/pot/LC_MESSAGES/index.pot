@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"POT-Creation-Date: 2026-03-30 09:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,15 +29,15 @@ msgstr ""
 msgid "Built-in services"
 msgstr ""
 
-#: ../../../index.rst:148 ../../../index.rst:150
+#: ../../../index.rst:144 ../../../index.rst:146
 msgid "Solving specific problems"
 msgstr ""
 
-#: ../../../index.rst:218 ../../../index.rst:220
+#: ../../../index.rst:214 ../../../index.rst:216
 msgid "Extending Scrapy"
 msgstr ""
 
-#: ../../../index.rst:273 ../../../index.rst:275
+#: ../../../index.rst:269 ../../../index.rst:271
 msgid "All the rest"
 msgstr ""
 
@@ -224,269 +225,261 @@ msgstr ""
 msgid "See all available exceptions and their meaning."
 msgstr ""
 
-#: ../../../index.rst:134
+#: ../../../index.rst:133
 msgid ":doc:`topics/logging`"
 msgstr ""
 
-#: ../../../index.rst:135
+#: ../../../index.rst:134
 msgid "Learn how to use Python's built-in logging on Scrapy."
 msgstr ""
 
-#: ../../../index.rst:137
+#: ../../../index.rst:136
 msgid ":doc:`topics/stats`"
 msgstr ""
 
-#: ../../../index.rst:138
+#: ../../../index.rst:137
 msgid "Collect statistics about your scraping crawler."
 msgstr ""
 
-#: ../../../index.rst:140
-msgid ":doc:`topics/email`"
-msgstr ""
-
-#: ../../../index.rst:141
-msgid "Send email notifications when certain events occur."
-msgstr ""
-
-#: ../../../index.rst:143
+#: ../../../index.rst:139
 msgid ":doc:`topics/telnetconsole`"
 msgstr ""
 
-#: ../../../index.rst:144
+#: ../../../index.rst:140
 msgid "Inspect a running crawler using a built-in Python console."
 msgstr ""
 
-#: ../../../index.rst:170
+#: ../../../index.rst:166
 msgid ":doc:`faq`"
 msgstr ""
 
-#: ../../../index.rst:171
+#: ../../../index.rst:167
 msgid "Get answers to most frequently asked questions."
 msgstr ""
 
-#: ../../../index.rst:173
+#: ../../../index.rst:169
 msgid ":doc:`topics/debug`"
 msgstr ""
 
-#: ../../../index.rst:174
+#: ../../../index.rst:170
 msgid "Learn how to debug common problems of your Scrapy spider."
 msgstr ""
 
-#: ../../../index.rst:176
+#: ../../../index.rst:172
 msgid ":doc:`topics/contracts`"
 msgstr ""
 
-#: ../../../index.rst:177
+#: ../../../index.rst:173
 msgid "Learn how to use contracts for testing your spiders."
 msgstr ""
 
-#: ../../../index.rst:179
+#: ../../../index.rst:175
 msgid ":doc:`topics/practices`"
 msgstr ""
 
-#: ../../../index.rst:180
+#: ../../../index.rst:176
 msgid "Get familiar with some Scrapy common practices."
 msgstr ""
 
-#: ../../../index.rst:182
+#: ../../../index.rst:178
 msgid ":doc:`topics/broad-crawls`"
 msgstr ""
 
-#: ../../../index.rst:183
+#: ../../../index.rst:179
 msgid "Tune Scrapy for crawling a lot domains in parallel."
 msgstr ""
 
-#: ../../../index.rst:185
+#: ../../../index.rst:181
 msgid ":doc:`topics/developer-tools`"
 msgstr ""
 
-#: ../../../index.rst:186
+#: ../../../index.rst:182
 msgid "Learn how to scrape with your browser's developer tools."
 msgstr ""
 
-#: ../../../index.rst:188
+#: ../../../index.rst:184
 msgid ":doc:`topics/dynamic-content`"
 msgstr ""
 
-#: ../../../index.rst:189
+#: ../../../index.rst:185
 msgid "Read webpage data that is loaded dynamically."
 msgstr ""
 
-#: ../../../index.rst:191
+#: ../../../index.rst:187
 msgid ":doc:`topics/leaks`"
 msgstr ""
 
-#: ../../../index.rst:192
+#: ../../../index.rst:188
 msgid "Learn how to find and get rid of memory leaks in your crawler."
 msgstr ""
 
-#: ../../../index.rst:194
+#: ../../../index.rst:190
 msgid ":doc:`topics/media-pipeline`"
 msgstr ""
 
-#: ../../../index.rst:195
+#: ../../../index.rst:191
 msgid "Download files and/or images associated with your scraped items."
 msgstr ""
 
-#: ../../../index.rst:197
+#: ../../../index.rst:193
 msgid ":doc:`topics/deploy`"
 msgstr ""
 
-#: ../../../index.rst:198
+#: ../../../index.rst:194
 msgid "Deploying your Scrapy spiders and run them in a remote server."
 msgstr ""
 
-#: ../../../index.rst:200
+#: ../../../index.rst:196
 msgid ":doc:`topics/autothrottle`"
 msgstr ""
 
-#: ../../../index.rst:201
+#: ../../../index.rst:197
 msgid "Adjust crawl rate dynamically based on load."
 msgstr ""
 
-#: ../../../index.rst:203
+#: ../../../index.rst:199
 msgid ":doc:`topics/benchmarking`"
 msgstr ""
 
-#: ../../../index.rst:204
+#: ../../../index.rst:200
 msgid "Check how Scrapy performs on your hardware."
 msgstr ""
 
-#: ../../../index.rst:206
+#: ../../../index.rst:202
 msgid ":doc:`topics/jobs`"
 msgstr ""
 
-#: ../../../index.rst:207
+#: ../../../index.rst:203
 msgid "Learn how to pause and resume crawls for large spiders."
 msgstr ""
 
-#: ../../../index.rst:209
+#: ../../../index.rst:205
 msgid ":doc:`topics/coroutines`"
 msgstr ""
 
-#: ../../../index.rst:210
+#: ../../../index.rst:206
 msgid "Use the :ref:`coroutine syntax <async>`."
 msgstr ""
 
-#: ../../../index.rst:212
+#: ../../../index.rst:208
 msgid ":doc:`topics/asyncio`"
 msgstr ""
 
-#: ../../../index.rst:213
+#: ../../../index.rst:209
 msgid "Use :mod:`asyncio` and :mod:`asyncio`-powered libraries."
 msgstr ""
 
-#: ../../../index.rst:237
+#: ../../../index.rst:233
 msgid ":doc:`topics/architecture`"
 msgstr ""
 
-#: ../../../index.rst:238
+#: ../../../index.rst:234
 msgid "Understand the Scrapy architecture."
 msgstr ""
 
-#: ../../../index.rst:240
+#: ../../../index.rst:236
 msgid ":doc:`topics/addons`"
 msgstr ""
 
-#: ../../../index.rst:241
+#: ../../../index.rst:237
 msgid "Enable and configure third-party extensions."
 msgstr ""
 
-#: ../../../index.rst:243
+#: ../../../index.rst:239
 msgid ":doc:`topics/downloader-middleware`"
 msgstr ""
 
-#: ../../../index.rst:244
+#: ../../../index.rst:240
 msgid "Customize how pages get requested and downloaded."
 msgstr ""
 
-#: ../../../index.rst:246
+#: ../../../index.rst:242
 msgid ":doc:`topics/spider-middleware`"
 msgstr ""
 
-#: ../../../index.rst:247
+#: ../../../index.rst:243
 msgid "Customize the input and output of your spiders."
 msgstr ""
 
-#: ../../../index.rst:249
+#: ../../../index.rst:245
 msgid ":doc:`topics/extensions`"
 msgstr ""
 
-#: ../../../index.rst:250
+#: ../../../index.rst:246
 msgid "Extend Scrapy with your custom functionality"
 msgstr ""
 
-#: ../../../index.rst:252
+#: ../../../index.rst:248
 msgid ":doc:`topics/signals`"
 msgstr ""
 
-#: ../../../index.rst:253
+#: ../../../index.rst:249
 msgid "See all available signals and how to work with them."
 msgstr ""
 
-#: ../../../index.rst:255
+#: ../../../index.rst:251
 msgid ":doc:`topics/scheduler`"
 msgstr ""
 
-#: ../../../index.rst:256
+#: ../../../index.rst:252
 msgid "Understand the scheduler component."
 msgstr ""
 
-#: ../../../index.rst:258
+#: ../../../index.rst:254
 msgid ":doc:`topics/exporters`"
 msgstr ""
 
-#: ../../../index.rst:259
+#: ../../../index.rst:255
 msgid "Quickly export your scraped items to a file (XML, CSV, etc)."
 msgstr ""
 
-#: ../../../index.rst:261
+#: ../../../index.rst:257
 msgid ":doc:`topics/download-handlers`"
 msgstr ""
 
-#: ../../../index.rst:262
+#: ../../../index.rst:258
 msgid ""
 "Customize how requests are downloaded or add support for new URL schemes."
 msgstr ""
 
-#: ../../../index.rst:264
+#: ../../../index.rst:260
 msgid ":doc:`topics/components`"
 msgstr ""
 
-#: ../../../index.rst:265
+#: ../../../index.rst:261
 msgid ""
 "Learn the common API and some good practices when building custom Scrapy "
 "components."
 msgstr ""
 
-#: ../../../index.rst:268
+#: ../../../index.rst:264
 msgid ":doc:`topics/api`"
 msgstr ""
 
-#: ../../../index.rst:269
+#: ../../../index.rst:265
 msgid "Use it on extensions and middlewares to extend Scrapy functionality."
 msgstr ""
 
-#: ../../../index.rst:283
+#: ../../../index.rst:279
 msgid ":doc:`news`"
 msgstr ""
 
-#: ../../../index.rst:284
+#: ../../../index.rst:280
 msgid "See what has changed in recent Scrapy versions."
 msgstr ""
 
-#: ../../../index.rst:286
+#: ../../../index.rst:282
 msgid ":doc:`contributing`"
 msgstr ""
 
-#: ../../../index.rst:287
+#: ../../../index.rst:283
 msgid "Learn how to contribute to the Scrapy project."
 msgstr ""
 
-#: ../../../index.rst:289
+#: ../../../index.rst:285
 msgid ":doc:`versioning`"
 msgstr ""
 
-#: ../../../index.rst:290
+#: ../../../index.rst:286
 msgid "Understand Scrapy versioning and API stability."
 msgstr ""
