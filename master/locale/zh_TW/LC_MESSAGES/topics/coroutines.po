@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"POT-Creation-Date: 2026-03-30 09:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,27 +118,15 @@ msgid ""
 msgstr ""
 
 #: ../../../topics/coroutines.rst:76
-msgid "These APIs don't have a coroutine-based counterpart:"
-msgstr ""
-
-#: ../../../topics/coroutines.rst:78
-msgid ":class:`~scrapy.mail.MailSender`"
-msgstr ""
-
-#: ../../../topics/coroutines.rst:80
-msgid ":meth:`~scrapy.mail.MailSender.send`"
-msgstr ""
-
-#: ../../../topics/coroutines.rst:82
 msgid ""
 "These APIs have a coroutine-based implementation and a Deferred-based one:"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:84
+#: ../../../topics/coroutines.rst:78
 msgid ":class:`scrapy.crawler.Crawler`:"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:86
+#: ../../../topics/coroutines.rst:80
 msgid ""
 ":meth:`~scrapy.crawler.Crawler.crawl_async` (coroutine-based) and :meth:"
 "`~scrapy.crawler.Crawler.crawl` (Deferred-based): the former may be "
@@ -146,7 +134,7 @@ msgid ""
 "change in a future Scrapy version."
 msgstr ""
 
-#: ../../../topics/coroutines.rst:91
+#: ../../../topics/coroutines.rst:85
 msgid ""
 ":class:`scrapy.crawler.AsyncCrawlerRunner` and its subclass :class:`scrapy."
 "crawler.AsyncCrawlerProcess` (coroutine-based) and :class:`scrapy.crawler."
@@ -155,80 +143,80 @@ msgid ""
 "latter should be used with those."
 msgstr ""
 
-#: ../../../topics/coroutines.rst:98
+#: ../../../topics/coroutines.rst:92
 msgid ""
 "The following user-supplied methods can return :class:`~twisted.internet."
 "defer.Deferred` objects (the methods that can also return coroutines are "
 "listed in :ref:`coroutine-support`):"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:102
+#: ../../../topics/coroutines.rst:96
 msgid "Custom downloader implementations (see :setting:`DOWNLOADER`):"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:104
+#: ../../../topics/coroutines.rst:98
 msgid "``fetch()``"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:106
+#: ../../../topics/coroutines.rst:100
 msgid "Custom scheduler implementations (see :setting:`SCHEDULER`):"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:108
+#: ../../../topics/coroutines.rst:102
 msgid ":meth:`~scrapy.core.scheduler.BaseScheduler.open`"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:110
+#: ../../../topics/coroutines.rst:104
 msgid ":meth:`~scrapy.core.scheduler.BaseScheduler.close`"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:112
+#: ../../../topics/coroutines.rst:106
 msgid "Custom dupefilters (see :setting:`DUPEFILTER_CLASS`):"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:114
+#: ../../../topics/coroutines.rst:108
 msgid "``open()``"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:116
+#: ../../../topics/coroutines.rst:110
 msgid "``close()``"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:118
+#: ../../../topics/coroutines.rst:112
 msgid "Custom feed storages (see :setting:`FEED_STORAGES`):"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:120
+#: ../../../topics/coroutines.rst:114
 msgid "``store()``"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:122
+#: ../../../topics/coroutines.rst:116
 msgid "Subclasses of :class:`scrapy.pipelines.media.MediaPipeline`:"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:124
+#: ../../../topics/coroutines.rst:118
 msgid "``media_to_download()``"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:126
+#: ../../../topics/coroutines.rst:120
 msgid "``item_completed()``"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:128
+#: ../../../topics/coroutines.rst:122
 msgid ""
 "Custom storages used by subclasses of :class:`scrapy.pipelines.files."
 "FilesPipeline`:"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:131
+#: ../../../topics/coroutines.rst:125
 msgid "``persist_file()``"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:133
+#: ../../../topics/coroutines.rst:127
 msgid "``stat_file()``"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:135
+#: ../../../topics/coroutines.rst:129
 msgid ""
 "In most cases you can use these APIs in code that otherwise uses coroutines, "
 "by wrapping a :class:`~twisted.internet.defer.Deferred` object into a :class:"
@@ -236,44 +224,31 @@ msgid ""
 "more information about this."
 msgstr ""
 
-#: ../../../topics/coroutines.rst:140 ../../../topics/coroutines.rst:395
-msgid "For example:"
-msgstr "例如："
+#: ../../../topics/coroutines.rst:134
+msgid ""
+"For example: a custom scheduler needs to define an ``open()`` method that "
+"can return a :class:`~twisted.internet.defer.Deferred` object. You can write "
+"a method that works with Deferreds and returns one directly, or you can "
+"write a coroutine and convert it into a function that returns a Deferred "
+"with :func:`~scrapy.utils.defer.deferred_f_from_coro_f`."
+msgstr ""
 
 #: ../../../topics/coroutines.rst:142
-msgid ""
-"The :meth:`MailSender.send() <scrapy.mail.MailSender.send>` method returns "
-"a :class:`~twisted.internet.defer.Deferred` object that fires when the email "
-"is sent. You can use this object directly in Deferred-based code or convert "
-"it into a :class:`~asyncio.Future` object with :func:`~scrapy.utils.defer."
-"maybe_deferred_to_future`."
-msgstr ""
-
-#: ../../../topics/coroutines.rst:147
-msgid ""
-"A custom scheduler needs to define an ``open()`` method that can return a :"
-"class:`~twisted.internet.defer.Deferred` object. You can write a method that "
-"works with Deferreds and returns one directly, or you can write a coroutine "
-"and convert it into a function that returns a Deferred with :func:`~scrapy."
-"utils.defer.deferred_f_from_coro_f`."
-msgstr ""
-
-#: ../../../topics/coroutines.rst:155
 msgid "General usage"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:157
+#: ../../../topics/coroutines.rst:144
 msgid "There are several use cases for coroutines in Scrapy."
 msgstr ""
 
-#: ../../../topics/coroutines.rst:159
+#: ../../../topics/coroutines.rst:146
 msgid ""
 "Code that would return Deferreds when written for previous Scrapy versions, "
 "such as downloader middlewares and signal handlers, can be rewritten to be "
 "shorter and cleaner:"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:163
+#: ../../../topics/coroutines.rst:150
 msgid ""
 "from itemadapter import ItemAdapter\n"
 "\n"
@@ -291,11 +266,11 @@ msgid ""
 "        return dfd"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:180
+#: ../../../topics/coroutines.rst:167
 msgid "becomes:"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:182
+#: ../../../topics/coroutines.rst:169
 msgid ""
 "from itemadapter import ItemAdapter\n"
 "\n"
@@ -307,7 +282,7 @@ msgid ""
 "        return item"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:193
+#: ../../../topics/coroutines.rst:180
 msgid ""
 "Coroutines may be used to call asynchronous code. This includes other "
 "coroutines, functions that return Deferreds and functions that return :term:"
@@ -315,7 +290,7 @@ msgid ""
 "you can use many useful Python libraries providing such code:"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:199
+#: ../../../topics/coroutines.rst:186
 msgid ""
 "class MySpiderDeferred(Spider):\n"
 "    # ...\n"
@@ -335,56 +310,56 @@ msgid ""
 "        # ... use response and additional_data to yield items and requests"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:217
+#: ../../../topics/coroutines.rst:204
 msgid ""
 "Many libraries that use coroutines, such as `aio-libs`_, require the :mod:"
 "`asyncio` loop and to use them you need to :doc:`enable asyncio support in "
 "Scrapy<asyncio>`."
 msgstr ""
 
-#: ../../../topics/coroutines.rst:221
+#: ../../../topics/coroutines.rst:208
 msgid ""
 "If you want to ``await`` on Deferreds while using the asyncio reactor, you "
 "need to :ref:`wrap them<asyncio-await-dfd>`."
 msgstr ""
 
-#: ../../../topics/coroutines.rst:224
+#: ../../../topics/coroutines.rst:211
 msgid "Common use cases for asynchronous code include:"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:226
+#: ../../../topics/coroutines.rst:213
 msgid ""
 "requesting data from websites, databases and other services (in :meth:"
 "`~scrapy.spiders.Spider.start`, callbacks, pipelines and middlewares);"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:229
+#: ../../../topics/coroutines.rst:216
 msgid "storing data in databases (in pipelines and middlewares);"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:230
+#: ../../../topics/coroutines.rst:217
 msgid ""
 "delaying the spider initialization until some external event (in the :signal:"
 "`spider_opened` handler);"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:232
+#: ../../../topics/coroutines.rst:219
 msgid ""
 "calling asynchronous Scrapy methods like :meth:`ExecutionEngine.download` "
 "(see :ref:`the screenshot pipeline example<ScreenshotPipeline>`)."
 msgstr ""
 
-#: ../../../topics/coroutines.rst:241
+#: ../../../topics/coroutines.rst:228
 msgid "Inline requests"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:243
+#: ../../../topics/coroutines.rst:230
 msgid ""
 "The spider below shows how to send a request and await its response all from "
 "within a spider callback:"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:246
+#: ../../../topics/coroutines.rst:233
 msgid ""
 "from scrapy import Spider, Request\n"
 "\n"
@@ -404,11 +379,11 @@ msgid ""
 "        }"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:265
+#: ../../../topics/coroutines.rst:252
 msgid "You can also send multiple requests in parallel:"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:267
+#: ../../../topics/coroutines.rst:254
 msgid ""
 "import asyncio\n"
 "\n"
@@ -436,11 +411,11 @@ msgid ""
 "        }"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:298
+#: ../../../topics/coroutines.rst:285
 msgid "Mixing synchronous and asynchronous spider middlewares"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:300
+#: ../../../topics/coroutines.rst:287
 msgid ""
 "The output of a :class:`~scrapy.Request` callback is passed as the "
 "``result`` parameter to the :meth:`~scrapy.spidermiddlewares."
@@ -452,13 +427,13 @@ msgid ""
 "middleware."
 msgstr ""
 
-#: ../../../topics/coroutines.rst:309
+#: ../../../topics/coroutines.rst:296
 msgid ""
 "Scrapy supports mixing :ref:`coroutine methods <async>` and synchronous "
 "methods in this chain of calls."
 msgstr ""
 
-#: ../../../topics/coroutines.rst:312
+#: ../../../topics/coroutines.rst:299
 msgid ""
 "However, if any of the ``process_spider_output`` methods is defined as a "
 "synchronous method, and the previous ``Request`` callback or "
@@ -468,33 +443,33 @@ msgid ""
 "its ``result`` parameter:"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:319
+#: ../../../topics/coroutines.rst:306
 msgid ""
 "The whole output of the previous ``Request`` callback or "
 "``process_spider_output`` method is awaited at this point."
 msgstr ""
 
-#: ../../../topics/coroutines.rst:322
+#: ../../../topics/coroutines.rst:309
 msgid ""
 "If an exception raises while awaiting the output of the previous ``Request`` "
 "callback or ``process_spider_output`` method, none of that output will be "
 "processed."
 msgstr ""
 
-#: ../../../topics/coroutines.rst:326
+#: ../../../topics/coroutines.rst:313
 msgid ""
 "This contrasts with the regular behavior, where all items yielded before an "
 "exception raises are processed."
 msgstr ""
 
-#: ../../../topics/coroutines.rst:329
+#: ../../../topics/coroutines.rst:316
 msgid ""
 "Asynchronous-to-synchronous conversions are supported for backward "
 "compatibility, but they are deprecated and will stop working in a future "
 "version of Scrapy."
 msgstr ""
 
-#: ../../../topics/coroutines.rst:333
+#: ../../../topics/coroutines.rst:320
 msgid ""
 "To avoid asynchronous-to-synchronous conversions, when defining ``Request`` "
 "callbacks as coroutine methods or when using spider middlewares whose "
@@ -504,11 +479,11 @@ msgid ""
 "process_spider_output_async method <universal-spider-middleware>`."
 msgstr ""
 
-#: ../../../topics/coroutines.rst:343
+#: ../../../topics/coroutines.rst:330
 msgid "For middleware users"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:345
+#: ../../../topics/coroutines.rst:332
 msgid ""
 "If you have asynchronous callbacks or use asynchronous-only spider "
 "middlewares you should make sure the asynchronous-to-synchronous "
@@ -522,7 +497,7 @@ msgid ""
 "synchronous-only spider middleware."
 msgstr ""
 
-#: ../../../topics/coroutines.rst:355
+#: ../../../topics/coroutines.rst:342
 msgid ""
 "If you want to update middlewares you wrote, see the :ref:`following section "
 "<sync-async-spider-middleware-authors>`. If you have 3rd-party middlewares "
@@ -531,11 +506,11 @@ msgid ""
 "middleware>` and use the subclasses in your projects."
 msgstr ""
 
-#: ../../../topics/coroutines.rst:364
+#: ../../../topics/coroutines.rst:351
 msgid "For middleware authors"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:366
+#: ../../../topics/coroutines.rst:353
 msgid ""
 "If you have a spider middleware that defines a synchronous "
 "``process_spider_output`` method, you should update it to support "
@@ -545,19 +520,19 @@ msgid ""
 "two options for this:"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:372
+#: ../../../topics/coroutines.rst:359
 msgid ""
 "Make the middleware asynchronous, by making the ``process_spider_output`` "
 "method an :term:`asynchronous generator`."
 msgstr ""
 
-#: ../../../topics/coroutines.rst:374
+#: ../../../topics/coroutines.rst:361
 msgid ""
 "Make the middleware universal, as described in the :ref:`next section "
 "<universal-spider-middleware>`."
 msgstr ""
 
-#: ../../../topics/coroutines.rst:377
+#: ../../../topics/coroutines.rst:364
 msgid ""
 "If your middleware won't be used in projects with synchronous-only "
 "middlewares, e.g. because it's an internal middleware and you know that all "
@@ -565,11 +540,11 @@ msgid ""
 "the first option. Otherwise, it's better to choose the second option."
 msgstr ""
 
-#: ../../../topics/coroutines.rst:385
+#: ../../../topics/coroutines.rst:372
 msgid "Universal spider middlewares"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:387
+#: ../../../topics/coroutines.rst:374
 msgid ""
 "To allow writing a spider middleware that supports asynchronous execution of "
 "its ``process_spider_output`` method in Scrapy 2.7 and later (avoiding :ref:"
@@ -580,7 +555,11 @@ msgid ""
 "``process_spider_output_async``."
 msgstr ""
 
-#: ../../../topics/coroutines.rst:397
+#: ../../../topics/coroutines.rst:382
+msgid "For example:"
+msgstr "例如："
+
+#: ../../../topics/coroutines.rst:384
 msgid ""
 "class UniversalSpiderMiddleware:\n"
 "    def process_spider_output(self, response, result):\n"
@@ -594,14 +573,14 @@ msgid ""
 "            yield r"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:410
+#: ../../../topics/coroutines.rst:397
 msgid ""
 "This is an interim measure to allow, for a time, to write code that works in "
 "Scrapy 2.7 and later without requiring asynchronous-to-synchronous "
 "conversions, and works in earlier Scrapy versions as well."
 msgstr ""
 
-#: ../../../topics/coroutines.rst:415
+#: ../../../topics/coroutines.rst:402
 msgid ""
 "In some future version of Scrapy, however, this feature will be deprecated "
 "and, eventually, in a later version of Scrapy, this feature will be removed, "
@@ -609,7 +588,7 @@ msgid ""
 "``process_spider_output`` method as an asynchronous generator."
 msgstr ""
 
-#: ../../../topics/coroutines.rst:421
+#: ../../../topics/coroutines.rst:408
 msgid ""
 "Since 2.13.0, Scrapy provides a base class, :class:`~scrapy."
 "spidermiddlewares.base.BaseSpiderMiddleware`, which implements the "

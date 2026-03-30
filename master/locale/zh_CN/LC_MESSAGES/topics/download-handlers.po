@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"POT-Creation-Date: 2026-03-30 09:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -163,6 +163,7 @@ msgstr ""
 #: ../../../topics/download-handlers.rst:126
 #: ../../../topics/download-handlers.rst:137
 #: ../../../topics/download-handlers.rst:202
+#: ../../../topics/download-handlers.rst:215
 msgid "Lazy: no."
 msgstr ""
 
@@ -209,7 +210,7 @@ msgid "Supported scheme: ``https``."
 msgstr ""
 
 #: ../../../topics/download-handlers.rst:151
-#: ../../../topics/download-handlers.rst:215
+#: ../../../topics/download-handlers.rst:266
 msgid "Lazy: yes."
 msgstr ""
 
@@ -281,10 +282,12 @@ msgid "HTTP11DownloadHandler"
 msgstr ""
 
 #: ../../../topics/download-handlers.rst:201
+#: ../../../topics/download-handlers.rst:214
 msgid "Supported schemes: ``http``, ``https``."
 msgstr ""
 
 #: ../../../topics/download-handlers.rst:204
+#: ../../../topics/download-handlers.rst:217
 msgid ""
 "This handler supports ``http://host/path`` and ``https://host/path`` URLs "
 "and uses the HTTP/1.1 protocol for them."
@@ -295,18 +298,87 @@ msgid "It's implemented using :mod:`twisted.web.client`."
 msgstr ""
 
 #: ../../../topics/download-handlers.rst:210
+msgid "HttpxDownloadHandler"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:220
+msgid ""
+"It's implemented using the ``httpx`` library and needs it to be installed."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:222
+msgid ""
+"If you want to use this handler you need to replace the default ones for the "
+"``http`` and ``https`` schemes:"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:225
+msgid ""
+"DOWNLOAD_HANDLERS = {\n"
+"    \"http\": \"scrapy.core.downloader.handlers._httpx."
+"HttpxDownloadHandler\",\n"
+"    \"https\": \"scrapy.core.downloader.handlers._httpx."
+"HttpxDownloadHandler\",\n"
+"}"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:234
+msgid ""
+"This handler is experimental, and not yet recommended for production "
+"environments. Future Scrapy versions may introduce related changes without a "
+"deprecation period or warning or even remove it altogether."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:240
+msgid ""
+"As this handler is based on a different HTTP client implementation compared "
+"to :class:`~.HTTP11DownloadHandler`, it's expected that its behavior on some "
+"websites may be different. Additionally, these are the Scrapy features that "
+"are explicitly not supported when using it:"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:245
+msgid "Proxy support (the :reqmeta:`proxy` meta key)."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:247
+msgid ""
+"Per-request bind address support (the :reqmeta:`bindaddress` meta key). The "
+"global :setting:`DOWNLOAD_BIND_ADDRESS` setting is supported but the port "
+"number, if specified, will be ignored."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:251
+msgid ""
+"The :setting:`DOWNLOADER_CLIENT_TLS_CIPHERS` and :setting:"
+"`DOWNLOADER_CLIENT_TLS_METHOD` settings."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:254
+msgid ""
+"Settings specific to the Twisted networking or HTTP implementation, like :"
+"setting:`DNS_RESOLVER`."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:257
+msgid ""
+"Using :ref:`non-asyncio reactors <disable-asyncio>` (``httpx`` requires "
+"``asyncio``)."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:261
 msgid "S3DownloadHandler"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:214
+#: ../../../topics/download-handlers.rst:265
 msgid "Supported scheme: ``s3``."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:217
+#: ../../../topics/download-handlers.rst:268
 msgid "This handler supports ``s3://bucket/path`` S3 URIs."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:219
+#: ../../../topics/download-handlers.rst:270
 msgid ""
 "It's implemented using the ``botocore`` library and needs it to be installed."
 msgstr ""
