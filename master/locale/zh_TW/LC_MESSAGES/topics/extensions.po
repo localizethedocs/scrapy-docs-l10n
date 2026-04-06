@@ -705,6 +705,3 @@ msgstr ""
 msgid ""
 "This extension only works on POSIX-compliant platforms (i.e. not Windows)."
 msgstr ""
-
-#~ msgid ":setting:`MEMUSAGE_NOTIFY_MAIL`"
-#~ msgstr ":setting:`MEMUSAGE_NOTIFY_MAIL`"
