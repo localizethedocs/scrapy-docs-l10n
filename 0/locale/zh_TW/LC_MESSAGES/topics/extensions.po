@@ -339,7 +339,7 @@ msgstr ":setting:`MEMUSAGE_WARNING_MB`"
 
 #: ../../../topics/extensions.rst:237
 msgid ":setting:`MEMUSAGE_NOTIFY_MAIL`"
-msgstr ":setting:`MEMUSAGE_NOTIFY_MAIL`"
+msgstr ""
 
 #: ../../../topics/extensions.rst:238
 msgid ":setting:`MEMUSAGE_REPORT`"
