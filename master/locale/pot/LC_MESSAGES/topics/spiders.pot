@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 09:50+0000\n"
+"POT-Creation-Date: 2026-04-06 09:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -127,7 +127,8 @@ msgid ""
 "``'example.com'`` to the list."
 msgstr ""
 
-#: ../../../docstring of scrapy.Spider.start_urls:1
+#: ../../../../../../.conda/lib/python3.12/site-packages/sphinx/ext/autodoc/_sentinels.py:docstring
+#: of scrapy.Spider.start_urls:1
 msgid "Start URLs. See :meth:`start`."
 msgstr ""
 
@@ -356,7 +357,7 @@ msgstr ""
 msgid ""
 "The ``parse`` method is in charge of processing the response and returning "
 "scraped data and/or more URLs to follow. Other Requests callbacks have the "
-"same requirements as the :class:`Spider` class."
+"same requirements as the :class:`~scrapy.Spider` class."
 msgstr ""
 
 #: ../../../topics/spiders.rst:203

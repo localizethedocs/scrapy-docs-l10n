@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 09:50+0000\n"
+"POT-Creation-Date: 2026-04-06 09:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1140,7 +1140,7 @@ msgstr ""
 #: ../../../news.rst:665
 msgid ""
 "Added :func:`scrapy.utils.asyncio.is_asyncio_available` as an alternative "
-"to :func:`scrapy.utils.defer.is_asyncio_reactor_installed` with a future-"
+"to :func:`scrapy.utils.reactor.is_asyncio_reactor_installed` with a future-"
 "proof name and semantics. (:issue:`6827`)"
 msgstr ""
 
@@ -7596,10 +7596,10 @@ msgstr ""
 
 #: ../../../news.rst:5371
 msgid ""
-"If you are using a custom context factory (:setting:"
-"`DOWNLOADER_CLIENTCONTEXTFACTORY`), its ``__init__`` method must accept two "
-"new parameters: ``tls_verbose_logging`` and ``tls_ciphers`` (:issue:`2111`, :"
-"issue:`3392`, :issue:`3442`, :issue:`3450`)"
+"If you are using a custom context factory "
+"(``DOWNLOADER_CLIENTCONTEXTFACTORY``), its ``__init__`` method must accept "
+"two new parameters: ``tls_verbose_logging`` and ``tls_ciphers`` (:issue:"
+"`2111`, :issue:`3392`, :issue:`3442`, :issue:`3450`)"
 msgstr ""
 
 #: ../../../news.rst:5376
@@ -11328,11 +11328,11 @@ msgid "``scrapy.contrib_exp`` and ``scrapy.contrib`` dissolutions"
 msgstr ""
 
 #: ../../../news.rst:7261
-msgid "scrapy.contrib\\_exp.downloadermidd\\ leware.decompression"
+msgid "scrapy.contrib\\_exp.downloadermidd leware.decompression"
 msgstr ""
 
 #: ../../../news.rst:7261
-msgid "scrapy.downloadermiddlewares.decom\\ pression"
+msgid "scrapy.downloadermiddlewares.decom pression"
 msgstr ""
 
 #: ../../../news.rst:7264
