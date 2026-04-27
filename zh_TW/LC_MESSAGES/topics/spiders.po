@@ -1,0 +1,1383 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy 2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-30 09:30+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/spiders.rst:5
+msgid "Spiders"
+msgstr ""
+
+#: ../../../topics/spiders.rst:7
+msgid ""
+"Spiders are classes which define how a certain site (or a group of sites) "
+"will be scraped, including how to perform the crawl (i.e. follow links) and "
+"how to extract structured data from their pages (i.e. scraping items). In "
+"other words, Spiders are the place where you define the custom behaviour for "
+"crawling and parsing pages for a particular site (or, in some cases, a group "
+"of sites)."
+msgstr ""
+
+#: ../../../topics/spiders.rst:13
+msgid "For spiders, the scraping cycle goes through something like this:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:15
+msgid ""
+"You start by generating the initial requests to crawl the first URLs, and "
+"specify a callback function to be called with the response downloaded from "
+"those requests."
+msgstr ""
+
+#: ../../../topics/spiders.rst:19
+msgid ""
+"The first requests to perform are obtained by iterating the :meth:`~scrapy."
+"Spider.start` method, which by default yields a :class:`~scrapy.Request` "
+"object for each URL in the :attr:`~scrapy.Spider.start_urls` spider "
+"attribute, with the :attr:`~scrapy.Spider.parse` method set as :attr:"
+"`~scrapy.Request.callback` function to handle each :class:`~scrapy.http."
+"Response`."
+msgstr ""
+
+#: ../../../topics/spiders.rst:26
+msgid ""
+"In the callback function, you parse the response (web page) and return :ref:"
+"`item objects <topics-items>`, :class:`~scrapy.Request` objects, or an "
+"iterable of these objects. Those Requests will also contain a callback "
+"(maybe the same) and will then be downloaded by Scrapy and then their "
+"response handled by the specified callback."
+msgstr ""
+
+#: ../../../topics/spiders.rst:33
+msgid ""
+"In callback functions, you parse the page contents, typically using :ref:"
+"`topics-selectors` (but you can also use BeautifulSoup, lxml or whatever "
+"mechanism you prefer) and generate items with the parsed data."
+msgstr ""
+
+#: ../../../topics/spiders.rst:37
+msgid ""
+"Finally, the items returned from the spider will be typically persisted to a "
+"database (in some :ref:`Item Pipeline <topics-item-pipeline>`) or written to "
+"a file using :ref:`topics-feed-exports`."
+msgstr ""
+
+#: ../../../topics/spiders.rst:41
+msgid ""
+"Even though this cycle applies (more or less) to any kind of spider, there "
+"are different kinds of default spiders bundled into Scrapy for different "
+"purposes. We will talk about those types here."
+msgstr ""
+
+#: ../../../topics/spiders.rst:48
+msgid "scrapy.Spider"
+msgstr ""
+
+#: ../../../../scrapy/spiders/__init__.py:docstring of scrapy.spiders.Spider:1
+msgid "Base class that any spider must subclass."
+msgstr ""
+
+#: ../../../../scrapy/spiders/__init__.py:docstring of scrapy.spiders.Spider:3
+msgid ""
+"It provides a default :meth:`start` implementation that sends requests based "
+"on the :attr:`start_urls` class attribute and calls the :meth:`parse` method "
+"for each response."
+msgstr ""
+
+#: ../../../topics/spiders.rst:55
+msgid ""
+"A string which defines the name for this spider. The spider name is how the "
+"spider is located (and instantiated) by Scrapy, so it must be unique. "
+"However, nothing prevents you from instantiating more than one instance of "
+"the same spider. This is the most important spider attribute and it's "
+"required."
+msgstr ""
+
+#: ../../../topics/spiders.rst:61
+msgid ""
+"If the spider scrapes a single domain, a common practice is to name the "
+"spider after the domain, with or without the `TLD`_. So, for example, a "
+"spider that crawls ``mywebsite.com`` would often be called ``mywebsite``."
+msgstr ""
+
+#: ../../../topics/spiders.rst:68
+msgid ""
+"An optional list of strings containing domains that this spider is allowed "
+"to crawl. Requests for URLs not belonging to the domain names specified in "
+"this list (or their subdomains) won't be followed if :class:`~scrapy."
+"downloadermiddlewares.offsite.OffsiteMiddleware` is enabled."
+msgstr ""
+
+#: ../../../topics/spiders.rst:74
+msgid ""
+"Let's say your target url is ``https://www.example.com/1.html``, then add "
+"``'example.com'`` to the list."
+msgstr ""
+
+#: ../../../docstring of scrapy.Spider.start_urls:1
+msgid "Start URLs. See :meth:`start`."
+msgstr ""
+
+#: ../../../topics/spiders.rst:81
+msgid ""
+"A dictionary of settings that will be overridden from the project wide "
+"configuration when running this spider. It must be defined as a class "
+"attribute since the settings are updated before instantiation."
+msgstr ""
+
+#: ../../../topics/spiders.rst:85
+msgid ""
+"For a list of available built-in settings see: :ref:`topics-settings-ref`."
+msgstr ""
+
+#: ../../../topics/spiders.rst:90
+msgid ""
+"This attribute is set by the :meth:`from_crawler` class method after "
+"initializing the class, and links to the :class:`~scrapy.crawler.Crawler` "
+"object to which this spider instance is bound."
+msgstr ""
+
+#: ../../../topics/spiders.rst:95
+msgid ""
+"Crawlers encapsulate a lot of components in the project for their single "
+"entry access (such as extensions, middlewares, signals managers, etc). See :"
+"ref:`topics-api-crawler` to know more about them."
+msgstr ""
+
+#: ../../../topics/spiders.rst:101
+msgid ""
+"Configuration for running this spider. This is a :class:`~scrapy.settings."
+"Settings` instance, see the :ref:`topics-settings` topic for a detailed "
+"introduction on this subject."
+msgstr ""
+
+#: ../../../topics/spiders.rst:107
+msgid ""
+"Python logger created with the Spider's :attr:`name`. You can use it to send "
+"log messages through it as described on :ref:`topics-logging-from-spiders`."
+msgstr ""
+
+#: ../../../topics/spiders.rst:113
+msgid ""
+"A dict you can use to persist some spider state between batches. See :ref:"
+"`topics-keeping-persistent-state-between-batches` to know more about it."
+msgstr ""
+
+#: ../../../topics/spiders.rst:118
+msgid "This is the class method used by Scrapy to create your spiders."
+msgstr ""
+
+#: ../../../topics/spiders.rst:120
+msgid ""
+"You probably won't need to override this directly because the default "
+"implementation acts as a proxy to the :meth:`__init__` method, calling it "
+"with the given arguments ``args`` and named arguments ``kwargs``."
+msgstr ""
+
+#: ../../../topics/spiders.rst:124
+msgid ""
+"Nonetheless, this method sets the :attr:`crawler` and :attr:`settings` "
+"attributes in the new instance so they can be accessed later inside the "
+"spider's code."
+msgstr ""
+
+#: ../../../topics/spiders.rst:130
+msgid ""
+"The settings in ``crawler.settings`` can now be modified in this method, "
+"which is handy if you want to modify them based on arguments. As a "
+"consequence, these settings aren't the final values as they can be modified "
+"later by e.g. :ref:`add-ons <topics-addons>`. For the same reason, most of "
+"the :class:`~scrapy.crawler.Crawler` attributes aren't initialized at this "
+"point."
+msgstr ""
+
+#: ../../../topics/spiders.rst:138
+msgid ""
+"The final settings and the initialized :class:`~scrapy.crawler.Crawler` "
+"attributes are available in the :meth:`start` method, handlers of the :"
+"signal:`engine_started` signal and later."
+msgstr ""
+
+#: ../../../topics/spiders.rst:0
+msgid "Parameters"
+msgstr "參數"
+
+#: ../../../topics/spiders.rst:143
+msgid "crawler to which the spider will be bound"
+msgstr ""
+
+#: ../../../topics/spiders.rst:146
+msgid "arguments passed to the :meth:`__init__` method"
+msgstr ""
+
+#: ../../../topics/spiders.rst:149
+msgid "keyword arguments passed to the :meth:`__init__` method"
+msgstr ""
+
+#: ../../../topics/spiders.rst:154
+msgid ""
+"The ``update_settings()`` method is used to modify the spider's settings and "
+"is called during initialization of a spider instance."
+msgstr ""
+
+#: ../../../topics/spiders.rst:157
+msgid ""
+"It takes a :class:`~scrapy.settings.Settings` object as a parameter and can "
+"add or update the spider's configuration values. This method is a class "
+"method, meaning that it is called on the :class:`~scrapy.Spider` class and "
+"allows all instances of the spider to share the same configuration."
+msgstr ""
+
+#: ../../../topics/spiders.rst:163
+msgid ""
+"While per-spider settings can be set in :attr:`~scrapy.Spider."
+"custom_settings`, using ``update_settings()`` allows you to dynamically add, "
+"remove or change settings based on other settings, spider attributes or "
+"other factors and use setting priorities other than ``'spider'``. Also, it's "
+"easy to extend ``update_settings()`` in a subclass by overriding it, while "
+"doing the same with :attr:`~scrapy.Spider.custom_settings` can be hard."
+msgstr ""
+
+#: ../../../topics/spiders.rst:171
+msgid "For example, suppose a spider needs to modify :setting:`FEEDS`:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:173
+msgid ""
+"import scrapy\n"
+"\n"
+"\n"
+"class MySpider(scrapy.Spider):\n"
+"    name = \"myspider\"\n"
+"    custom_feed = {\n"
+"        \"/home/user/documents/items.json\": {\n"
+"            \"format\": \"json\",\n"
+"            \"indent\": 4,\n"
+"        }\n"
+"    }\n"
+"\n"
+"    @classmethod\n"
+"    def update_settings(cls, settings):\n"
+"        super().update_settings(settings)\n"
+"        settings.setdefault(\"FEEDS\", {}).update(cls.custom_feed)"
+msgstr ""
+
+#: ../../../../scrapy/spiders/__init__.py:docstring of
+#: scrapy.spiders.Spider.start:1
+msgid "Yield the initial :class:`~scrapy.Request` objects to send."
+msgstr ""
+
+#: ../../../../scrapy/spiders/__init__.py:docstring of
+#: scrapy.spiders.Spider.start:5
+msgid "For example:"
+msgstr "例如："
+
+#: ../../../../scrapy/spiders/__init__.py:docstring of
+#: scrapy.spiders.Spider.start:7
+msgid ""
+"from scrapy import Request, Spider\n"
+"\n"
+"\n"
+"class MySpider(Spider):\n"
+"    name = \"myspider\"\n"
+"\n"
+"    async def start(self):\n"
+"        yield Request(\"https://toscrape.com/\")"
+msgstr ""
+
+#: ../../../../scrapy/spiders/__init__.py:docstring of
+#: scrapy.spiders.Spider.start:18
+msgid ""
+"The default implementation reads URLs from :attr:`start_urls` and yields a "
+"request for each with :attr:`~scrapy.Request.dont_filter` enabled. It is "
+"functionally equivalent to:"
+msgstr ""
+
+#: ../../../../scrapy/spiders/__init__.py:docstring of
+#: scrapy.spiders.Spider.start:22
+msgid ""
+"async def start(self):\n"
+"    for url in self.start_urls:\n"
+"        yield Request(url, dont_filter=True)"
+msgstr ""
+
+#: ../../../../scrapy/spiders/__init__.py:docstring of
+#: scrapy.spiders.Spider.start:28
+msgid "You can also yield :ref:`items <topics-items>`. For example:"
+msgstr ""
+
+#: ../../../../scrapy/spiders/__init__.py:docstring of
+#: scrapy.spiders.Spider.start:30
+msgid ""
+"async def start(self):\n"
+"    yield {\"foo\": \"bar\"}"
+msgstr ""
+
+#: ../../../../scrapy/spiders/__init__.py:docstring of
+#: scrapy.spiders.Spider.start:35
+msgid ""
+"To write spiders that work on Scrapy versions lower than 2.13, define also a "
+"synchronous ``start_requests()`` method that returns an iterable. For "
+"example:"
+msgstr ""
+
+#: ../../../../scrapy/spiders/__init__.py:docstring of
+#: scrapy.spiders.Spider.start:39
+msgid ""
+"def start_requests(self):\n"
+"    yield Request(\"https://toscrape.com/\")"
+msgstr ""
+
+#: ../../../../scrapy/spiders/__init__.py:docstring of
+#: scrapy.spiders.Spider.start:44
+msgid ":ref:`start-requests`"
+msgstr ""
+
+#: ../../../topics/spiders.rst:196
+msgid ""
+"This is the default callback used by Scrapy to process downloaded responses, "
+"when their requests don't specify a callback."
+msgstr ""
+
+#: ../../../topics/spiders.rst:199
+msgid ""
+"The ``parse`` method is in charge of processing the response and returning "
+"scraped data and/or more URLs to follow. Other Requests callbacks have the "
+"same requirements as the :class:`Spider` class."
+msgstr ""
+
+#: ../../../topics/spiders.rst:203
+msgid ""
+"This method, as well as any other Request callback, must return a :class:"
+"`~scrapy.Request` object, an :ref:`item object <topics-items>`, an iterable "
+"of :class:`~scrapy.Request` objects and/or :ref:`item objects <topics-"
+"items>`, or ``None``."
+msgstr ""
+
+#: ../../../topics/spiders.rst:208
+msgid "the response to parse"
+msgstr ""
+
+#: ../../../topics/spiders.rst:213
+msgid ""
+"Wrapper that sends a log message through the Spider's :attr:`logger`, kept "
+"for backward compatibility. For more information see :ref:`topics-logging-"
+"from-spiders`."
+msgstr ""
+
+#: ../../../topics/spiders.rst:219
+msgid ""
+"Called when the spider closes. This method provides a shortcut to signals."
+"connect() for the :signal:`spider_closed` signal."
+msgstr ""
+
+#: ../../../topics/spiders.rst:222
+msgid "Let's see an example:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:224
+msgid ""
+"import scrapy\n"
+"\n"
+"\n"
+"class MySpider(scrapy.Spider):\n"
+"    name = \"example.com\"\n"
+"    allowed_domains = [\"example.com\"]\n"
+"    start_urls = [\n"
+"        \"http://www.example.com/1.html\",\n"
+"        \"http://www.example.com/2.html\",\n"
+"        \"http://www.example.com/3.html\",\n"
+"    ]\n"
+"\n"
+"    def parse(self, response):\n"
+"        self.logger.info(\"A response from %s just arrived!\", response.url)"
+msgstr ""
+
+#: ../../../topics/spiders.rst:241
+msgid "Return multiple Requests and items from a single callback:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:243
+msgid ""
+"import scrapy\n"
+"\n"
+"\n"
+"class MySpider(scrapy.Spider):\n"
+"    name = \"example.com\"\n"
+"    allowed_domains = [\"example.com\"]\n"
+"    start_urls = [\n"
+"        \"http://www.example.com/1.html\",\n"
+"        \"http://www.example.com/2.html\",\n"
+"        \"http://www.example.com/3.html\",\n"
+"    ]\n"
+"\n"
+"    def parse(self, response):\n"
+"        for h3 in response.xpath(\"//h3\").getall():\n"
+"            yield {\"title\": h3}\n"
+"\n"
+"        for href in response.xpath(\"//a/@href\").getall():\n"
+"            yield scrapy.Request(response.urljoin(href), self.parse)"
+msgstr ""
+
+#: ../../../topics/spiders.rst:264
+msgid ""
+"Instead of :attr:`~.start_urls` you can use :meth:`~scrapy.Spider.start` "
+"directly; to give data more structure you can use :class:`~scrapy.Item` "
+"objects:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:269
+msgid ""
+"import scrapy\n"
+"from myproject.items import MyItem\n"
+"\n"
+"\n"
+"class MySpider(scrapy.Spider):\n"
+"    name = \"example.com\"\n"
+"    allowed_domains = [\"example.com\"]\n"
+"\n"
+"    async def start(self):\n"
+"        yield scrapy.Request(\"http://www.example.com/1.html\", self.parse)\n"
+"        yield scrapy.Request(\"http://www.example.com/2.html\", self.parse)\n"
+"        yield scrapy.Request(\"http://www.example.com/3.html\", self.parse)\n"
+"\n"
+"    def parse(self, response):\n"
+"        for h3 in response.xpath(\"//h3\").getall():\n"
+"            yield MyItem(title=h3)\n"
+"\n"
+"        for href in response.xpath(\"//a/@href\").getall():\n"
+"            yield scrapy.Request(response.urljoin(href), self.parse)"
+msgstr ""
+
+#: ../../../topics/spiders.rst:294
+msgid "Spider arguments"
+msgstr ""
+
+#: ../../../topics/spiders.rst:296
+msgid ""
+"Spiders can receive arguments that modify their behaviour. Some common uses "
+"for spider arguments are to define the start URLs or to restrict the crawl "
+"to certain sections of the site, but they can be used to configure any "
+"functionality of the spider."
+msgstr ""
+
+#: ../../../topics/spiders.rst:301
+msgid ""
+"Spider arguments are passed through the :command:`crawl` command using the "
+"``-a`` option. For example::"
+msgstr ""
+
+#: ../../../topics/spiders.rst:304
+msgid "scrapy crawl myspider -a category=electronics"
+msgstr ""
+
+#: ../../../topics/spiders.rst:306
+msgid "Spiders can access arguments in their `__init__` methods:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:308
+msgid ""
+"import scrapy\n"
+"\n"
+"\n"
+"class MySpider(scrapy.Spider):\n"
+"    name = \"myspider\"\n"
+"\n"
+"    def __init__(self, category=None, *args, **kwargs):\n"
+"        super(MySpider, self).__init__(*args, **kwargs)\n"
+"        self.start_urls = [f\"http://www.example.com/categories/"
+"{category}\"]\n"
+"        # ..."
+msgstr ""
+
+#: ../../../topics/spiders.rst:321
+msgid ""
+"The default `__init__` method will take any spider arguments and copy them "
+"to the spider as attributes. The above example can also be written as "
+"follows:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:325
+msgid ""
+"import scrapy\n"
+"\n"
+"\n"
+"class MySpider(scrapy.Spider):\n"
+"    name = \"myspider\"\n"
+"\n"
+"    async def start(self):\n"
+"        yield scrapy.Request(f\"http://www.example.com/categories/{self."
+"category}\")"
+msgstr ""
+
+#: ../../../topics/spiders.rst:336
+msgid ""
+"If you are :ref:`running Scrapy from a script <run-from-script>`, you can "
+"specify spider arguments when calling :class:`CrawlerProcess.crawl <scrapy."
+"crawler.CrawlerProcess.crawl>` or :class:`CrawlerRunner.crawl <scrapy."
+"crawler.CrawlerRunner.crawl>`:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:342
+msgid ""
+"process = CrawlerProcess()\n"
+"process.crawl(MySpider, category=\"electronics\")"
+msgstr ""
+
+#: ../../../topics/spiders.rst:347
+msgid ""
+"Keep in mind that spider arguments are only strings. The spider will not do "
+"any parsing on its own. If you were to set the ``start_urls`` attribute from "
+"the command line, you would have to parse it on your own into a list using "
+"something like :func:`ast.literal_eval` or :func:`json.loads` and then set "
+"it as an attribute. Otherwise, you would cause iteration over a "
+"``start_urls`` string (a very common python pitfall) resulting in each "
+"character being seen as a separate url."
+msgstr ""
+
+#: ../../../topics/spiders.rst:357
+msgid ""
+"A valid use case is to set the http auth credentials used by :class:`~scrapy."
+"downloadermiddlewares.httpauth.HttpAuthMiddleware`::"
+msgstr ""
+
+#: ../../../topics/spiders.rst:360
+msgid "scrapy crawl myspider -a http_user=myuser -a http_pass=mypassword"
+msgstr ""
+
+#: ../../../topics/spiders.rst:362
+msgid ""
+"Spider arguments can also be passed through the Scrapyd ``schedule.json`` "
+"API. See `Scrapyd documentation`_."
+msgstr ""
+
+#: ../../../topics/spiders.rst:368
+msgid "scrapy-spider-metadata parameters"
+msgstr ""
+
+#: ../../../topics/spiders.rst:370
+msgid ""
+"Another alternative to pass spider arguments is the library `scrapy-spider-"
+"metadata`_."
+msgstr ""
+
+#: ../../../topics/spiders.rst:372
+msgid ""
+"This allows for Scrapy spiders to define, validate, document and pre-process "
+"their arguments as Pydantic models."
+msgstr ""
+
+#: ../../../topics/spiders.rst:375
+msgid ""
+"The example shows how to define typed parameters where a string argument is "
+"automatically converted to an integer:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:378
+msgid ""
+"import scrapy\n"
+"from pydantic import BaseModel\n"
+"from scrapy_spider_metadata import Args\n"
+"\n"
+"\n"
+"class MyParams(BaseModel):\n"
+"    pages: int\n"
+"\n"
+"\n"
+"class BookSpider(Args[MyParams], scrapy.Spider):\n"
+"    name = \"bookspider\"\n"
+"    start_urls = [\"http://books.toscrape.com/catalogue\"]\n"
+"\n"
+"    async def start(self):\n"
+"        for start_url in self.start_urls:\n"
+"            for index in range(1, self.args.pages + 1):\n"
+"                yield scrapy.Request(f\"{start_url}/page-{index}.html\")\n"
+"\n"
+"    def parse(self, response):\n"
+"        book_links = response.css(\"article.product_pod h3 a::attr(href)\")."
+"getall()\n"
+"        for book_link in book_links:\n"
+"            yield response.follow(book_link, self.parse_book)\n"
+"\n"
+"    def parse_book(self, response):\n"
+"        yield {\n"
+"            \"title\": response.css(\"h1::text\").get(),\n"
+"            \"price\": response.css(\"p.price_color::text\").get(),\n"
+"        }"
+msgstr ""
+
+#: ../../../topics/spiders.rst:409
+msgid "This spider can be called from the command line::"
+msgstr ""
+
+#: ../../../topics/spiders.rst:411
+msgid "scrapy crawl bookspider -a pages=2"
+msgstr ""
+
+#: ../../../topics/spiders.rst:416
+msgid "Start requests"
+msgstr ""
+
+#: ../../../topics/spiders.rst:418
+msgid ""
+"**Start requests** are :class:`~scrapy.Request` objects yielded from the :"
+"meth:`~scrapy.Spider.start` method of a spider or from the :meth:`~scrapy."
+"spidermiddlewares.SpiderMiddleware.process_start` method of a :ref:`spider "
+"middleware <topics-spider-middleware>`."
+msgstr ""
+
+#: ../../../topics/spiders.rst:423
+msgid ":ref:`start-request-order`"
+msgstr ""
+
+#: ../../../topics/spiders.rst:428
+msgid "Delaying start request iteration"
+msgstr ""
+
+#: ../../../topics/spiders.rst:430
+msgid ""
+"You can override the :meth:`~scrapy.Spider.start` method as follows to pause "
+"its iteration whenever there are scheduled requests:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:433
+msgid ""
+"async def start(self):\n"
+"    async for item_or_request in super().start():\n"
+"        if self.crawler.engine.needs_backout():\n"
+"            await self.crawler.signals.wait_for(signals.scheduler_empty)\n"
+"        yield item_or_request"
+msgstr ""
+
+#: ../../../topics/spiders.rst:441
+msgid ""
+"This can help minimize the number of requests in the scheduler at any given "
+"time, to minimize resource usage (memory or disk, depending on :setting:"
+"`JOBDIR`)."
+msgstr ""
+
+#: ../../../topics/spiders.rst:448
+msgid "Generic Spiders"
+msgstr ""
+
+#: ../../../topics/spiders.rst:450
+msgid ""
+"Scrapy comes with some useful generic spiders that you can use to subclass "
+"your spiders from. Their aim is to provide convenient functionality for a "
+"few common scraping cases, like following all links on a site based on "
+"certain rules, crawling from `Sitemaps`_, or parsing an XML/CSV feed."
+msgstr ""
+
+#: ../../../topics/spiders.rst:455
+msgid ""
+"For the examples used in the following spiders, we'll assume you have a "
+"project with a ``TestItem`` declared in a ``myproject.items`` module:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:458
+msgid ""
+"import scrapy\n"
+"\n"
+"\n"
+"class TestItem(scrapy.Item):\n"
+"    id = scrapy.Field()\n"
+"    name = scrapy.Field()\n"
+"    description = scrapy.Field()"
+msgstr ""
+
+#: ../../../topics/spiders.rst:472
+msgid "CrawlSpider"
+msgstr ""
+
+#: ../../../topics/spiders.rst:476
+msgid ""
+"This is the most commonly used spider for crawling regular websites, as it "
+"provides a convenient mechanism for following links by defining a set of "
+"rules. It may not be the best suited for your particular web sites or "
+"project, but it's generic enough for several cases, so you can start from it "
+"and override it as needed for more custom functionality, or just implement "
+"your own spider."
+msgstr ""
+
+#: ../../../topics/spiders.rst:482
+msgid ""
+"Apart from the attributes inherited from Spider (that you must specify), "
+"this class supports a new attribute:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:487
+msgid ""
+"Which is a list of one (or more) :class:`Rule` objects.  Each :class:`Rule` "
+"defines a certain behaviour for crawling the site. Rules objects are "
+"described below. If multiple rules match the same link, the first one will "
+"be used, according to the order they're defined in this attribute."
+msgstr ""
+
+#: ../../../topics/spiders.rst:492
+msgid "This spider also exposes an overridable method:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:496
+msgid ""
+"This method is called for each response produced for the URLs in the "
+"spider's ``start_urls`` attribute. It allows to parse the initial responses "
+"and must return either an :ref:`item object <topics-items>`, a :class:"
+"`~scrapy.Request` object, or an iterable containing any of them."
+msgstr ""
+
+#: ../../../topics/spiders.rst:503
+msgid "Crawling rules"
+msgstr ""
+
+#: ../../../topics/spiders.rst:507
+msgid ""
+"``link_extractor`` is a :ref:`Link Extractor <topics-link-extractors>` "
+"object which defines how links will be extracted from each crawled page. "
+"Each produced link will be used to generate a :class:`~scrapy.Request` "
+"object, which will contain the link's text in its ``meta`` dictionary (under "
+"the ``link_text`` key). If omitted, a default link extractor created with no "
+"arguments will be used, resulting in all links being extracted."
+msgstr ""
+
+#: ../../../topics/spiders.rst:514
+msgid ""
+"``callback`` is a callable or a string (in which case a method from the "
+"spider object with that name will be used) to be called for each link "
+"extracted with the specified link extractor. This callback receives a :class:"
+"`~scrapy.http.Response` as its first argument and must return either a "
+"single instance or an iterable of :ref:`item objects <topics-items>` and/or :"
+"class:`~scrapy.Request` objects (or any subclass of them). As mentioned "
+"above, the received :class:`~scrapy.http.Response` object will contain the "
+"text of the link that produced the :class:`~scrapy.Request` in its ``meta`` "
+"dictionary (under the ``link_text`` key)"
+msgstr ""
+
+#: ../../../topics/spiders.rst:523
+msgid ""
+"``cb_kwargs`` is a dict containing the keyword arguments to be passed to the "
+"callback function."
+msgstr ""
+
+#: ../../../topics/spiders.rst:526
+msgid ""
+"``follow`` is a boolean which specifies if links should be followed from "
+"each response extracted with this rule. If ``callback`` is None ``follow`` "
+"defaults to ``True``, otherwise it defaults to ``False``."
+msgstr ""
+
+#: ../../../topics/spiders.rst:530
+msgid ""
+"``process_links`` is a callable, or a string (in which case a method from "
+"the spider object with that name will be used) which will be called for each "
+"list of links extracted from each response using the specified "
+"``link_extractor``. This is mainly used for filtering purposes."
+msgstr ""
+
+#: ../../../topics/spiders.rst:535
+msgid ""
+"``process_request`` is a callable (or a string, in which case a method from "
+"the spider object with that name will be used) which will be called for "
+"every :class:`~scrapy.Request` extracted by this rule. This callable should "
+"take said request as first argument and the :class:`~scrapy.http.Response` "
+"from which the request originated as second argument. It must return a "
+"``Request`` object or ``None`` (to filter out the request)."
+msgstr ""
+
+#: ../../../topics/spiders.rst:542
+msgid ""
+"``errback`` is a callable or a string (in which case a method from the "
+"spider object with that name will be used) to be called if any exception is "
+"raised while processing a request generated by the rule. It receives a :"
+"class:`Twisted Failure <twisted.python.failure.Failure>` instance as first "
+"parameter."
+msgstr ""
+
+#: ../../../topics/spiders.rst:548
+msgid ""
+"Because of its internal implementation, you must explicitly set callbacks "
+"for new requests when writing :class:`CrawlSpider`-based spiders; unexpected "
+"behaviour can occur otherwise."
+msgstr ""
+
+#: ../../../topics/spiders.rst:553
+msgid "CrawlSpider example"
+msgstr ""
+
+#: ../../../topics/spiders.rst:555
+msgid "Let's now take a look at an example CrawlSpider with rules:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:557
+msgid ""
+"import scrapy\n"
+"from scrapy.spiders import CrawlSpider, Rule\n"
+"from scrapy.linkextractors import LinkExtractor\n"
+"\n"
+"\n"
+"class MySpider(CrawlSpider):\n"
+"    name = \"example.com\"\n"
+"    allowed_domains = [\"example.com\"]\n"
+"    start_urls = [\"http://www.example.com\"]\n"
+"\n"
+"    rules = (\n"
+"        # Extract links matching 'category.php' (but not matching "
+"'subsection.php')\n"
+"        # and follow links from them (since no callback means follow=True by "
+"default).\n"
+"        Rule(LinkExtractor(allow=(r\"category\\.php\",), "
+"deny=(r\"subsection\\.php\",))),\n"
+"        # Extract links matching 'item.php' and parse them with the spider's "
+"method parse_item\n"
+"        Rule(LinkExtractor(allow=(r\"item\\.php\",)), "
+"callback=\"parse_item\"),\n"
+"    )\n"
+"\n"
+"    def parse_item(self, response):\n"
+"        self.logger.info(\"Hi, this is an item page! %s\", response.url)\n"
+"        item = scrapy.Item()\n"
+"        item[\"id\"] = response.xpath('//td[@id=\"item_id\"]/text()')."
+"re(r\"ID: (\\d+)\")\n"
+"        item[\"name\"] = response.xpath('//td[@id=\"item_name\"]/text()')."
+"get()\n"
+"        item[\"description\"] = response.xpath(\n"
+"            '//td[@id=\"item_description\"]/text()'\n"
+"        ).get()\n"
+"        item[\"link_text\"] = response.meta[\"link_text\"]\n"
+"        url = response.xpath('//td[@id=\"additional_data\"]/@href').get()\n"
+"        return response.follow(\n"
+"            url, self.parse_additional_page, cb_kwargs=dict(item=item)\n"
+"        )\n"
+"\n"
+"    def parse_additional_page(self, response, item):\n"
+"        item[\"additional_data\"] = response.xpath(\n"
+"            '//p[@id=\"additional_data\"]/text()'\n"
+"        ).get()\n"
+"        return item"
+msgstr ""
+
+#: ../../../topics/spiders.rst:598
+msgid ""
+"This spider would start crawling example.com's home page, collecting "
+"category links, and item links, parsing the latter with the ``parse_item`` "
+"method. For each item response, some data will be extracted from the HTML "
+"using XPath, and an :class:`~scrapy.Item` will be filled with it."
+msgstr ""
+
+#: ../../../topics/spiders.rst:604
+msgid "XMLFeedSpider"
+msgstr ""
+
+#: ../../../topics/spiders.rst:608
+msgid ""
+"XMLFeedSpider is designed for parsing XML feeds by iterating through them by "
+"a certain node name.  The iterator can be chosen from: ``iternodes``, "
+"``xml``, and ``html``.  It's recommended to use the ``iternodes`` iterator "
+"for performance reasons, since the ``xml`` and ``html`` iterators generate "
+"the whole DOM at once in order to parse it.  However, using ``html`` as the "
+"iterator may be useful when parsing XML with bad markup."
+msgstr ""
+
+#: ../../../topics/spiders.rst:615
+msgid ""
+"To set the iterator and the tag name, you must define the following class "
+"attributes:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:620
+msgid "A string which defines the iterator to use. It can be either:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:622
+msgid "``'iternodes'`` - a fast iterator based on regular expressions"
+msgstr ""
+
+#: ../../../topics/spiders.rst:624
+msgid ""
+"``'html'`` - an iterator which uses :class:`~scrapy.Selector`. Keep in mind "
+"this uses DOM parsing and must load all DOM in memory which could be a "
+"problem for big feeds"
+msgstr ""
+
+#: ../../../topics/spiders.rst:628
+msgid ""
+"``'xml'`` - an iterator which uses :class:`~scrapy.Selector`. Keep in mind "
+"this uses DOM parsing and must load all DOM in memory which could be a "
+"problem for big feeds"
+msgstr ""
+
+#: ../../../topics/spiders.rst:632
+msgid "It defaults to: ``'iternodes'``."
+msgstr ""
+
+#: ../../../topics/spiders.rst:636
+msgid ""
+"A string with the name of the node (or element) to iterate in. Example::"
+msgstr ""
+
+#: ../../../topics/spiders.rst:638
+msgid "itertag = 'product'"
+msgstr ""
+
+#: ../../../topics/spiders.rst:642
+msgid ""
+"A list of ``(prefix, uri)`` tuples which define the namespaces available in "
+"that document that will be processed with this spider. The ``prefix`` and "
+"``uri`` will be used to automatically register namespaces using the :meth:"
+"`~scrapy.Selector.register_namespace` method."
+msgstr ""
+
+#: ../../../topics/spiders.rst:648
+msgid ""
+"You can then specify nodes with namespaces in the :attr:`itertag` attribute."
+msgstr ""
+
+#: ../../../topics/spiders.rst:651
+msgid "Example::"
+msgstr ""
+
+#: ../../../topics/spiders.rst:653
+msgid ""
+"class YourSpider(XMLFeedSpider):\n"
+"\n"
+"    namespaces = [('n', 'http://www.sitemaps.org/schemas/sitemap/0.9')]\n"
+"    itertag = 'n:url'\n"
+"    # ..."
+msgstr ""
+
+#: ../../../topics/spiders.rst:659
+msgid ""
+"Apart from these new attributes, this spider has the following overridable "
+"methods too:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:664
+msgid ""
+"A method that receives the response as soon as it arrives from the spider "
+"middleware, before the spider starts parsing it. It can be used to modify "
+"the response body before parsing it. This method receives a response and "
+"also returns a response (it could be the same or another one)."
+msgstr ""
+
+#: ../../../topics/spiders.rst:671
+msgid ""
+"This method is called for the nodes matching the provided tag name "
+"(``itertag``).  Receives the response and an :class:`~scrapy.Selector` for "
+"each node.  Overriding this method is mandatory. Otherwise, your spider "
+"won't work.  This method must return an :ref:`item object <topics-items>`, "
+"a :class:`~scrapy.Request` object, or an iterable containing any of them."
+msgstr ""
+
+#: ../../../topics/spiders.rst:681
+msgid ""
+"This method is called for each result (item or request) returned by the "
+"spider, and it's intended to perform any last time processing required "
+"before returning the results to the framework core, for example setting the "
+"item IDs. It receives a list of results and the response which originated "
+"those results. It must return a list of results (items or requests)."
+msgstr ""
+
+#: ../../../topics/spiders.rst:687
+msgid ""
+"Because of its internal implementation, you must explicitly set callbacks "
+"for new requests when writing :class:`XMLFeedSpider`-based spiders; "
+"unexpected behaviour can occur otherwise."
+msgstr ""
+
+#: ../../../topics/spiders.rst:693
+msgid "XMLFeedSpider example"
+msgstr ""
+
+#: ../../../topics/spiders.rst:695
+msgid "These spiders are pretty easy to use, let's have a look at one example:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:698
+msgid ""
+"from scrapy.spiders import XMLFeedSpider\n"
+"from myproject.items import TestItem\n"
+"\n"
+"\n"
+"class MySpider(XMLFeedSpider):\n"
+"    name = \"example.com\"\n"
+"    allowed_domains = [\"example.com\"]\n"
+"    start_urls = [\"http://www.example.com/feed.xml\"]\n"
+"    iterator = \"iternodes\"  # This is actually unnecessary, since it's the "
+"default value\n"
+"    itertag = \"item\"\n"
+"\n"
+"    def parse_node(self, response, node):\n"
+"        self.logger.info(\n"
+"            \"Hi, this is a <%s> node!: %s\", self.itertag, \"\".join(node."
+"getall())\n"
+"        )\n"
+"\n"
+"        item = TestItem()\n"
+"        item[\"id\"] = node.xpath(\"@id\").get()\n"
+"        item[\"name\"] = node.xpath(\"name\").get()\n"
+"        item[\"description\"] = node.xpath(\"description\").get()\n"
+"        return item"
+msgstr ""
+
+#: ../../../topics/spiders.rst:722
+msgid ""
+"Basically what we did up there was to create a spider that downloads a feed "
+"from the given ``start_urls``, and then iterates through each of its "
+"``item`` tags, prints them out, and stores some random data in an :class:"
+"`~scrapy.Item`."
+msgstr ""
+
+#: ../../../topics/spiders.rst:727
+msgid "CSVFeedSpider"
+msgstr ""
+
+#: ../../../topics/spiders.rst:731
+msgid ""
+"This spider is very similar to the XMLFeedSpider, except that it iterates "
+"over rows, instead of nodes. The method that gets called in each iteration "
+"is :meth:`parse_row`."
+msgstr ""
+
+#: ../../../topics/spiders.rst:737
+msgid ""
+"A string with the separator character for each field in the CSV file "
+"Defaults to ``','`` (comma)."
+msgstr ""
+
+#: ../../../topics/spiders.rst:742
+msgid ""
+"A string with the enclosure character for each field in the CSV file "
+"Defaults to ``'\"'`` (quotation mark)."
+msgstr ""
+
+#: ../../../topics/spiders.rst:747
+msgid "A list of the column names in the CSV file."
+msgstr ""
+
+#: ../../../topics/spiders.rst:751
+msgid ""
+"Receives a response and a dict (representing each row) with a key for each "
+"provided (or detected) header of the CSV file.  This spider also gives the "
+"opportunity to override ``adapt_response`` and ``process_results`` methods "
+"for pre- and post-processing purposes."
+msgstr ""
+
+#: ../../../topics/spiders.rst:757
+msgid "CSVFeedSpider example"
+msgstr ""
+
+#: ../../../topics/spiders.rst:759
+msgid ""
+"Let's see an example similar to the previous one, but using a :class:"
+"`CSVFeedSpider`:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:763
+msgid ""
+"from scrapy.spiders import CSVFeedSpider\n"
+"from myproject.items import TestItem\n"
+"\n"
+"\n"
+"class MySpider(CSVFeedSpider):\n"
+"    name = \"example.com\"\n"
+"    allowed_domains = [\"example.com\"]\n"
+"    start_urls = [\"http://www.example.com/feed.csv\"]\n"
+"    delimiter = \";\"\n"
+"    quotechar = \"'\"\n"
+"    headers = [\"id\", \"name\", \"description\"]\n"
+"\n"
+"    def parse_row(self, response, row):\n"
+"        self.logger.info(\"Hi, this is a row!: %r\", row)\n"
+"\n"
+"        item = TestItem()\n"
+"        item[\"id\"] = row[\"id\"]\n"
+"        item[\"name\"] = row[\"name\"]\n"
+"        item[\"description\"] = row[\"description\"]\n"
+"        return item"
+msgstr ""
+
+#: ../../../topics/spiders.rst:788
+msgid "SitemapSpider"
+msgstr ""
+
+#: ../../../topics/spiders.rst:792
+msgid ""
+"SitemapSpider allows you to crawl a site by discovering the URLs using "
+"`Sitemaps`_."
+msgstr ""
+
+#: ../../../topics/spiders.rst:795
+msgid ""
+"It supports nested sitemaps and discovering sitemap urls from `robots.txt`_."
+msgstr ""
+
+#: ../../../topics/spiders.rst:800
+msgid "A list of urls pointing to the sitemaps whose urls you want to crawl."
+msgstr ""
+
+#: ../../../topics/spiders.rst:802
+msgid ""
+"You can also point to a `robots.txt`_ and it will be parsed to extract "
+"sitemap urls from it."
+msgstr ""
+
+#: ../../../topics/spiders.rst:807
+msgid "A list of tuples ``(regex, callback)`` where:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:809
+msgid ""
+"``regex`` is a regular expression to match urls extracted from sitemaps. "
+"``regex`` can be either a str or a compiled regex object."
+msgstr ""
+
+#: ../../../topics/spiders.rst:812
+msgid ""
+"callback is the callback to use for processing the urls that match the "
+"regular expression. ``callback`` can be a string (indicating the name of a "
+"spider method) or a callable."
+msgstr ""
+
+#: ../../../topics/spiders.rst:816 ../../../topics/spiders.rst:840
+#: ../../../topics/spiders.rst:858
+msgid "For example::"
+msgstr ""
+
+#: ../../../topics/spiders.rst:818
+msgid "sitemap_rules = [('/product/', 'parse_product')]"
+msgstr ""
+
+#: ../../../topics/spiders.rst:820
+msgid ""
+"Rules are applied in order, and only the first one that matches will be used."
+msgstr ""
+
+#: ../../../topics/spiders.rst:823
+msgid ""
+"If you omit this attribute, all urls found in sitemaps will be processed "
+"with the ``parse`` callback."
+msgstr ""
+
+#: ../../../topics/spiders.rst:828
+msgid ""
+"A list of regexes of sitemap that should be followed. This is only for sites "
+"that use `Sitemap index files`_ that point to other sitemap files."
+msgstr ""
+
+#: ../../../topics/spiders.rst:832
+msgid "By default, all sitemaps are followed."
+msgstr ""
+
+#: ../../../topics/spiders.rst:836
+msgid ""
+"Specifies if alternate links for one ``url`` should be followed. These are "
+"links for the same website in another language passed within the same "
+"``url`` block."
+msgstr ""
+
+#: ../../../topics/spiders.rst:842
+msgid ""
+"<url>\n"
+"    <loc>http://example.com/</loc>\n"
+"    <xhtml:link rel=\"alternate\" hreflang=\"de\" href=\"http://example.com/"
+"de\"/>\n"
+"</url>"
+msgstr ""
+
+#: ../../../topics/spiders.rst:847
+msgid ""
+"With ``sitemap_alternate_links`` set, this would retrieve both URLs. With "
+"``sitemap_alternate_links`` disabled, only ``http://example.com/`` would be "
+"retrieved."
+msgstr ""
+
+#: ../../../topics/spiders.rst:851
+msgid "Default is ``sitemap_alternate_links`` disabled."
+msgstr ""
+
+#: ../../../topics/spiders.rst:855
+msgid ""
+"This is a filter function that could be overridden to select sitemap entries "
+"based on their attributes."
+msgstr ""
+
+#: ../../../topics/spiders.rst:860
+msgid ""
+"<url>\n"
+"    <loc>http://example.com/</loc>\n"
+"    <lastmod>2005-01-01</lastmod>\n"
+"</url>"
+msgstr ""
+
+#: ../../../topics/spiders.rst:865
+msgid ""
+"We can define a ``sitemap_filter`` function to filter ``entries`` by date:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:867
+msgid ""
+"from datetime import datetime\n"
+"from scrapy.spiders import SitemapSpider\n"
+"\n"
+"\n"
+"class FilteredSitemapSpider(SitemapSpider):\n"
+"    name = \"filtered_sitemap_spider\"\n"
+"    allowed_domains = [\"example.com\"]\n"
+"    sitemap_urls = [\"http://example.com/sitemap.xml\"]\n"
+"\n"
+"    def sitemap_filter(self, entries):\n"
+"        for entry in entries:\n"
+"            date_time = datetime.strptime(entry[\"lastmod\"], \"%Y-%m-%d\")\n"
+"            if date_time.year >= 2005:\n"
+"                yield entry"
+msgstr ""
+
+#: ../../../topics/spiders.rst:884
+msgid ""
+"This would retrieve only ``entries`` modified on 2005 and the following "
+"years."
+msgstr ""
+
+#: ../../../topics/spiders.rst:887
+msgid ""
+"Entries are dict objects extracted from the sitemap document. Usually, the "
+"key is the tag name and the value is the text inside it."
+msgstr ""
+
+#: ../../../topics/spiders.rst:890
+msgid "It's important to notice that:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:892
+msgid ""
+"as the loc attribute is required, entries without this tag are discarded"
+msgstr ""
+
+#: ../../../topics/spiders.rst:893
+msgid ""
+"alternate links are stored in a list with the key ``alternate`` (see "
+"``sitemap_alternate_links``)"
+msgstr ""
+
+#: ../../../topics/spiders.rst:895
+msgid ""
+"namespaces are removed, so lxml tags named as ``{namespace}tagname`` become "
+"only ``tagname``"
+msgstr ""
+
+#: ../../../topics/spiders.rst:897
+msgid ""
+"If you omit this method, all entries found in sitemaps will be processed, "
+"observing other attributes and their settings."
+msgstr ""
+
+#: ../../../topics/spiders.rst:902
+msgid "SitemapSpider examples"
+msgstr "SitemapSpider 範例"
+
+#: ../../../topics/spiders.rst:904
+msgid ""
+"Simplest example: process all urls discovered through sitemaps using the "
+"``parse`` callback:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:907
+msgid ""
+"from scrapy.spiders import SitemapSpider\n"
+"\n"
+"\n"
+"class MySpider(SitemapSpider):\n"
+"    sitemap_urls = [\"http://www.example.com/sitemap.xml\"]\n"
+"\n"
+"    def parse(self, response):\n"
+"        pass  # ... scrape item here ..."
+msgstr ""
+
+#: ../../../topics/spiders.rst:918
+msgid ""
+"Process some urls with certain callback and other urls with a different "
+"callback:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:921
+msgid ""
+"from scrapy.spiders import SitemapSpider\n"
+"\n"
+"\n"
+"class MySpider(SitemapSpider):\n"
+"    sitemap_urls = [\"http://www.example.com/sitemap.xml\"]\n"
+"    sitemap_rules = [\n"
+"        (\"/product/\", \"parse_product\"),\n"
+"        (\"/category/\", \"parse_category\"),\n"
+"    ]\n"
+"\n"
+"    def parse_product(self, response):\n"
+"        pass  # ... scrape product ...\n"
+"\n"
+"    def parse_category(self, response):\n"
+"        pass  # ... scrape category ..."
+msgstr ""
+
+#: ../../../topics/spiders.rst:939
+msgid ""
+"Follow sitemaps defined in the `robots.txt`_ file and only follow sitemaps "
+"whose url contains ``/sitemap_shop``:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:942
+msgid ""
+"from scrapy.spiders import SitemapSpider\n"
+"\n"
+"\n"
+"class MySpider(SitemapSpider):\n"
+"    sitemap_urls = [\"http://www.example.com/robots.txt\"]\n"
+"    sitemap_rules = [\n"
+"        (\"/shop/\", \"parse_shop\"),\n"
+"    ]\n"
+"    sitemap_follow = [\"/sitemap_shops\"]\n"
+"\n"
+"    def parse_shop(self, response):\n"
+"        pass  # ... scrape shop here ..."
+msgstr ""
+
+#: ../../../topics/spiders.rst:957
+msgid "Combine SitemapSpider with other sources of urls:"
+msgstr ""
+
+#: ../../../topics/spiders.rst:959
+msgid ""
+"from scrapy.spiders import SitemapSpider\n"
+"\n"
+"\n"
+"class MySpider(SitemapSpider):\n"
+"    sitemap_urls = [\"http://www.example.com/robots.txt\"]\n"
+"    sitemap_rules = [\n"
+"        (\"/shop/\", \"parse_shop\"),\n"
+"    ]\n"
+"\n"
+"    other_urls = [\"http://www.example.com/about\"]\n"
+"\n"
+"    async def start(self):\n"
+"        async for item_or_request in super().start():\n"
+"            yield item_or_request\n"
+"        for url in self.other_urls:\n"
+"            yield Request(url, self.parse_other)\n"
+"\n"
+"    def parse_shop(self, response):\n"
+"        pass  # ... scrape shop here ...\n"
+"\n"
+"    def parse_other(self, response):\n"
+"        pass  # ... scrape other here ..."
+msgstr ""
