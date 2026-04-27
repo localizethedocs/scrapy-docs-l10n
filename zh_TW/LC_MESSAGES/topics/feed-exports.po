@@ -1,0 +1,1349 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/feed-exports.rst:5
+msgid "Feed exports"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:7
+msgid ""
+"One of the most frequently required features when implementing scrapers is "
+"being able to store the scraped data properly and, quite often, that means "
+"generating an \"export file\" with the scraped data (commonly called "
+"\"export feed\") to be consumed by other systems."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:12
+msgid ""
+"Scrapy provides this functionality out of the box with the Feed Exports, "
+"which allows you to generate feeds with the scraped items, using multiple "
+"serialization formats and storage backends."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:16
+msgid ""
+"This page provides detailed documentation for all feed export features. If "
+"you are looking for a step-by-step guide, check out `Zyte’s export guides`_."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:24
+msgid "Serialization formats"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:26
+msgid ""
+"For serializing the scraped data, the feed exports use the :ref:`Item "
+"exporters <topics-exporters>`. These formats are supported out of the box:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:29
+msgid ":ref:`topics-feed-format-json`"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:30
+msgid ":ref:`topics-feed-format-jsonlines`"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:31
+msgid ":ref:`topics-feed-format-csv`"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:32
+msgid ":ref:`topics-feed-format-xml`"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:34
+msgid ""
+"But you can also extend the supported format through the :setting:"
+"`FEED_EXPORTERS` setting."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:40
+msgid "JSON"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:42
+msgid "Value for the ``format`` key in the :setting:`FEEDS` setting: ``json``"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:44
+msgid "Exporter used: :class:`~scrapy.exporters.JsonItemExporter`"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:46
+msgid ""
+"See :ref:`this warning <json-with-large-data>` if you're using JSON with "
+"large feeds."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:52
+msgid "JSON lines"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:54
+msgid ""
+"Value for the ``format`` key in the :setting:`FEEDS` setting: ``jsonlines``"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:55
+msgid "Exporter used: :class:`~scrapy.exporters.JsonLinesItemExporter`"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:60
+msgid "CSV"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:62
+msgid "Value for the ``format`` key in the :setting:`FEEDS` setting: ``csv``"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:64
+msgid "Exporter used: :class:`~scrapy.exporters.CsvItemExporter`"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:66
+msgid ""
+"To specify columns to export, their order and their column names, use :"
+"setting:`FEED_EXPORT_FIELDS`. Other feed exporters can also use this option, "
+"but it is important for CSV because unlike many other export formats CSV "
+"uses a fixed header."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:74
+msgid "XML"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:76
+msgid "Value for the ``format`` key in the :setting:`FEEDS` setting: ``xml``"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:77
+msgid "Exporter used: :class:`~scrapy.exporters.XmlItemExporter`"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:82
+msgid "Pickle"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:84
+msgid ""
+"Value for the ``format`` key in the :setting:`FEEDS` setting: ``pickle``"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:85
+msgid "Exporter used: :class:`~scrapy.exporters.PickleItemExporter`"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:90
+msgid "Marshal"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:92
+msgid ""
+"Value for the ``format`` key in the :setting:`FEEDS` setting: ``marshal``"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:93
+msgid "Exporter used: :class:`~scrapy.exporters.MarshalItemExporter`"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:99
+msgid "Storages"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:101
+msgid ""
+"When using the feed exports you define where to store the feed using one or "
+"multiple URIs_ (through the :setting:`FEEDS` setting). The feed exports "
+"supports multiple storage backend types which are defined by the URI scheme."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:105
+msgid "The storages backends supported out of the box are:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:107
+msgid ":ref:`topics-feed-storage-fs`"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:108
+msgid ":ref:`topics-feed-storage-ftp`"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:109
+msgid ":ref:`topics-feed-storage-s3` (requires boto3_)"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:110
+msgid ":ref:`topics-feed-storage-gcs` (requires `google-cloud-storage`_)"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:111
+msgid ":ref:`topics-feed-storage-stdout`"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:113
+msgid ""
+"Some storage backends may be unavailable if the required external libraries "
+"are not available. For example, the S3 backend is only available if the "
+"boto3_ library is installed."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:121
+msgid "Storage URI parameters"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:123
+msgid ""
+"The storage URI can also contain parameters that get replaced when the feed "
+"is being created. These parameters are:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:126
+msgid ""
+"``%(time)s`` - gets replaced by a timestamp when the feed is being created"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:127
+msgid "``%(name)s`` - gets replaced by the spider name"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:129
+msgid ""
+"Any other named parameter gets replaced by the spider attribute of the same "
+"name. For example, ``%(site_id)s`` would get replaced by the ``spider."
+"site_id`` attribute the moment the feed is being created."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:133
+msgid "Here are some examples to illustrate:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:135
+msgid "Store in FTP using one directory per spider:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:137
+msgid ""
+"``ftp://user:password@ftp.example.com/scraping/feeds/%(name)s/%(time)s.json``"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:139
+msgid "Store in S3 using one directory per spider:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:141
+msgid "``s3://mybucket/scraping/feeds/%(name)s/%(time)s.json``"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:143
+msgid ""
+":ref:`Spider arguments <spiderargs>` become spider attributes, hence they "
+"can also be used as storage URI parameters."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:150
+msgid "Storage backends"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:155
+msgid "Local filesystem"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:157
+msgid "The feeds are stored in the local filesystem."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:159
+msgid "URI scheme: ``file``"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:160
+msgid "Example URI: ``file:///tmp/export.csv``"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:161 ../../../topics/feed-exports.rst:176
+#: ../../../topics/feed-exports.rst:276
+msgid "Required external libraries: none"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:163
+msgid ""
+"Note that for the local filesystem storage (only) you can omit the scheme if "
+"you specify an absolute path like ``/tmp/export.csv`` (Unix systems only). "
+"Alternatively you can also use a :class:`pathlib.Path` object."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:170
+msgid "FTP"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:172
+msgid "The feeds are stored in a FTP server."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:174
+msgid "URI scheme: ``ftp``"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:175
+msgid "Example URI: ``ftp://user:pass@ftp.example.com/path/to/export.csv``"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:178
+msgid ""
+"FTP supports two different connection modes: `active or passive <https://"
+"stackoverflow.com/a/1699163>`_. Scrapy uses the passive connection mode by "
+"default. To use the active connection mode instead, set the :setting:"
+"`FEED_STORAGE_FTP_ACTIVE` setting to ``True``."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:183 ../../../topics/feed-exports.rst:225
+#: ../../../topics/feed-exports.rst:256
+msgid ""
+"The default value for the ``overwrite`` key in the :setting:`FEEDS` for this "
+"storage backend is: ``True``."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:186 ../../../topics/feed-exports.rst:228
+#: ../../../topics/feed-exports.rst:259
+msgid ""
+"The value ``True`` in ``overwrite`` will cause you to lose the previous "
+"version of your data."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:189 ../../../topics/feed-exports.rst:231
+#: ../../../topics/feed-exports.rst:262
+msgid ""
+"This storage backend uses :ref:`delayed file delivery <delayed-file-"
+"delivery>`."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:195
+msgid "S3"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:197
+msgid "The feeds are stored on `Amazon S3`_."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:199
+msgid "URI scheme: ``s3``"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:201 ../../../topics/feed-exports.rst:243
+msgid "Example URIs:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:203
+msgid "``s3://mybucket/path/to/export.csv``"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:205
+msgid "``s3://aws_key:aws_secret@mybucket/path/to/export.csv``"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:207
+msgid "Required external libraries: `boto3`_ >= 1.20.0"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:209
+msgid ""
+"The AWS credentials can be passed as user/password in the URI, or they can "
+"be passed through the following settings:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:212
+msgid ":setting:`AWS_ACCESS_KEY_ID`"
+msgstr ":setting:`AWS_ACCESS_KEY_ID`"
+
+#: ../../../topics/feed-exports.rst:213
+msgid ":setting:`AWS_SECRET_ACCESS_KEY`"
+msgstr ":setting:`AWS_SECRET_ACCESS_KEY`"
+
+#: ../../../topics/feed-exports.rst:214
+msgid ""
+":setting:`AWS_SESSION_TOKEN` (only needed for `temporary security "
+"credentials`_)"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:218
+msgid ""
+"You can also define a custom ACL, custom endpoint, and region name for "
+"exported feeds using these settings:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:221 ../../../topics/feed-exports.rst:411
+msgid ":setting:`FEED_STORAGE_S3_ACL`"
+msgstr ":setting:`FEED_STORAGE_S3_ACL`"
+
+#: ../../../topics/feed-exports.rst:222
+msgid ":setting:`AWS_ENDPOINT_URL`"
+msgstr ":setting:`AWS_ENDPOINT_URL`"
+
+#: ../../../topics/feed-exports.rst:223
+msgid ":setting:`AWS_REGION_NAME`"
+msgstr ":setting:`AWS_REGION_NAME`"
+
+#: ../../../topics/feed-exports.rst:237
+msgid "Google Cloud Storage (GCS)"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:239
+msgid "The feeds are stored on `Google Cloud Storage`_."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:241
+msgid "URI scheme: ``gs``"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:245
+msgid "``gs://mybucket/path/to/export.csv``"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:247
+msgid "Required external libraries: `google-cloud-storage`_."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:249
+msgid ""
+"For more information about authentication, please refer to `Google Cloud "
+"documentation <https://cloud.google.com/docs/authentication>`_."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:251
+msgid ""
+"You can set a *Project ID* and *Access Control List (ACL)* through the "
+"following settings:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:253
+msgid ":setting:`FEED_STORAGE_GCS_ACL`"
+msgstr ":setting:`FEED_STORAGE_GCS_ACL`"
+
+#: ../../../topics/feed-exports.rst:254
+msgid ":setting:`GCS_PROJECT_ID`"
+msgstr ":setting:`GCS_PROJECT_ID`"
+
+#: ../../../topics/feed-exports.rst:270
+msgid "Standard output"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:272
+msgid "The feeds are written to the standard output of the Scrapy process."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:274
+msgid "URI scheme: ``stdout``"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:275
+msgid "Example URI: ``stdout:``"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:282
+msgid "Delayed file delivery"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:284
+msgid ""
+"As indicated above, some of the described storage backends use delayed file "
+"delivery."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:287
+msgid ""
+"These storage backends do not upload items to the feed URI as those items "
+"are scraped. Instead, Scrapy writes items into a temporary local file, and "
+"only once all the file contents have been written (i.e. at the end of the "
+"crawl) is that file uploaded to the feed URI."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:292
+msgid ""
+"If you want item delivery to start earlier when using one of these storage "
+"backends, use :setting:`FEED_EXPORT_BATCH_ITEM_COUNT` to split the output "
+"items in multiple files, with the specified maximum item count per file. "
+"That way, as soon as a file reaches the maximum item count, that file is "
+"delivered to the feed URI, allowing item delivery to start way before the "
+"end of the crawl."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:302
+msgid "Item filtering"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:304
+msgid ""
+"You can filter items that you want to allow for a particular feed by using "
+"the ``item_classes`` option in :ref:`feeds options <feed-options>`. Only "
+"items of the specified types will be added to the feed."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:308
+msgid ""
+"The ``item_classes`` option is implemented by the :class:`~scrapy.extensions."
+"feedexport.ItemFilter` class, which is the default value of the "
+"``item_filter`` :ref:`feed option <feed-options>`."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:311
+msgid ""
+"You can create your own custom filtering class by implementing :class:"
+"`~scrapy.extensions.feedexport.ItemFilter`'s method ``accepts`` and taking "
+"``feed_options`` as an argument."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:314
+msgid "For instance:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:316
+msgid ""
+"class MyCustomFilter:\n"
+"    def __init__(self, feed_options):\n"
+"        self.feed_options = feed_options\n"
+"\n"
+"    def accepts(self, item):\n"
+"        if \"field1\" in item and item[\"field1\"] == \"expected_data\":\n"
+"            return True\n"
+"        return False"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:328
+msgid ""
+"You can assign your custom filtering class to the ``item_filter`` :ref:"
+"`option of a feed <feed-options>`. See :setting:`FEEDS` for examples."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:332
+msgid "ItemFilter"
+msgstr ""
+
+#: ../../../../scrapy/extensions/feedexport.py:docstring of
+#: scrapy.extensions.feedexport.ItemFilter:1
+msgid ""
+"This will be used by FeedExporter to decide if an item should be allowed to "
+"be exported to a particular feed."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:0
+msgid "Parameters"
+msgstr "參數"
+
+#: ../../../../scrapy/extensions/feedexport.py:docstring of
+#: scrapy.extensions.feedexport.ItemFilter:4
+msgid "feed specific options passed from FeedExporter"
+msgstr ""
+
+#: ../../../../scrapy/extensions/feedexport.py:docstring of
+#: scrapy.extensions.feedexport.ItemFilter.accepts:1
+msgid "Return ``True`` if `item` should be exported or ``False`` otherwise."
+msgstr ""
+
+#: ../../../../scrapy/extensions/feedexport.py:docstring of
+#: scrapy.extensions.feedexport.ItemFilter.accepts:3
+msgid "scraped item which user wants to check if is acceptable"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../scrapy/extensions/feedexport.py:docstring of
+#: scrapy.extensions.feedexport.ItemFilter.accepts:5
+msgid "`True` if accepted, `False` otherwise"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:341
+msgid "Post-Processing"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:343
+msgid ""
+"Scrapy provides an option to activate plugins to post-process feeds before "
+"they are exported to feed storages. In addition to using :ref:`builtin "
+"plugins <builtin-plugins>`, you can create your own :ref:`plugins <custom-"
+"plugins>`."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:347
+msgid ""
+"These plugins can be activated through the ``postprocessing`` option of a "
+"feed. The option must be passed a list of post-processing plugins in the "
+"order you want the feed to be processed. These plugins can be declared "
+"either as an import string or with the imported class of the plugin. "
+"Parameters to plugins can be passed through the feed options. See :ref:`feed "
+"options <feed-options>` for examples."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:356
+msgid "Built-in Plugins"
+msgstr ""
+
+#: ../../../../scrapy/extensions/postprocessing.py:docstring of
+#: scrapy.extensions.postprocessing.GzipPlugin:1
+msgid ""
+"Compresses received data using `gzip <https://en.wikipedia.org/wiki/Gzip>`_."
+msgstr ""
+
+#: ../../../../scrapy/extensions/postprocessing.py:docstring of
+#: scrapy.extensions.postprocessing.Bz2Plugin:3
+#: scrapy.extensions.postprocessing.GzipPlugin:3
+#: scrapy.extensions.postprocessing.LZMAPlugin:3
+msgid "Accepted ``feed_options`` parameters:"
+msgstr ""
+
+#: ../../../../scrapy/extensions/postprocessing.py:docstring of
+#: scrapy.extensions.postprocessing.GzipPlugin:5
+msgid "`gzip_compresslevel`"
+msgstr ""
+
+#: ../../../../scrapy/extensions/postprocessing.py:docstring of
+#: scrapy.extensions.postprocessing.GzipPlugin:6
+msgid "`gzip_mtime`"
+msgstr ""
+
+#: ../../../../scrapy/extensions/postprocessing.py:docstring of
+#: scrapy.extensions.postprocessing.GzipPlugin:7
+msgid "`gzip_filename`"
+msgstr ""
+
+#: ../../../../scrapy/extensions/postprocessing.py:docstring of
+#: scrapy.extensions.postprocessing.GzipPlugin:9
+msgid "See :py:class:`gzip.GzipFile` for more info about parameters."
+msgstr ""
+
+#: ../../../../scrapy/extensions/postprocessing.py:docstring of
+#: scrapy.extensions.postprocessing.LZMAPlugin:1
+msgid ""
+"Compresses received data using `lzma <https://en.wikipedia.org/wiki/Lempel–"
+"Ziv–Markov_chain_algorithm>`_."
+msgstr ""
+
+#: ../../../../scrapy/extensions/postprocessing.py:docstring of
+#: scrapy.extensions.postprocessing.LZMAPlugin:5
+msgid "`lzma_format`"
+msgstr ""
+
+#: ../../../../scrapy/extensions/postprocessing.py:docstring of
+#: scrapy.extensions.postprocessing.LZMAPlugin:6
+msgid "`lzma_check`"
+msgstr ""
+
+#: ../../../../scrapy/extensions/postprocessing.py:docstring of
+#: scrapy.extensions.postprocessing.LZMAPlugin:7
+msgid "`lzma_preset`"
+msgstr ""
+
+#: ../../../../scrapy/extensions/postprocessing.py:docstring of
+#: scrapy.extensions.postprocessing.LZMAPlugin:8
+msgid "`lzma_filters`"
+msgstr ""
+
+#: ../../../../scrapy/extensions/postprocessing.py:docstring of
+#: scrapy.extensions.postprocessing.LZMAPlugin:11
+msgid "``lzma_filters`` cannot be used in pypy version 7.3.1 and older."
+msgstr ""
+
+#: ../../../../scrapy/extensions/postprocessing.py:docstring of
+#: scrapy.extensions.postprocessing.LZMAPlugin:13
+msgid "See :py:class:`lzma.LZMAFile` for more info about parameters."
+msgstr ""
+
+#: ../../../../scrapy/extensions/postprocessing.py:docstring of
+#: scrapy.extensions.postprocessing.Bz2Plugin:1
+msgid ""
+"Compresses received data using `bz2 <https://en.wikipedia.org/wiki/Bzip2>`_."
+msgstr ""
+
+#: ../../../../scrapy/extensions/postprocessing.py:docstring of
+#: scrapy.extensions.postprocessing.Bz2Plugin:5
+msgid "`bz2_compresslevel`"
+msgstr ""
+
+#: ../../../../scrapy/extensions/postprocessing.py:docstring of
+#: scrapy.extensions.postprocessing.Bz2Plugin:7
+msgid "See :py:class:`bz2.BZ2File` for more info about parameters."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:367
+msgid "Custom Plugins"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:369
+msgid "Each plugin is a class that must implement the following methods:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:373
+msgid "Initialize the plugin."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:375
+msgid ""
+"file-like object having at least the `write`, `tell` and `close` methods "
+"implemented"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:377
+msgid "feed-specific :ref:`options <feed-options>`"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:382
+msgid ""
+"Process and write `data` (:class:`bytes` or :class:`memoryview`) into the "
+"plugin's target file. It must return number of bytes written."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:387
+msgid "Clean up the plugin."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:389
+msgid ""
+"For example, you might want to close a file wrapper that you might have used "
+"to compress data written into the file received in the ``__init__`` method."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:393
+msgid "Do not close the file from the ``__init__`` method."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:395
+msgid ""
+"To pass a parameter to your plugin, use :ref:`feed options <feed-options>`. "
+"You can then access those parameters from the ``__init__`` method of your "
+"plugin."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:400
+msgid "Settings"
+msgstr "設定"
+
+#: ../../../topics/feed-exports.rst:402
+msgid "These are the settings used for configuring the feed exports:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:404
+msgid ":setting:`FEEDS` (mandatory)"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:405
+msgid ":setting:`FEED_EXPORT_ENCODING`"
+msgstr ":setting:`FEED_EXPORT_ENCODING`"
+
+#: ../../../topics/feed-exports.rst:406
+msgid ":setting:`FEED_STORE_EMPTY`"
+msgstr ":setting:`FEED_STORE_EMPTY`"
+
+#: ../../../topics/feed-exports.rst:407
+msgid ":setting:`FEED_EXPORT_FIELDS`"
+msgstr ":setting:`FEED_EXPORT_FIELDS`"
+
+#: ../../../topics/feed-exports.rst:408
+msgid ":setting:`FEED_EXPORT_INDENT`"
+msgstr ":setting:`FEED_EXPORT_INDENT`"
+
+#: ../../../topics/feed-exports.rst:409
+msgid ":setting:`FEED_STORAGES`"
+msgstr ":setting:`FEED_STORAGES`"
+
+#: ../../../topics/feed-exports.rst:410
+msgid ":setting:`FEED_STORAGE_FTP_ACTIVE`"
+msgstr ":setting:`FEED_STORAGE_FTP_ACTIVE`"
+
+#: ../../../topics/feed-exports.rst:412
+msgid ":setting:`FEED_EXPORTERS`"
+msgstr ":setting:`FEED_EXPORTERS`"
+
+#: ../../../topics/feed-exports.rst:413
+msgid ":setting:`FEED_EXPORT_BATCH_ITEM_COUNT`"
+msgstr ":setting:`FEED_EXPORT_BATCH_ITEM_COUNT`"
+
+#: ../../../topics/feed-exports.rst:420
+msgid "FEEDS"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:422 ../../../topics/feed-exports.rst:579
+#: ../../../topics/feed-exports.rst:641
+msgid "Default: ``{}``"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:424
+msgid ""
+"A dictionary in which every key is a feed URI (or a :class:`pathlib.Path` "
+"object) and each value is a nested dictionary containing configuration "
+"parameters for the specific feed."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:428
+msgid "This setting is required for enabling the feed export feature."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:430
+msgid "See :ref:`topics-feed-storage-backends` for supported URI schemes."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:432
+msgid "For instance::"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:434
+msgid ""
+"{\n"
+"    'items.json': {\n"
+"        'format': 'json',\n"
+"        'encoding': 'utf8',\n"
+"        'store_empty': False,\n"
+"        'item_classes': [MyItemClass1, 'myproject.items.MyItemClass2'],\n"
+"        'fields': None,\n"
+"        'indent': 4,\n"
+"        'item_export_kwargs': {\n"
+"           'export_empty_fields': True,\n"
+"        },\n"
+"    },\n"
+"    '/home/user/documents/items.xml': {\n"
+"        'format': 'xml',\n"
+"        'fields': ['name', 'price'],\n"
+"        'item_filter': MyCustomFilter1,\n"
+"        'encoding': 'latin1',\n"
+"        'indent': 8,\n"
+"    },\n"
+"    pathlib.Path('items.csv.gz'): {\n"
+"        'format': 'csv',\n"
+"        'fields': ['price', 'name'],\n"
+"        'item_filter': 'myproject.filters.MyCustomFilter2',\n"
+"        'postprocessing': [MyPlugin1, 'scrapy.extensions.postprocessing."
+"GzipPlugin'],\n"
+"        'gzip_compresslevel': 5,\n"
+"    },\n"
+"}"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:464
+msgid ""
+"The following is a list of the accepted keys and the setting that is used as "
+"a fallback value if that key is not provided for a specific feed definition:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:467
+msgid "``format``: the :ref:`serialization format <topics-feed-format>`."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:469
+msgid "This setting is mandatory, there is no fallback value."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:471
+msgid ""
+"``batch_item_count``: falls back to :setting:`FEED_EXPORT_BATCH_ITEM_COUNT`."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:474
+msgid "``encoding``: falls back to :setting:`FEED_EXPORT_ENCODING`."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:476
+msgid "``fields``: falls back to :setting:`FEED_EXPORT_FIELDS`."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:478
+msgid "``item_classes``: list of :ref:`item classes <topics-items>` to export."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:480
+msgid "If undefined or empty, all items are exported."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:482
+msgid ""
+"``item_filter``: a :ref:`filter class <item-filter>` to filter items to "
+"export."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:484
+msgid ":class:`~scrapy.extensions.feedexport.ItemFilter` is used be default."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:486
+msgid "``indent``: falls back to :setting:`FEED_EXPORT_INDENT`."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:488
+msgid ""
+"``item_export_kwargs``: :class:`dict` with keyword arguments for the "
+"corresponding :ref:`item exporter class <topics-exporters>`."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:490
+msgid ""
+"``overwrite``: whether to overwrite the file if it already exists (``True``) "
+"or append to its content (``False``)."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:493
+msgid ""
+"The default value depends on the :ref:`storage backend <topics-feed-storage-"
+"backends>`:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:496
+msgid ":ref:`topics-feed-storage-fs`: ``False``"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:498
+msgid ":ref:`topics-feed-storage-ftp`: ``True``"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:500
+msgid ""
+"Some FTP servers may not support appending to files (the ``APPE`` FTP "
+"command)."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:503
+msgid ":ref:`topics-feed-storage-s3`: ``True`` (appending is not supported)"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:505
+msgid ":ref:`topics-feed-storage-gcs`: ``True`` (appending is not supported)"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:507
+msgid ""
+":ref:`topics-feed-storage-stdout`: ``False`` (overwriting is not supported)"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:509
+msgid "``store_empty``: falls back to :setting:`FEED_STORE_EMPTY`."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:511
+msgid "``uri_params``: falls back to :setting:`FEED_URI_PARAMS`."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:513
+msgid ""
+"``postprocessing``: list of :ref:`plugins <post-processing>` to use for post-"
+"processing."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:515
+msgid "The plugins will be used in the order of the list passed."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:520
+msgid "FEED_EXPORT_ENCODING"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:522
+msgid "Default: ``\"utf-8\"`` (:ref:`fallback <default-settings>`: ``None``)"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:524
+msgid "The encoding to be used for the feed."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:526
+msgid ""
+"If set to ``None``, it uses UTF-8 for everything except JSON output, which "
+"uses safe numeric encoding (``\\uXXXX`` sequences) for historic reasons."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:529
+msgid "Use ``\"utf-8\"`` if you want UTF-8 for JSON too."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:531
+msgid ""
+"The :command:`startproject` command now sets this setting to ``\"utf-8\"`` "
+"in the generated ``settings.py`` file."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:538
+msgid "FEED_EXPORT_FIELDS"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:540 ../../../topics/feed-exports.rst:729
+msgid "Default: ``None``"
+msgstr "預設值：``None``"
+
+#: ../../../topics/feed-exports.rst:542
+msgid ""
+"Use the ``FEED_EXPORT_FIELDS`` setting to define the fields to export, their "
+"order and their output names. See :attr:`BaseItemExporter.fields_to_export "
+"<scrapy.exporters.BaseItemExporter.fields_to_export>` for more information."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:549
+msgid "FEED_EXPORT_INDENT"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:551 ../../../topics/feed-exports.rst:683
+msgid "Default: ``0``"
+msgstr "預設值：``0``"
+
+#: ../../../topics/feed-exports.rst:553
+msgid ""
+"Amount of spaces used to indent the output on each level. If "
+"``FEED_EXPORT_INDENT`` is a non-negative integer, then array elements and "
+"object members will be pretty-printed with that indent level. An indent "
+"level of ``0`` (the default), or negative, will put each item on a new line. "
+"``None`` selects the most compact representation."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:558
+msgid ""
+"Currently implemented only by :class:`~scrapy.exporters.JsonItemExporter` "
+"and :class:`~scrapy.exporters.XmlItemExporter`, i.e. when you are exporting "
+"to ``.json`` or ``.xml``."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:565
+msgid "FEED_STORE_EMPTY"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:567
+msgid "Default: ``True``"
+msgstr "預設值：``True``"
+
+#: ../../../topics/feed-exports.rst:569
+msgid ""
+"Whether to export empty feeds (i.e. feeds with no items). If ``False``, and "
+"there are no items to export, no new files are created and existing files "
+"are not modified, even if the :ref:`overwrite feed option <feed-options>` is "
+"enabled."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:577
+msgid "FEED_STORAGES"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:581
+msgid ""
+"A dict containing additional feed storage backends supported by your "
+"project. The keys are URI schemes and the values are paths to storage "
+"classes."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:587
+msgid "FEED_STORAGE_FTP_ACTIVE"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:589
+msgid "Default: ``False``"
+msgstr "預設值：``False``"
+
+#: ../../../topics/feed-exports.rst:591
+msgid ""
+"Whether to use the active connection mode when exporting feeds to an FTP "
+"server (``True``) or use the passive connection mode instead (``False``, "
+"default)."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:594
+msgid ""
+"For information about FTP connection modes, see `What is the difference "
+"between active and passive FTP? <https://stackoverflow.com/a/1699163>`_."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:600
+msgid "FEED_STORAGE_S3_ACL"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:602
+msgid "Default: ``''`` (empty string)"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:604
+msgid ""
+"A string containing a custom ACL for feeds exported to Amazon S3 by your "
+"project."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:606
+msgid ""
+"For a complete list of available values, access the `Canned ACL`_ section on "
+"Amazon S3 docs."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:611
+msgid "FEED_STORAGES_BASE"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:613 ../../../topics/feed-exports.rst:651
+msgid "Default:"
+msgstr "預設值："
+
+#: ../../../topics/feed-exports.rst:615
+msgid ""
+"{\n"
+"    \"\": \"scrapy.extensions.feedexport.FileFeedStorage\",\n"
+"    \"file\": \"scrapy.extensions.feedexport.FileFeedStorage\",\n"
+"    \"stdout\": \"scrapy.extensions.feedexport.StdoutFeedStorage\",\n"
+"    \"s3\": \"scrapy.extensions.feedexport.S3FeedStorage\",\n"
+"    \"ftp\": \"scrapy.extensions.feedexport.FTPFeedStorage\",\n"
+"}"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:625
+msgid ""
+"A dict containing the built-in feed storage backends supported by Scrapy. "
+"You can disable any of these backends by assigning ``None`` to their URI "
+"scheme in :setting:`FEED_STORAGES`. E.g., to disable the built-in FTP "
+"storage backend (without replacement), place this in your ``settings.py``:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:630
+msgid ""
+"FEED_STORAGES = {\n"
+"    \"ftp\": None,\n"
+"}"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:639
+msgid "FEED_EXPORTERS"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:643
+msgid ""
+"A dict containing additional exporters supported by your project. The keys "
+"are serialization formats and the values are paths to :ref:`Item exporter "
+"<topics-exporters>` classes."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:650
+msgid "FEED_EXPORTERS_BASE"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:653
+msgid ""
+"{\n"
+"    \"json\": \"scrapy.exporters.JsonItemExporter\",\n"
+"    \"jsonlines\": \"scrapy.exporters.JsonLinesItemExporter\",\n"
+"    \"jsonl\": \"scrapy.exporters.JsonLinesItemExporter\",\n"
+"    \"jl\": \"scrapy.exporters.JsonLinesItemExporter\",\n"
+"    \"csv\": \"scrapy.exporters.CsvItemExporter\",\n"
+"    \"xml\": \"scrapy.exporters.XmlItemExporter\",\n"
+"    \"marshal\": \"scrapy.exporters.MarshalItemExporter\",\n"
+"    \"pickle\": \"scrapy.exporters.PickleItemExporter\",\n"
+"}"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:666
+msgid ""
+"A dict containing the built-in feed exporters supported by Scrapy. You can "
+"disable any of these exporters by assigning ``None`` to their serialization "
+"format in :setting:`FEED_EXPORTERS`. E.g., to disable the built-in CSV "
+"exporter (without replacement), place this in your ``settings.py``:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:671
+msgid ""
+"FEED_EXPORTERS = {\n"
+"    \"csv\": None,\n"
+"}"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:681
+msgid "FEED_EXPORT_BATCH_ITEM_COUNT"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:685
+msgid ""
+"If assigned an integer number higher than ``0``, Scrapy generates multiple "
+"output files storing up to the specified number of items in each output file."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:688
+msgid ""
+"When generating multiple output files, you must use at least one of the "
+"following placeholders in the feed URI to indicate how the different output "
+"file names are generated:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:692
+msgid ""
+"``%(batch_time)s`` - gets replaced by a timestamp when the feed is being "
+"created (e.g. ``2020-03-28T14-45-08.237134``)"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:695
+msgid ""
+"``%(batch_id)d`` - gets replaced by the 1-based sequence number of the batch."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:697
+msgid ""
+"Use :ref:`printf-style string formatting <python:old-string-formatting>` to "
+"alter the number format. For example, to make the batch ID a 5-digit number "
+"by introducing leading zeroes as needed, use ``%(batch_id)05d`` (e.g. ``3`` "
+"becomes ``00003``, ``123`` becomes ``00123``)."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:702
+msgid "For instance, if your settings include:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:704
+msgid "FEED_EXPORT_BATCH_ITEM_COUNT = 100"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:708
+msgid "And your :command:`crawl` command line is::"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:710
+msgid ""
+"scrapy crawl spidername -o \"dirname/%(batch_id)d-filename%(batch_time)s."
+"json\""
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:712
+msgid "The command line above can generate a directory tree like::"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:714
+msgid ""
+"->projectname\n"
+"-->dirname\n"
+"--->1-filename2020-03-28T14-45-08.237134.json\n"
+"--->2-filename2020-03-28T14-45-09.148903.json\n"
+"--->3-filename2020-03-28T14-45-10.046092.json"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:720
+msgid ""
+"Where the first and second files contain exactly 100 items. The last one "
+"contains 100 items or fewer."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:727
+msgid "FEED_URI_PARAMS"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:731
+msgid ""
+"A string with the import path of a function to set the parameters to apply "
+"with :ref:`printf-style string formatting <python:old-string-formatting>` to "
+"the feed URI."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:735
+msgid "The function signature should be as follows:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:739
+msgid ""
+"Return a :class:`dict` of key-value pairs to apply to the feed URI using :"
+"ref:`printf-style string formatting <python:old-string-formatting>`."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:742
+msgid ""
+"default key-value pairs  Specifically:  -   ``batch_id``: ID of the file "
+"batch. See     :setting:`FEED_EXPORT_BATCH_ITEM_COUNT`.      If :setting:"
+"`FEED_EXPORT_BATCH_ITEM_COUNT` is ``0``, ``batch_id``     is always ``1``.  "
+"-   ``batch_time``: UTC date and time, in ISO format with ``:``     replaced "
+"with ``-``.      See :setting:`FEED_EXPORT_BATCH_ITEM_COUNT`.  -   ``time``: "
+"``batch_time``, with microseconds set to ``0``."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:742
+msgid "default key-value pairs"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:744
+msgid "Specifically:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:746
+msgid ""
+"``batch_id``: ID of the file batch. See :setting:"
+"`FEED_EXPORT_BATCH_ITEM_COUNT`."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:749
+msgid ""
+"If :setting:`FEED_EXPORT_BATCH_ITEM_COUNT` is ``0``, ``batch_id`` is always "
+"``1``."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:752
+msgid ""
+"``batch_time``: UTC date and time, in ISO format with ``:`` replaced with ``-"
+"``."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:755
+msgid "See :setting:`FEED_EXPORT_BATCH_ITEM_COUNT`."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:757
+msgid "``time``: ``batch_time``, with microseconds set to ``0``."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:760
+msgid "source spider of the feed items"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:763
+msgid ""
+"The function should return a new dictionary, modifying the received "
+"``params`` in-place is deprecated."
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:766
+msgid ""
+"For example, to include the :attr:`name <scrapy.Spider.name>` of the source "
+"spider in the feed URI:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:769
+msgid "Define the following function somewhere in your project:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:771
+msgid ""
+"# myproject/utils.py\n"
+"def uri_params(params, spider):\n"
+"    return {**params, \"spider_name\": spider.name}"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:777
+msgid "Point :setting:`FEED_URI_PARAMS` to that function in your settings:"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:779
+msgid ""
+"# myproject/settings.py\n"
+"FEED_URI_PARAMS = \"myproject.utils.uri_params\""
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:784
+msgid "Use ``%(spider_name)s`` in your feed URI::"
+msgstr ""
+
+#: ../../../topics/feed-exports.rst:786
+msgid "scrapy crawl <spider_name> -o \"%(spider_name)s.jsonl\""
+msgstr ""

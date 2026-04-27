@@ -1,0 +1,281 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/addons.rst:5
+msgid "Add-ons"
+msgstr ""
+
+#: ../../../topics/addons.rst:7
+msgid ""
+"Scrapy's add-on system is a framework which unifies managing and configuring "
+"components that extend Scrapy's core functionality, such as middlewares, "
+"extensions, or pipelines. It provides users with a plug-and-play experience "
+"in Scrapy extension management, and grants extensive configuration control "
+"to developers."
+msgstr ""
+
+#: ../../../topics/addons.rst:15
+msgid "Activating and configuring add-ons"
+msgstr ""
+
+#: ../../../topics/addons.rst:17
+msgid ""
+"During :class:`~scrapy.crawler.Crawler` initialization, the list of enabled "
+"add-ons is read from your ``ADDONS`` setting."
+msgstr ""
+
+#: ../../../topics/addons.rst:20
+msgid ""
+"The ``ADDONS`` setting is a dict in which every key is an add-on class or "
+"its import path and the value is its priority."
+msgstr ""
+
+#: ../../../topics/addons.rst:23
+msgid ""
+"This is an example where two add-ons are enabled in a project's ``settings."
+"py``::"
+msgstr ""
+
+#: ../../../topics/addons.rst:26
+msgid ""
+"ADDONS = {\n"
+"    'path.to.someaddon': 0,\n"
+"    SomeAddonClass: 1,\n"
+"}"
+msgstr ""
+
+#: ../../../topics/addons.rst:33
+msgid "Writing your own add-ons"
+msgstr ""
+
+#: ../../../topics/addons.rst:35
+msgid ""
+"Add-ons are :ref:`components <topics-components>` that include one or both "
+"of the following methods:"
+msgstr ""
+
+#: ../../../topics/addons.rst:40
+msgid ""
+"This method is called during the initialization of the :class:`~scrapy."
+"crawler.Crawler`. Here, you should perform dependency checks (e.g. for "
+"external Python libraries) and update the :class:`~scrapy.settings.Settings` "
+"object as wished, e.g. enable components for this add-on or set required "
+"configuration of other extensions."
+msgstr ""
+
+#: ../../../topics/addons.rst:0
+msgid "Parameters"
+msgstr "參數"
+
+#: ../../../topics/addons.rst:46 ../../../topics/addons.rst:55
+msgid "The settings object storing Scrapy/component configuration"
+msgstr ""
+
+#: ../../../topics/addons.rst:51
+msgid ""
+"Use this class method instead of the :meth:`update_settings` method to "
+"update :ref:`pre-crawler settings <pre-crawler-settings>` whose value is "
+"used before the :class:`~scrapy.crawler.Crawler` object is created."
+msgstr ""
+
+#: ../../../topics/addons.rst:58
+msgid ""
+"The settings set by the add-on should use the ``addon`` priority (see :ref:"
+"`populating-settings` and :func:`scrapy.settings.BaseSettings.set`)::"
+msgstr ""
+
+#: ../../../topics/addons.rst:61
+msgid ""
+"class MyAddon:\n"
+"    def update_settings(self, settings):\n"
+"        settings.set(\"DNSCACHE_ENABLED\", True, \"addon\")"
+msgstr ""
+
+#: ../../../topics/addons.rst:65
+msgid ""
+"This allows users to override these settings in the project or spider "
+"configuration."
+msgstr ""
+
+#: ../../../topics/addons.rst:68
+msgid ""
+"When editing the value of a setting instead of overriding it entirely, it is "
+"usually best to leave its priority unchanged. For example, when editing a :"
+"ref:`component priority dictionary <component-priority-dictionaries>`."
+msgstr ""
+
+#: ../../../topics/addons.rst:72
+msgid ""
+"If the ``update_settings`` method raises :exc:`scrapy.exceptions."
+"NotConfigured`, the add-on will be skipped. This makes it easy to enable an "
+"add-on only when some conditions are met."
+msgstr ""
+
+#: ../../../topics/addons.rst:77
+msgid "Fallbacks"
+msgstr ""
+
+#: ../../../topics/addons.rst:79
+msgid ""
+"Some components provided by add-ons need to fall back to \"default\" "
+"implementations, e.g. a custom download handler needs to send the request "
+"that it doesn't handle via the default download handler, or a stats "
+"collector that includes some additional processing but otherwise uses the "
+"default stats collector. And it's possible that a project needs to use "
+"several custom components of the same type, e.g. two custom download "
+"handlers that support different kinds of custom requests and still need to "
+"use the default download handler for other requests. To make such use cases "
+"easier to configure, we recommend that such custom components should be "
+"written in the following way:"
+msgstr ""
+
+#: ../../../topics/addons.rst:89
+msgid ""
+"The custom component (e.g. ``MyDownloadHandler``) shouldn't inherit from the "
+"default Scrapy one (e.g. ``scrapy.core.downloader.handlers.http11."
+"HTTP11DownloadHandler``), but instead be able to load the class of the "
+"fallback component from a special setting (e.g. "
+"``MY_FALLBACK_DOWNLOAD_HANDLER``), create an instance of it and use it."
+msgstr ""
+
+#: ../../../topics/addons.rst:95
+msgid ""
+"The add-ons that include these components should read the current value of "
+"the default setting (e.g. ``DOWNLOAD_HANDLERS``) in their "
+"``update_settings()`` methods, save that value into the fallback setting "
+"(``MY_FALLBACK_DOWNLOAD_HANDLER`` mentioned earlier) and set the default "
+"setting to the component provided by the add-on (e.g. "
+"``MyDownloadHandler``). If the fallback setting is already set by the user, "
+"they shouldn't change it."
+msgstr ""
+
+#: ../../../topics/addons.rst:102
+msgid ""
+"This way, if there are several add-ons that want to modify the same setting, "
+"all of them will fallback to the component from the previous one and then to "
+"the Scrapy default. The order of that depends on the priority order in the "
+"``ADDONS`` setting."
+msgstr ""
+
+#: ../../../topics/addons.rst:109
+msgid "Add-on examples"
+msgstr ""
+
+#: ../../../topics/addons.rst:111
+msgid "Set some basic configuration:"
+msgstr ""
+
+#: ../../../topics/addons.rst:114
+msgid ""
+"from myproject.pipelines import MyPipeline\n"
+"\n"
+"\n"
+"class MyAddon:\n"
+"    def update_settings(self, settings):\n"
+"        settings.set(\"DNSCACHE_ENABLED\", True, \"addon\")\n"
+"        settings.remove_from_list(\"METAREFRESH_IGNORE_TAGS\", "
+"\"noscript\")\n"
+"        settings.setdefault_in_component_priority_dict(\n"
+"            \"ITEM_PIPELINES\", MyPipeline, 200\n"
+"        )"
+msgstr ""
+
+#: ../../../topics/addons.rst:129
+msgid ""
+"When editing a :ref:`component priority dictionary <component-priority-"
+"dictionaries>` setting, like :setting:`ITEM_PIPELINES`, consider using "
+"setting methods like :meth:`~scrapy.settings.BaseSettings."
+"replace_in_component_priority_dict`, :meth:`~scrapy.settings.BaseSettings."
+"set_in_component_priority_dict` and :meth:`~scrapy.settings.BaseSettings."
+"setdefault_in_component_priority_dict` to avoid mistakes."
+msgstr ""
+
+#: ../../../topics/addons.rst:138
+msgid "Check dependencies:"
+msgstr ""
+
+#: ../../../topics/addons.rst:140
+msgid ""
+"class MyAddon:\n"
+"    def update_settings(self, settings):\n"
+"        try:\n"
+"            import boto\n"
+"        except ImportError:\n"
+"            raise NotConfigured(\"MyAddon requires the boto library\")\n"
+"        ..."
+msgstr ""
+
+#: ../../../topics/addons.rst:150
+msgid "Access the crawler instance:"
+msgstr ""
+
+#: ../../../topics/addons.rst:152
+msgid ""
+"class MyAddon:\n"
+"    def __init__(self, crawler) -> None:\n"
+"        super().__init__()\n"
+"        self.crawler = crawler\n"
+"\n"
+"    @classmethod\n"
+"    def from_crawler(cls, crawler):\n"
+"        return cls(crawler)\n"
+"\n"
+"    def update_settings(self, settings): ..."
+msgstr ""
+
+#: ../../../topics/addons.rst:165
+msgid "Use a fallback component:"
+msgstr ""
+
+#: ../../../topics/addons.rst:167
+msgid ""
+"from scrapy.utils.misc import build_from_crawler\n"
+"\n"
+"\n"
+"FALLBACK_SETTING = \"MY_FALLBACK_DOWNLOAD_HANDLER\"\n"
+"\n"
+"\n"
+"class MyHandler:\n"
+"    lazy = False\n"
+"\n"
+"    def __init__(self, crawler):\n"
+"        dhcls = load_object(crawler.settings.get(FALLBACK_SETTING))\n"
+"        self._fallback_handler = build_from_crawler(dhcls, crawler)\n"
+"\n"
+"    async def download_request(self, request):\n"
+"        if request.meta.get(\"my_params\"):\n"
+"            # handle the request\n"
+"            ...\n"
+"        else:\n"
+"            return await self._fallback_handler.download_request(request)\n"
+"\n"
+"    async def close(self):\n"
+"        pass\n"
+"\n"
+"\n"
+"class MyAddon:\n"
+"    def update_settings(self, settings):\n"
+"        if not settings.get(FALLBACK_SETTING):\n"
+"            settings.set(\n"
+"                FALLBACK_SETTING,\n"
+"                settings.getwithbase(\"DOWNLOAD_HANDLERS\")[\"https\"],\n"
+"                \"addon\",\n"
+"            )\n"
+"        settings[\"DOWNLOAD_HANDLERS\"][\"https\"] = MyHandler"
+msgstr ""
