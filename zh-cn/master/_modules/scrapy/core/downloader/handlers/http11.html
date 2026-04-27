@@ -1,0 +1,1035 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>scrapy.core.downloader.handlers.http11 &mdash; Scrapy 2.14.2 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=74c04d93" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://projects.localizethedocs.org/scrapy-docs-l10n/_modules/scrapy/core/downloader/handlers/http11.html" />
+      <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../../_static/documentation_options.js?v=fd62c621"></script>
+      <script src="../../../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../../../_static/translations.js?v=540d3cec"></script>
+      <script>
+(function () {
+    var COPY_ICON = String.fromCodePoint(0x1F4CB);
+    var SUCCESS_ICON = String.fromCodePoint(0x2713);
+    var ERROR_ICON = String.fromCodePoint(0x26A0);
+
+    function makeLabel(icon, text) {
+        return icon + ' ' + text;
+    }
+
+    function markdownPathFromCurrentPage(pathname) {
+        if (pathname.endsWith('.html')) {
+            return pathname.slice(0, -5) + '.md';
+        }
+        if (pathname.endsWith('/')) {
+            return pathname + 'index.md';
+        }
+        var lastPart = pathname.split('/').pop() || '';
+        if (!lastPart.includes('.')) {
+            return pathname + '.md';
+        }
+        return pathname + '.md';
+    }
+
+    async function copyToClipboard(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return;
+        }
+        var textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', 'readonly');
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+    }
+
+    function setTemporaryLabel(button, label) {
+        var previousLabel = button.textContent;
+        button.textContent = label;
+        window.setTimeout(function () {
+            button.textContent = previousLabel;
+            button.disabled = false;
+        }, 1000);
+    }
+
+    async function onButtonClick(button) {
+        button.disabled = true;
+        button.textContent = '...';
+        try {
+            var mdPath = markdownPathFromCurrentPage(window.location.pathname);
+            var response = await fetch(mdPath, { credentials: 'same-origin' });
+            if (!response.ok) {
+                throw new Error('Unable to fetch markdown source');
+            }
+            var markdown = await response.text();
+            await copyToClipboard(markdown);
+            setTemporaryLabel(button, makeLabel(SUCCESS_ICON, 'Copied'));
+        } catch (_error) {
+            setTemporaryLabel(button, makeLabel(ERROR_ICON, 'Error'));
+        }
+    }
+
+    function addStyles() {
+        var style = document.createElement('style');
+        style.textContent = [
+            '.scrapy-copy-as-markdown {',
+            '  position: fixed;',
+            '  right: 1rem;',
+            '  bottom: 1rem;',
+            '  z-index: 1000;',
+            '  border: 1px solid #c9d4de;',
+            '  border-radius: 0.45rem;',
+            '  background: #ffffff;',
+            '  color: #233a50;',
+            '  font: inherit;',
+            '  font-size: 0.875rem;',
+            '  line-height: 1;',
+            '  padding: 0.55rem 0.7rem;',
+            '  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);',
+            '  cursor: pointer;',
+            '}',
+            '.scrapy-copy-as-markdown:hover {',
+            '  background: #f3f7fb;',
+            '}',
+            '.scrapy-copy-as-markdown:disabled {',
+            '  opacity: 0.75;',
+            '  cursor: default;',
+            '}',
+        ].join('\n');
+        document.head.appendChild(style);
+    }
+
+    function addButton() {
+        if (!document.body || document.querySelector('.scrapy-copy-as-markdown')) {
+            return;
+        }
+
+        addStyles();
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'scrapy-copy-as-markdown';
+        button.title = 'Copy this page as Markdown';
+        button.setAttribute('aria-label', 'Copy this page as Markdown');
+        button.textContent = makeLabel(COPY_ICON, 'Copy as Markdown');
+        button.addEventListener('click', function () {
+            onButtonClick(button);
+        });
+        document.body.appendChild(button);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', addButton);
+    } else {
+        addButton();
+    }
+})();
+</script>
+      <script src="../../../../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../../../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../../../search.html" />
+ 
+<script type="text/javascript" src="../../../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+
+<a href="https://scrapy.org">scrapy.org</a> / <a href="../../../../../index.html">docs</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">First steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro/overview.html">Scrapy at a glance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro/install.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro/tutorial.html">Scrapy Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro/examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Basic concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/commands.html">Command line tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/spiders.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/selectors.html">Selectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/items.html">Items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/loaders.html">Item Loaders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/shell.html">Scrapy shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/item-pipeline.html">Item Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/feed-exports.html">Feed exports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/request-response.html">Requests and Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/link-extractors.html">Link Extractors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/exceptions.html">Exceptions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Built-in services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/stats.html">Stats Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/telnetconsole.html">Telnet Console</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Solving specific problems</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/debug.html">Debugging Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/contracts.html">Spiders Contracts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/practices.html">Common Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/broad-crawls.html">Broad Crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/developer-tools.html">Using your browser's Developer Tools for scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/dynamic-content.html">Selecting dynamically-loaded content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/leaks.html">Debugging memory leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/media-pipeline.html">Downloading and processing files and images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/deploy.html">Deploying Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/autothrottle.html">AutoThrottle extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/jobs.html">Jobs: pausing and resuming crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/coroutines.html">Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/asyncio.html">asyncio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Scrapy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/architecture.html">Architecture overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/addons.html">Add-ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/downloader-middleware.html">Downloader Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/spider-middleware.html">Spider Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/scheduler.html">Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/exporters.html">Item Exporters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/download-handlers.html">Download handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/api.html">Core API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">All the rest</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../news.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../contributing.html">Contributing to Scrapy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../versioning.html">Versioning and API stability</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Scrapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../../index.html">模块代码</a></li>
+      <li class="breadcrumb-item active">scrapy.core.downloader.handlers.http11</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>scrapy.core.downloader.handlers.http11 源代码</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Download handlers for http and https schemes&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipaddress</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">contextlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">suppress</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">TypedDict</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">cast</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">urldefrag</span><span class="p">,</span> <span class="n">urlparse</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">twisted.internet</span><span class="w"> </span><span class="kn">import</span> <span class="n">ssl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">twisted.internet.defer</span><span class="w"> </span><span class="kn">import</span> <span class="n">Deferred</span><span class="p">,</span> <span class="n">succeed</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">twisted.internet.endpoints</span><span class="w"> </span><span class="kn">import</span> <span class="n">TCP4ClientEndpoint</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">twisted.internet.protocol</span><span class="w"> </span><span class="kn">import</span> <span class="n">Factory</span><span class="p">,</span> <span class="n">Protocol</span><span class="p">,</span> <span class="n">connectionDone</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">twisted.python.failure</span><span class="w"> </span><span class="kn">import</span> <span class="n">Failure</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">twisted.web.client</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">URI</span><span class="p">,</span>
+    <span class="n">Agent</span><span class="p">,</span>
+    <span class="n">HTTPConnectionPool</span><span class="p">,</span>
+    <span class="n">ResponseDone</span><span class="p">,</span>
+    <span class="n">ResponseFailed</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">twisted.web.client</span><span class="w"> </span><span class="kn">import</span> <span class="n">Response</span> <span class="k">as</span> <span class="n">TxResponse</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">twisted.web.http</span><span class="w"> </span><span class="kn">import</span> <span class="n">PotentialDataLoss</span><span class="p">,</span> <span class="n">_DataLoss</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">twisted.web.http_headers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Headers</span> <span class="k">as</span> <span class="n">TxHeaders</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">twisted.web.iweb</span><span class="w"> </span><span class="kn">import</span> <span class="n">UNKNOWN_LENGTH</span><span class="p">,</span> <span class="n">IBodyProducer</span><span class="p">,</span> <span class="n">IPolicyForHTTPS</span><span class="p">,</span> <span class="n">IResponse</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">zope.interface</span><span class="w"> </span><span class="kn">import</span> <span class="n">implementer</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">signals</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.core.downloader.contextfactory</span><span class="w"> </span><span class="kn">import</span> <span class="n">_load_context_factory_from_settings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">DownloadCancelledError</span><span class="p">,</span>
+    <span class="n">DownloadTimeoutError</span><span class="p">,</span>
+    <span class="n">NotConfigured</span><span class="p">,</span>
+    <span class="n">ResponseDataLossError</span><span class="p">,</span>
+    <span class="n">StopDownload</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.http</span><span class="w"> </span><span class="kn">import</span> <span class="n">Headers</span><span class="p">,</span> <span class="n">Response</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.utils._download_handlers</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">BaseHttpDownloadHandler</span><span class="p">,</span>
+    <span class="n">check_stop_download</span><span class="p">,</span>
+    <span class="n">get_dataloss_msg</span><span class="p">,</span>
+    <span class="n">get_maxsize_msg</span><span class="p">,</span>
+    <span class="n">get_warnsize_msg</span><span class="p">,</span>
+    <span class="n">make_response</span><span class="p">,</span>
+    <span class="n">normalize_bind_address</span><span class="p">,</span>
+    <span class="n">wrap_twisted_exceptions</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.utils.defer</span><span class="w"> </span><span class="kn">import</span> <span class="n">maybe_deferred_to_future</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.utils.deprecate</span><span class="w"> </span><span class="kn">import</span> <span class="n">warn_on_deprecated_spider_attribute</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.utils.httpobj</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlparse_cached</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.utils.python</span><span class="w"> </span><span class="kn">import</span> <span class="n">to_bytes</span><span class="p">,</span> <span class="n">to_unicode</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.utils.ssl</span><span class="w"> </span><span class="kn">import</span> <span class="n">_log_ssl_conn_debug_info</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.utils.url</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_http_if_no_scheme</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">twisted.internet.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">ReactorBase</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">twisted.internet.interfaces</span><span class="w"> </span><span class="kn">import</span> <span class="n">IConsumer</span>
+
+    <span class="c1"># typing.NotRequired requires Python 3.11</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">NotRequired</span>
+
+    <span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.crawler</span><span class="w"> </span><span class="kn">import</span> <span class="n">Crawler</span>
+
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">_T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;_T&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">_ResultT</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+    <span class="n">txresponse</span><span class="p">:</span> <span class="n">TxResponse</span>
+    <span class="n">body</span><span class="p">:</span> <span class="n">NotRequired</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="n">NotRequired</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span>
+    <span class="n">certificate</span><span class="p">:</span> <span class="n">NotRequired</span><span class="p">[</span><span class="n">ssl</span><span class="o">.</span><span class="n">Certificate</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span>
+    <span class="n">ip_address</span><span class="p">:</span> <span class="n">NotRequired</span><span class="p">[</span><span class="n">ipaddress</span><span class="o">.</span><span class="n">IPv4Address</span> <span class="o">|</span> <span class="n">ipaddress</span><span class="o">.</span><span class="n">IPv6Address</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span>
+    <span class="n">stop_download</span><span class="p">:</span> <span class="n">NotRequired</span><span class="p">[</span><span class="n">StopDownload</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="HTTP11DownloadHandler">
+<a class="viewcode-back" href="../../../../../topics/download-handlers.html#scrapy.core.downloader.handlers.http11.HTTP11DownloadHandler">[文档]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">HTTP11DownloadHandler</span><span class="p">(</span><span class="n">BaseHttpDownloadHandler</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">crawler</span><span class="p">:</span> <span class="n">Crawler</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">crawler</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">getbool</span><span class="p">(</span><span class="s2">&quot;TWISTED_REACTOR_ENABLED&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">NotConfigured</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> requires a Twisted reactor.&quot;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">crawler</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_crawler</span> <span class="o">=</span> <span class="n">crawler</span>
+
+        <span class="kn">from</span><span class="w"> </span><span class="nn">twisted.internet</span><span class="w"> </span><span class="kn">import</span> <span class="n">reactor</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pool</span><span class="p">:</span> <span class="n">HTTPConnectionPool</span> <span class="o">=</span> <span class="n">HTTPConnectionPool</span><span class="p">(</span><span class="n">reactor</span><span class="p">,</span> <span class="n">persistent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pool</span><span class="o">.</span><span class="n">maxPersistentPerHost</span> <span class="o">=</span> <span class="n">crawler</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">getint</span><span class="p">(</span>
+            <span class="s2">&quot;CONCURRENT_REQUESTS_PER_DOMAIN&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pool</span><span class="o">.</span><span class="n">_factory</span><span class="o">.</span><span class="n">noisy</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contextFactory</span><span class="p">:</span> <span class="n">IPolicyForHTTPS</span> <span class="o">=</span> <span class="n">_load_context_factory_from_settings</span><span class="p">(</span>
+            <span class="n">crawler</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bind_address</span> <span class="o">=</span> <span class="n">crawler</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;DOWNLOAD_BIND_ADDRESS&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_disconnect_timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">download_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a deferred for the HTTP download&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_crawler</span><span class="o">.</span><span class="n">spider</span><span class="p">,</span> <span class="s2">&quot;download_maxsize&quot;</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+            <span class="n">warn_on_deprecated_spider_attribute</span><span class="p">(</span><span class="s2">&quot;download_maxsize&quot;</span><span class="p">,</span> <span class="s2">&quot;DOWNLOAD_MAXSIZE&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_crawler</span><span class="o">.</span><span class="n">spider</span><span class="p">,</span> <span class="s2">&quot;download_warnsize&quot;</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+            <span class="n">warn_on_deprecated_spider_attribute</span><span class="p">(</span>
+                <span class="s2">&quot;download_warnsize&quot;</span><span class="p">,</span> <span class="s2">&quot;DOWNLOAD_WARNSIZE&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">agent</span> <span class="o">=</span> <span class="n">ScrapyAgent</span><span class="p">(</span>
+            <span class="n">contextFactory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_contextFactory</span><span class="p">,</span>
+            <span class="n">bindAddress</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_bind_address</span><span class="p">,</span>
+            <span class="n">pool</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_pool</span><span class="p">,</span>
+            <span class="n">maxsize</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_crawler</span><span class="o">.</span><span class="n">spider</span><span class="p">,</span> <span class="s2">&quot;download_maxsize&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_maxsize</span>
+            <span class="p">),</span>
+            <span class="n">warnsize</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_crawler</span><span class="o">.</span><span class="n">spider</span><span class="p">,</span> <span class="s2">&quot;download_warnsize&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_warnsize</span>
+            <span class="p">),</span>
+            <span class="n">fail_on_dataloss</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_fail_on_dataloss</span><span class="p">,</span>
+            <span class="n">crawler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_crawler</span><span class="p">,</span>
+            <span class="n">tls_verbose_logging</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_tls_verbose_logging</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">wrap_twisted_exceptions</span><span class="p">():</span>
+                <span class="k">return</span> <span class="k">await</span> <span class="n">maybe_deferred_to_future</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">download_request</span><span class="p">(</span><span class="n">request</span><span class="p">))</span>
+        <span class="k">except</span> <span class="n">ResponseDataLossError</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fail_on_dataloss_warned</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">get_dataloss_msg</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="p">))</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_fail_on_dataloss_warned</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">raise</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">twisted.internet</span><span class="w"> </span><span class="kn">import</span> <span class="n">reactor</span>
+
+        <span class="n">d</span><span class="p">:</span> <span class="n">Deferred</span><span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pool</span><span class="o">.</span><span class="n">closeCachedConnections</span><span class="p">()</span>
+        <span class="c1"># closeCachedConnections will hang on network or server issues, so</span>
+        <span class="c1"># we&#39;ll manually timeout the deferred.</span>
+        <span class="c1">#</span>
+        <span class="c1"># Twisted issue addressing this problem can be found here:</span>
+        <span class="c1"># https://github.com/twisted/twisted/issues/7738</span>
+        <span class="c1">#</span>
+        <span class="c1"># closeCachedConnections doesn&#39;t handle external errbacks, so we&#39;ll</span>
+        <span class="c1"># issue a callback after `_disconnect_timeout` seconds.</span>
+        <span class="c1">#</span>
+        <span class="c1"># See also https://github.com/scrapy/scrapy/issues/2653</span>
+        <span class="n">delayed_call</span> <span class="o">=</span> <span class="n">reactor</span><span class="o">.</span><span class="n">callLater</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_disconnect_timeout</span><span class="p">,</span> <span class="n">d</span><span class="o">.</span><span class="n">callback</span><span class="p">,</span> <span class="p">())</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">maybe_deferred_to_future</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">delayed_call</span><span class="o">.</span><span class="n">active</span><span class="p">():</span>
+                <span class="n">delayed_call</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span></div>
+
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TunnelError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An HTTP CONNECT tunnel could not be established by the proxy.&quot;&quot;&quot;</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TunnelingTCP4ClientEndpoint</span><span class="p">(</span><span class="n">TCP4ClientEndpoint</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An endpoint that tunnels through proxies to allow HTTPS downloads. To</span>
+<span class="sd">    accomplish that, this endpoint sends an HTTP CONNECT to the proxy.</span>
+<span class="sd">    The HTTP CONNECT is always sent when using this endpoint, I think this could</span>
+<span class="sd">    be improved as the CONNECT will be redundant if the connection associated</span>
+<span class="sd">    with this endpoint comes from the pool and a CONNECT has already been issued</span>
+<span class="sd">    for it.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_truncatedLength</span> <span class="o">=</span> <span class="mi">1000</span>
+    <span class="n">_responseAnswer</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="sa">r</span><span class="s2">&quot;HTTP/1\.. (?P&lt;status&gt;\d</span><span class="si">{3}</span><span class="s2">)(?P&lt;reason&gt;.{,&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">_truncatedLength</span><span class="p">)</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;})&quot;</span>
+    <span class="p">)</span>
+    <span class="n">_responseMatcher</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">_responseAnswer</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">reactor</span><span class="p">:</span> <span class="n">ReactorBase</span><span class="p">,</span>
+        <span class="n">host</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">port</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">proxyConf</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
+        <span class="n">contextFactory</span><span class="p">:</span> <span class="n">IPolicyForHTTPS</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
+        <span class="n">bindAddress</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">proxyHost</span><span class="p">,</span> <span class="n">proxyPort</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_proxyAuthHeader</span> <span class="o">=</span> <span class="n">proxyConf</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">reactor</span><span class="p">,</span> <span class="n">proxyHost</span><span class="p">,</span> <span class="n">proxyPort</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">bindAddress</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tunnelReadyDeferred</span><span class="p">:</span> <span class="n">Deferred</span><span class="p">[</span><span class="n">Protocol</span><span class="p">]</span> <span class="o">=</span> <span class="n">Deferred</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tunneledHost</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">host</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tunneledPort</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">port</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contextFactory</span><span class="p">:</span> <span class="n">IPolicyForHTTPS</span> <span class="o">=</span> <span class="n">contextFactory</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_connectBuffer</span><span class="p">:</span> <span class="nb">bytearray</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">requestTunnel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">protocol</span><span class="p">:</span> <span class="n">Protocol</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Protocol</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Asks the proxy to open a tunnel.&quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">protocol</span><span class="o">.</span><span class="n">transport</span>
+        <span class="n">tunnelReq</span> <span class="o">=</span> <span class="n">tunnel_request_data</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tunneledHost</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tunneledPort</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_proxyAuthHeader</span>
+        <span class="p">)</span>
+        <span class="n">protocol</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">tunnelReq</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_protocolDataReceived</span> <span class="o">=</span> <span class="n">protocol</span><span class="o">.</span><span class="n">dataReceived</span>
+        <span class="n">protocol</span><span class="o">.</span><span class="n">dataReceived</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">processProxyResponse</span>  <span class="c1"># type: ignore[method-assign]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_protocol</span> <span class="o">=</span> <span class="n">protocol</span>
+        <span class="k">return</span> <span class="n">protocol</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">processProxyResponse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Processes the response from the proxy. If the tunnel is successfully</span>
+<span class="sd">        created, notifies the client that we are ready to send requests. If not</span>
+<span class="sd">        raises a TunnelError.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_protocol</span><span class="o">.</span><span class="n">transport</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_connectBuffer</span> <span class="o">+=</span> <span class="n">data</span>
+        <span class="c1"># make sure that enough (all) bytes are consumed</span>
+        <span class="c1"># and that we&#39;ve got all HTTP headers (ending with a blank line)</span>
+        <span class="c1"># from the proxy so that we don&#39;t send those bytes to the TLS layer</span>
+        <span class="c1">#</span>
+        <span class="c1"># see https://github.com/scrapy/scrapy/issues/2491</span>
+        <span class="k">if</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\r\n\r\n</span><span class="s2">&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connectBuffer</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_protocol</span><span class="o">.</span><span class="n">dataReceived</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_protocolDataReceived</span>  <span class="c1"># type: ignore[method-assign]</span>
+        <span class="n">respm</span> <span class="o">=</span> <span class="n">TunnelingTCP4ClientEndpoint</span><span class="o">.</span><span class="n">_responseMatcher</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_connectBuffer</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">respm</span> <span class="ow">and</span> <span class="nb">int</span><span class="p">(</span><span class="n">respm</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;status&quot;</span><span class="p">))</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="c1"># set proper Server Name Indication extension</span>
+            <span class="n">sslOptions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_contextFactory</span><span class="o">.</span><span class="n">creatorForNetloc</span><span class="p">(</span>  <span class="c1"># type: ignore[call-arg,misc]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_tunneledHost</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tunneledPort</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_protocol</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">startTLS</span><span class="p">(</span><span class="n">sslOptions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_protocolFactory</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tunnelReadyDeferred</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_protocol</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">extra</span><span class="p">:</span> <span class="n">Any</span>
+            <span class="k">if</span> <span class="n">respm</span><span class="p">:</span>
+                <span class="n">extra</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">respm</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;status&quot;</span><span class="p">)),</span>
+                    <span class="s2">&quot;reason&quot;</span><span class="p">:</span> <span class="n">respm</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;reason&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
+                <span class="p">}</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">extra</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_truncatedLength</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tunnelReadyDeferred</span><span class="o">.</span><span class="n">errback</span><span class="p">(</span>
+                <span class="n">TunnelError</span><span class="p">(</span>
+                    <span class="s2">&quot;Could not open CONNECT tunnel with proxy &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_host</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_port</span><span class="si">}</span><span class="s2"> [</span><span class="si">{</span><span class="n">extra</span><span class="si">!r}</span><span class="s2">]&quot;</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">connectFailed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reason</span><span class="p">:</span> <span class="n">Failure</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Propagates the errback to the appropriate deferred.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tunnelReadyDeferred</span><span class="o">.</span><span class="n">errback</span><span class="p">(</span><span class="n">reason</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">protocolFactory</span><span class="p">:</span> <span class="n">Factory</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Deferred</span><span class="p">[</span><span class="n">Protocol</span><span class="p">]:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_protocolFactory</span> <span class="o">=</span> <span class="n">protocolFactory</span>
+        <span class="n">connectDeferred</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">protocolFactory</span><span class="p">)</span>
+        <span class="n">connectDeferred</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">requestTunnel</span><span class="p">)</span>
+        <span class="n">connectDeferred</span><span class="o">.</span><span class="n">addErrback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connectFailed</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tunnelReadyDeferred</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">tunnel_request_data</span><span class="p">(</span>
+    <span class="n">host</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">port</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">proxy_auth_header</span><span class="p">:</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return binary content of a CONNECT request.</span>
+
+<span class="sd">    &gt;&gt;&gt; from scrapy.utils.python import to_unicode as s</span>
+<span class="sd">    &gt;&gt;&gt; s(tunnel_request_data(&quot;example.com&quot;, 8080))</span>
+<span class="sd">    &#39;CONNECT example.com:8080 HTTP/1.1\r\nHost: example.com:8080\r\n\r\n&#39;</span>
+<span class="sd">    &gt;&gt;&gt; s(tunnel_request_data(&quot;example.com&quot;, 8080, b&quot;123&quot;))</span>
+<span class="sd">    &#39;CONNECT example.com:8080 HTTP/1.1\r\nHost: example.com:8080\r\nProxy-Authorization: 123\r\n\r\n&#39;</span>
+<span class="sd">    &gt;&gt;&gt; s(tunnel_request_data(b&quot;example.com&quot;, &quot;8090&quot;))</span>
+<span class="sd">    &#39;CONNECT example.com:8090 HTTP/1.1\r\nHost: example.com:8090\r\n\r\n&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">host_value</span> <span class="o">=</span> <span class="n">to_bytes</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="sa">b</span><span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">to_bytes</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">port</span><span class="p">))</span>
+    <span class="n">tunnel_req</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;CONNECT &quot;</span> <span class="o">+</span> <span class="n">host_value</span> <span class="o">+</span> <span class="sa">b</span><span class="s2">&quot; HTTP/1.1</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+    <span class="n">tunnel_req</span> <span class="o">+=</span> <span class="sa">b</span><span class="s2">&quot;Host: &quot;</span> <span class="o">+</span> <span class="n">host_value</span> <span class="o">+</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+    <span class="k">if</span> <span class="n">proxy_auth_header</span><span class="p">:</span>
+        <span class="n">tunnel_req</span> <span class="o">+=</span> <span class="sa">b</span><span class="s2">&quot;Proxy-Authorization: &quot;</span> <span class="o">+</span> <span class="n">proxy_auth_header</span> <span class="o">+</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+    <span class="n">tunnel_req</span> <span class="o">+=</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="n">tunnel_req</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TunnelingAgent</span><span class="p">(</span><span class="n">Agent</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An agent that uses a L{TunnelingTCP4ClientEndpoint} to make HTTPS</span>
+<span class="sd">    downloads. It may look strange that we have chosen to subclass Agent and not</span>
+<span class="sd">    ProxyAgent but consider that after the tunnel is opened the proxy is</span>
+<span class="sd">    transparent to the client; thus the agent should behave like there is no</span>
+<span class="sd">    proxy involved.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">reactor</span><span class="p">:</span> <span class="n">ReactorBase</span><span class="p">,</span>
+        <span class="n">proxyConf</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="kc">None</span><span class="p">],</span>
+        <span class="n">contextFactory</span><span class="p">:</span> <span class="n">IPolicyForHTTPS</span><span class="p">,</span>
+        <span class="n">connectTimeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">bindAddress</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">pool</span><span class="p">:</span> <span class="n">HTTPConnectionPool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">reactor</span><span class="p">,</span> <span class="n">contextFactory</span><span class="p">,</span> <span class="n">connectTimeout</span><span class="p">,</span> <span class="n">bindAddress</span><span class="p">,</span> <span class="n">pool</span><span class="p">)</span>  <span class="c1"># type: ignore[no-untyped-call]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_proxyConf</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="n">proxyConf</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contextFactory</span><span class="p">:</span> <span class="n">IPolicyForHTTPS</span> <span class="o">=</span> <span class="n">contextFactory</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_getEndpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uri</span><span class="p">:</span> <span class="n">URI</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TunnelingTCP4ClientEndpoint</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">TunnelingTCP4ClientEndpoint</span><span class="p">(</span>
+            <span class="n">reactor</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_reactor</span><span class="p">,</span>
+            <span class="n">host</span><span class="o">=</span><span class="n">uri</span><span class="o">.</span><span class="n">host</span><span class="p">,</span>
+            <span class="n">port</span><span class="o">=</span><span class="n">uri</span><span class="o">.</span><span class="n">port</span><span class="p">,</span>
+            <span class="n">proxyConf</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxyConf</span><span class="p">,</span>
+            <span class="n">contextFactory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_contextFactory</span><span class="p">,</span>
+            <span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_endpointFactory</span><span class="o">.</span><span class="n">_connectTimeout</span><span class="p">,</span>
+            <span class="n">bindAddress</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_endpointFactory</span><span class="o">.</span><span class="n">_bindAddress</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_requestWithEndpoint</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">key</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+        <span class="n">endpoint</span><span class="p">:</span> <span class="n">TCP4ClientEndpoint</span><span class="p">,</span>
+        <span class="n">method</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span>
+        <span class="n">parsedURI</span><span class="p">:</span> <span class="n">URI</span><span class="p">,</span>
+        <span class="n">headers</span><span class="p">:</span> <span class="n">TxHeaders</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">bodyProducer</span><span class="p">:</span> <span class="n">IBodyProducer</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">requestPath</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Deferred</span><span class="p">[</span><span class="n">IResponse</span><span class="p">]:</span>
+        <span class="c1"># proxy host and port are required for HTTP pool `key`</span>
+        <span class="c1"># otherwise, same remote host connection request could reuse</span>
+        <span class="c1"># a cached tunneled connection to a different proxy</span>
+        <span class="n">key</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_proxyConf</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_requestWithEndpoint</span><span class="p">(</span>
+            <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+            <span class="n">endpoint</span><span class="o">=</span><span class="n">endpoint</span><span class="p">,</span>
+            <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+            <span class="n">parsedURI</span><span class="o">=</span><span class="n">parsedURI</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+            <span class="n">bodyProducer</span><span class="o">=</span><span class="n">bodyProducer</span><span class="p">,</span>
+            <span class="n">requestPath</span><span class="o">=</span><span class="n">requestPath</span><span class="p">,</span>
+        <span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ScrapyProxyAgent</span><span class="p">(</span><span class="n">Agent</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">reactor</span><span class="p">:</span> <span class="n">ReactorBase</span><span class="p">,</span>
+        <span class="n">proxyURI</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span>
+        <span class="n">connectTimeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">bindAddress</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">pool</span><span class="p">:</span> <span class="n">HTTPConnectionPool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>  <span class="c1"># type: ignore[no-untyped-call]</span>
+            <span class="n">reactor</span><span class="o">=</span><span class="n">reactor</span><span class="p">,</span>
+            <span class="n">connectTimeout</span><span class="o">=</span><span class="n">connectTimeout</span><span class="p">,</span>
+            <span class="n">bindAddress</span><span class="o">=</span><span class="n">bindAddress</span><span class="p">,</span>
+            <span class="n">pool</span><span class="o">=</span><span class="n">pool</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_proxyURI</span><span class="p">:</span> <span class="n">URI</span> <span class="o">=</span> <span class="n">URI</span><span class="o">.</span><span class="n">fromBytes</span><span class="p">(</span><span class="n">proxyURI</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">request</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">method</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span>
+        <span class="n">uri</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">,</span>
+        <span class="n">headers</span><span class="p">:</span> <span class="n">TxHeaders</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">bodyProducer</span><span class="p">:</span> <span class="n">IBodyProducer</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Deferred</span><span class="p">[</span><span class="n">IResponse</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Issue a new request via the configured proxy.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Cache *all* connections under the same key, since we are only</span>
+        <span class="c1"># connecting to a single destination, the proxy:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_requestWithEndpoint</span><span class="p">(</span>
+            <span class="n">key</span><span class="o">=</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;http-proxy&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_proxyURI</span><span class="o">.</span><span class="n">host</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_proxyURI</span><span class="o">.</span><span class="n">port</span><span class="p">),</span>
+            <span class="n">endpoint</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_getEndpoint</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_proxyURI</span><span class="p">),</span>  <span class="c1"># type: ignore[no-untyped-call]</span>
+            <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+            <span class="n">parsedURI</span><span class="o">=</span><span class="n">URI</span><span class="o">.</span><span class="n">fromBytes</span><span class="p">(</span><span class="n">uri</span><span class="p">),</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+            <span class="n">bodyProducer</span><span class="o">=</span><span class="n">bodyProducer</span><span class="p">,</span>
+            <span class="n">requestPath</span><span class="o">=</span><span class="n">uri</span><span class="p">,</span>
+        <span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ScrapyAgent</span><span class="p">:</span>
+    <span class="n">_Agent</span> <span class="o">=</span> <span class="n">Agent</span>
+    <span class="n">_ProxyAgent</span> <span class="o">=</span> <span class="n">ScrapyProxyAgent</span>
+    <span class="n">_TunnelingAgent</span> <span class="o">=</span> <span class="n">TunnelingAgent</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">contextFactory</span><span class="p">:</span> <span class="n">IPolicyForHTTPS</span><span class="p">,</span>
+        <span class="n">connectTimeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="n">bindAddress</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">pool</span><span class="p">:</span> <span class="n">HTTPConnectionPool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">maxsize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">warnsize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">fail_on_dataloss</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">crawler</span><span class="p">:</span> <span class="n">Crawler</span><span class="p">,</span>
+        <span class="n">tls_verbose_logging</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_contextFactory</span><span class="p">:</span> <span class="n">IPolicyForHTTPS</span> <span class="o">=</span> <span class="n">contextFactory</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_connectTimeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">connectTimeout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bindAddress</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">bindAddress</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pool</span><span class="p">:</span> <span class="n">HTTPConnectionPool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">pool</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_maxsize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">maxsize</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_warnsize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">warnsize</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fail_on_dataloss</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">fail_on_dataloss</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_txresponse</span><span class="p">:</span> <span class="n">TxResponse</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_crawler</span><span class="p">:</span> <span class="n">Crawler</span> <span class="o">=</span> <span class="n">crawler</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tls_verbose_logging</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">tls_verbose_logging</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_agent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Agent</span><span class="p">:</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">twisted.internet</span><span class="w"> </span><span class="kn">import</span> <span class="n">reactor</span>
+
+        <span class="n">bindaddress</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;bindaddress&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bindAddress</span>
+        <span class="n">bindaddress</span> <span class="o">=</span> <span class="n">normalize_bind_address</span><span class="p">(</span><span class="n">bindaddress</span><span class="p">)</span>
+        <span class="n">proxy</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;proxy&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">proxy</span><span class="p">:</span>
+            <span class="n">proxy</span> <span class="o">=</span> <span class="n">add_http_if_no_scheme</span><span class="p">(</span><span class="n">proxy</span><span class="p">)</span>
+            <span class="n">proxy_parsed</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">proxy</span><span class="p">)</span>
+            <span class="n">proxy_host</span> <span class="o">=</span> <span class="n">proxy_parsed</span><span class="o">.</span><span class="n">hostname</span>
+            <span class="n">proxy_port</span> <span class="o">=</span> <span class="n">proxy_parsed</span><span class="o">.</span><span class="n">port</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">proxy_port</span><span class="p">:</span>
+                <span class="n">proxy_port</span> <span class="o">=</span> <span class="mi">443</span> <span class="k">if</span> <span class="n">proxy_parsed</span><span class="o">.</span><span class="n">scheme</span> <span class="o">==</span> <span class="s2">&quot;https&quot;</span> <span class="k">else</span> <span class="mi">80</span>
+            <span class="k">if</span> <span class="n">urlparse_cached</span><span class="p">(</span><span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">scheme</span> <span class="o">==</span> <span class="s2">&quot;https&quot;</span><span class="p">:</span>
+                <span class="k">assert</span> <span class="n">proxy_host</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="n">proxyAuth</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;Proxy-Authorization&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                <span class="n">proxyConf</span> <span class="o">=</span> <span class="p">(</span><span class="n">proxy_host</span><span class="p">,</span> <span class="n">proxy_port</span><span class="p">,</span> <span class="n">proxyAuth</span><span class="p">)</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_TunnelingAgent</span><span class="p">(</span>
+                    <span class="n">reactor</span><span class="o">=</span><span class="n">reactor</span><span class="p">,</span>
+                    <span class="n">proxyConf</span><span class="o">=</span><span class="n">proxyConf</span><span class="p">,</span>
+                    <span class="n">contextFactory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_contextFactory</span><span class="p">,</span>
+                    <span class="n">connectTimeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+                    <span class="n">bindAddress</span><span class="o">=</span><span class="n">bindaddress</span><span class="p">,</span>
+                    <span class="n">pool</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_pool</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ProxyAgent</span><span class="p">(</span>
+                <span class="n">reactor</span><span class="o">=</span><span class="n">reactor</span><span class="p">,</span>
+                <span class="n">proxyURI</span><span class="o">=</span><span class="n">to_bytes</span><span class="p">(</span><span class="n">proxy</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;ascii&quot;</span><span class="p">),</span>
+                <span class="n">connectTimeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+                <span class="n">bindAddress</span><span class="o">=</span><span class="n">bindaddress</span><span class="p">,</span>
+                <span class="n">pool</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_pool</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_Agent</span><span class="p">(</span>  <span class="c1"># type: ignore[no-untyped-call]</span>
+            <span class="n">reactor</span><span class="o">=</span><span class="n">reactor</span><span class="p">,</span>
+            <span class="n">contextFactory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_contextFactory</span><span class="p">,</span>
+            <span class="n">connectTimeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+            <span class="n">bindAddress</span><span class="o">=</span><span class="n">bindaddress</span><span class="p">,</span>
+            <span class="n">pool</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_pool</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">download_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Deferred</span><span class="p">[</span><span class="n">Response</span><span class="p">]:</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">twisted.internet</span><span class="w"> </span><span class="kn">import</span> <span class="n">reactor</span>
+
+        <span class="n">timeout</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;download_timeout&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connectTimeout</span>
+        <span class="n">agent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_agent</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+
+        <span class="c1"># request details</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">urldefrag</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">method</span> <span class="o">=</span> <span class="n">to_bytes</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="p">)</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="n">TxHeaders</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">agent</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_TunnelingAgent</span><span class="p">):</span>
+            <span class="n">headers</span><span class="o">.</span><span class="n">removeHeader</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;Proxy-Authorization&quot;</span><span class="p">)</span>
+        <span class="n">bodyproducer</span> <span class="o">=</span> <span class="n">_RequestBodyProducer</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">)</span> <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">body</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+        <span class="n">d</span><span class="p">:</span> <span class="n">Deferred</span><span class="p">[</span><span class="n">IResponse</span><span class="p">]</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
+            <span class="n">method</span><span class="p">,</span>
+            <span class="n">to_bytes</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;ascii&quot;</span><span class="p">),</span>
+            <span class="n">headers</span><span class="p">,</span>
+            <span class="n">cast</span><span class="p">(</span><span class="s2">&quot;IBodyProducer&quot;</span><span class="p">,</span> <span class="n">bodyproducer</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="c1"># set download latency</span>
+        <span class="n">d</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cb_latency</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">start_time</span><span class="p">)</span>
+        <span class="c1"># response body is ready to be consumed</span>
+        <span class="n">d2</span><span class="p">:</span> <span class="n">Deferred</span><span class="p">[</span><span class="n">_ResultT</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cb_bodyready</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+        <span class="n">d3</span><span class="p">:</span> <span class="n">Deferred</span><span class="p">[</span><span class="n">Response</span><span class="p">]</span> <span class="o">=</span> <span class="n">d2</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cb_bodydone</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="c1"># check download timeout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timeout_cl</span> <span class="o">=</span> <span class="n">reactor</span><span class="o">.</span><span class="n">callLater</span><span class="p">(</span><span class="n">timeout</span><span class="p">,</span> <span class="n">d3</span><span class="o">.</span><span class="n">cancel</span><span class="p">)</span>
+        <span class="n">d3</span><span class="o">.</span><span class="n">addBoth</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cb_timeout</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">d3</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cb_timeout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">:</span> <span class="n">_T</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_T</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timeout_cl</span><span class="o">.</span><span class="n">active</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_timeout_cl</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">result</span>
+        <span class="c1"># needed for HTTPS requests, otherwise _ResponseReader doesn&#39;t</span>
+        <span class="c1"># receive connectionLost()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_txresponse</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_txresponse</span><span class="o">.</span><span class="n">_transport</span><span class="o">.</span><span class="n">stopProducing</span><span class="p">()</span>
+
+        <span class="k">raise</span> <span class="n">DownloadTimeoutError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Getting </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2"> took longer than </span><span class="si">{</span><span class="n">timeout</span><span class="si">}</span><span class="s2"> seconds.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cb_latency</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">:</span> <span class="n">_T</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">start_time</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_T</span><span class="p">:</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s2">&quot;download_latency&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_headers_from_twisted_response</span><span class="p">(</span><span class="n">response</span><span class="p">:</span> <span class="n">TxResponse</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Headers</span><span class="p">:</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="n">Headers</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">length</span> <span class="o">!=</span> <span class="n">UNKNOWN_LENGTH</span><span class="p">:</span>
+            <span class="n">headers</span><span class="p">[</span><span class="sa">b</span><span class="s2">&quot;Content-Length&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">length</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+        <span class="n">headers</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">getAllRawHeaders</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">headers</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cb_bodyready</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">txresponse</span><span class="p">:</span> <span class="n">TxResponse</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_ResultT</span> <span class="o">|</span> <span class="n">Deferred</span><span class="p">[</span><span class="n">_ResultT</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">stop_download</span> <span class="o">:=</span> <span class="n">check_stop_download</span><span class="p">(</span>
+            <span class="n">signals</span><span class="o">.</span><span class="n">headers_received</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_crawler</span><span class="p">,</span>
+            <span class="n">request</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_headers_from_twisted_response</span><span class="p">(</span><span class="n">txresponse</span><span class="p">),</span>
+            <span class="n">body_length</span><span class="o">=</span><span class="n">txresponse</span><span class="o">.</span><span class="n">length</span><span class="p">,</span>
+        <span class="p">):</span>
+            <span class="n">txresponse</span><span class="o">.</span><span class="n">_transport</span><span class="o">.</span><span class="n">stopProducing</span><span class="p">()</span>
+            <span class="n">txresponse</span><span class="o">.</span><span class="n">_transport</span><span class="o">.</span><span class="n">loseConnection</span><span class="p">()</span>
+            <span class="k">return</span> <span class="p">{</span>
+                <span class="s2">&quot;txresponse&quot;</span><span class="p">:</span> <span class="n">txresponse</span><span class="p">,</span>
+                <span class="s2">&quot;stop_download&quot;</span><span class="p">:</span> <span class="n">stop_download</span><span class="p">,</span>
+            <span class="p">}</span>
+
+        <span class="c1"># deliverBody hangs for responses without body</span>
+        <span class="k">if</span> <span class="n">cast</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">txresponse</span><span class="o">.</span><span class="n">length</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span>
+                <span class="s2">&quot;txresponse&quot;</span><span class="p">:</span> <span class="n">txresponse</span><span class="p">,</span>
+            <span class="p">}</span>
+
+        <span class="n">maxsize</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;download_maxsize&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxsize</span><span class="p">)</span>
+        <span class="n">warnsize</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;download_warnsize&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_warnsize</span><span class="p">)</span>
+        <span class="n">expected_size</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">cast</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">txresponse</span><span class="o">.</span><span class="n">length</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">txresponse</span><span class="o">.</span><span class="n">length</span> <span class="o">!=</span> <span class="n">UNKNOWN_LENGTH</span>
+            <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="p">)</span>
+        <span class="n">fail_on_dataloss</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s2">&quot;download_fail_on_dataloss&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fail_on_dataloss</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">maxsize</span> <span class="ow">and</span> <span class="n">expected_size</span> <span class="o">&gt;</span> <span class="n">maxsize</span><span class="p">:</span>
+            <span class="n">warning_msg</span> <span class="o">=</span> <span class="n">get_maxsize_msg</span><span class="p">(</span>
+                <span class="n">expected_size</span><span class="p">,</span> <span class="n">maxsize</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">expected</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">warning_msg</span><span class="p">)</span>
+            <span class="n">txresponse</span><span class="o">.</span><span class="n">_transport</span><span class="o">.</span><span class="n">loseConnection</span><span class="p">()</span>
+            <span class="k">raise</span> <span class="n">DownloadCancelledError</span><span class="p">(</span><span class="n">warning_msg</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">warnsize</span> <span class="ow">and</span> <span class="n">expected_size</span> <span class="o">&gt;</span> <span class="n">warnsize</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="n">get_warnsize_msg</span><span class="p">(</span><span class="n">expected_size</span><span class="p">,</span> <span class="n">warnsize</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">expected</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">_cancel</span><span class="p">(</span><span class="n">_</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Abort connection immediately.</span>
+            <span class="n">txresponse</span><span class="o">.</span><span class="n">_transport</span><span class="o">.</span><span class="n">_producer</span><span class="o">.</span><span class="n">abortConnection</span><span class="p">()</span>
+
+        <span class="n">d</span><span class="p">:</span> <span class="n">Deferred</span><span class="p">[</span><span class="n">_ResultT</span><span class="p">]</span> <span class="o">=</span> <span class="n">Deferred</span><span class="p">(</span><span class="n">_cancel</span><span class="p">)</span>
+        <span class="n">txresponse</span><span class="o">.</span><span class="n">deliverBody</span><span class="p">(</span>
+            <span class="n">_ResponseReader</span><span class="p">(</span>
+                <span class="n">finished</span><span class="o">=</span><span class="n">d</span><span class="p">,</span>
+                <span class="n">txresponse</span><span class="o">=</span><span class="n">txresponse</span><span class="p">,</span>
+                <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">,</span>
+                <span class="n">maxsize</span><span class="o">=</span><span class="n">maxsize</span><span class="p">,</span>
+                <span class="n">warnsize</span><span class="o">=</span><span class="n">warnsize</span><span class="p">,</span>
+                <span class="n">fail_on_dataloss</span><span class="o">=</span><span class="n">fail_on_dataloss</span><span class="p">,</span>
+                <span class="n">crawler</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_crawler</span><span class="p">,</span>
+                <span class="n">tls_verbose_logging</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_tls_verbose_logging</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="c1"># save response for timeouts</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_txresponse</span> <span class="o">=</span> <span class="n">txresponse</span>
+
+        <span class="k">return</span> <span class="n">d</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cb_bodydone</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">result</span><span class="p">:</span> <span class="n">_ResultT</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_headers_from_twisted_response</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;txresponse&quot;</span><span class="p">])</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">version</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s2">&quot;txresponse&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">version</span>
+            <span class="n">protocol</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">to_unicode</span><span class="p">(</span><span class="n">version</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">version</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">version</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">):</span>
+            <span class="n">protocol</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">make_response</span><span class="p">(</span>
+            <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+            <span class="n">status</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;txresponse&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">code</span><span class="p">),</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+            <span class="n">body</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
+            <span class="n">flags</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;flags&quot;</span><span class="p">),</span>
+            <span class="n">certificate</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;certificate&quot;</span><span class="p">),</span>
+            <span class="n">ip_address</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ip_address&quot;</span><span class="p">),</span>
+            <span class="n">protocol</span><span class="o">=</span><span class="n">protocol</span><span class="p">,</span>
+            <span class="n">stop_download</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;stop_download&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+
+
+<span class="nd">@implementer</span><span class="p">(</span><span class="n">IBodyProducer</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">_RequestBodyProducer</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">body</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span> <span class="o">=</span> <span class="n">body</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">startProducing</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">consumer</span><span class="p">:</span> <span class="n">IConsumer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Deferred</span><span class="p">[</span><span class="kc">None</span><span class="p">]:</span>
+        <span class="n">consumer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">succeed</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">pauseProducing</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">stopProducing</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">_ResponseReader</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">finished</span><span class="p">:</span> <span class="n">Deferred</span><span class="p">[</span><span class="n">_ResultT</span><span class="p">],</span>
+        <span class="n">txresponse</span><span class="p">:</span> <span class="n">TxResponse</span><span class="p">,</span>
+        <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span>
+        <span class="n">maxsize</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">warnsize</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">fail_on_dataloss</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+        <span class="n">crawler</span><span class="p">:</span> <span class="n">Crawler</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">tls_verbose_logging</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_finished</span><span class="p">:</span> <span class="n">Deferred</span><span class="p">[</span><span class="n">_ResultT</span><span class="p">]</span> <span class="o">=</span> <span class="n">finished</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_txresponse</span><span class="p">:</span> <span class="n">TxResponse</span> <span class="o">=</span> <span class="n">txresponse</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">:</span> <span class="n">Request</span> <span class="o">=</span> <span class="n">request</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bodybuf</span><span class="p">:</span> <span class="n">BytesIO</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_maxsize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">maxsize</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_warnsize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">warnsize</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fail_on_dataloss</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">fail_on_dataloss</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reached_warnsize</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bytes_received</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_certificate</span><span class="p">:</span> <span class="n">ssl</span><span class="o">.</span><span class="n">Certificate</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ip_address</span><span class="p">:</span> <span class="n">ipaddress</span><span class="o">.</span><span class="n">IPv4Address</span> <span class="o">|</span> <span class="n">ipaddress</span><span class="o">.</span><span class="n">IPv6Address</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_crawler</span><span class="p">:</span> <span class="n">Crawler</span> <span class="o">=</span> <span class="n">crawler</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tls_verbose_logging</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">tls_verbose_logging</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_finish_response</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">flags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">stop_download</span><span class="p">:</span> <span class="n">StopDownload</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_finished</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;txresponse&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_txresponse</span><span class="p">,</span>
+                <span class="s2">&quot;body&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bodybuf</span><span class="o">.</span><span class="n">getvalue</span><span class="p">(),</span>
+                <span class="s2">&quot;flags&quot;</span><span class="p">:</span> <span class="n">flags</span><span class="p">,</span>
+                <span class="s2">&quot;certificate&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_certificate</span><span class="p">,</span>
+                <span class="s2">&quot;ip_address&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ip_address</span><span class="p">,</span>
+                <span class="s2">&quot;stop_download&quot;</span><span class="p">:</span> <span class="n">stop_download</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">connectionMade</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">transport</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_certificate</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="ne">AttributeError</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_certificate</span> <span class="o">=</span> <span class="n">ssl</span><span class="o">.</span><span class="n">Certificate</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">_producer</span><span class="o">.</span><span class="n">getPeerCertificate</span><span class="p">()</span>
+                <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ip_address</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_ip_address</span> <span class="o">=</span> <span class="n">ipaddress</span><span class="o">.</span><span class="n">ip_address</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">_producer</span><span class="o">.</span><span class="n">getPeer</span><span class="p">()</span><span class="o">.</span><span class="n">host</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tls_verbose_logging</span><span class="p">:</span>
+            <span class="n">connection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">_producer</span><span class="o">.</span><span class="n">getHandle</span><span class="p">()</span>
+            <span class="n">hostname</span> <span class="o">=</span> <span class="n">urlparse_cached</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">)</span><span class="o">.</span><span class="n">hostname</span>
+            <span class="k">assert</span> <span class="n">hostname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="n">_log_ssl_conn_debug_info</span><span class="p">(</span><span class="n">hostname</span><span class="p">,</span> <span class="n">connection</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">dataReceived</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bodyBytes</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># This maybe called several times after cancel was called with buffered data.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_finished</span><span class="o">.</span><span class="n">called</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">transport</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bodybuf</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">bodyBytes</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bytes_received</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">bodyBytes</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">stop_download</span> <span class="o">:=</span> <span class="n">check_stop_download</span><span class="p">(</span>
+            <span class="n">signals</span><span class="o">.</span><span class="n">bytes_received</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_crawler</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">bodyBytes</span>
+        <span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">stopProducing</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">loseConnection</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_finish_response</span><span class="p">(</span><span class="n">stop_download</span><span class="o">=</span><span class="n">stop_download</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxsize</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bytes_received</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxsize</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="n">get_maxsize_msg</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_bytes_received</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_maxsize</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">,</span> <span class="n">expected</span><span class="o">=</span><span class="kc">False</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="c1"># Clear buffer earlier to avoid keeping data in memory for a long time.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_bodybuf</span><span class="o">.</span><span class="n">truncate</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_finished</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_warnsize</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bytes_received</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_warnsize</span>
+            <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reached_warnsize</span>
+        <span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_reached_warnsize</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="n">get_warnsize_msg</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_bytes_received</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_warnsize</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_request</span><span class="p">,</span> <span class="n">expected</span><span class="o">=</span><span class="kc">False</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">connectionLost</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reason</span><span class="p">:</span> <span class="n">Failure</span> <span class="o">=</span> <span class="n">connectionDone</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_finished</span><span class="o">.</span><span class="n">called</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="n">reason</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="n">ResponseDone</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_finish_response</span><span class="p">()</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="n">reason</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="n">PotentialDataLoss</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_finish_response</span><span class="p">(</span><span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;partial&quot;</span><span class="p">])</span>
+            <span class="k">return</span>
+
+        <span class="k">if</span> <span class="n">reason</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="n">ResponseFailed</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span>
+            <span class="n">r</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="n">_DataLoss</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">reason</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">reasons</span>  <span class="c1"># type: ignore[union-attr]</span>
+        <span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fail_on_dataloss</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_finish_response</span><span class="p">(</span><span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dataloss&quot;</span><span class="p">])</span>
+                <span class="k">return</span>
+
+            <span class="n">exc</span> <span class="o">=</span> <span class="n">ResponseDataLossError</span><span class="p">()</span>
+            <span class="n">exc</span><span class="o">.</span><span class="n">__cause__</span> <span class="o">=</span> <span class="n">reason</span><span class="o">.</span><span class="n">value</span>
+            <span class="n">reason</span> <span class="o">=</span> <span class="n">Failure</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_finished</span><span class="o">.</span><span class="n">errback</span><span class="p">(</span><span class="n">reason</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 Scrapy developers。
+      <span class="lastupdated">最后更新于 4月 27, 2026.
+      </span></p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

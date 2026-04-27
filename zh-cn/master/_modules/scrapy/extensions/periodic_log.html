@@ -1,0 +1,472 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>scrapy.extensions.periodic_log &mdash; Scrapy 2.14.2 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=74c04d93" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://projects.localizethedocs.org/scrapy-docs-l10n/_modules/scrapy/extensions/periodic_log.html" />
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=fd62c621"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../_static/translations.js?v=540d3cec"></script>
+      <script>
+(function () {
+    var COPY_ICON = String.fromCodePoint(0x1F4CB);
+    var SUCCESS_ICON = String.fromCodePoint(0x2713);
+    var ERROR_ICON = String.fromCodePoint(0x26A0);
+
+    function makeLabel(icon, text) {
+        return icon + ' ' + text;
+    }
+
+    function markdownPathFromCurrentPage(pathname) {
+        if (pathname.endsWith('.html')) {
+            return pathname.slice(0, -5) + '.md';
+        }
+        if (pathname.endsWith('/')) {
+            return pathname + 'index.md';
+        }
+        var lastPart = pathname.split('/').pop() || '';
+        if (!lastPart.includes('.')) {
+            return pathname + '.md';
+        }
+        return pathname + '.md';
+    }
+
+    async function copyToClipboard(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return;
+        }
+        var textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', 'readonly');
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+    }
+
+    function setTemporaryLabel(button, label) {
+        var previousLabel = button.textContent;
+        button.textContent = label;
+        window.setTimeout(function () {
+            button.textContent = previousLabel;
+            button.disabled = false;
+        }, 1000);
+    }
+
+    async function onButtonClick(button) {
+        button.disabled = true;
+        button.textContent = '...';
+        try {
+            var mdPath = markdownPathFromCurrentPage(window.location.pathname);
+            var response = await fetch(mdPath, { credentials: 'same-origin' });
+            if (!response.ok) {
+                throw new Error('Unable to fetch markdown source');
+            }
+            var markdown = await response.text();
+            await copyToClipboard(markdown);
+            setTemporaryLabel(button, makeLabel(SUCCESS_ICON, 'Copied'));
+        } catch (_error) {
+            setTemporaryLabel(button, makeLabel(ERROR_ICON, 'Error'));
+        }
+    }
+
+    function addStyles() {
+        var style = document.createElement('style');
+        style.textContent = [
+            '.scrapy-copy-as-markdown {',
+            '  position: fixed;',
+            '  right: 1rem;',
+            '  bottom: 1rem;',
+            '  z-index: 1000;',
+            '  border: 1px solid #c9d4de;',
+            '  border-radius: 0.45rem;',
+            '  background: #ffffff;',
+            '  color: #233a50;',
+            '  font: inherit;',
+            '  font-size: 0.875rem;',
+            '  line-height: 1;',
+            '  padding: 0.55rem 0.7rem;',
+            '  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);',
+            '  cursor: pointer;',
+            '}',
+            '.scrapy-copy-as-markdown:hover {',
+            '  background: #f3f7fb;',
+            '}',
+            '.scrapy-copy-as-markdown:disabled {',
+            '  opacity: 0.75;',
+            '  cursor: default;',
+            '}',
+        ].join('\n');
+        document.head.appendChild(style);
+    }
+
+    function addButton() {
+        if (!document.body || document.querySelector('.scrapy-copy-as-markdown')) {
+            return;
+        }
+
+        addStyles();
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'scrapy-copy-as-markdown';
+        button.title = 'Copy this page as Markdown';
+        button.setAttribute('aria-label', 'Copy this page as Markdown');
+        button.textContent = makeLabel(COPY_ICON, 'Copy as Markdown');
+        button.addEventListener('click', function () {
+            onButtonClick(button);
+        });
+        document.body.appendChild(button);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', addButton);
+    } else {
+        addButton();
+    }
+})();
+</script>
+      <script src="../../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+ 
+<script type="text/javascript" src="../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+
+<a href="https://scrapy.org">scrapy.org</a> / <a href="../../../index.html">docs</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">First steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro/overview.html">Scrapy at a glance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro/install.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro/tutorial.html">Scrapy Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro/examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Basic concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/commands.html">Command line tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/spiders.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/selectors.html">Selectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/items.html">Items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/loaders.html">Item Loaders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/shell.html">Scrapy shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/item-pipeline.html">Item Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/feed-exports.html">Feed exports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/request-response.html">Requests and Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/link-extractors.html">Link Extractors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/exceptions.html">Exceptions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Built-in services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/stats.html">Stats Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/telnetconsole.html">Telnet Console</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Solving specific problems</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/debug.html">Debugging Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/contracts.html">Spiders Contracts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/practices.html">Common Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/broad-crawls.html">Broad Crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/developer-tools.html">Using your browser's Developer Tools for scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/dynamic-content.html">Selecting dynamically-loaded content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/leaks.html">Debugging memory leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/media-pipeline.html">Downloading and processing files and images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/deploy.html">Deploying Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/autothrottle.html">AutoThrottle extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/jobs.html">Jobs: pausing and resuming crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/coroutines.html">Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/asyncio.html">asyncio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Scrapy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/architecture.html">Architecture overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/addons.html">Add-ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/downloader-middleware.html">Downloader Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/spider-middleware.html">Spider Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/scheduler.html">Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/exporters.html">Item Exporters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/download-handlers.html">Download handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/api.html">Core API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">All the rest</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../news.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing to Scrapy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versioning.html">Versioning and API stability</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Scrapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">模块代码</a></li>
+      <li class="breadcrumb-item active">scrapy.extensions.periodic_log</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>scrapy.extensions.periodic_log 源代码</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Spider</span><span class="p">,</span> <span class="n">signals</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">NotConfigured</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.utils.asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncioLoopingCall</span><span class="p">,</span> <span class="n">create_looping_call</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.utils.serialize</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScrapyJSONEncoder</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">json</span><span class="w"> </span><span class="kn">import</span> <span class="n">JSONEncoder</span>
+
+    <span class="kn">from</span><span class="w"> </span><span class="nn">twisted.internet.task</span><span class="w"> </span><span class="kn">import</span> <span class="n">LoopingCall</span>
+
+    <span class="c1"># typing.Self requires Python 3.11</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>
+
+    <span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.crawler</span><span class="w"> </span><span class="kn">import</span> <span class="n">Crawler</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.statscollectors</span><span class="w"> </span><span class="kn">import</span> <span class="n">StatsCollector</span>
+
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="PeriodicLog">
+<a class="viewcode-back" href="../../../topics/extensions.html#scrapy.extensions.periodic_log.PeriodicLog">[文档]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">PeriodicLog</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Log basic scraping stats periodically&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">stats</span><span class="p">:</span> <span class="n">StatsCollector</span><span class="p">,</span>
+        <span class="n">interval</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">60.0</span><span class="p">,</span>
+        <span class="n">ext_stats</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">ext_delta</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">ext_timing_enabled</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="p">:</span> <span class="n">StatsCollector</span> <span class="o">=</span> <span class="n">stats</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">interval</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">interval</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">multiplier</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">60.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">interval</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="p">:</span> <span class="n">AsyncioLoopingCall</span> <span class="o">|</span> <span class="n">LoopingCall</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="p">:</span> <span class="n">JSONEncoder</span> <span class="o">=</span> <span class="n">ScrapyJSONEncoder</span><span class="p">(</span><span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ext_stats_enabled</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">ext_stats</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ext_stats_include</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">ext_stats</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;include&quot;</span><span class="p">,</span> <span class="p">())</span> <span class="k">if</span> <span class="n">ext_stats</span> <span class="k">else</span> <span class="p">()</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ext_stats_exclude</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">ext_stats</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;exclude&quot;</span><span class="p">,</span> <span class="p">())</span> <span class="k">if</span> <span class="n">ext_stats</span> <span class="k">else</span> <span class="p">()</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ext_delta_enabled</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">ext_delta</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ext_delta_include</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">ext_delta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;include&quot;</span><span class="p">,</span> <span class="p">())</span> <span class="k">if</span> <span class="n">ext_delta</span> <span class="k">else</span> <span class="p">()</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ext_delta_exclude</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">ext_delta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;exclude&quot;</span><span class="p">,</span> <span class="p">())</span> <span class="k">if</span> <span class="n">ext_delta</span> <span class="k">else</span> <span class="p">()</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ext_timing_enabled</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">ext_timing_enabled</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_crawler</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">crawler</span><span class="p">:</span> <span class="n">Crawler</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
+        <span class="n">interval</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">crawler</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">getfloat</span><span class="p">(</span><span class="s2">&quot;LOGSTATS_INTERVAL&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">interval</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">NotConfigured</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">ext_stats</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">crawler</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">getdict</span><span class="p">(</span>
+                <span class="s2">&quot;PERIODIC_LOG_STATS&quot;</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+            <span class="n">ext_stats</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="p">{</span><span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+                <span class="k">if</span> <span class="n">crawler</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">getbool</span><span class="p">(</span><span class="s2">&quot;PERIODIC_LOG_STATS&quot;</span><span class="p">)</span>
+                <span class="k">else</span> <span class="kc">None</span>
+            <span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">ext_delta</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">crawler</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">getdict</span><span class="p">(</span>
+                <span class="s2">&quot;PERIODIC_LOG_DELTA&quot;</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+            <span class="n">ext_delta</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="p">{</span><span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+                <span class="k">if</span> <span class="n">crawler</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">getbool</span><span class="p">(</span><span class="s2">&quot;PERIODIC_LOG_DELTA&quot;</span><span class="p">)</span>
+                <span class="k">else</span> <span class="kc">None</span>
+            <span class="p">)</span>
+
+        <span class="n">ext_timing_enabled</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">crawler</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">getbool</span><span class="p">(</span>
+            <span class="s2">&quot;PERIODIC_LOG_TIMING_ENABLED&quot;</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">ext_stats</span> <span class="ow">or</span> <span class="n">ext_delta</span> <span class="ow">or</span> <span class="n">ext_timing_enabled</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">NotConfigured</span>
+        <span class="k">assert</span> <span class="n">crawler</span><span class="o">.</span><span class="n">stats</span>
+        <span class="k">assert</span> <span class="n">ext_stats</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">assert</span> <span class="n">ext_delta</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">crawler</span><span class="o">.</span><span class="n">stats</span><span class="p">,</span>
+            <span class="n">interval</span><span class="p">,</span>
+            <span class="n">ext_stats</span><span class="p">,</span>
+            <span class="n">ext_delta</span><span class="p">,</span>
+            <span class="n">ext_timing_enabled</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">crawler</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">spider_opened</span><span class="p">,</span> <span class="n">signal</span><span class="o">=</span><span class="n">signals</span><span class="o">.</span><span class="n">spider_opened</span><span class="p">)</span>
+        <span class="n">crawler</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">spider_closed</span><span class="p">,</span> <span class="n">signal</span><span class="o">=</span><span class="n">signals</span><span class="o">.</span><span class="n">spider_closed</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">o</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">spider_opened</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spider</span><span class="p">:</span> <span class="n">Spider</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time_prev</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delta_prev</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stats_prev</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">task</span> <span class="o">=</span> <span class="n">create_looping_call</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">interval</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ext_timing_enabled</span><span class="p">:</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">log_timing</span><span class="p">())</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ext_delta_enabled</span><span class="p">:</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">log_delta</span><span class="p">())</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ext_stats_enabled</span><span class="p">:</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">log_crawler_stats</span><span class="p">())</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">log_delta</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="n">num_stats</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">k</span><span class="p">:</span> <span class="n">v</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">_stats</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_allowed</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ext_delta_include</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ext_delta_exclude</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">delta_prev</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">num_stats</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">delta_prev</span> <span class="o">=</span> <span class="n">num_stats</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;delta&quot;</span><span class="p">:</span> <span class="n">delta</span><span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">log_timing</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">tz</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;log_interval&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">interval</span><span class="p">,</span>
+            <span class="s2">&quot;start_time&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">_stats</span><span class="p">[</span><span class="s2">&quot;start_time&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;utcnow&quot;</span><span class="p">:</span> <span class="n">now</span><span class="p">,</span>
+            <span class="s2">&quot;log_interval_real&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">now</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_prev</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">(),</span>
+            <span class="s2">&quot;elapsed&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">now</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">_stats</span><span class="p">[</span><span class="s2">&quot;start_time&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">(),</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">time_prev</span> <span class="o">=</span> <span class="n">now</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="n">time</span><span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">log_crawler_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="n">stats</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">k</span><span class="p">:</span> <span class="n">v</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">_stats</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_allowed</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ext_stats_include</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ext_stats_exclude</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;stats&quot;</span><span class="p">:</span> <span class="n">stats</span><span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">param_allowed</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">stat_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">include</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">exclude</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">include</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">exclude</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">exclude</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">stat_name</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">exclude</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">include</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">p</span> <span class="ow">in</span> <span class="n">stat_name</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">include</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">spider_closed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spider</span><span class="p">:</span> <span class="n">Spider</span><span class="p">,</span> <span class="n">reason</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">running</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">task</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 Scrapy developers。
+      <span class="lastupdated">最后更新于 4月 27, 2026.
+      </span></p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

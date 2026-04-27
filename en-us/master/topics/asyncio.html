@@ -1,0 +1,819 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en-US" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>asyncio &mdash; Scrapy 2.14.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=74c04d93" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://projects.localizethedocs.org/scrapy-docs-l10n/topics/asyncio.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4c358422"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script>
+(function () {
+    var COPY_ICON = String.fromCodePoint(0x1F4CB);
+    var SUCCESS_ICON = String.fromCodePoint(0x2713);
+    var ERROR_ICON = String.fromCodePoint(0x26A0);
+
+    function makeLabel(icon, text) {
+        return icon + ' ' + text;
+    }
+
+    function markdownPathFromCurrentPage(pathname) {
+        if (pathname.endsWith('.html')) {
+            return pathname.slice(0, -5) + '.md';
+        }
+        if (pathname.endsWith('/')) {
+            return pathname + 'index.md';
+        }
+        var lastPart = pathname.split('/').pop() || '';
+        if (!lastPart.includes('.')) {
+            return pathname + '.md';
+        }
+        return pathname + '.md';
+    }
+
+    async function copyToClipboard(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return;
+        }
+        var textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', 'readonly');
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+    }
+
+    function setTemporaryLabel(button, label) {
+        var previousLabel = button.textContent;
+        button.textContent = label;
+        window.setTimeout(function () {
+            button.textContent = previousLabel;
+            button.disabled = false;
+        }, 1000);
+    }
+
+    async function onButtonClick(button) {
+        button.disabled = true;
+        button.textContent = '...';
+        try {
+            var mdPath = markdownPathFromCurrentPage(window.location.pathname);
+            var response = await fetch(mdPath, { credentials: 'same-origin' });
+            if (!response.ok) {
+                throw new Error('Unable to fetch markdown source');
+            }
+            var markdown = await response.text();
+            await copyToClipboard(markdown);
+            setTemporaryLabel(button, makeLabel(SUCCESS_ICON, 'Copied'));
+        } catch (_error) {
+            setTemporaryLabel(button, makeLabel(ERROR_ICON, 'Error'));
+        }
+    }
+
+    function addStyles() {
+        var style = document.createElement('style');
+        style.textContent = [
+            '.scrapy-copy-as-markdown {',
+            '  position: fixed;',
+            '  right: 1rem;',
+            '  bottom: 1rem;',
+            '  z-index: 1000;',
+            '  border: 1px solid #c9d4de;',
+            '  border-radius: 0.45rem;',
+            '  background: #ffffff;',
+            '  color: #233a50;',
+            '  font: inherit;',
+            '  font-size: 0.875rem;',
+            '  line-height: 1;',
+            '  padding: 0.55rem 0.7rem;',
+            '  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);',
+            '  cursor: pointer;',
+            '}',
+            '.scrapy-copy-as-markdown:hover {',
+            '  background: #f3f7fb;',
+            '}',
+            '.scrapy-copy-as-markdown:disabled {',
+            '  opacity: 0.75;',
+            '  cursor: default;',
+            '}',
+        ].join('\n');
+        document.head.appendChild(style);
+    }
+
+    function addButton() {
+        if (!document.body || document.querySelector('.scrapy-copy-as-markdown')) {
+            return;
+        }
+
+        addStyles();
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'scrapy-copy-as-markdown';
+        button.title = 'Copy this page as Markdown';
+        button.setAttribute('aria-label', 'Copy this page as Markdown');
+        button.textContent = makeLabel(COPY_ICON, 'Copy as Markdown');
+        button.addEventListener('click', function () {
+            onButtonClick(button);
+        });
+        document.body.appendChild(button);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', addButton);
+    } else {
+        addButton();
+    }
+})();
+</script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Architecture overview" href="architecture.html" />
+    <link rel="prev" title="Coroutines" href="coroutines.html" />
+ 
+<script type="text/javascript" src="../ltd-provenance.js"></script>
+<script type="text/javascript" src="../ltd-current.js"></script>
+<script type="text/javascript" src="../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+
+<a href="https://scrapy.org">scrapy.org</a> / <a href="../index.html">docs</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">First steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/overview.html">Scrapy at a glance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/tutorial.html">Scrapy Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Basic concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Command line tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spiders.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selectors.html">Selectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="items.html">Items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loaders.html">Item Loaders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell.html">Scrapy shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="item-pipeline.html">Item Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feed-exports.html">Feed exports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="request-response.html">Requests and Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="link-extractors.html">Link Extractors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Built-in services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">Stats Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telnetconsole.html">Telnet Console</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Solving specific problems</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debug.html">Debugging Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contracts.html">Spiders Contracts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practices.html">Common Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="broad-crawls.html">Broad Crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer-tools.html">Using your browser’s Developer Tools for scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic-content.html">Selecting dynamically-loaded content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leaks.html">Debugging memory leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="media-pipeline.html">Downloading and processing files and images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy.html">Deploying Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autothrottle.html">AutoThrottle extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jobs.html">Jobs: pausing and resuming crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coroutines.html">Coroutines</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">asyncio</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installing-the-asyncio-reactor">Installing the asyncio reactor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#handling-a-pre-installed-reactor">Handling a pre-installed reactor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#integrating-deferred-code-and-asyncio-code">Integrating Deferred code and asyncio code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#scrapy.utils.defer.deferred_to_future"><code class="docutils literal notranslate"><span class="pre">deferred_to_future()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scrapy.utils.defer.maybe_deferred_to_future"><code class="docutils literal notranslate"><span class="pre">maybe_deferred_to_future()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scrapy.utils.defer.deferred_from_coro"><code class="docutils literal notranslate"><span class="pre">deferred_from_coro()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scrapy.utils.defer.deferred_f_from_coro_f"><code class="docutils literal notranslate"><span class="pre">deferred_f_from_coro_f()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scrapy.utils.defer.ensure_awaitable"><code class="docutils literal notranslate"><span class="pre">ensure_awaitable()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#enforcing-asyncio-as-a-requirement">Enforcing asyncio as a requirement</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#scrapy.utils.asyncio.is_asyncio_available"><code class="docutils literal notranslate"><span class="pre">is_asyncio_available()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scrapy.utils.reactor.is_asyncio_reactor_installed"><code class="docutils literal notranslate"><span class="pre">is_asyncio_reactor_installed()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#using-scrapy-without-a-twisted-reactor">Using Scrapy without a Twisted reactor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#limitations">Limitations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-differences">Other differences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-support-to-existing-code">Adding support to existing code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.utils.asyncio.call_later"><code class="docutils literal notranslate"><span class="pre">call_later()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.utils.asyncio.create_looping_call"><code class="docutils literal notranslate"><span class="pre">create_looping_call()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.utils.asyncio.AsyncioLoopingCall"><code class="docutils literal notranslate"><span class="pre">AsyncioLoopingCall</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.utils.asyncio.run_in_thread"><code class="docutils literal notranslate"><span class="pre">run_in_thread()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.utils.reactorless.is_reactorless"><code class="docutils literal notranslate"><span class="pre">is_reactorless()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#windows-specific-notes">Windows-specific notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-custom-asyncio-loops">Using custom asyncio loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#switching-to-a-non-asyncio-reactor">Switching to a non-asyncio reactor</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Scrapy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addons.html">Add-ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="downloader-middleware.html">Downloader Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spider-middleware.html">Spider Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scheduler.html">Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exporters.html">Item Exporters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download-handlers.html">Download handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Core API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">All the rest</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to Scrapy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../versioning.html">Versioning and API stability</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Scrapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">asyncio</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/scrapy/scrapy/blob/master/docs/topics/asyncio.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="asyncio">
+<span id="using-asyncio"></span><h1>asyncio<a class="headerlink" href="#asyncio" title="Link to this heading"></a></h1>
+<p>Scrapy has partial support for <a class="reference external" href="https://docs.python.org/3/library/asyncio.html#module-asyncio" title="(in Python v3.14)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncio</span></code></a>. After you <a class="reference internal" href="#install-asyncio"><span class="std std-ref">install the
+asyncio reactor</span></a>, you may use <a class="reference external" href="https://docs.python.org/3/library/asyncio.html#module-asyncio" title="(in Python v3.14)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncio</span></code></a> and
+<a class="reference external" href="https://docs.python.org/3/library/asyncio.html#module-asyncio" title="(in Python v3.14)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncio</span></code></a>-powered libraries in any <a class="reference internal" href="coroutines.html"><span class="doc">coroutine</span></a>.</p>
+<section id="installing-the-asyncio-reactor">
+<span id="install-asyncio"></span><h2>Installing the asyncio reactor<a class="headerlink" href="#installing-the-asyncio-reactor" title="Link to this heading"></a></h2>
+<p>To enable <a class="reference external" href="https://docs.python.org/3/library/asyncio.html#module-asyncio" title="(in Python v3.14)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncio</span></code></a> support, your <a class="reference internal" href="settings.html#std-setting-TWISTED_REACTOR"><code class="xref std std-setting docutils literal notranslate"><span class="pre">TWISTED_REACTOR</span></code></a> setting needs
+to be set to <code class="docutils literal notranslate"><span class="pre">'twisted.internet.asyncioreactor.AsyncioSelectorReactor'</span></code>,
+which is the default value.</p>
+<p>If you are using <a class="reference internal" href="api.html#scrapy.crawler.AsyncCrawlerRunner" title="scrapy.crawler.AsyncCrawlerRunner"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncCrawlerRunner</span></code></a> or
+<a class="reference internal" href="api.html#scrapy.crawler.CrawlerRunner" title="scrapy.crawler.CrawlerRunner"><code class="xref py py-class docutils literal notranslate"><span class="pre">CrawlerRunner</span></code></a>, you also need to
+install the <a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.asyncioreactor.AsyncioSelectorReactor.html" title="(in Twisted)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncioSelectorReactor</span></code></a>
+reactor manually. You can do that using
+<a class="reference internal" href="settings.html#scrapy.utils.reactor.install_reactor" title="scrapy.utils.reactor.install_reactor"><code class="xref py py-func docutils literal notranslate"><span class="pre">install_reactor()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">install_reactor</span><span class="p">(</span><span class="s2">&quot;twisted.internet.asyncioreactor.AsyncioSelectorReactor&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="handling-a-pre-installed-reactor">
+<span id="asyncio-preinstalled-reactor"></span><h2>Handling a pre-installed reactor<a class="headerlink" href="#handling-a-pre-installed-reactor" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">twisted.internet.reactor</span></code> and some other Twisted imports install the default
+Twisted reactor as a side effect. Once a Twisted reactor is installed, it is
+not possible to switch to a different reactor at run time.</p>
+<p>If you <a class="reference internal" href="#install-asyncio"><span class="std std-ref">configure the asyncio Twisted reactor</span></a> and, at
+run time, Scrapy complains that a different reactor is already installed,
+chances are you have some such imports in your code.</p>
+<p>You can usually fix the issue by moving those offending module-level Twisted
+imports to the method or function definitions where they are used. For example,
+if you have something like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">twisted.internet</span><span class="w"> </span><span class="kn">import</span> <span class="n">reactor</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">my_function</span><span class="p">():</span>
+    <span class="n">reactor</span><span class="o">.</span><span class="n">callLater</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Switch to something like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">my_function</span><span class="p">():</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">twisted.internet</span><span class="w"> </span><span class="kn">import</span> <span class="n">reactor</span>
+
+    <span class="n">reactor</span><span class="o">.</span><span class="n">callLater</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Alternatively, you can try to <a class="reference internal" href="#install-asyncio"><span class="std std-ref">manually install the asyncio reactor</span></a>, with <a class="reference internal" href="settings.html#scrapy.utils.reactor.install_reactor" title="scrapy.utils.reactor.install_reactor"><code class="xref py py-func docutils literal notranslate"><span class="pre">install_reactor()</span></code></a>, before
+those imports happen.</p>
+</section>
+<section id="integrating-deferred-code-and-asyncio-code">
+<span id="asyncio-await-dfd"></span><h2>Integrating Deferred code and asyncio code<a class="headerlink" href="#integrating-deferred-code-and-asyncio-code" title="Link to this heading"></a></h2>
+<p>Coroutine functions can await on Deferreds by wrapping them into
+<a class="reference external" href="https://docs.python.org/3/library/asyncio-future.html#asyncio.Future" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">asyncio.Future</span></code></a> objects. Scrapy provides two helpers for this:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="scrapy.utils.defer.deferred_to_future">
+<span class="sig-prename descclassname"><span class="pre">scrapy.utils.defer.</span></span><span class="sig-name descname"><span class="pre">deferred_to_future</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.defer.Deferred.html" title="(in Twisted)"><span class="pre">Deferred</span></a><span class="p"><span class="pre">[</span></span><span class="pre">_T</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Future</span><span class="p"><span class="pre">[</span></span><span class="pre">_T</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/scrapy/utils/defer.html#deferred_to_future"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scrapy.utils.defer.deferred_to_future" title="Link to this definition"></a></dt>
+<dd><p>Return an <a class="reference external" href="https://docs.python.org/3/library/asyncio-future.html#asyncio.Future" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">asyncio.Future</span></code></a> object that wraps <em>d</em>.</p>
+<p>This function requires
+<a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.asyncioreactor.AsyncioSelectorReactor.html" title="(in Twisted)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncioSelectorReactor</span></code></a> to be
+installed.</p>
+<p>When <a class="reference internal" href="#install-asyncio"><span class="std std-ref">using the asyncio reactor</span></a>, you cannot await
+on <a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.defer.Deferred.html" title="(in Twisted)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Deferred</span></code></a> objects from <a class="reference internal" href="coroutines.html#coroutine-support"><span class="std std-ref">Scrapy
+callables defined as coroutines</span></a>, you can only await on
+<code class="docutils literal notranslate"><span class="pre">Future</span></code> objects. Wrapping <code class="docutils literal notranslate"><span class="pre">Deferred</span></code> objects into <code class="docutils literal notranslate"><span class="pre">Future</span></code> objects
+allows you to wait on them:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MySpider</span><span class="p">(</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">additional_request</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="s1">&#39;https://example.org/price&#39;</span><span class="p">)</span>
+        <span class="n">deferred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">crawler</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">additional_request</span><span class="p">)</span>
+        <span class="n">additional_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">deferred_to_future</span><span class="p">(</span><span class="n">deferred</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 2.14: </span>This function no longer installs an asyncio loop if called before the
+Twisted asyncio reactor is installed. A <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.14)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">RuntimeError</span></code></a> is raised
+in this case.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scrapy.utils.defer.maybe_deferred_to_future">
+<span class="sig-prename descclassname"><span class="pre">scrapy.utils.defer.</span></span><span class="sig-name descname"><span class="pre">maybe_deferred_to_future</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.defer.Deferred.html" title="(in Twisted)"><span class="pre">Deferred</span></a><span class="p"><span class="pre">[</span></span><span class="pre">_T</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.defer.Deferred.html" title="(in Twisted)"><span class="pre">Deferred</span></a><span class="p"><span class="pre">[</span></span><span class="pre">_T</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Future</span><span class="p"><span class="pre">[</span></span><span class="pre">_T</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/scrapy/utils/defer.html#maybe_deferred_to_future"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scrapy.utils.defer.maybe_deferred_to_future" title="Link to this definition"></a></dt>
+<dd><p>Return <em>d</em> as an object that can be awaited from a <a class="reference internal" href="coroutines.html#coroutine-support"><span class="std std-ref">Scrapy callable
+defined as a coroutine</span></a>.</p>
+<p>What you can await in Scrapy callables defined as coroutines depends on the
+value of <a class="reference internal" href="settings.html#std-setting-TWISTED_REACTOR"><code class="xref std std-setting docutils literal notranslate"><span class="pre">TWISTED_REACTOR</span></code></a>:</p>
+<ul class="simple">
+<li><p>When <a class="reference internal" href="#install-asyncio"><span class="std std-ref">using the asyncio reactor</span></a>, you can only
+await on <a class="reference external" href="https://docs.python.org/3/library/asyncio-future.html#asyncio.Future" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">asyncio.Future</span></code></a> objects.</p></li>
+<li><p>When not using the asyncio reactor, you can only await on
+<a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.defer.Deferred.html" title="(in Twisted)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Deferred</span></code></a> objects.</p></li>
+</ul>
+<p>If you want to write code that uses <code class="docutils literal notranslate"><span class="pre">Deferred</span></code> objects but works with any
+reactor, use this function on all <code class="docutils literal notranslate"><span class="pre">Deferred</span></code> objects:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MySpider</span><span class="p">(</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">additional_request</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="s1">&#39;https://example.org/price&#39;</span><span class="p">)</span>
+        <span class="n">deferred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">crawler</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">additional_request</span><span class="p">)</span>
+        <span class="n">additional_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">maybe_deferred_to_future</span><span class="p">(</span><span class="n">deferred</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you don’t need to support reactors other than the default
+<a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.asyncioreactor.AsyncioSelectorReactor.html" title="(in Twisted)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncioSelectorReactor</span></code></a>, you
+can use <a class="reference internal" href="#scrapy.utils.defer.deferred_to_future" title="scrapy.utils.defer.deferred_to_future"><code class="xref py py-func docutils literal notranslate"><span class="pre">deferred_to_future()</span></code></a>, otherwise you
+should use <a class="reference internal" href="#scrapy.utils.defer.maybe_deferred_to_future" title="scrapy.utils.defer.maybe_deferred_to_future"><code class="xref py py-func docutils literal notranslate"><span class="pre">maybe_deferred_to_future()</span></code></a>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you need to use these functions in code that aims to be compatible
+with lower versions of Scrapy that do not provide these functions,
+down to Scrapy 2.0 (earlier versions do not support
+<a class="reference external" href="https://docs.python.org/3/library/asyncio.html#module-asyncio" title="(in Python v3.14)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncio</span></code></a>), you can copy the implementation of these functions
+into your own code.</p>
+</div>
+<p>Coroutines and futures can be wrapped into Deferreds (for example, when a
+Scrapy API requires passing a Deferred to it) using the following helpers:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="scrapy.utils.defer.deferred_from_coro">
+<span class="sig-prename descclassname"><span class="pre">scrapy.utils.defer.</span></span><span class="sig-name descname"><span class="pre">deferred_from_coro</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Awaitable" title="(in Python v3.14)"><span class="pre">Awaitable</span></a><span class="p"><span class="pre">[</span></span><span class="pre">_T</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.defer.Deferred.html" title="(in Twisted)"><span class="pre">Deferred</span></a><span class="p"><span class="pre">[</span></span><span class="pre">_T</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/scrapy/utils/defer.html#deferred_from_coro"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scrapy.utils.defer.deferred_from_coro" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">scrapy.utils.defer.</span></span><span class="sig-name descname"><span class="pre">deferred_from_coro</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">_T2</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">_T2</span></span></span></dt>
+<dd><p>Convert a coroutine or other awaitable object into a Deferred,
+or return the object as is if it isn’t a coroutine.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scrapy.utils.defer.deferred_f_from_coro_f">
+<span class="sig-prename descclassname"><span class="pre">scrapy.utils.defer.</span></span><span class="sig-name descname"><span class="pre">deferred_f_from_coro_f</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">coro_f</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="pre">_P</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Awaitable</span><span class="p"><span class="pre">[</span></span><span class="pre">_T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="pre">_P</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Deferred</span><span class="p"><span class="pre">[</span></span><span class="pre">_T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/scrapy/utils/defer.html#deferred_f_from_coro_f"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scrapy.utils.defer.deferred_f_from_coro_f" title="Link to this definition"></a></dt>
+<dd><p>Convert a coroutine function into a function that returns a Deferred.</p>
+<p>The coroutine function will be called at the time when the wrapper is called. Wrapper args will be passed to it.
+This is useful for callback chains, as callback functions are called with the previous callback result.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scrapy.utils.defer.ensure_awaitable">
+<span class="sig-prename descclassname"><span class="pre">scrapy.utils.defer.</span></span><span class="sig-name descname"><span class="pre">ensure_awaitable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Awaitable" title="(in Python v3.14)"><span class="pre">Awaitable</span></a><span class="p"><span class="pre">[</span></span><span class="pre">_T</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_warn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Awaitable" title="(in Python v3.14)"><span class="pre">Awaitable</span></a><span class="p"><span class="pre">[</span></span><span class="pre">_T</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/scrapy/utils/defer.html#ensure_awaitable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scrapy.utils.defer.ensure_awaitable" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">scrapy.utils.defer.</span></span><span class="sig-name descname"><span class="pre">ensure_awaitable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">_T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_warn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Awaitable" title="(in Python v3.14)"><span class="pre">Awaitable</span></a><span class="p"><span class="pre">[</span></span><span class="pre">_T</span><span class="p"><span class="pre">]</span></span></span></span></dt>
+<dd><p>Convert any value to an awaitable object.</p>
+<p>For a <a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.defer.Deferred.html" title="(in Twisted)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Deferred</span></code></a> object, use
+<a class="reference internal" href="#scrapy.utils.defer.maybe_deferred_to_future" title="scrapy.utils.defer.maybe_deferred_to_future"><code class="xref py py-func docutils literal notranslate"><span class="pre">maybe_deferred_to_future()</span></code></a> to wrap it into a suitable object. For an
+awaitable object of a different type, return it as is. For any other
+value, return a coroutine that completes with that value.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 2.14.</span></p>
+</div>
+</dd></dl>
+
+</section>
+<section id="enforcing-asyncio-as-a-requirement">
+<span id="enforce-asyncio-requirement"></span><h2>Enforcing asyncio as a requirement<a class="headerlink" href="#enforcing-asyncio-as-a-requirement" title="Link to this heading"></a></h2>
+<p>If you are writing a <a class="reference internal" href="components.html#topics-components"><span class="std std-ref">component</span></a> that requires asyncio
+to work, use <a class="reference internal" href="#scrapy.utils.asyncio.is_asyncio_available" title="scrapy.utils.asyncio.is_asyncio_available"><code class="xref py py-func docutils literal notranslate"><span class="pre">scrapy.utils.asyncio.is_asyncio_available()</span></code></a> to
+<a class="reference internal" href="components.html#enforce-component-requirements"><span class="std std-ref">enforce it as a requirement</span></a>. For
+example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.utils.asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">is_asyncio_available</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MyComponent</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_asyncio_available</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">MyComponent</span><span class="o">.</span><span class="vm">__qualname__</span><span class="si">}</span><span class="s2"> requires the asyncio support. &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Make sure you have configured the asyncio reactor in the &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;TWISTED_REACTOR setting. See the asyncio documentation &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;of Scrapy for more information.&quot;</span>
+            <span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="scrapy.utils.asyncio.is_asyncio_available">
+<span class="sig-prename descclassname"><span class="pre">scrapy.utils.asyncio.</span></span><span class="sig-name descname"><span class="pre">is_asyncio_available</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../_modules/scrapy/utils/asyncio.html#is_asyncio_available"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scrapy.utils.asyncio.is_asyncio_available" title="Link to this definition"></a></dt>
+<dd><p>Check if it’s possible to call asyncio code that relies on the asyncio event loop.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 2.14.</span></p>
+</div>
+<p>This function returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if there is a running asyncio event loop. If
+there is no such loop, it returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the Twisted reactor that is
+installed is
+<a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.asyncioreactor.AsyncioSelectorReactor.html" title="(in Twisted)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncioSelectorReactor</span></code></a>, returns
+<code class="docutils literal notranslate"><span class="pre">False</span></code> if a different reactor is installed, and raises a
+<a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.14)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">RuntimeError</span></code></a> if no reactor is installed.</p>
+<p>Code that doesn’t directly require a Twisted reactor should use this
+function while code that requires
+<a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.asyncioreactor.AsyncioSelectorReactor.html" title="(in Twisted)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncioSelectorReactor</span></code></a> should use
+<a class="reference internal" href="#scrapy.utils.reactor.is_asyncio_reactor_installed" title="scrapy.utils.reactor.is_asyncio_reactor_installed"><code class="xref py py-func docutils literal notranslate"><span class="pre">is_asyncio_reactor_installed()</span></code></a>.</p>
+<p>When this returns <code class="docutils literal notranslate"><span class="pre">True</span></code>, an asyncio loop is installed and used by
+Scrapy. It’s possible to call functions that require it, such as
+<a class="reference external" href="https://docs.python.org/3/library/asyncio-task.html#asyncio.sleep" title="(in Python v3.14)"><code class="xref py py-func docutils literal notranslate"><span class="pre">asyncio.sleep()</span></code></a>, and await on <a class="reference external" href="https://docs.python.org/3/library/asyncio-future.html#asyncio.Future" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">asyncio.Future</span></code></a> objects in
+Scrapy-related code.</p>
+<p>When this returns <code class="docutils literal notranslate"><span class="pre">False</span></code>, a non-asyncio Twisted reactor is installed.
+It’s not possible to use asyncio features that require an asyncio event
+loop or await on <a class="reference external" href="https://docs.python.org/3/library/asyncio-future.html#asyncio.Future" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">asyncio.Future</span></code></a> objects in Scrapy-related code,
+but it’s possible to await on <a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.defer.Deferred.html" title="(in Twisted)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Deferred</span></code></a>
+objects.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As this function uses <a class="reference external" href="https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.get_running_loop" title="(in Python v3.14)"><code class="xref py py-func docutils literal notranslate"><span class="pre">asyncio.get_running_loop()</span></code></a>, it will
+only detect the event loop if called in the same thread and from the
+code that runs inside that loop (this shouldn’t be a problem when
+calling it from code such as spiders and Scrapy components, if Scrapy
+is run using one of the supported ways).</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version VERSION: </span>This function now also returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if there is a running asyncio
+loop, even if no Twisted reactor is installed.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scrapy.utils.reactor.is_asyncio_reactor_installed">
+<span class="sig-prename descclassname"><span class="pre">scrapy.utils.reactor.</span></span><span class="sig-name descname"><span class="pre">is_asyncio_reactor_installed</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../_modules/scrapy/utils/reactor.html#is_asyncio_reactor_installed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scrapy.utils.reactor.is_asyncio_reactor_installed" title="Link to this definition"></a></dt>
+<dd><p>Check whether the installed reactor is <a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.asyncioreactor.AsyncioSelectorReactor.html" title="(in Twisted)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncioSelectorReactor</span></code></a>.</p>
+<p>Raise a <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#RuntimeError" title="(in Python v3.14)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">RuntimeError</span></code></a> if no reactor is installed.</p>
+<p>In a future Scrapy version, when Scrapy supports running without a Twisted
+reactor, this function won’t be useful for checking if it’s possible to use
+asyncio features, so the code that that doesn’t directly require a Twisted
+reactor should use <a class="reference internal" href="#scrapy.utils.asyncio.is_asyncio_available" title="scrapy.utils.asyncio.is_asyncio_available"><code class="xref py py-func docutils literal notranslate"><span class="pre">scrapy.utils.asyncio.is_asyncio_available()</span></code></a>
+instead of this function.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 2.13: </span>In earlier Scrapy versions this function silently installed the default
+reactor if there was no reactor installed. Now it raises an exception to
+prevent silent problems in this case.</p>
+</div>
+</dd></dl>
+
+</section>
+<section id="using-scrapy-without-a-twisted-reactor">
+<span id="asyncio-without-reactor"></span><h2>Using Scrapy without a Twisted reactor<a class="headerlink" href="#using-scrapy-without-a-twisted-reactor" title="Link to this heading"></a></h2>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 2.15.0.</span></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This is currently experimental and may not be suitable for production use.</p>
+</div>
+<p>It’s possible to use Scrapy without installing a Twisted reactor at all, by
+setting the <a class="reference internal" href="settings.html#std-setting-TWISTED_REACTOR_ENABLED"><code class="xref std std-setting docutils literal notranslate"><span class="pre">TWISTED_REACTOR_ENABLED</span></code></a> setting to <code class="docutils literal notranslate"><span class="pre">False</span></code>. In this
+mode Scrapy will use the asyncio event loop directly, and most of the Scrapy
+functionality will work in the same way.</p>
+<p>Doing this provides several benefits in certain use cases:</p>
+<ul class="simple">
+<li><p>A Twisted reactor, once stopped, cannot be started again. This prevents, for
+example, using several instances of
+<a class="reference internal" href="api.html#scrapy.crawler.AsyncCrawlerProcess" title="scrapy.crawler.AsyncCrawlerProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncCrawlerProcess</span></code></a> in the same process when they
+use a reactor, but with <code class="docutils literal notranslate"><span class="pre">TWISTED_REACTOR_ENABLED=False</span></code> it becomes
+possible.</p></li>
+<li><p>There may be limitations imposed by
+<a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.asyncioreactor.AsyncioSelectorReactor.html" title="(in Twisted)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncioSelectorReactor</span></code></a> and related
+Twisted code, such as the requirement of using
+<a class="reference external" href="https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.SelectorEventLoop" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SelectorEventLoop</span></code></a> on Windows (see <a class="reference internal" href="#asyncio-windows"><span class="std std-ref">Windows-specific notes</span></a>),
+that do not apply if the reactor is not used.</p></li>
+<li><p><a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.asyncioreactor.AsyncioSelectorReactor.html" title="(in Twisted)"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncioSelectorReactor</span></code></a> manages the
+underlying event loop, and while <a class="reference internal" href="api.html#scrapy.crawler.AsyncCrawlerRunner" title="scrapy.crawler.AsyncCrawlerRunner"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncCrawlerRunner</span></code></a>
+can use a pre-existing reactor which, in turn, can use a pre-existing event
+loop, it’s easier to use <a class="reference internal" href="api.html#scrapy.crawler.AsyncCrawlerRunner" title="scrapy.crawler.AsyncCrawlerRunner"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncCrawlerRunner</span></code></a> with a
+pre-existing loop directly.</p></li>
+<li><p>Omitting the reactor machinery may improve performance and reliability.</p></li>
+</ul>
+<section id="limitations">
+<h3>Limitations<a class="headerlink" href="#limitations" title="Link to this heading"></a></h3>
+<p>As some Scrapy features and components require a reactor, they don’t work and
+are disabled without it. Replacements that don’t require a reactor may be added
+in future Scrapy versions. The following features are not available:</p>
+<ul class="simple">
+<li><p>The default HTTP(S) download handler,
+<a class="reference internal" href="download-handlers.html#scrapy.core.downloader.handlers.http11.HTTP11DownloadHandler" title="scrapy.core.downloader.handlers.http11.HTTP11DownloadHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">HTTP11DownloadHandler</span></code></a> (this
+is likely the biggest difference; Scrapy provides an HTTP(S) download handler
+that doesn’t require a reactor and will be used instead of it:
+<a class="reference internal" href="download-handlers.html#scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler" title="scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpxDownloadHandler</span></code></a>)</p></li>
+<li><p><a class="reference internal" href="download-handlers.html#scrapy.core.downloader.handlers.ftp.FTPDownloadHandler" title="scrapy.core.downloader.handlers.ftp.FTPDownloadHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">FTPDownloadHandler</span></code></a></p></li>
+<li><p><a class="reference internal" href="download-handlers.html#scrapy.core.downloader.handlers.http2.H2DownloadHandler" title="scrapy.core.downloader.handlers.http2.H2DownloadHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">H2DownloadHandler</span></code></a></p></li>
+<li><p><a class="reference internal" href="shell.html#topics-shell"><span class="std std-ref">Scrapy shell</span></a></p></li>
+<li><p><a class="reference internal" href="telnetconsole.html#topics-telnetconsole"><span class="std std-ref">Telnet Console</span></a></p></li>
+<li><p><a class="reference internal" href="api.html#scrapy.crawler.CrawlerRunner" title="scrapy.crawler.CrawlerRunner"><code class="xref py py-class docutils literal notranslate"><span class="pre">CrawlerRunner</span></code></a> and
+<a class="reference internal" href="api.html#scrapy.crawler.CrawlerProcess" title="scrapy.crawler.CrawlerProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">CrawlerProcess</span></code></a>
+(<a class="reference internal" href="api.html#scrapy.crawler.AsyncCrawlerProcess" title="scrapy.crawler.AsyncCrawlerProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncCrawlerProcess</span></code></a> and
+<a class="reference internal" href="api.html#scrapy.crawler.AsyncCrawlerRunner" title="scrapy.crawler.AsyncCrawlerRunner"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncCrawlerRunner</span></code></a> are available)</p></li>
+<li><p>Twisted-specific DNS resolvers (the <a class="reference internal" href="settings.html#std-setting-DNS_RESOLVER"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DNS_RESOLVER</span></code></a> setting)</p></li>
+<li><p>User and 3rd-party code that requires a reactor (see <a class="reference internal" href="#asyncio-without-reactor-migrate"><span class="std std-ref">below</span></a> for examples)</p></li>
+</ul>
+<p>Note that importing Twisted modules and, among other things, creating and using
+<a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.defer.Deferred.html" title="(in Twisted)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Deferred</span></code></a> objects doesn’t require a reactor, so
+code that uses <a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.defer.Deferred.html" title="(in Twisted)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Deferred</span></code></a>,
+<a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.python.failure.Failure.html" title="(in Twisted)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Failure</span></code></a> and some other Twisted APIs will not
+necessarily stop working.</p>
+</section>
+<section id="other-differences">
+<h3>Other differences<a class="headerlink" href="#other-differences" title="Link to this heading"></a></h3>
+<p>When <a class="reference internal" href="settings.html#std-setting-TWISTED_REACTOR_ENABLED"><code class="xref std std-setting docutils literal notranslate"><span class="pre">TWISTED_REACTOR_ENABLED</span></code></a> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, Scrapy will change
+the defaults of some other settings:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="settings.html#std-setting-TELNETCONSOLE_ENABLED"><code class="xref std std-setting docutils literal notranslate"><span class="pre">TELNETCONSOLE_ENABLED</span></code></a> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">&quot;http&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;https&quot;</span></code> keys in <a class="reference internal" href="settings.html#std-setting-DOWNLOAD_HANDLERS_BASE"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOAD_HANDLERS_BASE</span></code></a> are
+set to <code class="docutils literal notranslate"><span class="pre">&quot;scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler&quot;</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">&quot;ftp&quot;</span></code> key in <a class="reference internal" href="settings.html#std-setting-DOWNLOAD_HANDLERS_BASE"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOAD_HANDLERS_BASE</span></code></a> is set to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+<p>Thus, <a class="reference internal" href="download-handlers.html#scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler" title="scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpxDownloadHandler</span></code></a> is
+used by default for making HTTP(S) requests. Please refer to its documentation
+for its differences and limitations compared to
+<a class="reference internal" href="download-handlers.html#scrapy.core.downloader.handlers.http11.HTTP11DownloadHandler" title="scrapy.core.downloader.handlers.http11.HTTP11DownloadHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">HTTP11DownloadHandler</span></code></a>.</p>
+<p>Additionally, <a class="reference internal" href="api.html#scrapy.crawler.AsyncCrawlerProcess" title="scrapy.crawler.AsyncCrawlerProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncCrawlerProcess</span></code></a> will install a
+<a class="reference external" href="https://docs.python.org/3/glossary.html#term-meta-path-finder" title="(in Python v3.14)"><span class="xref std std-term">meta path finder</span></a> that prevents <a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.reactor.html" title="(in Twisted)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">twisted.internet.reactor</span></code></a> from
+being imported.</p>
+</section>
+<section id="adding-support-to-existing-code">
+<span id="asyncio-without-reactor-migrate"></span><h3>Adding support to existing code<a class="headerlink" href="#adding-support-to-existing-code" title="Link to this heading"></a></h3>
+<p>Code that doesn’t directly use Twisted APIs or APIs that depend on Twisted ones
+doesn’t need special support for running without a reactor.</p>
+<p>Here are some examples of APIs and patterns that need a replacement:</p>
+<ul class="simple">
+<li><p>Using <a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.base.ReactorBase.html#callLater" title="(in Twisted)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reactor.callLater()</span></code></a> for sleeping or delayed calls.
+You can use <a class="reference external" href="https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.loop.call_later" title="(in Python v3.14)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">asyncio.loop.call_later()</span></code></a> instead.</p></li>
+<li><p>Using <a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.threads.html#deferToThread" title="(in Twisted)"><code class="xref py py-func docutils literal notranslate"><span class="pre">twisted.internet.threads.deferToThread()</span></code></a>,
+<a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.base.ReactorBase.html#callFromThread" title="(in Twisted)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reactor.callFromThread()</span></code></a> and related APIs to
+execute code in other threads. You can use <a class="reference external" href="https://docs.python.org/3/library/asyncio-task.html#asyncio.to_thread" title="(in Python v3.14)"><code class="xref py py-func docutils literal notranslate"><span class="pre">asyncio.to_thread()</span></code></a>,
+<a class="reference external" href="https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.loop.call_soon_threadsafe" title="(in Python v3.14)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">asyncio.loop.call_soon_threadsafe()</span></code></a> and related APIs instead.</p></li>
+<li><p>Using <a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.task.LoopingCall.html" title="(in Twisted)"><code class="xref py py-class docutils literal notranslate"><span class="pre">twisted.internet.task.LoopingCall</span></code></a> for scheduling repeated
+tasks. As there is no direct replacement in the standard library, you may
+need to write your own one using <a class="reference external" href="https://docs.python.org/3/library/asyncio-task.html#asyncio.sleep" title="(in Python v3.14)"><code class="xref py py-func docutils literal notranslate"><span class="pre">asyncio.sleep()</span></code></a> in a task.</p></li>
+<li><p>Using Twisted network client and server APIs (<a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.interfaces.IReactorTCP.html#connectTCP" title="(in Twisted)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reactor.connectTCP()</span></code></a>,
+<a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.interfaces.IReactorTCP.html#listenTCP" title="(in Twisted)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reactor.listenTCP()</span></code></a>,
+<a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.web.client.html" title="(in Twisted)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">twisted.web.client</span></code></a>, <a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.mail.smtp.html" title="(in Twisted)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">twisted.mail.smtp</span></code></a> etc.). You can use other
+built-in or 3rd-party libraries for this.</p></li>
+<li><p>Using <a class="reference internal" href="api.html#scrapy.crawler.CrawlerProcess" title="scrapy.crawler.CrawlerProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">CrawlerProcess</span></code></a> or
+<a class="reference internal" href="api.html#scrapy.crawler.CrawlerRunner" title="scrapy.crawler.CrawlerRunner"><code class="xref py py-class docutils literal notranslate"><span class="pre">CrawlerRunner</span></code></a>. You should use
+<a class="reference internal" href="api.html#scrapy.crawler.AsyncCrawlerProcess" title="scrapy.crawler.AsyncCrawlerProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncCrawlerProcess</span></code></a> or
+<a class="reference internal" href="api.html#scrapy.crawler.AsyncCrawlerRunner" title="scrapy.crawler.AsyncCrawlerRunner"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncCrawlerRunner</span></code></a> respectively instead.</p></li>
+<li><p>Checking whether <code class="docutils literal notranslate"><span class="pre">asyncio</span></code> support is available with
+<a class="reference internal" href="#scrapy.utils.reactor.is_asyncio_reactor_installed" title="scrapy.utils.reactor.is_asyncio_reactor_installed"><code class="xref py py-func docutils literal notranslate"><span class="pre">scrapy.utils.reactor.is_asyncio_reactor_installed()</span></code></a>. You should use
+<a class="reference internal" href="#scrapy.utils.asyncio.is_asyncio_available" title="scrapy.utils.asyncio.is_asyncio_available"><code class="xref py py-func docutils literal notranslate"><span class="pre">scrapy.utils.asyncio.is_asyncio_available()</span></code></a> instead.</p></li>
+</ul>
+<p>Scrapy provides unified helpers for some of these examples:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="scrapy.utils.asyncio.call_later">
+<span class="sig-prename descclassname"><span class="pre">scrapy.utils.asyncio.</span></span><span class="sig-name descname"><span class="pre">call_later</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Unpack</span><span class="p"><span class="pre">[</span></span><span class="pre">_Ts</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><span class="pre">object</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Unpack</span><span class="p"><span class="pre">[</span></span><span class="pre">_Ts</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">CallLaterResult</span></span></span><a class="reference internal" href="../_modules/scrapy/utils/asyncio.html#call_later"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scrapy.utils.asyncio.call_later" title="Link to this definition"></a></dt>
+<dd><p>Schedule a function to be called after a delay.</p>
+<p>This uses either <a class="reference external" href="https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.loop.call_later" title="(in Python v3.14)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">asyncio.loop.call_later()</span></code></a> or
+<a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.base.ReactorBase.html#callLater" title="(in Twisted)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reactor.callLater()</span></code></a>,
+depending on whether asyncio support is available.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 2.14.0.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scrapy.utils.asyncio.create_looping_call">
+<span class="sig-prename descclassname"><span class="pre">scrapy.utils.asyncio.</span></span><span class="sig-name descname"><span class="pre">create_looping_call</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">func:</span> <span class="pre">~collections.abc.Callable[[~_P],</span> <span class="pre">~scrapy.utils.asyncio._T],</span> <span class="pre">*args:</span> <span class="pre">~typing.~_P,</span> <span class="pre">**kwargs:</span> <span class="pre">~typing.~_P</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#scrapy.utils.asyncio.AsyncioLoopingCall" title="scrapy.utils.asyncio.AsyncioLoopingCall"><span class="pre">AsyncioLoopingCall</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.task.LoopingCall.html" title="(in Twisted)"><span class="pre">LoopingCall</span></a></span></span><a class="reference internal" href="../_modules/scrapy/utils/asyncio.html#create_looping_call"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scrapy.utils.asyncio.create_looping_call" title="Link to this definition"></a></dt>
+<dd><p>Create an instance of a looping call class.</p>
+<p>This creates an instance of
+<a class="reference internal" href="#scrapy.utils.asyncio.AsyncioLoopingCall" title="scrapy.utils.asyncio.AsyncioLoopingCall"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncioLoopingCall</span></code></a> or
+<a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.task.LoopingCall.html" title="(in Twisted)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoopingCall</span></code></a>, depending on whether asyncio
+support is available.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 2.14.0.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.utils.asyncio.AsyncioLoopingCall">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.utils.asyncio.</span></span><span class="sig-name descname"><span class="pre">AsyncioLoopingCall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">func:</span> <span class="pre">~collections.abc.Callable[[~_P],</span> <span class="pre">~scrapy.utils.asyncio._T],</span> <span class="pre">*args:</span> <span class="pre">~typing.~_P,</span> <span class="pre">**kwargs:</span> <span class="pre">~typing.~_P</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/scrapy/utils/asyncio.html#AsyncioLoopingCall"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scrapy.utils.asyncio.AsyncioLoopingCall" title="Link to this definition"></a></dt>
+<dd><p>A simple implementation of a periodic call using asyncio, keeping
+some API and behavior compatibility with
+<a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.task.LoopingCall.html" title="(in Twisted)"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoopingCall</span></code></a>.</p>
+<p>The function is called every <em>interval</em> seconds, independent of the finish
+time of the previous call. If the function  is still running when it’s time
+to call it again, calls are skipped until the function finishes.</p>
+<p>The function must not return a coroutine or a <code class="docutils literal notranslate"><span class="pre">Deferred</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 2.14.0.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scrapy.utils.asyncio.run_in_thread">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.utils.asyncio.</span></span><span class="sig-name descname"><span class="pre">run_in_thread</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">func:</span> <span class="pre">~collections.abc.Callable[[~_P],</span> <span class="pre">~scrapy.utils.asyncio._T],</span> <span class="pre">*args:</span> <span class="pre">~typing.~_P,</span> <span class="pre">**kwargs:</span> <span class="pre">~typing.~_P</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">_T</span></span></span><a class="reference internal" href="../_modules/scrapy/utils/asyncio.html#run_in_thread"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scrapy.utils.asyncio.run_in_thread" title="Link to this definition"></a></dt>
+<dd><p>Call a function in a thread and return its result as a coroutine.</p>
+<p>This uses either <a class="reference external" href="https://docs.python.org/3/library/asyncio-task.html#asyncio.to_thread" title="(in Python v3.14)"><code class="xref py py-func docutils literal notranslate"><span class="pre">asyncio.to_thread()</span></code></a> or
+<a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.threads.html#deferToThread" title="(in Twisted)"><code class="xref py py-func docutils literal notranslate"><span class="pre">twisted.internet.threads.deferToThread()</span></code></a>, depending on whether
+asyncio support is available.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version VERSION.</span></p>
+</div>
+</dd></dl>
+
+<p>If your code needs to know whether the reactor is available, you can either
+check for the value of the <a class="reference internal" href="settings.html#std-setting-TWISTED_REACTOR_ENABLED"><code class="xref std std-setting docutils literal notranslate"><span class="pre">TWISTED_REACTOR_ENABLED</span></code></a> setting (you need
+access to the <a class="reference internal" href="api.html#scrapy.crawler.Crawler" title="scrapy.crawler.Crawler"><code class="xref py py-class docutils literal notranslate"><span class="pre">Crawler</span></code></a> instance to do this) or use the
+following function:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="scrapy.utils.reactorless.is_reactorless">
+<span class="sig-prename descclassname"><span class="pre">scrapy.utils.reactorless.</span></span><span class="sig-name descname"><span class="pre">is_reactorless</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../_modules/scrapy/utils/reactorless.html#is_reactorless"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scrapy.utils.reactorless.is_reactorless" title="Link to this definition"></a></dt>
+<dd><p>Check if we are running in the reactorless mode, i.e. with
+<a class="reference internal" href="settings.html#std-setting-TWISTED_REACTOR_ENABLED"><code class="xref std std-setting docutils literal notranslate"><span class="pre">TWISTED_REACTOR_ENABLED</span></code></a> set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>As this checks the runtime state and not the setting itself, it can be
+wrong when executed very early, before the reactor and/or the asyncio event
+loop are initialized.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As this function uses
+<a class="reference internal" href="#scrapy.utils.asyncio.is_asyncio_available" title="scrapy.utils.asyncio.is_asyncio_available"><code class="xref py py-func docutils literal notranslate"><span class="pre">scrapy.utils.asyncio.is_asyncio_available()</span></code></a>, it has the same
+limitations for detecting a running asyncio event loop as that one.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version VERSION.</span></p>
+</div>
+</dd></dl>
+
+<p>In general, code that doesn’t use the reactor (directly or indirectly) can be
+used unmodified both with the asyncio reactor and without a reactor. This
+includes code that converts Deferreds to futures and vice versa as described in
+<a class="reference internal" href="#asyncio-await-dfd"><span class="std std-ref">Integrating Deferred code and asyncio code</span></a>.</p>
+</section>
+<section id="troubleshooting">
+<h3>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h3>
+<p><strong>ImportError: Import of twisted.internet.reactor is forbidden when running
+without a Twisted reactor […]:</strong> Scrapy is configured to run without a
+reactor, but some code imported <a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.reactor.html" title="(in Twisted)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">twisted.internet.reactor</span></code></a>, most likely
+because that code needs a reactor to be used. You need to stop using this code
+or set <a class="reference internal" href="settings.html#std-setting-TWISTED_REACTOR_ENABLED"><code class="xref std std-setting docutils literal notranslate"><span class="pre">TWISTED_REACTOR_ENABLED</span></code></a> back to <code class="docutils literal notranslate"><span class="pre">True</span></code>. It’s also possible
+that the reactor isn’t really needed but was installed due to the problem
+described in <a class="reference internal" href="#asyncio-preinstalled-reactor"><span class="std std-ref">Handling a pre-installed reactor</span></a>, in which case it should be
+enough to fix the problematic imports.</p>
+<p><strong>RuntimeError: TWISTED_REACTOR_ENABLED is False but a Twisted reactor is
+installed:</strong> Scrapy is configured to run without a reactor, but a reactor is
+already installed before the Scrapy code is executed. If you are trying to set
+<a class="reference internal" href="settings.html#std-setting-TWISTED_REACTOR_ENABLED"><code class="xref std std-setting docutils literal notranslate"><span class="pre">TWISTED_REACTOR_ENABLED</span></code></a> via <a class="reference internal" href="settings.html#spider-settings"><span class="std std-ref">per-spider settings</span></a>, it’s currently unsupported.</p>
+<p><strong>RuntimeError: We expected a Twisted reactor to be installed but it isn’t:</strong>
+Scrapy is configured to run with a reactor and not to install one, but a
+reactor wasn’t installed before the Scrapy code is executed. If you are trying
+to set <a class="reference internal" href="settings.html#std-setting-TWISTED_REACTOR_ENABLED"><code class="xref std std-setting docutils literal notranslate"><span class="pre">TWISTED_REACTOR_ENABLED</span></code></a> via <a class="reference internal" href="settings.html#spider-settings"><span class="std std-ref">per-spider settings</span></a>, it’s currently unsupported.</p>
+<p><strong>RuntimeError: &lt;class&gt; doesn’t support TWISTED_REACTOR_ENABLED=False:</strong> The
+listed class cannot be used with <a class="reference internal" href="settings.html#std-setting-TWISTED_REACTOR_ENABLED"><code class="xref std std-setting docutils literal notranslate"><span class="pre">TWISTED_REACTOR_ENABLED</span></code></a> set to
+<code class="docutils literal notranslate"><span class="pre">False</span></code>. There may be a replacement in the <a class="reference internal" href="#asyncio-without-reactor"><span class="std std-ref">documentation above</span></a> or the documentation of the affected class.</p>
+</section>
+</section>
+<section id="windows-specific-notes">
+<span id="asyncio-windows"></span><h2>Windows-specific notes<a class="headerlink" href="#windows-specific-notes" title="Link to this heading"></a></h2>
+<p>The Windows implementation of <a class="reference external" href="https://docs.python.org/3/library/asyncio.html#module-asyncio" title="(in Python v3.14)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncio</span></code></a> can use two event loop
+implementations, <a class="reference external" href="https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.ProactorEventLoop" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProactorEventLoop</span></code></a> (default) and
+<a class="reference external" href="https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.SelectorEventLoop" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SelectorEventLoop</span></code></a>. However, only
+<a class="reference external" href="https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.SelectorEventLoop" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SelectorEventLoop</span></code></a> works with Twisted.</p>
+<p>Scrapy changes the event loop class to <a class="reference external" href="https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.SelectorEventLoop" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">SelectorEventLoop</span></code></a>
+automatically when you change the <a class="reference internal" href="settings.html#std-setting-TWISTED_REACTOR"><code class="xref std std-setting docutils literal notranslate"><span class="pre">TWISTED_REACTOR</span></code></a> setting or call
+<a class="reference internal" href="settings.html#scrapy.utils.reactor.install_reactor" title="scrapy.utils.reactor.install_reactor"><code class="xref py py-func docutils literal notranslate"><span class="pre">install_reactor()</span></code></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Other libraries you use may require
+<a class="reference external" href="https://docs.python.org/3/library/asyncio-eventloop.html#asyncio.ProactorEventLoop" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProactorEventLoop</span></code></a>, e.g. because it supports
+subprocesses (this is the case with <a class="reference external" href="https://github.com/microsoft/playwright-python">playwright</a>), so you cannot use
+them together with Scrapy on Windows (but you should be able to use
+them on WSL or native Linux).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This problem doesn’t apply when not using the reactor, see
+<a class="reference internal" href="#asyncio-without-reactor"><span class="std std-ref">Using Scrapy without a Twisted reactor</span></a>.</p>
+</div>
+</section>
+<section id="using-custom-asyncio-loops">
+<span id="using-custom-loops"></span><h2>Using custom asyncio loops<a class="headerlink" href="#using-custom-asyncio-loops" title="Link to this heading"></a></h2>
+<p>You can also use custom asyncio event loops with the asyncio reactor. Set the
+<a class="reference internal" href="settings.html#std-setting-ASYNCIO_EVENT_LOOP"><code class="xref std std-setting docutils literal notranslate"><span class="pre">ASYNCIO_EVENT_LOOP</span></code></a> setting to the import path of the desired event
+loop class to use it instead of the default asyncio event loop.</p>
+</section>
+<section id="switching-to-a-non-asyncio-reactor">
+<span id="disable-asyncio"></span><h2>Switching to a non-asyncio reactor<a class="headerlink" href="#switching-to-a-non-asyncio-reactor" title="Link to this heading"></a></h2>
+<p>If for some reason your code doesn’t work with the asyncio reactor, you can use
+a different reactor by setting the <a class="reference internal" href="settings.html#std-setting-TWISTED_REACTOR"><code class="xref std std-setting docutils literal notranslate"><span class="pre">TWISTED_REACTOR</span></code></a> setting to its
+import path (e.g. <code class="docutils literal notranslate"><span class="pre">'twisted.internet.epollreactor.EPollReactor'</span></code>) or to
+<code class="docutils literal notranslate"><span class="pre">None</span></code>, which will use the default reactor for your platform. If you are
+using <a class="reference internal" href="api.html#scrapy.crawler.AsyncCrawlerRunner" title="scrapy.crawler.AsyncCrawlerRunner"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncCrawlerRunner</span></code></a> or
+<a class="reference internal" href="api.html#scrapy.crawler.AsyncCrawlerProcess" title="scrapy.crawler.AsyncCrawlerProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncCrawlerProcess</span></code></a> you also need to switch to their
+Deferred-based counterparts: <a class="reference internal" href="api.html#scrapy.crawler.CrawlerRunner" title="scrapy.crawler.CrawlerRunner"><code class="xref py py-class docutils literal notranslate"><span class="pre">CrawlerRunner</span></code></a> or
+<a class="reference internal" href="api.html#scrapy.crawler.CrawlerProcess" title="scrapy.crawler.CrawlerProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">CrawlerProcess</span></code></a> respectively.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="coroutines.html" class="btn btn-neutral float-left" title="Coroutines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="architecture.html" class="btn btn-neutral float-right" title="Architecture overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Scrapy developers.
+      <span class="lastupdated">Last updated on Apr 27, 2026.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

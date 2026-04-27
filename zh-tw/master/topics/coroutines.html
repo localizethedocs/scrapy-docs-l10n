@@ -1,0 +1,682 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-TW" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coroutines &mdash; Scrapy 2.14.2 說明文件</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=74c04d93" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://projects.localizethedocs.org/scrapy-docs-l10n/topics/coroutines.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d7de6d6"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/translations.js?v=cbf116e0"></script>
+      <script>
+(function () {
+    var COPY_ICON = String.fromCodePoint(0x1F4CB);
+    var SUCCESS_ICON = String.fromCodePoint(0x2713);
+    var ERROR_ICON = String.fromCodePoint(0x26A0);
+
+    function makeLabel(icon, text) {
+        return icon + ' ' + text;
+    }
+
+    function markdownPathFromCurrentPage(pathname) {
+        if (pathname.endsWith('.html')) {
+            return pathname.slice(0, -5) + '.md';
+        }
+        if (pathname.endsWith('/')) {
+            return pathname + 'index.md';
+        }
+        var lastPart = pathname.split('/').pop() || '';
+        if (!lastPart.includes('.')) {
+            return pathname + '.md';
+        }
+        return pathname + '.md';
+    }
+
+    async function copyToClipboard(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return;
+        }
+        var textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', 'readonly');
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+    }
+
+    function setTemporaryLabel(button, label) {
+        var previousLabel = button.textContent;
+        button.textContent = label;
+        window.setTimeout(function () {
+            button.textContent = previousLabel;
+            button.disabled = false;
+        }, 1000);
+    }
+
+    async function onButtonClick(button) {
+        button.disabled = true;
+        button.textContent = '...';
+        try {
+            var mdPath = markdownPathFromCurrentPage(window.location.pathname);
+            var response = await fetch(mdPath, { credentials: 'same-origin' });
+            if (!response.ok) {
+                throw new Error('Unable to fetch markdown source');
+            }
+            var markdown = await response.text();
+            await copyToClipboard(markdown);
+            setTemporaryLabel(button, makeLabel(SUCCESS_ICON, 'Copied'));
+        } catch (_error) {
+            setTemporaryLabel(button, makeLabel(ERROR_ICON, 'Error'));
+        }
+    }
+
+    function addStyles() {
+        var style = document.createElement('style');
+        style.textContent = [
+            '.scrapy-copy-as-markdown {',
+            '  position: fixed;',
+            '  right: 1rem;',
+            '  bottom: 1rem;',
+            '  z-index: 1000;',
+            '  border: 1px solid #c9d4de;',
+            '  border-radius: 0.45rem;',
+            '  background: #ffffff;',
+            '  color: #233a50;',
+            '  font: inherit;',
+            '  font-size: 0.875rem;',
+            '  line-height: 1;',
+            '  padding: 0.55rem 0.7rem;',
+            '  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);',
+            '  cursor: pointer;',
+            '}',
+            '.scrapy-copy-as-markdown:hover {',
+            '  background: #f3f7fb;',
+            '}',
+            '.scrapy-copy-as-markdown:disabled {',
+            '  opacity: 0.75;',
+            '  cursor: default;',
+            '}',
+        ].join('\n');
+        document.head.appendChild(style);
+    }
+
+    function addButton() {
+        if (!document.body || document.querySelector('.scrapy-copy-as-markdown')) {
+            return;
+        }
+
+        addStyles();
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'scrapy-copy-as-markdown';
+        button.title = 'Copy this page as Markdown';
+        button.setAttribute('aria-label', 'Copy this page as Markdown');
+        button.textContent = makeLabel(COPY_ICON, 'Copy as Markdown');
+        button.addEventListener('click', function () {
+            onButtonClick(button);
+        });
+        document.body.appendChild(button);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', addButton);
+    } else {
+        addButton();
+    }
+})();
+</script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜尋" href="../search.html" />
+    <link rel="next" title="asyncio" href="asyncio.html" />
+    <link rel="prev" title="Jobs: pausing and resuming crawls" href="jobs.html" />
+ 
+<script type="text/javascript" src="../ltd-provenance.js"></script>
+<script type="text/javascript" src="../ltd-current.js"></script>
+<script type="text/javascript" src="../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+
+<a href="https://scrapy.org">scrapy.org</a> / <a href="../index.html">docs</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">First steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/overview.html">Scrapy 速覽</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">安裝指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/tutorial.html">Scrapy 教學</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/examples.html">範例</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">基礎概念</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">命令行工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spiders.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selectors.html">Selectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="items.html">項目</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loaders.html">Item Loaders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell.html">Scrapy 外殼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="item-pipeline.html">Item Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feed-exports.html">Feed exports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="request-response.html">Requests and Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="link-extractors.html">Link Extractors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">設定</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">內建服務</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">Stats Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telnetconsole.html">Telnet Console</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">解決特定問題</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debug.html">Debugging Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contracts.html">Spiders Contracts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practices.html">Common Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="broad-crawls.html">Broad Crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer-tools.html">使用您的瀏覽器開發者工具進行網頁擷取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic-content.html">Selecting dynamically-loaded content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leaks.html">Debugging memory leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="media-pipeline.html">Downloading and processing files and images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy.html">Deploying Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autothrottle.html">AutoThrottle extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">基準測試</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jobs.html">Jobs: pausing and resuming crawls</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Coroutines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#supported-callables">Supported callables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-deferred-based-apis">Using Deferred-based APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#general-usage">General usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inline-requests">Inline requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mixing-synchronous-and-asynchronous-spider-middlewares">Mixing synchronous and asynchronous spider middlewares</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#for-middleware-users">For middleware users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#for-middleware-authors">For middleware authors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#universal-spider-middlewares">Universal spider middlewares</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="asyncio.html">asyncio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Scrapy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">架構概覽</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addons.html">Add-ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="downloader-middleware.html">Downloader Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spider-middleware.html">Spider Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scheduler.html">Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exporters.html">項目匯出器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download-handlers.html">Download handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">核心 API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">所有測試</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">發行備註</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to Scrapy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../versioning.html">Versioning and API stability</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Scrapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Coroutines</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/scrapy/scrapy/blob/master/docs/topics/coroutines.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="coroutines">
+<span id="topics-coroutines"></span><h1>Coroutines<a class="headerlink" href="#coroutines" title="連結到這個標頭"></a></h1>
+<p>Scrapy <a class="reference internal" href="#coroutine-support"><span class="std std-ref">supports</span></a> the <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#async" title="(in Python v3.14)"><span class="xref std std-ref">coroutine syntax</span></a>
+(i.e. <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code>).</p>
+<section id="supported-callables">
+<span id="coroutine-support"></span><h2>Supported callables<a class="headerlink" href="#supported-callables" title="連結到這個標頭"></a></h2>
+<p>The following callables may be defined as coroutines using <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code>, and
+hence use coroutine syntax (e.g. <code class="docutils literal notranslate"><span class="pre">await</span></code>, <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">for</span></code>, <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">with</span></code>):</p>
+<ul>
+<li><p>The <code class="xref py py-meth docutils literal notranslate"><span class="pre">start()</span></code> spider method, which <em>must</em> be
+defined as an <a class="reference external" href="https://docs.python.org/3/glossary.html#term-asynchronous-generator" title="(in Python v3.14)"><span class="xref std std-term">asynchronous generator</span></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">在 2.13 版被加入.</span></p>
+</div>
+</li>
+<li><p><a class="reference internal" href="request-response.html#scrapy.Request" title="scrapy.Request"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></a> callbacks.</p>
+<p>If you are using any custom or third-party <a class="reference internal" href="spider-middleware.html#topics-spider-middleware"><span class="std std-ref">spider middleware</span></a>, see <a class="reference internal" href="#sync-async-spider-middleware"><span class="std std-ref">Mixing synchronous and asynchronous spider middlewares</span></a>.</p>
+</li>
+<li><p>The <a class="reference internal" href="item-pipeline.html#process_item" title="process_item"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_item()</span></code></a> method of
+<a class="reference internal" href="item-pipeline.html#topics-item-pipeline"><span class="std std-ref">item pipelines</span></a>.</p></li>
+<li><p>The
+<a class="reference internal" href="downloader-middleware.html#scrapy.downloadermiddlewares.DownloaderMiddleware.process_request" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_request"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_request()</span></code></a>,
+<a class="reference internal" href="downloader-middleware.html#scrapy.downloadermiddlewares.DownloaderMiddleware.process_response" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_response"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_response()</span></code></a>,
+and
+<a class="reference internal" href="downloader-middleware.html#scrapy.downloadermiddlewares.DownloaderMiddleware.process_exception" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_exception"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_exception()</span></code></a>
+methods of
+<a class="reference internal" href="downloader-middleware.html#topics-downloader-middleware-custom"><span class="std std-ref">downloader middlewares</span></a>.</p></li>
+<li><p>The
+<a class="reference internal" href="spider-middleware.html#scrapy.spidermiddlewares.SpiderMiddleware.process_spider_output" title="scrapy.spidermiddlewares.SpiderMiddleware.process_spider_output"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_spider_output()</span></code></a>
+method of <a class="reference internal" href="spider-middleware.html#topics-spider-middleware"><span class="std std-ref">spider middlewares</span></a>.</p>
+<p>If defined as a coroutine, it must be an <a class="reference external" href="https://docs.python.org/3/glossary.html#term-asynchronous-generator" title="(in Python v3.14)"><span class="xref std std-term">asynchronous generator</span></a>.
+The input <code class="docutils literal notranslate"><span class="pre">result</span></code> parameter is an <a class="reference external" href="https://docs.python.org/3/glossary.html#term-asynchronous-iterable" title="(in Python v3.14)"><span class="xref std std-term">asynchronous iterable</span></a>.</p>
+<p>See also <a class="reference internal" href="#sync-async-spider-middleware"><span class="std std-ref">Mixing synchronous and asynchronous spider middlewares</span></a> and
+<a class="reference internal" href="#universal-spider-middleware"><span class="std std-ref">Universal spider middlewares</span></a>.</p>
+</li>
+<li><p>The <a class="reference internal" href="spider-middleware.html#scrapy.spidermiddlewares.SpiderMiddleware.process_start" title="scrapy.spidermiddlewares.SpiderMiddleware.process_start"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_start()</span></code></a> method
+of <a class="reference internal" href="spider-middleware.html#custom-spider-middleware"><span class="std std-ref">spider middlewares</span></a>, which <em>must</em> be
+defined as an <a class="reference external" href="https://docs.python.org/3/glossary.html#term-asynchronous-generator" title="(in Python v3.14)"><span class="xref std std-term">asynchronous generator</span></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">在 2.13 版被加入.</span></p>
+</div>
+</li>
+<li><p><a class="reference internal" href="signals.html#signal-deferred"><span class="std std-ref">Signal handlers that support deferreds</span></a>.</p></li>
+<li><p>Methods of <a class="reference internal" href="download-handlers.html#topics-download-handlers"><span class="std std-ref">download handlers</span></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">在 2.14 版被加入.</span></p>
+</div>
+</li>
+</ul>
+</section>
+<section id="using-deferred-based-apis">
+<span id="coroutine-deferred-apis"></span><h2>Using Deferred-based APIs<a class="headerlink" href="#using-deferred-based-apis" title="連結到這個標頭"></a></h2>
+<p>In addition to native coroutine APIs Scrapy has some APIs that return a
+<a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.defer.Deferred.html" title="(於 Twisted)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Deferred</span></code></a> object or take a user-supplied
+function that returns a <a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.defer.Deferred.html" title="(於 Twisted)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Deferred</span></code></a> object. These
+APIs are also asynchronous but don't yet support native <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code> syntax.
+In the future we plan to add support for the <code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code> syntax to these APIs
+or replace them with other APIs where changing the existing ones isn't
+possible.</p>
+<p>These APIs have a coroutine-based implementation and a Deferred-based one:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="api.html#scrapy.crawler.Crawler" title="scrapy.crawler.Crawler"><code class="xref py py-class docutils literal notranslate"><span class="pre">scrapy.crawler.Crawler</span></code></a>:</p>
+<ul>
+<li><p><a class="reference internal" href="api.html#scrapy.crawler.Crawler.crawl_async" title="scrapy.crawler.Crawler.crawl_async"><code class="xref py py-meth docutils literal notranslate"><span class="pre">crawl_async()</span></code></a> (coroutine-based) and
+<a class="reference internal" href="api.html#scrapy.crawler.Crawler.crawl" title="scrapy.crawler.Crawler.crawl"><code class="xref py py-meth docutils literal notranslate"><span class="pre">crawl()</span></code></a> (Deferred-based): the former
+may be inconvenient to use in Deferred-based code so both are available,
+this may change in a future Scrapy version.</p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="api.html#scrapy.crawler.AsyncCrawlerRunner" title="scrapy.crawler.AsyncCrawlerRunner"><code class="xref py py-class docutils literal notranslate"><span class="pre">scrapy.crawler.AsyncCrawlerRunner</span></code></a> and its subclass
+<a class="reference internal" href="api.html#scrapy.crawler.AsyncCrawlerProcess" title="scrapy.crawler.AsyncCrawlerProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">scrapy.crawler.AsyncCrawlerProcess</span></code></a> (coroutine-based) and
+<a class="reference internal" href="api.html#scrapy.crawler.CrawlerRunner" title="scrapy.crawler.CrawlerRunner"><code class="xref py py-class docutils literal notranslate"><span class="pre">scrapy.crawler.CrawlerRunner</span></code></a> and its subclass
+<a class="reference internal" href="api.html#scrapy.crawler.CrawlerProcess" title="scrapy.crawler.CrawlerProcess"><code class="xref py py-class docutils literal notranslate"><span class="pre">scrapy.crawler.CrawlerProcess</span></code></a> (Deferred-based): the former
+doesn't support non-default reactors and so the latter should be used
+with those.</p></li>
+</ul>
+<p>The following user-supplied methods can return
+<a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.defer.Deferred.html" title="(於 Twisted)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Deferred</span></code></a> objects (the methods that can also
+return coroutines are listed in <a class="reference internal" href="#coroutine-support"><span class="std std-ref">Supported callables</span></a>):</p>
+<ul class="simple">
+<li><p>Custom downloader implementations (see <a class="reference internal" href="settings.html#std-setting-DOWNLOADER"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOADER</span></code></a>):</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">fetch()</span></code></p></li>
+</ul>
+</li>
+<li><p>Custom scheduler implementations (see <a class="reference internal" href="settings.html#std-setting-SCHEDULER"><code class="xref std std-setting docutils literal notranslate"><span class="pre">SCHEDULER</span></code></a>):</p>
+<ul>
+<li><p><a class="reference internal" href="scheduler.html#scrapy.core.scheduler.BaseScheduler.open" title="scrapy.core.scheduler.BaseScheduler.open"><code class="xref py py-meth docutils literal notranslate"><span class="pre">open()</span></code></a></p></li>
+<li><p><a class="reference internal" href="scheduler.html#scrapy.core.scheduler.BaseScheduler.close" title="scrapy.core.scheduler.BaseScheduler.close"><code class="xref py py-meth docutils literal notranslate"><span class="pre">close()</span></code></a></p></li>
+</ul>
+</li>
+<li><p>Custom dupefilters (see <a class="reference internal" href="settings.html#std-setting-DUPEFILTER_CLASS"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DUPEFILTER_CLASS</span></code></a>):</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">open()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">close()</span></code></p></li>
+</ul>
+</li>
+<li><p>Custom feed storages (see <a class="reference internal" href="feed-exports.html#std-setting-FEED_STORAGES"><code class="xref std std-setting docutils literal notranslate"><span class="pre">FEED_STORAGES</span></code></a>):</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">store()</span></code></p></li>
+</ul>
+</li>
+<li><p>Subclasses of <code class="xref py py-class docutils literal notranslate"><span class="pre">scrapy.pipelines.media.MediaPipeline</span></code>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">media_to_download()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">item_completed()</span></code></p></li>
+</ul>
+</li>
+<li><p>Custom storages used by subclasses of
+<a class="reference internal" href="media-pipeline.html#scrapy.pipelines.files.FilesPipeline" title="scrapy.pipelines.files.FilesPipeline"><code class="xref py py-class docutils literal notranslate"><span class="pre">scrapy.pipelines.files.FilesPipeline</span></code></a>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">persist_file()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stat_file()</span></code></p></li>
+</ul>
+</li>
+</ul>
+<p>In most cases you can use these APIs in code that otherwise uses coroutines, by
+wrapping a <a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.defer.Deferred.html" title="(於 Twisted)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Deferred</span></code></a> object into a
+<a class="reference external" href="https://docs.python.org/3/library/asyncio-future.html#asyncio.Future" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Future</span></code></a> object or vice versa. See <a class="reference internal" href="asyncio.html#asyncio-await-dfd"><span class="std std-ref">Integrating Deferred code and asyncio code</span></a> for
+more information about this.</p>
+<p>For example: a custom scheduler needs to define an <code class="docutils literal notranslate"><span class="pre">open()</span></code> method that can
+return a <a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.internet.defer.Deferred.html" title="(於 Twisted)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Deferred</span></code></a> object. You can write a
+method that works with Deferreds and returns one directly, or you can write a
+coroutine and convert it into a function that returns a Deferred with
+<a class="reference internal" href="asyncio.html#scrapy.utils.defer.deferred_f_from_coro_f" title="scrapy.utils.defer.deferred_f_from_coro_f"><code class="xref py py-func docutils literal notranslate"><span class="pre">deferred_f_from_coro_f()</span></code></a>.</p>
+</section>
+<section id="general-usage">
+<h2>General usage<a class="headerlink" href="#general-usage" title="連結到這個標頭"></a></h2>
+<p>There are several use cases for coroutines in Scrapy.</p>
+<p>Code that would return Deferreds when written for previous Scrapy versions,
+such as downloader middlewares and signal handlers, can be rewritten to be
+shorter and cleaner:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">itemadapter</span><span class="w"> </span><span class="kn">import</span> <span class="n">ItemAdapter</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">DbPipeline</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="n">adapter</span> <span class="o">=</span> <span class="n">ItemAdapter</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="n">adapter</span><span class="p">[</span><span class="s2">&quot;field&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="k">return</span> <span class="n">item</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">process_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="n">adapter</span> <span class="o">=</span> <span class="n">ItemAdapter</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="n">dfd</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">get_some_data</span><span class="p">(</span><span class="n">adapter</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>
+        <span class="n">dfd</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_update_item</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dfd</span>
+</pre></div>
+</div>
+<p>becomes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">itemadapter</span><span class="w"> </span><span class="kn">import</span> <span class="n">ItemAdapter</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">DbPipeline</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">process_item</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="n">adapter</span> <span class="o">=</span> <span class="n">ItemAdapter</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="n">adapter</span><span class="p">[</span><span class="s2">&quot;field&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">get_some_data</span><span class="p">(</span><span class="n">adapter</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">item</span>
+</pre></div>
+</div>
+<p>Coroutines may be used to call asynchronous code. This includes other
+coroutines, functions that return Deferreds and functions that return
+<a class="reference external" href="https://docs.python.org/3/glossary.html#term-awaitable" title="(in Python v3.14)"><span class="xref std std-term">awaitable objects</span></a> such as <a class="reference external" href="https://docs.python.org/3/library/asyncio-future.html#asyncio.Future" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Future</span></code></a>.
+This means you can use many useful Python libraries providing such code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MySpiderDeferred</span><span class="p">(</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="c1"># ...</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">additional_response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">treq</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://additional.url&quot;</span><span class="p">)</span>
+        <span class="n">additional_data</span> <span class="o">=</span> <span class="k">await</span> <span class="n">treq</span><span class="o">.</span><span class="n">content</span><span class="p">(</span><span class="n">additional_response</span><span class="p">)</span>
+        <span class="c1"># ... use response and additional_data to yield items and requests</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MySpiderAsyncio</span><span class="p">(</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="c1"># ...</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">aiohttp</span><span class="o">.</span><span class="n">ClientSession</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+            <span class="k">async</span> <span class="k">with</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://additional.url&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">additional_response</span><span class="p">:</span>
+                <span class="n">additional_data</span> <span class="o">=</span> <span class="k">await</span> <span class="n">additional_response</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+        <span class="c1"># ... use response and additional_data to yield items and requests</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>Many libraries that use coroutines, such as <a class="reference external" href="https://github.com/aio-libs">aio-libs</a>, require the
+<a class="reference external" href="https://docs.python.org/3/library/asyncio.html#module-asyncio" title="(in Python v3.14)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncio</span></code></a> loop and to use them you need to
+<a class="reference internal" href="asyncio.html"><span class="doc">enable asyncio support in Scrapy</span></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>If you want to <code class="docutils literal notranslate"><span class="pre">await</span></code> on Deferreds while using the asyncio reactor,
+you need to <a class="reference internal" href="asyncio.html#asyncio-await-dfd"><span class="std std-ref">wrap them</span></a>.</p>
+</div>
+<p>Common use cases for asynchronous code include:</p>
+<ul class="simple">
+<li><p>requesting data from websites, databases and other services (in
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">start()</span></code>, callbacks, pipelines and
+middlewares);</p></li>
+<li><p>storing data in databases (in pipelines and middlewares);</p></li>
+<li><p>delaying the spider initialization until some external event (in the
+<a class="reference internal" href="signals.html#std-signal-spider_opened"><code class="xref std std-signal docutils literal notranslate"><span class="pre">spider_opened</span></code></a> handler);</p></li>
+<li><p>calling asynchronous Scrapy methods like <code class="xref py py-meth docutils literal notranslate"><span class="pre">ExecutionEngine.download()</span></code>
+(see <a class="reference internal" href="item-pipeline.html#screenshotpipeline"><span class="std std-ref">the screenshot pipeline example</span></a>).</p></li>
+</ul>
+</section>
+<section id="inline-requests">
+<span id="id1"></span><h2>Inline requests<a class="headerlink" href="#inline-requests" title="連結到這個標頭"></a></h2>
+<p>The spider below shows how to send a request and await its response all from
+within a spider callback:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scrapy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Spider</span><span class="p">,</span> <span class="n">Request</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SingleRequestSpider</span><span class="p">(</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;single&quot;</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;https://example.org/product&quot;</span><span class="p">]</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">additional_request</span> <span class="o">=</span> <span class="n">Request</span><span class="p">(</span><span class="s2">&quot;https://example.org/price&quot;</span><span class="p">)</span>
+        <span class="n">additional_response</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">crawler</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">download_async</span><span class="p">(</span>
+            <span class="n">additional_request</span>
+        <span class="p">)</span>
+        <span class="k">yield</span> <span class="p">{</span>
+            <span class="s2">&quot;h1&quot;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+            <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="n">additional_response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s2">&quot;#price&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<p>You can also send multiple requests in parallel:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Spider</span><span class="p">,</span> <span class="n">Request</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MultipleRequestsSpider</span><span class="p">(</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;multiple&quot;</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;https://example.com/product&quot;</span><span class="p">]</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">additional_requests</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">Request</span><span class="p">(</span><span class="s2">&quot;https://example.com/price&quot;</span><span class="p">),</span>
+            <span class="n">Request</span><span class="p">(</span><span class="s2">&quot;https://example.com/color&quot;</span><span class="p">),</span>
+        <span class="p">]</span>
+        <span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">additional_requests</span><span class="p">:</span>
+            <span class="n">task</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">crawler</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">download_async</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+            <span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+        <span class="n">responses</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">tasks</span><span class="p">)</span>
+        <span class="k">yield</span> <span class="p">{</span>
+            <span class="s2">&quot;h1&quot;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s2">&quot;h1::text&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+            <span class="s2">&quot;price&quot;</span><span class="p">:</span> <span class="n">responses</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s2">&quot;.price::text&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+            <span class="s2">&quot;price2&quot;</span><span class="p">:</span> <span class="n">responses</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s2">&quot;.color::text&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="mixing-synchronous-and-asynchronous-spider-middlewares">
+<span id="sync-async-spider-middleware"></span><h2>Mixing synchronous and asynchronous spider middlewares<a class="headerlink" href="#mixing-synchronous-and-asynchronous-spider-middlewares" title="連結到這個標頭"></a></h2>
+<p>The output of a <a class="reference internal" href="request-response.html#scrapy.Request" title="scrapy.Request"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></a> callback is passed as the <code class="docutils literal notranslate"><span class="pre">result</span></code>
+parameter to the
+<a class="reference internal" href="spider-middleware.html#scrapy.spidermiddlewares.SpiderMiddleware.process_spider_output" title="scrapy.spidermiddlewares.SpiderMiddleware.process_spider_output"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_spider_output()</span></code></a> method
+of the first <a class="reference internal" href="spider-middleware.html#topics-spider-middleware"><span class="std std-ref">spider middleware</span></a> from the
+<a class="reference internal" href="spider-middleware.html#topics-spider-middleware-setting"><span class="std std-ref">list of active spider middlewares</span></a>.
+Then the output of that <code class="docutils literal notranslate"><span class="pre">process_spider_output</span></code> method is passed to the
+<code class="docutils literal notranslate"><span class="pre">process_spider_output</span></code> method of the next spider middleware, and so on for
+every active spider middleware.</p>
+<p>Scrapy supports mixing <a class="reference external" href="https://docs.python.org/3/reference/compound_stmts.html#async" title="(in Python v3.14)"><span class="xref std std-ref">coroutine methods</span></a> and synchronous methods
+in this chain of calls.</p>
+<p>However, if any of the <code class="docutils literal notranslate"><span class="pre">process_spider_output</span></code> methods is defined as a
+synchronous method, and the previous <code class="docutils literal notranslate"><span class="pre">Request</span></code> callback or
+<code class="docutils literal notranslate"><span class="pre">process_spider_output</span></code> method is a coroutine, there are some drawbacks to
+the asynchronous-to-synchronous conversion that Scrapy does so that the
+synchronous <code class="docutils literal notranslate"><span class="pre">process_spider_output</span></code> method gets a synchronous iterable as its
+<code class="docutils literal notranslate"><span class="pre">result</span></code> parameter:</p>
+<ul>
+<li><p>The whole output of the previous <code class="docutils literal notranslate"><span class="pre">Request</span></code> callback or
+<code class="docutils literal notranslate"><span class="pre">process_spider_output</span></code> method is awaited at this point.</p></li>
+<li><p>If an exception raises while awaiting the output of the previous
+<code class="docutils literal notranslate"><span class="pre">Request</span></code> callback or <code class="docutils literal notranslate"><span class="pre">process_spider_output</span></code> method, none of that
+output will be processed.</p>
+<p>This contrasts with the regular behavior, where all items yielded before
+an exception raises are processed.</p>
+</li>
+</ul>
+<p>Asynchronous-to-synchronous conversions are supported for backward
+compatibility, but they are deprecated and will stop working in a future
+version of Scrapy.</p>
+<p>To avoid asynchronous-to-synchronous conversions, when defining <code class="docutils literal notranslate"><span class="pre">Request</span></code>
+callbacks as coroutine methods or when using spider middlewares whose
+<code class="docutils literal notranslate"><span class="pre">process_spider_output</span></code> method is an <a class="reference external" href="https://docs.python.org/3/glossary.html#term-asynchronous-generator" title="(in Python v3.14)"><span class="xref std std-term">asynchronous generator</span></a>, all
+active spider middlewares must either have their <code class="docutils literal notranslate"><span class="pre">process_spider_output</span></code>
+method defined as an asynchronous generator or <a class="reference internal" href="#universal-spider-middleware"><span class="std std-ref">define a
+process_spider_output_async method</span></a>.</p>
+<section id="for-middleware-users">
+<span id="sync-async-spider-middleware-users"></span><h3>For middleware users<a class="headerlink" href="#for-middleware-users" title="連結到這個標頭"></a></h3>
+<p>If you have asynchronous callbacks or use asynchronous-only spider middlewares
+you should make sure the asynchronous-to-synchronous conversions
+<a class="reference internal" href="#sync-async-spider-middleware"><span class="std std-ref">described above</span></a> don't happen. To do this,
+make sure all spider middlewares you use support asynchronous spider output.
+Even if you don't have asynchronous callbacks and don't use asynchronous-only
+spider middlewares in your project, it's still a good idea to make sure all
+middlewares you use support asynchronous spider output, so that it will be easy
+to start using asynchronous callbacks in the future. Because of this, Scrapy
+logs a warning when it detects a synchronous-only spider middleware.</p>
+<p>If you want to update middlewares you wrote, see the <a class="reference internal" href="#sync-async-spider-middleware-authors"><span class="std std-ref">following section</span></a>. If you have 3rd-party middlewares that
+aren't yet updated by their authors, you can <a class="reference external" href="https://docs.python.org/3/tutorial/classes.html#tut-inheritance" title="(in Python v3.14)"><span class="xref std std-ref">subclass</span></a>
+them to make them <a class="reference internal" href="#universal-spider-middleware"><span class="std std-ref">universal</span></a> and use the
+subclasses in your projects.</p>
+</section>
+<section id="for-middleware-authors">
+<span id="sync-async-spider-middleware-authors"></span><h3>For middleware authors<a class="headerlink" href="#for-middleware-authors" title="連結到這個標頭"></a></h3>
+<p>If you have a spider middleware that defines a synchronous
+<code class="docutils literal notranslate"><span class="pre">process_spider_output</span></code> method, you should update it to support asynchronous
+spider output for <a class="reference internal" href="#sync-async-spider-middleware"><span class="std std-ref">better compatibility</span></a>,
+even if you don't yet use it with asynchronous callbacks, especially if you
+publish this middleware for other people to use. You have two options for this:</p>
+<ol class="arabic simple">
+<li><p>Make the middleware asynchronous, by making the <code class="docutils literal notranslate"><span class="pre">process_spider_output</span></code>
+method an <a class="reference external" href="https://docs.python.org/3/glossary.html#term-asynchronous-generator" title="(in Python v3.14)"><span class="xref std std-term">asynchronous generator</span></a>.</p></li>
+<li><p>Make the middleware universal, as described in the <a class="reference internal" href="#universal-spider-middleware"><span class="std std-ref">next section</span></a>.</p></li>
+</ol>
+<p>If your middleware won't be used in projects with synchronous-only middlewares,
+e.g. because it's an internal middleware and you know that all other
+middlewares in your projects are already updated, it's safe to choose the first
+option. Otherwise, it's better to choose the second option.</p>
+</section>
+<section id="universal-spider-middlewares">
+<span id="universal-spider-middleware"></span><h3>Universal spider middlewares<a class="headerlink" href="#universal-spider-middlewares" title="連結到這個標頭"></a></h3>
+<p>To allow writing a spider middleware that supports asynchronous execution of
+its <code class="docutils literal notranslate"><span class="pre">process_spider_output</span></code> method in Scrapy 2.7 and later (avoiding
+<a class="reference internal" href="#sync-async-spider-middleware"><span class="std std-ref">asynchronous-to-synchronous conversions</span></a>)
+while maintaining support for older Scrapy versions, you may define
+<code class="docutils literal notranslate"><span class="pre">process_spider_output</span></code> as a synchronous method and define an
+<a class="reference external" href="https://docs.python.org/3/glossary.html#term-asynchronous-generator" title="(in Python v3.14)"><span class="xref std std-term">asynchronous generator</span></a> version of that method with an alternative name:
+<code class="docutils literal notranslate"><span class="pre">process_spider_output_async</span></code>.</p>
+<p>例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">UniversalSpiderMiddleware</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">process_spider_output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+            <span class="c1"># ... do something with r</span>
+            <span class="k">yield</span> <span class="n">r</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">process_spider_output_async</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+        <span class="k">async</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+            <span class="c1"># ... do something with r</span>
+            <span class="k">yield</span> <span class="n">r</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>This is an interim measure to allow, for a time, to write code that
+works in Scrapy 2.7 and later without requiring
+asynchronous-to-synchronous conversions, and works in earlier Scrapy
+versions as well.</p>
+<p>In some future version of Scrapy, however, this feature will be
+deprecated and, eventually, in a later version of Scrapy, this
+feature will be removed, and all spider middlewares will be expected
+to define their <code class="docutils literal notranslate"><span class="pre">process_spider_output</span></code> method as an asynchronous
+generator.</p>
+</div>
+<p>Since 2.13.0, Scrapy provides a base class,
+<a class="reference internal" href="spider-middleware.html#scrapy.spidermiddlewares.base.BaseSpiderMiddleware" title="scrapy.spidermiddlewares.base.BaseSpiderMiddleware"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSpiderMiddleware</span></code></a>, which implements
+the <code class="docutils literal notranslate"><span class="pre">process_spider_output()</span></code> and <code class="docutils literal notranslate"><span class="pre">process_spider_output_async()</span></code> methods,
+so instead of duplicating the processing code you can override the
+<code class="docutils literal notranslate"><span class="pre">get_processed_request()</span></code> and/or the <code class="docutils literal notranslate"><span class="pre">get_processed_item()</span></code> method.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="jobs.html" class="btn btn-neutral float-left" title="Jobs: pausing and resuming crawls" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="asyncio.html" class="btn btn-neutral float-right" title="asyncio" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Scrapy developers.
+      <span class="lastupdated">最後更新於 4月 27, 2026。
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,650 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Download handlers &mdash; Scrapy 2.14.2 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=74c04d93" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://projects.localizethedocs.org/scrapy-docs-l10n/topics/download-handlers.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=fd62c621"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+      <script>
+(function () {
+    var COPY_ICON = String.fromCodePoint(0x1F4CB);
+    var SUCCESS_ICON = String.fromCodePoint(0x2713);
+    var ERROR_ICON = String.fromCodePoint(0x26A0);
+
+    function makeLabel(icon, text) {
+        return icon + ' ' + text;
+    }
+
+    function markdownPathFromCurrentPage(pathname) {
+        if (pathname.endsWith('.html')) {
+            return pathname.slice(0, -5) + '.md';
+        }
+        if (pathname.endsWith('/')) {
+            return pathname + 'index.md';
+        }
+        var lastPart = pathname.split('/').pop() || '';
+        if (!lastPart.includes('.')) {
+            return pathname + '.md';
+        }
+        return pathname + '.md';
+    }
+
+    async function copyToClipboard(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return;
+        }
+        var textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', 'readonly');
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+    }
+
+    function setTemporaryLabel(button, label) {
+        var previousLabel = button.textContent;
+        button.textContent = label;
+        window.setTimeout(function () {
+            button.textContent = previousLabel;
+            button.disabled = false;
+        }, 1000);
+    }
+
+    async function onButtonClick(button) {
+        button.disabled = true;
+        button.textContent = '...';
+        try {
+            var mdPath = markdownPathFromCurrentPage(window.location.pathname);
+            var response = await fetch(mdPath, { credentials: 'same-origin' });
+            if (!response.ok) {
+                throw new Error('Unable to fetch markdown source');
+            }
+            var markdown = await response.text();
+            await copyToClipboard(markdown);
+            setTemporaryLabel(button, makeLabel(SUCCESS_ICON, 'Copied'));
+        } catch (_error) {
+            setTemporaryLabel(button, makeLabel(ERROR_ICON, 'Error'));
+        }
+    }
+
+    function addStyles() {
+        var style = document.createElement('style');
+        style.textContent = [
+            '.scrapy-copy-as-markdown {',
+            '  position: fixed;',
+            '  right: 1rem;',
+            '  bottom: 1rem;',
+            '  z-index: 1000;',
+            '  border: 1px solid #c9d4de;',
+            '  border-radius: 0.45rem;',
+            '  background: #ffffff;',
+            '  color: #233a50;',
+            '  font: inherit;',
+            '  font-size: 0.875rem;',
+            '  line-height: 1;',
+            '  padding: 0.55rem 0.7rem;',
+            '  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);',
+            '  cursor: pointer;',
+            '}',
+            '.scrapy-copy-as-markdown:hover {',
+            '  background: #f3f7fb;',
+            '}',
+            '.scrapy-copy-as-markdown:disabled {',
+            '  opacity: 0.75;',
+            '  cursor: default;',
+            '}',
+        ].join('\n');
+        document.head.appendChild(style);
+    }
+
+    function addButton() {
+        if (!document.body || document.querySelector('.scrapy-copy-as-markdown')) {
+            return;
+        }
+
+        addStyles();
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'scrapy-copy-as-markdown';
+        button.title = 'Copy this page as Markdown';
+        button.setAttribute('aria-label', 'Copy this page as Markdown');
+        button.textContent = makeLabel(COPY_ICON, 'Copy as Markdown');
+        button.addEventListener('click', function () {
+            onButtonClick(button);
+        });
+        document.body.appendChild(button);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', addButton);
+    } else {
+        addButton();
+    }
+})();
+</script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Components" href="components.html" />
+    <link rel="prev" title="Item Exporters" href="exporters.html" />
+ 
+<script type="text/javascript" src="../ltd-provenance.js"></script>
+<script type="text/javascript" src="../ltd-current.js"></script>
+<script type="text/javascript" src="../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+
+<a href="https://scrapy.org">scrapy.org</a> / <a href="../index.html">docs</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">First steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/overview.html">Scrapy at a glance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/tutorial.html">Scrapy Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Basic concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Command line tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spiders.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selectors.html">Selectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="items.html">Items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loaders.html">Item Loaders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell.html">Scrapy shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="item-pipeline.html">Item Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feed-exports.html">Feed exports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="request-response.html">Requests and Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="link-extractors.html">Link Extractors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Built-in services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">Stats Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telnetconsole.html">Telnet Console</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Solving specific problems</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debug.html">Debugging Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contracts.html">Spiders Contracts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practices.html">Common Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="broad-crawls.html">Broad Crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer-tools.html">Using your browser's Developer Tools for scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic-content.html">Selecting dynamically-loaded content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leaks.html">Debugging memory leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="media-pipeline.html">Downloading and processing files and images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy.html">Deploying Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autothrottle.html">AutoThrottle extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jobs.html">Jobs: pausing and resuming crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coroutines.html">Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asyncio.html">asyncio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Scrapy</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addons.html">Add-ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="downloader-middleware.html">Downloader Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spider-middleware.html">Spider Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scheduler.html">Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exporters.html">Item Exporters</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Download handlers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#using-download-handlers">Using download handlers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#replacing-http-s-download-handlers">Replacing HTTP(S) download handlers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lazy-instantiation-of-download-handlers">Lazy instantiation of download handlers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-your-own-download-handler">Writing your own download handler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#SampleDownloadHandler"><code class="docutils literal notranslate"><span class="pre">SampleDownloadHandler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#SampleDownloadHandler.lazy"><code class="docutils literal notranslate"><span class="pre">SampleDownloadHandler.lazy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#SampleDownloadHandler.download_request"><code class="docutils literal notranslate"><span class="pre">SampleDownloadHandler.download_request()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#SampleDownloadHandler.close"><code class="docutils literal notranslate"><span class="pre">SampleDownloadHandler.close()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#scrapy.core.downloader.handlers.base.BaseDownloadHandler"><code class="docutils literal notranslate"><span class="pre">BaseDownloadHandler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.core.downloader.handlers.base.BaseDownloadHandler.lazy"><code class="docutils literal notranslate"><span class="pre">BaseDownloadHandler.lazy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.core.downloader.handlers.base.BaseDownloadHandler.from_crawler"><code class="docutils literal notranslate"><span class="pre">BaseDownloadHandler.from_crawler()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.core.downloader.handlers.base.BaseDownloadHandler.download_request"><code class="docutils literal notranslate"><span class="pre">BaseDownloadHandler.download_request()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.core.downloader.handlers.base.BaseDownloadHandler.close"><code class="docutils literal notranslate"><span class="pre">BaseDownloadHandler.close()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#built-in-download-handlers-reference">Built-in download handlers reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#datauridownloadhandler">DataURIDownloadHandler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.core.downloader.handlers.datauri.DataURIDownloadHandler"><code class="docutils literal notranslate"><span class="pre">DataURIDownloadHandler</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#filedownloadhandler">FileDownloadHandler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.core.downloader.handlers.file.FileDownloadHandler"><code class="docutils literal notranslate"><span class="pre">FileDownloadHandler</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ftpdownloadhandler">FTPDownloadHandler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.core.downloader.handlers.ftp.FTPDownloadHandler"><code class="docutils literal notranslate"><span class="pre">FTPDownloadHandler</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#h2downloadhandler">H2DownloadHandler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.core.downloader.handlers.http2.H2DownloadHandler"><code class="docutils literal notranslate"><span class="pre">H2DownloadHandler</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#http11downloadhandler">HTTP11DownloadHandler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.core.downloader.handlers.http11.HTTP11DownloadHandler"><code class="docutils literal notranslate"><span class="pre">HTTP11DownloadHandler</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#httpxdownloadhandler">HttpxDownloadHandler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler"><code class="docutils literal notranslate"><span class="pre">HttpxDownloadHandler</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#s3downloadhandler">S3DownloadHandler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.core.downloader.handlers.s3.S3DownloadHandler"><code class="docutils literal notranslate"><span class="pre">S3DownloadHandler</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Core API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">All the rest</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to Scrapy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../versioning.html">Versioning and API stability</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Scrapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Download handlers</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/scrapy/scrapy/blob/master/docs/topics/download-handlers.rst" class="fa fa-github"> 在 GitHub 上编辑</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="download-handlers">
+<span id="topics-download-handlers"></span><h1>Download handlers<a class="headerlink" href="#download-handlers" title="链接到此标题。"></a></h1>
+<p>Download handlers are Scrapy <a class="reference internal" href="components.html#topics-components"><span class="std std-ref">components</span></a> used to
+download <a class="reference internal" href="request-response.html#topics-request-response"><span class="std std-ref">requests</span></a> and produce responses from
+them.</p>
+<section id="using-download-handlers">
+<h2>Using download handlers<a class="headerlink" href="#using-download-handlers" title="链接到此标题。"></a></h2>
+<p>The <a class="reference internal" href="settings.html#std-setting-DOWNLOAD_HANDLERS_BASE"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOAD_HANDLERS_BASE</span></code></a> and <a class="reference internal" href="settings.html#std-setting-DOWNLOAD_HANDLERS"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOAD_HANDLERS</span></code></a> settings
+tell Scrapy which handler is responsible for a given URL scheme. Their values
+are merged into a mapping from scheme names to handler classes. When Scrapy
+initializes it creates instances of all configured download handlers (except
+for <a class="reference internal" href="#lazy-download-handlers"><span class="std std-ref">lazy ones</span></a>) and stores them in a similar
+mapping. When Scrapy needs to download a request it extracts the scheme from
+its URL, finds the handler for this scheme, passes the request to it and gets a
+response from it.  If there is no handler for the scheme, the request is not
+downloaded and a <a class="reference internal" href="exceptions.html#scrapy.exceptions.NotSupported" title="scrapy.exceptions.NotSupported"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NotSupported</span></code></a> exception is raised.</p>
+<p>The <a class="reference internal" href="settings.html#std-setting-DOWNLOAD_HANDLERS_BASE"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOAD_HANDLERS_BASE</span></code></a> setting contains the default mapping of
+handlers. You can use the <a class="reference internal" href="settings.html#std-setting-DOWNLOAD_HANDLERS"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOAD_HANDLERS</span></code></a> setting to add handlers
+for additional schemes and to replace or disable default ones:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DOWNLOAD_HANDLERS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># disable support for ftp:// requests</span>
+    <span class="s2">&quot;ftp&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="c1"># replace the default one for http://</span>
+    <span class="s2">&quot;http&quot;</span><span class="p">:</span> <span class="s2">&quot;my.download_handlers.HttpHandler&quot;</span><span class="p">,</span>
+    <span class="c1"># http:// and https:// are different schemes,</span>
+    <span class="c1"># even though they may use the same handler</span>
+    <span class="s2">&quot;https&quot;</span><span class="p">:</span> <span class="s2">&quot;my.download_handlers.HttpHandler&quot;</span><span class="p">,</span>
+    <span class="c1"># support for any custom scheme can be added</span>
+    <span class="s2">&quot;sftp&quot;</span><span class="p">:</span> <span class="s2">&quot;my.download_handlers.SftpHandler&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="replacing-http-s-download-handlers">
+<h3>Replacing HTTP(S) download handlers<a class="headerlink" href="#replacing-http-s-download-handlers" title="链接到此标题。"></a></h3>
+<p>While Scrapy provides a default handler for <code class="docutils literal notranslate"><span class="pre">http</span></code> and <code class="docutils literal notranslate"><span class="pre">https</span></code> schemes,
+users may want to use a different handler, provided by Scrapy or by some
+3rd-party package. There are several considerations to keep in mind related to
+this.</p>
+<p>First of all, as <code class="docutils literal notranslate"><span class="pre">http</span></code> and <code class="docutils literal notranslate"><span class="pre">https</span></code> are separate schemes, they need
+separate entries in the <a class="reference internal" href="settings.html#std-setting-DOWNLOAD_HANDLERS"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOAD_HANDLERS</span></code></a> setting, even though it's
+likely that the same handler class will be used for both schemes.</p>
+<p>Additionally, some of the Scrapy settings, like <a class="reference internal" href="settings.html#std-setting-DOWNLOAD_MAXSIZE"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOAD_MAXSIZE</span></code></a>,
+are honored by the default HTTP(S) handler but not necessarily by alternative
+ones. The same may apply to other Scrapy features, e.g. the
+<a class="reference internal" href="signals.html#std-signal-bytes_received"><code class="xref std std-signal docutils literal notranslate"><span class="pre">bytes_received</span></code></a> and <a class="reference internal" href="signals.html#std-signal-headers_received"><code class="xref std std-signal docutils literal notranslate"><span class="pre">headers_received</span></code></a> signals.</p>
+</section>
+<section id="lazy-instantiation-of-download-handlers">
+<span id="lazy-download-handlers"></span><h3>Lazy instantiation of download handlers<a class="headerlink" href="#lazy-instantiation-of-download-handlers" title="链接到此标题。"></a></h3>
+<p>A download handler can be marked as &quot;lazy&quot; by setting its <code class="docutils literal notranslate"><span class="pre">lazy</span></code> class
+attribute to <code class="docutils literal notranslate"><span class="pre">True</span></code>. Such handlers are only instantiated when they need to
+download their first request. This may be useful when the instantiation is slow
+or requires dependencies that are not always available, and the handler is not
+needed on every spider run. For example, <a class="reference internal" href="#scrapy.core.downloader.handlers.s3.S3DownloadHandler" title="scrapy.core.downloader.handlers.s3.S3DownloadHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">the</span> <span class="pre">built-in</span> <span class="pre">S3</span> <span class="pre">handler</span></code></a> is lazy.</p>
+</section>
+</section>
+<section id="writing-your-own-download-handler">
+<h2>Writing your own download handler<a class="headerlink" href="#writing-your-own-download-handler" title="链接到此标题。"></a></h2>
+<p>A download handler is a <a class="reference internal" href="components.html#topics-components"><span class="std std-ref">component</span></a> that defines
+the following API:</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="SampleDownloadHandler">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">SampleDownloadHandler</span></span><a class="headerlink" href="#SampleDownloadHandler" title="链接到此定义。"></a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="SampleDownloadHandler.lazy">
+<span class="sig-name descname"><span class="pre">lazy</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(位于 Python v3.14)"><span class="pre">bool</span></a></span><a class="headerlink" href="#SampleDownloadHandler.lazy" title="链接到此定义。"></a></dt>
+<dd><p>If <code class="docutils literal notranslate"><span class="pre">False</span></code>, the handler will be instantiated when Scrapy is
+initialized.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the handler will only be instantiated when the first
+request handled by it needs to be downloaded.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SampleDownloadHandler.download_request">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">download_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="request-response.html#scrapy.Request" title="scrapy.Request"><span class="pre">Request</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Response:</span></span></span><a class="headerlink" href="#SampleDownloadHandler.download_request" title="链接到此定义。"></a></dt>
+<dd><p>Download the given request and return a response.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="SampleDownloadHandler.close">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#SampleDownloadHandler.close" title="链接到此定义。"></a></dt>
+<dd><p>Clean up any resources used by the handler.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>An optional base class for custom handlers is provided:</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.core.downloader.handlers.base.BaseDownloadHandler">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.core.downloader.handlers.base.</span></span><span class="sig-name descname"><span class="pre">BaseDownloadHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crawler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#scrapy.crawler.Crawler" title="scrapy.crawler.Crawler"><span class="pre">Crawler</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/scrapy/core/downloader/handlers/base.html#BaseDownloadHandler"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.core.downloader.handlers.base.BaseDownloadHandler" title="链接到此定义。"></a></dt>
+<dd><p>Optional base class for download handlers.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="scrapy.core.downloader.handlers.base.BaseDownloadHandler.lazy">
+<span class="sig-name descname"><span class="pre">lazy</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(位于 Python v3.14)"><span class="pre">bool</span></a></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></span><a class="headerlink" href="#scrapy.core.downloader.handlers.base.BaseDownloadHandler.lazy" title="链接到此定义。"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scrapy.core.downloader.handlers.base.BaseDownloadHandler.from_crawler">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_crawler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crawler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#scrapy.crawler.Crawler" title="scrapy.crawler.Crawler"><span class="pre">Crawler</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="reference internal" href="../_modules/scrapy/core/downloader/handlers/base.html#BaseDownloadHandler.from_crawler"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.core.downloader.handlers.base.BaseDownloadHandler.from_crawler" title="链接到此定义。"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scrapy.core.downloader.handlers.base.BaseDownloadHandler.download_request">
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">download_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="request-response.html#scrapy.Request" title="scrapy.Request"><span class="pre">Request</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="request-response.html#scrapy.http.Response" title="scrapy.http.Response"><span class="pre">Response</span></a></span></span><a class="reference internal" href="../_modules/scrapy/core/downloader/handlers/base.html#BaseDownloadHandler.download_request"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.core.downloader.handlers.base.BaseDownloadHandler.download_request" title="链接到此定义。"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scrapy.core.downloader.handlers.base.BaseDownloadHandler.close">
+<span class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/scrapy/core/downloader/handlers/base.html#BaseDownloadHandler.close"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.core.downloader.handlers.base.BaseDownloadHandler.close" title="链接到此定义。"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="built-in-download-handlers-reference">
+<span id="download-handlers-ref"></span><h2>Built-in download handlers reference<a class="headerlink" href="#built-in-download-handlers-reference" title="链接到此标题。"></a></h2>
+<section id="datauridownloadhandler">
+<h3>DataURIDownloadHandler<a class="headerlink" href="#datauridownloadhandler" title="链接到此标题。"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.core.downloader.handlers.datauri.DataURIDownloadHandler">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.core.downloader.handlers.datauri.</span></span><span class="sig-name descname"><span class="pre">DataURIDownloadHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crawler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#scrapy.crawler.Crawler" title="scrapy.crawler.Crawler"><span class="pre">Crawler</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/scrapy/core/downloader/handlers/datauri.html#DataURIDownloadHandler"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.core.downloader.handlers.datauri.DataURIDownloadHandler" title="链接到此定义。"></a></dt>
+<dd></dd></dl>
+
+<div class="line-block">
+<div class="line">Supported scheme: <code class="docutils literal notranslate"><span class="pre">data</span></code>.</div>
+<div class="line">Lazy: no.</div>
+</div>
+<p>This handler supports RFC 2397 <code class="docutils literal notranslate"><span class="pre">data:content/type;base64,</span></code> data URIs.</p>
+</section>
+<section id="filedownloadhandler">
+<h3>FileDownloadHandler<a class="headerlink" href="#filedownloadhandler" title="链接到此标题。"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.core.downloader.handlers.file.FileDownloadHandler">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.core.downloader.handlers.file.</span></span><span class="sig-name descname"><span class="pre">FileDownloadHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crawler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#scrapy.crawler.Crawler" title="scrapy.crawler.Crawler"><span class="pre">Crawler</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/scrapy/core/downloader/handlers/file.html#FileDownloadHandler"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.core.downloader.handlers.file.FileDownloadHandler" title="链接到此定义。"></a></dt>
+<dd></dd></dl>
+
+<div class="line-block">
+<div class="line">Supported scheme: <code class="docutils literal notranslate"><span class="pre">file</span></code>.</div>
+<div class="line">Lazy: no.</div>
+</div>
+<p>This handler supports <code class="docutils literal notranslate"><span class="pre">file:///path</span></code> local file URIs. It doesn't
+support remote files.</p>
+</section>
+<section id="ftpdownloadhandler">
+<h3>FTPDownloadHandler<a class="headerlink" href="#ftpdownloadhandler" title="链接到此标题。"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.core.downloader.handlers.ftp.FTPDownloadHandler">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.core.downloader.handlers.ftp.</span></span><span class="sig-name descname"><span class="pre">FTPDownloadHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crawler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#scrapy.crawler.Crawler" title="scrapy.crawler.Crawler"><span class="pre">Crawler</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/scrapy/core/downloader/handlers/ftp.html#FTPDownloadHandler"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.core.downloader.handlers.ftp.FTPDownloadHandler" title="链接到此定义。"></a></dt>
+<dd></dd></dl>
+
+<div class="line-block">
+<div class="line">Supported scheme: <code class="docutils literal notranslate"><span class="pre">ftp</span></code>.</div>
+<div class="line">Lazy: no.</div>
+</div>
+<p>This handler supports <code class="docutils literal notranslate"><span class="pre">ftp://host/path</span></code> FTP URIs.</p>
+<p>It's implemented using <a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.protocols.ftp.html" title="（在 Twisted）"><code class="xref py py-mod docutils literal notranslate"><span class="pre">twisted.protocols.ftp</span></code></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>This handler is not supported when <a class="reference internal" href="settings.html#std-setting-TWISTED_REACTOR_ENABLED"><code class="xref std std-setting docutils literal notranslate"><span class="pre">TWISTED_REACTOR_ENABLED</span></code></a> is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</div>
+</section>
+<section id="h2downloadhandler">
+<span id="twisted-http2-handler"></span><h3>H2DownloadHandler<a class="headerlink" href="#h2downloadhandler" title="链接到此标题。"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.core.downloader.handlers.http2.H2DownloadHandler">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.core.downloader.handlers.http2.</span></span><span class="sig-name descname"><span class="pre">H2DownloadHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crawler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#scrapy.crawler.Crawler" title="scrapy.crawler.Crawler"><span class="pre">Crawler</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/scrapy/core/downloader/handlers/http2.html#H2DownloadHandler"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.core.downloader.handlers.http2.H2DownloadHandler" title="链接到此定义。"></a></dt>
+<dd></dd></dl>
+
+<div class="line-block">
+<div class="line">Supported scheme: <code class="docutils literal notranslate"><span class="pre">https</span></code>.</div>
+<div class="line">Lazy: yes.</div>
+</div>
+<p>This handler supports <code class="docutils literal notranslate"><span class="pre">https://host/path</span></code> URLs and uses the HTTP/2 protocol
+for them.</p>
+<p>It's implemented using <a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.web.client.html" title="（在 Twisted）"><code class="xref py py-mod docutils literal notranslate"><span class="pre">twisted.web.client</span></code></a> and the <code class="docutils literal notranslate"><span class="pre">h2</span></code> library.</p>
+<p>For this handler to work you need to install the <code class="docutils literal notranslate"><span class="pre">Twisted[http2]</span></code> extra
+dependency.</p>
+<p>If you want to use this handler you need to replace the default one for the
+<code class="docutils literal notranslate"><span class="pre">https</span></code> scheme:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DOWNLOAD_HANDLERS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;https&quot;</span><span class="p">:</span> <span class="s2">&quot;scrapy.core.downloader.handlers.http2.H2DownloadHandler&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>This handler is experimental, and not yet recommended for production
+environments. Future Scrapy versions may introduce related changes without
+a deprecation period or warning.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Known limitations of the HTTP/2 implementation in this handler include:</p>
+<ul class="simple">
+<li><p>No support for HTTP/2 Cleartext (h2c), since no major browser supports
+HTTP/2 unencrypted (refer <a class="reference external" href="https://http2.github.io/faq/#does-http2-require-encryption">http2 faq</a>).</p></li>
+<li><p>No setting to specify a maximum <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc7540#section-4.2">frame size</a> larger than the default
+value, 16384. Connections to servers that send a larger frame will
+fail.</p></li>
+<li><p>No support for <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc7540#section-8.2">server pushes</a>, which are ignored.</p></li>
+<li><p>No support for the <a class="reference internal" href="signals.html#std-signal-bytes_received"><code class="xref std std-signal docutils literal notranslate"><span class="pre">bytes_received</span></code></a> and
+<a class="reference internal" href="signals.html#std-signal-headers_received"><code class="xref std std-signal docutils literal notranslate"><span class="pre">headers_received</span></code></a> signals.</p></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>This handler is not supported when <a class="reference internal" href="settings.html#std-setting-TWISTED_REACTOR_ENABLED"><code class="xref std std-setting docutils literal notranslate"><span class="pre">TWISTED_REACTOR_ENABLED</span></code></a> is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</div>
+</section>
+<section id="http11downloadhandler">
+<h3>HTTP11DownloadHandler<a class="headerlink" href="#http11downloadhandler" title="链接到此标题。"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.core.downloader.handlers.http11.HTTP11DownloadHandler">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.core.downloader.handlers.http11.</span></span><span class="sig-name descname"><span class="pre">HTTP11DownloadHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crawler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#scrapy.crawler.Crawler" title="scrapy.crawler.Crawler"><span class="pre">Crawler</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/scrapy/core/downloader/handlers/http11.html#HTTP11DownloadHandler"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.core.downloader.handlers.http11.HTTP11DownloadHandler" title="链接到此定义。"></a></dt>
+<dd></dd></dl>
+
+<div class="line-block">
+<div class="line">Supported schemes: <code class="docutils literal notranslate"><span class="pre">http</span></code>, <code class="docutils literal notranslate"><span class="pre">https</span></code>.</div>
+<div class="line">Lazy: no.</div>
+</div>
+<p>This handler supports <code class="docutils literal notranslate"><span class="pre">http://host/path</span></code> and <code class="docutils literal notranslate"><span class="pre">https://host/path</span></code> URLs and
+uses the HTTP/1.1 protocol for them.</p>
+<p>It's implemented using <a class="reference external" href="https://docs.twisted.org/en/stable/api/twisted.web.client.html" title="（在 Twisted）"><code class="xref py py-mod docutils literal notranslate"><span class="pre">twisted.web.client</span></code></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>This handler is not supported when <a class="reference internal" href="settings.html#std-setting-TWISTED_REACTOR_ENABLED"><code class="xref std std-setting docutils literal notranslate"><span class="pre">TWISTED_REACTOR_ENABLED</span></code></a> is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</div>
+</section>
+<section id="httpxdownloadhandler">
+<h3>HttpxDownloadHandler<a class="headerlink" href="#httpxdownloadhandler" title="链接到此标题。"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.core.downloader.handlers._httpx.</span></span><span class="sig-name descname"><span class="pre">HttpxDownloadHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crawler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#scrapy.crawler.Crawler" title="scrapy.crawler.Crawler"><span class="pre">Crawler</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/scrapy/core/downloader/handlers/_httpx.html#HttpxDownloadHandler"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler" title="链接到此定义。"></a></dt>
+<dd></dd></dl>
+
+<div class="line-block">
+<div class="line">Supported schemes: <code class="docutils literal notranslate"><span class="pre">http</span></code>, <code class="docutils literal notranslate"><span class="pre">https</span></code>.</div>
+<div class="line">Lazy: no.</div>
+</div>
+<p>This handler supports <code class="docutils literal notranslate"><span class="pre">http://host/path</span></code> and <code class="docutils literal notranslate"><span class="pre">https://host/path</span></code> URLs and
+uses the HTTP/1.1 protocol for them.</p>
+<p>It's implemented using the <code class="docutils literal notranslate"><span class="pre">httpx</span></code> library and needs it to be installed.</p>
+<p>If you want to use this handler you need to replace the default ones for the
+<code class="docutils literal notranslate"><span class="pre">http</span></code> and <code class="docutils literal notranslate"><span class="pre">https</span></code> schemes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DOWNLOAD_HANDLERS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;http&quot;</span><span class="p">:</span> <span class="s2">&quot;scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https&quot;</span><span class="p">:</span> <span class="s2">&quot;scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>This handler is experimental, and not yet recommended for production
+environments. Future Scrapy versions may introduce related changes without
+a deprecation period or warning or even remove it altogether.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>As this handler is based on a different HTTP client implementation compared
+to <a class="reference internal" href="#scrapy.core.downloader.handlers.http11.HTTP11DownloadHandler" title="scrapy.core.downloader.handlers.http11.HTTP11DownloadHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">HTTP11DownloadHandler</span></code></a>, it's expected that its behavior on
+some websites may be different. Additionally, these are the Scrapy features
+that are explicitly not supported when using it:</p>
+<ul class="simple">
+<li><p>Proxy support (the <a class="reference internal" href="downloader-middleware.html#std-reqmeta-proxy"><code class="xref std std-reqmeta docutils literal notranslate"><span class="pre">proxy</span></code></a> meta key).</p></li>
+<li><p>Per-request bind address support (the <a class="reference internal" href="request-response.html#std-reqmeta-bindaddress"><code class="xref std std-reqmeta docutils literal notranslate"><span class="pre">bindaddress</span></code></a> meta key).
+The global <a class="reference internal" href="settings.html#std-setting-DOWNLOAD_BIND_ADDRESS"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOAD_BIND_ADDRESS</span></code></a> setting is supported but the
+port number, if specified, will be ignored.</p></li>
+<li><p>The <a class="reference internal" href="settings.html#std-setting-DOWNLOADER_CLIENT_TLS_CIPHERS"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOADER_CLIENT_TLS_CIPHERS</span></code></a> and
+<a class="reference internal" href="settings.html#std-setting-DOWNLOADER_CLIENT_TLS_METHOD"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOADER_CLIENT_TLS_METHOD</span></code></a> settings.</p></li>
+<li><p>Settings specific to the Twisted networking or HTTP implementation, like
+<a class="reference internal" href="settings.html#std-setting-DNS_RESOLVER"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DNS_RESOLVER</span></code></a>.</p></li>
+<li><p>Using <a class="reference internal" href="asyncio.html#disable-asyncio"><span class="std std-ref">non-asyncio reactors</span></a> (<code class="docutils literal notranslate"><span class="pre">httpx</span></code> requires
+<code class="docutils literal notranslate"><span class="pre">asyncio</span></code>).</p></li>
+</ul>
+</div>
+</section>
+<section id="s3downloadhandler">
+<h3>S3DownloadHandler<a class="headerlink" href="#s3downloadhandler" title="链接到此标题。"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.core.downloader.handlers.s3.S3DownloadHandler">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.core.downloader.handlers.s3.</span></span><span class="sig-name descname"><span class="pre">S3DownloadHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crawler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#scrapy.crawler.Crawler" title="scrapy.crawler.Crawler"><span class="pre">Crawler</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/scrapy/core/downloader/handlers/s3.html#S3DownloadHandler"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.core.downloader.handlers.s3.S3DownloadHandler" title="链接到此定义。"></a></dt>
+<dd></dd></dl>
+
+<div class="line-block">
+<div class="line">Supported scheme: <code class="docutils literal notranslate"><span class="pre">s3</span></code>.</div>
+<div class="line">Lazy: yes.</div>
+</div>
+<p>This handler supports <code class="docutils literal notranslate"><span class="pre">s3://bucket/path</span></code> S3 URIs.</p>
+<p>It's implemented using the <code class="docutils literal notranslate"><span class="pre">botocore</span></code> library and needs it to be installed.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="exporters.html" class="btn btn-neutral float-left" title="Item Exporters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="components.html" class="btn btn-neutral float-right" title="Components" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 Scrapy developers。
+      <span class="lastupdated">最后更新于 4月 27, 2026.
+      </span></p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

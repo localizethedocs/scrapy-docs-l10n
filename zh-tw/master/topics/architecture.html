@@ -1,0 +1,450 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-TW" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>架構概覽 &mdash; Scrapy 2.14.2 說明文件</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=74c04d93" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://projects.localizethedocs.org/scrapy-docs-l10n/topics/architecture.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=8d7de6d6"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/translations.js?v=cbf116e0"></script>
+      <script>
+(function () {
+    var COPY_ICON = String.fromCodePoint(0x1F4CB);
+    var SUCCESS_ICON = String.fromCodePoint(0x2713);
+    var ERROR_ICON = String.fromCodePoint(0x26A0);
+
+    function makeLabel(icon, text) {
+        return icon + ' ' + text;
+    }
+
+    function markdownPathFromCurrentPage(pathname) {
+        if (pathname.endsWith('.html')) {
+            return pathname.slice(0, -5) + '.md';
+        }
+        if (pathname.endsWith('/')) {
+            return pathname + 'index.md';
+        }
+        var lastPart = pathname.split('/').pop() || '';
+        if (!lastPart.includes('.')) {
+            return pathname + '.md';
+        }
+        return pathname + '.md';
+    }
+
+    async function copyToClipboard(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return;
+        }
+        var textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', 'readonly');
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+    }
+
+    function setTemporaryLabel(button, label) {
+        var previousLabel = button.textContent;
+        button.textContent = label;
+        window.setTimeout(function () {
+            button.textContent = previousLabel;
+            button.disabled = false;
+        }, 1000);
+    }
+
+    async function onButtonClick(button) {
+        button.disabled = true;
+        button.textContent = '...';
+        try {
+            var mdPath = markdownPathFromCurrentPage(window.location.pathname);
+            var response = await fetch(mdPath, { credentials: 'same-origin' });
+            if (!response.ok) {
+                throw new Error('Unable to fetch markdown source');
+            }
+            var markdown = await response.text();
+            await copyToClipboard(markdown);
+            setTemporaryLabel(button, makeLabel(SUCCESS_ICON, 'Copied'));
+        } catch (_error) {
+            setTemporaryLabel(button, makeLabel(ERROR_ICON, 'Error'));
+        }
+    }
+
+    function addStyles() {
+        var style = document.createElement('style');
+        style.textContent = [
+            '.scrapy-copy-as-markdown {',
+            '  position: fixed;',
+            '  right: 1rem;',
+            '  bottom: 1rem;',
+            '  z-index: 1000;',
+            '  border: 1px solid #c9d4de;',
+            '  border-radius: 0.45rem;',
+            '  background: #ffffff;',
+            '  color: #233a50;',
+            '  font: inherit;',
+            '  font-size: 0.875rem;',
+            '  line-height: 1;',
+            '  padding: 0.55rem 0.7rem;',
+            '  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);',
+            '  cursor: pointer;',
+            '}',
+            '.scrapy-copy-as-markdown:hover {',
+            '  background: #f3f7fb;',
+            '}',
+            '.scrapy-copy-as-markdown:disabled {',
+            '  opacity: 0.75;',
+            '  cursor: default;',
+            '}',
+        ].join('\n');
+        document.head.appendChild(style);
+    }
+
+    function addButton() {
+        if (!document.body || document.querySelector('.scrapy-copy-as-markdown')) {
+            return;
+        }
+
+        addStyles();
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'scrapy-copy-as-markdown';
+        button.title = 'Copy this page as Markdown';
+        button.setAttribute('aria-label', 'Copy this page as Markdown');
+        button.textContent = makeLabel(COPY_ICON, 'Copy as Markdown');
+        button.addEventListener('click', function () {
+            onButtonClick(button);
+        });
+        document.body.appendChild(button);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', addButton);
+    } else {
+        addButton();
+    }
+})();
+</script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜尋" href="../search.html" />
+    <link rel="next" title="Add-ons" href="addons.html" />
+    <link rel="prev" title="asyncio" href="asyncio.html" />
+ 
+<script type="text/javascript" src="../ltd-provenance.js"></script>
+<script type="text/javascript" src="../ltd-current.js"></script>
+<script type="text/javascript" src="../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+
+<a href="https://scrapy.org">scrapy.org</a> / <a href="../index.html">docs</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">First steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/overview.html">Scrapy 速覽</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">安裝指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/tutorial.html">Scrapy 教學</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/examples.html">範例</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">基礎概念</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">命令行工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spiders.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selectors.html">Selectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="items.html">項目</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loaders.html">Item Loaders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell.html">Scrapy 外殼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="item-pipeline.html">Item Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feed-exports.html">Feed exports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="request-response.html">Requests and Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="link-extractors.html">Link Extractors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">設定</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">內建服務</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">Stats Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telnetconsole.html">Telnet Console</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">解決特定問題</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debug.html">Debugging Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contracts.html">Spiders Contracts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practices.html">Common Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="broad-crawls.html">Broad Crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer-tools.html">使用您的瀏覽器開發者工具進行網頁擷取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic-content.html">Selecting dynamically-loaded content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leaks.html">Debugging memory leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="media-pipeline.html">Downloading and processing files and images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy.html">Deploying Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autothrottle.html">AutoThrottle extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">基準測試</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jobs.html">Jobs: pausing and resuming crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coroutines.html">Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asyncio.html">asyncio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Scrapy</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">架構概覽</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">概覽</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-flow">Data flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#components">Components</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#scrapy-engine">Scrapy Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scheduler">Scheduler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#downloader">Downloader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spiders">Spiders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#item-pipeline">Item Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#downloader-middlewares">Downloader middlewares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spider-middlewares">Spider middlewares</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#event-driven-networking">Event-driven networking</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="addons.html">Add-ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="downloader-middleware.html">Downloader Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spider-middleware.html">Spider Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scheduler.html">Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exporters.html">項目匯出器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download-handlers.html">Download handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">核心 API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">所有測試</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">發行備註</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to Scrapy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../versioning.html">Versioning and API stability</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Scrapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">架構概覽</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/scrapy/scrapy/blob/master/docs/topics/architecture.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="architecture-overview">
+<span id="topics-architecture"></span><h1>架構概覽<a class="headerlink" href="#architecture-overview" title="連結到這個標頭"></a></h1>
+<p>This document describes the architecture of Scrapy and how its components
+interact.</p>
+<section id="overview">
+<h2>概覽<a class="headerlink" href="#overview" title="連結到這個標頭"></a></h2>
+<p>The following diagram shows an overview of the Scrapy architecture with its
+components and an outline of the data flow that takes place inside the system
+(shown by the red arrows). A brief description of the components is included
+below with links for more detailed information about them. The data flow is
+also described below.</p>
+</section>
+<section id="data-flow">
+<span id="id1"></span><h2>Data flow<a class="headerlink" href="#data-flow" title="連結到這個標頭"></a></h2>
+<a class="reference internal image-reference" href="../_images/scrapy_architecture_02.png"><img alt="Scrapy architecture" height="470" src="../_images/scrapy_architecture_02.png" width="700" />
+</a>
+<p>The data flow in Scrapy is controlled by the execution engine, and goes like
+this:</p>
+<ol class="arabic simple">
+<li><p>The <a class="reference internal" href="#component-engine"><span class="std std-ref">Engine</span></a> gets the initial Requests to crawl from the
+<a class="reference internal" href="#component-spiders"><span class="std std-ref">Spider</span></a>.</p></li>
+<li><p>The <a class="reference internal" href="#component-engine"><span class="std std-ref">Engine</span></a> schedules the Requests in the
+<a class="reference internal" href="#component-scheduler"><span class="std std-ref">Scheduler</span></a> and asks for the
+next Requests to crawl.</p></li>
+<li><p>The <a class="reference internal" href="#component-scheduler"><span class="std std-ref">Scheduler</span></a> returns the next Requests
+to the <a class="reference internal" href="#component-engine"><span class="std std-ref">Engine</span></a>.</p></li>
+<li><p>The <a class="reference internal" href="#component-engine"><span class="std std-ref">Engine</span></a> sends the Requests to the
+<a class="reference internal" href="#component-downloader"><span class="std std-ref">Downloader</span></a>, passing through the
+<a class="reference internal" href="#component-downloader-middleware"><span class="std std-ref">Downloader Middlewares</span></a> (see
+<a class="reference internal" href="downloader-middleware.html#scrapy.downloadermiddlewares.DownloaderMiddleware.process_request" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_request"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_request()</span></code></a>).</p></li>
+<li><p>Once the page finishes downloading the
+<a class="reference internal" href="#component-downloader"><span class="std std-ref">Downloader</span></a> generates a Response (with
+that page) and sends it to the Engine, passing through the
+<a class="reference internal" href="#component-downloader-middleware"><span class="std std-ref">Downloader Middlewares</span></a> (see
+<a class="reference internal" href="downloader-middleware.html#scrapy.downloadermiddlewares.DownloaderMiddleware.process_response" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_response"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_response()</span></code></a>).</p></li>
+<li><p>The <a class="reference internal" href="#component-engine"><span class="std std-ref">Engine</span></a> receives the Response from the
+<a class="reference internal" href="#component-downloader"><span class="std std-ref">Downloader</span></a> and sends it to the
+<a class="reference internal" href="#component-spiders"><span class="std std-ref">Spider</span></a> for processing, passing
+through the <a class="reference internal" href="#component-spider-middleware"><span class="std std-ref">Spider Middleware</span></a> (see
+<a class="reference internal" href="spider-middleware.html#scrapy.spidermiddlewares.SpiderMiddleware.process_spider_input" title="scrapy.spidermiddlewares.SpiderMiddleware.process_spider_input"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_spider_input()</span></code></a>).</p></li>
+<li><p>The <a class="reference internal" href="#component-spiders"><span class="std std-ref">Spider</span></a> processes the Response and returns
+scraped items and new Requests (to follow) to the
+<a class="reference internal" href="#component-engine"><span class="std std-ref">Engine</span></a>, passing through the
+<a class="reference internal" href="#component-spider-middleware"><span class="std std-ref">Spider Middleware</span></a> (see
+<a class="reference internal" href="spider-middleware.html#scrapy.spidermiddlewares.SpiderMiddleware.process_spider_output" title="scrapy.spidermiddlewares.SpiderMiddleware.process_spider_output"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_spider_output()</span></code></a>).</p></li>
+<li><p>The <a class="reference internal" href="#component-engine"><span class="std std-ref">Engine</span></a> sends processed items to
+<a class="reference internal" href="#component-pipelines"><span class="std std-ref">Item Pipelines</span></a>, then send processed Requests to
+the <a class="reference internal" href="#component-scheduler"><span class="std std-ref">Scheduler</span></a> and asks for possible next Requests
+to crawl.</p></li>
+<li><p>The process repeats (from step 3) until there are no more requests from the
+<a class="reference internal" href="#component-scheduler"><span class="std std-ref">Scheduler</span></a>.</p></li>
+</ol>
+</section>
+<section id="components">
+<h2>Components<a class="headerlink" href="#components" title="連結到這個標頭"></a></h2>
+<section id="scrapy-engine">
+<span id="component-engine"></span><h3>Scrapy Engine<a class="headerlink" href="#scrapy-engine" title="連結到這個標頭"></a></h3>
+<p>The engine is responsible for controlling the data flow between all components
+of the system, and triggering events when certain actions occur. See the
+<a class="reference internal" href="#data-flow"><span class="std std-ref">Data Flow</span></a> section above for more details.</p>
+</section>
+<section id="scheduler">
+<span id="component-scheduler"></span><h3>Scheduler<a class="headerlink" href="#scheduler" title="連結到這個標頭"></a></h3>
+<p>The <a class="reference internal" href="scheduler.html#topics-scheduler"><span class="std std-ref">scheduler</span></a> receives requests from the engine and
+enqueues them for feeding them later (also to the engine) when the engine
+requests them.</p>
+</section>
+<section id="downloader">
+<span id="component-downloader"></span><h3>Downloader<a class="headerlink" href="#downloader" title="連結到這個標頭"></a></h3>
+<p>The Downloader is responsible for fetching web pages and feeding them to the
+engine which, in turn, feeds them to the spiders.</p>
+</section>
+<section id="spiders">
+<span id="component-spiders"></span><h3>Spiders<a class="headerlink" href="#spiders" title="連結到這個標頭"></a></h3>
+<p>Spiders are custom classes written by Scrapy users to parse responses and
+extract <a class="reference internal" href="items.html#topics-items"><span class="std std-ref">items</span></a> from them or additional requests to
+follow. For more information see <a class="reference internal" href="spiders.html#topics-spiders"><span class="std std-ref">Spiders</span></a>.</p>
+</section>
+<section id="item-pipeline">
+<span id="component-pipelines"></span><h3>Item Pipeline<a class="headerlink" href="#item-pipeline" title="連結到這個標頭"></a></h3>
+<p>The Item Pipeline is responsible for processing the items once they have been
+extracted (or scraped) by the spiders. Typical tasks include cleansing,
+validation and persistence (like storing the item in a database). For more
+information see <a class="reference internal" href="item-pipeline.html#topics-item-pipeline"><span class="std std-ref">Item Pipeline</span></a>.</p>
+</section>
+<section id="downloader-middlewares">
+<span id="component-downloader-middleware"></span><h3>Downloader middlewares<a class="headerlink" href="#downloader-middlewares" title="連結到這個標頭"></a></h3>
+<p>Downloader middlewares are specific hooks that sit between the Engine and the
+Downloader and process requests when they pass from the Engine to the
+Downloader, and responses that pass from Downloader to the Engine.</p>
+<p>Use a Downloader middleware if you need to do one of the following:</p>
+<ul class="simple">
+<li><p>process a request just before it is sent to the Downloader
+(i.e. right before Scrapy sends the request to the website);</p></li>
+<li><p>change received response before passing it to a spider;</p></li>
+<li><p>send a new Request instead of passing received response to a spider;</p></li>
+<li><p>pass response to a spider without fetching a web page;</p></li>
+<li><p>silently drop some requests.</p></li>
+</ul>
+<p>For more information see <a class="reference internal" href="downloader-middleware.html#topics-downloader-middleware"><span class="std std-ref">Downloader Middleware</span></a>.</p>
+</section>
+<section id="spider-middlewares">
+<span id="component-spider-middleware"></span><h3>Spider middlewares<a class="headerlink" href="#spider-middlewares" title="連結到這個標頭"></a></h3>
+<p>Spider middlewares are specific hooks that sit between the Engine and the
+Spiders and are able to process spider input (responses) and output (items and
+requests).</p>
+<p>Use a Spider middleware if you need to</p>
+<ul class="simple">
+<li><p>post-process output of spider callbacks - change/add/remove requests or items;</p></li>
+<li><p>post-process start requests or items;</p></li>
+<li><p>handle spider exceptions;</p></li>
+<li><p>call errback instead of callback for some of the requests based on response
+content.</p></li>
+</ul>
+<p>For more information see <a class="reference internal" href="spider-middleware.html#topics-spider-middleware"><span class="std std-ref">Spider Middleware</span></a>.</p>
+</section>
+</section>
+<section id="event-driven-networking">
+<h2>Event-driven networking<a class="headerlink" href="#event-driven-networking" title="連結到這個標頭"></a></h2>
+<p>Scrapy is written with <a class="reference external" href="https://twisted.org/">Twisted</a>, a popular event-driven networking framework
+for Python. Thus, it's implemented using a non-blocking (aka asynchronous) code
+for concurrency.</p>
+<p>For more information about asynchronous programming and Twisted see these
+links:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.twisted.org/en/stable/core/howto/defer-intro.html" title="(in Twisted v25.5)"><span>Introduction to Deferreds</span></a></p></li>
+<li><p><a class="reference external" href="https://krondo.com/an-introduction-to-asynchronous-programming-and-twisted/">Twisted Introduction - Krondo</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="asyncio.html" class="btn btn-neutral float-left" title="asyncio" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="addons.html" class="btn btn-neutral float-right" title="Add-ons" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Scrapy developers.
+      <span class="lastupdated">最後更新於 4月 27, 2026。
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

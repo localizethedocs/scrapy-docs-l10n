@@ -1,0 +1,627 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en-US" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>scrapy.utils.asyncio &mdash; Scrapy 2.14.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=74c04d93" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://projects.localizethedocs.org/scrapy-docs-l10n/_modules/scrapy/utils/asyncio.html" />
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=4c358422"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script>
+(function () {
+    var COPY_ICON = String.fromCodePoint(0x1F4CB);
+    var SUCCESS_ICON = String.fromCodePoint(0x2713);
+    var ERROR_ICON = String.fromCodePoint(0x26A0);
+
+    function makeLabel(icon, text) {
+        return icon + ' ' + text;
+    }
+
+    function markdownPathFromCurrentPage(pathname) {
+        if (pathname.endsWith('.html')) {
+            return pathname.slice(0, -5) + '.md';
+        }
+        if (pathname.endsWith('/')) {
+            return pathname + 'index.md';
+        }
+        var lastPart = pathname.split('/').pop() || '';
+        if (!lastPart.includes('.')) {
+            return pathname + '.md';
+        }
+        return pathname + '.md';
+    }
+
+    async function copyToClipboard(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return;
+        }
+        var textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', 'readonly');
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+    }
+
+    function setTemporaryLabel(button, label) {
+        var previousLabel = button.textContent;
+        button.textContent = label;
+        window.setTimeout(function () {
+            button.textContent = previousLabel;
+            button.disabled = false;
+        }, 1000);
+    }
+
+    async function onButtonClick(button) {
+        button.disabled = true;
+        button.textContent = '...';
+        try {
+            var mdPath = markdownPathFromCurrentPage(window.location.pathname);
+            var response = await fetch(mdPath, { credentials: 'same-origin' });
+            if (!response.ok) {
+                throw new Error('Unable to fetch markdown source');
+            }
+            var markdown = await response.text();
+            await copyToClipboard(markdown);
+            setTemporaryLabel(button, makeLabel(SUCCESS_ICON, 'Copied'));
+        } catch (_error) {
+            setTemporaryLabel(button, makeLabel(ERROR_ICON, 'Error'));
+        }
+    }
+
+    function addStyles() {
+        var style = document.createElement('style');
+        style.textContent = [
+            '.scrapy-copy-as-markdown {',
+            '  position: fixed;',
+            '  right: 1rem;',
+            '  bottom: 1rem;',
+            '  z-index: 1000;',
+            '  border: 1px solid #c9d4de;',
+            '  border-radius: 0.45rem;',
+            '  background: #ffffff;',
+            '  color: #233a50;',
+            '  font: inherit;',
+            '  font-size: 0.875rem;',
+            '  line-height: 1;',
+            '  padding: 0.55rem 0.7rem;',
+            '  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);',
+            '  cursor: pointer;',
+            '}',
+            '.scrapy-copy-as-markdown:hover {',
+            '  background: #f3f7fb;',
+            '}',
+            '.scrapy-copy-as-markdown:disabled {',
+            '  opacity: 0.75;',
+            '  cursor: default;',
+            '}',
+        ].join('\n');
+        document.head.appendChild(style);
+    }
+
+    function addButton() {
+        if (!document.body || document.querySelector('.scrapy-copy-as-markdown')) {
+            return;
+        }
+
+        addStyles();
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'scrapy-copy-as-markdown';
+        button.title = 'Copy this page as Markdown';
+        button.setAttribute('aria-label', 'Copy this page as Markdown');
+        button.textContent = makeLabel(COPY_ICON, 'Copy as Markdown');
+        button.addEventListener('click', function () {
+            onButtonClick(button);
+        });
+        document.body.appendChild(button);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', addButton);
+    } else {
+        addButton();
+    }
+})();
+</script>
+      <script src="../../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+ 
+<script type="text/javascript" src="../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+
+<a href="https://scrapy.org">scrapy.org</a> / <a href="../../../index.html">docs</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">First steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro/overview.html">Scrapy at a glance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro/install.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro/tutorial.html">Scrapy Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../intro/examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Basic concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/commands.html">Command line tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/spiders.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/selectors.html">Selectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/items.html">Items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/loaders.html">Item Loaders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/shell.html">Scrapy shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/item-pipeline.html">Item Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/feed-exports.html">Feed exports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/request-response.html">Requests and Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/link-extractors.html">Link Extractors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/exceptions.html">Exceptions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Built-in services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/stats.html">Stats Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/telnetconsole.html">Telnet Console</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Solving specific problems</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/debug.html">Debugging Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/contracts.html">Spiders Contracts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/practices.html">Common Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/broad-crawls.html">Broad Crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/developer-tools.html">Using your browser’s Developer Tools for scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/dynamic-content.html">Selecting dynamically-loaded content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/leaks.html">Debugging memory leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/media-pipeline.html">Downloading and processing files and images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/deploy.html">Deploying Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/autothrottle.html">AutoThrottle extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/jobs.html">Jobs: pausing and resuming crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/coroutines.html">Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/asyncio.html">asyncio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Scrapy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/architecture.html">Architecture overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/addons.html">Add-ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/downloader-middleware.html">Downloader Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/spider-middleware.html">Spider Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/scheduler.html">Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/exporters.html">Item Exporters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/download-handlers.html">Download handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../topics/api.html">Core API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">All the rest</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../news.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing to Scrapy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versioning.html">Versioning and API stability</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Scrapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">scrapy.utils.asyncio</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for scrapy.utils.asyncio</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Utilities related to asyncio and its support in Scrapy.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncIterator</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Coroutine</span><span class="p">,</span> <span class="n">Iterable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Concatenate</span><span class="p">,</span> <span class="n">ParamSpec</span><span class="p">,</span> <span class="n">TypeVar</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">twisted.internet.defer</span><span class="w"> </span><span class="kn">import</span> <span class="n">Deferred</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">twisted.internet.task</span><span class="w"> </span><span class="kn">import</span> <span class="n">LoopingCall</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">twisted.internet.threads</span><span class="w"> </span><span class="kn">import</span> <span class="n">deferToThread</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.utils.asyncgen</span><span class="w"> </span><span class="kn">import</span> <span class="n">as_async_generator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.utils.reactor</span><span class="w"> </span><span class="kn">import</span> <span class="n">is_asyncio_reactor_installed</span><span class="p">,</span> <span class="n">is_reactor_installed</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">twisted.internet.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">DelayedCall</span>
+
+    <span class="c1"># typing.Self, typing.TypeVarTuple and typing.Unpack require Python 3.11</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span><span class="p">,</span> <span class="n">TypeVarTuple</span><span class="p">,</span> <span class="n">Unpack</span>
+
+    <span class="n">_Ts</span> <span class="o">=</span> <span class="n">TypeVarTuple</span><span class="p">(</span><span class="s2">&quot;_Ts&quot;</span><span class="p">)</span>
+
+
+<span class="n">_T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;_T&quot;</span><span class="p">)</span>
+<span class="n">_P</span> <span class="o">=</span> <span class="n">ParamSpec</span><span class="p">(</span><span class="s2">&quot;_P&quot;</span><span class="p">)</span>
+
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="is_asyncio_available">
+<a class="viewcode-back" href="../../../topics/asyncio.html#scrapy.utils.asyncio.is_asyncio_available">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_asyncio_available</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if it&#39;s possible to call asyncio code that relies on the asyncio event loop.</span>
+
+<span class="sd">    .. versionadded:: 2.14</span>
+
+<span class="sd">    This function returns ``True`` if there is a running asyncio event loop. If</span>
+<span class="sd">    there is no such loop, it returns ``True`` if the Twisted reactor that is</span>
+<span class="sd">    installed is</span>
+<span class="sd">    :class:`~twisted.internet.asyncioreactor.AsyncioSelectorReactor`, returns</span>
+<span class="sd">    ``False`` if a different reactor is installed, and raises a</span>
+<span class="sd">    :exc:`RuntimeError` if no reactor is installed.</span>
+
+<span class="sd">    Code that doesn&#39;t directly require a Twisted reactor should use this</span>
+<span class="sd">    function while code that requires</span>
+<span class="sd">    :class:`~twisted.internet.asyncioreactor.AsyncioSelectorReactor` should use</span>
+<span class="sd">    :func:`~scrapy.utils.reactor.is_asyncio_reactor_installed`.</span>
+
+<span class="sd">    When this returns ``True``, an asyncio loop is installed and used by</span>
+<span class="sd">    Scrapy. It&#39;s possible to call functions that require it, such as</span>
+<span class="sd">    :func:`asyncio.sleep`, and await on :class:`asyncio.Future` objects in</span>
+<span class="sd">    Scrapy-related code.</span>
+
+<span class="sd">    When this returns ``False``, a non-asyncio Twisted reactor is installed.</span>
+<span class="sd">    It&#39;s not possible to use asyncio features that require an asyncio event</span>
+<span class="sd">    loop or await on :class:`asyncio.Future` objects in Scrapy-related code,</span>
+<span class="sd">    but it&#39;s possible to await on :class:`~twisted.internet.defer.Deferred`</span>
+<span class="sd">    objects.</span>
+
+<span class="sd">    .. note:: As this function uses :func:`asyncio.get_running_loop()`, it will</span>
+<span class="sd">        only detect the event loop if called in the same thread and from the</span>
+<span class="sd">        code that runs inside that loop (this shouldn&#39;t be a problem when</span>
+<span class="sd">        calling it from code such as spiders and Scrapy components, if Scrapy</span>
+<span class="sd">        is run using one of the supported ways).</span>
+
+<span class="sd">    .. versionchanged:: VERSION</span>
+<span class="sd">        This function now also returns ``True`` if there is a running asyncio</span>
+<span class="sd">        loop, even if no Twisted reactor is installed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Check if there is a running asyncio loop.</span>
+    <span class="c1"># Can&#39;t easily check for an installed but not running one, and if we</span>
+    <span class="c1"># checked that there could be false positives due to some 3rd-party code</span>
+    <span class="c1"># installing it as a side effect (e.g. by calling get_event_loop()).</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="c1"># Check if there is an installed asyncio reactor (it doesn&#39;t need to be</span>
+    <span class="c1"># running).</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_reactor_installed</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+            <span class="s2">&quot;is_asyncio_available() called without an installed reactor&quot;</span>
+            <span class="s2">&quot; or running asyncio loop.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">is_asyncio_reactor_installed</span><span class="p">()</span></div>
+
+
+
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_parallel_asyncio</span><span class="p">(</span>
+    <span class="n">iterable</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">_T</span><span class="p">]</span> <span class="o">|</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="n">_T</span><span class="p">],</span>
+    <span class="n">count</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">callable_</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="n">Concatenate</span><span class="p">[</span><span class="n">_T</span><span class="p">,</span> <span class="n">_P</span><span class="p">],</span> <span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">]],</span>
+    <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">_P</span><span class="o">.</span><span class="n">args</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">_P</span><span class="o">.</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Execute a callable over the objects in the given iterable, in parallel,</span>
+<span class="sd">    using no more than ``count`` concurrent calls.</span>
+
+<span class="sd">    This function is only used in</span>
+<span class="sd">    :meth:`scrapy.core.scraper.Scraper.handle_spider_output_async` and so it</span>
+<span class="sd">    assumes that neither *callable* nor iterating *iterable* will raise an</span>
+<span class="sd">    exception.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">queue</span><span class="p">:</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Queue</span><span class="p">[</span><span class="n">_T</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Queue</span><span class="p">(</span><span class="n">count</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">worker</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">item</span> <span class="o">=</span> <span class="k">await</span> <span class="n">queue</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">item</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">await</span> <span class="n">callable_</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">finally</span><span class="p">:</span>
+                <span class="n">queue</span><span class="o">.</span><span class="n">task_done</span><span class="p">()</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">fill_queue</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">async</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">as_async_generator</span><span class="p">(</span><span class="n">iterable</span><span class="p">):</span>
+            <span class="k">await</span> <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
+            <span class="k">await</span> <span class="n">queue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="n">fill_task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">fill_queue</span><span class="p">())</span>
+    <span class="n">work_tasks</span> <span class="o">=</span> <span class="p">[</span><span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">worker</span><span class="p">())</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">)]</span>
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">wait</span><span class="p">([</span><span class="n">fill_task</span><span class="p">,</span> <span class="o">*</span><span class="n">work_tasks</span><span class="p">])</span>
+
+
+<div class="viewcode-block" id="AsyncioLoopingCall">
+<a class="viewcode-back" href="../../../topics/asyncio.html#scrapy.utils.asyncio.AsyncioLoopingCall">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AsyncioLoopingCall</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A simple implementation of a periodic call using asyncio, keeping</span>
+<span class="sd">    some API and behavior compatibility with</span>
+<span class="sd">    :class:`~twisted.internet.task.LoopingCall`.</span>
+
+<span class="sd">    The function is called every *interval* seconds, independent of the finish</span>
+<span class="sd">    time of the previous call. If the function  is still running when it&#39;s time</span>
+<span class="sd">    to call it again, calls are skipped until the function finishes.</span>
+
+<span class="sd">    The function must not return a coroutine or a ``Deferred``.</span>
+
+<span class="sd">    .. versionadded:: 2.14.0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="n">_P</span><span class="p">,</span> <span class="n">_T</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">_P</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">_P</span><span class="o">.</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="n">_P</span><span class="p">,</span> <span class="n">_T</span><span class="p">]</span> <span class="o">=</span> <span class="n">func</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">args</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_kwargs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="p">:</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Task</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">interval</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">running</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interval</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">now</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Start calling the function every *interval* seconds.</span>
+
+<span class="sd">        :param interval: The interval in seconds between calls.</span>
+<span class="sd">        :type interval: float</span>
+
+<span class="sd">        :param now: If ``True``, also call the function immediately.</span>
+<span class="sd">        :type now: bool</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">running</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;AsyncioLoopingCall already running&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">interval</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Interval must be greater than 0&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">interval</span> <span class="o">=</span> <span class="n">interval</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">now</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_call</span><span class="p">()</span>
+        <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_task</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_loop</span><span class="p">())</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_to_sleep</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the time to sleep until the next call.&quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">interval</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">running_for</span> <span class="o">=</span> <span class="n">now</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">interval</span> <span class="o">-</span> <span class="p">(</span><span class="n">running_for</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">interval</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_loop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run an infinite loop that calls the function periodically.&quot;&quot;&quot;</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">running</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_sleep</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_call</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Stop the periodic calls.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">interval</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_start_time</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_task</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_task</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_call</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Execute the function.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_kwargs</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;Error calling the AsyncioLoopingCall function&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="p">(</span><span class="n">Coroutine</span><span class="p">,</span> <span class="n">Deferred</span><span class="p">)):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                    <span class="s2">&quot;The AsyncioLoopingCall function must not return a coroutine or a Deferred&quot;</span>
+                <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="create_looping_call">
+<a class="viewcode-back" href="../../../topics/asyncio.html#scrapy.utils.asyncio.create_looping_call">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_looping_call</span><span class="p">(</span>
+    <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="n">_P</span><span class="p">,</span> <span class="n">_T</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">_P</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">_P</span><span class="o">.</span><span class="n">kwargs</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AsyncioLoopingCall</span> <span class="o">|</span> <span class="n">LoopingCall</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create an instance of a looping call class.</span>
+
+<span class="sd">    This creates an instance of</span>
+<span class="sd">    :class:`~scrapy.utils.asyncio.AsyncioLoopingCall` or</span>
+<span class="sd">    :class:`~twisted.internet.task.LoopingCall`, depending on whether asyncio</span>
+<span class="sd">    support is available.</span>
+
+<span class="sd">    .. versionadded:: 2.14.0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">is_asyncio_available</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">AsyncioLoopingCall</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">LoopingCall</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="call_later">
+<a class="viewcode-back" href="../../../topics/asyncio.html#scrapy.utils.asyncio.call_later">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">call_later</span><span class="p">(</span>
+    <span class="n">delay</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Unpack</span><span class="p">[</span><span class="n">_Ts</span><span class="p">]],</span> <span class="nb">object</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Unpack</span><span class="p">[</span><span class="n">_Ts</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CallLaterResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Schedule a function to be called after a delay.</span>
+
+<span class="sd">    This uses either :meth:`asyncio.loop.call_later` or</span>
+<span class="sd">    :meth:`reactor.callLater() &lt;twisted.internet.base.ReactorBase.callLater&gt;`,</span>
+<span class="sd">    depending on whether asyncio support is available.</span>
+
+<span class="sd">    .. versionadded:: 2.14.0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">is_asyncio_available</span><span class="p">():</span>
+        <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_event_loop</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">CallLaterResult</span><span class="o">.</span><span class="n">from_asyncio</span><span class="p">(</span><span class="n">loop</span><span class="o">.</span><span class="n">call_later</span><span class="p">(</span><span class="n">delay</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">))</span>
+
+    <span class="kn">from</span><span class="w"> </span><span class="nn">twisted.internet</span><span class="w"> </span><span class="kn">import</span> <span class="n">reactor</span>
+
+    <span class="k">return</span> <span class="n">CallLaterResult</span><span class="o">.</span><span class="n">from_twisted</span><span class="p">(</span><span class="n">reactor</span><span class="o">.</span><span class="n">callLater</span><span class="p">(</span><span class="n">delay</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">))</span></div>
+
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CallLaterResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An universal result for :func:`call_later`, wrapping either</span>
+<span class="sd">    :class:`asyncio.TimerHandle` or :class:`twisted.internet.base.DelayedCall`.</span>
+
+<span class="sd">    The provided API is close to the :class:`asyncio.TimerHandle` one: there is</span>
+<span class="sd">    no ``active()`` (as there is no such public API in</span>
+<span class="sd">    :class:`asyncio.TimerHandle`) but ``cancel()`` can be called on already</span>
+<span class="sd">    called or cancelled instances.</span>
+
+<span class="sd">    .. versionadded:: 2.14.0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_timer_handle</span><span class="p">:</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">TimerHandle</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">_delayed_call</span><span class="p">:</span> <span class="n">DelayedCall</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_asyncio</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">timer_handle</span><span class="p">:</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">TimerHandle</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a CallLaterResult from an asyncio TimerHandle.&quot;&quot;&quot;</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
+        <span class="n">o</span><span class="o">.</span><span class="n">_timer_handle</span> <span class="o">=</span> <span class="n">timer_handle</span>
+        <span class="k">return</span> <span class="n">o</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_twisted</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">delayed_call</span><span class="p">:</span> <span class="n">DelayedCall</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a CallLaterResult from a Twisted DelayedCall.&quot;&quot;&quot;</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">()</span>
+        <span class="n">o</span><span class="o">.</span><span class="n">_delayed_call</span> <span class="o">=</span> <span class="n">delayed_call</span>
+        <span class="k">return</span> <span class="n">o</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">cancel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cancel the underlying delayed call.</span>
+
+<span class="sd">        Does nothing if the delayed call was already called or cancelled.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_timer_handle</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_timer_handle</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_timer_handle</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_delayed_call</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_delayed_call</span><span class="o">.</span><span class="n">active</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_delayed_call</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_delayed_call</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<div class="viewcode-block" id="run_in_thread">
+<a class="viewcode-back" href="../../../topics/asyncio.html#scrapy.utils.asyncio.run_in_thread">[docs]</a>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">run_in_thread</span><span class="p">(</span>
+    <span class="n">func</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="n">_P</span><span class="p">,</span> <span class="n">_T</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">_P</span><span class="o">.</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">_P</span><span class="o">.</span><span class="n">kwargs</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_T</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Call a function in a thread and return its result as a coroutine.</span>
+
+<span class="sd">    This uses either :func:`asyncio.to_thread` or</span>
+<span class="sd">    :func:`twisted.internet.threads.deferToThread`, depending on whether</span>
+<span class="sd">    asyncio support is available.</span>
+
+<span class="sd">    .. versionadded:: VERSION</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">is_asyncio_available</span><span class="p">():</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">to_thread</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1"># circular import</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.utils.defer</span><span class="w"> </span><span class="kn">import</span> <span class="n">maybe_deferred_to_future</span>  <span class="c1"># noqa: PLC0415</span>
+
+    <span class="k">return</span> <span class="k">await</span> <span class="n">maybe_deferred_to_future</span><span class="p">(</span><span class="n">deferToThread</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Scrapy developers.
+      <span class="lastupdated">Last updated on Apr 27, 2026.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

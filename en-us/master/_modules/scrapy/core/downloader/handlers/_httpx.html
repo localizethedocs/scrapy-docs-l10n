@@ -1,0 +1,604 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en-US" data-content_root="../../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>scrapy.core.downloader.handlers._httpx &mdash; Scrapy 2.14.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/custom.css?v=74c04d93" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../../../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://projects.localizethedocs.org/scrapy-docs-l10n/_modules/scrapy/core/downloader/handlers/_httpx.html" />
+      <script src="../../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../../_static/documentation_options.js?v=4c358422"></script>
+      <script src="../../../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+      <script>
+(function () {
+    var COPY_ICON = String.fromCodePoint(0x1F4CB);
+    var SUCCESS_ICON = String.fromCodePoint(0x2713);
+    var ERROR_ICON = String.fromCodePoint(0x26A0);
+
+    function makeLabel(icon, text) {
+        return icon + ' ' + text;
+    }
+
+    function markdownPathFromCurrentPage(pathname) {
+        if (pathname.endsWith('.html')) {
+            return pathname.slice(0, -5) + '.md';
+        }
+        if (pathname.endsWith('/')) {
+            return pathname + 'index.md';
+        }
+        var lastPart = pathname.split('/').pop() || '';
+        if (!lastPart.includes('.')) {
+            return pathname + '.md';
+        }
+        return pathname + '.md';
+    }
+
+    async function copyToClipboard(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return;
+        }
+        var textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', 'readonly');
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+    }
+
+    function setTemporaryLabel(button, label) {
+        var previousLabel = button.textContent;
+        button.textContent = label;
+        window.setTimeout(function () {
+            button.textContent = previousLabel;
+            button.disabled = false;
+        }, 1000);
+    }
+
+    async function onButtonClick(button) {
+        button.disabled = true;
+        button.textContent = '...';
+        try {
+            var mdPath = markdownPathFromCurrentPage(window.location.pathname);
+            var response = await fetch(mdPath, { credentials: 'same-origin' });
+            if (!response.ok) {
+                throw new Error('Unable to fetch markdown source');
+            }
+            var markdown = await response.text();
+            await copyToClipboard(markdown);
+            setTemporaryLabel(button, makeLabel(SUCCESS_ICON, 'Copied'));
+        } catch (_error) {
+            setTemporaryLabel(button, makeLabel(ERROR_ICON, 'Error'));
+        }
+    }
+
+    function addStyles() {
+        var style = document.createElement('style');
+        style.textContent = [
+            '.scrapy-copy-as-markdown {',
+            '  position: fixed;',
+            '  right: 1rem;',
+            '  bottom: 1rem;',
+            '  z-index: 1000;',
+            '  border: 1px solid #c9d4de;',
+            '  border-radius: 0.45rem;',
+            '  background: #ffffff;',
+            '  color: #233a50;',
+            '  font: inherit;',
+            '  font-size: 0.875rem;',
+            '  line-height: 1;',
+            '  padding: 0.55rem 0.7rem;',
+            '  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);',
+            '  cursor: pointer;',
+            '}',
+            '.scrapy-copy-as-markdown:hover {',
+            '  background: #f3f7fb;',
+            '}',
+            '.scrapy-copy-as-markdown:disabled {',
+            '  opacity: 0.75;',
+            '  cursor: default;',
+            '}',
+        ].join('\n');
+        document.head.appendChild(style);
+    }
+
+    function addButton() {
+        if (!document.body || document.querySelector('.scrapy-copy-as-markdown')) {
+            return;
+        }
+
+        addStyles();
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'scrapy-copy-as-markdown';
+        button.title = 'Copy this page as Markdown';
+        button.setAttribute('aria-label', 'Copy this page as Markdown');
+        button.textContent = makeLabel(COPY_ICON, 'Copy as Markdown');
+        button.addEventListener('click', function () {
+            onButtonClick(button);
+        });
+        document.body.appendChild(button);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', addButton);
+    } else {
+        addButton();
+    }
+})();
+</script>
+      <script src="../../../../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../../../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+ 
+<script type="text/javascript" src="../../../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+
+<a href="https://scrapy.org">scrapy.org</a> / <a href="../../../../../index.html">docs</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">First steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro/overview.html">Scrapy at a glance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro/install.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro/tutorial.html">Scrapy Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../intro/examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Basic concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/commands.html">Command line tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/spiders.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/selectors.html">Selectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/items.html">Items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/loaders.html">Item Loaders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/shell.html">Scrapy shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/item-pipeline.html">Item Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/feed-exports.html">Feed exports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/request-response.html">Requests and Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/link-extractors.html">Link Extractors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/exceptions.html">Exceptions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Built-in services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/stats.html">Stats Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/telnetconsole.html">Telnet Console</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Solving specific problems</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/debug.html">Debugging Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/contracts.html">Spiders Contracts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/practices.html">Common Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/broad-crawls.html">Broad Crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/developer-tools.html">Using your browser’s Developer Tools for scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/dynamic-content.html">Selecting dynamically-loaded content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/leaks.html">Debugging memory leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/media-pipeline.html">Downloading and processing files and images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/deploy.html">Deploying Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/autothrottle.html">AutoThrottle extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/benchmarking.html">Benchmarking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/jobs.html">Jobs: pausing and resuming crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/coroutines.html">Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/asyncio.html">asyncio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Scrapy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/architecture.html">Architecture overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/addons.html">Add-ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/downloader-middleware.html">Downloader Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/spider-middleware.html">Spider Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/scheduler.html">Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/exporters.html">Item Exporters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/download-handlers.html">Download handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../topics/api.html">Core API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">All the rest</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../news.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../contributing.html">Contributing to Scrapy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../versioning.html">Versioning and API stability</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">Scrapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">scrapy.core.downloader.handlers._httpx</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for scrapy.core.downloader.handlers._httpx</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;``httpx``-based HTTP(S) download handler. Currently not recommended for production use.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipaddress</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">http.cookiejar</span><span class="w"> </span><span class="kn">import</span> <span class="n">Cookie</span><span class="p">,</span> <span class="n">CookieJar</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">NoReturn</span><span class="p">,</span> <span class="n">TypedDict</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">signals</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">CannotResolveHostError</span><span class="p">,</span>
+    <span class="n">DownloadCancelledError</span><span class="p">,</span>
+    <span class="n">DownloadConnectionRefusedError</span><span class="p">,</span>
+    <span class="n">DownloadFailedError</span><span class="p">,</span>
+    <span class="n">DownloadTimeoutError</span><span class="p">,</span>
+    <span class="n">NotConfigured</span><span class="p">,</span>
+    <span class="n">ResponseDataLossError</span><span class="p">,</span>
+    <span class="n">UnsupportedURLSchemeError</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.http</span><span class="w"> </span><span class="kn">import</span> <span class="n">Headers</span><span class="p">,</span> <span class="n">Response</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.utils._download_handlers</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">BaseHttpDownloadHandler</span><span class="p">,</span>
+    <span class="n">check_stop_download</span><span class="p">,</span>
+    <span class="n">get_dataloss_msg</span><span class="p">,</span>
+    <span class="n">get_maxsize_msg</span><span class="p">,</span>
+    <span class="n">get_warnsize_msg</span><span class="p">,</span>
+    <span class="n">make_response</span><span class="p">,</span>
+    <span class="n">normalize_bind_address</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.utils.asyncio</span><span class="w"> </span><span class="kn">import</span> <span class="n">is_asyncio_available</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.utils.ssl</span><span class="w"> </span><span class="kn">import</span> <span class="n">_log_sslobj_debug_info</span><span class="p">,</span> <span class="n">_make_ssl_context</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">contextlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">AbstractAsyncContextManager</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">http.client</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTTPResponse</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">ipaddress</span><span class="w"> </span><span class="kn">import</span> <span class="n">IPv4Address</span><span class="p">,</span> <span class="n">IPv6Address</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">urllib.request</span><span class="w"> </span><span class="kn">import</span> <span class="n">Request</span> <span class="k">as</span> <span class="n">ULRequest</span>
+
+    <span class="kn">from</span><span class="w"> </span><span class="nn">httpcore</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncNetworkStream</span>
+
+    <span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.crawler</span><span class="w"> </span><span class="kn">import</span> <span class="n">Crawler</span>
+
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">httpx</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">httpx</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># type: ignore[assignment]</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">_BaseResponseArgs</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+    <span class="n">status</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">url</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">headers</span><span class="p">:</span> <span class="n">Headers</span>
+    <span class="n">ip_address</span><span class="p">:</span> <span class="n">IPv4Address</span> <span class="o">|</span> <span class="n">IPv6Address</span>
+    <span class="n">protocol</span><span class="p">:</span> <span class="nb">str</span>
+
+
+<span class="c1"># workaround for (and from) https://github.com/encode/httpx/issues/2992</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">_NullCookieJar</span><span class="p">(</span><span class="n">CookieJar</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A CookieJar that rejects all cookies.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">extract_cookies</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">:</span> <span class="n">HTTPResponse</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">ULRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_cookie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cookie</span><span class="p">:</span> <span class="n">Cookie</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+
+<div class="viewcode-block" id="HttpxDownloadHandler">
+<a class="viewcode-back" href="../../../../../topics/download-handlers.html#scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">HttpxDownloadHandler</span><span class="p">(</span><span class="n">BaseHttpDownloadHandler</span><span class="p">):</span>
+    <span class="n">_DEFAULT_CONNECT_TIMEOUT</span> <span class="o">=</span> <span class="mi">10</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">crawler</span><span class="p">:</span> <span class="n">Crawler</span><span class="p">):</span>
+        <span class="c1"># we skip HttpxDownloadHandler tests with the non-asyncio reactor</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_asyncio_available</span><span class="p">():</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">raise</span> <span class="n">NotConfigured</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> requires the asyncio support. Make&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot; sure that you have either enabled the asyncio Twisted&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot; reactor in the TWISTED_REACTOR setting or disabled the&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot; TWISTED_REACTOR_ENABLED setting. See the asyncio&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot; documentation of Scrapy for more information.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">httpx</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">raise</span> <span class="n">NotConfigured</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> requires the httpx library to be installed.&quot;</span>
+            <span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">crawler</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+            <span class="s2">&quot;HttpxDownloadHandler is experimental and is not recommented for production use.&quot;</span>
+        <span class="p">)</span>
+        <span class="n">bind_address</span> <span class="o">=</span> <span class="n">crawler</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;DOWNLOAD_BIND_ADDRESS&quot;</span><span class="p">)</span>
+        <span class="n">bind_address</span> <span class="o">=</span> <span class="n">normalize_bind_address</span><span class="p">(</span><span class="n">bind_address</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_bind_address</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="n">bind_address</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">host</span><span class="p">,</span> <span class="n">port</span> <span class="o">=</span> <span class="n">bind_address</span>
+            <span class="k">if</span> <span class="n">port</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="s2">&quot;DOWNLOAD_BIND_ADDRESS specifies a port (</span><span class="si">%s</span><span class="s2">), but </span><span class="si">%s</span><span class="s2"> does not &quot;</span>
+                    <span class="s2">&quot;support binding to a specific local port. Ignoring the port &quot;</span>
+                    <span class="s2">&quot;and binding only to </span><span class="si">%r</span><span class="s2">.&quot;</span><span class="p">,</span>
+                    <span class="n">port</span><span class="p">,</span>
+                    <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                    <span class="n">host</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_bind_address</span> <span class="o">=</span> <span class="n">host</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">httpx</span><span class="o">.</span><span class="n">AsyncClient</span><span class="p">(</span>
+            <span class="n">cookies</span><span class="o">=</span><span class="n">_NullCookieJar</span><span class="p">(),</span>
+            <span class="n">transport</span><span class="o">=</span><span class="n">httpx</span><span class="o">.</span><span class="n">AsyncHTTPTransport</span><span class="p">(</span>
+                <span class="n">verify</span><span class="o">=</span><span class="n">_make_ssl_context</span><span class="p">(</span><span class="n">crawler</span><span class="o">.</span><span class="n">settings</span><span class="p">),</span>
+                <span class="n">local_address</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_bind_address</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">download_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_warn_unsupported_meta</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">meta</span><span class="p">)</span>
+
+        <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s2">&quot;download_timeout&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_DEFAULT_CONNECT_TIMEOUT</span>
+        <span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">async</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_httpx_response</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span> <span class="k">as</span> <span class="n">httpx_response</span><span class="p">:</span>
+                <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_response</span><span class="p">(</span><span class="n">httpx_response</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">httpx</span><span class="o">.</span><span class="n">TimeoutException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">DownloadTimeoutError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Getting </span><span class="si">{</span><span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="si">}</span><span class="s2"> took longer than </span><span class="si">{</span><span class="n">timeout</span><span class="si">}</span><span class="s2"> seconds.&quot;</span>
+            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+        <span class="k">except</span> <span class="n">httpx</span><span class="o">.</span><span class="n">UnsupportedProtocol</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">UnsupportedURLSchemeError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+        <span class="k">except</span> <span class="n">httpx</span><span class="o">.</span><span class="n">ConnectError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">error_message</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="s2">&quot;Name or service not known&quot;</span> <span class="ow">in</span> <span class="n">error_message</span>
+                <span class="ow">or</span> <span class="s2">&quot;getaddrinfo failed&quot;</span> <span class="ow">in</span> <span class="n">error_message</span>
+                <span class="ow">or</span> <span class="s2">&quot;nodename nor servname&quot;</span> <span class="ow">in</span> <span class="n">error_message</span>
+                <span class="ow">or</span> <span class="s2">&quot;Temporary failure in name resolution&quot;</span> <span class="ow">in</span> <span class="n">error_message</span>
+            <span class="p">):</span>
+                <span class="k">raise</span> <span class="n">CannotResolveHostError</span><span class="p">(</span><span class="n">error_message</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+            <span class="k">raise</span> <span class="n">DownloadConnectionRefusedError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+        <span class="k">except</span> <span class="n">httpx</span><span class="o">.</span><span class="n">NetworkError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">DownloadFailedError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+        <span class="k">except</span> <span class="n">httpx</span><span class="o">.</span><span class="n">RemoteProtocolError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">DownloadFailedError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_warn_unsupported_meta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">meta</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;bindaddress&quot;</span><span class="p">):</span>
+            <span class="c1"># configurable only per-client:</span>
+            <span class="c1"># https://github.com/encode/httpx/issues/755#issuecomment-2746121794</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;The &#39;bindaddress&#39; request meta key is not supported by&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> and will be ignored.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;proxy&quot;</span><span class="p">):</span>
+            <span class="c1"># configurable only per-client:</span>
+            <span class="c1"># https://github.com/encode/httpx/issues/486</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;The &#39;proxy&#39; request meta key is not supported by&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> and will be ignored.&quot;</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_httpx_response</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AbstractAsyncContextManager</span><span class="p">[</span><span class="n">httpx</span><span class="o">.</span><span class="n">Response</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span>
+            <span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="p">,</span>
+            <span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+            <span class="n">content</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">to_tuple_list</span><span class="p">(),</span>
+            <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_read_response</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">httpx_response</span><span class="p">:</span> <span class="n">httpx</span><span class="o">.</span><span class="n">Response</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Response</span><span class="p">:</span>
+        <span class="n">maxsize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;download_maxsize&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_maxsize</span><span class="p">)</span>
+        <span class="n">warnsize</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;download_warnsize&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_warnsize</span><span class="p">)</span>
+
+        <span class="n">content_length</span> <span class="o">=</span> <span class="n">httpx_response</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Content-Length&quot;</span><span class="p">)</span>
+        <span class="n">expected_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">content_length</span><span class="p">)</span> <span class="k">if</span> <span class="n">content_length</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">maxsize</span> <span class="ow">and</span> <span class="n">expected_size</span> <span class="ow">and</span> <span class="n">expected_size</span> <span class="o">&gt;</span> <span class="n">maxsize</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cancel_maxsize</span><span class="p">(</span><span class="n">expected_size</span><span class="p">,</span> <span class="n">maxsize</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">expected</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">reached_warnsize</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">warnsize</span> <span class="ow">and</span> <span class="n">expected_size</span> <span class="ow">and</span> <span class="n">expected_size</span> <span class="o">&gt;</span> <span class="n">warnsize</span><span class="p">:</span>
+            <span class="n">reached_warnsize</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="n">get_warnsize_msg</span><span class="p">(</span><span class="n">expected_size</span><span class="p">,</span> <span class="n">warnsize</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">expected</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="n">headers</span> <span class="o">=</span> <span class="n">Headers</span><span class="p">(</span><span class="n">httpx_response</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">multi_items</span><span class="p">())</span>
+        <span class="n">network_stream</span><span class="p">:</span> <span class="n">AsyncNetworkStream</span> <span class="o">=</span> <span class="n">httpx_response</span><span class="o">.</span><span class="n">extensions</span><span class="p">[</span><span class="s2">&quot;network_stream&quot;</span><span class="p">]</span>
+
+        <span class="n">make_response_base_args</span><span class="p">:</span> <span class="n">_BaseResponseArgs</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">httpx_response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="p">,</span>
+            <span class="s2">&quot;headers&quot;</span><span class="p">:</span> <span class="n">headers</span><span class="p">,</span>
+            <span class="s2">&quot;ip_address&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_server_ip</span><span class="p">(</span><span class="n">network_stream</span><span class="p">),</span>
+            <span class="s2">&quot;protocol&quot;</span><span class="p">:</span> <span class="n">httpx_response</span><span class="o">.</span><span class="n">http_version</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_log_tls_info</span><span class="p">(</span><span class="n">network_stream</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">stop_download</span> <span class="o">:=</span> <span class="n">check_stop_download</span><span class="p">(</span>
+            <span class="n">signals</span><span class="o">.</span><span class="n">headers_received</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">crawler</span><span class="p">,</span>
+            <span class="n">request</span><span class="p">,</span>
+            <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+            <span class="n">body_length</span><span class="o">=</span><span class="n">expected_size</span><span class="p">,</span>
+        <span class="p">):</span>
+            <span class="k">return</span> <span class="n">make_response</span><span class="p">(</span>
+                <span class="o">**</span><span class="n">make_response_base_args</span><span class="p">,</span>
+                <span class="n">stop_download</span><span class="o">=</span><span class="n">stop_download</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="n">response_body</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">()</span>
+        <span class="n">bytes_received</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">async</span> <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">httpx_response</span><span class="o">.</span><span class="n">aiter_raw</span><span class="p">():</span>
+                <span class="n">response_body</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+                <span class="n">bytes_received</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">stop_download</span> <span class="o">:=</span> <span class="n">check_stop_download</span><span class="p">(</span>
+                    <span class="n">signals</span><span class="o">.</span><span class="n">bytes_received</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">crawler</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">chunk</span>
+                <span class="p">):</span>
+                    <span class="k">return</span> <span class="n">make_response</span><span class="p">(</span>
+                        <span class="o">**</span><span class="n">make_response_base_args</span><span class="p">,</span>
+                        <span class="n">body</span><span class="o">=</span><span class="n">response_body</span><span class="o">.</span><span class="n">getvalue</span><span class="p">(),</span>
+                        <span class="n">stop_download</span><span class="o">=</span><span class="n">stop_download</span><span class="p">,</span>
+                    <span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">maxsize</span> <span class="ow">and</span> <span class="n">bytes_received</span> <span class="o">&gt;</span> <span class="n">maxsize</span><span class="p">:</span>
+                    <span class="n">response_body</span><span class="o">.</span><span class="n">truncate</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_cancel_maxsize</span><span class="p">(</span>
+                        <span class="n">bytes_received</span><span class="p">,</span> <span class="n">maxsize</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">expected</span><span class="o">=</span><span class="kc">False</span>
+                    <span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">warnsize</span> <span class="ow">and</span> <span class="n">bytes_received</span> <span class="o">&gt;</span> <span class="n">warnsize</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">reached_warnsize</span><span class="p">:</span>
+                    <span class="n">reached_warnsize</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                        <span class="n">get_warnsize_msg</span><span class="p">(</span>
+                            <span class="n">bytes_received</span><span class="p">,</span> <span class="n">warnsize</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">expected</span><span class="o">=</span><span class="kc">False</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+        <span class="k">except</span> <span class="n">httpx</span><span class="o">.</span><span class="n">RemoteProtocolError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># special handling of the dataloss case</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="s2">&quot;peer closed connection without sending complete message body&quot;</span>
+                <span class="ow">not</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+            <span class="p">):</span>
+                <span class="k">raise</span>
+            <span class="n">fail_on_dataloss</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                <span class="s2">&quot;download_fail_on_dataloss&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fail_on_dataloss</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">fail_on_dataloss</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">make_response</span><span class="p">(</span>
+                    <span class="o">**</span><span class="n">make_response_base_args</span><span class="p">,</span>
+                    <span class="n">body</span><span class="o">=</span><span class="n">response_body</span><span class="o">.</span><span class="n">getvalue</span><span class="p">(),</span>
+                    <span class="n">flags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dataloss&quot;</span><span class="p">],</span>
+                <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_log_dataloss_warning</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">ResponseDataLossError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+
+        <span class="k">return</span> <span class="n">make_response</span><span class="p">(</span>
+            <span class="o">**</span><span class="n">make_response_base_args</span><span class="p">,</span>
+            <span class="n">body</span><span class="o">=</span><span class="n">response_body</span><span class="o">.</span><span class="n">getvalue</span><span class="p">(),</span>
+        <span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_server_ip</span><span class="p">(</span><span class="n">network_stream</span><span class="p">:</span> <span class="n">AsyncNetworkStream</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IPv4Address</span> <span class="o">|</span> <span class="n">IPv6Address</span><span class="p">:</span>
+        <span class="n">extra_server_addr</span> <span class="o">=</span> <span class="n">network_stream</span><span class="o">.</span><span class="n">get_extra_info</span><span class="p">(</span><span class="s2">&quot;server_addr&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ipaddress</span><span class="o">.</span><span class="n">ip_address</span><span class="p">(</span><span class="n">extra_server_addr</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_log_tls_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">network_stream</span><span class="p">:</span> <span class="n">AsyncNetworkStream</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tls_verbose_logging</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">extra_ssl_object</span> <span class="o">=</span> <span class="n">network_stream</span><span class="o">.</span><span class="n">get_extra_info</span><span class="p">(</span><span class="s2">&quot;ssl_object&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">extra_ssl_object</span><span class="p">,</span> <span class="n">ssl</span><span class="o">.</span><span class="n">SSLObject</span><span class="p">):</span>
+            <span class="n">_log_sslobj_debug_info</span><span class="p">(</span><span class="n">extra_ssl_object</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_log_dataloss_warning</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fail_on_dataloss_warned</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">get_dataloss_msg</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_fail_on_dataloss_warned</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_cancel_maxsize</span><span class="p">(</span>
+        <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">expected</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NoReturn</span><span class="p">:</span>
+        <span class="n">warning_msg</span> <span class="o">=</span> <span class="n">get_maxsize_msg</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">expected</span><span class="o">=</span><span class="n">expected</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">warning_msg</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">DownloadCancelledError</span><span class="p">(</span><span class="n">warning_msg</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">aclose</span><span class="p">()</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Scrapy developers.
+      <span class="lastupdated">Last updated on Apr 27, 2026.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
