@@ -1,0 +1,286 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-30 09:50+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/architecture.rst:5
+msgid "Architecture overview"
+msgstr ""
+
+#: ../../../topics/architecture.rst:7
+msgid ""
+"This document describes the architecture of Scrapy and how its components "
+"interact."
+msgstr ""
+
+#: ../../../topics/architecture.rst:11
+msgid "Overview"
+msgstr ""
+
+#: ../../../topics/architecture.rst:13
+msgid ""
+"The following diagram shows an overview of the Scrapy architecture with its "
+"components and an outline of the data flow that takes place inside the "
+"system (shown by the red arrows). A brief description of the components is "
+"included below with links for more detailed information about them. The data "
+"flow is also described below."
+msgstr ""
+
+#: ../../../topics/architecture.rst:22
+msgid "Data flow"
+msgstr ""
+
+#: ../../../topics/architecture.rst:24
+msgid "Scrapy architecture"
+msgstr ""
+
+#: ../../../topics/architecture.rst:29
+msgid ""
+"The data flow in Scrapy is controlled by the execution engine, and goes like "
+"this:"
+msgstr ""
+
+#: ../../../topics/architecture.rst:32
+msgid ""
+"The :ref:`Engine <component-engine>` gets the initial Requests to crawl from "
+"the :ref:`Spider <component-spiders>`."
+msgstr ""
+
+#: ../../../topics/architecture.rst:35
+msgid ""
+"The :ref:`Engine <component-engine>` schedules the Requests in the :ref:"
+"`Scheduler <component-scheduler>` and asks for the next Requests to crawl."
+msgstr ""
+
+#: ../../../topics/architecture.rst:39
+msgid ""
+"The :ref:`Scheduler <component-scheduler>` returns the next Requests to the :"
+"ref:`Engine <component-engine>`."
+msgstr ""
+
+#: ../../../topics/architecture.rst:42
+msgid ""
+"The :ref:`Engine <component-engine>` sends the Requests to the :ref:"
+"`Downloader <component-downloader>`, passing through the :ref:`Downloader "
+"Middlewares <component-downloader-middleware>` (see :meth:`~scrapy."
+"downloadermiddlewares.DownloaderMiddleware.process_request`)."
+msgstr ""
+
+#: ../../../topics/architecture.rst:47
+msgid ""
+"Once the page finishes downloading the :ref:`Downloader <component-"
+"downloader>` generates a Response (with that page) and sends it to the "
+"Engine, passing through the :ref:`Downloader Middlewares <component-"
+"downloader-middleware>` (see :meth:`~scrapy.downloadermiddlewares."
+"DownloaderMiddleware.process_response`)."
+msgstr ""
+
+#: ../../../topics/architecture.rst:53
+msgid ""
+"The :ref:`Engine <component-engine>` receives the Response from the :ref:"
+"`Downloader <component-downloader>` and sends it to the :ref:`Spider "
+"<component-spiders>` for processing, passing through the :ref:`Spider "
+"Middleware <component-spider-middleware>` (see :meth:`~scrapy."
+"spidermiddlewares.SpiderMiddleware.process_spider_input`)."
+msgstr ""
+
+#: ../../../topics/architecture.rst:59
+msgid ""
+"The :ref:`Spider <component-spiders>` processes the Response and returns "
+"scraped items and new Requests (to follow) to the :ref:`Engine <component-"
+"engine>`, passing through the :ref:`Spider Middleware <component-spider-"
+"middleware>` (see :meth:`~scrapy.spidermiddlewares.SpiderMiddleware."
+"process_spider_output`)."
+msgstr ""
+
+#: ../../../topics/architecture.rst:65
+msgid ""
+"The :ref:`Engine <component-engine>` sends processed items to :ref:`Item "
+"Pipelines <component-pipelines>`, then send processed Requests to the :ref:"
+"`Scheduler <component-scheduler>` and asks for possible next Requests to "
+"crawl."
+msgstr ""
+
+#: ../../../topics/architecture.rst:70
+msgid ""
+"The process repeats (from step 3) until there are no more requests from the :"
+"ref:`Scheduler <component-scheduler>`."
+msgstr ""
+
+#: ../../../topics/architecture.rst:74
+msgid "Components"
+msgstr ""
+
+#: ../../../topics/architecture.rst:79
+msgid "Scrapy Engine"
+msgstr ""
+
+#: ../../../topics/architecture.rst:81
+msgid ""
+"The engine is responsible for controlling the data flow between all "
+"components of the system, and triggering events when certain actions occur. "
+"See the :ref:`Data Flow <data-flow>` section above for more details."
+msgstr ""
+
+#: ../../../topics/architecture.rst:88
+msgid "Scheduler"
+msgstr ""
+
+#: ../../../topics/architecture.rst:90
+msgid ""
+"The :ref:`scheduler <topics-scheduler>` receives requests from the engine "
+"and enqueues them for feeding them later (also to the engine) when the "
+"engine requests them."
+msgstr ""
+
+#: ../../../topics/architecture.rst:97
+msgid "Downloader"
+msgstr ""
+
+#: ../../../topics/architecture.rst:99
+msgid ""
+"The Downloader is responsible for fetching web pages and feeding them to the "
+"engine which, in turn, feeds them to the spiders."
+msgstr ""
+
+#: ../../../topics/architecture.rst:105
+msgid "Spiders"
+msgstr ""
+
+#: ../../../topics/architecture.rst:107
+msgid ""
+"Spiders are custom classes written by Scrapy users to parse responses and "
+"extract :ref:`items <topics-items>` from them or additional requests to "
+"follow. For more information see :ref:`topics-spiders`."
+msgstr ""
+
+#: ../../../topics/architecture.rst:114
+msgid "Item Pipeline"
+msgstr ""
+
+#: ../../../topics/architecture.rst:116
+msgid ""
+"The Item Pipeline is responsible for processing the items once they have "
+"been extracted (or scraped) by the spiders. Typical tasks include cleansing, "
+"validation and persistence (like storing the item in a database). For more "
+"information see :ref:`topics-item-pipeline`."
+msgstr ""
+
+#: ../../../topics/architecture.rst:124
+msgid "Downloader middlewares"
+msgstr ""
+
+#: ../../../topics/architecture.rst:126
+msgid ""
+"Downloader middlewares are specific hooks that sit between the Engine and "
+"the Downloader and process requests when they pass from the Engine to the "
+"Downloader, and responses that pass from Downloader to the Engine."
+msgstr ""
+
+#: ../../../topics/architecture.rst:130
+msgid "Use a Downloader middleware if you need to do one of the following:"
+msgstr ""
+
+#: ../../../topics/architecture.rst:132
+msgid ""
+"process a request just before it is sent to the Downloader (i.e. right "
+"before Scrapy sends the request to the website);"
+msgstr ""
+
+#: ../../../topics/architecture.rst:134
+msgid "change received response before passing it to a spider;"
+msgstr ""
+
+#: ../../../topics/architecture.rst:135
+msgid "send a new Request instead of passing received response to a spider;"
+msgstr ""
+
+#: ../../../topics/architecture.rst:136
+msgid "pass response to a spider without fetching a web page;"
+msgstr ""
+
+#: ../../../topics/architecture.rst:137
+msgid "silently drop some requests."
+msgstr ""
+
+#: ../../../topics/architecture.rst:139
+msgid "For more information see :ref:`topics-downloader-middleware`."
+msgstr ""
+
+#: ../../../topics/architecture.rst:144
+msgid "Spider middlewares"
+msgstr ""
+
+#: ../../../topics/architecture.rst:146
+msgid ""
+"Spider middlewares are specific hooks that sit between the Engine and the "
+"Spiders and are able to process spider input (responses) and output (items "
+"and requests)."
+msgstr ""
+
+#: ../../../topics/architecture.rst:150
+msgid "Use a Spider middleware if you need to"
+msgstr ""
+
+#: ../../../topics/architecture.rst:152
+msgid ""
+"post-process output of spider callbacks - change/add/remove requests or "
+"items;"
+msgstr ""
+
+#: ../../../topics/architecture.rst:153
+msgid "post-process start requests or items;"
+msgstr ""
+
+#: ../../../topics/architecture.rst:154
+msgid "handle spider exceptions;"
+msgstr ""
+
+#: ../../../topics/architecture.rst:155
+msgid ""
+"call errback instead of callback for some of the requests based on response "
+"content."
+msgstr ""
+
+#: ../../../topics/architecture.rst:158
+msgid "For more information see :ref:`topics-spider-middleware`."
+msgstr ""
+
+#: ../../../topics/architecture.rst:161
+msgid "Event-driven networking"
+msgstr ""
+
+#: ../../../topics/architecture.rst:163
+msgid ""
+"Scrapy is written with `Twisted`_, a popular event-driven networking "
+"framework for Python. Thus, it's implemented using a non-blocking (aka "
+"asynchronous) code for concurrency."
+msgstr ""
+
+#: ../../../topics/architecture.rst:167
+msgid ""
+"For more information about asynchronous programming and Twisted see these "
+"links:"
+msgstr ""
+
+#: ../../../topics/architecture.rst:170
+msgid ":doc:`twisted:core/howto/defer-intro`"
+msgstr ""
+
+#: ../../../topics/architecture.rst:171
+msgid "`Twisted Introduction - Krondo`_"
+msgstr ""
