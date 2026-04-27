@@ -242,6 +242,20 @@ elseif (CMAKE_HOST_WIN32)
 else()
     message(FATAL_ERROR "Invalid OS platform. (${CMAKE_HOST_SYSTEM_NAME})")
 endif()
+if     (VERSION MATCHES "^(master)$" OR
+        VERSION MATCHES "^(latest)$")
+    set(PIP_INSTALL_EXTRA_ARGS  "")
+elseif (VERSION MATCHES "^([0-9]+)$"      AND
+        VERSION VERSION_LESS_EQUAL    "2" AND
+        VERSION VERSION_GREATER_EQUAL "2")
+    set(PIP_INSTALL_EXTRA_ARGS  "")
+elseif (VERSION MATCHES "^([0-9]+)$"      AND
+        VERSION VERSION_LESS_EQUAL    "1" AND
+        VERSION VERSION_GREATER_EQUAL "0")
+    set(PIP_INSTALL_EXTRA_ARGS  ".")
+else()
+    message(FATAL_ERROR "Invalid VERSION value. (${VERSION})")
+endif()
 set(REQUIREMENTS_TXT_PATH "${PROJ_OUT_REPO_DIR}/docs/requirements.txt")
 file(READ "${REQUIREMENTS_TXT_PATH}" REQUIREMENTS_TXT_CNT)
 remove_cmake_message_indent()
@@ -253,7 +267,7 @@ execute_process(
     COMMAND ${CMAKE_COMMAND} -E env
             ${ENV_VARS_OF_SYSTEM}
             ${Python_EXECUTABLE} -m pip install
-            .
+            ${PIP_INSTALL_EXTRA_ARGS}
             --requirement=${REQUIREMENTS_TXT_PATH}
             --progress-bar=off
             --verbose
