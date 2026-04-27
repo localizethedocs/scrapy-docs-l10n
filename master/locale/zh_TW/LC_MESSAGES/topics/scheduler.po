@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 09:50+0000\n"
+"POT-Creation-Date: 2026-04-06 09:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -271,7 +271,7 @@ msgid ":setting:`DEPTH_PRIORITY` = ``1``"
 msgstr ":setting:`DEPTH_PRIORITY` = ``1``"
 
 #: ../../../../scrapy/core/scheduler.py:docstring of
-#: scrapy.core.scheduler.Scheduler:64
+#: scrapy.core.scheduler.Scheduler:63
 msgid ""
 ":setting:`SCHEDULER_DISK_QUEUE` = ``\"scrapy.squeues.PickleFifoDiskQueue\"``"
 msgstr ""

@@ -16,9 +16,9 @@
       "branch" : "master",
       "commit" : 
       {
-        "date" : "2026-03-30 10:12:43 +0200",
-        "hash" : "86a7ceaa9ff590da04e35992497878f15a7edd8b",
-        "title" : "Dynamic loading for S3 HTTPS handler (#7370)"
+        "date" : "2026-04-06 10:24:21 +0200",
+        "hash" : "f8d103a65a5d5a424d3100db37ed2e5ff8738b2b",
+        "title" : "Add llms.txt and llms-full.txt generation (#7380)"
       }
     },
     "zh_TW" : 
@@ -26,9 +26,9 @@
       "branch" : "master",
       "commit" : 
       {
-        "date" : "2026-03-30 10:12:43 +0200",
-        "hash" : "86a7ceaa9ff590da04e35992497878f15a7edd8b",
-        "title" : "Dynamic loading for S3 HTTPS handler (#7370)"
+        "date" : "2026-04-06 10:24:21 +0200",
+        "hash" : "f8d103a65a5d5a424d3100db37ed2e5ff8738b2b",
+        "title" : "Add llms.txt and llms-full.txt generation (#7380)"
       }
     }
   },

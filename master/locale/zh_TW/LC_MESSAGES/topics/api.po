@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 09:50+0000\n"
+"POT-Creation-Date: 2026-04-06 09:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -238,21 +238,31 @@ msgid ""
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
-#: scrapy.crawler.AsyncCrawlerRunner:1 scrapy.crawler.CrawlerRunner:1
+#: scrapy.crawler.AsyncCrawlerRunner:1
 msgid ""
 "This is a convenient helper class that keeps track of, manages and runs "
-"crawlers inside an already setup :mod:`~twisted.internet.reactor`."
+"crawlers inside an already setup :mod:`~twisted.internet.reactor` or asyncio "
+"event loop."
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
-#: scrapy.crawler.AsyncCrawlerRunner:4
+#: scrapy.crawler.AsyncCrawlerRunner:5
 msgid ""
 "The AsyncCrawlerRunner object must be instantiated with a :class:`~scrapy."
 "settings.Settings` object."
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
-#: scrapy.crawler.AsyncCrawlerProcess:18 scrapy.crawler.AsyncCrawlerRunner:7
+#: scrapy.crawler.AsyncCrawlerRunner:8
+msgid ""
+"When the :setting:`TWISTED_REACTOR_ENABLED` setting is set to ``True``, this "
+"class requires a reactor to be installed and uses it, otherwise it requires "
+"a reactor to not be installed but requires an asyncio event loop to be "
+"installed and uses it."
+msgstr ""
+
+#: ../../../../scrapy/crawler.py:docstring of
+#: scrapy.crawler.AsyncCrawlerProcess:22 scrapy.crawler.AsyncCrawlerRunner:13
 #: scrapy.crawler.CrawlerProcess:18 scrapy.crawler.CrawlerRunner:7
 msgid ""
 "This class shouldn't be needed (since Scrapy is responsible of using it "
@@ -261,10 +271,10 @@ msgid ""
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
-#: scrapy.crawler.AsyncCrawlerProcess:22 scrapy.crawler.AsyncCrawlerRunner:11
+#: scrapy.crawler.AsyncCrawlerProcess:26 scrapy.crawler.AsyncCrawlerRunner:17
 msgid ""
 "This class provides coroutine APIs. It requires :class:`~twisted.internet."
-"asyncioreactor.AsyncioSelectorReactor`."
+"asyncioreactor.AsyncioSelectorReactor` when used with a reactor."
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
@@ -337,6 +347,12 @@ msgstr ""
 msgid "Completes when they all have ended."
 msgstr ""
 
+#: ../../../../scrapy/crawler.py:docstring of scrapy.crawler.CrawlerRunner:1
+msgid ""
+"This is a convenient helper class that keeps track of, manages and runs "
+"crawlers inside an already setup :mod:`~twisted.internet.reactor`."
+msgstr ""
+
 #: ../../../../scrapy/crawler.py:docstring of scrapy.crawler.CrawlerRunner:4
 msgid ""
 "The CrawlerRunner object must be instantiated with a :class:`~scrapy."
@@ -364,13 +380,6 @@ msgstr ""
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.CrawlerRunner.stop:3
 msgid "Returns a deferred that is fired when they all have ended."
-msgstr ""
-
-#: ../../../../scrapy/crawler.py:docstring of
-#: scrapy.crawler.AsyncCrawlerProcess:1
-msgid ""
-"Bases: :py:class:`~scrapy.crawler.CrawlerProcessBase`, :py:class:`~scrapy."
-"crawler.AsyncCrawlerRunner`"
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
@@ -403,7 +412,15 @@ msgid ""
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
-#: scrapy.crawler.AsyncCrawlerProcess:15 scrapy.crawler.CrawlerProcess:15
+#: scrapy.crawler.AsyncCrawlerProcess:15
+msgid ""
+"When the :setting:`TWISTED_REACTOR_ENABLED` setting is set to ``True``, this "
+"class installs a reactor and uses it, otherwise it requires a reactor to not "
+"be installed but installs an asyncio event loop and uses it."
+msgstr ""
+
+#: ../../../../scrapy/crawler.py:docstring of
+#: scrapy.crawler.AsyncCrawlerProcess:19 scrapy.crawler.CrawlerProcess:15
 msgid "whether to install root logging handler (default: True)"
 msgstr ""
 
@@ -442,15 +459,22 @@ msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerProcess.start:1
-#: scrapy.crawler.CrawlerProcess.start:1
 msgid ""
-"This method starts a :mod:`~twisted.internet.reactor`, adjusts its pool size "
-"to :setting:`REACTOR_THREADPOOL_MAXSIZE`, and installs a DNS cache based on :"
-"setting:`DNSCACHE_ENABLED` and :setting:`DNSCACHE_SIZE`."
+"This method starts a :mod:`~twisted.internet.reactor` or an asyncio event "
+"loop, depending on the value of the :setting:`TWISTED_REACTOR_ENABLED` "
+"setting."
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerProcess.start:5
+msgid ""
+"When using a reactor it adjusts its pool size to :setting:"
+"`REACTOR_THREADPOOL_MAXSIZE` and installs a DNS resolver based on :setting:"
+"`DNSCACHE_ENABLED`."
+msgstr ""
+
+#: ../../../../scrapy/crawler.py:docstring of
+#: scrapy.crawler.AsyncCrawlerProcess.start:9
 #: scrapy.crawler.CrawlerProcess.start:5
 msgid ""
 "If ``stop_after_crawl`` is True, the reactor will be stopped after all "
@@ -458,23 +482,17 @@ msgid ""
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
-#: scrapy.crawler.AsyncCrawlerProcess.start:8
+#: scrapy.crawler.AsyncCrawlerProcess.start:12
 #: scrapy.crawler.CrawlerProcess.start:8
 msgid "stop or not the reactor when all crawlers have finished"
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
-#: scrapy.crawler.AsyncCrawlerProcess.start:11
+#: scrapy.crawler.AsyncCrawlerProcess.start:15
 #: scrapy.crawler.CrawlerProcess.start:11
 msgid ""
 "whether to install the OS signal handlers from Twisted and Scrapy (default: "
 "True)"
-msgstr ""
-
-#: ../../../../scrapy/crawler.py:docstring of scrapy.crawler.CrawlerProcess:1
-msgid ""
-"Bases: :py:class:`~scrapy.crawler.CrawlerProcessBase`, :py:class:`~scrapy."
-"crawler.CrawlerRunner`"
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of scrapy.crawler.CrawlerProcess:3
@@ -502,6 +520,14 @@ msgstr ""
 msgid ""
 "This class provides Deferred-based APIs. Use :class:`AsyncCrawlerProcess` "
 "for modern coroutine APIs."
+msgstr ""
+
+#: ../../../../scrapy/crawler.py:docstring of
+#: scrapy.crawler.CrawlerProcess.start:1
+msgid ""
+"This method starts a :mod:`~twisted.internet.reactor`, adjusts its pool size "
+"to :setting:`REACTOR_THREADPOOL_MAXSIZE`, and installs a DNS resolver based "
+"on :setting:`DNSCACHE_ENABLED`."
 msgstr ""
 
 #: ../../../topics/api.rst:129
@@ -554,11 +580,6 @@ msgid ""
 "Small helper function that looks up a given string priority in the :attr:"
 "`~scrapy.settings.SETTINGS_PRIORITIES` dictionary and returns its numerical "
 "value, or directly returns a given numerical priority."
-msgstr ""
-
-#: ../../../../scrapy/settings/__init__.py:docstring of
-#: scrapy.settings.Settings:1
-msgid "Bases: :py:class:`~scrapy.settings.BaseSettings`"
 msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of

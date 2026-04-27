@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 09:50+0000\n"
+"POT-Creation-Date: 2026-04-06 09:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,109 +45,105 @@ msgid ":setting:`DOWNLOAD_HANDLERS`"
 msgstr ""
 
 #: ../../../topics/components.rst:18
-msgid ":setting:`DOWNLOADER_CLIENTCONTEXTFACTORY`"
-msgstr ""
-
-#: ../../../topics/components.rst:20
 msgid ":setting:`DOWNLOADER_MIDDLEWARES`"
 msgstr ""
 
-#: ../../../topics/components.rst:22
+#: ../../../topics/components.rst:20
 msgid ":setting:`DUPEFILTER_CLASS`"
 msgstr ""
 
-#: ../../../topics/components.rst:24
+#: ../../../topics/components.rst:22
 msgid ":setting:`EXTENSIONS`"
 msgstr ""
 
-#: ../../../topics/components.rst:26
+#: ../../../topics/components.rst:24
 msgid ":setting:`FEED_EXPORTERS`"
 msgstr ""
 
-#: ../../../topics/components.rst:28
+#: ../../../topics/components.rst:26
 msgid ":setting:`FEED_STORAGES`"
 msgstr ""
 
-#: ../../../topics/components.rst:30
+#: ../../../topics/components.rst:28
 msgid ":setting:`ITEM_PIPELINES`"
 msgstr ""
 
-#: ../../../topics/components.rst:32
+#: ../../../topics/components.rst:30
 msgid ":setting:`SCHEDULER`"
 msgstr ""
 
-#: ../../../topics/components.rst:34
+#: ../../../topics/components.rst:32
 msgid ":setting:`SCHEDULER_DISK_QUEUE`"
 msgstr ""
 
-#: ../../../topics/components.rst:36
+#: ../../../topics/components.rst:34
 msgid ":setting:`SCHEDULER_MEMORY_QUEUE`"
 msgstr ""
 
-#: ../../../topics/components.rst:38
+#: ../../../topics/components.rst:36
 msgid ":setting:`SCHEDULER_PRIORITY_QUEUE`"
 msgstr ":setting:`SCHEDULER_PRIORITY_QUEUE`"
 
-#: ../../../topics/components.rst:40
+#: ../../../topics/components.rst:38
 msgid ":setting:`SCHEDULER_START_DISK_QUEUE`"
 msgstr ":setting:`SCHEDULER_START_DISK_QUEUE`"
 
-#: ../../../topics/components.rst:42
+#: ../../../topics/components.rst:40
 msgid ":setting:`SCHEDULER_START_MEMORY_QUEUE`"
 msgstr ":setting:`SCHEDULER_START_MEMORY_QUEUE`"
 
-#: ../../../topics/components.rst:44
+#: ../../../topics/components.rst:42
 msgid ":setting:`SPIDER_MIDDLEWARES`"
 msgstr ":setting:`SPIDER_MIDDLEWARES`"
 
-#: ../../../topics/components.rst:46
+#: ../../../topics/components.rst:44
 msgid ""
 "Third-party Scrapy components may also let you define additional Scrapy "
 "components, usually configurable through :ref:`settings <topics-settings>`, "
 "to modify their behavior."
 msgstr ""
 
-#: ../../../topics/components.rst:53
+#: ../../../topics/components.rst:51
 msgid "Initializing from the crawler"
 msgstr ""
 
-#: ../../../topics/components.rst:55
+#: ../../../topics/components.rst:53
 msgid "Any Scrapy component may optionally define the following class method:"
 msgstr ""
 
-#: ../../../topics/components.rst:59
+#: ../../../topics/components.rst:57
 msgid "Return an instance of the component based on *crawler*."
 msgstr ""
 
-#: ../../../topics/components.rst:61
+#: ../../../topics/components.rst:59
 msgid ""
 "*args* and *kwargs* are component-specific arguments that some components "
 "receive. However, most components do not get any arguments, and instead :ref:"
 "`use settings <component-settings>`."
 msgstr ""
 
-#: ../../../topics/components.rst:65
+#: ../../../topics/components.rst:63
 msgid ""
 "If a component class defines this method, this class method is called to "
 "create any instance of the component."
 msgstr ""
 
-#: ../../../topics/components.rst:68
+#: ../../../topics/components.rst:66
 msgid ""
 "The *crawler* object provides access to all Scrapy core components like :ref:"
 "`settings <topics-settings>` and :ref:`signals <topics-signals>`, allowing "
 "the component to access them and hook its functionality into Scrapy."
 msgstr ""
 
-#: ../../../topics/components.rst:76
+#: ../../../topics/components.rst:74
 msgid "Settings"
 msgstr "設定"
 
-#: ../../../topics/components.rst:78
+#: ../../../topics/components.rst:76
 msgid "Components can be configured through :ref:`settings <topics-settings>`."
 msgstr ""
 
-#: ../../../topics/components.rst:80
+#: ../../../topics/components.rst:78
 msgid ""
 "Components can read any setting from the :attr:`~scrapy.crawler.Crawler."
 "settings` attribute of the :class:`~scrapy.crawler.Crawler` object they can :"
@@ -155,11 +151,11 @@ msgid ""
 "custom settings."
 msgstr ""
 
-#: ../../../topics/components.rst:85
+#: ../../../topics/components.rst:83
 msgid "For example:"
 msgstr "例如："
 
-#: ../../../topics/components.rst:87
+#: ../../../topics/components.rst:85
 msgid ""
 "class MyExtension:\n"
 "    @classmethod\n"
@@ -172,14 +168,14 @@ msgid ""
 "            print(\"log is enabled!\")"
 msgstr ""
 
-#: ../../../topics/components.rst:99
+#: ../../../topics/components.rst:97
 msgid ""
 "Components do not need to declare their custom settings programmatically. "
 "However, they should document them, so that users know they exist and how to "
 "use them."
 msgstr ""
 
-#: ../../../topics/components.rst:103
+#: ../../../topics/components.rst:101
 msgid ""
 "It is a good practice to prefix custom settings with the name of the "
 "component, to avoid collisions with custom settings of other existing (or "
@@ -187,7 +183,7 @@ msgid ""
 "prefix its custom settings with ``WARC_CACHING_``."
 msgstr ""
 
-#: ../../../topics/components.rst:108
+#: ../../../topics/components.rst:106
 msgid ""
 "Another good practice, mainly for components meant for :ref:`component "
 "priority dictionaries <component-priority-dictionaries>`, is to provide a "
@@ -198,18 +194,18 @@ msgid ""
 "exceptions.NotConfigured`."
 msgstr ""
 
-#: ../../../topics/components.rst:116
+#: ../../../topics/components.rst:114
 msgid ""
 "When choosing a name for a custom setting, it is also a good idea to have a "
 "look at the names of :ref:`built-in settings <topics-settings-ref>`, to try "
 "to maintain consistency with them."
 msgstr ""
 
-#: ../../../topics/components.rst:123
+#: ../../../topics/components.rst:121
 msgid "Enforcing requirements"
 msgstr ""
 
-#: ../../../topics/components.rst:125
+#: ../../../topics/components.rst:123
 msgid ""
 "Sometimes, your components may only be intended to work under certain "
 "conditions. For example, they may require a minimum version of Scrapy to "
@@ -217,14 +213,14 @@ msgid ""
 "values."
 msgstr ""
 
-#: ../../../topics/components.rst:129
+#: ../../../topics/components.rst:127
 msgid ""
 "In addition to describing those conditions in the documentation of your "
 "component, it is a good practice to raise an exception from the ``__init__`` "
 "method of your component if those conditions are not met at run time."
 msgstr ""
 
-#: ../../../topics/components.rst:133
+#: ../../../topics/components.rst:131
 msgid ""
 "In the case of :ref:`downloader middlewares <topics-downloader-"
 "middleware>`, :ref:`extensions <topics-extensions>`, :ref:`item pipelines "
@@ -237,13 +233,13 @@ msgid ""
 "`ValueError` may be better if the issue is the value of a setting."
 msgstr ""
 
-#: ../../../topics/components.rst:144
+#: ../../../topics/components.rst:142
 msgid ""
 "If your requirement is a minimum Scrapy version, you may use :attr:`scrapy."
 "__version__` to enforce your requirement. For example:"
 msgstr ""
 
-#: ../../../topics/components.rst:147
+#: ../../../topics/components.rst:145
 msgid ""
 "from packaging.version import parse as parse_version\n"
 "\n"
@@ -261,11 +257,11 @@ msgid ""
 "            )"
 msgstr ""
 
-#: ../../../topics/components.rst:165
+#: ../../../topics/components.rst:163
 msgid "API reference"
 msgstr ""
 
-#: ../../../topics/components.rst:167
+#: ../../../topics/components.rst:165
 msgid ""
 "The following function can be used to create an instance of a component "
 "class:"
@@ -288,7 +284,7 @@ msgstr ""
 msgid "Raises ``TypeError`` if the resulting instance is ``None``."
 msgstr ""
 
-#: ../../../topics/components.rst:171
+#: ../../../topics/components.rst:169
 msgid ""
 "The following function can also be useful when implementing a component, to "
 "report the import path of the component class, e.g. when reporting problems:"
