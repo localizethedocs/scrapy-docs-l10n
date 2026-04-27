@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 09:50+0000\n"
+"POT-Creation-Date: 2026-04-06 09:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,7 +99,7 @@ msgstr ""
 msgid "Return a :func:`~copy.deepcopy` of this item."
 msgstr ""
 
-#: ../../../docstring of scrapy.Item.fields:1
+#: ../../../../scrapy/item.py:docstring of scrapy.Item.fields:1
 msgid ""
 "A dictionary containing *all declared fields* for this Item, not only those "
 "populated. The keys are the field names and the values are the :class:"

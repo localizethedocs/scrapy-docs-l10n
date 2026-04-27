@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 09:50+0000\n"
+"POT-Creation-Date: 2026-04-06 09:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1642,7 +1642,7 @@ msgstr ""
 msgid "See also: :ref:`old-extraction-api`"
 msgstr ""
 
-#: ../../../docstring of scrapy.Selector.attrib:1
+#: ../../../../scrapy/__init__.py:docstring of scrapy.Selector.attrib:1
 msgid ""
 "Return the attributes dictionary for underlying element. For JSON selectors, "
 "return an empty dict."
@@ -1796,7 +1796,8 @@ msgid ""
 "provided)."
 msgstr ""
 
-#: ../../../docstring of scrapy.selector.SelectorList.attrib:1
+#: ../../../../scrapy/selector/__init__.py:docstring of
+#: scrapy.selector.SelectorList.attrib:1
 msgid ""
 "Return the attributes dictionary for the first element. If the list is "
 "empty, return an empty dict."
