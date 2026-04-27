@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"POT-Creation-Date: 2026-04-06 09:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -853,7 +853,34 @@ msgstr ""
 msgid "\"unsafe-url\" policy is NOT recommended."
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:408
+#: ../../../topics/spider-middleware.rst:409
+msgid "REFERRER_POLICIES"
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:413
+msgid "Default: ``{}``"
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:415
+msgid ""
+"A dictionary mapping policy names to import paths of :class:`scrapy."
+"spidermiddlewares.referer.ReferrerPolicy` subclasses, or ``None`` to disable "
+"support for a given policy name."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:419
+msgid ""
+"This allows overriding the policies triggered by the ``Referrer-Policy`` "
+"response header."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:422
+msgid ""
+"Use ``\"\"`` to override the policy for responses with `no referrer policy "
+"<https://www.w3.org/TR/referrer-policy/#referrer-policy-empty-string>`__."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:427
 msgid "StartSpiderMiddleware"
 msgstr ""
 
@@ -876,21 +903,21 @@ msgid ""
 "middleware>`."
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:416
+#: ../../../topics/spider-middleware.rst:435
 msgid "UrlLengthMiddleware"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:423
+#: ../../../topics/spider-middleware.rst:442
 msgid "Filters out requests with URLs longer than URLLENGTH_LIMIT"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:425
+#: ../../../topics/spider-middleware.rst:444
 msgid ""
 "The :class:`UrlLengthMiddleware` can be configured through the following "
 "settings (see the settings documentation for more info):"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:428
+#: ../../../topics/spider-middleware.rst:447
 msgid ""
 ":setting:`URLLENGTH_LIMIT` - The maximum URL length to allow for crawled "
 "URLs."
