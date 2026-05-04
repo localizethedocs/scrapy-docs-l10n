@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/components.rst:5
 msgid "Components"
-msgstr ""
+msgstr "組件"
 
 #: ../../../topics/components.rst:7
 msgid ""
@@ -38,47 +38,47 @@ msgstr ":setting:`ADDONS`"
 
 #: ../../../topics/components.rst:14
 msgid ":setting:`DNS_RESOLVER`"
-msgstr ""
+msgstr ":setting:`DNS_RESOLVER`"
 
 #: ../../../topics/components.rst:16
 msgid ":setting:`DOWNLOAD_HANDLERS`"
-msgstr ""
+msgstr ":setting:`DOWNLOAD_HANDLERS`"
 
 #: ../../../topics/components.rst:18
 msgid ":setting:`DOWNLOADER_MIDDLEWARES`"
-msgstr ""
+msgstr ":setting:`DOWNLOADER_MIDDLEWARES`"
 
 #: ../../../topics/components.rst:20
 msgid ":setting:`DUPEFILTER_CLASS`"
-msgstr ""
+msgstr ":setting:`DUPEFILTER_CLASS`"
 
 #: ../../../topics/components.rst:22
 msgid ":setting:`EXTENSIONS`"
-msgstr ""
+msgstr ":setting:`EXTENSIONS`"
 
 #: ../../../topics/components.rst:24
 msgid ":setting:`FEED_EXPORTERS`"
-msgstr ""
+msgstr ":setting:`FEED_EXPORTERS`"
 
 #: ../../../topics/components.rst:26
 msgid ":setting:`FEED_STORAGES`"
-msgstr ""
+msgstr ":setting:`FEED_STORAGES`"
 
 #: ../../../topics/components.rst:28
 msgid ":setting:`ITEM_PIPELINES`"
-msgstr ""
+msgstr ":setting:`ITEM_PIPELINES`"
 
 #: ../../../topics/components.rst:30
 msgid ":setting:`SCHEDULER`"
-msgstr ""
+msgstr ":setting:`SCHEDULER`"
 
 #: ../../../topics/components.rst:32
 msgid ":setting:`SCHEDULER_DISK_QUEUE`"
-msgstr ""
+msgstr ":setting:`SCHEDULER_DISK_QUEUE`"
 
 #: ../../../topics/components.rst:34
 msgid ":setting:`SCHEDULER_MEMORY_QUEUE`"
-msgstr ""
+msgstr ":setting:`SCHEDULER_MEMORY_QUEUE`"
 
 #: ../../../topics/components.rst:36
 msgid ":setting:`SCHEDULER_PRIORITY_QUEUE`"
@@ -259,7 +259,7 @@ msgstr ""
 
 #: ../../../topics/components.rst:163
 msgid "API reference"
-msgstr ""
+msgstr "API 參考"
 
 #: ../../../topics/components.rst:165
 msgid ""

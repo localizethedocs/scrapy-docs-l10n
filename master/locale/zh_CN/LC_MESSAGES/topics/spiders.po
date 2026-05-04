@@ -214,7 +214,7 @@ msgstr ""
 
 #: ../../../topics/spiders.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: ../../../topics/spiders.rst:143
 msgid "crawler to which the spider will be bound"
@@ -284,7 +284,7 @@ msgstr ""
 #: ../../../../scrapy/spiders/__init__.py:docstring of
 #: scrapy.spiders.Spider.start:5
 msgid "For example:"
-msgstr ""
+msgstr "例如："
 
 #: ../../../../scrapy/spiders/__init__.py:docstring of
 #: scrapy.spiders.Spider.start:7

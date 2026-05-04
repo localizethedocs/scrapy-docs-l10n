@@ -44,7 +44,7 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:24
 msgid "Serialization formats"
-msgstr ""
+msgstr "序列化格式"
 
 #: ../../../topics/feed-exports.rst:26
 msgid ""

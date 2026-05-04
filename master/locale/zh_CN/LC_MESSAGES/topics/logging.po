@@ -614,7 +614,7 @@ msgstr ""
 
 #: ../../../topics/logging.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: ../../../../scrapy/utils/log.py:docstring of
 #: scrapy.utils.log.configure_logging:3
@@ -626,7 +626,7 @@ msgstr ""
 #: ../../../../scrapy/utils/log.py:docstring of
 #: scrapy.utils.log.configure_logging:7
 msgid "whether to install root logging handler (default: True)"
-msgstr ""
+msgstr "是否安装 root 日志处理程序(默认：True)"
 
 #: ../../../../scrapy/utils/log.py:docstring of
 #: scrapy.utils.log.configure_logging:11

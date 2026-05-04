@@ -182,7 +182,7 @@ msgstr ""
 
 #: ../../../topics/architecture.rst:124
 msgid "Downloader middlewares"
-msgstr ""
+msgstr "下载器中间件"
 
 #: ../../../topics/architecture.rst:126
 msgid ""
@@ -223,7 +223,7 @@ msgstr ""
 
 #: ../../../topics/architecture.rst:144
 msgid "Spider middlewares"
-msgstr ""
+msgstr "蜘蛛中间件"
 
 #: ../../../topics/architecture.rst:146
 msgid ""

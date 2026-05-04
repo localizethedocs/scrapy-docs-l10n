@@ -635,7 +635,7 @@ msgstr ""
 
 #: ../../../topics/media-pipeline.rst:431
 msgid "For example:"
-msgstr ""
+msgstr "例如："
 
 #: ../../../topics/media-pipeline.rst:433
 msgid ""

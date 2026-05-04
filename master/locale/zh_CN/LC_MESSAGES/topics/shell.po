@@ -276,7 +276,7 @@ msgstr ""
 
 #: ../../../topics/shell.rst:171
 msgid "On Windows, use double quotes instead::"
-msgstr ""
+msgstr "在Windows上，使用双引号代替："
 
 #: ../../../topics/shell.rst:173
 msgid "scrapy shell \"https://scrapy.org\" --nolog"

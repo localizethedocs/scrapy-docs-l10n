@@ -11361,11 +11361,11 @@ msgstr ""
 
 #: ../../../news.rst:7270
 msgid "scrapy.contrib.linkextractors"
-msgstr ""
+msgstr "scrapy.contrib.linkextractors"
 
 #: ../../../news.rst:7270 ../../../news.rst:7304
 msgid "scrapy.linkextractors"
-msgstr ""
+msgstr "scrapy.linkextractors"
 
 #: ../../../news.rst:7272
 msgid "scrapy.contrib.loader"

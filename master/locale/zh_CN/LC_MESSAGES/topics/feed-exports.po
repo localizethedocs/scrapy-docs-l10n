@@ -545,7 +545,7 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: ../../../../scrapy/extensions/feedexport.py:docstring of
 #: scrapy.extensions.feedexport.ItemFilter:4
@@ -564,7 +564,7 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:0
 msgid "Returns"
-msgstr ""
+msgstr "返回"
 
 #: ../../../../scrapy/extensions/feedexport.py:docstring of
 #: scrapy.extensions.feedexport.ItemFilter.accepts:5
@@ -986,7 +986,7 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:540 ../../../topics/feed-exports.rst:729
 msgid "Default: ``None``"
-msgstr ""
+msgstr "默认值： ``None``"
 
 #: ../../../topics/feed-exports.rst:542
 msgid ""
@@ -1001,7 +1001,7 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:551 ../../../topics/feed-exports.rst:683
 msgid "Default: ``0``"
-msgstr ""
+msgstr "默认值: ``0``"
 
 #: ../../../topics/feed-exports.rst:553
 msgid ""
@@ -1025,7 +1025,7 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:567
 msgid "Default: ``True``"
-msgstr ""
+msgstr "默认: ``True``"
 
 #: ../../../topics/feed-exports.rst:569
 msgid ""
@@ -1052,7 +1052,7 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:589
 msgid "Default: ``False``"
-msgstr ""
+msgstr "默认值： ``False``"
 
 #: ../../../topics/feed-exports.rst:591
 msgid ""

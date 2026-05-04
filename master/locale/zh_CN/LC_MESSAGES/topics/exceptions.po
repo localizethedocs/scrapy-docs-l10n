@@ -19,37 +19,37 @@ msgstr ""
 
 #: ../../../topics/exceptions.rst:5
 msgid "Exceptions"
-msgstr ""
+msgstr "例外"
 
 #: ../../../topics/exceptions.rst:13
 msgid "Built-in Exceptions reference"
-msgstr ""
+msgstr "内置异常引用"
 
 #: ../../../topics/exceptions.rst:15
 msgid "Here's a list of all exceptions included in Scrapy and their usage."
-msgstr ""
+msgstr "下面是一个包含在废钢及其使用中的所有异常列表。"
 
 #: ../../../topics/exceptions.rst:19
 msgid "CloseSpider"
-msgstr ""
+msgstr "关闭 Spider"
 
 #: ../../../topics/exceptions.rst:23
 msgid ""
 "This exception can be raised from a spider callback to request the spider to "
 "be closed/stopped. Supported arguments:"
-msgstr ""
+msgstr "此异常可以从旋转器回调来请求关闭/停止的旋转器。支持的参数："
 
 #: ../../../topics/exceptions.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: ../../../topics/exceptions.rst:26
 msgid "the reason for closing"
-msgstr ""
+msgstr "关闭原因"
 
 #: ../../../topics/exceptions.rst:29
 msgid "For example:"
-msgstr ""
+msgstr "例如："
 
 #: ../../../topics/exceptions.rst:31
 msgid ""
@@ -57,10 +57,13 @@ msgid ""
 "    if \"Bandwidth exceeded\" in response.body:\n"
 "        raise CloseSpider(\"bandwidth_exceeded\")"
 msgstr ""
+"def parse_page(自己，响应):\n"
+"    如果“带宽超过”在响应中。正文:\n"
+"        raise CloseSpider(\"带宽超出\")"
 
 #: ../../../topics/exceptions.rst:38
 msgid "DontCloseSpider"
-msgstr ""
+msgstr "DontCloseSpider"
 
 #: ../../../topics/exceptions.rst:42
 msgid ""
@@ -70,7 +73,7 @@ msgstr ""
 
 #: ../../../topics/exceptions.rst:46
 msgid "DropItem"
-msgstr ""
+msgstr "丢弃物品"
 
 #: ../../../topics/exceptions.rst:50
 msgid ""
@@ -80,39 +83,39 @@ msgstr ""
 
 #: ../../../topics/exceptions.rst:54
 msgid "IgnoreRequest"
-msgstr ""
+msgstr "忽略请求"
 
 #: ../../../topics/exceptions.rst:58
 msgid ""
 "This exception can be raised by the Scheduler or any downloader middleware "
 "to indicate that the request should be ignored."
-msgstr ""
+msgstr "此异常可以由调度器或任何下载器中间件来表示请求应该被忽略。"
 
 #: ../../../topics/exceptions.rst:62
 msgid "NotConfigured"
-msgstr ""
+msgstr "节点配置"
 
 #: ../../../topics/exceptions.rst:66
 msgid ""
 "This exception can be raised by some components to indicate that they will "
 "remain disabled. Those components include:"
-msgstr ""
+msgstr "此异常可能会被某些组件提升，以表明它们仍将被禁用。"
 
 #: ../../../topics/exceptions.rst:69
 msgid "Extensions"
-msgstr ""
+msgstr "扩展"
 
 #: ../../../topics/exceptions.rst:70
 msgid "Item pipelines"
-msgstr ""
+msgstr "物品流线"
 
 #: ../../../topics/exceptions.rst:71
 msgid "Downloader middlewares"
-msgstr ""
+msgstr "下载器中间件"
 
 #: ../../../topics/exceptions.rst:72
 msgid "Spider middlewares"
-msgstr ""
+msgstr "蜘蛛中间件"
 
 #: ../../../topics/exceptions.rst:74
 msgid "The exception must be raised in the component's ``__init__`` method."
@@ -120,15 +123,15 @@ msgstr ""
 
 #: ../../../topics/exceptions.rst:77
 msgid "NotSupported"
-msgstr ""
+msgstr "不支持"
 
 #: ../../../topics/exceptions.rst:81
 msgid "This exception is raised to indicate an unsupported feature."
-msgstr ""
+msgstr "提起此异常是为了表示一个不支持的功能。"
 
 #: ../../../topics/exceptions.rst:84
 msgid "StopDownload"
-msgstr ""
+msgstr "停止下载"
 
 #: ../../../topics/exceptions.rst:88
 msgid ""
@@ -141,7 +144,7 @@ msgstr ""
 msgid ""
 "The ``fail`` boolean parameter controls which method will handle the "
 "resulting response:"
-msgstr ""
+msgstr "``fail`` 布尔参数控制哪个方法会处理结果的响应："
 
 #: ../../../topics/exceptions.rst:94
 msgid ""
@@ -155,7 +158,7 @@ msgstr ""
 
 #: ../../../topics/exceptions.rst:101
 msgid "If ``fail=False``, the request callback is called instead."
-msgstr ""
+msgstr "如果``fail=False`` ，请求回调将被调用。"
 
 #: ../../../topics/exceptions.rst:103
 msgid ""
