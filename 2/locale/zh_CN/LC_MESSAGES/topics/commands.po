@@ -969,7 +969,7 @@ msgstr ""
 
 #: ../../../topics/commands.rst:641
 msgid "Example:"
-msgstr ""
+msgstr "示例："
 
 #: ../../../topics/commands.rst:643
 msgid "COMMANDS_MODULE = \"mybot.commands\""

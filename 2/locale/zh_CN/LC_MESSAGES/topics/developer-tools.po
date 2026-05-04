@@ -435,7 +435,7 @@ msgstr ""
 
 #: ../../../topics/developer-tools.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: ../../../../scrapy/utils/curl.py:docstring of
 #: scrapy.utils.curl.curl_to_request_kwargs:3
@@ -451,7 +451,7 @@ msgstr ""
 
 #: ../../../topics/developer-tools.rst:0
 msgid "Returns"
-msgstr ""
+msgstr "返回"
 
 #: ../../../../scrapy/utils/curl.py:docstring of
 #: scrapy.utils.curl.curl_to_request_kwargs:7

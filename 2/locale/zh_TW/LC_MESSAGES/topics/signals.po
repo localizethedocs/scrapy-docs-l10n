@@ -81,7 +81,7 @@ msgstr ""
 
 #: ../../../topics/signals.rst:50
 msgid "Asynchronous signal handlers"
-msgstr ""
+msgstr "異步訊號處理器"
 
 #: ../../../topics/signals.rst:52
 msgid ""
@@ -141,7 +141,7 @@ msgstr ""
 
 #: ../../../topics/signals.rst:101
 msgid "Built-in signals reference"
-msgstr ""
+msgstr "內建訊號參考"
 
 #: ../../../topics/signals.rst:106
 msgid "Here's the list of Scrapy built-in signals and their meaning."
@@ -211,7 +211,7 @@ msgstr ""
 
 #: ../../../topics/signals.rst:154
 msgid "Item signals"
-msgstr ""
+msgstr "項目訊號"
 
 #: ../../../topics/signals.rst:157
 msgid ""
@@ -306,11 +306,11 @@ msgstr ""
 
 #: ../../../topics/signals.rst:238
 msgid "Spider signals"
-msgstr ""
+msgstr "爬蟲訊號"
 
 #: ../../../topics/signals.rst:241
 msgid "spider_closed"
-msgstr ""
+msgstr "spider_closed"
 
 #: ../../../topics/signals.rst:246
 msgid ""
@@ -335,7 +335,7 @@ msgstr ""
 
 #: ../../../topics/signals.rst:264
 msgid "spider_opened"
-msgstr ""
+msgstr "spider_opened"
 
 #: ../../../topics/signals.rst:269
 msgid ""
@@ -350,7 +350,7 @@ msgstr ""
 
 #: ../../../topics/signals.rst:279
 msgid "spider_idle"
-msgstr ""
+msgstr "spider_idle"
 
 #: ../../../topics/signals.rst:284
 msgid ""
@@ -406,7 +406,7 @@ msgstr ""
 
 #: ../../../topics/signals.rst:316
 msgid "spider_error"
-msgstr ""
+msgstr "spider_error"
 
 #: ../../../topics/signals.rst:321
 msgid ""

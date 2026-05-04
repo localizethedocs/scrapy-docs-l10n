@@ -238,7 +238,7 @@ msgstr ""
 
 #: ../../../topics/coroutines.rst:140 ../../../topics/coroutines.rst:395
 msgid "For example:"
-msgstr ""
+msgstr "例如："
 
 #: ../../../topics/coroutines.rst:142
 msgid ""

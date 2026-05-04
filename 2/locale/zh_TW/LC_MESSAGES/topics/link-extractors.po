@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/link-extractors.rst:5
 msgid "Link Extractors"
-msgstr ""
+msgstr "連結提取器"
 
 #: ../../../topics/link-extractors.rst:7
 msgid "A link extractor is an object that extracts links from responses."
@@ -54,10 +54,13 @@ msgid ""
 "    for link in self.link_extractor.extract_links(response):\n"
 "        yield Request(link.url, callback=self.parse)"
 msgstr ""
+"def parse(self, response):\n"
+"    for link in self.link_extractor.extract_links(response):\n"
+"        yield Request(link.url, callback=self.parse)"
 
 #: ../../../topics/link-extractors.rst:32
 msgid "Link extractor reference"
-msgstr ""
+msgstr "連結提取器參考"
 
 #: ../../../topics/link-extractors.rst:37
 msgid ""
@@ -68,11 +71,11 @@ msgstr ""
 
 #: ../../../topics/link-extractors.rst:41
 msgid "from scrapy.linkextractors import LinkExtractor"
-msgstr ""
+msgstr "from scrapy.linkextractors import LinkExtractor"
 
 #: ../../../topics/link-extractors.rst:44
 msgid "LxmlLinkExtractor"
-msgstr ""
+msgstr "LxmlLinkExtractor"
 
 #: ../../../topics/link-extractors.rst:52
 msgid ""
@@ -196,6 +199,8 @@ msgid ""
 "<a href=\"javascript:goToPage('../other/page.html'); return false\">Link "
 "text</a>"
 msgstr ""
+"<a href=\"javascript:goToPage('../other/page.html'); return false\">連結文字"
+"</a>"
 
 #: ../../../topics/link-extractors.rst:133
 msgid "You can use the following function in ``process_value``:"
@@ -208,6 +213,10 @@ msgid ""
 "    if m:\n"
 "        return m.group(1)"
 msgstr ""
+"def process_value(value):\n"
+"    m = re.search(r\"javascript:goToPage\\('(.*?)'\", value)\n"
+"    if m:\n"
+"        return m.group(1)"
 
 #: ../../../topics/link-extractors.rst:144
 msgid ""
@@ -243,7 +252,7 @@ msgstr ""
 
 #: ../../../topics/link-extractors.rst:156
 msgid "Link"
-msgstr ""
+msgstr "連結"
 
 #: ../../../../scrapy/link.py:docstring of scrapy.link.Link:1
 msgid "Link objects represent an extracted link by the LinkExtractor."

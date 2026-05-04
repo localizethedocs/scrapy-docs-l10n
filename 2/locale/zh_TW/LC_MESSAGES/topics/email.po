@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/email.rst:5
 msgid "Sending e-mail"
-msgstr ""
+msgstr "發送電子郵件"
 
 #: ../../../topics/email.rst:10
 msgid ""

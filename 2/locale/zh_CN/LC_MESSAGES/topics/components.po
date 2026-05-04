@@ -157,7 +157,7 @@ msgstr ""
 
 #: ../../../topics/components.rst:85
 msgid "For example:"
-msgstr ""
+msgstr "例如："
 
 #: ../../../topics/components.rst:87
 msgid ""

@@ -197,7 +197,7 @@ msgstr ""
 #: ../../../../scrapy/utils/response.py:docstring of
 #: scrapy.utils.response.open_in_browser:6
 msgid "For example:"
-msgstr ""
+msgstr "例如："
 
 #: ../../../../scrapy/utils/response.py:docstring of
 #: scrapy.utils.response.open_in_browser:8
