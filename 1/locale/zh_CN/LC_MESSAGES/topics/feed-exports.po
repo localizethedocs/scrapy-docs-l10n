@@ -415,7 +415,7 @@ msgstr ""
 #: ../../../topics/feed-exports.rst:232 ../../../topics/feed-exports.rst:252
 #: ../../../topics/feed-exports.rst:266
 msgid "Default: ``None``"
-msgstr ""
+msgstr "默认值： ``None``"
 
 #: ../../../topics/feed-exports.rst:234
 msgid ""
@@ -491,7 +491,7 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:286
 msgid "Default: ``0``"
-msgstr ""
+msgstr "默认值: ``0``"
 
 #: ../../../topics/feed-exports.rst:288
 msgid ""
@@ -515,7 +515,7 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:302 ../../../topics/feed-exports.rst:321
 msgid "Default: ``False``"
-msgstr ""
+msgstr "默认值： ``False``"
 
 #: ../../../topics/feed-exports.rst:304
 msgid "Whether to export empty feeds (ie. feeds with no items)."

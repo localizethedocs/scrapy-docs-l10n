@@ -4135,11 +4135,11 @@ msgstr ""
 
 #: ../../../news.rst:2104
 msgid "scrapy.contrib.linkextractors"
-msgstr ""
+msgstr "scrapy.contrib.linkextractors"
 
 #: ../../../news.rst:2104 ../../../news.rst:2138
 msgid "scrapy.linkextractors"
-msgstr ""
+msgstr "scrapy.linkextractors"
 
 #: ../../../news.rst:2106
 msgid "scrapy.contrib.loader"

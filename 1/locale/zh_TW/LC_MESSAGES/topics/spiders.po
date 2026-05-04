@@ -708,7 +708,7 @@ msgstr ""
 
 #: ../../../topics/spiders.rst:505
 msgid "Example::"
-msgstr ""
+msgstr "範例：\\ ::"
 
 #: ../../../topics/spiders.rst:507
 msgid ""
@@ -906,7 +906,7 @@ msgstr ""
 #: ../../../topics/spiders.rst:656 ../../../topics/spiders.rst:680
 #: ../../../topics/spiders.rst:698
 msgid "For example::"
-msgstr ""
+msgstr "例如：\\ ::\n"
 
 #: ../../../topics/spiders.rst:658
 msgid "sitemap_rules = [('/product/', 'parse_product')]"

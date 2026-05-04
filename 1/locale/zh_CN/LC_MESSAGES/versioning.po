@@ -71,7 +71,7 @@ msgstr ""
 
 #: ../../../versioning.rst:31
 msgid "For example:"
-msgstr ""
+msgstr "例如："
 
 #: ../../../versioning.rst:33
 msgid ""

@@ -1904,7 +1904,7 @@ msgstr ""
 #: sphinx/domains/c.py:3346 sphinx/domains/cpp.py:7453
 #: sphinx/domains/python.py:674 sphinx/ext/napoleon/docstring.py:755
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: sphinx/domains/c.py:3349 sphinx/domains/cpp.py:7459
 msgid "Return values"
@@ -1913,7 +1913,7 @@ msgstr ""
 #: sphinx/domains/c.py:3352 sphinx/domains/cpp.py:7462
 #: sphinx/domains/javascript.py:250 sphinx/domains/python.py:686
 msgid "Returns"
-msgstr ""
+msgstr "返回"
 
 #: sphinx/domains/c.py:3354 sphinx/domains/javascript.py:252
 #: sphinx/domains/python.py:688

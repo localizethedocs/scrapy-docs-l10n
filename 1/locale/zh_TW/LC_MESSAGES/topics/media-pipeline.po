@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/media-pipeline.rst:5
 msgid "Downloading and processing files and images"
-msgstr ""
+msgstr "下載並處理檔案和影像"
 
 #: ../../../topics/media-pipeline.rst:9
 msgid ""

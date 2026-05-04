@@ -120,7 +120,7 @@ msgstr ""
 #: ../../../topics/settings.rst:980 ../../../topics/settings.rst:1046
 #: ../../../topics/settings.rst:1073 ../../../topics/settings.rst:1344
 msgid "Example::"
-msgstr ""
+msgstr "範例：\\ ::"
 
 #: ../../../topics/settings.rst:65
 msgid "scrapy crawl myspider -s LOG_FILE=scrapy.log"
@@ -730,7 +730,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:495
 msgid "DOWNLOADER_CLIENT_TLS_VERBOSE_LOGGING"
-msgstr ""
+msgstr "DOWNLOADER_CLIENT_TLS_VERBOSE_LOGGING"
 
 #: ../../../topics/settings.rst:499
 msgid ""
@@ -1172,7 +1172,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:851
 msgid "ITEM_PIPELINES_BASE"
-msgstr ""
+msgstr "ITEM_PIPELINES_BASE"
 
 #: ../../../topics/settings.rst:855
 msgid ""
@@ -1187,7 +1187,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:865
 msgid "Whether to enable logging."
-msgstr ""
+msgstr "是否啟用日誌紀錄。"
 
 #: ../../../topics/settings.rst:870
 msgid "LOG_ENCODING"

@@ -197,7 +197,7 @@ msgstr ""
 
 #: ../../../topics/spiders.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: ../../../topics/spiders.rst:138
 msgid "crawler to which the spider will be bound"

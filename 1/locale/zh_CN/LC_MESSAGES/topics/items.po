@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:5
 msgid "Items"
-msgstr ""
+msgstr "项目"
 
 #: ../../../topics/items.rst:10
 msgid ""
@@ -74,6 +74,8 @@ msgid ""
 "similar to `Django Models`_, except that Scrapy Items are much simpler as "
 "there is no concept of different field types."
 msgstr ""
+"熟悉`Django`_ 的人会注意到报废物品类似于`Django Models`_, 除了废料条目更简"
+"单，因为没有不同字段类型的概念。"
 
 #: ../../../topics/items.rst:56
 msgid "Item Fields"
@@ -120,7 +122,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:85
 msgid "Creating items"
-msgstr ""
+msgstr "创建项目"
 
 #: ../../../topics/items.rst:89
 msgid ""
@@ -131,7 +133,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:94
 msgid "Getting field values"
-msgstr ""
+msgstr "获取字段值"
 
 #: ../../../topics/items.rst:98
 msgid ""
@@ -174,7 +176,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:135
 msgid "Setting field values"
-msgstr ""
+msgstr "设置字段值"
 
 #: ../../../topics/items.rst:139
 msgid ""
@@ -190,7 +192,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:149
 msgid "Accessing all populated values"
-msgstr ""
+msgstr "访问所有有人居住的值"
 
 #: ../../../topics/items.rst:151
 msgid "To access all populated values, just use the typical `dict API`_::"
@@ -204,16 +206,21 @@ msgid ""
 ">>> product.items()\n"
 "[('price', 1000), ('name', 'Desktop PC')]"
 msgstr ""
+">>> product.keys()\n"
+"['price', 'name']\n"
+"\n"
+">> > product.items()\n"
+"[('price', 1000) ('name', 'desktop PC')]"
 
 #: ../../../topics/items.rst:163
 msgid "Copying items"
-msgstr ""
+msgstr "复制项目"
 
 #: ../../../topics/items.rst:165
 msgid ""
 "To copy an item, you must first decide whether you want a shallow copy or a "
 "deep copy."
-msgstr ""
+msgstr "要复制一个物品，您必须首先决定是要一个浅色的副本还是深深的副本。"
 
 #: ../../../topics/items.rst:168
 msgid ""
@@ -229,10 +236,13 @@ msgid ""
 "list of tags. Adding a tag to the list of one of the items will add the tag "
 "to the other item as well."
 msgstr ""
+"例如，如果你有一个带有标签列表的项目，并且你创建了一个浅色的项目副本。 原始项"
+"目和副本都有相同的标签列表。 将标签添加到其中一个项目的列表中，也会将标签添加"
+"到其他项目中。"
 
 #: ../../../topics/items.rst:179
 msgid "If that is not the desired behavior, use a deep copy instead."
-msgstr ""
+msgstr "如果这不是需要的行为，则使用深文本代替。"
 
 #: ../../../topics/items.rst:181
 msgid "See the `documentation of the copy module`_ for more information."
@@ -254,7 +264,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:195
 msgid "Other common tasks"
-msgstr ""
+msgstr "其他共同任务"
 
 #: ../../../topics/items.rst:197
 msgid "Creating dicts from items::"
@@ -291,6 +301,7 @@ msgid ""
 "You can extend Items (to add more fields or to change some metadata for some "
 "fields) by declaring a subclass of your original Item."
 msgstr ""
+"您可以通过声明原始项目的亚类来扩展项目 (添加更多字段或更改某些字段的元数据)。"
 
 #: ../../../topics/items.rst:218
 msgid "For example::"
@@ -302,6 +313,9 @@ msgid ""
 "    discount_percent = scrapy.Field(serializer=str)\n"
 "    discount_expiration_date = scrapy.Field()"
 msgstr ""
+"类折扣 Product(Product):\n"
+"    discount_per = scrapy.Field(serializer=str)\n"
+"    discount_expiration_date = scrapy.Field()"
 
 #: ../../../topics/items.rst:224
 msgid ""
@@ -320,10 +334,12 @@ msgid ""
 "That adds (or replaces) the ``serializer`` metadata key for the ``name`` "
 "field, keeping all the previously existing metadata values."
 msgstr ""
+"添加(或替换) ``name`` 字段的 ``serializer`` 元数据键，保留所有以前存在的元数"
+"据值。"
 
 #: ../../../topics/items.rst:234
 msgid "Item objects"
-msgstr ""
+msgstr "项目对象"
 
 #: ../../../topics/items.rst:238
 msgid "Return a new Item optionally initialized from the given argument."

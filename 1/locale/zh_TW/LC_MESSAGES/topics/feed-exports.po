@@ -38,7 +38,7 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:21
 msgid "Serialization formats"
-msgstr ""
+msgstr "序列化格式"
 
 #: ../../../topics/feed-exports.rst:23
 msgid ""

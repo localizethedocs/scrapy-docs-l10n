@@ -123,7 +123,7 @@ msgstr ""
 
 #: ../../../topics/architecture.rst:74
 msgid "Components"
-msgstr ""
+msgstr "組件"
 
 #: ../../../topics/architecture.rst:79
 msgid "Scrapy Engine"
@@ -169,7 +169,7 @@ msgstr ""
 
 #: ../../../topics/architecture.rst:113
 msgid "Item Pipeline"
-msgstr ""
+msgstr "項目管線"
 
 #: ../../../topics/architecture.rst:115
 msgid ""

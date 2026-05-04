@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/benchmarking.rst:5
 msgid "Benchmarking"
-msgstr ""
+msgstr "基准"
 
 #: ../../../topics/benchmarking.rst:9
 msgid ""
@@ -29,18 +29,22 @@ msgid ""
 "order to have a common baseline for comparisons. It uses a simple spider "
 "that does nothing and just follows links."
 msgstr ""
+"废料带有一个简单的基准套件，这个套件能生成本地的 HTTP 服务器，并且能够以最快"
+"的速度将其爬行。 这个基准的目标是了解碎片如何在你的硬件中表现出来， 以便有一"
+"个共同的基准进行比较。 它使用一种简单的拼写器，这种拼写不做任何事情，只需跟随"
+"链接。"
 
 #: ../../../topics/benchmarking.rst:15
 msgid "To run it use::"
-msgstr ""
+msgstr "要运行它使用："
 
 #: ../../../topics/benchmarking.rst:17
 msgid "scrapy bench"
-msgstr ""
+msgstr "碎片板"
 
 #: ../../../topics/benchmarking.rst:19
 msgid "You should see an output like this::"
-msgstr ""
+msgstr "你应该看到这样的输出:"
 
 #: ../../../topics/benchmarking.rst:21
 msgid ""
@@ -130,6 +134,9 @@ msgid ""
 "stuff which results in slower crawl rates. How slower depends on how much "
 "your spider does and how well it's written."
 msgstr ""
+"这告诉您，废钢能够在运行它的硬件中每分钟翻转大约3000页。 注意这是一个非常简单"
+"的拼写器，旨在跟随链接， 您写的任何自定义拼写器都可能会做更多的事情，从而降低"
+"crawl率。 速度多慢取决于你的蜘蛛做得多少和写得多好。"
 
 #: ../../../topics/benchmarking.rst:86
 msgid ""

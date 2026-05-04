@@ -202,7 +202,7 @@ msgstr ""
 
 #: ../../../topics/autothrottle.rst:104 ../../../topics/autothrottle.rst:161
 msgid "Default: ``False``"
-msgstr ""
+msgstr "默认值： ``False``"
 
 #: ../../../topics/autothrottle.rst:106
 msgid "Enables the AutoThrottle extension."

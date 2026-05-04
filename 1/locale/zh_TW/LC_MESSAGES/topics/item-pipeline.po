@@ -19,13 +19,15 @@ msgstr ""
 
 #: ../../../topics/item-pipeline.rst:5
 msgid "Item Pipeline"
-msgstr ""
+msgstr "項目管線"
 
 #: ../../../topics/item-pipeline.rst:7
 msgid ""
 "After an item has been scraped by a spider, it is sent to the Item Pipeline "
 "which processes it through several components that are executed sequentially."
 msgstr ""
+"在爬蟲擷取到項目後，會將其發送到項目管線，該管線會按順序執行多個組件來處理項"
+"目。"
 
 #: ../../../topics/item-pipeline.rst:10
 msgid ""
@@ -34,6 +36,9 @@ msgid ""
 "perform an action over it, also deciding if the item should continue through "
 "the pipeline or be dropped and no longer processed."
 msgstr ""
+"每個項目管線組件（有時簡稱「項目管線」）都是實作簡單方法的 Python 類別。它們"
+"接收一個項目並對其執行操作，同時決定該項目是否應繼續通過管線，還是應被丟棄並"
+"不再處理。"
 
 #: ../../../topics/item-pipeline.rst:15
 msgid "Typical uses of item pipelines are:"
@@ -41,7 +46,7 @@ msgstr ""
 
 #: ../../../topics/item-pipeline.rst:17
 msgid "cleansing HTML data"
-msgstr ""
+msgstr "清理 HTML 資料"
 
 #: ../../../topics/item-pipeline.rst:18
 msgid ""
@@ -58,7 +63,7 @@ msgstr ""
 
 #: ../../../topics/item-pipeline.rst:24
 msgid "Writing your own item pipeline"
-msgstr ""
+msgstr "編寫您自己的項目管線"
 
 #: ../../../topics/item-pipeline.rst:26
 msgid ""
@@ -122,7 +127,7 @@ msgstr ""
 
 #: ../../../topics/item-pipeline.rst:73
 msgid "Item pipeline example"
-msgstr ""
+msgstr "項目管線範例"
 
 #: ../../../topics/item-pipeline.rst:76
 msgid "Price validation and dropping items with no prices"
@@ -191,7 +196,7 @@ msgstr ""
 
 #: ../../../topics/item-pipeline.rst:125
 msgid "Write items to MongoDB"
-msgstr ""
+msgstr "將項目寫入至 MongoDB"
 
 #: ../../../topics/item-pipeline.rst:127
 msgid ""
