@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:5
 msgid "Item Loaders"
-msgstr ""
+msgstr "項目載入器"
 
 #: ../../../topics/loaders.rst:10
 msgid ""
@@ -47,7 +47,7 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:25
 msgid "Using Item Loaders to populate items"
-msgstr ""
+msgstr "使用項目載入器來填寫項目"
 
 #: ../../../topics/loaders.rst:27
 msgid ""
@@ -236,7 +236,7 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:148
 msgid "Declaring Item Loaders"
-msgstr ""
+msgstr "宣告項目載入器"
 
 #: ../../../topics/loaders.rst:150
 msgid ""
@@ -329,7 +329,7 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:213
 msgid "Item Loader Context"
-msgstr ""
+msgstr "項目載入器上下文"
 
 #: ../../../topics/loaders.rst:215
 msgid ""
@@ -402,7 +402,7 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:255
 msgid "ItemLoader objects"
-msgstr ""
+msgstr "ItemLoader 物件"
 
 #: ../../../topics/loaders.rst:259
 msgid ""
@@ -689,7 +689,7 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:485
 msgid "Reusing and extending Item Loaders"
-msgstr ""
+msgstr "重新使用並擴充項目載入器"
 
 #: ../../../topics/loaders.rst:487
 msgid ""
@@ -799,7 +799,7 @@ msgstr ""
 #: ../../../topics/loaders.rst:560 ../../../topics/loaders.rst:573
 #: ../../../topics/loaders.rst:609
 msgid "Example::"
-msgstr ""
+msgstr "範例：\\ ::"
 
 #: ../../../topics/loaders.rst:562
 msgid ""

@@ -54,7 +54,7 @@ msgstr ""
 
 #: ../../../topics/signals.rst:30
 msgid "Built-in signals reference"
-msgstr ""
+msgstr "內建訊號參考"
 
 #: ../../../topics/signals.rst:35
 msgid "Here's the list of Scrapy built-in signals and their meaning."
@@ -143,7 +143,7 @@ msgstr ""
 
 #: ../../../topics/signals.rst:108
 msgid "spider_closed"
-msgstr ""
+msgstr "spider_closed"
 
 #: ../../../topics/signals.rst:113
 msgid ""
@@ -168,7 +168,7 @@ msgstr ""
 
 #: ../../../topics/signals.rst:131
 msgid "spider_opened"
-msgstr ""
+msgstr "spider_opened"
 
 #: ../../../topics/signals.rst:136
 msgid ""
@@ -183,7 +183,7 @@ msgstr ""
 
 #: ../../../topics/signals.rst:146
 msgid "spider_idle"
-msgstr ""
+msgstr "spider_idle"
 
 #: ../../../topics/signals.rst:151
 msgid ""
@@ -226,7 +226,7 @@ msgstr ""
 
 #: ../../../topics/signals.rst:170
 msgid "spider_error"
-msgstr ""
+msgstr "spider_error"
 
 #: ../../../topics/signals.rst:175
 msgid ""

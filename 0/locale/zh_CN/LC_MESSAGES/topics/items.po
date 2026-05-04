@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:5
 msgid "Items"
-msgstr ""
+msgstr "项目"
 
 #: ../../../topics/items.rst:10
 msgid ""
@@ -62,6 +62,8 @@ msgid ""
 "similar to `Django Models`_, except that Scrapy Items are much simpler as "
 "there is no concept of different field types."
 msgstr ""
+"熟悉`Django`_ 的人会注意到报废物品类似于`Django Models`_, 除了废料条目更简"
+"单，因为没有不同字段类型的概念。"
 
 #: ../../../topics/items.rst:46
 msgid "Item Fields"
@@ -112,7 +114,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:77
 msgid "Creating items"
-msgstr ""
+msgstr "创建项目"
 
 #: ../../../topics/items.rst:81
 msgid ""
@@ -123,7 +125,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:86
 msgid "Getting field values"
-msgstr ""
+msgstr "获取字段值"
 
 #: ../../../topics/items.rst:90
 msgid ""
@@ -166,7 +168,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:127
 msgid "Setting field values"
-msgstr ""
+msgstr "设置字段值"
 
 #: ../../../topics/items.rst:131
 msgid ""
@@ -182,7 +184,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:141
 msgid "Accessing all populated values"
-msgstr ""
+msgstr "访问所有有人居住的值"
 
 #: ../../../topics/items.rst:143
 msgid "To access all populated values, just use the typical `dict API`_::"
@@ -196,10 +198,15 @@ msgid ""
 ">>> product.items()\n"
 "[('price', 1000), ('name', 'Desktop PC')]"
 msgstr ""
+">>> product.keys()\n"
+"['price', 'name']\n"
+"\n"
+">> > product.items()\n"
+"[('price', 1000) ('name', 'desktop PC')]"
 
 #: ../../../topics/items.rst:152
 msgid "Other common tasks"
-msgstr ""
+msgstr "其他共同任务"
 
 #: ../../../topics/items.rst:154
 msgid "Copying items::"
@@ -251,6 +258,7 @@ msgid ""
 "You can extend Items (to add more fields or to change some metadata for some "
 "fields) by declaring a subclass of your original Item."
 msgstr ""
+"您可以通过声明原始项目的亚类来扩展项目 (添加更多字段或更改某些字段的元数据)。"
 
 #: ../../../topics/items.rst:185
 msgid "For example::"
@@ -262,6 +270,9 @@ msgid ""
 "    discount_percent = scrapy.Field(serializer=str)\n"
 "    discount_expiration_date = scrapy.Field()"
 msgstr ""
+"类折扣 Product(Product):\n"
+"    discount_per = scrapy.Field(serializer=str)\n"
+"    discount_expiration_date = scrapy.Field()"
 
 #: ../../../topics/items.rst:191
 msgid ""
@@ -280,10 +291,12 @@ msgid ""
 "That adds (or replaces) the ``serializer`` metadata key for the ``name`` "
 "field, keeping all the previously existing metadata values."
 msgstr ""
+"添加(或替换) ``name`` 字段的 ``serializer`` 元数据键，保留所有以前存在的元数"
+"据值。"
 
 #: ../../../topics/items.rst:201
 msgid "Item objects"
-msgstr ""
+msgstr "项目对象"
 
 #: ../../../topics/items.rst:205
 msgid "Return a new Item optionally initialized from the given argument."

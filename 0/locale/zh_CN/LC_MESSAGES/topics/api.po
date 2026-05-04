@@ -19,17 +19,17 @@ msgstr ""
 
 #: ../../../topics/api.rst:5
 msgid "Core API"
-msgstr ""
+msgstr "Core API"
 
 #: ../../../topics/api.rst:9
 msgid ""
 "This section documents the Scrapy core API, and it's intended for developers "
 "of extensions and middlewares."
-msgstr ""
+msgstr "本节记载了Scrapy core API，它的对象是扩展和中间件的开发者。"
 
 #: ../../../topics/api.rst:15
 msgid "Crawler API"
-msgstr ""
+msgstr "Crawler API"
 
 #: ../../../topics/api.rst:17
 msgid ""
@@ -56,13 +56,13 @@ msgstr ""
 
 #: ../../../topics/api.rst:38
 msgid "The settings manager of this crawler."
-msgstr ""
+msgstr "此Crawler的设置管理器。"
 
 #: ../../../topics/api.rst:40
 msgid ""
 "This is used by extensions & middlewares to access the Scrapy settings of "
 "this crawler."
-msgstr ""
+msgstr "此选项被扩展 & 中间器用于访问此 crawler 的Scrapy 设置。"
 
 #: ../../../topics/api.rst:43
 msgid "For an introduction on Scrapy settings see :ref:`topics-settings`."
@@ -74,13 +74,13 @@ msgstr ""
 
 #: ../../../topics/api.rst:49
 msgid "The signals manager of this crawler."
-msgstr ""
+msgstr "这个爬行器的信号管理器。"
 
 #: ../../../topics/api.rst:51
 msgid ""
 "This is used by extensions & middlewares to hook themselves into Scrapy "
 "functionality."
-msgstr ""
+msgstr "扩展和中间件用于将自己绑定到废料功能。"
 
 #: ../../../topics/api.rst:54
 msgid "For an introduction on signals see :ref:`topics-signals`."
@@ -92,13 +92,13 @@ msgstr ""
 
 #: ../../../topics/api.rst:60
 msgid "The stats collector of this crawler."
-msgstr ""
+msgstr "这个crawler的数据收集器。"
 
 #: ../../../topics/api.rst:62
 msgid ""
 "This is used from extensions & middlewares to record stats of their "
 "behaviour, or access stats collected by other extensions."
-msgstr ""
+msgstr "这是从扩展和中期来记录他们的行为统计或其他扩展收集的访问统计信息。"
 
 #: ../../../topics/api.rst:65
 msgid "For an introduction on stats collection see :ref:`topics-stats`."
@@ -110,11 +110,11 @@ msgstr ""
 
 #: ../../../topics/api.rst:71
 msgid "The extension manager that keeps track of enabled extensions."
-msgstr ""
+msgstr "用于跟踪启用扩展的扩展管理器。"
 
 #: ../../../topics/api.rst:73 ../../../topics/api.rst:83
 msgid "Most extensions won't need to access this attribute."
-msgstr ""
+msgstr "大多数扩展不需要访问此属性。"
 
 #: ../../../topics/api.rst:75
 msgid ""
@@ -131,7 +131,7 @@ msgstr ""
 msgid ""
 "The execution engine, which coordinates the core crawling logic between the "
 "scheduler, downloader and spiders."
-msgstr ""
+msgstr "执行引擎，它协调调度器、下载器和蜘蛛之间的核心爬行逻辑。"
 
 #: ../../../topics/api.rst:90
 msgid ""
@@ -158,13 +158,13 @@ msgstr ""
 
 #: ../../../topics/api.rst:109
 msgid "Settings API"
-msgstr ""
+msgstr "设置 API"
 
 #: ../../../topics/api.rst:116
 msgid ""
 "Dictionary that sets the key name and priority level of the default settings "
 "priorities used in Scrapy."
-msgstr ""
+msgstr "设置在废件中默认设置优先级的关键名称和优先级的字典。"
 
 #: ../../../topics/api.rst:119
 msgid ""
@@ -194,7 +194,7 @@ msgstr ""
 msgid ""
 "This object stores Scrapy settings for the configuration of internal "
 "components, and can be used for any further customization."
-msgstr ""
+msgstr "此对象储存内部组件配置的 Scrapy 设置，可以用于任何进一步的定制操作。"
 
 #: ../../../topics/api.rst:143
 msgid ""
@@ -223,7 +223,7 @@ msgstr ""
 
 #: ../../../topics/api.rst:162
 msgid "Store a key/value attribute with a given priority."
-msgstr ""
+msgstr "保存一个具有给定优先级的密钥/值属性。"
 
 #: ../../../topics/api.rst:164
 msgid ""
@@ -234,17 +234,17 @@ msgstr ""
 
 #: ../../../topics/api.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: ../../../topics/api.rst:168 ../../../topics/api.rst:212
 #: ../../../topics/api.rst:227 ../../../topics/api.rst:237
 #: ../../../topics/api.rst:247 ../../../topics/api.rst:261
 msgid "the setting name"
-msgstr ""
+msgstr "设置名称"
 
 #: ../../../topics/api.rst:171
 msgid "the value to associate with the setting"
-msgstr ""
+msgstr "要与设置关联的值"
 
 #: ../../../topics/api.rst:174
 msgid ""
@@ -254,7 +254,7 @@ msgstr ""
 
 #: ../../../topics/api.rst:180
 msgid "Store key/value pairs with a given priority."
-msgstr ""
+msgstr "存储具有特定优先级的密钥/值对。"
 
 #: ../../../topics/api.rst:182
 msgid ""
@@ -264,7 +264,7 @@ msgstr ""
 
 #: ../../../topics/api.rst:186
 msgid "the settings names and values"
-msgstr ""
+msgstr "设置名称和值"
 
 #: ../../../topics/api.rst:189 ../../../topics/api.rst:204
 msgid ""
@@ -274,7 +274,7 @@ msgstr ""
 
 #: ../../../topics/api.rst:195
 msgid "Store settings from a module with a given priority."
-msgstr ""
+msgstr "从具有特定优先级的模块存储设置。"
 
 #: ../../../topics/api.rst:197
 msgid ""
@@ -285,17 +285,17 @@ msgstr ""
 
 #: ../../../topics/api.rst:201
 msgid "the module or the path of the module"
-msgstr ""
+msgstr "模块或模块路径"
 
 #: ../../../topics/api.rst:210
 msgid "Get a setting value without affecting its original type."
-msgstr ""
+msgstr "获取一个设置值而不影响其原始类型。"
 
 #: ../../../topics/api.rst:215 ../../../topics/api.rst:230
 #: ../../../topics/api.rst:240 ../../../topics/api.rst:250
 #: ../../../topics/api.rst:264
 msgid "the value to return if no setting is found"
-msgstr ""
+msgstr "如果没有找到设置则返回的值"
 
 #: ../../../topics/api.rst:220
 msgid ""
@@ -308,7 +308,7 @@ msgstr ""
 msgid ""
 "For example, settings populated through environment variables set to ``'0'`` "
 "will return ``False`` when using this method."
-msgstr ""
+msgstr "例如，环境变量设置为 ``'0'`` 时返回的 ``False`` 。"
 
 #: ../../../topics/api.rst:235
 msgid "Get a setting value as an int"
@@ -329,14 +329,16 @@ msgid ""
 "For example, settings populated through environment variables set to ``'one,"
 "two'`` will return a list ['one', 'two'] when using this method."
 msgstr ""
+"例如，通过环境变量填充的设置设置设置为 ``'one,two'`` 时，会返回一个列表"
+"['one','2']。"
 
 #: ../../../topics/api.rst:270
 msgid "Signals API"
-msgstr ""
+msgstr "信号 API"
 
 #: ../../../topics/api.rst:279
 msgid "Connect a receiver function to a signal."
-msgstr ""
+msgstr "将接收器函数与信号连接起来。"
 
 #: ../../../topics/api.rst:281
 msgid ""
@@ -346,15 +348,15 @@ msgstr ""
 
 #: ../../../topics/api.rst:285
 msgid "the function to be connected"
-msgstr ""
+msgstr "要连接的函数"
 
 #: ../../../topics/api.rst:288
 msgid "the signal to connect to"
-msgstr ""
+msgstr "要连接到的信号"
 
 #: ../../../topics/api.rst:293
 msgid "Send a signal, catch exceptions and log them."
-msgstr ""
+msgstr "发送一个信号，捕获异常并记录它们。"
 
 #: ../../../topics/api.rst:295 ../../../topics/api.rst:306
 msgid ""
@@ -382,15 +384,15 @@ msgstr ""
 
 #: ../../../topics/api.rst:316
 msgid "Disconnect all receivers from the given signal."
-msgstr ""
+msgstr "断开所有接收器与给定信号的连接。"
 
 #: ../../../topics/api.rst:318
 msgid "the signal to disconnect from"
-msgstr ""
+msgstr "要断开连接的信号"
 
 #: ../../../topics/api.rst:324
 msgid "Stats Collector API"
-msgstr ""
+msgstr "统计数据收集器 API"
 
 #: ../../../topics/api.rst:326
 msgid ""
@@ -403,25 +405,26 @@ msgstr ""
 #: ../../../topics/api.rst:338
 msgid ""
 "Return the value for the given stats key or default if it doesn't exist."
-msgstr ""
+msgstr "返回给定状态键值或默认值，如果它不存在。"
 
 #: ../../../topics/api.rst:342
 msgid "Get all stats from the currently running spider as a dict."
-msgstr ""
+msgstr "从当前运行的蜘蛛获取所有的统计信息作为一种词典。"
 
 #: ../../../topics/api.rst:346
 msgid "Set the given value for the given stats key."
-msgstr ""
+msgstr "设置给定统计键的给定值。"
 
 #: ../../../topics/api.rst:350
 msgid "Override the current stats with the dict passed in ``stats`` argument."
-msgstr ""
+msgstr "使用 ``stats`` 参数覆盖当前的统计信息。"
 
 #: ../../../topics/api.rst:354
 msgid ""
 "Increment the value of the given stats key, by the given count, assuming the "
 "start value given (when it's not set)."
 msgstr ""
+"通过给定的计数增加给定统计数据的值，假定给定的起始值 (当它没有设置时)。"
 
 #: ../../../topics/api.rst:359
 msgid ""
@@ -429,6 +432,8 @@ msgid ""
 "is lower than value. If there is no current value for the given key, the "
 "value is always set."
 msgstr ""
+"仅在同一键的当前值小于值时设置给定的键值。 如果给定的键值没有当前值，则该值总"
+"是被设置的。"
 
 #: ../../../topics/api.rst:365
 msgid ""
@@ -436,16 +441,19 @@ msgid ""
 "is greater than value. If there is no current value for the given key, the "
 "value is always set."
 msgstr ""
+"只有当同一键的当前值大于值时，才设置给定的键值。 如果给定的键值没有当前值，则"
+"该值总是被设置的。"
 
 #: ../../../topics/api.rst:371
 msgid "Clear all stats."
-msgstr ""
+msgstr "清除所有数据"
 
 #: ../../../topics/api.rst:373
 msgid ""
 "The following methods are not part of the stats collection api but instead "
 "used when implementing custom stats collectors:"
 msgstr ""
+"以下方法不是统计数据收集api的一部分，而是在实现自定义统计数据收集器时使用："
 
 #: ../../../topics/api.rst:378
 msgid "Open the given spider for stats collection."

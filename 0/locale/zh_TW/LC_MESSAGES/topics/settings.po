@@ -116,7 +116,7 @@ msgstr ""
 #: ../../../topics/settings.rst:583 ../../../topics/settings.rst:627
 #: ../../../topics/settings.rst:667 ../../../topics/settings.rst:810
 msgid "Example::"
-msgstr ""
+msgstr "範例：\\ ::"
 
 #: ../../../topics/settings.rst:60
 msgid "scrapy crawl myspider -s LOG_FILE=scrapy.log"
@@ -729,7 +729,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:508
 msgid "ITEM_PIPELINES_BASE"
-msgstr ""
+msgstr "ITEM_PIPELINES_BASE"
 
 #: ../../../topics/settings.rst:512
 msgid ""
@@ -744,7 +744,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:522
 msgid "Whether to enable logging."
-msgstr ""
+msgstr "是否啟用日誌紀錄。"
 
 #: ../../../topics/settings.rst:527
 msgid "LOG_ENCODING"

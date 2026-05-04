@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:5
 msgid "Item Exporters"
-msgstr ""
+msgstr "物品导出"
 
 #: ../../../topics/exporters.rst:10
 msgid ""
@@ -32,11 +32,11 @@ msgstr ""
 msgid ""
 "For this purpose Scrapy provides a collection of Item Exporters for "
 "different output formats, such as XML, CSV or JSON."
-msgstr ""
+msgstr "为此目的，Scrapy 提供了不同输出格式的物品导出器集，如XML、CSV或JSON。"
 
 #: ../../../topics/exporters.rst:18
 msgid "Using Item Exporters"
-msgstr ""
+msgstr "使用项目导出"
 
 #: ../../../topics/exporters.rst:20
 msgid ""
@@ -115,7 +115,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:76
 msgid "Serialization of item fields"
-msgstr ""
+msgstr "项目字段序列化"
 
 #: ../../../topics/exporters.rst:78
 msgid ""
@@ -123,22 +123,24 @@ msgid ""
 "serialization library, and the decision of how to serialize them is "
 "delegated to each particular serialization library."
 msgstr ""
+"默认情况下，字段值将不被修改传递到底层序列化库， 每个特定的序列化图书馆都将如"
+"何对其进行序列化的决定委托给每个特定的序列化图书馆。"
 
 #: ../../../topics/exporters.rst:82
 msgid ""
 "However, you can customize how each field value is serialized *before it is "
 "passed to the serialization library*."
-msgstr ""
+msgstr "然而，您可以自定义每个字段值在传递到序列化库之前的序列化方式*。"
 
 #: ../../../topics/exporters.rst:85
 msgid ""
 "There are two ways to customize how a field will be serialized, which are "
 "described next."
-msgstr ""
+msgstr "有两种方法来定制一个字段的序列化方法，下面描述这两种方法。"
 
 #: ../../../topics/exporters.rst:91
 msgid "1. Declaring a serializer in the field"
-msgstr ""
+msgstr "1. 声明字段中的序列转换器"
 
 #: ../../../topics/exporters.rst:93
 msgid ""
@@ -165,7 +167,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:110
 msgid "2. Overriding the serialize_field() method"
-msgstr ""
+msgstr "2. 覆盖 serialize_field() 方法"
 
 #: ../../../topics/exporters.rst:112
 msgid ""
@@ -193,7 +195,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:132
 msgid "Built-in Item Exporters reference"
-msgstr ""
+msgstr "内置项目导出器参考"
 
 #: ../../../topics/exporters.rst:134
 msgid ""
@@ -209,7 +211,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:141
 msgid "BaseItemExporter"
-msgstr ""
+msgstr "BaseItemExporter"
 
 #: ../../../topics/exporters.rst:145
 msgid ""
@@ -218,6 +220,8 @@ msgid ""
 "defining what fields to export, whether to export empty fields, or which "
 "encoding to use."
 msgstr ""
+"这是所有物品导出者的 (抽象) 基类。 它为所有(混凝土)物项出口商使用的共同特征提"
+"供支持。 例如定义要导出的字段，不管是导出空字段还是使用哪种编码。"
 
 #: ../../../topics/exporters.rst:150
 msgid ""
@@ -228,7 +232,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:156
 msgid "Exports the given item. This method must be implemented in subclasses."
-msgstr ""
+msgstr "导出给定项。这个方法必须在子类中实现。"
 
 #: ../../../topics/exporters.rst:160
 msgid ""
@@ -236,6 +240,8 @@ msgid ""
 "method (in your custom Item Exporters) if you want to control how a "
 "particular field or value will be serialized/exported."
 msgstr ""
+"返回给定字段的序列化值。 如果您想要控制特定字段或值将被序列化/导出的方式，您"
+"可以覆盖此方法(在您的自定义项导出器中)。"
 
 #: ../../../topics/exporters.rst:164
 msgid ""
@@ -248,7 +254,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: ../../../topics/exporters.rst:170
 msgid "the field being serialized"
@@ -256,11 +262,11 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:173
 msgid "the name of the field being serialized"
-msgstr ""
+msgstr "被序列化的字段名称"
 
 #: ../../../topics/exporters.rst:176
 msgid "the value being serialized"
-msgstr ""
+msgstr "正在序列化的值"
 
 #: ../../../topics/exporters.rst:180
 msgid ""
@@ -304,7 +310,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:216
 msgid "XmlItemExporter"
-msgstr ""
+msgstr "XmlItemExporter"
 
 #: ../../../topics/exporters.rst:220
 msgid "Exports Items in XML format to the specified file object."
@@ -318,11 +324,11 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:224
 msgid "The name of root element in the exported XML."
-msgstr ""
+msgstr "导出的 XML 根元素的名称。"
 
 #: ../../../topics/exporters.rst:227
 msgid "The name of each item element in the exported XML."
-msgstr ""
+msgstr "导出的 XML 中每个元素的名称。"
 
 #: ../../../topics/exporters.rst:230 ../../../topics/exporters.rst:316
 #: ../../../topics/exporters.rst:332
@@ -335,7 +341,7 @@ msgstr ""
 #: ../../../topics/exporters.rst:335 ../../../topics/exporters.rst:355
 #: ../../../topics/exporters.rst:385
 msgid "A typical output of this exporter would be::"
-msgstr ""
+msgstr "出口商的典型产出如下："
 
 #: ../../../topics/exporters.rst:235
 msgid ""
@@ -351,6 +357,17 @@ msgid ""
 " </item>\n"
 "</items>"
 msgstr ""
+"<?xml version=\"1。 \" encoding=\"utf-8?\n"
+"<items>\n"
+"  <item>\n"
+"    <name></name>\n"
+"    <price>1200</price>\n"
+" </item>\n"
+"  <item>\n"
+"    <name>DVD 播放器</name>\n"
+"    <price>200</price>\n"
+" </item>\n"
+"</items>"
 
 #: ../../../topics/exporters.rst:247
 msgid ""
@@ -361,15 +378,15 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:251
 msgid "For example, the item::"
-msgstr ""
+msgstr "例如，项目："
 
 #: ../../../topics/exporters.rst:253
 msgid "Item(name=['John', 'Doe'], age='23')"
-msgstr ""
+msgstr "项目名称=['John', 'Doe'], 年龄='23'"
 
 #: ../../../topics/exporters.rst:255
 msgid "Would be serialized as::"
-msgstr ""
+msgstr "序列化为:"
 
 #: ../../../topics/exporters.rst:257
 msgid ""
@@ -384,10 +401,20 @@ msgid ""
 "  </item>\n"
 "</items>"
 msgstr ""
+"<?xml version=\"1。 \" encoding=\"utf-8?\n"
+"<items>\n"
+"  <item>\n"
+"    <name>\n"
+"      <value>John</value>\n"
+"      <value>Doe</value>\n"
+"    </name>\n"
+"    <age></age>\n"
+"  </item>\n"
+"</items>"
 
 #: ../../../topics/exporters.rst:269
 msgid "CsvItemExporter"
-msgstr ""
+msgstr "CsvItemExporter"
 
 #: ../../../topics/exporters.rst:273
 msgid ""
@@ -408,7 +435,7 @@ msgstr ""
 msgid ""
 "The char (or chars) that will be used for joining multi-valued fields, if "
 "found."
-msgstr ""
+msgstr "用于加入多值字段的字符(或字符)，如果找到的话。"
 
 #: ../../../topics/exporters.rst:289
 msgid ""
@@ -424,10 +451,13 @@ msgid ""
 "Color TV,1200\n"
 "DVD player,200"
 msgstr ""
+"产品,价格\n"
+"彩色电视,1200\n"
+"DVD 播放器 200"
 
 #: ../../../topics/exporters.rst:303
 msgid "PickleItemExporter"
-msgstr ""
+msgstr "选取物品导出器"
 
 #: ../../../topics/exporters.rst:307
 msgid "Exports Items in pickle format to the given file-like object."
@@ -435,7 +465,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:311
 msgid "The pickle protocol to use."
-msgstr ""
+msgstr "要使用的小卡协议。"
 
 #: ../../../topics/exporters.rst:314
 msgid "For more information, refer to the `pickle module documentation`_."
@@ -444,11 +474,11 @@ msgstr ""
 #: ../../../topics/exporters.rst:319
 msgid ""
 "Pickle isn't a human readable format, so no output examples are provided."
-msgstr ""
+msgstr "Pickle 不是一个可读的人类格式，所以不提供输出示例。"
 
 #: ../../../topics/exporters.rst:324
 msgid "PprintItemExporter"
-msgstr ""
+msgstr "PprintItemExporter"
 
 #: ../../../topics/exporters.rst:328
 msgid "Exports Items in pretty print format to the specified file object."
@@ -459,14 +489,16 @@ msgid ""
 "{'name': 'Color TV', 'price': '1200'}\n"
 "{'name': 'DVD player', 'price': '200'}"
 msgstr ""
+"{'name': 'Color TV', 'price': '1200'}\n"
+"{'name': 'DVD player', 'price': '200'}"
 
 #: ../../../topics/exporters.rst:340
 msgid "Longer lines (when present) are pretty-formatted."
-msgstr ""
+msgstr "较长的行数(当存在时)是预格式化的。"
 
 #: ../../../topics/exporters.rst:343
 msgid "JsonItemExporter"
-msgstr ""
+msgstr "JsonItemExporter"
 
 #: ../../../topics/exporters.rst:347
 msgid ""
@@ -482,6 +514,8 @@ msgid ""
 "[{\"name\": \"Color TV\", \"price\": \"1200\"},\n"
 "{\"name\": \"DVD player\", \"price\": \"200\"}]"
 msgstr ""
+"[{\"name\": \"Color TV\", \"price\": \"1200\"},\n"
+"{\"name\": \"DVD player\", \"price\": \"200\"}]"
 
 #: ../../../topics/exporters.rst:362
 msgid ""
@@ -496,7 +530,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:373
 msgid "JsonLinesItemExporter"
-msgstr ""
+msgstr "JsonLinesItemExporter"
 
 #: ../../../topics/exporters.rst:377
 msgid ""
@@ -512,6 +546,8 @@ msgid ""
 "{\"name\": \"Color TV\", \"price\": \"1200\"}\n"
 "{\"name\": \"DVD player\", \"price\": \"200\"}"
 msgstr ""
+"{\"name\": \"Color TV\", \"price\": \"1200\"}\n"
+"{\"name\": \"DVD player\", \"price\": \"200\"}"
 
 #: ../../../topics/exporters.rst:390
 msgid ""

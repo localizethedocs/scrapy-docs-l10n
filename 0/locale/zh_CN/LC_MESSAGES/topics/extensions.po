@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:5
 msgid "Extensions"
-msgstr ""
+msgstr "扩展"
 
 #: ../../../topics/extensions.rst:7
 msgid ""
@@ -133,7 +133,7 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:77
 msgid "Writing your own extension"
-msgstr ""
+msgstr "写入您自己的扩展"
 
 #: ../../../topics/extensions.rst:79
 msgid ""
@@ -165,7 +165,7 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:96
 msgid "Sample extension"
-msgstr ""
+msgstr "示例扩展"
 
 #: ../../../topics/extensions.rst:98
 msgid ""
@@ -173,24 +173,28 @@ msgid ""
 "described in the previous section. This extension will log a message every "
 "time:"
 msgstr ""
+"我们将在这里执行一个简单的扩展来说明上一节描述的概念。这个扩展将每次记录一条"
+"消息："
 
 #: ../../../topics/extensions.rst:101
 msgid "a spider is opened"
-msgstr ""
+msgstr "一个蜘蛛已经打开"
 
 #: ../../../topics/extensions.rst:102
 msgid "a spider is closed"
-msgstr ""
+msgstr "一个蜘蛛已被关闭"
 
 #: ../../../topics/extensions.rst:103
 msgid "a specific number of items are scraped"
-msgstr ""
+msgstr "特定数量的物品已被擦除"
 
 #: ../../../topics/extensions.rst:105
 msgid ""
 "The extension will be enabled through the ``MYEXT_ENABLED`` setting and the "
 "number of items will be specified through the ``MYEXT_ITEMCOUNT`` setting."
 msgstr ""
+"扩展将通过 ``MYEXT_ENABLED`` 设置启用，项目数量将通过 ``MYEXT_ITEMCOUNT`` 设"
+"置。"
 
 #: ../../../topics/extensions.rst:108
 msgid "Here is the code of such extension::"
@@ -247,23 +251,23 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:155
 msgid "Built-in extensions reference"
-msgstr ""
+msgstr "内置扩展引用"
 
 #: ../../../topics/extensions.rst:158
 msgid "General purpose extensions"
-msgstr ""
+msgstr "一般用途扩展"
 
 #: ../../../topics/extensions.rst:161
 msgid "Log Stats extension"
-msgstr ""
+msgstr "日志统计扩展"
 
 #: ../../../topics/extensions.rst:168
 msgid "Log basic stats like crawled pages and scraped items."
-msgstr ""
+msgstr "记录基本统计信息，如破解过的页面和被窃的项目。"
 
 #: ../../../topics/extensions.rst:171
 msgid "Core Stats extension"
-msgstr ""
+msgstr "核心统计扩展"
 
 #: ../../../topics/extensions.rst:178
 msgid ""
@@ -281,13 +285,15 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:196
 msgid "Telnet console extension"
-msgstr ""
+msgstr "Telnet 控制台扩展"
 
 #: ../../../topics/extensions.rst:203
 msgid ""
 "Provides a telnet console for getting into a Python interpreter inside the "
 "currently running Scrapy process, which can be very useful for debugging."
 msgstr ""
+"提供一个 telnet 控制台，用于进入当前运行的 Scrapy 进程中的 Python 解释器，这"
+"对调试非常有用。"
 
 #: ../../../topics/extensions.rst:206
 msgid ""
@@ -298,16 +304,16 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:213
 msgid "Memory usage extension"
-msgstr ""
+msgstr "内存使用扩展"
 
 #: ../../../topics/extensions.rst:220
 msgid "This extension does not work in Windows."
-msgstr ""
+msgstr "此扩展在 Windows 中不可用。"
 
 #: ../../../topics/extensions.rst:222
 msgid ""
 "Monitors the memory used by the Scrapy process that runs the spider and:"
-msgstr ""
+msgstr "监视运行旋转器的废料过程所使用的内存，并且："
 
 #: ../../../topics/extensions.rst:224
 msgid ""
@@ -347,15 +353,15 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:241
 msgid "Memory debugger extension"
-msgstr ""
+msgstr "内存调试器扩展"
 
 #: ../../../topics/extensions.rst:248
 msgid "An extension for debugging memory usage. It collects information about:"
-msgstr ""
+msgstr "调试内存使用的扩展。它收集有关以下方面的信息："
 
 #: ../../../topics/extensions.rst:250
 msgid "objects uncollected by the Python garbage collector"
-msgstr ""
+msgstr "Python垃圾收集器未收集的对象"
 
 #: ../../../topics/extensions.rst:251
 msgid ""
@@ -371,19 +377,19 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:257
 msgid "Close spider extension"
-msgstr ""
+msgstr "关闭蜘蛛扩展"
 
 #: ../../../topics/extensions.rst:264
 msgid ""
 "Closes a spider automatically when some conditions are met, using a specific "
 "closing reason for each condition."
-msgstr ""
+msgstr "在满足某些条件时自动关闭旋转器，使用每个条件的特定关闭原因。"
 
 #: ../../../topics/extensions.rst:267
 msgid ""
 "The conditions for closing a spider can be configured through the following "
 "settings:"
-msgstr ""
+msgstr "关闭旋转器的条件可以通过以下设置进行配置："
 
 #: ../../../topics/extensions.rst:270
 msgid ":setting:`CLOSESPIDER_TIMEOUT`"
@@ -403,12 +409,12 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:278
 msgid "CLOSESPIDER_TIMEOUT"
-msgstr ""
+msgstr "PLAYLIST_TIMEOUT"
 
 #: ../../../topics/extensions.rst:280 ../../../topics/extensions.rst:292
 #: ../../../topics/extensions.rst:306 ../../../topics/extensions.rst:320
 msgid "Default: ``0``"
-msgstr ""
+msgstr "默认值: ``0``"
 
 #: ../../../topics/extensions.rst:282
 msgid ""
@@ -420,7 +426,7 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:290
 msgid "CLOSESPIDER_ITEMCOUNT"
-msgstr ""
+msgstr "PLAYLIST_TITLE"
 
 #: ../../../topics/extensions.rst:294
 msgid ""
@@ -432,7 +438,7 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:302
 msgid "CLOSESPIDER_PAGECOUNT"
-msgstr ""
+msgstr "PLAYLIST_DESCRIPTION"
 
 #: ../../../topics/extensions.rst:308
 msgid ""
@@ -441,10 +447,13 @@ msgid ""
 "``closespider_pagecount``. If zero (or non set), spiders won't be closed by "
 "number of crawled responses."
 msgstr ""
+"一个整数型变量，它指定的 crawl 响应的最大数量。 如果超越那个范围，那个蜘蛛将"
+"被关闭，原因是 ``closespider_pagecount`` 。 如果零(或未设置)，喷雾器将不会因"
+"为被压缩的响应数而关闭。"
 
 #: ../../../topics/extensions.rst:316
 msgid "CLOSESPIDER_ERRORCOUNT"
-msgstr ""
+msgstr "CLESSPIDER_ERRORCOUNT"
 
 #: ../../../topics/extensions.rst:322
 msgid ""
@@ -453,6 +462,9 @@ msgid ""
 "it will be closed with the reason ``closespider_errorcount``. If zero (or "
 "non set), spiders won't be closed by number of errors."
 msgstr ""
+"在关闭拼写器之前指定接收的最大错误数的整数。 如果蜘蛛生成的错误超过了这个数"
+"量，它将被关闭，原因是 ``closespider_errorcount`` 。 如果零(或未设定)，喷洒器"
+"将不会因数个错误而关闭。"
 
 #: ../../../topics/extensions.rst:328
 msgid "StatsMailer extension"
@@ -468,21 +480,22 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:344
 msgid "Debugging extensions"
-msgstr ""
+msgstr "调试扩展"
 
 #: ../../../topics/extensions.rst:347
 msgid "Stack trace dump extension"
-msgstr ""
+msgstr "堆栈跟踪转储扩展"
 
 #: ../../../topics/extensions.rst:351
 msgid ""
 "Dumps information about the running process when a `SIGQUIT`_ or `SIGUSR2`_ "
 "signal is received. The information dumped is the following:"
 msgstr ""
+"当收到`SIGQUIT`_ 或 `SIGUSR2_ 信号时有关运行过程的信息。丢失的信息如下："
 
 #: ../../../topics/extensions.rst:354
 msgid "engine status (using ``scrapy.utils.engine.get_engine_status()``)"
-msgstr ""
+msgstr "引擎状态 (使用 ``scrapy.utils.engine.get_engine_status()`` )"
 
 #: ../../../topics/extensions.rst:355
 msgid "live references (see :ref:`topics-leaks-trackrefs`)"
@@ -490,13 +503,13 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:356
 msgid "stack trace of all threads"
-msgstr ""
+msgstr "所有线程的堆栈跟踪"
 
 #: ../../../topics/extensions.rst:358
 msgid ""
 "After the stack trace and engine status is dumped, the Scrapy process "
 "continues running normally."
-msgstr ""
+msgstr "堆栈跟踪和引擎状态被倾弃后，废料处理继续正常运行。"
 
 #: ../../../topics/extensions.rst:361
 msgid ""
@@ -506,25 +519,25 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:364
 msgid "There are at least two ways to send Scrapy the `SIGQUIT`_ signal:"
-msgstr ""
+msgstr "至少有两种方式发送废件`SIGQUIT`_ 信号："
 
 #: ../../../topics/extensions.rst:366
 msgid "By pressing Ctrl-\\ while a Scrapy process is running (Linux only?)"
-msgstr ""
+msgstr "当Scrapy process 正在运行时按 Ctrl \\ (仅限Linux？)"
 
 #: ../../../topics/extensions.rst:367
 msgid ""
 "By running this command (assuming ``<pid>`` is the process id of the Scrapy "
 "process)::"
-msgstr ""
+msgstr "通过运行此命令(假定``<pid>`` 是Scrapy进程的进程ID)::"
 
 #: ../../../topics/extensions.rst:370
 msgid "kill -QUIT <pid>"
-msgstr ""
+msgstr "击杀-QUIT <pid>"
 
 #: ../../../topics/extensions.rst:376
 msgid "Debugger extension"
-msgstr ""
+msgstr "调试器扩展"
 
 #: ../../../topics/extensions.rst:380
 msgid ""

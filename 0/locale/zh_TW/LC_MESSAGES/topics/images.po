@@ -162,7 +162,7 @@ msgstr ""
 #: ../../../topics/images.rst:97 ../../../topics/images.rst:162
 #: ../../../topics/images.rst:201
 msgid "For example::"
-msgstr ""
+msgstr "例如：\\ ::\n"
 
 #: ../../../topics/images.rst:99
 msgid "IMAGES_STORE = '/path/to/valid/dir'"

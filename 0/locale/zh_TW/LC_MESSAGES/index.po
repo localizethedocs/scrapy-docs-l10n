@@ -146,7 +146,7 @@ msgstr ""
 
 #: ../../../index.rst:87
 msgid ":doc:`topics/item-pipeline`"
-msgstr ""
+msgstr ":doc:`topics/item-pipeline`"
 
 #: ../../../index.rst:87
 msgid "Post-process and store your scraped data."
@@ -162,7 +162,7 @@ msgstr ""
 
 #: ../../../index.rst:93
 msgid ":doc:`topics/link-extractors`"
-msgstr ""
+msgstr ":doc:`topics/link-extractors`"
 
 #: ../../../index.rst:93
 msgid "Convenient classes to extract links to follow from pages."

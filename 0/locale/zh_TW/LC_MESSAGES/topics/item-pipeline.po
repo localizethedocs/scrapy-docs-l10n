@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/item-pipeline.rst:5
 msgid "Item Pipeline"
-msgstr ""
+msgstr "項目管線"
 
 #: ../../../topics/item-pipeline.rst:7
 msgid ""
@@ -41,7 +41,7 @@ msgstr ""
 
 #: ../../../topics/item-pipeline.rst:17
 msgid "cleansing HTML data"
-msgstr ""
+msgstr "清理 HTML 資料"
 
 #: ../../../topics/item-pipeline.rst:18
 msgid ""
@@ -58,7 +58,7 @@ msgstr ""
 
 #: ../../../topics/item-pipeline.rst:24
 msgid "Writing your own item pipeline"
-msgstr ""
+msgstr "編寫您自己的項目管線"
 
 #: ../../../topics/item-pipeline.rst:26
 msgid ""
@@ -108,7 +108,7 @@ msgstr ""
 
 #: ../../../topics/item-pipeline.rst:60
 msgid "Item pipeline example"
-msgstr ""
+msgstr "項目管線範例"
 
 #: ../../../topics/item-pipeline.rst:63
 msgid "Price validation and dropping items with no prices"

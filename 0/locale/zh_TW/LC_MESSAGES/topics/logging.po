@@ -175,7 +175,7 @@ msgstr ""
 
 #: ../../../topics/logging.rst:113
 msgid "Logging settings"
-msgstr ""
+msgstr "日誌紀錄設定"
 
 #: ../../../topics/logging.rst:115
 msgid "These settings can be used to configure the logging:"

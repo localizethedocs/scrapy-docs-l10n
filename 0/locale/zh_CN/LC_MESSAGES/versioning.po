@@ -53,7 +53,7 @@ msgstr ""
 
 #: ../../../versioning.rst:22
 msgid "For example:"
-msgstr ""
+msgstr "例如："
 
 #: ../../../versioning.rst:24
 msgid ""

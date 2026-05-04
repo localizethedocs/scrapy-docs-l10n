@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:5
 msgid "Spider Middleware"
-msgstr ""
+msgstr "蜘蛛中间件"
 
 #: ../../../topics/spider-middleware.rst:7
 msgid ""
@@ -31,7 +31,7 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:15
 msgid "Activating a spider middleware"
-msgstr ""
+msgstr "激活旋转器中间件"
 
 #: ../../../topics/spider-middleware.rst:17
 msgid ""
@@ -90,10 +90,12 @@ msgid ""
 "Finally, keep in mind that some middlewares may need to be enabled through a "
 "particular setting. See each middleware documentation for more info."
 msgstr ""
+"最后，牢记某些中间件可能需要通过特定的设置启用。请参阅每个中间件文档以获取更"
+"多信息。"
 
 #: ../../../topics/spider-middleware.rst:53
 msgid "Writing your own spider middleware"
-msgstr ""
+msgstr "写入你自己的蜘蛛中间件"
 
 #: ../../../topics/spider-middleware.rst:55
 msgid ""
@@ -105,7 +107,7 @@ msgstr ""
 msgid ""
 "This method is called for each response that goes through the spider "
 "middleware and into the spider, for processing."
-msgstr ""
+msgstr "这个方法需要通过旋转器中间件和旋转器进行处理。"
 
 #: ../../../topics/spider-middleware.rst:67
 msgid ""
@@ -118,6 +120,8 @@ msgid ""
 "executing all other middlewares until, finally, the response is handed to "
 "the spider for processing."
 msgstr ""
+"如果返回 ``None`` ，废纸将继续处理这个响应，执行所有其他中间程序，直到最后将"
+"响应交给蜘蛛处理。"
 
 #: ../../../topics/spider-middleware.rst:74
 msgid ""
@@ -130,11 +134,11 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: ../../../topics/spider-middleware.rst:80
 msgid "the response being processed"
-msgstr ""
+msgstr "正在处理的响应"
 
 #: ../../../topics/spider-middleware.rst:83
 msgid "the spider for which this response is intended"
@@ -144,7 +148,7 @@ msgstr ""
 msgid ""
 "This method is called with the results returned from the Spider, after it "
 "has processed the response."
-msgstr ""
+msgstr "在处理了响应后，这个方法会与从Spider返回的结果一起调用。"
 
 #: ../../../topics/spider-middleware.rst:92
 msgid ""
@@ -154,11 +158,11 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:95
 msgid "the response which generated this output from the spider"
-msgstr ""
+msgstr "从旋转器生成此输出的响应"
 
 #: ../../../topics/spider-middleware.rst:99
 msgid "the result returned by the spider"
-msgstr ""
+msgstr "旋转器返回的结果"
 
 #: ../../../topics/spider-middleware.rst:103
 msgid "the spider whose result is being processed"
@@ -193,11 +197,11 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:124
 msgid "the response being processed when the exception was raised"
-msgstr ""
+msgstr "异常提起时正在处理的响应"
 
 #: ../../../topics/spider-middleware.rst:128
 msgid "the exception raised"
-msgstr ""
+msgstr "提出异常了"
 
 #: ../../../topics/spider-middleware.rst:131
 msgid "the spider which raised the exception"
@@ -237,7 +241,7 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:168
 msgid "Built-in spider middleware reference"
-msgstr ""
+msgstr "内置旋转器中间件引用"
 
 #: ../../../topics/spider-middleware.rst:170
 msgid ""
@@ -255,7 +259,7 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:178
 msgid "DepthMiddleware"
-msgstr ""
+msgstr "深中间件"
 
 #: ../../../topics/spider-middleware.rst:185
 msgid ""
@@ -288,7 +292,7 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:199
 msgid "HttpErrorMiddleware"
-msgstr ""
+msgstr "HttpErrorMiddleware"
 
 #: ../../../topics/spider-middleware.rst:206
 msgid ""
@@ -296,12 +300,14 @@ msgid ""
 "have to deal with them, which (most of the time) imposes an overhead, "
 "consumes more resources, and makes the spider logic more complex."
 msgstr ""
+"过滤不成功的HTTP响应(错误)，所以拼写器不必处理它们。 (大部分时间)造成间接费"
+"用，消耗更多资源，并使螺旋逻辑更加复杂。"
 
 #: ../../../topics/spider-middleware.rst:210
 msgid ""
 "According to the `HTTP standard`_, successful responses are those whose "
 "status codes are in the 200-300 range."
-msgstr ""
+msgstr "根据`HTTP标准`_'，成功的答复是其身份码在200-300范围内的那些人。"
 
 #: ../../../topics/spider-middleware.rst:215
 msgid ""
@@ -335,38 +341,39 @@ msgid ""
 "Keep in mind, however, that it's usually a bad idea to handle non-200 "
 "responses, unless you really know what you're doing."
 msgstr ""
+"然而，要记住，处理非200个响应通常是一个坏主意，除非你真的知道你在做什么。"
 
 #: ../../../topics/spider-middleware.rst:235
 msgid "For more information see: `HTTP Status Code Definitions`_."
-msgstr ""
+msgstr "详情见：`HTTP Status Code Definitions`_。"
 
 #: ../../../topics/spider-middleware.rst:240
 msgid "HttpErrorMiddleware settings"
-msgstr ""
+msgstr "HttpErrorMiddleware 设置"
 
 #: ../../../topics/spider-middleware.rst:245
 msgid "HTTPERROR_ALLOWED_CODES"
-msgstr ""
+msgstr "HTTPERROR_ALLOWED_CODES"
 
 #: ../../../topics/spider-middleware.rst:247
 msgid "Default: ``[]``"
-msgstr ""
+msgstr "默认值： ``[]``"
 
 #: ../../../topics/spider-middleware.rst:249
 msgid "Pass all responses with non-200 status codes contained in this list."
-msgstr ""
+msgstr "通过列表中包含非200条状态码的所有回复。"
 
 #: ../../../topics/spider-middleware.rst:254
 msgid "HTTPERROR_ALLOW_ALL"
-msgstr ""
+msgstr "HTTPERROR_ALLOW_ALL"
 
 #: ../../../topics/spider-middleware.rst:256
 msgid "Default: ``False``"
-msgstr ""
+msgstr "默认值： ``False``"
 
 #: ../../../topics/spider-middleware.rst:258
 msgid "Pass all responses, regardless of its status code."
-msgstr ""
+msgstr "通过所有响应，无论其状态码如何。"
 
 #: ../../../topics/spider-middleware.rst:261
 msgid "OffsiteMiddleware"
@@ -421,37 +428,37 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:295
 msgid "RefererMiddleware"
-msgstr ""
+msgstr "参考中间件"
 
 #: ../../../topics/spider-middleware.rst:302
 msgid ""
 "Populates Request ``Referer`` header, based on the URL of the Response which "
 "generated it."
-msgstr ""
+msgstr "根据生成响应的 URL 填充请求的 ``Referer`` 标题。"
 
 #: ../../../topics/spider-middleware.rst:306
 msgid "RefererMiddleware settings"
-msgstr ""
+msgstr "参考中间件设置"
 
 #: ../../../topics/spider-middleware.rst:311
 msgid "REFERER_ENABLED"
-msgstr ""
+msgstr "REFER_已启用"
 
 #: ../../../topics/spider-middleware.rst:315
 msgid "Default: ``True``"
-msgstr ""
+msgstr "默认: ``True``"
 
 #: ../../../topics/spider-middleware.rst:317
 msgid "Whether to enable referer middleware."
-msgstr ""
+msgstr "是否启用审核者中间件。"
 
 #: ../../../topics/spider-middleware.rst:320
 msgid "UrlLengthMiddleware"
-msgstr ""
+msgstr "UrlLengthMiddleware"
 
 #: ../../../topics/spider-middleware.rst:327
 msgid "Filters out requests with URLs longer than URLLENGTH_LIMIT"
-msgstr ""
+msgstr "过滤带有URL长于URLLENGTH_LIMIT"
 
 #: ../../../topics/spider-middleware.rst:329
 msgid ""

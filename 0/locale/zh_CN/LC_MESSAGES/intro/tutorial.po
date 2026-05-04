@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:5
 msgid "Scrapy Tutorial"
-msgstr ""
+msgstr "碎片教程"
 
 #: ../../../intro/tutorial.rst:7
 msgid ""
@@ -35,11 +35,11 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:13
 msgid "This tutorial will walk you through these tasks:"
-msgstr ""
+msgstr "这个教程将使你走过这些任务："
 
 #: ../../../intro/tutorial.rst:15
 msgid "Creating a new Scrapy project"
-msgstr ""
+msgstr "创建一个新的废钢项目"
 
 #: ../../../intro/tutorial.rst:16
 msgid "Defining the Items you will extract"
@@ -69,7 +69,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:34
 msgid "Creating a project"
-msgstr ""
+msgstr "创建一个项目"
 
 #: ../../../intro/tutorial.rst:36
 msgid ""
@@ -79,11 +79,11 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:39
 msgid "scrapy startproject tutorial"
-msgstr ""
+msgstr "碎片启动项目教程"
 
 #: ../../../intro/tutorial.rst:41
 msgid "This will create a ``tutorial`` directory with the following contents::"
-msgstr ""
+msgstr "这将创建一个包含以下内容的 ``tutorial`` 目录："
 
 #: ../../../intro/tutorial.rst:43
 msgid ""
@@ -175,7 +175,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:92
 msgid "Our first Spider"
-msgstr ""
+msgstr "我们的第一个蜘蛛。"
 
 #: ../../../intro/tutorial.rst:94
 msgid ""
@@ -264,7 +264,7 @@ msgstr ""
 #: ../../../intro/tutorial.rst:144
 msgid ""
 "To put our spider to work, go to the project's top level directory and run::"
-msgstr ""
+msgstr "要使我们的旋转器正常工作，请前往项目的顶级目录并运行："
 
 #: ../../../intro/tutorial.rst:146 ../../../intro/tutorial.rst:371
 msgid "scrapy crawl dmoz"
@@ -309,7 +309,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:172
 msgid "What just happened under the hood?"
-msgstr ""
+msgstr "刚刚发生了什么事情？"
 
 #: ../../../intro/tutorial.rst:174
 msgid ""
@@ -714,7 +714,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:424
 msgid "Storing the scraped data"
-msgstr ""
+msgstr "存储废料数据"
 
 #: ../../../intro/tutorial.rst:426
 msgid ""
@@ -744,7 +744,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:442
 msgid "Next steps"
-msgstr ""
+msgstr "今后的步骤"
 
 #: ../../../intro/tutorial.rst:444
 msgid ""

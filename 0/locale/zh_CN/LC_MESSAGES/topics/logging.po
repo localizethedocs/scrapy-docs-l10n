@@ -111,7 +111,7 @@ msgstr ""
 
 #: ../../../topics/logging.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: ../../../topics/logging.rst:61
 msgid ""

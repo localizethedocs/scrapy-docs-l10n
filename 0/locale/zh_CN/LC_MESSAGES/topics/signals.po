@@ -103,7 +103,7 @@ msgstr ""
 
 #: ../../../topics/signals.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: ../../../topics/signals.rst:73
 msgid "the item scraped"
@@ -153,7 +153,7 @@ msgstr ""
 
 #: ../../../topics/signals.rst:118
 msgid "the spider which has been closed"
-msgstr ""
+msgstr "已关闭的蜘蛛。"
 
 #: ../../../topics/signals.rst:121
 msgid ""
@@ -179,7 +179,7 @@ msgstr ""
 
 #: ../../../topics/signals.rst:142
 msgid "the spider which has been opened"
-msgstr ""
+msgstr "已打开的 spider"
 
 #: ../../../topics/signals.rst:146
 msgid "spider_idle"
@@ -239,7 +239,7 @@ msgstr ""
 
 #: ../../../topics/signals.rst:180
 msgid "the response being processed when the exception was raised"
-msgstr ""
+msgstr "异常提起时正在处理的响应"
 
 #: ../../../topics/signals.rst:183
 msgid "the spider which raised the exception"
@@ -287,7 +287,7 @@ msgstr ""
 
 #: ../../../topics/signals.rst:220 ../../../topics/signals.rst:239
 msgid "the spider for which the response is intended"
-msgstr ""
+msgstr "响应的旋转器"
 
 #: ../../../topics/signals.rst:224
 msgid "response_downloaded"
