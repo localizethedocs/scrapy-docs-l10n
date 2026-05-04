@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"POT-Creation-Date: 2026-04-06 09:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:5
 msgid "Items"
-msgstr ""
+msgstr "项目"
 
 #: ../../../topics/items.rst:10
 msgid ""
@@ -38,7 +38,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:22
 msgid "Item Types"
-msgstr ""
+msgstr "项目类型"
 
 #: ../../../topics/items.rst:24
 msgid ""
@@ -50,7 +50,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:33
 msgid "Dictionaries"
-msgstr ""
+msgstr "词典"
 
 #: ../../../topics/items.rst:35
 msgid "As an item type, :class:`dict` is convenient and familiar."
@@ -58,7 +58,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:40
 msgid "Item objects"
-msgstr ""
+msgstr "项目对象"
 
 #: ../../../topics/items.rst:42
 msgid ""
@@ -68,7 +68,7 @@ msgstr ""
 
 #: ../../../../scrapy/item.py:docstring of scrapy.item.Item:1
 msgid "Base class for scraped items."
-msgstr ""
+msgstr "用于支架物品的基础类"
 
 #: ../../../../scrapy/item.py:docstring of scrapy.item.Item:3
 msgid ""
@@ -143,7 +143,7 @@ msgstr ""
 #: ../../../topics/items.rst:67 ../../../topics/items.rst:94
 #: ../../../topics/items.rst:126
 msgid "Example:"
-msgstr ""
+msgstr "示例："
 
 #: ../../../topics/items.rst:69
 msgid ""
@@ -154,10 +154,16 @@ msgid ""
 "    one_field = Field()\n"
 "    another_field = Field()"
 msgstr ""
+"从 scrapy.item 导入项目，字段\n"
+"\n"
+"\n"
+"class CustomItem:\n"
+"    one_field = Field()\n"
+"    another_field = Field()"
 
 #: ../../../topics/items.rst:81
 msgid "Dataclass objects"
-msgstr ""
+msgstr "基准星对象"
 
 #: ../../../topics/items.rst:83
 msgid ""
@@ -169,11 +175,11 @@ msgstr ""
 
 #: ../../../topics/items.rst:87
 msgid "Additionally, ``dataclass`` items also allow you to:"
-msgstr ""
+msgstr "此外，``dataclass`` 项目也允许您："
 
 #: ../../../topics/items.rst:89 ../../../topics/items.rst:119
 msgid "define the type and default value of each defined field."
-msgstr ""
+msgstr "定义每个定义字段的类型和默认值。"
 
 #: ../../../topics/items.rst:91
 msgid ""
@@ -192,14 +198,21 @@ msgid ""
 "    one_field: str\n"
 "    another_field: int"
 msgstr ""
+"从 dataclasses 导入 dataclass\n"
+"\n"
+"\n"
+"@dataclass\n"
+"customitem:\n"
+"    one_field: str\n"
+"    another_field: int"
 
 #: ../../../topics/items.rst:106
 msgid "Field types are not enforced at run time."
-msgstr ""
+msgstr "字段类型在运行时没有强制执行。"
 
 #: ../../../topics/items.rst:111
 msgid "attr.s objects"
-msgstr ""
+msgstr "对象"
 
 #: ../../../topics/items.rst:113
 msgid ""
@@ -211,7 +224,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:117
 msgid "Additionally, ``attr.s`` items also allow to:"
-msgstr ""
+msgstr "此外，``tot.s`` 项目也允许："
 
 #: ../../../topics/items.rst:121
 msgid ""
@@ -235,14 +248,21 @@ msgid ""
 "    one_field = attr.ib()\n"
 "    another_field = attr.ib()"
 msgstr ""
+"导入 attr\n"
+"\n"
+"\n"
+"@tot.s\n"
+"CustomItem:\n"
+"    one_field = tot.ib()\n"
+"    another_field = tot.ib()"
 
 #: ../../../topics/items.rst:140 ../../../topics/items.rst:211
 msgid "Working with Item objects"
-msgstr ""
+msgstr "使用项目对象"
 
 #: ../../../topics/items.rst:145
 msgid "Declaring Item subclasses"
-msgstr ""
+msgstr "声明项子类"
 
 #: ../../../topics/items.rst:147
 msgid ""
@@ -262,6 +282,15 @@ msgid ""
 "    tags = scrapy.Field()\n"
 "    last_updated = scrapy.Field(serializer=str)"
 msgstr ""
+"导入 scrapy\n"
+"\n"
+"\n"
+"class Product(scrapy.Item):\n"
+"    name = scrapy.Field()\n"
+"    price = scrapy.Field()\n"
+"    stock = scrapy.Field()\n"
+"    tags = scrapy.Field()\n"
+"    last_updated = scrapy.Field(serializer=str)"
 
 #: ../../../topics/items.rst:162
 msgid ""
@@ -269,10 +298,12 @@ msgid ""
 "similar to `Django Models`_, except that Scrapy Items are much simpler as "
 "there is no concept of different field types."
 msgstr ""
+"熟悉`Django`_ 的人会注意到报废物品类似于`Django Models`_, 除了废料条目更简"
+"单，因为没有不同字段类型的概念。"
 
 #: ../../../topics/items.rst:173
 msgid "Declaring fields"
-msgstr ""
+msgstr "声明字段"
 
 #: ../../../topics/items.rst:175
 msgid ""
@@ -304,7 +335,7 @@ msgstr ""
 
 #: ../../../../scrapy/item.py:docstring of scrapy.item.Field:1
 msgid "Container of field metadata"
-msgstr ""
+msgstr "字段元数据容器"
 
 #: ../../../topics/items.rst:196
 msgid ""
@@ -321,6 +352,8 @@ msgid ""
 "Please refer to the documentation for `dataclasses.field`_ and `attr.ib`_ "
 "for additional information."
 msgstr ""
+"还可以对 ``dataclass`` 和 ``tours`` 两个项目声明字段元数据。请参考文档中的 "
+"`dataclasses.field`_ 和 `tot.ib`_ 获取更多信息。"
 
 #: ../../../topics/items.rst:215
 msgid ""
@@ -331,7 +364,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:220
 msgid "Creating items"
-msgstr ""
+msgstr "创建项目"
 
 #: ../../../topics/items.rst:222
 msgid ""
@@ -339,10 +372,13 @@ msgid ""
 ">>> print(product)\n"
 "Product(name='Desktop PC', price=1000)"
 msgstr ""
+">>>> product = Product(name=\"Desktop PC\", price=1000)\n"
+">>>> print(product)\n"
+"Product(name='Desktop PC', price=1000)"
 
 #: ../../../topics/items.rst:230
 msgid "Getting field values"
-msgstr ""
+msgstr "获取字段值"
 
 #: ../../../topics/items.rst:232
 msgid ""
@@ -382,10 +418,44 @@ msgid ""
 ">>> \"lala\" in product.fields  # is lala a declared field?\n"
 "False"
 msgstr ""
+">>>> product[\"name\"]\n"
+"桌面PCformat@@1 >>> 产品 et(\"name\")\n"
+"桌面PC\n"
+"\n"
+">> > product[\"price\"]\n"
+"1000\n"
+"\n"
+">> > product[\"last_updated\"]\n"
+"Traceby (最近一次来电):\n"
+"    . .\n"
+"密钥错误：“last _updated”\n"
+"\n"
+">> 产品 et(\"最后更新\", \"未设置\")\n"
+"未设置\n"
+"\n"
+">>> product[\"lala\"] # 获取未知字段\n"
+"Traceby (最近的通话时间):\n"
+"    。 。\n"
+"Key错误：'lala'\n"
+"\n"
+">> 产品 et(\"lala\", \"未知字段\")\n"
+"\"未知字段\"\n"
+"\n"
+">>> 产品#中的“name”字段被填入？\n"
+"True\n"
+"\n"
+">>> \"last _updated\" in product # is last_updated?\n"
+"False\n"
+"\n"
+">> > > \"last _updated\" in product ields # 是最后更新一个声明的字段吗？\n"
+"True\n"
+"\n"
+">>> \"lala\" 在产品中。fields # 是一个声明的字段吗？\n"
+"False"
 
 #: ../../../topics/items.rst:272
 msgid "Setting field values"
-msgstr ""
+msgstr "设置字段值"
 
 #: ../../../topics/items.rst:274
 msgid ""
@@ -398,10 +468,18 @@ msgid ""
 "    ...\n"
 "KeyError: 'Product does not support field: lala'"
 msgstr ""
+">>>> product[\"last_updated\"] = \"todayy\"\n"
+">>>> product[\"last_updated\"]\n"
+"今日\n"
+"\n"
+">> product[\"lala\"] = \"test\" # 设置未知字段\n"
+"Traceback(最近一次调用):\n"
+"    . 。\n"
+"密钥错误：“产品不支持字段: lala”"
 
 #: ../../../topics/items.rst:287
 msgid "Accessing all populated values"
-msgstr ""
+msgstr "访问所有有人居住的值"
 
 #: ../../../topics/items.rst:289
 msgid "To access all populated values, just use the typical :class:`dict` API:"
@@ -415,16 +493,21 @@ msgid ""
 ">>> product.items()\n"
 "[('price', 1000), ('name', 'Desktop PC')]"
 msgstr ""
+">>> product.keys()\n"
+"['price', 'name']\n"
+"\n"
+">> > product.items()\n"
+"[('price', 1000) ('name', 'desktop PC')]"
 
 #: ../../../topics/items.rst:303
 msgid "Copying items"
-msgstr ""
+msgstr "复制项目"
 
 #: ../../../topics/items.rst:305
 msgid ""
 "To copy an item, you must first decide whether you want a shallow copy or a "
 "deep copy."
-msgstr ""
+msgstr "要复制一个物品，您必须首先决定是要一个浅色的副本还是深深的副本。"
 
 #: ../../../topics/items.rst:308
 msgid ""
@@ -440,10 +523,13 @@ msgid ""
 "list of tags. Adding a tag to the list of one of the items will add the tag "
 "to the other item as well."
 msgstr ""
+"例如，如果你有一个带有标签列表的项目，并且你创建了一个浅色的项目副本。 原始项"
+"目和副本都有相同的标签列表。 将标签添加到其中一个项目的列表中，也会将标签添加"
+"到其他项目中。"
 
 #: ../../../topics/items.rst:317
 msgid "If that is not the desired behavior, use a deep copy instead."
-msgstr ""
+msgstr "如果这不是需要的行为，则使用深文本代替。"
 
 #: ../../../topics/items.rst:319
 msgid "See :mod:`copy` for more information."
@@ -464,11 +550,11 @@ msgstr ""
 
 #: ../../../topics/items.rst:331
 msgid "Other common tasks"
-msgstr ""
+msgstr "其他共同任务"
 
 #: ../../../topics/items.rst:333
 msgid "Creating dicts from items:"
-msgstr ""
+msgstr "从项目创建口令："
 
 #: ../../../topics/items.rst:335
 msgid ""
@@ -489,17 +575,18 @@ msgstr ""
 
 #: ../../../topics/items.rst:352
 msgid "Extending Item subclasses"
-msgstr ""
+msgstr "扩展项目子类"
 
 #: ../../../topics/items.rst:354
 msgid ""
 "You can extend Items (to add more fields or to change some metadata for some "
 "fields) by declaring a subclass of your original Item."
 msgstr ""
+"您可以通过声明原始项目的亚类来扩展项目 (添加更多字段或更改某些字段的元数据)。"
 
 #: ../../../topics/items.rst:357
 msgid "For example:"
-msgstr ""
+msgstr "例如："
 
 #: ../../../topics/items.rst:359
 msgid ""
@@ -507,28 +594,37 @@ msgid ""
 "    discount_percent = scrapy.Field(serializer=str)\n"
 "    discount_expiration_date = scrapy.Field()"
 msgstr ""
+"类折扣 Product(Product):\n"
+"    discount_per = scrapy.Field(serializer=str)\n"
+"    discount_expiration_date = scrapy.Field()"
 
 #: ../../../topics/items.rst:365
 msgid ""
 "You can also extend field metadata by using the previous field metadata and "
 "appending more values, or changing existing values, like this:"
 msgstr ""
+"您也可以通过使用先前的字段元数据和附加更多的值或更改现有的值来扩展字段元数"
+"据，如："
 
 #: ../../../topics/items.rst:368
 msgid ""
 "class SpecificProduct(Product):\n"
 "    name = scrapy.Field(Product.fields[\"name\"], serializer=my_serializer)"
 msgstr ""
+"class SpecificProduct(Product):\n"
+"    name = scrapy.Field(Product.fields[\"name\"], serializer=my_serializer)"
 
 #: ../../../topics/items.rst:373
 msgid ""
 "That adds (or replaces) the ``serializer`` metadata key for the ``name`` "
 "field, keeping all the previously existing metadata values."
 msgstr ""
+"添加(或替换) ``name`` 字段的 ``serializer`` 元数据键，保留所有以前存在的元数"
+"据值。"
 
 #: ../../../topics/items.rst:382
 msgid "Supporting All Item Types"
-msgstr ""
+msgstr "支持所有项目类型"
 
 #: ../../../topics/items.rst:384
 msgid ""
@@ -540,7 +636,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:391
 msgid "Other classes related to items"
-msgstr ""
+msgstr "与项目相关的其他类"
 
 #: ../../../../scrapy/item.py:docstring of scrapy.item.ItemMeta:1
 msgid "Metaclass_ of :class:`Item` that handles field definitions."

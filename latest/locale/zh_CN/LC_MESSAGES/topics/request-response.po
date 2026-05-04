@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"POT-Creation-Date: 2026-04-06 09:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,7 +56,7 @@ msgstr ""
 
 #: ../../../topics/request-response.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: ../../../topics/request-response.rst:29
 msgid ""
@@ -344,7 +344,7 @@ msgstr ""
 
 #: ../../../docstring of scrapy.Request.priority:1
 msgid "Default: ``0``"
-msgstr ""
+msgstr "默认值: ``0``"
 
 #: ../../../docstring of scrapy.Request.priority:3
 msgid ""
@@ -568,7 +568,7 @@ msgstr ""
 #: ../../../../scrapy/http/request/__init__.py:docstring of
 #: scrapy.http.request.NO_CALLBACK:5
 msgid "For example:"
-msgstr ""
+msgstr "例如："
 
 #: ../../../../scrapy/http/request/__init__.py:docstring of
 #: scrapy.http.request.NO_CALLBACK:7
@@ -610,7 +610,7 @@ msgstr ""
 
 #: ../../../topics/request-response.rst:266
 msgid "Example:"
-msgstr ""
+msgstr "示例："
 
 #: ../../../topics/request-response.rst:268
 msgid ""

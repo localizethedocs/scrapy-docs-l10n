@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"POT-Creation-Date: 2026-04-06 09:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,17 +19,17 @@ msgstr ""
 
 #: ../../../topics/api.rst:5
 msgid "Core API"
-msgstr ""
+msgstr "Core API"
 
 #: ../../../topics/api.rst:7
 msgid ""
 "This section documents the Scrapy core API, and it's intended for developers "
 "of extensions and middlewares."
-msgstr ""
+msgstr "本节记载了Scrapy core API，它的对象是扩展和中间件的开发者。"
 
 #: ../../../topics/api.rst:13
 msgid "Crawler API"
-msgstr ""
+msgstr "Crawler API"
 
 #: ../../../topics/api.rst:15
 msgid ""
@@ -57,7 +57,7 @@ msgstr ""
 
 #: ../../../topics/api.rst:40
 msgid "The request fingerprint builder of this crawler."
-msgstr ""
+msgstr "此crawler的请求指纹生成器。"
 
 #: ../../../topics/api.rst:42
 msgid ""
@@ -67,13 +67,13 @@ msgstr ""
 
 #: ../../../topics/api.rst:47
 msgid "The settings manager of this crawler."
-msgstr ""
+msgstr "此Crawler的设置管理器。"
 
 #: ../../../topics/api.rst:49
 msgid ""
 "This is used by extensions & middlewares to access the Scrapy settings of "
 "this crawler."
-msgstr ""
+msgstr "此选项被扩展 & 中间器用于访问此 crawler 的Scrapy 设置。"
 
 #: ../../../topics/api.rst:52
 msgid "For an introduction on Scrapy settings see :ref:`topics-settings`."
@@ -85,13 +85,13 @@ msgstr ""
 
 #: ../../../topics/api.rst:58
 msgid "The signals manager of this crawler."
-msgstr ""
+msgstr "这个爬行器的信号管理器。"
 
 #: ../../../topics/api.rst:60
 msgid ""
 "This is used by extensions & middlewares to hook themselves into Scrapy "
 "functionality."
-msgstr ""
+msgstr "扩展和中间件用于将自己绑定到废料功能。"
 
 #: ../../../topics/api.rst:63
 msgid "For an introduction on signals see :ref:`topics-signals`."
@@ -103,13 +103,13 @@ msgstr ""
 
 #: ../../../topics/api.rst:69
 msgid "The stats collector of this crawler."
-msgstr ""
+msgstr "这个crawler的数据收集器。"
 
 #: ../../../topics/api.rst:71
 msgid ""
 "This is used from extensions & middlewares to record stats of their "
 "behaviour, or access stats collected by other extensions."
-msgstr ""
+msgstr "这是从扩展和中期来记录他们的行为统计或其他扩展收集的访问统计信息。"
 
 #: ../../../topics/api.rst:74
 msgid "For an introduction on stats collection see :ref:`topics-stats`."
@@ -121,11 +121,11 @@ msgstr ""
 
 #: ../../../topics/api.rst:80
 msgid "The extension manager that keeps track of enabled extensions."
-msgstr ""
+msgstr "用于跟踪启用扩展的扩展管理器。"
 
 #: ../../../topics/api.rst:82
 msgid "Most extensions won't need to access this attribute."
-msgstr ""
+msgstr "大多数扩展不需要访问此属性。"
 
 #: ../../../topics/api.rst:84
 msgid ""
@@ -137,7 +137,7 @@ msgstr ""
 msgid ""
 "The execution engine, which coordinates the core crawling logic between the "
 "scheduler, downloader and spiders."
-msgstr ""
+msgstr "执行引擎，它协调调度器、下载器和蜘蛛之间的核心爬行逻辑。"
 
 #: ../../../topics/api.rst:92
 msgid ""
@@ -145,6 +145,8 @@ msgid ""
 "the downloader and scheduler behaviour, although this is an advanced use and "
 "this API is not yet stable."
 msgstr ""
+"一些扩展可能想要访问废钢引擎，检查或修改下载器和调度器行为。 虽然这是一个高级"
+"用途，此 API 尚不稳定。"
 
 #: ../../../topics/api.rst:98
 msgid ""
@@ -160,28 +162,32 @@ msgid ""
 "and *kwargs* arguments, while setting the execution engine in motion. Should "
 "be called only once."
 msgstr ""
+"以给定的 *args* 和 *kwargs * 参数实例启动龙卷风，同时启动执行引擎。 只能打一"
+"次电话。"
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.Crawler.crawl_async:7
 msgid "Complete when the crawl is finished."
-msgstr ""
+msgstr "crawl 完成后完成。"
 
 #: ../../../../scrapy/crawler.py:docstring of scrapy.crawler.Crawler.crawl:5
 msgid "Return a deferred that is fired when the crawl is finished."
-msgstr ""
+msgstr "返回一个延迟的计时器完成时被射出。"
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.Crawler.stop_async:1
 msgid ""
 "Start a graceful stop of the crawler and complete when the crawler is "
 "stopped."
-msgstr ""
+msgstr "在爬行者停止时开始一个可喜的停顿。"
 
 #: ../../../../scrapy/crawler.py:docstring of scrapy.crawler.Crawler.stop:1
 msgid ""
 "Start a graceful stop of the crawler and return a deferred that is fired "
 "when the crawler is stopped."
 msgstr ""
+"开始一个可宽松的起始点并返回一个推迟的起始点，而起始点的起始点则在起始点停止"
+"时被射出。"
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.Crawler.get_addon:1
@@ -271,7 +277,7 @@ msgstr ""
 #: scrapy.crawler.AsyncCrawlerRunner.crawl:1
 #: scrapy.crawler.CrawlerRunner.crawl:1
 msgid "Run a crawler with the provided arguments."
-msgstr ""
+msgstr "用提供的参数运行一个爬行器。"
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerRunner.crawl:3
@@ -299,7 +305,7 @@ msgstr ""
 
 #: ../../../topics/api.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerRunner.crawl:13
@@ -307,19 +313,19 @@ msgstr ""
 msgid ""
 "already created crawler, or a spider class or spider's name inside the "
 "project to create it"
-msgstr ""
+msgstr "已经在项目内创建了 crawler，或者一个蜘蛛类或蜘蛛的名字来创建它"
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerRunner.crawl:18
 #: scrapy.crawler.CrawlerRunner.crawl:17
 msgid "arguments to initialize the spider"
-msgstr ""
+msgstr "要初始化蜘蛛的参数"
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerRunner.crawl:20
 #: scrapy.crawler.CrawlerRunner.crawl:19
 msgid "keyword arguments to initialize the spider"
-msgstr ""
+msgstr "要初始化旋转器的关键字参数"
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerRunner.join:1
@@ -330,12 +336,12 @@ msgstr ""
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerRunner.stop:1 scrapy.crawler.CrawlerRunner.stop:1
 msgid "Stops simultaneously all the crawling jobs taking place."
-msgstr ""
+msgstr "同时停止正在进行的所有扫荡作业。"
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerRunner.stop:3
 msgid "Completes when they all have ended."
-msgstr ""
+msgstr "当他们全部结束时完成。"
 
 #: ../../../../scrapy/crawler.py:docstring of scrapy.crawler.CrawlerRunner:4
 msgid ""
@@ -352,7 +358,7 @@ msgstr ""
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.CrawlerRunner.crawl:10
 msgid "Returns a deferred that is fired when the crawling is finished."
-msgstr ""
+msgstr "返回一个延迟，当拖拽完成时被发射。"
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.CrawlerRunner.join:1
@@ -364,7 +370,7 @@ msgstr ""
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.CrawlerRunner.stop:3
 msgid "Returns a deferred that is fired when they all have ended."
-msgstr ""
+msgstr "返回一个在他们全部结束时被发射的延迟。"
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerProcess:1
@@ -376,7 +382,7 @@ msgstr ""
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerProcess:1 scrapy.crawler.CrawlerProcess:1
 msgid "A class to run multiple scrapy crawlers in a process simultaneously."
-msgstr ""
+msgstr "一个在一个过程中同时运行多个废钢种的类。"
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerProcess:3
@@ -405,7 +411,7 @@ msgstr ""
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerProcess:15 scrapy.crawler.CrawlerProcess:15
 msgid "whether to install root logging handler (default: True)"
-msgstr ""
+msgstr "是否安装 root 日志处理程序(默认：True)"
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerProcess.crawlers:1
@@ -423,7 +429,7 @@ msgstr ""
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.CrawlerRunnerBase.create_crawler:3
 msgid "If ``crawler_or_spidercls`` is a Crawler, it is returned as-is."
-msgstr ""
+msgstr "如果``crawler_or_spidercls`` 是一个 Crawler，那么它将按原样恢复。"
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.CrawlerRunnerBase.create_crawler:4
@@ -431,6 +437,8 @@ msgid ""
 "If ``crawler_or_spidercls`` is a Spider subclass, a new Crawler is "
 "constructed for it."
 msgstr ""
+"如果``crawler_or_spidercls`` 是一个 Spider 子类，那么就会为它构建一个新的 "
+"Crawler 类。"
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.CrawlerRunnerBase.create_crawler:6
@@ -439,6 +447,8 @@ msgid ""
 "this name in a Scrapy project (using spider loader), then creates a Crawler "
 "instance for it."
 msgstr ""
+"如果``crawler_or_spidercls`` 是一个字符串，此函数会在一个废钢工程中找到一个具"
+"有此名称的蜘蛛(使用 spider loader), 然后为此创建一个 Crawler 实例。"
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerProcess.start:1
@@ -461,7 +471,7 @@ msgstr ""
 #: scrapy.crawler.AsyncCrawlerProcess.start:8
 #: scrapy.crawler.CrawlerProcess.start:8
 msgid "stop or not the reactor when all crawlers have finished"
-msgstr ""
+msgstr "当所有的 crawler 已完成时停止或不停止反应器"
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerProcess.start:11
@@ -469,7 +479,7 @@ msgstr ""
 msgid ""
 "whether to install the OS signal handlers from Twisted and Scrapy (default: "
 "True)"
-msgstr ""
+msgstr "是否安装来自 Twisted and Scrapy 的 OS 信号处理程序 (默认：True)"
 
 #: ../../../../scrapy/crawler.py:docstring of scrapy.crawler.CrawlerProcess:1
 msgid ""
@@ -506,13 +516,13 @@ msgstr ""
 
 #: ../../../topics/api.rst:129
 msgid "Settings API"
-msgstr ""
+msgstr "设置 API"
 
 #: ../../../topics/api.rst:136
 msgid ""
 "Dictionary that sets the key name and priority level of the default settings "
 "priorities used in Scrapy."
-msgstr ""
+msgstr "设置在废件中默认设置优先级的关键名称和优先级的字典。"
 
 #: ../../../topics/api.rst:139
 msgid ""
@@ -533,6 +543,14 @@ msgid ""
 "    \"cmdline\": 40,\n"
 "}"
 msgstr ""
+"SETTTINGS_PRIORITES = own\n"
+"    \"default\": 0,\n"
+"    \"command\": 10,\n"
+"    \"addon\": 15,\n"
+"    \"project\": 20,\n"
+"    \"spider\": 30,\n"
+"    \"cmdline\": 40,\n"
+"}"
 
 #: ../../../topics/api.rst:155
 msgid ""
@@ -558,7 +576,7 @@ msgstr ""
 msgid ""
 "This object stores Scrapy settings for the configuration of internal "
 "components, and can be used for any further customization."
-msgstr ""
+msgstr "此对象储存内部组件配置的 Scrapy 设置，可以用于任何进一步的定制操作。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.Settings:4
@@ -575,6 +593,8 @@ msgid ""
 "Instances of this class behave like dictionaries, but store priorities along "
 "with their ``(key, value)`` pairs, and can be frozen (i.e. marked immutable)."
 msgstr ""
+"这类行为的例子就像词典，但是将优先级与他们的 ``(键，值)`` 一起存储，并且可以"
+"被冻结(即标记为不可变)。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings:5
@@ -614,11 +634,13 @@ msgid ""
 "This change is applied regardless of the priority of the *name* setting. The "
 "setting priority is not affected by this change either."
 msgstr ""
+"无论*名称*设置的优先级如何，此更改都会被应用。设置优先级也不会受到此更改的影"
+"响。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.copy:1
 msgid "Make a deep copy of current settings."
-msgstr ""
+msgstr "制作当前设置的深度副本。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.copy:3
@@ -631,37 +653,37 @@ msgstr ""
 #: scrapy.settings.BaseSettings.copy:6
 msgid ""
 "Modifications to the new object won't be reflected on the original settings."
-msgstr ""
+msgstr "对新对象的修改将不会反映在原来的设置中。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.copy_to_dict:1
 msgid "Make a copy of current settings and convert to a dict."
-msgstr ""
+msgstr "制作当前设置的副本并转换为字典。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.copy_to_dict:3
 msgid ""
 "This method returns a new dict populated with the same values and their "
 "priorities as the current settings."
-msgstr ""
+msgstr "这个方法返回一个与当前设置相同的值和优先级的新词典。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.copy_to_dict:6
 msgid ""
 "Modifications to the returned dict won't be reflected on the original "
 "settings."
-msgstr ""
+msgstr "对返回的字典的修改不会反映在原来的设置中。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.copy_to_dict:9
 msgid ""
 "This method can be useful for example for printing settings in Scrapy shell."
-msgstr ""
+msgstr "这个方法可以用于打印Scrapy shell的设置。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.freeze:1
 msgid "Disable further changes to the current settings."
-msgstr ""
+msgstr "禁用当前设置的进一步更改。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.freeze:3
@@ -674,7 +696,7 @@ msgstr ""
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.frozencopy:1
 msgid "Return an immutable copy of the current settings."
-msgstr ""
+msgstr "返回当前设置的不可变副本。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.frozencopy:3
@@ -685,7 +707,7 @@ msgstr ""
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.get:1
 msgid "Get a setting value without affecting its original type."
-msgstr ""
+msgstr "获取一个设置值而不影响其原始类型。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.get:3 scrapy.settings.BaseSettings.getbool:9
@@ -696,7 +718,7 @@ msgstr ""
 #: scrapy.settings.BaseSettings.getpriority:4
 #: scrapy.settings.BaseSettings.set:7
 msgid "the setting name"
-msgstr ""
+msgstr "设置名称"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.get:6 scrapy.settings.BaseSettings.getbool:12
@@ -706,12 +728,12 @@ msgstr ""
 #: scrapy.settings.BaseSettings.getint:6
 #: scrapy.settings.BaseSettings.getlist:11
 msgid "the value to return if no setting is found"
-msgstr ""
+msgstr "如果没有找到设置则返回的值"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.getbool:1
 msgid "Get a setting value as a boolean."
-msgstr ""
+msgstr "获取一个设定值作为布尔值。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.getbool:3
@@ -719,13 +741,15 @@ msgid ""
 "``1``, ``'1'``, `True`` and ``'True'`` return ``True``, while ``0``, "
 "``'0'``, ``False``, ``'False'`` and ``None`` return ``False``."
 msgstr ""
+"``1`` 、 ``1'`` 、 `True`` 和 ``'True'`` 返回 ``True`` ， 而``0`` 、 "
+"``'0'`` 、 ``False`` 和 ``None`` 返回 ``False`` 。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.getbool:6
 msgid ""
 "For example, settings populated through environment variables set to ``'0'`` "
 "will return ``False`` when using this method."
-msgstr ""
+msgstr "例如，环境变量设置为 ``'0'`` 时返回的 ``False`` 。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.getdict:1
@@ -748,7 +772,7 @@ msgstr ""
 #: scrapy.settings.BaseSettings.getdictorlist:3
 msgid ""
 "If the setting is already a dict or a list, a copy of it will be returned."
-msgstr ""
+msgstr "如果设置已经是字典或列表, 将返回其副本。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.getdictorlist:6
@@ -756,11 +780,13 @@ msgid ""
 "If it is a string it will be evaluated as JSON, or as a comma-separated list "
 "of strings as a fallback."
 msgstr ""
+"如果它是一个字符串，它将被评为JSON，或者作为一个逗号分隔的字符串作为一个回退"
+"来评估。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.getdictorlist:9
 msgid "For example, settings populated from the command line will return:"
-msgstr ""
+msgstr "例如，从命令行中填写的设置将返回："
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.getdictorlist:11
@@ -768,21 +794,24 @@ msgid ""
 "``{'key1': 'value1', 'key2': 'value2'}`` if set to ``'{\"key1\": \"value1\", "
 "\"key2\": \"value2\"}'``"
 msgstr ""
+"``{'key1': 'value1', 'key2': 'value2'}`` 如果设置为 ``'{\"key1\": "
+"\"value1\", \"key2\": \"value2\"}\""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.getdictorlist:14
 msgid "``['one', 'two']`` if set to ``'[\"one\", \"two\"]'`` or ``'one,two'``"
 msgstr ""
+"``['one', 'two']`` 如果设置为 ``'[\"one\", \"two\"]'`` 或 ``'one,two'``"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.getfloat:1
 msgid "Get a setting value as a float."
-msgstr ""
+msgstr "获取一个设定值为浮点数。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.getint:1
 msgid "Get a setting value as an int."
-msgstr ""
+msgstr "获取一个设定值作为整数。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.getlist:1
@@ -791,6 +820,8 @@ msgid ""
 "copy of it will be returned. If it's a string it will be split by \",\". If "
 "it is an empty string, an empty list will be returned."
 msgstr ""
+"获取一个设置值作为列表。如果设置的原始类型是一个列表，将返回它的副本。 如果它"
+"是一个字符串，它将被拆分\",\"如果它是空字符串，将返回一个空列表。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.getlist:5
@@ -798,6 +829,8 @@ msgid ""
 "For example, settings populated through environment variables set to ``'one,"
 "two'`` will return a list ['one', 'two'] when using this method."
 msgstr ""
+"例如，通过环境变量填充的设置设置设置为 ``'one,two'`` 时，会返回一个列表"
+"['one','2']。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.getpriority:1
@@ -805,17 +838,19 @@ msgid ""
 "Return the current numerical priority value of a setting, or ``None`` if the "
 "given ``name`` does not exist."
 msgstr ""
+"返回当前设置的数值优先级值，如果给定的 ``name`` 不存在，则返回一个 "
+"``None`` 。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.getwithbase:1
 msgid ""
 "Get a composition of a dictionary-like setting and its `_BASE` counterpart."
-msgstr ""
+msgstr "获取字典设置和它的 `_BASE` 对应部分的组合。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.getwithbase:4
 msgid "name of the dictionary-like setting"
-msgstr ""
+msgstr "字典设置的名称"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.maxpriority:1
@@ -829,7 +864,7 @@ msgstr ""
 #: scrapy.settings.BaseSettings.pop:1
 msgid ""
 "If key is not found, d is returned if given, otherwise KeyError is raised."
-msgstr ""
+msgstr "如果找不到密钥，则返回，如果给出密钥，则返回，否则出现密钥错误。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.remove_from_list:1
@@ -861,6 +896,7 @@ msgid ""
 "If *old_cls* was present as an import string, even more than once, those "
 "keys are dropped and replaced by *new_cls*."
 msgstr ""
+"如果*老的克隆*作为导入字符串存在，那些密钥将被丢弃并被*new_cls*所取代。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.replace_in_component_priority_dict:10
@@ -871,11 +907,14 @@ msgid ""
 "different values, the value assigned to *new_cls* is one of them, with no "
 "guarantee about which one it is."
 msgstr ""
+"如果指定了*优先级*，那就是组件优先级字典中分配给*new_cls*的值。否则，使用了"
+"*old_cls*的值。 如果*old_cls* 存在多次(可能有导入字符串)，则不同的数值。 分配"
+"给*new_cls*的值是其中之一，不能保证它是哪一个。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.set:1
 msgid "Store a key/value attribute with a given priority."
-msgstr ""
+msgstr "保存一个具有给定优先级的密钥/值属性。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.set:3
@@ -888,7 +927,7 @@ msgstr ""
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.set:10
 msgid "the value to associate with the setting"
-msgstr ""
+msgstr "要与设置关联的值"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.set:13
@@ -907,14 +946,14 @@ msgstr ""
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.set_in_component_priority_dict:4
 msgid "If *cls* already exists, its value is updated."
-msgstr ""
+msgstr "如果*cls* 已经存在，其值将被更新。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.set_in_component_priority_dict:6
 msgid ""
 "If *cls* was present as an import string, even more than once, those keys "
 "are dropped and replaced by *cls*."
-msgstr ""
+msgstr "如果*cls*存在作为导入字符串，那么这些键值会丢弃并被*cls*代替。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.setdefault_in_component_priority_dict:1
@@ -930,11 +969,13 @@ msgid ""
 "If *cls* is not already defined, it is set regardless of the priority of the "
 "*name* setting. The setting priority is not affected by this change either."
 msgstr ""
+"如果*cls*尚未定义, 则无论*名称*设置的优先级大小都会设定。 设定优先级也不受这"
+"一变化的影响。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.setmodule:1
 msgid "Store settings from a module with a given priority."
-msgstr ""
+msgstr "从具有特定优先级的模块存储设置。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.setmodule:3
@@ -947,7 +988,7 @@ msgstr ""
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.setmodule:7
 msgid "the module or the path of the module"
-msgstr ""
+msgstr "模块或模块路径"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.setmodule:10
@@ -960,7 +1001,7 @@ msgstr ""
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.update:1
 msgid "Store key/value pairs with a given priority."
-msgstr ""
+msgstr "存储具有特定优先级的密钥/值对。"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.update:3
@@ -982,17 +1023,17 @@ msgstr ""
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.update:14
 msgid "the settings names and values"
-msgstr ""
+msgstr "设置名称和值"
 
 #: ../../../topics/api.rst:170
 msgid "SpiderLoader API"
-msgstr ""
+msgstr "SpiderLoader API"
 
 #: ../../../topics/api.rst:177
 msgid ""
 "This class is in charge of retrieving and handling the spider classes "
 "defined across the project."
-msgstr ""
+msgstr "此类负责检索和处理整个项目定义的蜘蛛类。"
 
 #: ../../../topics/api.rst:180
 msgid ""
@@ -1011,7 +1052,7 @@ msgstr ""
 
 #: ../../../topics/api.rst:192
 msgid "project settings"
-msgstr ""
+msgstr "项目设置"
 
 #: ../../../topics/api.rst:197
 msgid ""
@@ -1019,38 +1060,40 @@ msgid ""
 "loaded spiders for a spider class with name ``spider_name`` and will raise a "
 "KeyError if not found."
 msgstr ""
+"使用给定的名字获得蜘蛛类。 如果找不到名字为 ``spider_name`` 的 spider 类，它"
+"会发现先前加载的蜘蛛类。如果找不到密钥错误。"
 
 #: ../../../topics/api.rst:201
 msgid "spider class name"
-msgstr ""
+msgstr "spider 类名称"
 
 #: ../../../topics/api.rst:206
 msgid "Get the names of the available spiders in the project."
-msgstr ""
+msgstr "获取项目中可用蜘蛛的名称。"
 
 #: ../../../topics/api.rst:210
 msgid ""
 "List the spiders' names that can handle the given request. Will try to match "
 "the request's url against the domains of the spiders."
-msgstr ""
+msgstr "列出可以处理给定请求的蜘蛛名称。将尝试匹配请求的URL与蜘蛛的域名。"
 
 #: ../../../topics/api.rst:213
 msgid "queried request"
-msgstr ""
+msgstr "查询请求"
 
 #: ../../../../scrapy/spiderloader.py:docstring of
 #: scrapy.spiderloader.DummySpiderLoader:1
 msgid "A dummy spider loader that does not load any spiders."
-msgstr ""
+msgstr "一个不加载任何蜘蛛的虚拟蜘蛛加载器。"
 
 #: ../../../topics/api.rst:221
 msgid "Signals API"
-msgstr ""
+msgstr "信号 API"
 
 #: ../../../../scrapy/signalmanager.py:docstring of
 #: scrapy.signalmanager.SignalManager.connect:1
 msgid "Connect a receiver function to a signal."
-msgstr ""
+msgstr "将接收器函数与信号连接起来。"
 
 #: ../../../../scrapy/signalmanager.py:docstring of
 #: scrapy.signalmanager.SignalManager.connect:3
@@ -1062,12 +1105,12 @@ msgstr ""
 #: ../../../../scrapy/signalmanager.py:docstring of
 #: scrapy.signalmanager.SignalManager.connect:7
 msgid "the function to be connected"
-msgstr ""
+msgstr "要连接的函数"
 
 #: ../../../../scrapy/signalmanager.py:docstring of
 #: scrapy.signalmanager.SignalManager.connect:10
 msgid "the signal to connect to"
-msgstr ""
+msgstr "要连接到的信号"
 
 #: ../../../../scrapy/signalmanager.py:docstring of
 #: scrapy.signalmanager.SignalManager.disconnect:1
@@ -1079,17 +1122,17 @@ msgstr ""
 #: ../../../../scrapy/signalmanager.py:docstring of
 #: scrapy.signalmanager.SignalManager.disconnect_all:1
 msgid "Disconnect all receivers from the given signal."
-msgstr ""
+msgstr "断开所有接收器与给定信号的连接。"
 
 #: ../../../../scrapy/signalmanager.py:docstring of
 #: scrapy.signalmanager.SignalManager.disconnect_all:3
 msgid "the signal to disconnect from"
-msgstr ""
+msgstr "要断开连接的信号"
 
 #: ../../../../scrapy/signalmanager.py:docstring of
 #: scrapy.signalmanager.SignalManager.send_catch_log:1
 msgid "Send a signal, catch exceptions and log them."
-msgstr ""
+msgstr "发送一个信号，捕获异常并记录它们。"
 
 #: ../../../../scrapy/signalmanager.py:docstring of
 #: scrapy.signalmanager.SignalManager.send_catch_log:3
@@ -1114,6 +1157,7 @@ msgid ""
 "Returns a coroutine that completes once all signal handlers have finished. "
 "Send a signal, catch exceptions and log them."
 msgstr ""
+"返回一个珊瑚，一旦所有信号处理完成。发送一个信号、 捕获异常并记录它们。"
 
 #: ../../../../scrapy/signalmanager.py:docstring of
 #: scrapy.signalmanager.SignalManager.send_catch_log_deferred:4
@@ -1121,11 +1165,13 @@ msgid ""
 "Returns a Deferred that gets fired once all signal handlers have finished. "
 "Send a signal, catch exceptions and log them."
 msgstr ""
+"返回一个递延错误，所有信号处理完成后会被发射。发送一个信号、 捕获异常并记录它"
+"们。"
 
 #: ../../../../scrapy/signalmanager.py:docstring of
 #: scrapy.signalmanager.SignalManager.wait_for:1
 msgid "Await the next *signal*."
-msgstr ""
+msgstr "等待下一个 *信号*。"
 
 #: ../../../../scrapy/core/engine.py:docstring of
 #: scrapy.core.engine.ExecutionEngine.needs_backout:4
@@ -1136,7 +1182,7 @@ msgstr ""
 
 #: ../../../topics/api.rst:231
 msgid "Stats Collector API"
-msgstr ""
+msgstr "统计数据收集器 API"
 
 #: ../../../topics/api.rst:233
 msgid ""
@@ -1149,25 +1195,26 @@ msgstr ""
 #: ../../../topics/api.rst:245
 msgid ""
 "Return the value for the given stats key or default if it doesn't exist."
-msgstr ""
+msgstr "返回给定状态键值或默认值，如果它不存在。"
 
 #: ../../../topics/api.rst:249
 msgid "Get all stats from the currently running spider as a dict."
-msgstr ""
+msgstr "从当前运行的蜘蛛获取所有的统计信息作为一种词典。"
 
 #: ../../../topics/api.rst:253
 msgid "Set the given value for the given stats key."
-msgstr ""
+msgstr "设置给定统计键的给定值。"
 
 #: ../../../topics/api.rst:257
 msgid "Override the current stats with the dict passed in ``stats`` argument."
-msgstr ""
+msgstr "使用 ``stats`` 参数覆盖当前的统计信息。"
 
 #: ../../../topics/api.rst:261
 msgid ""
 "Increment the value of the given stats key, by the given count, assuming the "
 "start value given (when it's not set)."
 msgstr ""
+"通过给定的计数增加给定统计数据的值，假定给定的起始值 (当它没有设置时)。"
 
 #: ../../../topics/api.rst:266
 msgid ""
@@ -1175,6 +1222,8 @@ msgid ""
 "is lower than value. If there is no current value for the given key, the "
 "value is always set."
 msgstr ""
+"仅在同一键的当前值小于值时设置给定的键值。 如果给定的键值没有当前值，则该值总"
+"是被设置的。"
 
 #: ../../../topics/api.rst:272
 msgid ""
@@ -1182,34 +1231,37 @@ msgid ""
 "is greater than value. If there is no current value for the given key, the "
 "value is always set."
 msgstr ""
+"只有当同一键的当前值大于值时，才设置给定的键值。 如果给定的键值没有当前值，则"
+"该值总是被设置的。"
 
 #: ../../../topics/api.rst:278
 msgid "Clear all stats."
-msgstr ""
+msgstr "清除所有数据"
 
 #: ../../../topics/api.rst:280
 msgid ""
 "The following methods are not part of the stats collection api but instead "
 "used when implementing custom stats collectors:"
 msgstr ""
+"以下方法不是统计数据收集api的一部分，而是在实现自定义统计数据收集器时使用："
 
 #: ../../../topics/api.rst:285
 msgid "Open the spider for stats collection."
-msgstr ""
+msgstr "打开拼写器来收集数据。"
 
 #: ../../../topics/api.rst:289
 msgid ""
 "Close the spider. After this is called, no more specific stats can be "
 "accessed or collected."
-msgstr ""
+msgstr "关闭拼写器。调用后无法访问或收集更多特定的统计数据。"
 
 #: ../../../topics/api.rst:293
 msgid "Engine API"
-msgstr ""
+msgstr "引擎 API"
 
 #: ../../../../scrapy/core/engine.py:docstring of
 #: scrapy.core.engine.ExecutionEngine.needs_backout:1
 msgid ""
 "Returns ``True`` if no more requests can be sent at the moment, or ``False`` "
 "otherwise."
-msgstr ""
+msgstr "返回``True`` ，如果目前没有更多的请求可以发送，或者返回``False`` 。"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"POT-Creation-Date: 2026-04-06 09:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -86,7 +86,7 @@ msgstr ""
 
 #: ../../../topics/email.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: ../../../topics/email.rst:59
 msgid ""
@@ -212,7 +212,7 @@ msgstr ""
 
 #: ../../../topics/email.rst:155 ../../../topics/email.rst:165
 msgid "Default: ``None``"
-msgstr ""
+msgstr "默认值： ``None``"
 
 #: ../../../topics/email.rst:157
 msgid ""
@@ -235,7 +235,7 @@ msgstr ""
 
 #: ../../../topics/email.rst:174 ../../../topics/email.rst:183
 msgid "Default: ``False``"
-msgstr ""
+msgstr "默认值： ``False``"
 
 #: ../../../topics/email.rst:176
 msgid ""

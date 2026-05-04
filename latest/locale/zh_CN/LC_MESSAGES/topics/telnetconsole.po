@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"POT-Creation-Date: 2026-04-06 09:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -296,7 +296,7 @@ msgstr ""
 
 #: ../../../topics/telnetconsole.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: ../../../topics/telnetconsole.rst:164
 msgid "the dict of telnet variables"
@@ -354,7 +354,7 @@ msgstr ""
 
 #: ../../../topics/telnetconsole.rst:208
 msgid "Default: ``None``"
-msgstr ""
+msgstr "默认值： ``None``"
 
 #: ../../../topics/telnetconsole.rst:210
 msgid ""

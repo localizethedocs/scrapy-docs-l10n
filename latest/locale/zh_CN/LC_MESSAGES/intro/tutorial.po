@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"POT-Creation-Date: 2026-04-06 09:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:5
 msgid "Scrapy Tutorial"
-msgstr ""
+msgstr "碎片教程"
 
 #: ../../../intro/tutorial.rst:7
 msgid ""
@@ -32,14 +32,16 @@ msgid ""
 "We are going to scrape `quotes.toscrape.com <https://quotes.toscrape.com/"
 ">`_, a website that lists quotes from famous authors."
 msgstr ""
+"我们将要扫描`quotes.toscrape.com <https://quotes.toscrape.com/>`_'，一个列出"
+"著名作者引用的网站。"
 
 #: ../../../intro/tutorial.rst:13
 msgid "This tutorial will walk you through these tasks:"
-msgstr ""
+msgstr "这个教程将使你走过这些任务："
 
 #: ../../../intro/tutorial.rst:15
 msgid "Creating a new Scrapy project"
-msgstr ""
+msgstr "创建一个新的废钢项目"
 
 #: ../../../intro/tutorial.rst:16
 msgid ""
@@ -48,45 +50,48 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:17
 msgid "Exporting the scraped data using the command line"
-msgstr ""
+msgstr "使用命令行导出回收数据"
 
 #: ../../../intro/tutorial.rst:18
 msgid "Changing spider to recursively follow links"
-msgstr ""
+msgstr "将蜘蛛切换为递归跟随链接"
 
 #: ../../../intro/tutorial.rst:19 ../../../intro/tutorial.rst:776
 msgid "Using spider arguments"
-msgstr ""
+msgstr "使用 spider 参数"
 
 #: ../../../intro/tutorial.rst:21
 msgid ""
 "Scrapy is written in Python_. The more you learn about Python, the more you "
 "can get out of Scrapy."
 msgstr ""
+"Scrapy 由 Python_写。您了解的 Python 越多，您就越能从Scraph 中提取越多。"
 
 #: ../../../intro/tutorial.rst:24
 msgid ""
 "If you're already familiar with other languages and want to learn Python "
 "quickly, the `Python Tutorial`_ is a good resource."
 msgstr ""
+"如果您已经熟悉其他语言并想要快速学习 Python，那么`Python Tutorial`_ 是一个很"
+"好的资源。"
 
 #: ../../../intro/tutorial.rst:27
 msgid ""
 "If you're new to programming and want to start with Python, the following "
 "books may be useful to you:"
-msgstr ""
+msgstr "如果你是新的编程并想从Python开始，以下书可能对你有用："
 
 #: ../../../intro/tutorial.rst:30
 msgid "`Automate the Boring Stuff With Python`_"
-msgstr ""
+msgstr "`使用 Python`_ 自动填充装货箱"
 
 #: ../../../intro/tutorial.rst:32
 msgid "`How To Think Like a Computer Scientist`_"
-msgstr ""
+msgstr "“如何想像计算机科学家”_"
 
 #: ../../../intro/tutorial.rst:34
 msgid "`Learn Python 3 The Hard Way`_"
-msgstr ""
+msgstr "`学习 Python 3 The Hard Way`_"
 
 #: ../../../intro/tutorial.rst:36
 msgid ""
@@ -94,24 +99,27 @@ msgid ""
 "programmers`_, as well as the `suggested resources in the learnpython-"
 "subreddit`_."
 msgstr ""
+"你也可以看看`这个非程序员的 Python 资源列表'，以及`learnpython-subreddit` 中"
+"的推荐资源。"
 
 #: ../../../intro/tutorial.rst:49
 msgid "Creating a project"
-msgstr ""
+msgstr "创建一个项目"
 
 #: ../../../intro/tutorial.rst:51
 msgid ""
 "Before you start scraping, you will have to set up a new Scrapy project. "
 "Enter a directory where you'd like to store your code and run::"
 msgstr ""
+"在开始拆解之前，您必须设置一个新的废钢项目。 输入您想要存储代码并运行的目录："
 
 #: ../../../intro/tutorial.rst:54
 msgid "scrapy startproject tutorial"
-msgstr ""
+msgstr "碎片启动项目教程"
 
 #: ../../../intro/tutorial.rst:56
 msgid "This will create a ``tutorial`` directory with the following contents::"
-msgstr ""
+msgstr "这将创建一个包含以下内容的 ``tutorial`` 目录："
 
 #: ../../../intro/tutorial.rst:58
 msgid ""
@@ -136,7 +144,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:77
 msgid "Our first Spider"
-msgstr ""
+msgstr "我们的第一个蜘蛛。"
 
 #: ../../../intro/tutorial.rst:79
 msgid ""
@@ -153,6 +161,8 @@ msgid ""
 "``quotes_spider.py`` under the ``tutorial/spiders`` directory in your "
 "project:"
 msgstr ""
+"这是我们第一个Spider的代码。将其保存在你的项目中的 ``tutorial/spiders`` 目录"
+"下的 ``quotes_spider.py`` 文件中："
 
 #: ../../../intro/tutorial.rst:87
 msgid ""
@@ -216,16 +226,16 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:134
 msgid "How to run our spider"
-msgstr ""
+msgstr "如何运行我们的蜘蛛。"
 
 #: ../../../intro/tutorial.rst:136
 msgid ""
 "To put our spider to work, go to the project's top level directory and run::"
-msgstr ""
+msgstr "要使我们的旋转器正常工作，请前往项目的顶级目录并运行："
 
 #: ../../../intro/tutorial.rst:138 ../../../intro/tutorial.rst:502
 msgid "scrapy crawl quotes"
-msgstr ""
+msgstr "碎片crawl 引用"
 
 #: ../../../intro/tutorial.rst:140
 msgid ""
@@ -233,6 +243,8 @@ msgid ""
 "will send some requests for the ``quotes.toscrape.com`` domain. You will get "
 "an output similar to this::"
 msgstr ""
+"此命令运行我们刚刚添加的名为 ``quotes`` 的蜘蛛，这将发送一些关于 ``quotes`` "
+"的请求。 oscrape.com`` 域名。您将会获得类似于这个输出的输出："
 
 #: ../../../intro/tutorial.rst:144
 msgid ""
@@ -253,6 +265,22 @@ msgid ""
 "2016-12-16 21:24:05 [scrapy.core.engine] INFO: Closing spider (finished)\n"
 "..."
 msgstr ""
+"... (省略为简洁)\n"
+"2016-12-16 21:24:05 [scrapy.core.engine] INFO: Spider opened\n"
+"2016-12-16 21:24:05 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 "
+"pages/min), scriked 0 items (at 0 items/min)\n"
+"2016-12-16 21:24:05 [scrapy.extensions.telnet] DEBUG: Telnet console 监听"
+"127。 0。 :6023\n"
+"2016-12-16 21:24:05 [scrapy.core.engine] DEBUG: Crawled (404) <GET https://"
+"quotes.toscrape.com/robots.txt> (refer: None)\n"
+"2016-12-16 21:24:05 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://"
+"quotes.toscrape.com/page/1/> (referer: None)\n"
+"2016-12-16 21:05 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://"
+"quotes.toscrape.com/page/2/> (refer: None)\n"
+"2016-12-16 21:24:05 [quotes] DEBUG: Saved file quotes-1。 tml\n"
+"2016-12-16 21:24:05 [quotes] DEBUG: 保存的文件引号-2.html\n"
+"2016-12-16 21:05 [scrapy.core.engine] INFO: Closing spider (finished)\n"
+"..."
 
 #: ../../../intro/tutorial.rst:156
 msgid ""
@@ -260,16 +288,18 @@ msgid ""
 "new files have been created: *quotes-1.html* and *quotes-2.html*, with the "
 "content for the respective URLs, as our ``parse`` method instructs."
 msgstr ""
+"现在，请检查当前目录中的文件。您应该注意两个新文件已经创建：*引号-1。 tml* "
+"和 *quotes-2.html*，包含相应URLs 的内容，我们的 ``parse`` 方法指示这些内容。"
 
 #: ../../../intro/tutorial.rst:160
 msgid ""
 "If you are wondering why we haven't parsed the HTML yet, hold on, we will "
 "cover that soon."
-msgstr ""
+msgstr "如果你想知道我们为什么还没有解析HTML，请坚持，我们很快就会覆盖它。"
 
 #: ../../../intro/tutorial.rst:165
 msgid "What just happened under the hood?"
-msgstr ""
+msgstr "刚刚发生了什么事情？"
 
 #: ../../../intro/tutorial.rst:167
 msgid ""
@@ -282,7 +312,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:175
 msgid "A shortcut to the ``start`` method"
-msgstr ""
+msgstr "``start`` 方法的快捷方式"
 
 #: ../../../intro/tutorial.rst:177
 msgid ""
@@ -324,7 +354,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:211
 msgid "Extracting data"
-msgstr ""
+msgstr "正在提取数据"
 
 #: ../../../intro/tutorial.rst:213
 msgid ""
@@ -334,7 +364,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:216
 msgid "scrapy shell 'https://quotes.toscrape.com/page/1/'"
-msgstr ""
+msgstr "scrapy shell 'https://quotes.toscrape.com/page/1/'"
 
 #: ../../../intro/tutorial.rst:220
 msgid ""
@@ -342,18 +372,20 @@ msgid ""
 "command line, otherwise URLs containing arguments (i.e. ``&`` character) "
 "will not work."
 msgstr ""
+"记得在从命令行运行Scrapy shell 时总是在引用中使用URL，否则包含参数的URL(例如"
+"``&`` 字符)将无法工作。"
 
 #: ../../../intro/tutorial.rst:224
 msgid "On Windows, use double quotes instead::"
-msgstr ""
+msgstr "在Windows上，使用双引号代替："
 
 #: ../../../intro/tutorial.rst:226
 msgid "scrapy shell \"https://quotes.toscrape.com/page/1/\""
-msgstr ""
+msgstr "scrapy shell \"https://quotes.toscrape.com/page/1/\""
 
 #: ../../../intro/tutorial.rst:228
 msgid "You will see something like::"
-msgstr ""
+msgstr "您将看到一些类似的东西："
 
 #: ../../../intro/tutorial.rst:230
 msgid ""
@@ -374,12 +406,27 @@ msgid ""
 "[s]   fetch(req_or_url) Fetch request (or URL) and update local objects\n"
 "[s]   view(response)    View response in a browser"
 msgstr ""
+"[ ... 扫描日志在这里... []\n"
+"2016-09-19 12:09:27 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://"
+"quotes.toscrape.com/page/1/> (refer: None)\n"
+"[s] 可用的Scrapy objects:\n"
+"[s]   scrapy scrapy module (含有废料) 等式，碎片。 选择器， 等)\n"
+"[s]   crawler    <scrapy.crawler.Crawler object at 0x7fa91d888c90>\n"
+"[s]   item {}\n"
+"[s]   request    <GET https://quotes.toscrape.com/page/1/>\n"
+"[s]   reply <200 https://quotes。 鸡奸。 om/page/1/>\n"
+"[s]   设置   <scrapy.settings.Settings object at 0x7fa91d888c10>\n"
+"[s]   spider     <DefaultSpider 'default' at 0x7fa91c8af990>\n"
+"[s] 有用的快捷方式：\n"
+"[s]   shdp() Shell 帮助 (打印此帮助)\n"
+"[s]   fetch(req_or_url) Fetch request (or URL) 并更新本地对象\n"
+"[s]   view(响应) 查看在浏览器中的响应"
 
 #: ../../../intro/tutorial.rst:245
 msgid ""
 "Using the shell, you can try selecting elements using `CSS`_ with the "
 "response object:"
-msgstr ""
+msgstr "使用 shell，您可以尝试使用 `CSS`_ 来选择响应对象："
 
 #: ../../../intro/tutorial.rst:252
 msgid ""
@@ -387,6 +434,9 @@ msgid ""
 "[<Selector query='descendant-or-self::title' data='<title>Quotes to Scrape</"
 "title>'>]"
 msgstr ""
+">>>> response.css(\"title\")\n"
+"[<Selector query='descendant-or-self::title' data='<title>Quotes to scrak</"
+"title>'>]"
 
 #: ../../../intro/tutorial.rst:257
 msgid ""
@@ -398,13 +448,15 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:263
 msgid "To extract the text from the title above, you can do:"
-msgstr ""
+msgstr "要从上面的标题中提取文本，您可以做："
 
 #: ../../../intro/tutorial.rst:265
 msgid ""
 ">>> response.css(\"title::text\").getall()\n"
 "['Quotes to Scrape']"
 msgstr ""
+">>> response.css(\"title::text\").getall()\n"
+"['引用到Scrape']"
 
 #: ../../../intro/tutorial.rst:270
 msgid ""
@@ -413,12 +465,17 @@ msgid ""
 "``<title>`` element.  If we don't specify ``::text``, we'd get the full "
 "title element, including its tags:"
 msgstr ""
+"这里有两件事需要注意：一个是我们已经将 ``:text`` 添加到CSS 查询中。 表示我们"
+"只想在``<title>`` 元素中选择文本元素。 如果我们没有指定 ``::text`` ，我们将得"
+"到完整的标题元素，包括其标签："
 
 #: ../../../intro/tutorial.rst:275
 msgid ""
 ">>> response.css(\"title\").getall()\n"
 "['<title>Quotes to Scrape</title>']"
 msgstr ""
+">>> response.css(\"title\").getall()\n"
+"['<title>Quotes to Scrak</title>']"
 
 #: ../../../intro/tutorial.rst:280
 msgid ""
@@ -427,22 +484,29 @@ msgid ""
 "all. When you know you just want the first result, as in this case, you can "
 "do:"
 msgstr ""
+"另一件事是调用 ``的结果。 etall()`` 是一个列表：一个选择器可能返回多个结果，"
+"所以我们可以提取所有的结果。 当你知道你只是想要第一个结果，就像在这种情况下那"
+"样, 你可以做："
 
 #: ../../../intro/tutorial.rst:284
 msgid ""
 ">>> response.css(\"title::text\").get()\n"
 "'Quotes to Scrape'"
 msgstr ""
+">>> response.css(\"title::text\").get()\n"
+"'引用到 Scrape'"
 
 #: ../../../intro/tutorial.rst:289
 msgid "As an alternative, you could've written:"
-msgstr ""
+msgstr "作为替代，您可以写入："
 
 #: ../../../intro/tutorial.rst:291
 msgid ""
 ">>> response.css(\"title::text\")[0].get()\n"
 "'Quotes to Scrape'"
 msgstr ""
+">>> response.css(\"title::text\")[0].get()\n"
+"'Quotes to Scrape'"
 
 #: ../../../intro/tutorial.rst:296
 msgid ""
@@ -457,6 +521,10 @@ msgid ""
 "...\n"
 "IndexError: list index out of range"
 msgstr ""
+">>>>> response.css(\"noelement\")[0].get()\n"
+"Tracetback(最近一次通话):\n"
+"...\n"
+"Index错误：列表索引超出范围"
 
 #: ../../../intro/tutorial.rst:306
 msgid ""
@@ -467,7 +535,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:310
 msgid ">>> response.css(\"noelement\").get()"
-msgstr ""
+msgstr ">>> response.css(\"noelement\").get()"
 
 #: ../../../intro/tutorial.rst:314
 msgid ""
@@ -475,6 +543,9 @@ msgid ""
 "to errors due to things not being found on a page, so that even if some "
 "parts fail to be scraped, you can at least get **some** data."
 msgstr ""
+"这里有一个课程：对于大多数拆解代码，你希望它能够对因为在页面上找不到的事情而"
+"产生的错误做出弹性反应， 这样即使有些部件未被拆除，您至少可以获得**一些** 数"
+"据。"
 
 #: ../../../intro/tutorial.rst:318
 msgid ""
@@ -493,6 +564,12 @@ msgid ""
 ">>> response.css(\"title::text\").re(r\"(\\w+) to (\\w+)\")\n"
 "['Quotes', 'Scrape']"
 msgstr ""
+">>>> response.css(\"title::text\").re(r\"Quotes.*\")\n"
+"['quotes to scrape']\n"
+">>> > response.css(\"title::text\").re(r\"Q\\w+\")\n"
+"[''Quotes']\n"
+">>> > response.css(\"title::text\").re(r\"(\\w+) to (\\w+)\")\n"
+"['quotes', 'Scrape']"
 
 #: ../../../intro/tutorial.rst:332
 msgid ""
@@ -507,15 +584,17 @@ msgid ""
 "`Selector Gadget`_ is also a nice tool to quickly find CSS selector for "
 "visually selected elements, which works in many browsers."
 msgstr ""
+"`Selector Gadget`_ 也是一个很好的工具，可以快速找到用于视觉选择的元素的 CSS "
+"选择器，这些元素在许多浏览器中起作用。"
 
 #: ../../../intro/tutorial.rst:344
 msgid "XPath: a brief intro"
-msgstr ""
+msgstr "XPath：简短介绍"
 
 #: ../../../intro/tutorial.rst:346
 msgid ""
 "Besides `CSS`_, Scrapy selectors also support using `XPath`_ expressions:"
-msgstr ""
+msgstr "除了`CSS`_之外，Scrapy 选择器也支持使用 `XPath`_ 表达式："
 
 #: ../../../intro/tutorial.rst:348
 msgid ""
@@ -524,6 +603,10 @@ msgid ""
 ">>> response.xpath(\"//title/text()\").get()\n"
 "'Quotes to Scrape'"
 msgstr ""
+">>>> response.xpath(\"//title\")\n"
+"[<Selector query='//title' data='<title>Quotes to Scrak</title>'>]\n"
+">> > response.xpath(\"//title/text()\").get()\n"
+"'Quotes to Scrape'"
 
 #: ../../../intro/tutorial.rst:355
 msgid ""
@@ -532,6 +615,8 @@ msgid ""
 "can see that if you read the text representation of the selector objects in "
 "the shell closely."
 msgstr ""
+"XPath 表达式非常强大，是废料选择器的基础。事实上，CSS 选择器会转换为 XPath 底"
+"层。 您可以看到如果您仔细阅读外壳中选择器对象的文本表达式。"
 
 #: ../../../intro/tutorial.rst:360
 msgid ""
@@ -542,6 +627,10 @@ msgid ""
 "of scraping, and we encourage you to learn XPath even if you already know "
 "how to construct CSS selectors, it will make scraping much easier."
 msgstr ""
+"虽然XPath 表达式可能不像CSS 选择器那么受欢迎，但它提供了更多的力量，因为除了"
+"导航结构外，它还可以查看内容。 使用 XPath，您可以选择如下内容：*包含文本\"下"
+"一页\"的链接。 这使XPath 非常适合拆解任务， 我们鼓励您学习XPath ，即使您已经"
+"知道如何构建CSS 选择器，它也会使拆解变得更容易。"
 
 #: ../../../intro/tutorial.rst:367
 msgid ""
@@ -554,19 +643,21 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:377
 msgid "Extracting quotes and authors"
-msgstr ""
+msgstr "正在提取引用和作者"
 
 #: ../../../intro/tutorial.rst:379
 msgid ""
 "Now that you know a bit about selection and extraction, let's complete our "
 "spider by writing the code to extract the quotes from the web page."
 msgstr ""
+"现在你有点关于选择和提取， 让我们通过写代码从网页提取引文来完成我们的蜘蛛。"
 
 #: ../../../intro/tutorial.rst:382
 msgid ""
 "Each quote in https://quotes.toscrape.com is represented by HTML elements "
 "that look like this:"
 msgstr ""
+"https://quotes.toscrape.com 中的每个引用都由看起来像这样的 HTML 元素表示："
 
 #: ../../../intro/tutorial.rst:385
 msgid ""
@@ -588,20 +679,37 @@ msgid ""
 "    </div>\n"
 "</div>"
 msgstr ""
+"<div class=\"quote\">\n"
+"    <span class=\"text\">“我们创建它的世界是我们\n"
+"    思考的过程。 不改变我们的思维，就不能改变这种状况。</span>\n"
+"    <span>\n"
+" <small class=\"author\">Albert Einstein</small>\n"
+"        <a href=\"/author/Albert-Einstein\">(about)</a>\n"
+"    </span>\n"
+"    \n"
+"    <div class=\"tags\">\n"
+"        Tags:\n"
+"        <a class=\"tag\" href=\"/tag/change/page/1/\">change</a>\n"
+"        <a class=\"tag\" href=\"/tag/deep-thoughts/page/1/\">deept though</"
+"a>\n"
+"        <a class=\"tag\" href=\"/tag/thinking/page/1/\">though</a>\n"
+"        <a class=\"tag\" href=\"/tag/world/page/1/\">world</a>\n"
+"    </div>\n"
+"</div>"
 
 #: ../../../intro/tutorial.rst:403
 msgid ""
 "Let's open up scrapy shell and play a bit to find out how to extract the "
 "data we want::"
-msgstr ""
+msgstr "让我们打开碎片外壳并玩一点来了解如何提取我们想要的数据:"
 
 #: ../../../intro/tutorial.rst:406
 msgid "scrapy shell 'https://quotes.toscrape.com'"
-msgstr ""
+msgstr "scrapy shell 'https://quotes.toscrape.com'"
 
 #: ../../../intro/tutorial.rst:408
 msgid "We get a list of selectors for the quote HTML elements with:"
-msgstr ""
+msgstr "我们得到了一个 HTML 元素报价的选择器列表："
 
 #: ../../../intro/tutorial.rst:410
 msgid ""
@@ -614,6 +722,14 @@ msgid ""
 "itemscope itemtype...'>,\n"
 "...]"
 msgstr ""
+">>>> response.css(\"div.quote\")\n"
+"[<Selector query=\"descendant-or-self::div[@class and contains(concat(' ', "
+"normalize-space(@class), ' '), ' quote ')]\" data='<div class=\"quote\" "
+"itemscope itemtype...'>,\n"
+"<Selector query=\"descendant-or-self::div[@class and contains(concat(' ', "
+"normalize-space(@class), ' '), ' quote ')]\" data='<div class=\"quote\" "
+"itemscope itemtype...'>,\n"
+"...]"
 
 #: ../../../intro/tutorial.rst:417
 msgid ""
@@ -622,16 +738,20 @@ msgid ""
 "variable, so that we can run our CSS selectors directly on a particular "
 "quote:"
 msgstr ""
+"上面的查询返回的每个选择器允许我们对其子元素进行进一步的查询。 让我们将第一个"
+"选择器分配给一个变量，这样我们就可以直接在特定的引号上运行我们的 CSS 选择器："
 
 #: ../../../intro/tutorial.rst:421
 msgid ">>> quote = response.css(\"div.quote\")[0]"
-msgstr ""
+msgstr ">>>引用=响应.css(\"div.quote\")[0]"
 
 #: ../../../intro/tutorial.rst:425
 msgid ""
 "Now, let's extract the ``text``, ``author`` and ``tags`` from that quote "
 "using the ``quote`` object we just created:"
 msgstr ""
+"现在，让我们用我们刚刚创建的 ``quote`` 对象来从这个引用中提取``text`` 、"
+"``author`` 和 ``tags`` ："
 
 #: ../../../intro/tutorial.rst:428
 msgid ""
@@ -643,12 +763,18 @@ msgid ""
 ">>> author\n"
 "'Albert Einstein'"
 msgstr ""
+">>>> text = quote.css(\"span.text::text\").get()\n"
+">>> text\n"
+"“我们创建的世界是一个我们思考的过程。 不改变我们的思维，不能更改。”'\n"
+">> 作者 = quote.css(\"small.author::text\").get()\n"
+">> > 作者\n"
+"'Albert Einstein'"
 
 #: ../../../intro/tutorial.rst:437
 msgid ""
 "Given that the tags are a list of strings, we can use the ``.getall()`` "
 "method to get all of them:"
-msgstr ""
+msgstr "鉴于标签是字符串列表, 我们可以使用 ``.getall()`` 方法获取所有字符串:"
 
 #: ../../../intro/tutorial.rst:440
 msgid ""
@@ -656,12 +782,17 @@ msgid ""
 ">>> tags\n"
 "['change', 'deep-thoughts', 'thinking', 'world']"
 msgstr ""
+">>>> 标签 = quote.css(\"div.tag a.tag::text\").getall()\n"
+">> 标签\n"
+"['change', 'deep-thoughts', 'thinking', 'world']"
 
 #: ../../../intro/tutorial.rst:450
 msgid ""
 "Having figured out how to extract each bit, we can now iterate over all the "
 "quote elements and put them together into a Python dictionary:"
 msgstr ""
+"在描述了如何提取每一点之后，我们现在可以重复所有报价元素，并将它们放在Python"
+"词典中："
 
 #: ../../../intro/tutorial.rst:453
 msgid ""
@@ -682,7 +813,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:466
 msgid "Extracting data in our spider"
-msgstr ""
+msgstr "在我们的旋转器中提取数据"
 
 #: ../../../intro/tutorial.rst:468
 msgid ""
@@ -690,6 +821,8 @@ msgid ""
 "particular, just saving the whole HTML page to a local file. Let's integrate "
 "the extraction logic above into our spider."
 msgstr ""
+"让我们回到我们的蜘蛛。直到现在，它还没有提取任何数据，只需将整个HTML页面保存"
+"到一个本地文件。 让我们把上面的提取逻辑融入我们的蜘蛛。"
 
 #: ../../../intro/tutorial.rst:472
 msgid ""
@@ -697,6 +830,8 @@ msgid ""
 "extracted from the page. To do that, we use the ``yield`` Python keyword in "
 "the callback, as you can see below:"
 msgstr ""
+"废料生成器通常生成许多字典，其中含有从页面提取的数据。 为此，我们在回调中使"
+"用 ``gyd`` Python 关键字，你可以看到以下："
 
 #: ../../../intro/tutorial.rst:476
 msgid ""
@@ -721,19 +856,19 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:496
 msgid "To run this spider, exit the scrapy shell by entering::"
-msgstr ""
+msgstr "若要运行这个拼写器，请通过输入退出废纸︰"
 
 #: ../../../intro/tutorial.rst:498
 msgid "quit()"
-msgstr ""
+msgstr "quit()"
 
 #: ../../../intro/tutorial.rst:500
 msgid "Then, run::"
-msgstr ""
+msgstr "然后运行：:"
 
 #: ../../../intro/tutorial.rst:504
 msgid "Now, it should output the extracted data with the log::"
-msgstr ""
+msgstr "现在，它应该用日志输出已提取的数据:"
 
 #: ../../../intro/tutorial.rst:506
 msgid ""
@@ -747,10 +882,18 @@ msgid ""
 "'Thomas A. Edison', 'text': \"“I have not failed. I've just found 10,000 "
 "ways that won't work.”\"}"
 msgstr ""
+"2016-09-19 18:57:19 [scrapy.core.scraper] DEBUG: Scrapped from <200 https://"
+"quotes.toscraph om/page/1/>\n"
+"{'tags': ['life', 'love'], 'author': 'Andreasctic Gide', “文本”：“最好是对你"
+"的心情表示憎恨，而不是对你不喜欢的情景。 '}\n"
+"2016-09-19 18:57:19 [scrapy.core.scraper] DEBUG: Scrapped from <200 https://"
+"quotes.toscraph om/page/1/>\n"
+"{'tags': ['edison', 'failure', '灵感', 'paraphrased'], 'author': 'Thomas A. "
+"Edison', 'text': \"我没有失败。我刚找到了 10 000种不会工作的方法。\"}"
 
 #: ../../../intro/tutorial.rst:515
 msgid "Storing the scraped data"
-msgstr ""
+msgstr "存储废料数据"
 
 #: ../../../intro/tutorial.rst:517
 msgid ""
@@ -760,13 +903,15 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:520
 msgid "scrapy crawl quotes -O quotes.json"
-msgstr ""
+msgstr "scray crawl quotes -O quotes.json"
 
 #: ../../../intro/tutorial.rst:522
 msgid ""
 "That will generate a ``quotes.json`` file containing all scraped items, "
 "serialized in `JSON`_."
 msgstr ""
+"这将生成一个 ``quotes.json`` 文件，其中包含所有被卷轴的物品，并在 `JSON` 中序"
+"列化。"
 
 #: ../../../intro/tutorial.rst:525
 msgid ""
@@ -775,10 +920,13 @@ msgid ""
 "JSON file makes the file contents invalid JSON. When appending to a file, "
 "consider using a different serialization format, such as `JSON Lines`_::"
 msgstr ""
+"``-O`` 命令行切换覆盖任何现有的文件。使用 ``-o`` 代替将新内容添加到任何现有文"
+"件中。 但是，附加到 JSON 文件使文件内容无效 JSON 。 当附加到一个文件时，考虑"
+"使用不同的序列化格式，例如`JSON Lines`_:"
 
 #: ../../../intro/tutorial.rst:530
 msgid "scrapy crawl quotes -o quotes.jsonl"
-msgstr ""
+msgstr "scrapy crawl quotes -o quotes.jsonl"
 
 #: ../../../intro/tutorial.rst:532
 msgid ""
@@ -788,6 +936,10 @@ msgid ""
 "big files without having to fit everything in memory, there are tools like "
 "`JQ`_ to help do that at the command-line."
 msgstr ""
+"`JSON Lines`_ 格式是有用的，因为它与流相似，所以你可以轻松地将新记录附加到"
+"它。 当你运行两次时，它与JSON不存在相同的问题。 此外，由于每条记录都是单独的"
+"一行，您可以处理大文件，而不必将所有文件都放在内存中。 有一些工具，例如`JQ`_ "
+"来帮助在命令行进行这种操作。"
 
 #: ../../../intro/tutorial.rst:538
 msgid ""
@@ -801,7 +953,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:550
 msgid "Following links"
-msgstr ""
+msgstr "关注链接"
 
 #: ../../../intro/tutorial.rst:552
 msgid ""
@@ -809,12 +961,14 @@ msgid ""
 "https://quotes.toscrape.com, you want quotes from all the pages in the "
 "website."
 msgstr ""
+"让我们说，不要只是从https://quotes.toscrape.com的头两个页面中拆除物品，你想要"
+"从网站中的所有页面中引用。"
 
 #: ../../../intro/tutorial.rst:555
 msgid ""
 "Now that you know how to extract data from pages, let's see how to follow "
 "links from them."
-msgstr ""
+msgstr "现在你知道如何从页面提取数据，让我们看看如何从它们中跟进链接。"
 
 #: ../../../intro/tutorial.rst:558
 msgid ""
@@ -822,6 +976,8 @@ msgid ""
 "Examining our page, we can see there is a link to the next page with the "
 "following markup:"
 msgstr ""
+"第一件事是提取链接到我们想要遵循的页面。 查看我们的页面，我们可以看到一个链接"
+"到下一个页面的标记："
 
 #: ../../../intro/tutorial.rst:562
 msgid ""
@@ -835,7 +991,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:570
 msgid "We can try extracting it in the shell:"
-msgstr ""
+msgstr "我们可以尝试在炮弹中提取它："
 
 #: ../../../intro/tutorial.rst:575
 msgid ""
@@ -843,12 +999,16 @@ msgid ""
 "Scrapy supports a CSS extension that lets you select the attribute contents, "
 "like this:"
 msgstr ""
+"这就得到了锚点元素，但我们想要属性 'href`` 。 为此，Scrapy 支持 CSS 扩展，使"
+"您可以选择属性内容，例如："
 
 #: ../../../intro/tutorial.rst:579
 msgid ""
 ">>> response.css(\"li.next a::attr(href)\").get()\n"
 "'/page/2/'"
 msgstr ""
+">>> response.css(\"li.next a::attr(href)\").get()\n"
+"'/page/2/'"
 
 #: ../../../intro/tutorial.rst:584
 msgid ""
@@ -861,12 +1021,14 @@ msgid ""
 ">>> response.css(\"li.next a\").attrib[\"href\"]\n"
 "'/page/2/'"
 msgstr ""
+">>> response.css(\"li.next a\").attrib[\"href\"]\n"
+"'/page/2/'"
 
 #: ../../../intro/tutorial.rst:592
 msgid ""
 "Now let's see our spider, modified to recursively follow the link to the "
 "next page, extracting data from it:"
-msgstr ""
+msgstr "现在让我们看到我们的蜘蛛，修改后递归跟着链接到下一页，从它中提取数据："
 
 #: ../../../intro/tutorial.rst:595
 msgid ""
@@ -909,6 +1071,8 @@ msgid ""
 "Request in a callback method, Scrapy will schedule that request to be sent "
 "and register a callback method to be executed when that request finishes."
 msgstr ""
+"你在这里看到的是废料的以下链接机制：当你在回调方法中发出请求， Scrapy 将安排"
+"发送请求的时间并注册一个回调方法在请求完成后执行。"
 
 #: ../../../intro/tutorial.rst:631
 msgid ""
@@ -916,6 +1080,8 @@ msgid ""
 "rules you define, and extract different kinds of data depending on the page "
 "it's visiting."
 msgstr ""
+"使用这个，您可以根据您定义的规则构建跟随链接的复杂的 crawler ， 并根据所访问"
+"的页面提取不同类型的数据。"
 
 #: ../../../intro/tutorial.rst:635
 msgid ""
@@ -923,10 +1089,12 @@ msgid ""
 "next page until it doesn't find one -- handy for crawling blogs, forums and "
 "other sites with pagination."
 msgstr ""
+"在我们的例子中，它创造了一种循环， 关注所有链接到下一个页面直到找不到一个-便"
+"捷地浏览博客、论坛和其他带分页的站点。"
 
 #: ../../../intro/tutorial.rst:643
 msgid "A shortcut for creating Requests"
-msgstr ""
+msgstr "创建请求的快捷方式"
 
 #: ../../../intro/tutorial.rst:645
 msgid ""
@@ -964,30 +1132,41 @@ msgid ""
 "no need to call urljoin. Note that ``response.follow`` just returns a "
 "Request instance; you still have to yield this Request."
 msgstr ""
+"不同于scrapy.Request, ``response.follow`` 直接支持相对的 URL - 无需调用 "
+"urljoin。 请注意，``response.follow`` 只是返回了一个请求实例；您仍然必须提交"
+"此请求。"
 
 #: ../../../intro/tutorial.rst:677
 msgid ""
 "You can also pass a selector to ``response.follow`` instead of a string; "
 "this selector should extract necessary attributes:"
 msgstr ""
+"你也可以传递一个选择器到 ``response.follow`` 而不是一个字符串；这个选择器应该"
+"提取必要的属性："
 
 #: ../../../intro/tutorial.rst:680
 msgid ""
 "for href in response.css(\"ul.pager a::attr(href)\"):\n"
 "    yield response.follow(href, callback=self.parse)"
 msgstr ""
+"用于响应.css(\"ul.pager a:ttran(href)\":\n"
+"    yound response.follow(href, callback=self.parse)"
 
 #: ../../../intro/tutorial.rst:685
 msgid ""
 "For ``<a>`` elements there is a shortcut: ``response.follow`` uses their "
 "href attribute automatically. So the code can be shortened further:"
 msgstr ""
+"对于``<a>`` 元素，存在一个快捷方式： ``response.follow`` 自动使用它们的 href "
+"属性。所以代码可以进一步缩短："
 
 #: ../../../intro/tutorial.rst:688
 msgid ""
 "for a in response.css(\"ul.pager a\"):\n"
 "    yield response.follow(a, callback=self.parse)"
 msgstr ""
+"用于响应.css(\"ul.pager a\"):\n"
+"    red response.follow(a, callback=self.parse)"
 
 #: ../../../intro/tutorial.rst:693
 msgid ""
@@ -1000,24 +1179,26 @@ msgid ""
 "anchors = response.css(\"ul.pager a\")\n"
 "yield from response.follow_all(anchors, callback=self.parse)"
 msgstr ""
+"锚点 = response.css(\"ul.pager a\")\n"
+"从响应, follow_all(锚, callback=self.parse)"
 
 #: ../../../intro/tutorial.rst:701
 msgid "or, shortening it further:"
-msgstr ""
+msgstr "或进一步缩短："
 
 #: ../../../intro/tutorial.rst:703
 msgid "yield from response.follow_all(css=\"ul.pager a\", callback=self.parse)"
-msgstr ""
+msgstr "从 response.follow_all(css=\"ul.pager a\", callback=self.parse)"
 
 #: ../../../intro/tutorial.rst:711
 msgid "More examples and patterns"
-msgstr ""
+msgstr "更多示例和模式"
 
 #: ../../../intro/tutorial.rst:713
 msgid ""
 "Here is another spider that illustrates callbacks and following links, this "
 "time for scraping author information:"
-msgstr ""
+msgstr "这是另一个显示回调和跟随链接的旋转器，这次是为了拆除作者信息："
 
 #: ../../../intro/tutorial.rst:716
 msgid ""
@@ -1047,6 +1228,30 @@ msgid ""
 "            \"bio\": extract_with_css(\".author-description::text\"),\n"
 "        }"
 msgstr ""
+"导入 scrapy\n"
+"\n"
+"\n"
+"类AuthorSpider(scrapy.Spider):\n"
+"    name = \"author\"\n"
+"\n"
+"    start_urls = [\"https://quotes\" oscrape.com/\"]\n"
+"\n"
+"    def parse(self, response):\n"
+"        author_page_links = response. ss(\".author + a\")\n"
+"        从response.follow_all(author_page_links, self. arse_author)\n"
+"\n"
+"        pagination_links = response.css(\"li. ext a\")\n"
+"        sound from response.follow_all(pagination_links, self.\n"
+"\n"
+"    def parse_author(自己) 答复：\n"
+"        def extract_with_css(查询)：\n"
+"            返回答复。 ss(query).get(默认=\"\")。 trip()\n"
+"\n"
+"        aid power\n"
+"            \"name\": extract_with_css(\"h3). 超标题：:text\",\n"
+"            \"出生日期\": extract_with_css(\"). uthor-born-date: :text\",\n"
+"            \"bio\": extract_with_css(\"). uthor-description:::text\"),\n"
+"}"
 
 #: ../../../intro/tutorial.rst:743
 msgid ""
@@ -1054,6 +1259,8 @@ msgid ""
 "the authors pages calling the ``parse_author`` callback for each of them, "
 "and also the pagination links with the ``parse`` callback as we saw before."
 msgstr ""
+"这个旋转器将从主页开始， 它将跟随作者页面的所有链接，其中每个页面调用 "
+"``parse_author`` 回调。 还有我们以前看到的 ``parse`` 回调的分页链接。"
 
 #: ../../../intro/tutorial.rst:747
 msgid ""
@@ -1068,6 +1275,8 @@ msgid ""
 "cleanup the data from a CSS query and yields the Python dict with the author "
 "data."
 msgstr ""
+"``parse_author`` 回调定义了一个助手函数来提取和清理一个 CSS 查询的数据，并用"
+"作者数据生成Python 词典。"
 
 #: ../../../intro/tutorial.rst:755
 msgid ""
@@ -1083,7 +1292,7 @@ msgstr ""
 msgid ""
 "Hopefully by now you have a good understanding of how to use the mechanism "
 "of following links and callbacks with Scrapy."
-msgstr ""
+msgstr "希望您现在能够很好地了解如何使用以下链接和回调的机制。"
 
 #: ../../../intro/tutorial.rst:765
 msgid ""
@@ -1104,11 +1313,11 @@ msgstr ""
 msgid ""
 "You can provide command line arguments to your spiders by using the ``-a`` "
 "option when running them::"
-msgstr ""
+msgstr "你可以使用 ``-a`` 选项为你的蜘蛛提供命令行参数：:"
 
 #: ../../../intro/tutorial.rst:781
 msgid "scrapy crawl quotes -O quotes-humor.json -a tag=humor"
-msgstr ""
+msgstr "scray crawl quotes -O quotes-humor.json -a tag=humor"
 
 #: ../../../intro/tutorial.rst:783
 msgid ""
@@ -1122,6 +1331,8 @@ msgid ""
 "available via ``self.tag``. You can use this to make your spider fetch only "
 "quotes with a specific tag, building the URL based on the argument:"
 msgstr ""
+"在这个示例中，为 ``tag`` 参数提供的值将通过 ``self.tag`` 提供。 你可以使用这"
+"个来让你的蜘蛛提取只是带有特定标签的报价，基于参数构建URL："
 
 #: ../../../intro/tutorial.rst:790
 msgid ""
@@ -1156,6 +1367,8 @@ msgid ""
 "will only visit URLs from the ``humor`` tag, such as ``https://quotes."
 "toscrape.com/tag/humor``."
 msgstr ""
+"如果你将 ``tag=humor`` 参数传递给这个蜘蛛，你会注意到，它只会访问 ``humor`` "
+"标签中的 URL，例如``https://quotes.toscrape.com/tag/humor`` 。"
 
 #: ../../../intro/tutorial.rst:821
 msgid ""
@@ -1164,7 +1377,7 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:824
 msgid "Next steps"
-msgstr ""
+msgstr "今后的步骤"
 
 #: ../../../intro/tutorial.rst:826
 msgid ""

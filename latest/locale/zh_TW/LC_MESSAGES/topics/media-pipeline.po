@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"POT-Creation-Date: 2026-04-06 09:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/media-pipeline.rst:5
 msgid "Downloading and processing files and images"
-msgstr ""
+msgstr "下載並處理檔案和影像"
 
 #: ../../../topics/media-pipeline.rst:9
 msgid ""
@@ -160,7 +160,7 @@ msgstr ""
 
 #: ../../../topics/media-pipeline.rst:98
 msgid "ITEM_PIPELINES = {\"scrapy.pipelines.files.FilesPipeline\": 1}"
-msgstr ""
+msgstr "ITEM_PIPELINES = {\"scrapy.pipelines.files.FilesPipeline\": 1}"
 
 #: ../../../topics/media-pipeline.rst:103
 msgid "You can also use both the Files and Images Pipeline at the same time."
@@ -279,6 +279,15 @@ msgid ""
 "\n"
 "    return image_filename"
 msgstr ""
+"import hashlib\n"
+"\n"
+"\n"
+"def file_path(self, request, response=None, info=None, *, item=None):\n"
+"    image_url_hash = hashlib.shake_256(request.url.encode()).hexdigest(5)\n"
+"    image_perspective = request.url.split(\"/\")[-2]\n"
+"    image_filename = f\"{image_url_hash}_{image_perspective}.jpg\"\n"
+"\n"
+"    return image_filename"
 
 #: ../../../topics/media-pipeline.rst:177
 msgid ""
@@ -952,6 +961,17 @@ msgid ""
 "    adapter[\"file_paths\"] = file_paths\n"
 "    return item"
 msgstr ""
+"from itemadapter import ItemAdapter\n"
+"from scrapy.exceptions import DropItem\n"
+"\n"
+"\n"
+"def item_completed(self, results, item, info):\n"
+"    file_paths = [x[\"path\"] for ok, x in results if ok]\n"
+"    if not file_paths:\n"
+"        raise DropItem(\"Item contains no files\")\n"
+"    adapter = ItemAdapter(item)\n"
+"    adapter[\"file_paths\"] = file_paths\n"
+"    return item"
 
 #: ../../../topics/media-pipeline.rst:652
 #: ../../../topics/media-pipeline.rst:737
@@ -981,6 +1001,15 @@ msgid ""
 "    def file_path(self, request, response=None, info=None, *, item=None):\n"
 "        return \"files/\" + PurePosixPath(urlparse_cached(request).path).name"
 msgstr ""
+"from pathlib import PurePosixPath\n"
+"from scrapy.utils.httpobj import urlparse_cached\n"
+"\n"
+"from scrapy.pipelines.images import ImagesPipeline\n"
+"\n"
+"\n"
+"class MyImagesPipeline(ImagesPipeline):\n"
+"    def file_path(self, request, response=None, info=None, *, item=None):\n"
+"        return \"files/\" + PurePosixPath(urlparse_cached(request).path).name"
 
 #: ../../../topics/media-pipeline.rst:703
 msgid ""
@@ -1072,4 +1101,4 @@ msgstr ""
 
 #: ../../../topics/media-pipeline.rst:773
 msgid "ITEM_PIPELINES = {\"myproject.pipelines.MyImagesPipeline\": 300}"
-msgstr ""
+msgstr "ITEM_PIPELINES = {\"myproject.pipelines.MyImagesPipeline\": 300}"

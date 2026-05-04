@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"POT-Creation-Date: 2026-04-06 09:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -946,7 +946,7 @@ msgstr ""
 
 #: ../../../topics/spiders.rst:651
 msgid "Example::"
-msgstr ""
+msgstr "範例：\\ ::"
 
 #: ../../../topics/spiders.rst:653
 msgid ""
@@ -1153,7 +1153,7 @@ msgstr ""
 #: ../../../topics/spiders.rst:816 ../../../topics/spiders.rst:840
 #: ../../../topics/spiders.rst:858
 msgid "For example::"
-msgstr ""
+msgstr "例如：\\ ::\n"
 
 #: ../../../topics/spiders.rst:818
 msgid "sitemap_rules = [('/product/', 'parse_product')]"

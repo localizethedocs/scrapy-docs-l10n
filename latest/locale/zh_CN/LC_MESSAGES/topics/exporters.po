@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"POT-Creation-Date: 2026-04-06 09:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:5
 msgid "Item Exporters"
-msgstr ""
+msgstr "物品导出"
 
 #: ../../../topics/exporters.rst:10
 msgid ""
@@ -27,16 +27,18 @@ msgid ""
 "items, to use the data in some other application. That is, after all, the "
 "whole purpose of the scraping process."
 msgstr ""
+"一旦你破解了你的项目，你常常想要继续或导出这些项目，以便在其他一些应用程序中"
+"使用数据。 这毕竟是拆解过程的全部目的。"
 
 #: ../../../topics/exporters.rst:14
 msgid ""
 "For this purpose Scrapy provides a collection of Item Exporters for "
 "different output formats, such as XML, CSV or JSON."
-msgstr ""
+msgstr "为此目的，Scrapy 提供了不同输出格式的物品导出器集，如XML、CSV或JSON。"
 
 #: ../../../topics/exporters.rst:18
 msgid "Using Item Exporters"
-msgstr ""
+msgstr "使用项目导出"
 
 #: ../../../topics/exporters.rst:20
 msgid ""
@@ -115,7 +117,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:79
 msgid "Serialization of item fields"
-msgstr ""
+msgstr "项目字段序列化"
 
 #: ../../../topics/exporters.rst:81
 msgid ""
@@ -123,22 +125,24 @@ msgid ""
 "serialization library, and the decision of how to serialize them is "
 "delegated to each particular serialization library."
 msgstr ""
+"默认情况下，字段值将不被修改传递到底层序列化库， 每个特定的序列化图书馆都将如"
+"何对其进行序列化的决定委托给每个特定的序列化图书馆。"
 
 #: ../../../topics/exporters.rst:85
 msgid ""
 "However, you can customize how each field value is serialized *before it is "
 "passed to the serialization library*."
-msgstr ""
+msgstr "然而，您可以自定义每个字段值在传递到序列化库之前的序列化方式*。"
 
 #: ../../../topics/exporters.rst:88
 msgid ""
 "There are two ways to customize how a field will be serialized, which are "
 "described next."
-msgstr ""
+msgstr "有两种方法来定制一个字段的序列化方法，下面描述这两种方法。"
 
 #: ../../../topics/exporters.rst:94
 msgid "1. Declaring a serializer in the field"
-msgstr ""
+msgstr "1. 声明字段中的序列转换器"
 
 #: ../../../topics/exporters.rst:96
 msgid ""
@@ -149,7 +153,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:100 ../../../topics/exporters.rst:125
 msgid "Example:"
-msgstr ""
+msgstr "示例："
 
 #: ../../../topics/exporters.rst:102
 msgid ""
@@ -164,10 +168,20 @@ msgid ""
 "    name = scrapy.Field()\n"
 "    price = scrapy.Field(serializer=serialize_price)"
 msgstr ""
+"导入 scrapy\n"
+"\n"
+"\n"
+"def serialize_price(value):\n"
+"    return f\"$ {str(value)}\"\n"
+"\n"
+"\n"
+"class Product(scrapy.Item):\n"
+"    name = scrapy.Field()\n"
+"    price = scrapy.Field(serializer=serialize_price)"
 
 #: ../../../topics/exporters.rst:117
 msgid "2. Overriding the serialize_field() method"
-msgstr ""
+msgstr "2. 覆盖 serialize_field() 方法"
 
 #: ../../../topics/exporters.rst:119
 msgid ""
@@ -192,26 +206,38 @@ msgid ""
 "            return f\"$ {str(value)}\"\n"
 "        return super().serialize_field(field, name, value)"
 msgstr ""
+"来自废料。 xporters importer XmlItemExporter\n"
+"\n"
+"\n"
+"class ProductXmlExportter(XmlItemExporter):\n"
+"    def serialize_field(自己, field, field, 名字，值：\n"
+"        如果名称== \"价格\"：\n"
+"            return f\"$ {str(value)}\"\n"
+"        return super(). erialize_field(字段，名称，值)"
 
 #: ../../../topics/exporters.rst:141
 msgid "Built-in Item Exporters reference"
-msgstr ""
+msgstr "内置项目导出器参考"
 
 #: ../../../topics/exporters.rst:143
 msgid ""
 "Here is a list of the Item Exporters bundled with Scrapy. Some of them "
 "contain output examples, which assume you're exporting these two items:"
 msgstr ""
+"这里是一个与废件捆绑在一起的物品导出器列表。其中一些包含输出示例，这些示例假"
+"定您导出这两个物品："
 
 #: ../../../topics/exporters.rst:147
 msgid ""
 "Item(name=\"Color TV\", price=\"1200\")\n"
 "Item(name=\"DVD player\", price=\"200\")"
 msgstr ""
+"Item(name=\"彩色电视\", price=\"1200\")\n"
+"Item(name=\"DVD 播放器\", price=\"200\")"
 
 #: ../../../topics/exporters.rst:153
 msgid "BaseItemExporter"
-msgstr ""
+msgstr "BaseItemExporter"
 
 #: ../../../topics/exporters.rst:157
 msgid ""
@@ -220,6 +246,8 @@ msgid ""
 "defining what fields to export, whether to export empty fields, or which "
 "encoding to use."
 msgstr ""
+"这是所有物品导出者的 (抽象) 基类。 它为所有(混凝土)物项出口商使用的共同特征提"
+"供支持。 例如定义要导出的字段，不管是导出空字段还是使用哪种编码。"
 
 #: ../../../topics/exporters.rst:162
 msgid ""
@@ -231,7 +259,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:168
 msgid "Exports the given item. This method must be implemented in subclasses."
-msgstr ""
+msgstr "导出给定项。这个方法必须在子类中实现。"
 
 #: ../../../topics/exporters.rst:172
 msgid ""
@@ -239,6 +267,8 @@ msgid ""
 "method (in your custom Item Exporters) if you want to control how a "
 "particular field or value will be serialized/exported."
 msgstr ""
+"返回给定字段的序列化值。 如果您想要控制特定字段或值将被序列化/导出的方式，您"
+"可以覆盖此方法(在您的自定义项导出器中)。"
 
 #: ../../../topics/exporters.rst:176
 msgid ""
@@ -250,7 +280,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:0
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: ../../../topics/exporters.rst:181
 msgid ""
@@ -260,11 +290,11 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:186
 msgid "the name of the field being serialized"
-msgstr ""
+msgstr "被序列化的字段名称"
 
 #: ../../../topics/exporters.rst:189
 msgid "the value being serialized"
-msgstr ""
+msgstr "正在序列化的值"
 
 #: ../../../topics/exporters.rst:193
 msgid ""
@@ -282,35 +312,35 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:207
 msgid "Fields to export, their order [1]_ and their output names."
-msgstr ""
+msgstr "要导出的字段，订单 [1]_ 及其输出名称。"
 
 #: ../../../topics/exporters.rst:209
 msgid "Possible values are:"
-msgstr ""
+msgstr "可能的值为："
 
 #: ../../../topics/exporters.rst:211
 msgid "``None`` (all fields [2]_, default)"
-msgstr ""
+msgstr "``None`` (所有字段 [2]_, 默认)"
 
 #: ../../../topics/exporters.rst:213
 msgid "A list of fields::"
-msgstr ""
+msgstr "字段列表:"
 
 #: ../../../topics/exporters.rst:215
 msgid "['field1', 'field2']"
-msgstr ""
+msgstr "['field 1', 'field 2']"
 
 #: ../../../topics/exporters.rst:217
 msgid "A dict where keys are fields and values are output names::"
-msgstr ""
+msgstr "键值为字段和值为输出名的词典:"
 
 #: ../../../topics/exporters.rst:219
 msgid "{'field1': 'Field 1', 'field2': 'Field 2'}"
-msgstr ""
+msgstr "{'field1': 'field 1', 'field 2'}"
 
 #: ../../../topics/exporters.rst:221
 msgid "Not all exporters respect the specified field order."
-msgstr ""
+msgstr "并非所有出口商都遵守指定的字段顺序。"
 
 #: ../../../topics/exporters.rst:222
 msgid ""
@@ -329,36 +359,36 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:233
 msgid "This option is ignored for dict items."
-msgstr ""
+msgstr "此选项被忽略用于字典项目。"
 
 #: ../../../topics/exporters.rst:237
 msgid "The output character encoding."
-msgstr ""
+msgstr "输出字符编码。"
 
 #: ../../../topics/exporters.rst:241
 msgid ""
 "Amount of spaces used to indent the output on each level. Defaults to ``0``."
-msgstr ""
+msgstr "用于缩进每个级别输出的空格数量。默认值为 ``0`` 。"
 
 #: ../../../topics/exporters.rst:243
 msgid ""
 "``indent=None`` selects the most compact representation, all items in the "
 "same line with no indentation"
-msgstr ""
+msgstr "``indent=None`` 选择最紧凑的表达式，所有项目都在同一行中没有缩进"
 
 #: ../../../topics/exporters.rst:245
 msgid "``indent<=0`` each item on its own line, no indentation"
-msgstr ""
+msgstr "``indent<=0`` 每个项目在其自身行中，无缩进"
 
 #: ../../../topics/exporters.rst:246
 msgid ""
 "``indent>0`` each item on its own line, indented with the provided numeric "
 "value"
-msgstr ""
+msgstr "每个项目在其自身行上的 ``indent>0`` 以提供的数值缩进"
 
 #: ../../../topics/exporters.rst:249
 msgid "PythonItemExporter"
-msgstr ""
+msgstr "PythonItemExporter"
 
 #: ../../../../scrapy/exporters.py:docstring of
 #: scrapy.exporters.PythonItemExporter:1
@@ -376,11 +406,11 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:257
 msgid "XmlItemExporter"
-msgstr ""
+msgstr "XmlItemExporter"
 
 #: ../../../topics/exporters.rst:261
 msgid "Exports items in XML format to the specified file object."
-msgstr ""
+msgstr "将XML格式的项目导出到指定的文件对象。"
 
 #: ../../../topics/exporters.rst:263 ../../../topics/exporters.rst:320
 #: ../../../topics/exporters.rst:355 ../../../topics/exporters.rst:375
@@ -390,14 +420,16 @@ msgid ""
 "should accept ``bytes`` (a disk file opened in binary mode, a ``io.BytesIO`` "
 "object, etc)"
 msgstr ""
+"用于导出数据的文件类对象。 它的 ``write`` 方法应该接受 ``bytes`` (一个在二进"
+"制模式中打开的磁盘文件，一个 ``io.BytesIO`` 对象等)"
 
 #: ../../../topics/exporters.rst:266
 msgid "The name of root element in the exported XML."
-msgstr ""
+msgstr "导出的 XML 根元素的名称。"
 
 #: ../../../topics/exporters.rst:269
 msgid "The name of each item element in the exported XML."
-msgstr ""
+msgstr "导出的 XML 中每个元素的名称。"
 
 #: ../../../topics/exporters.rst:272 ../../../topics/exporters.rst:363
 #: ../../../topics/exporters.rst:378
@@ -410,7 +442,7 @@ msgstr ""
 #: ../../../topics/exporters.rst:381 ../../../topics/exporters.rst:402
 #: ../../../topics/exporters.rst:431
 msgid "A typical output of this exporter would be::"
-msgstr ""
+msgstr "出口商的典型产出如下："
 
 #: ../../../topics/exporters.rst:277
 msgid ""
@@ -426,6 +458,17 @@ msgid ""
 " </item>\n"
 "</items>"
 msgstr ""
+"<?xml version=\"1。 \" encoding=\"utf-8?\n"
+"<items>\n"
+"  <item>\n"
+"    <name></name>\n"
+"    <price>1200</price>\n"
+" </item>\n"
+"  <item>\n"
+"    <name>DVD 播放器</name>\n"
+"    <price>200</price>\n"
+" </item>\n"
+"</items>"
 
 #: ../../../topics/exporters.rst:289
 msgid ""
@@ -436,15 +479,15 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:293
 msgid "For example, the item::"
-msgstr ""
+msgstr "例如，项目："
 
 #: ../../../topics/exporters.rst:295
 msgid "Item(name=['John', 'Doe'], age='23')"
-msgstr ""
+msgstr "项目名称=['John', 'Doe'], 年龄='23'"
 
 #: ../../../topics/exporters.rst:297
 msgid "Would be serialized as::"
-msgstr ""
+msgstr "序列化为:"
 
 #: ../../../topics/exporters.rst:299
 msgid ""
@@ -459,10 +502,20 @@ msgid ""
 "  </item>\n"
 "</items>"
 msgstr ""
+"<?xml version=\"1。 \" encoding=\"utf-8?\n"
+"<items>\n"
+"  <item>\n"
+"    <name>\n"
+"      <value>John</value>\n"
+"      <value>Doe</value>\n"
+"    </name>\n"
+"    <age></age>\n"
+"  </item>\n"
+"</items>"
 
 #: ../../../topics/exporters.rst:311
 msgid "CsvItemExporter"
-msgstr ""
+msgstr "CsvItemExporter"
 
 #: ../../../topics/exporters.rst:315
 msgid ""
@@ -483,7 +536,7 @@ msgstr ""
 msgid ""
 "The char (or chars) that will be used for joining multi-valued fields, if "
 "found."
-msgstr ""
+msgstr "用于加入多值字段的字符(或字符)，如果找到的话。"
 
 #: ../../../topics/exporters.rst:332
 msgid ""
@@ -505,18 +558,21 @@ msgid ""
 "Color TV,1200\n"
 "DVD player,200"
 msgstr ""
+"产品,价格\n"
+"彩色电视,1200\n"
+"DVD 播放器 200"
 
 #: ../../../topics/exporters.rst:349
 msgid "PickleItemExporter"
-msgstr ""
+msgstr "选取物品导出器"
 
 #: ../../../topics/exporters.rst:353
 msgid "Exports items in pickle format to the given file-like object."
-msgstr ""
+msgstr "将选取格式的项目导出到给定的文件类对象。"
 
 #: ../../../topics/exporters.rst:358
 msgid "The pickle protocol to use."
-msgstr ""
+msgstr "要使用的小卡协议。"
 
 #: ../../../topics/exporters.rst:361
 msgid "For more information, see :mod:`pickle`."
@@ -525,29 +581,31 @@ msgstr ""
 #: ../../../topics/exporters.rst:366
 msgid ""
 "Pickle isn't a human readable format, so no output examples are provided."
-msgstr ""
+msgstr "Pickle 不是一个可读的人类格式，所以不提供输出示例。"
 
 #: ../../../topics/exporters.rst:369
 msgid "PprintItemExporter"
-msgstr ""
+msgstr "PprintItemExporter"
 
 #: ../../../topics/exporters.rst:373
 msgid "Exports items in pretty print format to the specified file object."
-msgstr ""
+msgstr "向指定的文件对象导出精致打印格式的项目。"
 
 #: ../../../topics/exporters.rst:383
 msgid ""
 "{'name': 'Color TV', 'price': '1200'}\n"
 "{'name': 'DVD player', 'price': '200'}"
 msgstr ""
+"{'name': 'Color TV', 'price': '1200'}\n"
+"{'name': 'DVD player', 'price': '200'}"
 
 #: ../../../topics/exporters.rst:386
 msgid "Longer lines (when present) are pretty-formatted."
-msgstr ""
+msgstr "较长的行数(当存在时)是预格式化的。"
 
 #: ../../../topics/exporters.rst:389
 msgid "JsonItemExporter"
-msgstr ""
+msgstr "JsonItemExporter"
 
 #: ../../../topics/exporters.rst:393
 msgid ""
@@ -564,6 +622,8 @@ msgid ""
 "[{\"name\": \"Color TV\", \"price\": \"1200\"},\n"
 "{\"name\": \"DVD player\", \"price\": \"200\"}]"
 msgstr ""
+"[{\"name\": \"Color TV\", \"price\": \"1200\"},\n"
+"{\"name\": \"DVD player\", \"price\": \"200\"}]"
 
 #: ../../../topics/exporters.rst:409
 msgid ""
@@ -578,7 +638,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:418
 msgid "JsonLinesItemExporter"
-msgstr ""
+msgstr "JsonLinesItemExporter"
 
 #: ../../../topics/exporters.rst:422
 msgid ""
@@ -595,6 +655,8 @@ msgid ""
 "{\"name\": \"Color TV\", \"price\": \"1200\"}\n"
 "{\"name\": \"DVD player\", \"price\": \"200\"}"
 msgstr ""
+"{\"name\": \"Color TV\", \"price\": \"1200\"}\n"
+"{\"name\": \"DVD player\", \"price\": \"200\"}"
 
 #: ../../../topics/exporters.rst:436
 msgid ""
@@ -604,7 +666,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:440
 msgid "MarshalItemExporter"
-msgstr ""
+msgstr "MarshalItemExporter"
 
 #: ../../../../scrapy/exporters.py:docstring of
 #: scrapy.exporters.MarshalItemExporter:1

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"POT-Creation-Date: 2026-04-06 09:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -182,7 +182,7 @@ msgstr ""
 
 #: ../../../topics/architecture.rst:124
 msgid "Downloader middlewares"
-msgstr ""
+msgstr "下载器中间件"
 
 #: ../../../topics/architecture.rst:126
 msgid ""
@@ -223,7 +223,7 @@ msgstr ""
 
 #: ../../../topics/architecture.rst:144
 msgid "Spider middlewares"
-msgstr ""
+msgstr "蜘蛛中间件"
 
 #: ../../../topics/architecture.rst:146
 msgid ""

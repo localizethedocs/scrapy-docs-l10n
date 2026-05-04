@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"POT-Creation-Date: 2026-04-06 09:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:5
 msgid "Item Loaders"
-msgstr ""
+msgstr "項目載入器"
 
 #: ../../../topics/loaders.rst:10
 msgid ""
@@ -54,7 +54,7 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:28
 msgid "Using Item Loaders to populate items"
-msgstr ""
+msgstr "使用項目載入器來填寫項目"
 
 #: ../../../topics/loaders.rst:30
 msgid ""
@@ -285,7 +285,7 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:192
 msgid "Declaring Item Loaders"
-msgstr ""
+msgstr "宣告項目載入器"
 
 #: ../../../topics/loaders.rst:194
 msgid ""
@@ -309,6 +309,19 @@ msgid ""
 "\n"
 "    # ..."
 msgstr ""
+"from itemloaders.processors import TakeFirst, MapCompose, Join\n"
+"from scrapy.loader import ItemLoader\n"
+"\n"
+"\n"
+"class ProductLoader(ItemLoader):\n"
+"    default_output_processor = TakeFirst()\n"
+"\n"
+"    name_in = MapCompose(str.title)\n"
+"    name_out = Join()\n"
+"\n"
+"    price_in = MapCompose(str.strip)\n"
+"\n"
+"    # ..."
 
 #: ../../../topics/loaders.rst:212
 msgid ""
@@ -365,6 +378,13 @@ msgid ""
 ">>> il.load_item()\n"
 "{'name': 'Welcome to my website', 'price': '1000'}"
 msgstr ""
+">>> from scrapy.loader import ItemLoader\n"
+">>> il = ItemLoader(item=Product())\n"
+">>> il.add_value(\"name\", [\"Welcome to my\", \"<strong>website</"
+"strong>\"])\n"
+">>> il.add_value(\"price\", [\"&euro;\", \"<span>1000</span>\"])\n"
+">>> il.load_item()\n"
+"{'name': 'Welcome to my website', 'price': '1000'}"
 
 #: ../../../topics/loaders.rst:264
 msgid ""
@@ -393,7 +413,7 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:277
 msgid "Item Loader Context"
-msgstr ""
+msgstr "項目載入器上下文"
 
 #: ../../../topics/loaders.rst:279
 msgid ""
@@ -440,6 +460,8 @@ msgid ""
 "loader = ItemLoader(product)\n"
 "loader.context[\"unit\"] = \"cm\""
 msgstr ""
+"loader = ItemLoader(product)\n"
+"loader.context[\"unit\"] = \"cm\""
 
 #: ../../../topics/loaders.rst:311
 msgid ""
@@ -449,7 +471,7 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:314
 msgid "loader = ItemLoader(product, unit=\"cm\")"
-msgstr ""
+msgstr "loader = ItemLoader(product, unit=\"cm\")"
 
 #: ../../../topics/loaders.rst:318
 msgid ""
@@ -466,7 +488,7 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:331
 msgid "ItemLoader objects"
-msgstr ""
+msgstr "ItemLoader 物件"
 
 #: ../../../../scrapy/loader/__init__.py:docstring of
 #: scrapy.loader.ItemLoader:1
@@ -892,7 +914,7 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:346
 msgid "Example::"
-msgstr ""
+msgstr "範例：\\ ::"
 
 #: ../../../topics/loaders.rst:348
 msgid ""
@@ -950,7 +972,7 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:392
 msgid "Reusing and extending Item Loaders"
-msgstr ""
+msgstr "重新使用並擴充項目載入器"
 
 #: ../../../topics/loaders.rst:394
 msgid ""
@@ -1014,6 +1036,13 @@ msgid ""
 "class XmlProductLoader(ProductLoader):\n"
 "    name_in = MapCompose(remove_cdata, ProductLoader.name_in)"
 msgstr ""
+"from itemloaders.processors import MapCompose\n"
+"from myproject.ItemLoaders import ProductLoader\n"
+"from myproject.utils.xml import remove_cdata\n"
+"\n"
+"\n"
+"class XmlProductLoader(ProductLoader):\n"
+"    name_in = MapCompose(remove_cdata, ProductLoader.name_in)"
 
 #: ../../../topics/loaders.rst:441
 msgid "And that's how you typically extend input processors."

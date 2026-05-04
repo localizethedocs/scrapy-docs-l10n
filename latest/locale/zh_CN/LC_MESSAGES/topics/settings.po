@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"POT-Creation-Date: 2026-04-06 09:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -300,7 +300,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:192
 msgid "For example:"
-msgstr ""
+msgstr "例如："
 
 #: ../../../topics/settings.rst:195
 msgid ""
@@ -577,7 +577,7 @@ msgstr ""
 #: ../../../topics/settings.rst:1325 ../../../topics/settings.rst:1365
 #: ../../../topics/settings.rst:1394 ../../../topics/settings.rst:1692
 msgid "Default: ``None``"
-msgstr ""
+msgstr "默认值： ``None``"
 
 #: ../../../topics/settings.rst:390
 msgid ""
@@ -711,7 +711,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:498
 msgid "Default: ``100``"
-msgstr ""
+msgstr "默认值： ``100``"
 
 #: ../../../topics/settings.rst:500
 msgid ""
@@ -854,7 +854,7 @@ msgstr ""
 #: ../../../topics/settings.rst:597 ../../../topics/settings.rst:609
 #: ../../../topics/settings.rst:1546 ../../../topics/settings.rst:1595
 msgid "Default: ``0``"
-msgstr ""
+msgstr "默认值: ``0``"
 
 #: ../../../topics/settings.rst:599 ../../../topics/settings.rst:611
 #: ../../../topics/settings.rst:640
@@ -909,7 +909,7 @@ msgstr ""
 #: ../../../topics/settings.rst:1505 ../../../topics/settings.rst:1578
 #: ../../../topics/settings.rst:1714 ../../../topics/settings.rst:1876
 msgid "Default: ``False``"
-msgstr ""
+msgstr "默认值： ``False``"
 
 #: ../../../topics/settings.rst:642
 msgid ""
@@ -928,7 +928,7 @@ msgstr ""
 #: ../../../topics/settings.rst:1943 ../../../topics/settings.rst:1965
 #: ../../../topics/settings.rst:2128
 msgid "Default: ``True``"
-msgstr ""
+msgstr "默认: ``True``"
 
 #: ../../../topics/settings.rst:652
 msgid "Whether to enable DNS in-memory cache."
@@ -1760,7 +1760,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:1340 ../../../topics/settings.rst:1922
 msgid "Example:"
-msgstr ""
+msgstr "示例："
 
 #: ../../../topics/settings.rst:1342
 msgid ""
@@ -1973,7 +1973,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:1514
 msgid "Default: ``[]``"
-msgstr ""
+msgstr "默认值： ``[]``"
 
 #: ../../../topics/settings.rst:1516
 msgid ""

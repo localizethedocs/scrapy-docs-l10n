@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"POT-Creation-Date: 2026-04-06 09:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../../../topics/broad-crawls.rst:5
 msgid "Broad Crawls"
-msgstr ""
+msgstr "广泛的爪子"
 
 #: ../../../topics/broad-crawls.rst:7
 msgid ""
@@ -28,6 +28,9 @@ msgid ""
 "required (for example, there are generic spiders that handle any given site "
 "thrown at them)."
 msgstr ""
+"扫描默认值被优化用于覆盖特定站点。 这些场址往往由一个单一的废料喷洒器处理，但"
+"没有必要或要求这样做（例如）。 那里有通用的喷雾器，处理任何向他们投掷的网"
+"站)。"
 
 #: ../../../topics/broad-crawls.rst:12
 msgid ""
@@ -38,15 +41,18 @@ msgid ""
 "to perform. These are called \"broad crawls\" and is the typical crawlers "
 "employed by search engines."
 msgstr ""
+"除了这种“焦点角料”之外，还有另一种常见的覆盖大量（可能是无限制的）域。 而且只"
+"受时间或其他任意限制， 而不是停止当域被夷为平地或没有更多的请求执行的时候。 "
+"这些都叫做“大型箱子”，是搜索引擎使用的典型箱子。"
 
 #: ../../../topics/broad-crawls.rst:19
 msgid "These are some common properties often found in broad crawls:"
-msgstr ""
+msgstr "这些是一些常见的特性，常常出现在广泛的爪子里："
 
 #: ../../../topics/broad-crawls.rst:21
 msgid ""
 "they crawl many domains (often, unbounded) instead of a specific set of sites"
-msgstr ""
+msgstr "他们捕捉了许多域名(常常是未弹出的) 而不是特定的站点。"
 
 #: ../../../topics/broad-crawls.rst:23
 msgid ""
@@ -54,12 +60,16 @@ msgid ""
 "impractical (or impossible) to do so, and instead limit the crawl by time or "
 "number of pages crawled"
 msgstr ""
+"它们不一定需要完成的域名，因为这样做是不切实际的(或不可能的)。 而是按时间或被"
+"夷为平地的页数限制crawl"
 
 #: ../../../topics/broad-crawls.rst:27
 msgid ""
 "they are simpler in logic (as opposed to very complex spiders with many "
 "extraction rules) because data is often post-processed in a separate stage"
 msgstr ""
+"它们在逻辑上比较简单(而不是具有许多提取规则的非常复杂的拼写器)，因为数据往往"
+"是在一个单独的阶段后处理的。"
 
 #: ../../../topics/broad-crawls.rst:30
 msgid ""
@@ -68,6 +78,9 @@ msgid ""
 "site is crawled slowly to respect politeness, but many sites are crawled in "
 "parallel)"
 msgstr ""
+"它们同时捕捉许多域名， 允许他们通过不受任何特定站点约束的限制来实现更快的 "
+"crawl 速度(每个站点都会慢慢地被压缩到尊重政治性的状态) 但许多站点平行被夷为平"
+"地)"
 
 #: ../../../topics/broad-crawls.rst:35
 msgid ""
@@ -78,10 +91,14 @@ msgid ""
 "along with concrete suggestions of Scrapy settings to tune in order to "
 "achieve an efficient broad crawl."
 msgstr ""
+"如上文所述，精选电缆的默认设置是优化的，而不是宽泛的 crawl。 然而，由于其异步"
+"结构，因此废料非常适合于进行快速宽阔的爪哇。 本页概述了在使用Scrapy进行广泛的"
+"crawls时你需要记住的一些事情， 连同对废品设置的具体建议进行调整以便实现一种有"
+"效率的宽阔箱子。"
 
 #: ../../../topics/broad-crawls.rst:47
 msgid "Increase concurrency"
-msgstr ""
+msgstr "增加同义性"
 
 #: ../../../topics/broad-crawls.rst:49
 msgid ""
@@ -97,14 +114,16 @@ msgid ""
 "much to increase it will depend on how much CPU and memory your crawler will "
 "have available."
 msgstr ""
+"废料中默认的全局同义词限制不适合平行翻转许多不同域名，所以你会想要增加它。 增"
+"加多少将取决于您的 CPU 和内存的数量。"
 
 #: ../../../topics/broad-crawls.rst:58
 msgid "A good starting point is ``100``:"
-msgstr ""
+msgstr "一个很好的起点是 ``100`` ："
 
 #: ../../../topics/broad-crawls.rst:60
 msgid "CONCURRENT_REQUESTS = 100"
-msgstr ""
+msgstr "CONCRENT_REQUESTS = 100"
 
 #: ../../../topics/broad-crawls.rst:64
 msgid ""
@@ -112,16 +131,20 @@ msgid ""
 "concurrency your Scrapy process gets CPU bounded. For optimum performance, "
 "you should pick a concurrency where CPU usage is at 80-90%."
 msgstr ""
+"但是找到问题的最佳途径是进行一些试验，并且确定你的废料处理程序有何同义词使得"
+"CPU拥抱。 为了最佳性能，您应该选择一个 CPU 使用率为80%至90%的同系物。"
 
 #: ../../../topics/broad-crawls.rst:68
 msgid ""
 "Increasing concurrency also increases memory usage. If memory usage is a "
 "concern, you might need to lower your global concurrency limit accordingly."
 msgstr ""
+"同时增加内存使用量也会增加内存使用量。如果内存使用令人担忧，您可能需要相应地"
+"降低全局内币种限制。"
 
 #: ../../../topics/broad-crawls.rst:73
 msgid "Increase Twisted IO thread pool maximum size"
-msgstr ""
+msgstr "增加扭曲的 IO 线程池最大尺寸"
 
 #: ../../../topics/broad-crawls.rst:75
 msgid ""
@@ -131,18 +154,21 @@ msgid ""
 "threads handling DNS queries. The DNS queue will be processed faster "
 "speeding up establishing of connection and crawling overall."
 msgstr ""
+"当前Scrapy 使用 DNS 解析以阻塞方式使用线程池。 由于同货币水平较高，卷轴可能较"
+"慢，甚至击中DNS解析器超时。 增加处理DNS查询线程数的可能解决方案。 DNS队列将会"
+"更快地处理连接加速和整流加速。"
 
 #: ../../../topics/broad-crawls.rst:81
 msgid "To increase maximum thread pool size use:"
-msgstr ""
+msgstr "要增加最大线程池大小，请使用："
 
 #: ../../../topics/broad-crawls.rst:83
 msgid "REACTOR_THREADPOOL_MAXSIZE = 20"
-msgstr ""
+msgstr "REACTOR_THREADPOOL_MAXSIZE = 20"
 
 #: ../../../topics/broad-crawls.rst:88
 msgid "Setup your own DNS"
-msgstr ""
+msgstr "设置您自己的 DNS"
 
 #: ../../../topics/broad-crawls.rst:90
 msgid ""
@@ -151,10 +177,13 @@ msgid ""
 "or even blocking your machines. To avoid this setup your own DNS server with "
 "local cache and upstream to some large DNS like OpenDNS or Verizon."
 msgstr ""
+"如果你有多个卷轴过程和单个中央DNS, 它可以像DoS一样攻击DNS服务器，导致整个网络"
+"减速，甚至阻挡您的机器。 为了避免这种设置，您自己的DNS服务器使用本地缓存和上"
+"游流到一些大的DNS，如OpenDNS或Verizon。"
 
 #: ../../../topics/broad-crawls.rst:96
 msgid "Reduce log level"
-msgstr ""
+msgstr "降低日志级别"
 
 #: ../../../topics/broad-crawls.rst:98
 msgid ""
@@ -165,18 +194,22 @@ msgid ""
 "production. Using ``DEBUG`` level when developing your (broad) crawler may "
 "be fine though."
 msgstr ""
+"当你进行广泛的crawl时，你常常只关心你得到的crawl率和发现的任何错误。 当使用 "
+"``INFO`` 日志时，这些统计数据由Scrapy 报告。 为了保存 CPU (和日志存储要求)，"
+"你不应该在生产中执行大型笼子时使用 ``DEBUG`` 日志。 使用 ``DEBUG`` 来开发你"
+"的 (broad) crawler 可能是很好的。"
 
 #: ../../../topics/broad-crawls.rst:105
 msgid "To set the log level use:"
-msgstr ""
+msgstr "要设置日志级别，请使用："
 
 #: ../../../topics/broad-crawls.rst:107
 msgid "LOG_LEVEL = \"INFO\""
-msgstr ""
+msgstr "LOG_LEVEL = “信息”"
 
 #: ../../../topics/broad-crawls.rst:112
 msgid "Disable cookies"
-msgstr ""
+msgstr "禁用 cookie"
 
 #: ../../../topics/broad-crawls.rst:114
 msgid ""
@@ -185,18 +218,20 @@ msgid ""
 "performance by saving some CPU cycles and reducing the memory footprint of "
 "your Scrapy crawler."
 msgstr ""
+"禁用cookie，除非您*实际*需要。 在进行广泛的龙卷风时往往不需要cookie (搜索引擎"
+"对它们置之不理)， 并通过保存一些CPU循环和减少废钢的内存足迹来提高性能。"
 
 #: ../../../topics/broad-crawls.rst:119
 msgid "To disable cookies use:"
-msgstr ""
+msgstr "要禁用 cookie 使用："
 
 #: ../../../topics/broad-crawls.rst:121
 msgid "COOKIES_ENABLED = False"
-msgstr ""
+msgstr "COOKIES_ENABLED = False"
 
 #: ../../../topics/broad-crawls.rst:126
 msgid "Disable retries"
-msgstr ""
+msgstr "禁用重试"
 
 #: ../../../topics/broad-crawls.rst:128
 msgid ""
@@ -205,18 +240,20 @@ msgid ""
 "causing a timeout error which gets retried many times, unnecessarily, "
 "preventing crawler capacity to be reused for other domains."
 msgstr ""
+"重试失败的 HTTP 请求可能会大大减慢计时速度，尤其是当站点响应非常慢(或失败)"
+"时， 因此导致超时错误，多次尝试不必要地阻止了 crawler 的容量用于其他域。"
 
 #: ../../../topics/broad-crawls.rst:133
 msgid "To disable retries use:"
-msgstr ""
+msgstr "要禁用重试使用："
 
 #: ../../../topics/broad-crawls.rst:135
 msgid "RETRY_ENABLED = False"
-msgstr ""
+msgstr "RETRY_ENABLED = False"
 
 #: ../../../topics/broad-crawls.rst:140
 msgid "Reduce download timeout"
-msgstr ""
+msgstr "减少下载超时"
 
 #: ../../../topics/broad-crawls.rst:142
 msgid ""
@@ -224,18 +261,20 @@ msgid ""
 "case for broad crawls) reduce the download timeout so that stuck requests "
 "are discarded quickly and free up capacity to process the next ones."
 msgstr ""
+"除非你从非常缓慢的连接中抓住(这种情况不应该是广泛的 crawls)，否则下载超时将会"
+"减少，以便迅速丢弃被卡住的请求，并释放处理下一个请求的能力。"
 
 #: ../../../topics/broad-crawls.rst:146
 msgid "To reduce the download timeout use:"
-msgstr ""
+msgstr "为了减少下载超时使用："
 
 #: ../../../topics/broad-crawls.rst:148
 msgid "DOWNLOAD_TIMEOUT = 15"
-msgstr ""
+msgstr "下载_TIMEOUT = 15"
 
 #: ../../../topics/broad-crawls.rst:153
 msgid "Disable redirects"
-msgstr ""
+msgstr "禁用重定向"
 
 #: ../../../topics/broad-crawls.rst:155
 msgid ""
@@ -245,18 +284,21 @@ msgid ""
 "request constant per crawl batch, otherwise redirect loops may cause the "
 "crawler to dedicate too many resources on any specific domain."
 msgstr ""
+"考虑禁用重定向，除非您有兴趣关注它们。 当执行广泛的板条箱时，通常是在稍后的板"
+"条箱中重新定向和解析它们。 这也有助于保持每个crawl批量的请求数量不变， 否则，"
+"重定向循环可能会导致爬行者将太多资源用于任何特定领域。"
 
 #: ../../../topics/broad-crawls.rst:161
 msgid "To disable redirects use:"
-msgstr ""
+msgstr "要禁用重定向使用："
 
 #: ../../../topics/broad-crawls.rst:163
 msgid "REDIRECT_ENABLED = False"
-msgstr ""
+msgstr "REDIRECT_ENABLED = False"
 
 #: ../../../topics/broad-crawls.rst:170
 msgid "Crawl in BFO order"
-msgstr ""
+msgstr "BFO 顺序中的 Crawl"
 
 #: ../../../topics/broad-crawls.rst:172
 msgid ":ref:`Scrapy crawls in DFO order by default <faq-bfo-dfo>`."
@@ -268,6 +310,8 @@ msgid ""
 "processing. As a result, unprocessed early requests stay in memory until the "
 "final depth is reached, which can significantly increase memory usage."
 msgstr ""
+"然而，在广义上的胶合板上，页面的编排速度往往比页面处理速度快。 结果，未处理的"
+"提早请求在达到最后深度之前保持内存，这可能大大增加内存使用率。"
 
 #: ../../../topics/broad-crawls.rst:178
 msgid ":ref:`Crawl in BFO order <faq-bfo-dfo>` instead to save memory."
@@ -275,7 +319,7 @@ msgstr ""
 
 #: ../../../topics/broad-crawls.rst:182
 msgid "Be mindful of memory leaks"
-msgstr ""
+msgstr "请注意内存泄漏。"
 
 #: ../../../topics/broad-crawls.rst:184
 msgid ""
@@ -287,7 +331,7 @@ msgstr ""
 
 #: ../../../topics/broad-crawls.rst:191
 msgid "Install a specific Twisted reactor"
-msgstr ""
+msgstr "安装特定的扭曲反应堆。"
 
 #: ../../../topics/broad-crawls.rst:193
 msgid ""

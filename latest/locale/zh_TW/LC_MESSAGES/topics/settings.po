@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"POT-Creation-Date: 2026-04-06 09:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -116,7 +116,7 @@ msgstr ""
 #: ../../../topics/settings.rst:59 ../../../topics/settings.rst:1520
 #: ../../../topics/settings.rst:1584 ../../../topics/settings.rst:1611
 msgid "Example::"
-msgstr ""
+msgstr "範例：\\ ::"
 
 #: ../../../topics/settings.rst:61
 msgid "scrapy crawl myspider -s LOG_LEVEL=INFO -s LOG_FILE=scrapy.log"
@@ -1115,7 +1115,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:790
 msgid "DOWNLOADER_CLIENT_TLS_VERBOSE_LOGGING"
-msgstr ""
+msgstr "DOWNLOADER_CLIENT_TLS_VERBOSE_LOGGING"
 
 #: ../../../topics/settings.rst:794
 msgid ""
@@ -1772,7 +1772,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:1352
 msgid "ITEM_PIPELINES_BASE"
-msgstr ""
+msgstr "ITEM_PIPELINES_BASE"
 
 #: ../../../topics/settings.rst:1356
 msgid ""
@@ -1797,7 +1797,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:1378
 msgid "Whether to enable logging."
-msgstr ""
+msgstr "是否啟用日誌紀錄。"
 
 #: ../../../topics/settings.rst:1383
 msgid "LOG_ENCODING"

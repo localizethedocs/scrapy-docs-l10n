@@ -11325,11 +11325,11 @@ msgstr ""
 
 #: ../../../news.rst:7241
 msgid "scrapy.contrib.linkextractors"
-msgstr ""
+msgstr "scrapy.contrib.linkextractors"
 
 #: ../../../news.rst:7241 ../../../news.rst:7275
 msgid "scrapy.linkextractors"
-msgstr ""
+msgstr "scrapy.linkextractors"
 
 #: ../../../news.rst:7243
 msgid "scrapy.contrib.loader"

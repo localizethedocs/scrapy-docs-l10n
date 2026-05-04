@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-09 05:59+0000\n"
+"POT-Creation-Date: 2026-04-06 09:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -180,7 +180,7 @@ msgstr ""
 
 #: ../../../index.rst:103
 msgid ":doc:`topics/item-pipeline`"
-msgstr ""
+msgstr ":doc:`topics/item-pipeline`"
 
 #: ../../../index.rst:104
 msgid "Post-process and store your scraped data."
@@ -204,7 +204,7 @@ msgstr ""
 
 #: ../../../index.rst:112
 msgid ":doc:`topics/link-extractors`"
-msgstr ""
+msgstr ":doc:`topics/link-extractors`"
 
 #: ../../../index.rst:113
 msgid "Convenient classes to extract links to follow from pages."

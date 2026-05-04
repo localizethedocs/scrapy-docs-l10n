@@ -664,7 +664,7 @@ msgstr ""
 #: domains/c/__init__.py:304 domains/cpp/__init__.py:453
 #: domains/javascript.py:261 domains/python/_object.py:176
 msgid "Returns"
-msgstr ""
+msgstr "返回"
 
 #: domains/c/__init__.py:306 domains/javascript.py:263
 #: domains/python/_object.py:178
@@ -2975,7 +2975,7 @@ msgstr ""
 #: domains/c/__init__.py:298 domains/cpp/__init__.py:436
 #: domains/python/_object.py:164 ext/napoleon/docstring.py:786
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: domains/python/_object.py:169
 msgid "Variables"
