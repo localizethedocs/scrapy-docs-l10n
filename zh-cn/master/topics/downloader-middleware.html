@@ -1,0 +1,1346 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>下载中间件 &mdash; Scrapy 2.14.2 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=74c04d93" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://projects.localizethedocs.org/scrapy-docs-l10n/topics/downloader-middleware.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=fd62c621"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+      <script>
+(function () {
+    var COPY_ICON = String.fromCodePoint(0x1F4CB);
+    var SUCCESS_ICON = String.fromCodePoint(0x2713);
+    var ERROR_ICON = String.fromCodePoint(0x26A0);
+
+    function makeLabel(icon, text) {
+        return icon + ' ' + text;
+    }
+
+    function markdownPathFromCurrentPage(pathname) {
+        if (pathname.endsWith('.html')) {
+            return pathname.slice(0, -5) + '.md';
+        }
+        if (pathname.endsWith('/')) {
+            return pathname + 'index.md';
+        }
+        var lastPart = pathname.split('/').pop() || '';
+        if (!lastPart.includes('.')) {
+            return pathname + '.md';
+        }
+        return pathname + '.md';
+    }
+
+    async function copyToClipboard(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return;
+        }
+        var textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', 'readonly');
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+    }
+
+    function setTemporaryLabel(button, label) {
+        var previousLabel = button.textContent;
+        button.textContent = label;
+        window.setTimeout(function () {
+            button.textContent = previousLabel;
+            button.disabled = false;
+        }, 1000);
+    }
+
+    async function onButtonClick(button) {
+        button.disabled = true;
+        button.textContent = '...';
+        try {
+            var mdPath = markdownPathFromCurrentPage(window.location.pathname);
+            var response = await fetch(mdPath, { credentials: 'same-origin' });
+            if (!response.ok) {
+                throw new Error('Unable to fetch markdown source');
+            }
+            var markdown = await response.text();
+            await copyToClipboard(markdown);
+            setTemporaryLabel(button, makeLabel(SUCCESS_ICON, 'Copied'));
+        } catch (_error) {
+            setTemporaryLabel(button, makeLabel(ERROR_ICON, 'Error'));
+        }
+    }
+
+    function addStyles() {
+        var style = document.createElement('style');
+        style.textContent = [
+            '.scrapy-copy-as-markdown {',
+            '  position: fixed;',
+            '  right: 1rem;',
+            '  bottom: 1rem;',
+            '  z-index: 1000;',
+            '  border: 1px solid #c9d4de;',
+            '  border-radius: 0.45rem;',
+            '  background: #ffffff;',
+            '  color: #233a50;',
+            '  font: inherit;',
+            '  font-size: 0.875rem;',
+            '  line-height: 1;',
+            '  padding: 0.55rem 0.7rem;',
+            '  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);',
+            '  cursor: pointer;',
+            '}',
+            '.scrapy-copy-as-markdown:hover {',
+            '  background: #f3f7fb;',
+            '}',
+            '.scrapy-copy-as-markdown:disabled {',
+            '  opacity: 0.75;',
+            '  cursor: default;',
+            '}',
+        ].join('\n');
+        document.head.appendChild(style);
+    }
+
+    function addButton() {
+        if (!document.body || document.querySelector('.scrapy-copy-as-markdown')) {
+            return;
+        }
+
+        addStyles();
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'scrapy-copy-as-markdown';
+        button.title = 'Copy this page as Markdown';
+        button.setAttribute('aria-label', 'Copy this page as Markdown');
+        button.textContent = makeLabel(COPY_ICON, 'Copy as Markdown');
+        button.addEventListener('click', function () {
+            onButtonClick(button);
+        });
+        document.body.appendChild(button);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', addButton);
+    } else {
+        addButton();
+    }
+})();
+</script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="蜘蛛中间件" href="spider-middleware.html" />
+    <link rel="prev" title="Add-ons" href="addons.html" />
+ 
+<script type="text/javascript" src="../ltd-provenance.js"></script>
+<script type="text/javascript" src="../ltd-current.js"></script>
+<script type="text/javascript" src="../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+
+<a href="https://scrapy.org">scrapy.org</a> / <a href="../index.html">docs</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">First steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/overview.html">Scrapy at a glance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/tutorial.html">碎片教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Basic concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Command line tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spiders.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selectors.html">Selectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="items.html">项目</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loaders.html">Item Loaders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell.html">Scrapy shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="item-pipeline.html">Item Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feed-exports.html">Feed exports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="request-response.html">Requests and Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="link-extractors.html">Link Extractors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">例外</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Built-in services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">Stats Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telnetconsole.html">Telnet Console</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Solving specific problems</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debug.html">Debugging Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contracts.html">Spiders Contracts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practices.html">Common Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="broad-crawls.html">广泛的爪子</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer-tools.html">Using your browser's Developer Tools for scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic-content.html">Selecting dynamically-loaded content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leaks.html">Debugging memory leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="media-pipeline.html">Downloading and processing files and images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy.html">Deploying Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autothrottle.html">AutoThrottle extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">基准</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jobs.html">Jobs: pausing and resuming crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coroutines.html">Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asyncio.html">asyncio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Scrapy</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addons.html">Add-ons</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">下载中间件</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#activating-a-downloader-middleware">激活下载器中间件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-your-own-downloader-middleware">写入您自己的下载器中间件</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#scrapy.downloadermiddlewares.DownloaderMiddleware"><code class="docutils literal notranslate"><span class="pre">DownloaderMiddleware</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_request"><code class="docutils literal notranslate"><span class="pre">DownloaderMiddleware.process_request()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_response"><code class="docutils literal notranslate"><span class="pre">DownloaderMiddleware.process_response()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_exception"><code class="docutils literal notranslate"><span class="pre">DownloaderMiddleware.process_exception()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#built-in-downloader-middleware-reference">内置下载器中间件参考</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-scrapy.downloadermiddlewares.cookies">Cookies中间件</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.downloadermiddlewares.cookies.CookiesMiddleware"><code class="docutils literal notranslate"><span class="pre">CookiesMiddleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multiple-cookie-sessions-per-spider">每个蜘蛛多个cookie会话</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cookies-enabled">COOKIES_已启用</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cookies-debug">COOKIES _DEBUG</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-scrapy.downloadermiddlewares.defaultheaders">默认Headers中间件</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware"><code class="docutils literal notranslate"><span class="pre">DefaultHeadersMiddleware</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-scrapy.downloadermiddlewares.downloadtimeout">下载超时中件</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware"><code class="docutils literal notranslate"><span class="pre">DownloadTimeoutMiddleware</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-scrapy.downloadermiddlewares.httpauth">HttpAuthMiddleware</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware"><code class="docutils literal notranslate"><span class="pre">HttpAuthMiddleware</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-scrapy.downloadermiddlewares.httpcache">HttpCache中间件</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware"><code class="docutils literal notranslate"><span class="pre">HttpCacheMiddleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dummy-policy-default">虚拟策略 (默认)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rfc2616-policy">RFC2616政策</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filesystem-storage-backend-default">文件系统存储后端 (默认)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dbm-storage-backend">DBM 存储后端</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#writing-your-own-storage-backend">写入您自己的存储后端</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#httpcache-middleware-settings">HTTPache 中间件设置</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-scrapy.downloadermiddlewares.httpcompression">HttpComppression中间件</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware"><code class="docutils literal notranslate"><span class="pre">HttpCompressionMiddleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#httpcompressionmiddleware-settings">HttpComppression中间件设置</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-scrapy.downloadermiddlewares.httpproxy">HttpProxyMiddleware</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware"><code class="docutils literal notranslate"><span class="pre">HttpProxyMiddleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#httpproxymiddleware-settings">HttpProxyMiddleware 设置</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-scrapy.downloadermiddlewares.offsite">离站中间件</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.downloadermiddlewares.offsite.OffsiteMiddleware"><code class="docutils literal notranslate"><span class="pre">OffsiteMiddleware</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-scrapy.downloadermiddlewares.redirect">重定向中间件</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.downloadermiddlewares.redirect.RedirectMiddleware"><code class="docutils literal notranslate"><span class="pre">RedirectMiddleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#redirectmiddleware-settings">重定向中间件设置</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#metarefreshmiddleware">元刷新中间件</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware"><code class="docutils literal notranslate"><span class="pre">MetaRefreshMiddleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metarefreshmiddleware-settings">元刷新中间件设置</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-scrapy.downloadermiddlewares.retry">重试中间件</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.downloadermiddlewares.retry.RetryMiddleware"><code class="docutils literal notranslate"><span class="pre">RetryMiddleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.downloadermiddlewares.retry.get_retry_request"><code class="docutils literal notranslate"><span class="pre">get_retry_request()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#retrymiddleware-settings">RetryMiddleware 设置</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-scrapy.downloadermiddlewares.robotstxt">机器人Txt中间件</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware"><code class="docutils literal notranslate"><span class="pre">RobotsTxtMiddleware</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#protego-parser">Protego parser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#robotfileparser">RobotFileParser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#robotexclusionrulesparser">Robotexclusionrules解析器</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implementing-support-for-a-new-parser">支持新的解析器</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-scrapy.downloadermiddlewares.stats">下载统计</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.downloadermiddlewares.stats.DownloaderStats"><code class="docutils literal notranslate"><span class="pre">DownloaderStats</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-scrapy.downloadermiddlewares.useragent">UserAgentMiddleware</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scrapy.downloadermiddlewares.useragent.UserAgentMiddleware"><code class="docutils literal notranslate"><span class="pre">UserAgentMiddleware</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="spider-middleware.html">蜘蛛中间件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">扩展</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scheduler.html">Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exporters.html">物品导出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download-handlers.html">Download handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Core API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">All the rest</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to Scrapy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../versioning.html">Versioning and API stability</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Scrapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">下载中间件</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/scrapy/scrapy/blob/master/docs/topics/downloader-middleware.rst" class="fa fa-github"> 在 GitHub 上编辑</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="downloader-middleware">
+<span id="topics-downloader-middleware"></span><h1>下载中间件<a class="headerlink" href="#downloader-middleware" title="链接到此标题。"></a></h1>
+<p>下载器中间件是一个将钩子绑定到废料的请求/响应处理的框架。它是一个低级系统，用于全局修改废料的请求和反应。</p>
+<section id="activating-a-downloader-middleware">
+<span id="topics-downloader-middleware-setting"></span><h2>激活下载器中间件<a class="headerlink" href="#activating-a-downloader-middleware" title="链接到此标题。"></a></h2>
+<p>To activate a downloader middleware component, add it to the
+<a class="reference internal" href="settings.html#std-setting-DOWNLOADER_MIDDLEWARES"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOADER_MIDDLEWARES</span></code></a> setting, which is a dict whose keys are the
+middleware class paths and their values are the middleware orders.</p>
+<p>下面是一个示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DOWNLOADER_MIDDLEWARES</span> <span class="o">=</span> <span class="n">Power</span>
+    <span class="s2">&quot;myproject.middlewares.CustomDownloaderMiddleware&quot;</span><span class="p">:</span> <span class="mi">543</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="settings.html#std-setting-DOWNLOADER_MIDDLEWARES"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOADER_MIDDLEWARES</span></code></a> setting is merged with the
+<a class="reference internal" href="settings.html#std-setting-DOWNLOADER_MIDDLEWARES_BASE"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOADER_MIDDLEWARES_BASE</span></code></a> setting defined in Scrapy (and not meant
+to be overridden) and then sorted by order to get the final sorted list of
+enabled middlewares: the first middleware is the one closer to the engine and
+the last is the one closer to the downloader. In other words,
+the <a class="reference internal" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_request" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_request"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_request()</span></code></a>
+method of each middleware will be invoked in increasing
+middleware order (100, 200, 300, ...) and the <a class="reference internal" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_response" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_response"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_response()</span></code></a> method
+of each middleware will be invoked in decreasing order.</p>
+<p>To decide which order to assign to your middleware see the
+<a class="reference internal" href="settings.html#std-setting-DOWNLOADER_MIDDLEWARES_BASE"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOADER_MIDDLEWARES_BASE</span></code></a> setting and pick a value according to
+where you want to insert the middleware. The order does matter because each
+middleware performs a different action and your middleware could depend on some
+previous (or subsequent) middleware being applied.</p>
+<p>If you want to disable a built-in middleware (the ones defined in
+<a class="reference internal" href="settings.html#std-setting-DOWNLOADER_MIDDLEWARES_BASE"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOADER_MIDDLEWARES_BASE</span></code></a> and enabled by default) you must define it
+in your project's <a class="reference internal" href="settings.html#std-setting-DOWNLOADER_MIDDLEWARES"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOADER_MIDDLEWARES</span></code></a> setting and assign <code class="docutils literal notranslate"><span class="pre">None</span></code>
+as its value.  For example, if you want to disable the user-agent middleware:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DOWNLOADER_MIDDLEWARES</span> <span class="o">=</span> <span class="n">Power</span>
+    <span class="s2">&quot;myproject.middlewares.CustomDownloaderMiddlewares&quot;</span><span class="p">:</span> <span class="mi">543</span><span class="p">,</span>
+    <span class="s2">&quot;scrapy.downloadermidlewares.useragent.UserAgentMiddleware&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>最后，牢记某些中间件可能需要通过特定的设置启用。请参阅每个中间件文档以获取更多信息。</p>
+</section>
+<section id="writing-your-own-downloader-middleware">
+<span id="topics-downloader-middleware-custom"></span><h2>写入您自己的下载器中间件<a class="headerlink" href="#writing-your-own-downloader-middleware" title="链接到此标题。"></a></h2>
+<p>Each downloader middleware is a <a class="reference internal" href="components.html#topics-components"><span class="std std-ref">component</span></a> that
+defines one or more of these methods:</p>
+<dl class="py class" id="module-scrapy.downloadermiddlewares">
+<dt class="sig sig-object py" id="scrapy.downloadermiddlewares.DownloaderMiddleware">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.downloadermiddlewares.</span></span><span class="sig-name descname"><span class="pre">DownloaderMiddleware</span></span><a class="headerlink" href="#scrapy.downloadermiddlewares.DownloaderMiddleware" title="链接到此定义。"></a></dt>
+<dd><div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>任何下载器中间件方法都可以定义为一种Coroutine 函数(<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">def</span></code> )。</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="scrapy.downloadermiddlewares.DownloaderMiddleware.process_request">
+<span class="sig-name descname"><span class="pre">process_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_request" title="链接到此定义。"></a></dt>
+<dd><p>每个请求都需要这个方法来下载中间件。</p>
+<p><a class="reference internal" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_request" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_request"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_request()</span></code></a> should either: return <code class="docutils literal notranslate"><span class="pre">None</span></code>, return a
+<a class="reference internal" href="request-response.html#scrapy.http.Response" title="scrapy.http.Response"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></a> object, return a <a class="reference internal" href="request-response.html#scrapy.Request" title="scrapy.Request"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></a>
+object, or raise <a class="reference internal" href="exceptions.html#scrapy.exceptions.IgnoreRequest" title="scrapy.exceptions.IgnoreRequest"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IgnoreRequest</span></code></a>.</p>
+<p>如果返回 <code class="docutils literal notranslate"><span class="pre">None</span></code> ，Scrapy 将继续处理此请求，执行所有其他中间行程直到， 最后，相应的下载处理程序被称为已执行的请求(其响应已下载)。</p>
+<p>If it returns a <a class="reference internal" href="request-response.html#scrapy.http.Response" title="scrapy.http.Response"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></a> object, Scrapy won't bother
+calling <em>any</em> other <a class="reference internal" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_request" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_request"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_request()</span></code></a> or <a class="reference internal" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_exception" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_exception"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_exception()</span></code></a> methods,
+or the appropriate download function; it'll return that response. The <a class="reference internal" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_response" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_response"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_response()</span></code></a>
+methods of installed middleware is always called on every response.</p>
+<p>If it returns a <a class="reference internal" href="request-response.html#scrapy.Request" title="scrapy.Request"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></a> object, Scrapy will stop calling
+<a class="reference internal" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_request" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_request"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_request()</span></code></a> methods and reschedule the returned request. Once the newly returned
+request is performed, the appropriate middleware chain will be called on
+the downloaded response.</p>
+<p>If it raises an <a class="reference internal" href="exceptions.html#scrapy.exceptions.IgnoreRequest" title="scrapy.exceptions.IgnoreRequest"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IgnoreRequest</span></code></a> exception, the
+<a class="reference internal" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_exception" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_exception"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_exception()</span></code></a> methods of installed downloader middleware will be called.
+If none of them handle the exception, the errback function of the request
+(<code class="docutils literal notranslate"><span class="pre">Request.errback</span></code>) is called. If no code handles the raised exception, it is
+ignored and not logged (unlike other exceptions).</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<a class="reference internal" href="request-response.html#scrapy.Request" title="scrapy.Request"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></a> object) -- 正在处理请求</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scrapy.downloadermiddlewares.DownloaderMiddleware.process_response">
+<span class="sig-name descname"><span class="pre">process_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_response" title="链接到此定义。"></a></dt>
+<dd><p><a class="reference internal" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_response" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_response"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_response()</span></code></a> should either: return a <a class="reference internal" href="request-response.html#scrapy.http.Response" title="scrapy.http.Response"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></a>
+object, return a <a class="reference internal" href="request-response.html#scrapy.Request" title="scrapy.Request"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></a> object or
+raise a <a class="reference internal" href="exceptions.html#scrapy.exceptions.IgnoreRequest" title="scrapy.exceptions.IgnoreRequest"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IgnoreRequest</span></code></a> exception.</p>
+<p>If it returns a <a class="reference internal" href="request-response.html#scrapy.http.Response" title="scrapy.http.Response"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></a> (it could be the same given
+response, or a brand-new one), that response will continue to be processed
+with the <a class="reference internal" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_response" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_response"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_response()</span></code></a> of the next middleware in the chain.</p>
+<p>If it returns a <a class="reference internal" href="request-response.html#scrapy.Request" title="scrapy.Request"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></a> object, the middleware chain is
+halted and the returned request is rescheduled to be downloaded in the future.
+This is the same behavior as if a request is returned from <a class="reference internal" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_request" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_request"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_request()</span></code></a>.</p>
+<p>If it raises an <a class="reference internal" href="exceptions.html#scrapy.exceptions.IgnoreRequest" title="scrapy.exceptions.IgnoreRequest"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IgnoreRequest</span></code></a> exception, the errback
+function of the request (<code class="docutils literal notranslate"><span class="pre">Request.errback</span></code>) is called. If no code handles the raised
+exception, it is ignored and not logged (unlike other exceptions).</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> (is a <a class="reference internal" href="request-response.html#scrapy.Request" title="scrapy.Request"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></a> object) -- the request that originated the response</p></li>
+<li><p><strong>response</strong> (<a class="reference internal" href="request-response.html#scrapy.http.Response" title="scrapy.http.Response"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></a> object) -- 正在处理的响应</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scrapy.downloadermiddlewares.DownloaderMiddleware.process_exception">
+<span class="sig-name descname"><span class="pre">process_exception</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exception</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_exception" title="链接到此定义。"></a></dt>
+<dd><p>Scrapy calls <a class="reference internal" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_exception" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_exception"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_exception()</span></code></a> when a <a class="reference internal" href="download-handlers.html#topics-download-handlers"><span class="std std-ref">download handler</span></a> or a <a class="reference internal" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_request" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_request"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_request()</span></code></a> (from a
+downloader middleware) raises an exception (including an
+<a class="reference internal" href="exceptions.html#scrapy.exceptions.IgnoreRequest" title="scrapy.exceptions.IgnoreRequest"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IgnoreRequest</span></code></a> exception).</p>
+<p><a class="reference internal" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_exception" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_exception"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_exception()</span></code></a> should return: either <code class="docutils literal notranslate"><span class="pre">None</span></code>,
+a <a class="reference internal" href="request-response.html#scrapy.http.Response" title="scrapy.http.Response"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></a> object, or a <a class="reference internal" href="request-response.html#scrapy.Request" title="scrapy.Request"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></a> object.</p>
+<p>If it returns <code class="docutils literal notranslate"><span class="pre">None</span></code>, Scrapy will continue processing this exception,
+executing any other <a class="reference internal" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_exception" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_exception"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_exception()</span></code></a> methods of installed middleware,
+until no middleware is left and the default exception handling kicks in.</p>
+<p>If it returns a <a class="reference internal" href="request-response.html#scrapy.http.Response" title="scrapy.http.Response"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></a> object, the <a class="reference internal" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_response" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_response"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_response()</span></code></a>
+method chain of installed middleware is started, and Scrapy won't bother calling
+any other <a class="reference internal" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_exception" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_exception"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_exception()</span></code></a> methods of middleware.</p>
+<p>If it returns a <a class="reference internal" href="request-response.html#scrapy.Request" title="scrapy.Request"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></a> object, the returned request is
+rescheduled to be downloaded in the future. This stops the execution of
+<a class="reference internal" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_exception" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_exception"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_exception()</span></code></a> methods of the middleware the same as returning a
+response would.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> (is a <a class="reference internal" href="request-response.html#scrapy.Request" title="scrapy.Request"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></a> object) -- 生成异常的请求</p></li>
+<li><p><strong>exception</strong> (an <code class="docutils literal notranslate"><span class="pre">Exception</span></code> object) -- 引起的异常</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="built-in-downloader-middleware-reference">
+<span id="topics-downloader-middleware-ref"></span><h2>内置下载器中间件参考<a class="headerlink" href="#built-in-downloader-middleware-reference" title="链接到此标题。"></a></h2>
+<p>This page describes all downloader middleware components that come with
+Scrapy. For information on how to use them and how to write your own downloader
+middleware, see the <a class="reference internal" href="#topics-downloader-middleware"><span class="std std-ref">downloader middleware usage guide</span></a>.</p>
+<p>For a list of the components enabled by default (and their orders) see the
+<a class="reference internal" href="settings.html#std-setting-DOWNLOADER_MIDDLEWARES_BASE"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOADER_MIDDLEWARES_BASE</span></code></a> setting.</p>
+<section id="module-scrapy.downloadermiddlewares.cookies">
+<span id="cookiesmiddleware"></span><span id="cookies-mw"></span><h3>Cookies中间件<a class="headerlink" href="#module-scrapy.downloadermiddlewares.cookies" title="链接到此标题。"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.downloadermiddlewares.cookies.CookiesMiddleware">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.downloadermiddlewares.cookies.</span></span><span class="sig-name descname"><span class="pre">CookiesMiddleware</span></span><a class="reference internal" href="../_modules/scrapy/downloadermiddlewares/cookies.html#CookiesMiddleware"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.downloadermiddlewares.cookies.CookiesMiddleware" title="链接到此定义。"></a></dt>
+<dd><p>这个中间件允许与需要cookies的网站合作，例如那些使用会话的网站。 它会记录由 web 服务器发送的 cookie 并在其后的请求（来自那个spider）中将它们发送回来，就像网页浏览器一样。</p>
+<div class="admonition caution">
+<p class="admonition-title">小心</p>
+<p>When non-UTF8 encoded byte sequences are passed to a
+<a class="reference internal" href="request-response.html#scrapy.Request" title="scrapy.Request"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></a>, the <code class="docutils literal notranslate"><span class="pre">CookiesMiddleware</span></code> will log
+a warning. Refer to <a class="reference internal" href="logging.html#topics-logging-advanced-customization"><span class="std std-ref">Advanced customization</span></a>
+to customize the logging behaviour.</p>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">小心</p>
+<p>Cookies set via the <code class="docutils literal notranslate"><span class="pre">Cookie</span></code> header are not considered by the
+<a class="reference internal" href="#cookies-mw"><span class="std std-ref">Cookies中间件</span></a>. If you need to set cookies for a request, use the
+<a class="reference internal" href="request-response.html#scrapy.Request" title="scrapy.Request"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request.cookies</span></code></a> parameter. This is a known
+current limitation that is being worked on.</p>
+</div>
+</dd></dl>
+
+<p>以下设置可以用于配置 cookie 中间层：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#std-setting-COOKIES_ENABLED"><code class="xref std std-setting docutils literal notranslate"><span class="pre">COOKIES_ENABLED</span></code></a></p></li>
+<li><p><a class="reference internal" href="#std-setting-COOKIES_DEBUG"><code class="xref std std-setting docutils literal notranslate"><span class="pre">COOKIES_DEBUG</span></code></a></p></li>
+</ul>
+<section id="multiple-cookie-sessions-per-spider">
+<span id="std-reqmeta-cookiejar"></span><h4>每个蜘蛛多个cookie会话<a class="headerlink" href="#multiple-cookie-sessions-per-spider" title="链接到此标题。"></a></h4>
+<p>There is support for keeping multiple cookie sessions per spider by using the
+<a class="reference internal" href="#std-reqmeta-cookiejar"><code class="xref std std-reqmeta docutils literal notranslate"><span class="pre">cookiejar</span></code></a> Request meta key. By default it uses a single cookie jar
+(session), but you can pass an identifier to use different ones.</p>
+<p>例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">对于i</span><span class="p">,</span> <span class="n">枚举中的</span> <span class="n">url</span> <span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">yow</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;cookiejar&quot;</span><span class="p">:</span> <span class="n">i</span><span class="p">},</span> <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_page</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Keep in mind that the <a class="reference internal" href="#std-reqmeta-cookiejar"><code class="xref std std-reqmeta docutils literal notranslate"><span class="pre">cookiejar</span></code></a> meta key is not &quot;sticky&quot;. You need to keep
+passing it along on subsequent requests. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">parse_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+    <span class="c1"># 做一些处理</span>
+    <span class="k">return</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span>
+        <span class="s2">&quot;http://www.example.com/otherpage&quot;</span><span class="p">,</span>
+        <span class="n">meta</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;cookiejar&quot;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">mete</span><span class="p">[</span><span class="s2">&quot;cookiejar&quot;</span><span class="p">]},</span>
+        <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parse_other_page</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="cookies-enabled">
+<span id="std-setting-COOKIES_ENABLED"></span><h4>COOKIES_已启用<a class="headerlink" href="#cookies-enabled" title="链接到此标题。"></a></h4>
+<p>默认: <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+<p>是否启用 cookie 中间件。如果禁用，没有cookie 会被发送到 Web 服务器。</p>
+<p>Notice that despite the value of <a class="reference internal" href="#std-setting-COOKIES_ENABLED"><code class="xref std std-setting docutils literal notranslate"><span class="pre">COOKIES_ENABLED</span></code></a> setting if
+<code class="docutils literal notranslate"><span class="pre">Request.</span></code><a class="reference internal" href="request-response.html#std-reqmeta-dont_merge_cookies"><code class="xref std std-reqmeta docutils literal notranslate"><span class="pre">meta['dont_merge_cookies']</span></code></a>
+evaluates to <code class="docutils literal notranslate"><span class="pre">True</span></code> the request cookies will <strong>not</strong> be sent to the
+web server and received cookies in <a class="reference internal" href="request-response.html#scrapy.http.Response" title="scrapy.http.Response"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></a> will
+<strong>not</strong> be merged with the existing cookies.</p>
+<p>For more detailed information see the <code class="docutils literal notranslate"><span class="pre">cookies</span></code> parameter in
+<a class="reference internal" href="request-response.html#scrapy.Request" title="scrapy.Request"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></a>.</p>
+</section>
+<section id="cookies-debug">
+<span id="std-setting-COOKIES_DEBUG"></span><h4>COOKIES _DEBUG<a class="headerlink" href="#cookies-debug" title="链接到此标题。"></a></h4>
+<p>默认值： <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p>如果启用，Scrapy 将记录在请求中发送的所有 cookie (例如``Cookie`` 头)和在响应中收到的所有 cookie (例如``Set-Cookie`` 头)。</p>
+<p>Here's an example of a log with <a class="reference internal" href="#std-setting-COOKIES_DEBUG"><code class="xref std std-setting docutils literal notranslate"><span class="pre">COOKIES_DEBUG</span></code></a> enabled:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>2011-04-06 14:35:10-0300 [scrapy.core.engine] 信息: Spider opened&lt;GET http://www.diningcity.com/netherlands/index.html&gt;011-04-06 14:35:10-0300 [scrapy.downloadermiddlewares.cookies] DEBUG: 发送cookie 到 &lt;GET http://www.diningcity.com/netherlands/index.html&gt;
+        Cookie: clientlanguage_nl=en_EN
+2011-04-06 14:35:14-0300 [scrapy.downloadermiddlewares.cookies] DEBUG: 接收cookies from : &lt;200 http://www. iningcity.com/neterslands/index。 tml&gt;
+        Set-Cookie: JSESSIONID=B~FA4DC0C496C8762AE4F1A620EAB34F38; 路径=/
+        Set-Cookie: ip_isocode=US
+        Set-Cookie: clientlanguage_nl=en_EN; 到期：Thu, 07-April-2011 21:21:34 GMT；路径=/
+2011-04-06 14:49:50-0300 [scrapy.core.engine] DEBUG：Crawled 200) &lt;GET http://www.diningcity.com/netherlands/index.html&gt; (refer: None)
+[...]
+</pre></div>
+</div>
+</section>
+</section>
+<section id="module-scrapy.downloadermiddlewares.defaultheaders">
+<span id="defaultheadersmiddleware"></span><h3>默认Headers中间件<a class="headerlink" href="#module-scrapy.downloadermiddlewares.defaultheaders" title="链接到此标题。"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.downloadermiddlewares.defaultheaders.</span></span><span class="sig-name descname"><span class="pre">DefaultHeadersMiddleware</span></span><a class="reference internal" href="../_modules/scrapy/downloadermiddlewares/defaultheaders.html#DefaultHeadersMiddleware"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware" title="链接到此定义。"></a></dt>
+<dd><p>This middleware sets all default requests headers specified in the
+<a class="reference internal" href="settings.html#std-setting-DEFAULT_REQUEST_HEADERS"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DEFAULT_REQUEST_HEADERS</span></code></a> setting.</p>
+</dd></dl>
+
+</section>
+<section id="module-scrapy.downloadermiddlewares.downloadtimeout">
+<span id="downloadtimeoutmiddleware"></span><h3>下载超时中件<a class="headerlink" href="#module-scrapy.downloadermiddlewares.downloadtimeout" title="链接到此标题。"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.downloadermiddlewares.downloadtimeout.</span></span><span class="sig-name descname"><span class="pre">DownloadTimeoutMiddleware</span></span><a class="reference internal" href="../_modules/scrapy/downloadermiddlewares/downloadtimeout.html#DownloadTimeoutMiddleware"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware" title="链接到此定义。"></a></dt>
+<dd><p>This middleware sets the download timeout for requests specified in the
+<a class="reference internal" href="settings.html#std-setting-DOWNLOAD_TIMEOUT"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOAD_TIMEOUT</span></code></a> setting.</p>
+</dd></dl>
+
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>You can also set download timeout per-request using the
+<a class="reference internal" href="request-response.html#std-reqmeta-download_timeout"><code class="xref std std-reqmeta docutils literal notranslate"><span class="pre">download_timeout</span></code></a> <a class="reference internal" href="request-response.html#scrapy.Request.meta" title="scrapy.Request.meta"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Request.meta</span></code></a> key; this is supported
+even when DownloadTimeoutMiddleware is disabled.</p>
+</div>
+</section>
+<section id="module-scrapy.downloadermiddlewares.httpauth">
+<span id="httpauthmiddleware"></span><h3>HttpAuthMiddleware<a class="headerlink" href="#module-scrapy.downloadermiddlewares.httpauth" title="链接到此标题。"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.downloadermiddlewares.httpauth.</span></span><span class="sig-name descname"><span class="pre">HttpAuthMiddleware</span></span><a class="reference internal" href="../_modules/scrapy/downloadermiddlewares/httpauth.html#HttpAuthMiddleware"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware" title="链接到此定义。"></a></dt>
+<dd><p>此中间件使用 <a class="reference external" href="https://en.wikipedia.org/wiki/Basic_access_authentication">Basic Access authentication</a> (aka. HTTP auth) 验证某些特定间谍生成的所有请求。</p>
+<p>为蜘蛛启用 HTTP 身份验证， 将 <code class="docutils literal notranslate"><span class="pre">http_user</span></code> 和 <code class="docutils literal notranslate"><span class="pre">http_pass</span></code> 的 spider 属性设置为认证数据和 <code class="docutils literal notranslate"><span class="pre">http_auth_domain</span></code> 的 spider 属性设置为需要此身份验证的域(其子域也将以同样的方式处理)。 你可以将 <code class="docutils literal notranslate"><span class="pre">http_auth_domain</span></code> 设置为 <code class="docutils literal notranslate"><span class="pre">None</span></code> 以启用所有请求的身份验证，但是你可能会将你的身份验证证书泄漏到无关的域。</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>在以前的 Scrapy 版本中，HttpAuthMiddleware 发送了所有请求的身份验证数据。 如果蜘蛛对几个不同的域提出请求，那将是一个安全问题。 目前如果``http_auth_domain`` 属性未设定。 中间件将使用第一个请求的域，这个域将适用于某些间谍，但不适用于另一些间谍。 今后，中间件将产生错误。</p>
+</div>
+<p>示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">来自废料</span><span class="err">。</span> <span class="n">piders</span> <span class="n">importer</span> <span class="n">CrawlSpider</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">IntranetSiteSpider</span><span class="p">(</span><span class="n">CrawlSpider</span><span class="p">):</span>
+    <span class="n">http_user</span> <span class="o">=</span> <span class="s2">&quot;somepass&quot;</span>
+    <span class="n">http_pass</span><span class="o">=</span> <span class="s2">&quot;somepass&quot;</span>
+    <span class="n">http_auth_domain</span> <span class="o">=</span> <span class="s2">&quot;intrannet. xample.com&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;intranet.example.com&quot;</span>
+
+    <span class="c1"># ... 剩余的 spider 代码省略...</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-scrapy.downloadermiddlewares.httpcache">
+<span id="httpcachemiddleware"></span><h3>HttpCache中间件<a class="headerlink" href="#module-scrapy.downloadermiddlewares.httpcache" title="链接到此标题。"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.downloadermiddlewares.httpcache.</span></span><span class="sig-name descname"><span class="pre">HttpCacheMiddleware</span></span><a class="reference internal" href="../_modules/scrapy/downloadermiddlewares/httpcache.html#HttpCacheMiddleware"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware" title="链接到此定义。"></a></dt>
+<dd><p>这个中间件为所有HTTP请求和响应提供低级缓存。 它必须与缓存存储后端和缓存策略相结合。</p>
+<p>废料带有以下HTTP缓存存储后端：</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#httpcache-storage-fs"><span class="std std-ref">文件系统存储后端 (默认)</span></a></p></li>
+<li><p><a class="reference internal" href="#httpcache-storage-dbm"><span class="std std-ref">DBM 存储后端</span></a></p></li>
+</ul>
+</div></blockquote>
+<p>You can change the HTTP cache storage backend with the <a class="reference internal" href="#std-setting-HTTPCACHE_STORAGE"><code class="xref std std-setting docutils literal notranslate"><span class="pre">HTTPCACHE_STORAGE</span></code></a>
+setting. Or you can also <a class="reference internal" href="#httpcache-storage-custom"><span class="std std-ref">implement your own storage backend.</span></a></p>
+<p>带有两个HTTP缓存策略的废船：</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="#httpcache-policy-rfc2616"><span class="std std-ref">RFC2616政策</span></a></p></li>
+<li><p><a class="reference internal" href="#httpcache-policy-dummy"><span class="std std-ref">虚拟策略 (默认)</span></a></p></li>
+</ul>
+</div></blockquote>
+<p>You can change the HTTP cache policy with the <a class="reference internal" href="#std-setting-HTTPCACHE_POLICY"><code class="xref std std-setting docutils literal notranslate"><span class="pre">HTTPCACHE_POLICY</span></code></a>
+setting. Or you can also implement your own policy.</p>
+<p id="std-reqmeta-dont_cache">You can also avoid caching a response on every policy using <a class="reference internal" href="#std-reqmeta-dont_cache"><code class="xref std std-reqmeta docutils literal notranslate"><span class="pre">dont_cache</span></code></a> meta key equals <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+</dd></dl>
+
+<section id="dummy-policy-default">
+<span id="httpcache-policy-dummy"></span><h4>虚拟策略 (默认)<a class="headerlink" href="#dummy-policy-default" title="链接到此标题。"></a></h4>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.extensions.httpcache.DummyPolicy">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.extensions.httpcache.</span></span><span class="sig-name descname"><span class="pre">DummyPolicy</span></span><a class="reference internal" href="../_modules/scrapy/extensions/httpcache.html#DummyPolicy"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.extensions.httpcache.DummyPolicy" title="链接到此定义。"></a></dt>
+<dd><p>此策略不知道任何 HTTP 缓存控制指令。每个请求及其相应响应都是缓存的。 当再次看到同样的请求时，将在没有从因特网上转移任何东西的情况下回来答复。</p>
+<p>虚拟策略有助于更快地测试蜘蛛(无需每次等待下载)和尝试你的蜘蛛脱机。 当互联网连接不可用。 目标是能够“重放”一个蜘蛛运行*就像它之前运行的那样*。</p>
+</dd></dl>
+
+</section>
+<section id="rfc2616-policy">
+<span id="httpcache-policy-rfc2616"></span><h4>RFC2616政策<a class="headerlink" href="#rfc2616-policy" title="链接到此标题。"></a></h4>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.extensions.httpcache.RFC2616Policy">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.extensions.httpcache.</span></span><span class="sig-name descname"><span class="pre">RFC2616Policy</span></span><a class="reference internal" href="../_modules/scrapy/extensions/httpcache.html#RFC2616Policy"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.extensions.httpcache.RFC2616Policy" title="链接到此定义。"></a></dt>
+<dd><p>此策略提供 RFC2616 兼容的 HTTP 缓存，即： 使用 HTTP Cache-Control 意识，旨在生产并用于连续运行，以避免下载未经修改的数据(以节省带宽和加速crawls)。</p>
+<p>已经执行的任务：</p>
+<ul class="simple">
+<li><p>不要尝试使用 <code class="docutils literal notranslate"><span class="pre">no-store</span></code> 缓存控制指令设置存储响应/请求</p></li>
+<li><p>如果设置了 <code class="docutils literal notranslate"><span class="pre">no-cache</span></code> 缓存控制指令，即使是新的响应，请不要为缓存响应服务。</p></li>
+<li><p>从 <code class="docutils literal notranslate"><span class="pre">max-age</span></code> 缓存控制指令计算淡化生命期</p></li>
+<li><p>计算从 <code class="docutils literal notranslate"><span class="pre">Expires</span></code> 响应头的淡化生存期</p></li>
+<li><p>从 <code class="docutils literal notranslate"><span class="pre">Last-Modified</span></code> 响应头计算淡化生命周期(Firefox使用的heuristic</p></li>
+<li><p>从 <code class="docutils literal notranslate"><span class="pre">Age</span></code> 响应头计算当前年龄</p></li>
+<li><p>从 <code class="docutils literal notranslate"><span class="pre">Date</span></code> 头计算当前年龄</p></li>
+<li><p>基于``Last-Modified`` 响应头的无效响应</p></li>
+<li><p>基于``ETag`` 响应头的更新过时响应</p></li>
+<li><p>设置 <code class="docutils literal notranslate"><span class="pre">Date</span></code> 标头缺少任何接收到的响应</p></li>
+<li><p>在请求中支持 <code class="docutils literal notranslate"><span class="pre">max-stale</span></code> 缓存控制指令</p></li>
+</ul>
+<p>这将允许使用完整的 RFC2616 缓存策略配置蜘蛛。 但避免在请求基础上重新验证，同时仍然符合HTTP投机。</p>
+<p>示例：</p>
+<p>添加 <code class="docutils literal notranslate"><span class="pre">Cache-Control:</span> <span class="pre">max-stale=600</span></code> 以请求头部接受超过到期时间不超过 600 秒的答复。</p>
+<p>另见：RFC2616，14.9.3</p>
+<p>缺失的内容：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Pragma:</span> <span class="pre">no-cache</span></code> 支持 <a class="reference external" href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9.1">https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9.1</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Vary</span></code> header 支持 <a class="reference external" href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html#sec13.6">https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html#sec13.6</a></p></li>
+<li><p>更新后无效或删除https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html#sec13.10</p></li>
+<li><p>... 可能是其他...</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="filesystem-storage-backend-default">
+<span id="httpcache-storage-fs"></span><h4>文件系统存储后端 (默认)<a class="headerlink" href="#filesystem-storage-backend-default" title="链接到此标题。"></a></h4>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.extensions.httpcache.FilesystemCacheStorage">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.extensions.httpcache.</span></span><span class="sig-name descname"><span class="pre">FilesystemCacheStorage</span></span><a class="reference internal" href="../_modules/scrapy/extensions/httpcache.html#FilesystemCacheStorage"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.extensions.httpcache.FilesystemCacheStorage" title="链接到此定义。"></a></dt>
+<dd><p>文件系统存储后端可用于 HTTP 缓存中间件。</p>
+<p>每对请求/响应都存储在不同的目录中，包含以下文件：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">request_body</span></code> - 纯请求体</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">request_headers</span></code> - 请求标题(原HTTP格式)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">response_body</span></code> - 纯响应体</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">response_headers</span></code> - 请求标题(原HTTP格式)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">meta</span></code> - 此缓存资源的一些元数据为 Python <code class="docutils literal notranslate"><span class="pre">repr()</span></code> 格式 (grep-friendly 格式)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">picked_meta</span></code> - <code class="docutils literal notranslate"><span class="pre">meta</span></code> 中相同的元数据，但是为了更有效的反序列化</p></li>
+</ul>
+<p>目录名称来自请求指纹(见``scrapy.utils.request)。 cinerprint``，一个层次的子目录被用来避免将太多的文件创建到同一个目录中(在许多文件系统中效率不高)。 一个示例目录可以是:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">cache</span><span class="o">/</span><span class="nb">dir</span><span class="o">/</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="mi">72</span><span class="o">/</span><span class="mi">72811</span><span class="n">f648e718090f041317756c03adb0ada46c7</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="dbm-storage-backend">
+<span id="httpcache-storage-dbm"></span><h4>DBM 存储后端<a class="headerlink" href="#dbm-storage-backend" title="链接到此标题。"></a></h4>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.extensions.httpcache.DbmCacheStorage">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.extensions.httpcache.</span></span><span class="sig-name descname"><span class="pre">DbmCacheStorage</span></span><a class="reference internal" href="../_modules/scrapy/extensions/httpcache.html#DbmCacheStorage"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.extensions.httpcache.DbmCacheStorage" title="链接到此定义。"></a></dt>
+<dd><p>一个 <a class="reference external" href="https://en.wikipedia.org/wiki/Dbm">DBM</a> 存储后端也可用于 HTTP 缓存中级设备。</p>
+<p>By default, it uses the <a class="reference external" href="https://docs.python.org/3/library/dbm.html#module-dbm" title="(位于 Python v3.14)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dbm</span></code></a>, but you can change it with the
+<a class="reference internal" href="#std-setting-HTTPCACHE_DBM_MODULE"><code class="xref std std-setting docutils literal notranslate"><span class="pre">HTTPCACHE_DBM_MODULE</span></code></a> setting.</p>
+</dd></dl>
+
+</section>
+<section id="writing-your-own-storage-backend">
+<span id="httpcache-storage-custom"></span><h4>写入您自己的存储后端<a class="headerlink" href="#writing-your-own-storage-backend" title="链接到此标题。"></a></h4>
+<p>您可以通过创建 Python 类来实现缓存存储后端，定义下面描述的方法。</p>
+<dl class="py class" id="module-scrapy.extensions.httpcache">
+<dt class="sig sig-object py" id="scrapy.extensions.httpcache.CacheStorage">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.extensions.httpcache.</span></span><span class="sig-name descname"><span class="pre">CacheStorage</span></span><a class="headerlink" href="#scrapy.extensions.httpcache.CacheStorage" title="链接到此定义。"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="scrapy.extensions.httpcache.CacheStorage.open_spider">
+<span class="sig-name descname"><span class="pre">open_spider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spider</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scrapy.extensions.httpcache.CacheStorage.open_spider" title="链接到此定义。"></a></dt>
+<dd><p>This method gets called after a spider has been opened for crawling. It handles
+the <a class="reference internal" href="signals.html#std-signal-spider_opened"><code class="xref std std-signal docutils literal notranslate"><span class="pre">open_spider</span></code></a> signal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>spider</strong> (<a class="reference internal" href="spiders.html#scrapy.Spider" title="scrapy.Spider"><code class="xref py py-class docutils literal notranslate"><span class="pre">Spider</span></code></a> object) -- 已打开的 spider</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scrapy.extensions.httpcache.CacheStorage.close_spider">
+<span class="sig-name descname"><span class="pre">close_spider</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spider</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scrapy.extensions.httpcache.CacheStorage.close_spider" title="链接到此定义。"></a></dt>
+<dd><p>This method gets called after a spider has been closed. It handles
+the <a class="reference internal" href="signals.html#std-signal-spider_closed"><code class="xref std std-signal docutils literal notranslate"><span class="pre">close_spider</span></code></a> signal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>spider</strong> (<a class="reference internal" href="spiders.html#scrapy.Spider" title="scrapy.Spider"><code class="xref py py-class docutils literal notranslate"><span class="pre">Spider</span></code></a> object) -- 已关闭的蜘蛛。</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scrapy.extensions.httpcache.CacheStorage.retrieve_response">
+<span class="sig-name descname"><span class="pre">retrieve_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spider</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scrapy.extensions.httpcache.CacheStorage.retrieve_response" title="链接到此定义。"></a></dt>
+<dd><p>如果在缓存中存在，则返回响应，或者``None`` 。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>spider</strong> (<a class="reference internal" href="spiders.html#scrapy.Spider" title="scrapy.Spider"><code class="xref py py-class docutils literal notranslate"><span class="pre">Spider</span></code></a> object) -- 生成请求的蜘蛛。</p></li>
+<li><p><strong>request</strong> (<a class="reference internal" href="request-response.html#scrapy.Request" title="scrapy.Request"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></a> object) -- 查找缓存响应的请求</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scrapy.extensions.httpcache.CacheStorage.store_response">
+<span class="sig-name descname"><span class="pre">store_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spider</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scrapy.extensions.httpcache.CacheStorage.store_response" title="链接到此定义。"></a></dt>
+<dd><p>将给定的响应存储在缓存中。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>spider</strong> (<a class="reference internal" href="spiders.html#scrapy.Spider" title="scrapy.Spider"><code class="xref py py-class docutils literal notranslate"><span class="pre">Spider</span></code></a> object) -- 响应的旋转器</p></li>
+<li><p><strong>request</strong> (<a class="reference internal" href="request-response.html#scrapy.Request" title="scrapy.Request"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></a> object) -- 生成的对应请求</p></li>
+<li><p><strong>response</strong> (<a class="reference internal" href="request-response.html#scrapy.http.Response" title="scrapy.http.Response"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></a> object) -- 存储在缓存中的响应</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p>为了使用您的存储后端，设置：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#std-setting-HTTPCACHE_STORAGE"><code class="xref std std-setting docutils literal notranslate"><span class="pre">HTTPCACHE_STORAGE</span></code></a> to the Python import path of your custom storage class.</p></li>
+</ul>
+</section>
+<section id="httpcache-middleware-settings">
+<h4>HTTPache 中间件设置<a class="headerlink" href="#httpcache-middleware-settings" title="链接到此标题。"></a></h4>
+<p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">HttpCacheMiddleware</span></code> can be configured through the following
+settings:</p>
+<section id="httpcache-enabled">
+<span id="std-setting-HTTPCACHE_ENABLED"></span><h5>HTTPCACHE_已启用<a class="headerlink" href="#httpcache-enabled" title="链接到此标题。"></a></h5>
+<p>默认值： <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p>是否启用 HTTP 缓存。</p>
+</section>
+<section id="httpcache-expiration-secs">
+<span id="std-setting-HTTPCACHE_EXPIRATION_SECS"></span><h5>HTTPHE_EXPIRATION_SECS<a class="headerlink" href="#httpcache-expiration-secs" title="链接到此标题。"></a></h5>
+<p>默认值: <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>缓存请求的过期时间，以秒计。</p>
+<p>超过此时间的缓存请求将被重新下载。如果为零，缓存请求将永远不会过期。</p>
+</section>
+<section id="httpcache-dir">
+<span id="std-setting-HTTPCACHE_DIR"></span><h5>HTTPCACHE_DIR<a class="headerlink" href="#httpcache-dir" title="链接到此标题。"></a></h5>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">'httpcache'</span></code></p>
+<p>The directory to use for storing the (low-level) HTTP cache. If empty, the HTTP
+cache will be disabled. If a relative path is given, is taken relative to the
+project data dir. For more info see: <a class="reference internal" href="commands.html#topics-project-structure"><span class="std std-ref">Default structure of Scrapy projects</span></a>.</p>
+</section>
+<section id="httpcache-ignore-http-codes">
+<span id="std-setting-HTTPCACHE_IGNORE_HTTP_CODES"></span><h5>HTTPHE_IGNORE_HTTP_CODES<a class="headerlink" href="#httpcache-ignore-http-codes" title="链接到此标题。"></a></h5>
+<p>默认值： <code class="docutils literal notranslate"><span class="pre">[]</span></code></p>
+<p>不要缓存这些HTTP代码的响应。</p>
+</section>
+<section id="httpcache-ignore-missing">
+<span id="std-setting-HTTPCACHE_IGNORE_MISSING"></span><h5>HTTPHE_IGNORE_MISSSING<a class="headerlink" href="#httpcache-ignore-missing" title="链接到此标题。"></a></h5>
+<p>默认值： <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p>如果启用，缓存中找不到的请求将被忽略而不是下载。</p>
+</section>
+<section id="httpcache-ignore-schemes">
+<span id="std-setting-HTTPCACHE_IGNORE_SCHEMES"></span><h5>HTTPCACHE_IGNORE_SCHEMES<a class="headerlink" href="#httpcache-ignore-schemes" title="链接到此标题。"></a></h5>
+<p>默认值： <code class="docutils literal notranslate"><span class="pre">['file']</span></code></p>
+<p>不要缓存这些URI方案的回复。</p>
+</section>
+<section id="httpcache-storage">
+<span id="std-setting-HTTPCACHE_STORAGE"></span><h5>HTTPHE_STORAGE_TITLE<a class="headerlink" href="#httpcache-storage" title="链接到此标题。"></a></h5>
+<p>默认值： <code class="docutils literal notranslate"><span class="pre">'scrapy.extensions.httpcache.filesystemCacheStorage'</span></code></p>
+<p>该类实现缓存存储后端。</p>
+</section>
+<section id="httpcache-dbm-module">
+<span id="std-setting-HTTPCACHE_DBM_MODULE"></span><h5>HTTPCACHE_DBM_MODULE<a class="headerlink" href="#httpcache-dbm-module" title="链接到此标题。"></a></h5>
+<p>Default: <code class="docutils literal notranslate"><span class="pre">'dbm'</span></code></p>
+<p>The database module to use in the <a class="reference internal" href="#httpcache-storage-dbm"><span class="std std-ref">DBM storage backend</span></a>. This setting is specific to the DBM backend.</p>
+</section>
+<section id="httpcache-policy">
+<span id="std-setting-HTTPCACHE_POLICY"></span><h5>HTTPHE_POLICY<a class="headerlink" href="#httpcache-policy" title="链接到此标题。"></a></h5>
+<p>默认： <code class="docutils literal notranslate"><span class="pre">'scrapy.extensions.httpcache.DummyPolicy'</span></code></p>
+<p>执行缓存策略的类。</p>
+</section>
+<section id="httpcache-gzip">
+<span id="std-setting-HTTPCACHE_GZIP"></span><h5>HTTPHE_GZIP<a class="headerlink" href="#httpcache-gzip" title="链接到此标题。"></a></h5>
+<p>默认值： <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p>如果启用，将所有缓存数据以 gzip压缩。此设置是专门针对文件系统后端的。</p>
+</section>
+<section id="httpcache-always-store">
+<span id="std-setting-HTTPCACHE_ALWAYS_STORE"></span><h5>HTTPHE_ALWAYS_STORE<a class="headerlink" href="#httpcache-always-store" title="链接到此标题。"></a></h5>
+<p>默认值： <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p>如果启用，将无条件缓存页面。</p>
+<p>一个蜘蛛可能希望在缓存中提供所有的响应，供将来使用 <code class="docutils literal notranslate"><span class="pre">Cache-Control：max-stale</span></code> 。 DummyPolicy 缓存所有响应，但永远不会重新验证它们，有时需要更细致的政策。</p>
+<p>此设置仍然遵守响应中的 <code class="docutils literal notranslate"><span class="pre">Cache-Control:</span> <span class="pre">no-store</span></code> 指令。 如果你不想这样做，在你给缓存中期的回复中，过滤器``no-store`` 。</p>
+</section>
+<section id="httpcache-ignore-response-cache-controls">
+<span id="std-setting-HTTPCACHE_IGNORE_RESPONSE_CACHE_CONTROLS"></span><h5>HTTPCACHE_IGNORE_RESPONSE_CACHE_CONTROLS<a class="headerlink" href="#httpcache-ignore-response-cache-controls" title="链接到此标题。"></a></h5>
+<p>默认值： <code class="docutils literal notranslate"><span class="pre">[]</span></code></p>
+<p>响应中的 Cache-Control 指令列表被忽略。</p>
+<p>站点常常设置“无商店”、“无缓存”、“必须重新验证”等，但如果一个蜘蛛实际遵守这些指令，就会对其生成的流量感到失望。 这允许有选择地忽略已知对被夷为平地站点不重要的缓存控制指令。</p>
+<p>我们假设，除非执行者实际需要，在请求中不会发布缓存控制指令，因此请求中的指令不会被过滤。</p>
+</section>
+</section>
+</section>
+<section id="module-scrapy.downloadermiddlewares.httpcompression">
+<span id="httpcompressionmiddleware"></span><h3>HttpComppression中间件<a class="headerlink" href="#module-scrapy.downloadermiddlewares.httpcompression" title="链接到此标题。"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.downloadermiddlewares.httpcompression.</span></span><span class="sig-name descname"><span class="pre">HttpCompressionMiddleware</span></span><a class="reference internal" href="../_modules/scrapy/downloadermiddlewares/httpcompression.html#HttpCompressionMiddleware"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware" title="链接到此定义。"></a></dt>
+<dd><p>这个中间件允许从网站发送/接收压缩的 (gzip、调制) 流量。</p>
+<p>这个中间件还支持解码 <a class="reference external" href="https://www.ietf.org/rfc/rfc7932.txt">brotli-compressed</a> 和 <a class="reference external" href="https://www.ietf.org/rfc/rfc8478.txt">zstd-compressed</a> 反应，但条件是必须安装`brotli`_ 或 <a class="reference external" href="https://pypi.org/project/zstandard/">zstandard</a> 。</p>
+</dd></dl>
+
+<section id="httpcompressionmiddleware-settings">
+<h4>HttpComppression中间件设置<a class="headerlink" href="#httpcompressionmiddleware-settings" title="链接到此标题。"></a></h4>
+<section id="compression-enabled">
+<span id="std-setting-COMPRESSION_ENABLED"></span><h5>开启_EMAT<a class="headerlink" href="#compression-enabled" title="链接到此标题。"></a></h5>
+<p>默认: <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+<p>是否启用压缩中间件功能。</p>
+</section>
+</section>
+</section>
+<section id="module-scrapy.downloadermiddlewares.httpproxy">
+<span id="httpproxymiddleware"></span><h3>HttpProxyMiddleware<a class="headerlink" href="#module-scrapy.downloadermiddlewares.httpproxy" title="链接到此标题。"></a></h3>
+<dl class="py class" id="std-reqmeta-proxy">
+<dt class="sig sig-object py" id="scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.downloadermiddlewares.httpproxy.</span></span><span class="sig-name descname"><span class="pre">HttpProxyMiddleware</span></span><a class="reference internal" href="../_modules/scrapy/downloadermiddlewares/httpproxy.html#HttpProxyMiddleware"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware" title="链接到此定义。"></a></dt>
+<dd><p>This middleware sets the HTTP proxy to use for requests, by setting the
+<a class="reference internal" href="#std-reqmeta-proxy"><code class="xref std std-reqmeta docutils literal notranslate"><span class="pre">proxy</span></code></a> meta value for <a class="reference internal" href="request-response.html#scrapy.Request" title="scrapy.Request"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></a> objects.</p>
+<p>Like the Python standard library module <a class="reference external" href="https://docs.python.org/3/library/urllib.request.html#module-urllib.request" title="(位于 Python v3.14)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">urllib.request</span></code></a>, it obeys
+the following environment variables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">http_proxy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">https://_proxy</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">no_proxy</span></code></p></li>
+</ul>
+<p>You can also set the meta key <a class="reference internal" href="#std-reqmeta-proxy"><code class="xref std std-reqmeta docutils literal notranslate"><span class="pre">proxy</span></code></a> per-request, to a value like
+<code class="docutils literal notranslate"><span class="pre">http://some_proxy_server:port</span></code> or <code class="docutils literal notranslate"><span class="pre">http://username:password&#64;some_proxy_server:port</span></code>.
+Keep in mind this value will take precedence over <code class="docutils literal notranslate"><span class="pre">http_proxy</span></code>/<code class="docutils literal notranslate"><span class="pre">https_proxy</span></code>
+environment variables, and it will also ignore <code class="docutils literal notranslate"><span class="pre">no_proxy</span></code> environment variable.</p>
+</dd></dl>
+
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Handling of this meta key needs to be implemented inside the <a class="reference internal" href="download-handlers.html#topics-download-handlers"><span class="std std-ref">download
+handler</span></a>, so it's not guaranteed to be supported
+by all 3rd-party handlers. It's currently unsupported by
+<a class="reference internal" href="download-handlers.html#scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler" title="scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpxDownloadHandler</span></code></a>.</p>
+</div>
+<section id="httpproxymiddleware-settings">
+<h4>HttpProxyMiddleware 设置<a class="headerlink" href="#httpproxymiddleware-settings" title="链接到此标题。"></a></h4>
+<section id="httpproxy-enabled">
+<span id="std-setting-HTTPPROXY_AUTH_ENCODING"></span><span id="std-setting-HTTPPROXY_ENABLED"></span><h5>HTTPPROXY_已启用<a class="headerlink" href="#httpproxy-enabled" title="链接到此标题。"></a></h5>
+<p>默认: <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+<p>Whether or not to enable the <a class="reference internal" href="#scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware" title="scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpProxyMiddleware</span></code></a>.</p>
+</section>
+<section id="httpproxy-auth-encoding">
+<h5>HTTPPROXY_AUTH_ENCODE<a class="headerlink" href="#httpproxy-auth-encoding" title="链接到此标题。"></a></h5>
+<p>默认： <code class="docutils literal notranslate"><span class="pre">&quot;latin-1&quot;</span></code></p>
+<p>The default encoding for proxy authentication on <a class="reference internal" href="#scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware" title="scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpProxyMiddleware</span></code></a>.</p>
+</section>
+</section>
+</section>
+<section id="module-scrapy.downloadermiddlewares.offsite">
+<span id="offsitemiddleware"></span><h3>离站中间件<a class="headerlink" href="#module-scrapy.downloadermiddlewares.offsite" title="链接到此标题。"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.downloadermiddlewares.offsite.OffsiteMiddleware">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.downloadermiddlewares.offsite.</span></span><span class="sig-name descname"><span class="pre">OffsiteMiddleware</span></span><a class="reference internal" href="../_modules/scrapy/downloadermiddlewares/offsite.html#OffsiteMiddleware"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.downloadermiddlewares.offsite.OffsiteMiddleware" title="链接到此定义。"></a></dt>
+<dd><div class="versionadded">
+<p><span class="versionmodified added">在 2.11.2 版本加入.</span></p>
+</div>
+<p>过滤超越拼写器覆盖域外的 URL 请求。</p>
+<p>This middleware filters out every request whose host names aren't in the
+spider's <a class="reference internal" href="spiders.html#scrapy.Spider.allowed_domains" title="scrapy.Spider.allowed_domains"><code class="xref py py-attr docutils literal notranslate"><span class="pre">allowed_domains</span></code></a> attribute.
+All subdomains of any domain in the list are also allowed.
+E.g. the rule <code class="docutils literal notranslate"><span class="pre">www.example.org</span></code> will also allow <code class="docutils literal notranslate"><span class="pre">bob.www.example.org</span></code>
+but not <code class="docutils literal notranslate"><span class="pre">www2.example.com</span></code> nor <code class="docutils literal notranslate"><span class="pre">example.com</span></code>.</p>
+<p>当你的蜘蛛返回一个不属于蜘蛛所覆盖的域的请求时， 这个中间件将记录一个与此相似的调试消息：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>DEBUG: 已过滤的离站请求为“offsite.example”: &lt;GET http://offsite.example/some/page.html&gt;
+</pre></div>
+</div>
+<p>为了避免用太多的噪声填充日志，它只能打印每个新域过滤中的一条消息。 例如，如果有另一个请求“离站”。 xample`` 被过滤，将不会打印日志消息。但是如果请求“其他”。 xample`` 已被过滤，消息将被打印(但只适用于第一次请求过滤)。</p>
+<p>If the spider doesn't define an
+<a class="reference internal" href="spiders.html#scrapy.Spider.allowed_domains" title="scrapy.Spider.allowed_domains"><code class="xref py py-attr docutils literal notranslate"><span class="pre">allowed_domains</span></code></a> attribute, or the
+attribute is empty, the offsite middleware will allow all requests.</p>
+<p id="std-reqmeta-allow_offsite">If the request has the <a class="reference internal" href="request-response.html#scrapy.Request.dont_filter" title="scrapy.Request.dont_filter"><code class="xref py py-attr docutils literal notranslate"><span class="pre">dont_filter</span></code></a> attribute set to
+<code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">Request.meta</span></code> has <code class="docutils literal notranslate"><span class="pre">allow_offsite</span></code> set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, then
+the OffsiteMiddleware will allow the request even if its domain is not listed
+in allowed domains.</p>
+</dd></dl>
+
+</section>
+<section id="module-scrapy.downloadermiddlewares.redirect">
+<span id="redirectmiddleware"></span><h3>重定向中间件<a class="headerlink" href="#module-scrapy.downloadermiddlewares.redirect" title="链接到此标题。"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.downloadermiddlewares.redirect.RedirectMiddleware">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.downloadermiddlewares.redirect.</span></span><span class="sig-name descname"><span class="pre">RedirectMiddleware</span></span><a class="reference internal" href="../_modules/scrapy/downloadermiddlewares/redirect.html#RedirectMiddleware"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.downloadermiddlewares.redirect.RedirectMiddleware" title="链接到此定义。"></a></dt>
+<dd><p>这个中间件处理基于响应状态的请求重定向。</p>
+</dd></dl>
+
+<p id="std-reqmeta-redirect_urls">The urls which the request goes through (while being redirected) can be found
+in the <code class="docutils literal notranslate"><span class="pre">redirect_urls</span></code> <a class="reference internal" href="request-response.html#scrapy.Request.meta" title="scrapy.Request.meta"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Request.meta</span></code></a> key.</p>
+<p id="std-reqmeta-redirect_reasons">The reason behind each redirect in <a class="reference internal" href="#std-reqmeta-redirect_urls"><code class="xref std std-reqmeta docutils literal notranslate"><span class="pre">redirect_urls</span></code></a> can be found in the
+<code class="docutils literal notranslate"><span class="pre">redirect_reasons</span></code> <a class="reference internal" href="request-response.html#scrapy.Request.meta" title="scrapy.Request.meta"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Request.meta</span></code></a> key. For
+example: <code class="docutils literal notranslate"><span class="pre">[301,</span> <span class="pre">302,</span> <span class="pre">307,</span> <span class="pre">'meta</span> <span class="pre">refresh']</span></code>.</p>
+<p>The format of a reason depends on the middleware that handled the corresponding
+redirect. For example, <a class="reference internal" href="#scrapy.downloadermiddlewares.redirect.RedirectMiddleware" title="scrapy.downloadermiddlewares.redirect.RedirectMiddleware"><code class="xref py py-class docutils literal notranslate"><span class="pre">RedirectMiddleware</span></code></a> indicates the triggering
+response status code as an integer, while <a class="reference internal" href="#scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware" title="scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaRefreshMiddleware</span></code></a>
+always uses the <code class="docutils literal notranslate"><span class="pre">'meta</span> <span class="pre">refresh'</span></code> string as reason.</p>
+<p>The <a class="reference internal" href="#scrapy.downloadermiddlewares.redirect.RedirectMiddleware" title="scrapy.downloadermiddlewares.redirect.RedirectMiddleware"><code class="xref py py-class docutils literal notranslate"><span class="pre">RedirectMiddleware</span></code></a> can be configured through the following
+settings (see the settings documentation for more info):</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#std-setting-REDIRECT_ENABLED"><code class="xref std std-setting docutils literal notranslate"><span class="pre">REDIRECT_ENABLED</span></code></a></p></li>
+<li><p><a class="reference internal" href="#std-setting-REDIRECT_MAX_TIMES"><code class="xref std std-setting docutils literal notranslate"><span class="pre">REDIRECT_MAX_TIMES</span></code></a></p></li>
+</ul>
+<p id="std-reqmeta-dont_redirect">If <a class="reference internal" href="request-response.html#scrapy.Request.meta" title="scrapy.Request.meta"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Request.meta</span></code></a> has <code class="docutils literal notranslate"><span class="pre">dont_redirect</span></code>
+key set to True, the request will be ignored by this middleware.</p>
+<p>如果你想要处理你的蜘蛛中的一些重定向状态代码，你可以在 <code class="docutils literal notranslate"><span class="pre">handle_httpstatus_list</span></code> 的属性中指定这些代码。</p>
+<p>例如，如果你想要重定向中间件忽略301和302反应(并将它们传递给你的蜘蛛)，你可以这样做：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">MySpider</span><span class="p">(</span><span class="n">CrawlSpider</span><span class="p">):</span>
+    <span class="n">handle_httpstatus_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">301</span><span class="p">,</span> <span class="mi">302</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">handle_httpstatus_list</span></code> key of <a class="reference internal" href="request-response.html#scrapy.Request.meta" title="scrapy.Request.meta"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Request.meta</span></code></a> can also be used to specify which response codes to
+allow on a per-request basis. You can also set the meta key
+<code class="docutils literal notranslate"><span class="pre">handle_httpstatus_all</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code> if you want to allow any response code
+for a request.</p>
+<section id="redirectmiddleware-settings">
+<h4>重定向中间件设置<a class="headerlink" href="#redirectmiddleware-settings" title="链接到此标题。"></a></h4>
+<section id="redirect-enabled">
+<span id="std-setting-REDIRECT_ENABLED"></span><h5>REDIRECT_已启用<a class="headerlink" href="#redirect-enabled" title="链接到此标题。"></a></h5>
+<p>默认: <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+<p>是否启用重定向中间件.</p>
+</section>
+<section id="redirect-max-times">
+<span id="std-setting-REDIRECT_MAX_TIMES"></span><h5>REDIRECT_MAX_TIMES<a class="headerlink" href="#redirect-max-times" title="链接到此标题。"></a></h5>
+<p>默认值： <code class="docutils literal notranslate"><span class="pre">20</span></code></p>
+<p>单个请求所遵循的最大重定向次数。如果超过最大重定向，请求将被中止和忽略。</p>
+</section>
+</section>
+</section>
+<section id="metarefreshmiddleware">
+<h3>元刷新中间件<a class="headerlink" href="#metarefreshmiddleware" title="链接到此标题。"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.downloadermiddlewares.redirect.</span></span><span class="sig-name descname"><span class="pre">MetaRefreshMiddleware</span></span><a class="reference internal" href="../_modules/scrapy/downloadermiddlewares/redirect.html#MetaRefreshMiddleware"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware" title="链接到此定义。"></a></dt>
+<dd><p>此中间件处理基于元刷新html 标签的请求重定向。</p>
+</dd></dl>
+
+<p>The <a class="reference internal" href="#scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware" title="scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaRefreshMiddleware</span></code></a> can be configured through the following
+settings (see the settings documentation for more info):</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#std-setting-METAREFRESH_ENABLED"><code class="xref std std-setting docutils literal notranslate"><span class="pre">METAREFRESH_ENABLED</span></code></a></p></li>
+<li><p><a class="reference internal" href="#std-setting-METAREFRESH_IGNORE_TAGS"><code class="xref std std-setting docutils literal notranslate"><span class="pre">METAREFRESH_IGNORE_TAGS</span></code></a></p></li>
+<li><p><a class="reference internal" href="#std-setting-METAREFRESH_MAXDELAY"><code class="xref std std-setting docutils literal notranslate"><span class="pre">METAREFRESH_MAXDELAY</span></code></a></p></li>
+</ul>
+<p>This middleware obey <a class="reference internal" href="#std-setting-REDIRECT_MAX_TIMES"><code class="xref std std-setting docutils literal notranslate"><span class="pre">REDIRECT_MAX_TIMES</span></code></a> setting, <a class="reference internal" href="#std-reqmeta-dont_redirect"><code class="xref std std-reqmeta docutils literal notranslate"><span class="pre">dont_redirect</span></code></a>,
+<a class="reference internal" href="#std-reqmeta-redirect_urls"><code class="xref std std-reqmeta docutils literal notranslate"><span class="pre">redirect_urls</span></code></a> and <a class="reference internal" href="#std-reqmeta-redirect_reasons"><code class="xref std std-reqmeta docutils literal notranslate"><span class="pre">redirect_reasons</span></code></a> request meta keys as described
+for <a class="reference internal" href="#scrapy.downloadermiddlewares.redirect.RedirectMiddleware" title="scrapy.downloadermiddlewares.redirect.RedirectMiddleware"><code class="xref py py-class docutils literal notranslate"><span class="pre">RedirectMiddleware</span></code></a></p>
+<section id="metarefreshmiddleware-settings">
+<h4>元刷新中间件设置<a class="headerlink" href="#metarefreshmiddleware-settings" title="链接到此标题。"></a></h4>
+<section id="metarefresh-enabled">
+<span id="std-setting-METAREFRESH_ENABLED"></span><h5>METAREFRESH_PLAYLIN<a class="headerlink" href="#metarefresh-enabled" title="链接到此标题。"></a></h5>
+<p>默认: <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+<p>Meta 刷新中间件是否启用。</p>
+</section>
+<section id="metarefresh-ignore-tags">
+<span id="std-setting-METAREFRESH_IGNORE_TAGS"></span><h5>METAREFRESH_INTERNATIONAL<a class="headerlink" href="#metarefresh-ignore-tags" title="链接到此标题。"></a></h5>
+<p>默认值： <code class="docutils literal notranslate"><span class="pre">[]</span></code></p>
+<p>忽略这些标签中的元标签。</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">在 2.11.2 版本发生变更: </span>The default value of <a class="reference internal" href="#std-setting-METAREFRESH_IGNORE_TAGS"><code class="xref std std-setting docutils literal notranslate"><span class="pre">METAREFRESH_IGNORE_TAGS</span></code></a> changed from
+<code class="docutils literal notranslate"><span class="pre">[]</span></code> to <code class="docutils literal notranslate"><span class="pre">[&quot;noscript&quot;]</span></code>.</p>
+</div>
+</section>
+<section id="metarefresh-maxdelay">
+<span id="std-setting-METAREFRESH_MAXDELAY"></span><h5>METAREFRESH_MEXDELAY<a class="headerlink" href="#metarefresh-maxdelay" title="链接到此标题。"></a></h5>
+<p>默认值： <code class="docutils literal notranslate"><span class="pre">100</span></code></p>
+<p>最大元刷新延迟(以秒为单位)以跟随重定向。 有些站点使用元刷新来重定向到会话过期页面，所以我们限制自动重定向到最大延迟。</p>
+</section>
+</section>
+</section>
+<section id="module-scrapy.downloadermiddlewares.retry">
+<span id="retrymiddleware"></span><h3>重试中间件<a class="headerlink" href="#module-scrapy.downloadermiddlewares.retry" title="链接到此标题。"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.downloadermiddlewares.retry.RetryMiddleware">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.downloadermiddlewares.retry.</span></span><span class="sig-name descname"><span class="pre">RetryMiddleware</span></span><a class="reference internal" href="../_modules/scrapy/downloadermiddlewares/retry.html#RetryMiddleware"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.downloadermiddlewares.retry.RetryMiddleware" title="链接到此定义。"></a></dt>
+<dd><p>重试失败请求的中间件，如连接超时或 HTTP 500 错误。</p>
+</dd></dl>
+
+<p>在拆解过程中收集失败的页面，并在结束时重新安排时间，一旦旋转器完成整理所有常规(非失败)页面。</p>
+<p>The <a class="reference internal" href="#scrapy.downloadermiddlewares.retry.RetryMiddleware" title="scrapy.downloadermiddlewares.retry.RetryMiddleware"><code class="xref py py-class docutils literal notranslate"><span class="pre">RetryMiddleware</span></code></a> can be configured through the following
+settings (see the settings documentation for more info):</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#std-setting-RETRY_ENABLED"><code class="xref std std-setting docutils literal notranslate"><span class="pre">RETRY_ENABLED</span></code></a></p></li>
+<li><p><a class="reference internal" href="#std-setting-RETRY_TIMES"><code class="xref std std-setting docutils literal notranslate"><span class="pre">RETRY_TIMES</span></code></a></p></li>
+<li><p><a class="reference internal" href="#std-setting-RETRY_HTTP_CODES"><code class="xref std std-setting docutils literal notranslate"><span class="pre">RETRY_HTTP_CODES</span></code></a></p></li>
+<li><p><a class="reference internal" href="#std-setting-RETRY_EXCEPTIONS"><code class="xref std std-setting docutils literal notranslate"><span class="pre">RETRY_EXCEPTIONS</span></code></a></p></li>
+</ul>
+<p id="std-reqmeta-dont_retry">If <a class="reference internal" href="request-response.html#scrapy.Request.meta" title="scrapy.Request.meta"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Request.meta</span></code></a> has <code class="docutils literal notranslate"><span class="pre">dont_retry</span></code> key
+set to True, the request will be ignored by this middleware.</p>
+<p>To retry requests from a spider callback, you can use the
+<a class="reference internal" href="#scrapy.downloadermiddlewares.retry.get_retry_request" title="scrapy.downloadermiddlewares.retry.get_retry_request"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_retry_request()</span></code></a> function:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="scrapy.downloadermiddlewares.retry.get_retry_request">
+<span class="sig-prename descclassname"><span class="pre">scrapy.downloadermiddlewares.retry.</span></span><span class="sig-name descname"><span class="pre">get_retry_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="request-response.html#scrapy.Request" title="scrapy.Request"><span class="pre">Request</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spider</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="spiders.html#scrapy.Spider" title="scrapy.Spider"><span class="pre">scrapy.Spider</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">reason</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(位于 Python v3.14)"><span class="pre">Exception</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(位于 Python v3.14)"><span class="pre">type</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(位于 Python v3.14)"><span class="pre">Exception</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'unspecified'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_retry_times</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">priority_adjust</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Logger</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">&lt;Logger</span> <span class="pre">scrapy.downloadermiddlewares.retry</span> <span class="pre">(WARNING)&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stats_base_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'retry'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="request-response.html#scrapy.Request" title="scrapy.Request"><span class="pre">Request</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/scrapy/downloadermiddlewares/retry.html#get_retry_request"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.downloadermiddlewares.retry.get_retry_request" title="链接到此定义。"></a></dt>
+<dd><p>Returns a new <a class="reference internal" href="request-response.html#scrapy.Request" title="scrapy.Request"><code class="xref py py-class docutils literal notranslate"><span class="pre">Request</span></code></a> object to retry the specified
+request, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if retries of the specified request have been
+exhausted.</p>
+<p>For example, in a <a class="reference internal" href="spiders.html#scrapy.Spider" title="scrapy.Spider"><code class="xref py py-class docutils literal notranslate"><span class="pre">Spider</span></code></a> callback, you could use it as
+follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">:</span>
+        <span class="n">new_request_or_none</span> <span class="o">=</span> <span class="n">get_retry_request</span><span class="p">(</span>
+            <span class="n">response</span><span class="o">.</span><span class="n">request</span><span class="p">,</span>
+            <span class="n">spider</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+            <span class="n">reason</span><span class="o">=</span><span class="s1">&#39;empty&#39;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">new_request_or_no</span>
+</pre></div>
+</div>
+<p><em>spider</em> is the <a class="reference internal" href="spiders.html#scrapy.Spider" title="scrapy.Spider"><code class="xref py py-class docutils literal notranslate"><span class="pre">Spider</span></code></a> instance which is asking for the
+retry request. It is used to access the <a class="reference internal" href="settings.html#topics-settings"><span class="std std-ref">settings</span></a>
+and <a class="reference internal" href="stats.html#topics-stats"><span class="std std-ref">stats</span></a>, and to provide extra logging context (see
+<a class="reference external" href="https://docs.python.org/3/library/logging.html#logging.debug" title="(位于 Python v3.14)"><code class="xref py py-func docutils literal notranslate"><span class="pre">logging.debug()</span></code></a>).</p>
+<p><em>reason</em> is a string or an <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#Exception" title="(位于 Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></a> object that indicates the
+reason why the request needs to be retried. It is used to name retry stats.</p>
+<p><em>max_retry_times</em> is a number that determines the maximum number of times
+that <em>request</em> can be retried. If not specified or <code class="docutils literal notranslate"><span class="pre">None</span></code>, the number is
+read from the <a class="reference internal" href="request-response.html#std-reqmeta-max_retry_times"><code class="xref std std-reqmeta docutils literal notranslate"><span class="pre">max_retry_times</span></code></a> meta key of the request. If the
+<a class="reference internal" href="request-response.html#std-reqmeta-max_retry_times"><code class="xref std std-reqmeta docutils literal notranslate"><span class="pre">max_retry_times</span></code></a> meta key is not defined or <code class="docutils literal notranslate"><span class="pre">None</span></code>, the number
+is read from the <a class="reference internal" href="#std-setting-RETRY_TIMES"><code class="xref std std-setting docutils literal notranslate"><span class="pre">RETRY_TIMES</span></code></a> setting.</p>
+<p><em>priority_adjust</em> is a number that determines how the priority of the new
+request changes in relation to <em>request</em>. If not specified, the number is
+read from the <a class="reference internal" href="#std-setting-RETRY_PRIORITY_ADJUST"><code class="xref std std-setting docutils literal notranslate"><span class="pre">RETRY_PRIORITY_ADJUST</span></code></a> setting.</p>
+<p><em>logger</em> 是日志记录器对象将在记录消息时使用</p>
+<p><em>stats_base_key</em> 是一个字符串，可用作与重试相关的作业统计的基本密钥</p>
+</dd></dl>
+
+<section id="retrymiddleware-settings">
+<h4>RetryMiddleware 设置<a class="headerlink" href="#retrymiddleware-settings" title="链接到此标题。"></a></h4>
+<section id="retry-enabled">
+<span id="std-setting-RETRY_ENABLED"></span><h5>RETRY_已启用<a class="headerlink" href="#retry-enabled" title="链接到此标题。"></a></h5>
+<p>默认: <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
+<p>是否启用重试中间件.</p>
+</section>
+<section id="retry-times">
+<span id="std-setting-RETRY_TIMES"></span><h5>TRY_TIMES<a class="headerlink" href="#retry-times" title="链接到此标题。"></a></h5>
+<p>默认: <code class="docutils literal notranslate"><span class="pre">2</span></code></p>
+<p>除第一次下载外，重试的最大次数。</p>
+<p>Maximum number of retries can also be specified per-request using
+<a class="reference internal" href="request-response.html#std-reqmeta-max_retry_times"><code class="xref std std-reqmeta docutils literal notranslate"><span class="pre">max_retry_times</span></code></a> attribute of <a class="reference internal" href="request-response.html#scrapy.Request.meta" title="scrapy.Request.meta"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Request.meta</span></code></a>.
+When initialized, the <a class="reference internal" href="request-response.html#std-reqmeta-max_retry_times"><code class="xref std std-reqmeta docutils literal notranslate"><span class="pre">max_retry_times</span></code></a> meta key takes higher
+precedence over the <a class="reference internal" href="#std-setting-RETRY_TIMES"><code class="xref std std-setting docutils literal notranslate"><span class="pre">RETRY_TIMES</span></code></a> setting.</p>
+</section>
+<section id="retry-http-codes">
+<span id="std-setting-RETRY_HTTP_CODES"></span><h5>RETRY_HTTP_CODES<a class="headerlink" href="#retry-http-codes" title="链接到此标题。"></a></h5>
+<p>默认： <code class="docutils literal notranslate"><span class="pre">[500、502、503、504、522、524、408、429]</span></code></p>
+<p>要重试的HTTP响应码。其他错误 (DNS 查找问题、连接丢失等) 总是被检索。</p>
+<p>In some cases you may want to add 400 to <a class="reference internal" href="#std-setting-RETRY_HTTP_CODES"><code class="xref std std-setting docutils literal notranslate"><span class="pre">RETRY_HTTP_CODES</span></code></a> because
+it is a common code used to indicate server overload. It is not included by
+default because HTTP specs say so.</p>
+</section>
+<section id="retry-exceptions">
+<span id="std-setting-RETRY_EXCEPTIONS"></span><h5>RETRY_EXCEPTIONS<a class="headerlink" href="#retry-exceptions" title="链接到此标题。"></a></h5>
+<p>默认：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+    <span class="s1">&#39;scrapy.exceptions.CannotResolveHostError&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;scrapy.exceptions.DownloadConnectionRefusedError&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;scrapy.exceptions.DownloadFailedError&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;scrapy.exceptions.DownloadTimeoutError&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;scrapy.exceptions.ResponseDataLossError&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;twisted.internet.error.ConnectionDone&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;twisted.internet.error.ConnectError&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;twisted.internet.error.ConnectionLost&#39;</span><span class="p">,</span>
+    <span class="ne">IOError</span><span class="p">,</span>
+    <span class="s1">&#39;scrapy.core.downloader.handlers.http11.TunnelError&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>需要重试的异常列表。</p>
+<p>每个列表条目可以是异常类型或导入路径作为字符串。</p>
+<p>An exception will not be caught when the exception type is not in
+<a class="reference internal" href="#std-setting-RETRY_EXCEPTIONS"><code class="xref std std-setting docutils literal notranslate"><span class="pre">RETRY_EXCEPTIONS</span></code></a> or when the maximum number of retries for a request
+has been exceeded (see <a class="reference internal" href="#std-setting-RETRY_TIMES"><code class="xref std std-setting docutils literal notranslate"><span class="pre">RETRY_TIMES</span></code></a>). To learn about uncaught
+exception propagation, see
+<a class="reference internal" href="#scrapy.downloadermiddlewares.DownloaderMiddleware.process_exception" title="scrapy.downloadermiddlewares.DownloaderMiddleware.process_exception"><code class="xref py py-meth docutils literal notranslate"><span class="pre">process_exception()</span></code></a>.</p>
+</section>
+<section id="retry-priority-adjust">
+<span id="std-setting-RETRY_PRIORITY_ADJUST"></span><h5>TRY_PRIORITY_ADJUST<a class="headerlink" href="#retry-priority-adjust" title="链接到此标题。"></a></h5>
+<p>默认值： <code class="docutils literal notranslate"><span class="pre">-1</span></code></p>
+<p>调整重试请求相对于原始请求的优先级：</p>
+<ul class="simple">
+<li><p>积极的优先次序调整意味着更高的优先次序。</p></li>
+<li><p><strong>负优先级调整 (默认) 意味着较低优先级。</strong></p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="module-scrapy.downloadermiddlewares.robotstxt">
+<span id="robotstxtmiddleware"></span><span id="topics-dlmw-robots"></span><h3>机器人Txt中间件<a class="headerlink" href="#module-scrapy.downloadermiddlewares.robotstxt" title="链接到此标题。"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.downloadermiddlewares.robotstxt.</span></span><span class="sig-name descname"><span class="pre">RobotsTxtMiddleware</span></span><a class="reference internal" href="../_modules/scrapy/downloadermiddlewares/robotstxt.html#RobotsTxtMiddleware"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware" title="链接到此定义。"></a></dt>
+<dd><p>此中间件过滤器排除了robots.txt 排除标准禁止的请求。</p>
+<p>To make sure Scrapy respects robots.txt make sure the middleware is enabled
+and the <a class="reference internal" href="settings.html#std-setting-ROBOTSTXT_OBEY"><code class="xref std std-setting docutils literal notranslate"><span class="pre">ROBOTSTXT_OBEY</span></code></a> setting is enabled.</p>
+<p>The <a class="reference internal" href="settings.html#std-setting-ROBOTSTXT_USER_AGENT"><code class="xref std std-setting docutils literal notranslate"><span class="pre">ROBOTSTXT_USER_AGENT</span></code></a> setting can be used to specify the
+user agent string to use for matching in the <a class="reference external" href="https://www.robotstxt.org/">robots.txt</a> file. If it
+is <code class="docutils literal notranslate"><span class="pre">None</span></code>, the User-Agent header you are sending with the request or the
+<a class="reference internal" href="settings.html#std-setting-USER_AGENT"><code class="xref std std-setting docutils literal notranslate"><span class="pre">USER_AGENT</span></code></a> setting (in that order) will be used for determining
+the user agent to use in the <a class="reference external" href="https://www.robotstxt.org/">robots.txt</a> file.</p>
+<p>这个中间件必须与 <a class="reference external" href="https://www.robotstxt.org/">robots.txt</a> 解析器合并。</p>
+<p>支持下面的 <a class="reference external" href="https://www.robotstxt.org/">robots.txt</a> 解析器的废船：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#protego-parser"><span class="std std-ref">Protego</span></a> (default)</p></li>
+<li><p><a class="reference internal" href="#python-robotfileparser"><span class="std std-ref">RobotFileParser</span></a></p></li>
+<li><p><a class="reference internal" href="#rerp-parser"><span class="std std-ref">Robotexclusionrulesparser</span></a></p></li>
+</ul>
+<p>You can change the <a class="reference external" href="https://www.robotstxt.org/">robots.txt</a> parser with the <a class="reference internal" href="settings.html#std-setting-ROBOTSTXT_PARSER"><code class="xref std std-setting docutils literal notranslate"><span class="pre">ROBOTSTXT_PARSER</span></code></a>
+setting. Or you can also <a class="reference internal" href="#support-for-new-robots-parser"><span class="std std-ref">implement support for a new parser</span></a>.</p>
+</dd></dl>
+
+<p id="std-reqmeta-dont_obey_robotstxt">If <a class="reference internal" href="request-response.html#scrapy.Request.meta" title="scrapy.Request.meta"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Request.meta</span></code></a> has
+<code class="docutils literal notranslate"><span class="pre">dont_obey_robotstxt</span></code> key set to True
+the request will be ignored by this middleware even if
+<a class="reference internal" href="settings.html#std-setting-ROBOTSTXT_OBEY"><code class="xref std std-setting docutils literal notranslate"><span class="pre">ROBOTSTXT_OBEY</span></code></a> is enabled.</p>
+<p>Parsers 在几个方面各有不同：</p>
+<ul class="simple">
+<li><p>实施的语文</p></li>
+<li><p>支持的规范</p></li>
+<li><p>支持通配符</p></li>
+<li><p>基于`length rule &lt;<a class="reference external" href="https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt#order-of-precedence-for-rules">https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt#order-of-precedence-for-rules</a>&gt;`: 特别是 <code class="docutils literal notranslate"><span class="pre">Allow</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Disallow</span></code> 指令的用途， 基于路径长度的最特定规则会跳过较不具体的(较短的)规则</p></li>
+</ul>
+<p>不同解析器的性能比较可在 <a href="#id1"><span class="problematic" id="id2">`</span></a>下面的链接 &lt;<a class="reference external" href="https://github.com/scrapy/scrapy/issues/3969">https://github.com/scrapy/scrapy/issues/3969</a>&gt;`_上找到。</p>
+<section id="protego-parser">
+<span id="id1"></span><h4>Protego parser<a class="headerlink" href="#protego-parser" title="链接到此标题。"></a></h4>
+<p>基于 <a class="reference external" href="https://github.com/scrapy/protego">Protego</a>:</p>
+<ul class="simple">
+<li><p>在 Python 中实现</p></li>
+<li><p>符合谷歌的机器人.txt 规格 &lt;<a class="reference external" href="https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt">https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt</a>&gt;`_</p></li>
+<li><p>支持通配符</p></li>
+<li><p>使用基于长度的规则</p></li>
+</ul>
+<p>默认情况下，Scrapy 使用此解析器。</p>
+</section>
+<section id="robotfileparser">
+<span id="python-robotfileparser"></span><h4>RobotFileParser<a class="headerlink" href="#robotfileparser" title="链接到此标题。"></a></h4>
+<p>Based on <a class="reference external" href="https://docs.python.org/3/library/urllib.robotparser.html#urllib.robotparser.RobotFileParser" title="(位于 Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">RobotFileParser</span></code></a>:</p>
+<ul class="simple">
+<li><p>是 Python 内置的 <a class="reference external" href="https://www.robotstxt.org/">robots.txt</a> 解析器</p></li>
+<li><p>符合`Martijn Koster1996年规格草案 &lt;<a class="reference external" href="https://www.robotstxt.org/norobots-rfc.txt">https://www.robotstxt.org/norobots-rfc.txt</a>&gt;`_</p></li>
+<li><p>不支持通配符</p></li>
+<li><p>不使用基于长度的规则</p></li>
+</ul>
+<p>它比Protego快，比1.8.0之前的废品版本与后向兼容。</p>
+<p>为了使用此解析器，设置：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="settings.html#std-setting-ROBOTSTXT_PARSER"><code class="xref std std-setting docutils literal notranslate"><span class="pre">ROBOTSTXT_PARSER</span></code></a> to <code class="docutils literal notranslate"><span class="pre">scrapy.robotstxt.PythonRobotParser</span></code></p></li>
+</ul>
+</section>
+<section id="robotexclusionrulesparser">
+<span id="rerp-parser"></span><h4>Robotexclusionrules解析器<a class="headerlink" href="#robotexclusionrulesparser" title="链接到此标题。"></a></h4>
+<p>基于 <a class="reference external" href="https://pypi.org/project/robotexclusionrulesparser/">Robotexclusionrulesser</a>:</p>
+<ul class="simple">
+<li><p>在 Python 中实现</p></li>
+<li><p>符合`Martijn Koster1996年规格草案 &lt;<a class="reference external" href="https://www.robotstxt.org/norobots-rfc.txt">https://www.robotstxt.org/norobots-rfc.txt</a>&gt;`_</p></li>
+<li><p>支持通配符</p></li>
+<li><p>不使用基于长度的规则</p></li>
+</ul>
+<p>要使用此解析器：</p>
+<ul class="simple">
+<li><p>运行 <code class="docutils literal notranslate"><span class="pre">Robotexclusionrulesparser</span></code> 安装 <code class="docutils literal notranslate"><span class="pre">pipp</span> <span class="pre">install</span> <span class="pre">robotexclusionrulesparser</span></code></p></li>
+<li><p>Set <a class="reference internal" href="settings.html#std-setting-ROBOTSTXT_PARSER"><code class="xref std std-setting docutils literal notranslate"><span class="pre">ROBOTSTXT_PARSER</span></code></a> setting to
+<code class="docutils literal notranslate"><span class="pre">scrapy.robotstxt.RerpRobotParser</span></code></p></li>
+</ul>
+</section>
+<section id="implementing-support-for-a-new-parser">
+<span id="support-for-new-robots-parser"></span><h4>支持新的解析器<a class="headerlink" href="#implementing-support-for-a-new-parser" title="链接到此标题。"></a></h4>
+<p>You can implement support for a new <a class="reference external" href="https://www.robotstxt.org/">robots.txt</a> parser by subclassing
+the abstract base class <a class="reference internal" href="#scrapy.robotstxt.RobotParser" title="scrapy.robotstxt.RobotParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">RobotParser</span></code></a> and
+implementing the methods described below.</p>
+<dl class="py class" id="module-scrapy.robotstxt">
+<dt class="sig sig-object py" id="scrapy.robotstxt.RobotParser">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.robotstxt.</span></span><span class="sig-name descname"><span class="pre">RobotParser</span></span><a class="reference internal" href="../_modules/scrapy/robotstxt.html#RobotParser"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.robotstxt.RobotParser" title="链接到此定义。"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="scrapy.robotstxt.RobotParser.allowed">
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">allowed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(位于 Python v3.14)"><span class="pre">bytes</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_agent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(位于 Python v3.14)"><span class="pre">bytes</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(位于 Python v3.14)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="../_modules/scrapy/robotstxt.html#RobotParser.allowed"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.robotstxt.RobotParser.allowed" title="链接到此定义。"></a></dt>
+<dd><p>如果``user_agent`` 被允许返回crawl <code class="docutils literal notranslate"><span class="pre">url</span></code> ，则返回 <code class="docutils literal notranslate"><span class="pre">True</span></code> ，否则返回 <code class="docutils literal notranslate"><span class="pre">False</span></code> 。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(位于 Python v3.14)"><em>bytes</em></a>) -- 绝对网址</p></li>
+<li><p><strong>user_agent</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(位于 Python v3.14)"><em>bytes</em></a>) -- 用户代理</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scrapy.robotstxt.RobotParser.from_crawler">
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_crawler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crawler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#scrapy.crawler.Crawler" title="scrapy.crawler.Crawler"><span class="pre">Crawler</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">robotstxt_body</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(位于 Python v3.14)"><span class="pre">bytes</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="reference internal" href="../_modules/scrapy/robotstxt.html#RobotParser.from_crawler"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.robotstxt.RobotParser.from_crawler" title="链接到此定义。"></a></dt>
+<dd><p>将 <a class="reference external" href="https://www.robotstxt.org/">robots.txt</a> 文件的内容解析为字节。这必须是一个类方法。它必须返回一个解析器后端的新实例。</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>crawler</strong> (<a class="reference internal" href="api.html#scrapy.crawler.Crawler" title="scrapy.crawler.Crawler"><code class="xref py py-class docutils literal notranslate"><span class="pre">Crawler</span></code></a> instance) -- 请求的 crawler</p></li>
+<li><p><strong>robotstxt_body</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#bytes" title="(位于 Python v3.14)"><em>bytes</em></a>) -- robots.txt_文件的内容。</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+<section id="module-scrapy.downloadermiddlewares.stats">
+<span id="downloaderstats"></span><h3>下载统计<a class="headerlink" href="#module-scrapy.downloadermiddlewares.stats" title="链接到此标题。"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.downloadermiddlewares.stats.DownloaderStats">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.downloadermiddlewares.stats.</span></span><span class="sig-name descname"><span class="pre">DownloaderStats</span></span><a class="reference internal" href="../_modules/scrapy/downloadermiddlewares/stats.html#DownloaderStats"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.downloadermiddlewares.stats.DownloaderStats" title="链接到此定义。"></a></dt>
+<dd><p>存储所有请求、 响应和异常通过的中件的统计信息。</p>
+<p>To use this middleware you must enable the <a class="reference internal" href="settings.html#std-setting-DOWNLOADER_STATS"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOADER_STATS</span></code></a>
+setting.</p>
+</dd></dl>
+
+</section>
+<section id="module-scrapy.downloadermiddlewares.useragent">
+<span id="useragentmiddleware"></span><h3>UserAgentMiddleware<a class="headerlink" href="#module-scrapy.downloadermiddlewares.useragent" title="链接到此标题。"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.downloadermiddlewares.useragent.UserAgentMiddleware">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.downloadermiddlewares.useragent.</span></span><span class="sig-name descname"><span class="pre">UserAgentMiddleware</span></span><a class="reference internal" href="../_modules/scrapy/downloadermiddlewares/useragent.html#UserAgentMiddleware"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.downloadermiddlewares.useragent.UserAgentMiddleware" title="链接到此定义。"></a></dt>
+<dd><p>设置 <code class="docutils literal notranslate"><span class="pre">User-Agent</span></code> 标题的中间件.</p>
+<p>The header value is taken from the <a class="reference internal" href="settings.html#std-setting-USER_AGENT"><code class="xref std std-setting docutils literal notranslate"><span class="pre">USER_AGENT</span></code></a> setting.</p>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="addons.html" class="btn btn-neutral float-left" title="Add-ons" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="spider-middleware.html" class="btn btn-neutral float-right" title="蜘蛛中间件" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 Scrapy developers。
+      <span class="lastupdated">最后更新于 5月 11, 2026.
+      </span></p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
