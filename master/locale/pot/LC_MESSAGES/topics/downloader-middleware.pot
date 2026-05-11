@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 09:50+0000\n"
+"POT-Creation-Date: 2026-05-11 11:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1645,11 +1645,10 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:1106
 msgid ""
-"Usage of `length based rule <https://developers.google.com/search/docs/"
-"crawling-indexing/robots/robots_txt#order-of-precedence-for-rules>`_: in "
-"particular for ``Allow`` and ``Disallow`` directives, where the most "
-"specific rule based on the length of the path trumps the less specific "
-"(shorter) rule"
+"Usage of `length based rule <https://developers.google.com/crawling/docs/"
+"robots-txt/robots-txt-spec#order-of-precedence-for-rules>`_: in particular "
+"for ``Allow`` and ``Disallow`` directives, where the most specific rule "
+"based on the length of the path trumps the less specific (shorter) rule"
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:1111
@@ -1674,7 +1673,7 @@ msgstr ""
 #: ../../../topics/downloader-middleware.rst:1123
 msgid ""
 "is compliant with `Google's Robots.txt Specification <https://developers."
-"google.com/search/docs/crawling-indexing/robots/robots_txt>`_"
+"google.com/crawling/docs/robots-txt/robots-txt-spec>`_"
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:1126
