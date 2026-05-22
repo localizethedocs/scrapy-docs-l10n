@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy 2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 09:30+0000\n"
+"POT-Creation-Date: 2026-05-11 11:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,8 +60,8 @@ msgstr ""
 
 #: ../../../versioning.rst:26
 msgid ""
-"With Scrapy 0.* series, Scrapy used `odd-numbered versions for development "
-"releases`_. This is not the case anymore from Scrapy 1.0 onwards."
+"With Scrapy 0.* series, Scrapy used odd-numbered versions for development "
+"releases. This is not the case anymore from Scrapy 1.0 onwards."
 msgstr ""
 
 #: ../../../versioning.rst:29
