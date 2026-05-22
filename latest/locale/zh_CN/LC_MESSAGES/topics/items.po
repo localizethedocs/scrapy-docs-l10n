@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-06 09:35+0000\n"
+"POT-Creation-Date: 2026-05-11 11:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,7 +99,7 @@ msgstr ""
 msgid "Return a :func:`~copy.deepcopy` of this item."
 msgstr ""
 
-#: ../../../docstring of scrapy.Item.fields:1
+#: ../../../../scrapy/item.py:docstring of scrapy.Item.fields:1
 msgid ""
 "A dictionary containing *all declared fields* for this Item, not only those "
 "populated. The keys are the field names and the values are the :class:"
@@ -141,7 +141,7 @@ msgid ""
 msgstr ""
 
 #: ../../../topics/items.rst:67 ../../../topics/items.rst:94
-#: ../../../topics/items.rst:126
+#: ../../../topics/items.rst:126 ../../../topics/items.rst:164
 msgid "Example:"
 msgstr "示例："
 
@@ -256,21 +256,78 @@ msgstr ""
 "    one_field = tot.ib()\n"
 "    another_field = tot.ib()"
 
-#: ../../../topics/items.rst:140 ../../../topics/items.rst:211
+#: ../../../topics/items.rst:142
+msgid "Pydantic models"
+msgstr ""
+
+#: ../../../topics/items.rst:144
+msgid ""
+"`Pydantic <https://docs.pydantic.dev/>`_ models allow the defining of item "
+"classes with field names, so that :ref:`item exporters <topics-exporters>` "
+"can export all fields by default even if the first scraped object does not "
+"have values for all of them."
+msgstr ""
+
+#: ../../../topics/items.rst:149
+msgid "Additionally, ``pydantic`` items also allow you to:"
+msgstr ""
+
+#: ../../../topics/items.rst:151
+msgid ""
+"define the type and default value of each defined field with run-time type "
+"validation."
+msgstr ""
+
+#: ../../../topics/items.rst:154
+msgid ""
+"define custom field metadata through `pydantic.Field <https://docs.pydantic."
+"dev/latest/concepts/fields/>`_, which can be used to :ref:`customize "
+"serialization <topics-exporters-field-serialization>`."
+msgstr ""
+
+#: ../../../topics/items.rst:158
+msgid ""
+"benefit from automatic data validation and conversion based on type "
+"annotations."
+msgstr ""
+
+#: ../../../topics/items.rst:161
+msgid ""
+"In order to use this type, the `pydantic package <https://docs.pydantic.dev/"
+">`_ needs to be installed."
+msgstr ""
+
+#: ../../../topics/items.rst:166
+msgid ""
+"from pydantic import BaseModel, Field\n"
+"\n"
+"\n"
+"class CustomItem(BaseModel):\n"
+"    one_field: str = Field(default=\"\", description=\"First field\")\n"
+"    another_field: int = Field(default=0, description=\"Second field\")"
+msgstr ""
+
+#: ../../../topics/items.rst:175
+msgid ""
+"Unlike other item types, Pydantic models enforce field types at run time and "
+"will raise validation errors for invalid data types."
+msgstr ""
+
+#: ../../../topics/items.rst:179 ../../../topics/items.rst:250
 msgid "Working with Item objects"
 msgstr "使用项目对象"
 
-#: ../../../topics/items.rst:145
+#: ../../../topics/items.rst:184
 msgid "Declaring Item subclasses"
 msgstr "声明项子类"
 
-#: ../../../topics/items.rst:147
+#: ../../../topics/items.rst:186
 msgid ""
 "Item subclasses are declared using a simple class definition syntax and :"
 "class:`Field` objects. Here is an example:"
 msgstr ""
 
-#: ../../../topics/items.rst:150
+#: ../../../topics/items.rst:189
 msgid ""
 "import scrapy\n"
 "\n"
@@ -292,7 +349,7 @@ msgstr ""
 "    tags = scrapy.Field()\n"
 "    last_updated = scrapy.Field(serializer=str)"
 
-#: ../../../topics/items.rst:162
+#: ../../../topics/items.rst:201
 msgid ""
 "Those familiar with `Django`_ will notice that Scrapy Items are declared "
 "similar to `Django Models`_, except that Scrapy Items are much simpler as "
@@ -301,18 +358,18 @@ msgstr ""
 "熟悉`Django`_ 的人会注意到报废物品类似于`Django Models`_, 除了废料条目更简"
 "单，因为没有不同字段类型的概念。"
 
-#: ../../../topics/items.rst:173
+#: ../../../topics/items.rst:212
 msgid "Declaring fields"
 msgstr "声明字段"
 
-#: ../../../topics/items.rst:175
+#: ../../../topics/items.rst:214
 msgid ""
 ":class:`Field` objects are used to specify metadata for each field. For "
 "example, the serializer function for the ``last_updated`` field illustrated "
 "in the example above."
 msgstr ""
 
-#: ../../../topics/items.rst:179
+#: ../../../topics/items.rst:218
 msgid ""
 "You can specify any kind of metadata for each field. There is no restriction "
 "on the values accepted by :class:`Field` objects. For this same reason, "
@@ -326,7 +383,7 @@ msgid ""
 "documentation to see which metadata keys are used by each component."
 msgstr ""
 
-#: ../../../topics/items.rst:190
+#: ../../../topics/items.rst:229
 msgid ""
 "It's important to note that the :class:`Field` objects used to declare the "
 "item do not stay assigned as class attributes. Instead, they can be accessed "
@@ -337,7 +394,7 @@ msgstr ""
 msgid "Container of field metadata"
 msgstr "字段元数据容器"
 
-#: ../../../topics/items.rst:196
+#: ../../../topics/items.rst:235
 msgid ""
 "The :class:`Field` class is just an alias to the built-in :class:`dict` "
 "class and doesn't provide any extra functionality or attributes. In other "
@@ -346,7 +403,7 @@ msgid ""
 "declaring>` based on class attributes."
 msgstr ""
 
-#: ../../../topics/items.rst:202
+#: ../../../topics/items.rst:241
 msgid ""
 "Field metadata can also be declared for ``dataclass`` and ``attrs`` items. "
 "Please refer to the documentation for `dataclasses.field`_ and `attr.ib`_ "
@@ -355,18 +412,18 @@ msgstr ""
 "还可以对 ``dataclass`` 和 ``tours`` 两个项目声明字段元数据。请参考文档中的 "
 "`dataclasses.field`_ 和 `tot.ib`_ 获取更多信息。"
 
-#: ../../../topics/items.rst:215
+#: ../../../topics/items.rst:254
 msgid ""
 "Here are some examples of common tasks performed with items, using the "
 "``Product`` item :ref:`declared above  <topics-items-declaring>`. You will "
 "notice the API is very similar to the :class:`dict` API."
 msgstr ""
 
-#: ../../../topics/items.rst:220
+#: ../../../topics/items.rst:259
 msgid "Creating items"
 msgstr "创建项目"
 
-#: ../../../topics/items.rst:222
+#: ../../../topics/items.rst:261
 msgid ""
 ">>> product = Product(name=\"Desktop PC\", price=1000)\n"
 ">>> print(product)\n"
@@ -376,11 +433,11 @@ msgstr ""
 ">>>> print(product)\n"
 "Product(name='Desktop PC', price=1000)"
 
-#: ../../../topics/items.rst:230
+#: ../../../topics/items.rst:269
 msgid "Getting field values"
 msgstr "获取字段值"
 
-#: ../../../topics/items.rst:232
+#: ../../../topics/items.rst:271
 msgid ""
 ">>> product[\"name\"]\n"
 "Desktop PC\n"
@@ -453,11 +510,11 @@ msgstr ""
 ">>> \"lala\" 在产品中。fields # 是一个声明的字段吗？\n"
 "False"
 
-#: ../../../topics/items.rst:272
+#: ../../../topics/items.rst:311
 msgid "Setting field values"
 msgstr "设置字段值"
 
-#: ../../../topics/items.rst:274
+#: ../../../topics/items.rst:313
 msgid ""
 ">>> product[\"last_updated\"] = \"today\"\n"
 ">>> product[\"last_updated\"]\n"
@@ -477,15 +534,15 @@ msgstr ""
 "    . 。\n"
 "密钥错误：“产品不支持字段: lala”"
 
-#: ../../../topics/items.rst:287
+#: ../../../topics/items.rst:326
 msgid "Accessing all populated values"
 msgstr "访问所有有人居住的值"
 
-#: ../../../topics/items.rst:289
+#: ../../../topics/items.rst:328
 msgid "To access all populated values, just use the typical :class:`dict` API:"
 msgstr ""
 
-#: ../../../topics/items.rst:291
+#: ../../../topics/items.rst:330
 msgid ""
 ">>> product.keys()\n"
 "['price', 'name']\n"
@@ -499,24 +556,24 @@ msgstr ""
 ">> > product.items()\n"
 "[('price', 1000) ('name', 'desktop PC')]"
 
-#: ../../../topics/items.rst:303
+#: ../../../topics/items.rst:342
 msgid "Copying items"
 msgstr "复制项目"
 
-#: ../../../topics/items.rst:305
+#: ../../../topics/items.rst:344
 msgid ""
 "To copy an item, you must first decide whether you want a shallow copy or a "
 "deep copy."
 msgstr "要复制一个物品，您必须首先决定是要一个浅色的副本还是深深的副本。"
 
-#: ../../../topics/items.rst:308
+#: ../../../topics/items.rst:347
 msgid ""
 "If your item contains :term:`mutable` values like lists or dictionaries, a "
 "shallow copy will keep references to the same mutable values across all "
 "different copies."
 msgstr ""
 
-#: ../../../topics/items.rst:312
+#: ../../../topics/items.rst:351
 msgid ""
 "For example, if you have an item with a list of tags, and you create a "
 "shallow copy of that item, both the original item and the copy have the same "
@@ -527,36 +584,36 @@ msgstr ""
 "目和副本都有相同的标签列表。 将标签添加到其中一个项目的列表中，也会将标签添加"
 "到其他项目中。"
 
-#: ../../../topics/items.rst:317
+#: ../../../topics/items.rst:356
 msgid "If that is not the desired behavior, use a deep copy instead."
 msgstr "如果这不是需要的行为，则使用深文本代替。"
 
-#: ../../../topics/items.rst:319
+#: ../../../topics/items.rst:358
 msgid "See :mod:`copy` for more information."
 msgstr ""
 
-#: ../../../topics/items.rst:321
+#: ../../../topics/items.rst:360
 msgid ""
 "To create a shallow copy of an item, you can either call :meth:`~scrapy.Item."
 "copy` on an existing item (``product2 = product.copy()``) or instantiate "
 "your item class from an existing item (``product2 = Product(product)``)."
 msgstr ""
 
-#: ../../../topics/items.rst:326
+#: ../../../topics/items.rst:365
 msgid ""
 "To create a deep copy, call :meth:`~scrapy.Item.deepcopy` instead "
 "(``product2 = product.deepcopy()``)."
 msgstr ""
 
-#: ../../../topics/items.rst:331
+#: ../../../topics/items.rst:370
 msgid "Other common tasks"
 msgstr "其他共同任务"
 
-#: ../../../topics/items.rst:333
+#: ../../../topics/items.rst:372
 msgid "Creating dicts from items:"
 msgstr "从项目创建口令："
 
-#: ../../../topics/items.rst:335
+#: ../../../topics/items.rst:374
 msgid ""
 ">>> dict(product)  # create a dict from all populated values\n"
 "{'price': 1000, 'name': 'Desktop PC'}\n"
@@ -573,22 +630,22 @@ msgid ""
 "KeyError: 'Product does not support field: lala'"
 msgstr ""
 
-#: ../../../topics/items.rst:352
+#: ../../../topics/items.rst:391
 msgid "Extending Item subclasses"
 msgstr "扩展项目子类"
 
-#: ../../../topics/items.rst:354
+#: ../../../topics/items.rst:393
 msgid ""
 "You can extend Items (to add more fields or to change some metadata for some "
 "fields) by declaring a subclass of your original Item."
 msgstr ""
 "您可以通过声明原始项目的亚类来扩展项目 (添加更多字段或更改某些字段的元数据)。"
 
-#: ../../../topics/items.rst:357
+#: ../../../topics/items.rst:396
 msgid "For example:"
 msgstr "例如："
 
-#: ../../../topics/items.rst:359
+#: ../../../topics/items.rst:398
 msgid ""
 "class DiscountedProduct(Product):\n"
 "    discount_percent = scrapy.Field(serializer=str)\n"
@@ -598,7 +655,7 @@ msgstr ""
 "    discount_per = scrapy.Field(serializer=str)\n"
 "    discount_expiration_date = scrapy.Field()"
 
-#: ../../../topics/items.rst:365
+#: ../../../topics/items.rst:404
 msgid ""
 "You can also extend field metadata by using the previous field metadata and "
 "appending more values, or changing existing values, like this:"
@@ -606,7 +663,7 @@ msgstr ""
 "您也可以通过使用先前的字段元数据和附加更多的值或更改现有的值来扩展字段元数"
 "据，如："
 
-#: ../../../topics/items.rst:368
+#: ../../../topics/items.rst:407
 msgid ""
 "class SpecificProduct(Product):\n"
 "    name = scrapy.Field(Product.fields[\"name\"], serializer=my_serializer)"
@@ -614,7 +671,7 @@ msgstr ""
 "class SpecificProduct(Product):\n"
 "    name = scrapy.Field(Product.fields[\"name\"], serializer=my_serializer)"
 
-#: ../../../topics/items.rst:373
+#: ../../../topics/items.rst:412
 msgid ""
 "That adds (or replaces) the ``serializer`` metadata key for the ``name`` "
 "field, keeping all the previously existing metadata values."
@@ -622,11 +679,11 @@ msgstr ""
 "添加(或替换) ``name`` 字段的 ``serializer`` 元数据键，保留所有以前存在的元数"
 "据值。"
 
-#: ../../../topics/items.rst:382
+#: ../../../topics/items.rst:421
 msgid "Supporting All Item Types"
 msgstr "支持所有项目类型"
 
-#: ../../../topics/items.rst:384
+#: ../../../topics/items.rst:423
 msgid ""
 "In code that receives an item, such as methods of :ref:`item pipelines "
 "<topics-item-pipeline>` or :ref:`spider middlewares <topics-spider-"
@@ -634,7 +691,7 @@ msgid ""
 "ItemAdapter` class to write code that works for any supported item type."
 msgstr ""
 
-#: ../../../topics/items.rst:391
+#: ../../../topics/items.rst:430
 msgid "Other classes related to items"
 msgstr "与项目相关的其他类"
 

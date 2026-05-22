@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-06 09:35+0000\n"
+"POT-Creation-Date: 2026-05-11 11:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -244,21 +244,31 @@ msgid ""
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
-#: scrapy.crawler.AsyncCrawlerRunner:1 scrapy.crawler.CrawlerRunner:1
+#: scrapy.crawler.AsyncCrawlerRunner:1
 msgid ""
 "This is a convenient helper class that keeps track of, manages and runs "
-"crawlers inside an already setup :mod:`~twisted.internet.reactor`."
+"crawlers inside an already setup :mod:`~twisted.internet.reactor` or asyncio "
+"event loop."
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
-#: scrapy.crawler.AsyncCrawlerRunner:4
+#: scrapy.crawler.AsyncCrawlerRunner:5
 msgid ""
 "The AsyncCrawlerRunner object must be instantiated with a :class:`~scrapy."
 "settings.Settings` object."
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
-#: scrapy.crawler.AsyncCrawlerProcess:18 scrapy.crawler.AsyncCrawlerRunner:7
+#: scrapy.crawler.AsyncCrawlerRunner:8
+msgid ""
+"When the :setting:`TWISTED_REACTOR_ENABLED` setting is set to ``True``, this "
+"class requires a reactor to be installed and uses it, otherwise it requires "
+"a reactor to not be installed but requires an asyncio event loop to be "
+"installed and uses it."
+msgstr ""
+
+#: ../../../../scrapy/crawler.py:docstring of
+#: scrapy.crawler.AsyncCrawlerProcess:22 scrapy.crawler.AsyncCrawlerRunner:13
 #: scrapy.crawler.CrawlerProcess:18 scrapy.crawler.CrawlerRunner:7
 msgid ""
 "This class shouldn't be needed (since Scrapy is responsible of using it "
@@ -267,10 +277,10 @@ msgid ""
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
-#: scrapy.crawler.AsyncCrawlerProcess:22 scrapy.crawler.AsyncCrawlerRunner:11
+#: scrapy.crawler.AsyncCrawlerProcess:26 scrapy.crawler.AsyncCrawlerRunner:17
 msgid ""
 "This class provides coroutine APIs. It requires :class:`~twisted.internet."
-"asyncioreactor.AsyncioSelectorReactor`."
+"asyncioreactor.AsyncioSelectorReactor` when used with a reactor."
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
@@ -343,6 +353,12 @@ msgstr "同时停止正在进行的所有扫荡作业。"
 msgid "Completes when they all have ended."
 msgstr "当他们全部结束时完成。"
 
+#: ../../../../scrapy/crawler.py:docstring of scrapy.crawler.CrawlerRunner:1
+msgid ""
+"This is a convenient helper class that keeps track of, manages and runs "
+"crawlers inside an already setup :mod:`~twisted.internet.reactor`."
+msgstr ""
+
 #: ../../../../scrapy/crawler.py:docstring of scrapy.crawler.CrawlerRunner:4
 msgid ""
 "The CrawlerRunner object must be instantiated with a :class:`~scrapy."
@@ -371,13 +387,6 @@ msgstr ""
 #: scrapy.crawler.CrawlerRunner.stop:3
 msgid "Returns a deferred that is fired when they all have ended."
 msgstr "返回一个在他们全部结束时被发射的延迟。"
-
-#: ../../../../scrapy/crawler.py:docstring of
-#: scrapy.crawler.AsyncCrawlerProcess:1
-msgid ""
-"Bases: :py:class:`~scrapy.crawler.CrawlerProcessBase`, :py:class:`~scrapy."
-"crawler.AsyncCrawlerRunner`"
-msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerProcess:1 scrapy.crawler.CrawlerProcess:1
@@ -409,7 +418,15 @@ msgid ""
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
-#: scrapy.crawler.AsyncCrawlerProcess:15 scrapy.crawler.CrawlerProcess:15
+#: scrapy.crawler.AsyncCrawlerProcess:15
+msgid ""
+"When the :setting:`TWISTED_REACTOR_ENABLED` setting is set to ``True``, this "
+"class installs a reactor and uses it, otherwise it requires a reactor to not "
+"be installed but installs an asyncio event loop and uses it."
+msgstr ""
+
+#: ../../../../scrapy/crawler.py:docstring of
+#: scrapy.crawler.AsyncCrawlerProcess:19 scrapy.crawler.CrawlerProcess:15
 msgid "whether to install root logging handler (default: True)"
 msgstr "是否安装 root 日志处理程序(默认：True)"
 
@@ -452,15 +469,22 @@ msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerProcess.start:1
-#: scrapy.crawler.CrawlerProcess.start:1
 msgid ""
-"This method starts a :mod:`~twisted.internet.reactor`, adjusts its pool size "
-"to :setting:`REACTOR_THREADPOOL_MAXSIZE`, and installs a DNS cache based on :"
-"setting:`DNSCACHE_ENABLED` and :setting:`DNSCACHE_SIZE`."
+"This method starts a :mod:`~twisted.internet.reactor` or an asyncio event "
+"loop, depending on the value of the :setting:`TWISTED_REACTOR_ENABLED` "
+"setting."
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerProcess.start:5
+msgid ""
+"When using a reactor it adjusts its pool size to :setting:"
+"`REACTOR_THREADPOOL_MAXSIZE` and installs a DNS resolver based on :setting:"
+"`DNSCACHE_ENABLED`."
+msgstr ""
+
+#: ../../../../scrapy/crawler.py:docstring of
+#: scrapy.crawler.AsyncCrawlerProcess.start:9
 #: scrapy.crawler.CrawlerProcess.start:5
 msgid ""
 "If ``stop_after_crawl`` is True, the reactor will be stopped after all "
@@ -468,24 +492,18 @@ msgid ""
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
-#: scrapy.crawler.AsyncCrawlerProcess.start:8
+#: scrapy.crawler.AsyncCrawlerProcess.start:12
 #: scrapy.crawler.CrawlerProcess.start:8
 msgid "stop or not the reactor when all crawlers have finished"
 msgstr "当所有的 crawler 已完成时停止或不停止反应器"
 
 #: ../../../../scrapy/crawler.py:docstring of
-#: scrapy.crawler.AsyncCrawlerProcess.start:11
+#: scrapy.crawler.AsyncCrawlerProcess.start:15
 #: scrapy.crawler.CrawlerProcess.start:11
 msgid ""
 "whether to install the OS signal handlers from Twisted and Scrapy (default: "
 "True)"
 msgstr "是否安装来自 Twisted and Scrapy 的 OS 信号处理程序 (默认：True)"
-
-#: ../../../../scrapy/crawler.py:docstring of scrapy.crawler.CrawlerProcess:1
-msgid ""
-"Bases: :py:class:`~scrapy.crawler.CrawlerProcessBase`, :py:class:`~scrapy."
-"crawler.CrawlerRunner`"
-msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of scrapy.crawler.CrawlerProcess:3
 msgid ""
@@ -512,6 +530,14 @@ msgstr ""
 msgid ""
 "This class provides Deferred-based APIs. Use :class:`AsyncCrawlerProcess` "
 "for modern coroutine APIs."
+msgstr ""
+
+#: ../../../../scrapy/crawler.py:docstring of
+#: scrapy.crawler.CrawlerProcess.start:1
+msgid ""
+"This method starts a :mod:`~twisted.internet.reactor`, adjusts its pool size "
+"to :setting:`REACTOR_THREADPOOL_MAXSIZE`, and installs a DNS resolver based "
+"on :setting:`DNSCACHE_ENABLED`."
 msgstr ""
 
 #: ../../../topics/api.rst:129
@@ -564,11 +590,6 @@ msgid ""
 "Small helper function that looks up a given string priority in the :attr:"
 "`~scrapy.settings.SETTINGS_PRIORITIES` dictionary and returns its numerical "
 "value, or directly returns a given numerical priority."
-msgstr ""
-
-#: ../../../../scrapy/settings/__init__.py:docstring of
-#: scrapy.settings.Settings:1
-msgid "Bases: :py:class:`~scrapy.settings.BaseSettings`"
 msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
@@ -731,6 +752,25 @@ msgid "the value to return if no setting is found"
 msgstr "如果没有找到设置则返回的值"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
+#: scrapy.settings.BaseSettings.get_component_priority_dict_with_base:1
+msgid ""
+"Get a composition of a component priority dictionary setting and its "
+"``_BASE`` counterpart."
+msgstr ""
+
+#: ../../../../scrapy/settings/__init__.py:docstring of
+#: scrapy.settings.BaseSettings.get_component_priority_dict_with_base:4
+msgid ""
+"Keys are resolved to their import path for deduplication and then restored "
+"to their latest input representation."
+msgstr ""
+
+#: ../../../../scrapy/settings/__init__.py:docstring of
+#: scrapy.settings.BaseSettings.get_component_priority_dict_with_base:7
+msgid "name of the component priority dictionary setting"
+msgstr ""
+
+#: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.getbool:1
 msgid "Get a setting value as a boolean."
 msgstr "获取一个设定值作为布尔值。"
@@ -844,11 +884,19 @@ msgstr ""
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.getwithbase:1
 msgid ""
-"Get a composition of a dictionary-like setting and its `_BASE` counterpart."
-msgstr "获取字典设置和它的 `_BASE` 对应部分的组合。"
+"Get a composition of a dictionary-like setting and its ``_BASE`` counterpart."
+msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.getwithbase:4
+msgid ""
+"Use :meth:`~scrapy.settings.BaseSettings."
+"get_component_priority_dict_with_base` instead if the setting is a :ref:"
+"`component priority dictionary <component-priority-dictionaries>`."
+msgstr ""
+
+#: ../../../../scrapy/settings/__init__.py:docstring of
+#: scrapy.settings.BaseSettings.getwithbase:9
 msgid "name of the dictionary-like setting"
 msgstr "字典设置的名称"
 
@@ -1265,3 +1313,8 @@ msgid ""
 "Returns ``True`` if no more requests can be sent at the moment, or ``False`` "
 "otherwise."
 msgstr "返回``True`` ，如果目前没有更多的请求可以发送，或者返回``False`` 。"
+
+#~ msgid ""
+#~ "Get a composition of a dictionary-like setting and its `_BASE` "
+#~ "counterpart."
+#~ msgstr "获取字典设置和它的 `_BASE` 对应部分的组合。"
