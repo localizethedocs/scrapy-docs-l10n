@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-06 09:38+0000\n"
+"POT-Creation-Date: 2026-05-11 11:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -738,6 +738,25 @@ msgid "the value to return if no setting is found"
 msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
+#: scrapy.settings.BaseSettings.get_component_priority_dict_with_base:1
+msgid ""
+"Get a composition of a component priority dictionary setting and its "
+"``_BASE`` counterpart."
+msgstr ""
+
+#: ../../../../scrapy/settings/__init__.py:docstring of
+#: scrapy.settings.BaseSettings.get_component_priority_dict_with_base:4
+msgid ""
+"Keys are resolved to their import path for deduplication and then restored "
+"to their latest input representation."
+msgstr ""
+
+#: ../../../../scrapy/settings/__init__.py:docstring of
+#: scrapy.settings.BaseSettings.get_component_priority_dict_with_base:7
+msgid "name of the component priority dictionary setting"
+msgstr ""
+
+#: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.getbool:1
 msgid "Get a setting value as a boolean."
 msgstr ""
@@ -838,11 +857,19 @@ msgstr ""
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.getwithbase:1
 msgid ""
-"Get a composition of a dictionary-like setting and its `_BASE` counterpart."
+"Get a composition of a dictionary-like setting and its ``_BASE`` counterpart."
 msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.getwithbase:4
+msgid ""
+"Use :meth:`~scrapy.settings.BaseSettings."
+"get_component_priority_dict_with_base` instead if the setting is a :ref:"
+"`component priority dictionary <component-priority-dictionaries>`."
+msgstr ""
+
+#: ../../../../scrapy/settings/__init__.py:docstring of
+#: scrapy.settings.BaseSettings.getwithbase:9
 msgid "name of the dictionary-like setting"
 msgstr ""
 

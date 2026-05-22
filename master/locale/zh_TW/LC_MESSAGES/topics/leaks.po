@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 09:50+0000\n"
+"POT-Creation-Date: 2026-05-11 11:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,25 +114,25 @@ msgid ""
 "You can enter the telnet console and inspect how many objects (of the "
 "classes mentioned above) are currently alive using the ``prefs()`` function "
 "which is an alias to the :func:`~scrapy.utils.trackref.print_live_refs` "
-"function::"
+"function:"
 msgstr ""
 
 #: ../../../topics/leaks.rst:73
-msgid ""
-"telnet localhost 6023\n"
-"\n"
-".. code-block:: pycon\n"
-"\n"
-"    >>> prefs()\n"
-"    Live References\n"
-"\n"
-"    ExampleSpider                       1   oldest: 15s ago\n"
-"    HtmlResponse                       10   oldest: 1s ago\n"
-"    Selector                            2   oldest: 0s ago\n"
-"    FormRequest                       878   oldest: 7s ago"
+msgid "telnet localhost 6023"
 msgstr ""
 
-#: ../../../topics/leaks.rst:85
+#: ../../../topics/leaks.rst:77
+msgid ""
+">>> prefs()\n"
+"Live References\n"
+"\n"
+"ExampleSpider                       1   oldest: 15s ago\n"
+"HtmlResponse                       10   oldest: 1s ago\n"
+"Selector                            2   oldest: 0s ago\n"
+"Request                           878   oldest: 7s ago"
+msgstr ""
+
+#: ../../../topics/leaks.rst:87
 msgid ""
 "As you can see, that report also shows the \"age\" of the oldest object in "
 "each class. If you're running multiple spiders per process chances are you "
@@ -141,74 +141,74 @@ msgid ""
 "`~scrapy.utils.trackref.get_oldest` function (from the telnet console)."
 msgstr ""
 
-#: ../../../topics/leaks.rst:92
+#: ../../../topics/leaks.rst:94
 msgid "Which objects are tracked?"
 msgstr ""
 
-#: ../../../topics/leaks.rst:94
+#: ../../../topics/leaks.rst:96
 msgid ""
 "The objects tracked by ``trackrefs`` are all from these classes (and all its "
 "subclasses):"
 msgstr ""
 
-#: ../../../topics/leaks.rst:97
+#: ../../../topics/leaks.rst:99
 msgid ":class:`scrapy.Request`"
 msgstr ""
 
-#: ../../../topics/leaks.rst:98
+#: ../../../topics/leaks.rst:100
 msgid ":class:`scrapy.http.Response`"
 msgstr ""
 
-#: ../../../topics/leaks.rst:99
+#: ../../../topics/leaks.rst:101
 msgid ":class:`scrapy.Item`"
 msgstr ""
 
-#: ../../../topics/leaks.rst:100
+#: ../../../topics/leaks.rst:102
 msgid ":class:`scrapy.Selector`"
 msgstr ""
 
-#: ../../../topics/leaks.rst:101
+#: ../../../topics/leaks.rst:103
 msgid ":class:`scrapy.Spider`"
 msgstr ""
 
-#: ../../../topics/leaks.rst:104
+#: ../../../topics/leaks.rst:106
 msgid "A real example"
 msgstr ""
 
-#: ../../../topics/leaks.rst:106
+#: ../../../topics/leaks.rst:108
 msgid ""
 "Let's see a concrete example of a hypothetical case of memory leaks. Suppose "
 "we have some spider with a line similar to this one::"
 msgstr ""
 
-#: ../../../topics/leaks.rst:109
+#: ../../../topics/leaks.rst:111
 msgid ""
 "return Request(f\"http://www.somenastyspider.com/product.php?"
 "pid={product_id}\",\n"
 "               callback=self.parse, cb_kwargs={'referer': response})"
 msgstr ""
 
-#: ../../../topics/leaks.rst:112
+#: ../../../topics/leaks.rst:114
 msgid ""
 "That line is passing a response reference inside a request which effectively "
 "ties the response lifetime to the requests' one, and that would definitely "
 "cause memory leaks."
 msgstr ""
 
-#: ../../../topics/leaks.rst:116
+#: ../../../topics/leaks.rst:118
 msgid ""
 "Let's see how we can discover the cause (without knowing it a priori, of "
 "course) by using the ``trackref`` tool."
 msgstr ""
 
-#: ../../../topics/leaks.rst:119
+#: ../../../topics/leaks.rst:121
 msgid ""
 "After the crawler is running for a few minutes and we notice its memory "
 "usage has grown a lot, we can enter its telnet console and check the live "
 "references:"
 msgstr ""
 
-#: ../../../topics/leaks.rst:123
+#: ../../../topics/leaks.rst:125
 msgid ""
 ">>> prefs()\n"
 "Live References\n"
@@ -219,7 +219,7 @@ msgid ""
 "Request                          3878   oldest: 250s ago"
 msgstr ""
 
-#: ../../../topics/leaks.rst:133
+#: ../../../topics/leaks.rst:135
 msgid ""
 "The fact that there are so many live responses (and that they're so old) is "
 "definitely suspicious, as responses should have a relatively short lifetime "
@@ -229,13 +229,13 @@ msgid ""
 "the leaks (passing response references inside requests)."
 msgstr ""
 
-#: ../../../topics/leaks.rst:140
+#: ../../../topics/leaks.rst:142
 msgid ""
 "Sometimes extra information about live objects can be helpful. Let's check "
 "the oldest response:"
 msgstr ""
 
-#: ../../../topics/leaks.rst:143
+#: ../../../topics/leaks.rst:145
 msgid ""
 ">>> from scrapy.utils.trackref import get_oldest\n"
 ">>> r = get_oldest(\"HtmlResponse\")\n"
@@ -243,13 +243,13 @@ msgid ""
 "'http://www.somenastyspider.com/product.php?pid=123'"
 msgstr ""
 
-#: ../../../topics/leaks.rst:150
+#: ../../../topics/leaks.rst:152
 msgid ""
 "If you want to iterate over all objects, instead of getting the oldest one, "
 "you can use the :func:`scrapy.utils.trackref.iter_all` function:"
 msgstr ""
 
-#: ../../../topics/leaks.rst:153
+#: ../../../topics/leaks.rst:155
 msgid ""
 ">>> from scrapy.utils.trackref import iter_all\n"
 ">>> [r.url for r in iter_all(\"HtmlResponse\")]\n"
@@ -258,11 +258,11 @@ msgid ""
 "...]"
 msgstr ""
 
-#: ../../../topics/leaks.rst:162
+#: ../../../topics/leaks.rst:164
 msgid "Too many spiders?"
 msgstr ""
 
-#: ../../../topics/leaks.rst:164
+#: ../../../topics/leaks.rst:166
 msgid ""
 "If your project has too many spiders executed in parallel, the output of :"
 "func:`prefs` can be difficult to read. For this reason, that function has a "
@@ -270,28 +270,28 @@ msgid ""
 "its subclasses). For example, this won't show any live references to spiders:"
 msgstr ""
 
-#: ../../../topics/leaks.rst:170
+#: ../../../topics/leaks.rst:172
 msgid ""
 ">>> from scrapy.spiders import Spider\n"
 ">>> prefs(ignore=Spider)"
 msgstr ""
 
-#: ../../../topics/leaks.rst:179
+#: ../../../topics/leaks.rst:181
 msgid "scrapy.utils.trackref module"
 msgstr ""
 
-#: ../../../topics/leaks.rst:181
+#: ../../../topics/leaks.rst:183
 msgid ""
 "Here are the functions available in the :mod:`~scrapy.utils.trackref` module."
 msgstr ""
 
-#: ../../../topics/leaks.rst:185
+#: ../../../topics/leaks.rst:187
 msgid ""
 "Inherit from this class if you want to track live instances with the "
 "``trackref`` module."
 msgstr ""
 
-#: ../../../topics/leaks.rst:190
+#: ../../../topics/leaks.rst:192
 msgid "Print a report of live references, grouped by class name."
 msgstr ""
 
@@ -299,31 +299,31 @@ msgstr ""
 msgid "Parameters"
 msgstr "參數"
 
-#: ../../../topics/leaks.rst:192
+#: ../../../topics/leaks.rst:194
 msgid ""
 "if given, all objects from the specified class (or tuple of classes) will be "
 "ignored."
 msgstr ""
 
-#: ../../../topics/leaks.rst:198
+#: ../../../topics/leaks.rst:200
 msgid ""
 "Return the oldest object alive with the given class name, or ``None`` if "
 "none is found. Use :func:`print_live_refs` first to get a list of all "
 "tracked live objects per class name."
 msgstr ""
 
-#: ../../../topics/leaks.rst:204
+#: ../../../topics/leaks.rst:206
 msgid ""
 "Return an iterator over all objects alive with the given class name, or "
 "``None`` if none is found. Use :func:`print_live_refs` first to get a list "
 "of all tracked live objects per class name."
 msgstr ""
 
-#: ../../../topics/leaks.rst:213
+#: ../../../topics/leaks.rst:215
 msgid "Debugging memory leaks with muppy"
 msgstr ""
 
-#: ../../../topics/leaks.rst:215
+#: ../../../topics/leaks.rst:217
 msgid ""
 "``trackref`` provides a very convenient mechanism for tracking down memory "
 "leaks, but it only keeps track of the objects that are more likely to cause "
@@ -333,25 +333,25 @@ msgid ""
 "resource: the muppy library."
 msgstr ""
 
-#: ../../../topics/leaks.rst:222
+#: ../../../topics/leaks.rst:224
 msgid "You can use muppy from `Pympler`_."
 msgstr ""
 
-#: ../../../topics/leaks.rst:226
+#: ../../../topics/leaks.rst:228
 msgid "If you use ``pip``, you can install muppy with the following command::"
 msgstr ""
 
-#: ../../../topics/leaks.rst:228
+#: ../../../topics/leaks.rst:230
 msgid "pip install Pympler"
 msgstr ""
 
-#: ../../../topics/leaks.rst:230
+#: ../../../topics/leaks.rst:232
 msgid ""
 "Here's an example to view all Python objects available in the heap using "
 "muppy:"
 msgstr ""
 
-#: ../../../topics/leaks.rst:234
+#: ../../../topics/leaks.rst:236
 msgid ""
 ">>> from pympler import muppy\n"
 ">>> all_objects = muppy.get_objects()\n"
@@ -379,15 +379,15 @@ msgid ""
 "                         <class 'int |        1425 |     43.20 KB"
 msgstr ""
 
-#: ../../../topics/leaks.rst:263
+#: ../../../topics/leaks.rst:265
 msgid "For more info about muppy, refer to the `muppy documentation`_."
 msgstr ""
 
-#: ../../../topics/leaks.rst:270
+#: ../../../topics/leaks.rst:272
 msgid "Leaks without leaks"
 msgstr ""
 
-#: ../../../topics/leaks.rst:272
+#: ../../../topics/leaks.rst:274
 msgid ""
 "Sometimes, you may notice that the memory usage of your Scrapy process will "
 "only increase, but never decrease. Unfortunately, this could happen even "
@@ -397,31 +397,31 @@ msgid ""
 "see:"
 msgstr ""
 
-#: ../../../topics/leaks.rst:278
+#: ../../../topics/leaks.rst:280
 msgid ""
 "`Python Memory Management <https://www.evanjones.ca/python-memory.html>`_"
 msgstr ""
 
-#: ../../../topics/leaks.rst:279
+#: ../../../topics/leaks.rst:281
 msgid ""
 "`Python Memory Management Part 2 <https://www.evanjones.ca/python-memory-"
 "part2.html>`_"
 msgstr ""
 
-#: ../../../topics/leaks.rst:280
+#: ../../../topics/leaks.rst:282
 msgid ""
 "`Python Memory Management Part 3 <https://www.evanjones.ca/python-memory-"
 "part3.html>`_"
 msgstr ""
 
-#: ../../../topics/leaks.rst:282
+#: ../../../topics/leaks.rst:284
 msgid ""
 "The improvements proposed by Evan Jones, which are detailed in `this "
 "paper`_, got merged in Python 2.5, but this only reduces the problem, it "
 "doesn't fix it completely. To quote the paper:"
 msgstr ""
 
-#: ../../../topics/leaks.rst:286
+#: ../../../topics/leaks.rst:288
 msgid ""
 "*Unfortunately, this patch can only free an arena if there are no more "
 "objects allocated in it anymore. This means that fragmentation is a large "
@@ -432,7 +432,7 @@ msgid ""
 "memory. This would require significant changes to the Python interpreter.*"
 msgstr ""
 
-#: ../../../topics/leaks.rst:296
+#: ../../../topics/leaks.rst:298
 msgid ""
 "To keep memory consumption reasonable you can split the job into several "
 "smaller jobs or enable :ref:`persistent job queue <topics-jobs>` and stop/"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-06 09:38+0000\n"
+"POT-Creation-Date: 2026-05-11 11:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -597,7 +597,96 @@ msgid ""
 "dict, raising an exception if they cannot be found."
 msgstr ""
 
-#: ../../../topics/request-response.rst:250
+#: ../../../topics/request-response.rst:252
+msgid "Creating requests that submit HTML forms"
+msgstr ""
+
+#: ../../../topics/request-response.rst:254
+msgid ""
+"Use :doc:`form2request <form2request:index>` to build request data from an "
+"HTML ``<form>`` element and convert it to a :class:`~scrapy.Request`."
+msgstr ""
+
+#: ../../../topics/request-response.rst:257
+msgid "Install it with pip:"
+msgstr ""
+
+#: ../../../topics/request-response.rst:259
+msgid "pip install form2request"
+msgstr ""
+
+#: ../../../topics/request-response.rst:263
+msgid ""
+"Select the desired form with CSS or XPath, then build and convert request "
+"data:"
+msgstr ""
+
+#: ../../../topics/request-response.rst:266
+msgid ""
+"from form2request import form2request\n"
+"\n"
+"\n"
+"def parse(self, response):\n"
+"    form = response.css(\"form#search\")\n"
+"    request_data = form2request(form, data={\"q\": \"scrapy\"})\n"
+"    yield request_data.to_scrapy(callback=self.parse_results)"
+msgstr ""
+
+#: ../../../topics/request-response.rst:276
+msgid ""
+"Use ``data`` to override field values. To drop a field from the resulting "
+"request, set its value to ``None``."
+msgstr ""
+
+#: ../../../topics/request-response.rst:279
+msgid ""
+"By default, form2request simulates clicking the first submit button. To "
+"submit without clicking any button, pass ``click=False``. To click a "
+"specific submit button, pass its element:"
+msgstr ""
+
+#: ../../../topics/request-response.rst:283
+msgid ""
+"def parse(self, response):\n"
+"    form = response.css(\"form#checkout\")\n"
+"    submit = form.css('button[name=\"pay\"]')\n"
+"    request_data = form2request(form, click=submit)"
+msgstr ""
+
+#: ../../../topics/request-response.rst:293
+msgid "Using form2request to simulate a user login"
+msgstr ""
+
+#: ../../../topics/request-response.rst:295
+msgid ""
+"It is usual for web sites to provide pre-populated form fields through "
+"``<input type=\"hidden\">`` elements, such as session related data or "
+"authentication tokens (for login pages). Build the request from the form and "
+"only override the credentials:"
+msgstr ""
+
+#: ../../../topics/request-response.rst:300
+msgid ""
+"import scrapy\n"
+"from form2request import form2request\n"
+"\n"
+"\n"
+"class LoginSpider(scrapy.Spider):\n"
+"    name = \"example.com\"\n"
+"    start_urls = [\"http://www.example.com/users/login.php\"]\n"
+"\n"
+"    def parse(self, response):\n"
+"        form = response.css(\"form\")\n"
+"        request_data = form2request(\n"
+"            form,\n"
+"            data={\"username\": \"john\", \"password\": \"secret\"},\n"
+"        )\n"
+"        yield request_data.to_scrapy(callback=self.after_login)\n"
+"\n"
+"    def after_login(self, response): ..."
+msgstr ""
+
+#: ../../../topics/request-response.rst:322
 msgid "Other functions related to requests"
 msgstr ""
 
@@ -608,7 +697,7 @@ msgid ""
 "indicates that the request is not meant to have a spider callback at all."
 msgstr ""
 
-#: ../../../topics/request-response.rst:657
+#: ../../../topics/request-response.rst:729
 #: ../../../../scrapy/http/request/__init__.py:docstring of
 #: scrapy.http.request.NO_CALLBACK:5
 msgid "For example:"
@@ -641,22 +730,22 @@ msgid ""
 "spider for methods with the same name."
 msgstr ""
 
-#: ../../../topics/request-response.rst:260
+#: ../../../topics/request-response.rst:332
 msgid "Passing additional data to callback functions"
 msgstr ""
 
-#: ../../../topics/request-response.rst:262
+#: ../../../topics/request-response.rst:334
 msgid ""
 "The callback of a request is a function that will be called when the "
 "response of that request is downloaded. The callback function will be called "
 "with the downloaded :class:`Response` object as its first argument."
 msgstr ""
 
-#: ../../../topics/request-response.rst:266
+#: ../../../topics/request-response.rst:338
 msgid "Example:"
 msgstr "範例："
 
-#: ../../../topics/request-response.rst:268
+#: ../../../topics/request-response.rst:340
 msgid ""
 "def parse_page1(self, response):\n"
 "    return scrapy.Request(\n"
@@ -670,7 +759,7 @@ msgid ""
 "    self.logger.info(\"Visited %s\", response.url)"
 msgstr ""
 
-#: ../../../topics/request-response.rst:280
+#: ../../../topics/request-response.rst:352
 msgid ""
 "In some cases you may be interested in passing arguments to those callback "
 "functions so you can receive the arguments later, in the second callback. "
@@ -678,7 +767,7 @@ msgid ""
 "cb_kwargs` attribute:"
 msgstr ""
 
-#: ../../../topics/request-response.rst:285
+#: ../../../topics/request-response.rst:357
 msgid ""
 "def parse(self, response):\n"
 "    request = scrapy.Request(\n"
@@ -699,7 +788,7 @@ msgid ""
 "    )"
 msgstr ""
 
-#: ../../../topics/request-response.rst:304
+#: ../../../topics/request-response.rst:376
 msgid ""
 ":attr:`.Request.cb_kwargs` was introduced in version ``1.7``. Prior to that, "
 "using :attr:`.Request.meta` was recommended for passing information around "
@@ -708,29 +797,29 @@ msgid ""
 "communication with components like middlewares and extensions."
 msgstr ""
 
-#: ../../../topics/request-response.rst:313
+#: ../../../topics/request-response.rst:385
 msgid "Using errbacks to catch exceptions in request processing"
 msgstr ""
 
-#: ../../../topics/request-response.rst:315
+#: ../../../topics/request-response.rst:387
 msgid ""
 "The errback of a request is a function that will be called when an exception "
 "is raise while processing it."
 msgstr ""
 
-#: ../../../topics/request-response.rst:318
+#: ../../../topics/request-response.rst:390
 msgid ""
 "It receives a :exc:`~twisted.python.failure.Failure` as first parameter and "
 "can be used to track connection establishment timeouts, DNS errors etc."
 msgstr ""
 
-#: ../../../topics/request-response.rst:321
+#: ../../../topics/request-response.rst:393
 msgid ""
 "Here's an example spider logging all errors and catching some specific "
 "errors if needed:"
 msgstr ""
 
-#: ../../../topics/request-response.rst:324
+#: ../../../topics/request-response.rst:396
 msgid ""
 "import scrapy\n"
 "\n"
@@ -787,11 +876,11 @@ msgid ""
 "            self.logger.error(\"TimeoutError on %s\", request.url)"
 msgstr ""
 
-#: ../../../topics/request-response.rst:382
+#: ../../../topics/request-response.rst:454
 msgid "Accessing additional data in errback functions"
 msgstr ""
 
-#: ../../../topics/request-response.rst:384
+#: ../../../topics/request-response.rst:456
 msgid ""
 "In case of a failure to process the request, you may be interested in "
 "accessing arguments to the callback functions so you can process further "
@@ -799,7 +888,7 @@ msgid ""
 "achieve this by using ``Failure.request.cb_kwargs``:"
 msgstr ""
 
-#: ../../../topics/request-response.rst:389
+#: ../../../topics/request-response.rst:461
 msgid ""
 "def parse(self, response):\n"
 "    request = scrapy.Request(\n"
@@ -821,11 +910,11 @@ msgid ""
 "    )"
 msgstr ""
 
-#: ../../../topics/request-response.rst:414
+#: ../../../topics/request-response.rst:486
 msgid "Request fingerprints"
 msgstr ""
 
-#: ../../../topics/request-response.rst:416
+#: ../../../topics/request-response.rst:488
 msgid ""
 "There are some aspects of scraping, such as filtering out duplicate requests "
 "(see :setting:`DUPEFILTER_CLASS`) or caching responses (see :setting:"
@@ -833,13 +922,13 @@ msgid ""
 "identifier from a :class:`~scrapy.Request` object: a request fingerprint."
 msgstr ""
 
-#: ../../../topics/request-response.rst:422
+#: ../../../topics/request-response.rst:494
 msgid ""
 "You often do not need to worry about request fingerprints, the default "
 "request fingerprinter works for most projects."
 msgstr ""
 
-#: ../../../topics/request-response.rst:425
+#: ../../../topics/request-response.rst:497
 msgid ""
 "However, there is no universal way to generate a unique identifier from a "
 "request, because different situations require comparing requests "
@@ -848,21 +937,21 @@ msgid ""
 "include some or all headers, etc."
 msgstr ""
 
-#: ../../../topics/request-response.rst:431
+#: ../../../topics/request-response.rst:503
 msgid ""
 "To change how request fingerprints are built for your requests, use the :"
 "setting:`REQUEST_FINGERPRINTER_CLASS` setting."
 msgstr ""
 
-#: ../../../topics/request-response.rst:437
+#: ../../../topics/request-response.rst:509
 msgid "REQUEST_FINGERPRINTER_CLASS"
 msgstr ""
 
-#: ../../../topics/request-response.rst:439
+#: ../../../topics/request-response.rst:511
 msgid "Default: :class:`scrapy.utils.request.RequestFingerprinter`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:441
+#: ../../../topics/request-response.rst:513
 msgid ""
 "A :ref:`request fingerprinter class <custom-request-fingerprinter>` or its "
 "import path."
@@ -883,25 +972,25 @@ msgid ""
 "wikipedia.org/wiki/SHA-1>`_ hash."
 msgstr ""
 
-#: ../../../topics/request-response.rst:449
+#: ../../../topics/request-response.rst:521
 msgid "Writing your own request fingerprinter"
 msgstr ""
 
-#: ../../../topics/request-response.rst:451
+#: ../../../topics/request-response.rst:523
 msgid ""
 "A request fingerprinter is a :ref:`component <topics-components>` that must "
 "implement the following method:"
 msgstr ""
 
-#: ../../../topics/request-response.rst:458
+#: ../../../topics/request-response.rst:530
 msgid "Return a :class:`bytes` object that uniquely identifies *request*."
 msgstr ""
 
-#: ../../../topics/request-response.rst:460
+#: ../../../topics/request-response.rst:532
 msgid "See also :ref:`request-fingerprint-restrictions`."
 msgstr ""
 
-#: ../../../topics/request-response.rst:464
+#: ../../../topics/request-response.rst:536
 msgid ""
 "The :meth:`fingerprint` method of the default request fingerprinter, :class:"
 "`scrapy.utils.request.RequestFingerprinter`, uses :func:`scrapy.utils."
@@ -964,13 +1053,13 @@ msgid ""
 "when handling requests with a headless browser)."
 msgstr ""
 
-#: ../../../topics/request-response.rst:472
+#: ../../../topics/request-response.rst:544
 msgid ""
 "For example, to take the value of a request header named ``X-ID`` into "
 "account:"
 msgstr ""
 
-#: ../../../topics/request-response.rst:475
+#: ../../../topics/request-response.rst:547
 msgid ""
 "# my_project/settings.py\n"
 "REQUEST_FINGERPRINTER_CLASS = \"my_project.utils.RequestFingerprinter\"\n"
@@ -984,38 +1073,38 @@ msgid ""
 "        return fingerprint(request, include_headers=[\"X-ID\"])"
 msgstr ""
 
-#: ../../../topics/request-response.rst:488
+#: ../../../topics/request-response.rst:560
 msgid "You can also write your own fingerprinting logic from scratch."
 msgstr ""
 
-#: ../../../topics/request-response.rst:490
+#: ../../../topics/request-response.rst:562
 msgid ""
 "However, if you do not use :func:`scrapy.utils.request.fingerprint`, make "
 "sure you use :class:`~weakref.WeakKeyDictionary` to cache request "
 "fingerprints:"
 msgstr ""
 
-#: ../../../topics/request-response.rst:493
+#: ../../../topics/request-response.rst:565
 msgid ""
 "Caching saves CPU by ensuring that fingerprints are calculated only once per "
 "request, and not once per Scrapy component that needs the fingerprint of a "
 "request."
 msgstr ""
 
-#: ../../../topics/request-response.rst:497
+#: ../../../topics/request-response.rst:569
 msgid ""
 "Using :class:`~weakref.WeakKeyDictionary` saves memory by ensuring that "
 "request objects do not stay in memory forever just because you have "
 "references to them in your cache dictionary."
 msgstr ""
 
-#: ../../../topics/request-response.rst:501
+#: ../../../topics/request-response.rst:573
 msgid ""
 "For example, to take into account only the URL of a request, without any "
 "prior URL canonicalization or taking the request method or body into account:"
 msgstr ""
 
-#: ../../../topics/request-response.rst:504
+#: ../../../topics/request-response.rst:576
 msgid ""
 "from hashlib import sha1\n"
 "from weakref import WeakKeyDictionary\n"
@@ -1034,7 +1123,7 @@ msgid ""
 "        return self.cache[request]"
 msgstr ""
 
-#: ../../../topics/request-response.rst:522
+#: ../../../topics/request-response.rst:594
 msgid ""
 "If you need to be able to override the request fingerprinting for arbitrary "
 "requests from your spider callbacks, you may implement a request "
@@ -1043,7 +1132,7 @@ msgid ""
 "request.fingerprint`. For example:"
 msgstr ""
 
-#: ../../../topics/request-response.rst:528
+#: ../../../topics/request-response.rst:600
 msgid ""
 "from scrapy.utils.request import fingerprint\n"
 "\n"
@@ -1055,13 +1144,13 @@ msgid ""
 "        return fingerprint(request)"
 msgstr ""
 
-#: ../../../topics/request-response.rst:539
+#: ../../../topics/request-response.rst:611
 msgid ""
 "If you need to reproduce the same fingerprinting algorithm as Scrapy 2.6, "
 "use the following request fingerprinter:"
 msgstr ""
 
-#: ../../../topics/request-response.rst:542
+#: ../../../topics/request-response.rst:614
 msgid ""
 "from hashlib import sha1\n"
 "from weakref import WeakKeyDictionary\n"
@@ -1083,55 +1172,55 @@ msgid ""
 "        return self.cache[request]"
 msgstr ""
 
-#: ../../../topics/request-response.rst:567
+#: ../../../topics/request-response.rst:639
 msgid "Request fingerprint restrictions"
 msgstr ""
 
-#: ../../../topics/request-response.rst:569
+#: ../../../topics/request-response.rst:641
 msgid ""
 "Scrapy components that use request fingerprints may impose additional "
 "restrictions on the format of the fingerprints that your :ref:`request "
 "fingerprinter <custom-request-fingerprinter>` generates."
 msgstr ""
 
-#: ../../../topics/request-response.rst:573
+#: ../../../topics/request-response.rst:645
 msgid "The following built-in Scrapy components have such restrictions:"
 msgstr ""
 
-#: ../../../topics/request-response.rst:575
+#: ../../../topics/request-response.rst:647
 msgid ""
 ":class:`scrapy.extensions.httpcache.FilesystemCacheStorage` (default value "
 "of :setting:`HTTPCACHE_STORAGE`)"
 msgstr ""
 
-#: ../../../topics/request-response.rst:578
+#: ../../../topics/request-response.rst:650
 msgid "Request fingerprints must be at least 1 byte long."
 msgstr ""
 
-#: ../../../topics/request-response.rst:580
+#: ../../../topics/request-response.rst:652
 msgid ""
 "Path and filename length limits of the file system of :setting:"
 "`HTTPCACHE_DIR` also apply. Inside :setting:`HTTPCACHE_DIR`, the following "
 "directory structure is created:"
 msgstr ""
 
-#: ../../../topics/request-response.rst:584
+#: ../../../topics/request-response.rst:656
 msgid ":attr:`.Spider.name`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:586
+#: ../../../topics/request-response.rst:658
 msgid "first byte of a request fingerprint as hexadecimal"
 msgstr ""
 
-#: ../../../topics/request-response.rst:588
+#: ../../../topics/request-response.rst:660
 msgid "fingerprint as hexadecimal"
 msgstr ""
 
-#: ../../../topics/request-response.rst:590
+#: ../../../topics/request-response.rst:662
 msgid "filenames up to 16 characters long"
 msgstr ""
 
-#: ../../../topics/request-response.rst:592
+#: ../../../topics/request-response.rst:664
 msgid ""
 "For example, if a request fingerprint is made of 20 bytes (default), :"
 "setting:`HTTPCACHE_DIR` is ``'/home/user/project/.scrapy/httpcache'``, and "
@@ -1139,17 +1228,17 @@ msgid ""
 "file path like::"
 msgstr ""
 
-#: ../../../topics/request-response.rst:597
+#: ../../../topics/request-response.rst:669
 msgid ""
 "/home/user/project/.scrapy/httpcache/"
 "my_spider/01/0123456789abcdef0123456789abcdef01234567/response_headers"
 msgstr ""
 
-#: ../../../topics/request-response.rst:599
+#: ../../../topics/request-response.rst:671
 msgid ":class:`scrapy.extensions.httpcache.DbmCacheStorage`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:601
+#: ../../../topics/request-response.rst:673
 msgid ""
 "The underlying DBM implementation must support keys as long as twice the "
 "number of bytes of a request fingerprint, plus 5. For example, if a request "
@@ -1157,141 +1246,141 @@ msgid ""
 "supported."
 msgstr ""
 
-#: ../../../topics/request-response.rst:610
+#: ../../../topics/request-response.rst:682
 msgid "Request.meta special keys"
 msgstr ""
 
-#: ../../../topics/request-response.rst:612
+#: ../../../topics/request-response.rst:684
 msgid ""
 "The :attr:`.Request.meta` attribute can contain any arbitrary data, but "
 "there are some special keys recognized by Scrapy and its built-in extensions."
 msgstr ""
 
-#: ../../../topics/request-response.rst:615
+#: ../../../topics/request-response.rst:687
 msgid "Those are:"
 msgstr ""
 
-#: ../../../topics/request-response.rst:617
+#: ../../../topics/request-response.rst:689
 msgid ":reqmeta:`allow_offsite`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:618
+#: ../../../topics/request-response.rst:690
 msgid ":reqmeta:`autothrottle_dont_adjust_delay`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:619
+#: ../../../topics/request-response.rst:691
 msgid ":reqmeta:`bindaddress`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:620
+#: ../../../topics/request-response.rst:692
 msgid ":reqmeta:`cookiejar`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:621
+#: ../../../topics/request-response.rst:693
 msgid ":reqmeta:`dont_cache`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:622
+#: ../../../topics/request-response.rst:694
 msgid ":reqmeta:`dont_merge_cookies`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:623
+#: ../../../topics/request-response.rst:695
 msgid ":reqmeta:`dont_obey_robotstxt`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:624
+#: ../../../topics/request-response.rst:696
 msgid ":reqmeta:`dont_redirect`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:625
+#: ../../../topics/request-response.rst:697
 msgid ":reqmeta:`dont_retry`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:626
+#: ../../../topics/request-response.rst:698
 msgid ":reqmeta:`download_fail_on_dataloss`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:627
+#: ../../../topics/request-response.rst:699
 msgid ":reqmeta:`download_latency`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:628
+#: ../../../topics/request-response.rst:700
 msgid ":reqmeta:`download_maxsize`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:629
+#: ../../../topics/request-response.rst:701
 msgid ":reqmeta:`download_warnsize`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:630
+#: ../../../topics/request-response.rst:702
 msgid ":reqmeta:`download_timeout`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:631
+#: ../../../topics/request-response.rst:703
 msgid "``ftp_password`` (See :setting:`FTP_PASSWORD` for more info)"
 msgstr ""
 
-#: ../../../topics/request-response.rst:632
+#: ../../../topics/request-response.rst:704
 msgid "``ftp_user`` (See :setting:`FTP_USER` for more info)"
 msgstr ""
 
-#: ../../../topics/request-response.rst:633
+#: ../../../topics/request-response.rst:705
 msgid ":reqmeta:`handle_httpstatus_all`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:634
+#: ../../../topics/request-response.rst:706
 msgid ":reqmeta:`handle_httpstatus_list`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:635
+#: ../../../topics/request-response.rst:707
 msgid ":reqmeta:`is_start_request`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:636
+#: ../../../topics/request-response.rst:708
 msgid ":reqmeta:`max_retry_times`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:637
+#: ../../../topics/request-response.rst:709
 msgid ":reqmeta:`proxy`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:638
+#: ../../../topics/request-response.rst:710
 msgid ":reqmeta:`redirect_reasons`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:639
+#: ../../../topics/request-response.rst:711
 msgid ":reqmeta:`redirect_urls`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:640
+#: ../../../topics/request-response.rst:712
 msgid ":reqmeta:`referrer_policy`"
 msgstr ""
 
-#: ../../../topics/request-response.rst:645
+#: ../../../topics/request-response.rst:717
 msgid "bindaddress"
 msgstr ""
 
-#: ../../../topics/request-response.rst:647
+#: ../../../topics/request-response.rst:719
 msgid "The default local outgoing address for download-handler connections."
 msgstr ""
 
-#: ../../../topics/request-response.rst:649
+#: ../../../topics/request-response.rst:721
 msgid "This meta value can be either:"
 msgstr ""
 
-#: ../../../topics/request-response.rst:651
+#: ../../../topics/request-response.rst:723
 msgid ""
 "a host address as a string (e.g. ``\"127.0.0.2\"``), in which case the local "
 "port is chosen automatically, or"
 msgstr ""
 
-#: ../../../topics/request-response.rst:654
+#: ../../../topics/request-response.rst:726
 msgid ""
 "a ``(host, port)`` tuple (e.g. ``(\"127.0.0.2\", 50000)``) to bind to both a "
 "specific local interface and a specific local port."
 msgstr ""
 
-#: ../../../topics/request-response.rst:659
+#: ../../../topics/request-response.rst:731
 msgid ""
 "Request(\n"
 "    \"https://example.org\",\n"
@@ -1299,7 +1388,7 @@ msgid ""
 ")"
 msgstr ""
 
-#: ../../../topics/request-response.rst:666
+#: ../../../topics/request-response.rst:738
 msgid ""
 "Request(\n"
 "    \"https://example.org\",\n"
@@ -1307,35 +1396,35 @@ msgid ""
 ")"
 msgstr ""
 
-#: ../../../topics/request-response.rst:673
+#: ../../../topics/request-response.rst:745
 msgid ""
 "If not set, built-in HTTP download handlers use the value of :setting:"
 "`DOWNLOAD_BIND_ADDRESS` as the default bind address. Set the :reqmeta:"
 "`bindaddress` request meta key to override it for a specific request."
 msgstr ""
 
-#: ../../../topics/request-response.rst:678
+#: ../../../topics/request-response.rst:750
 msgid ""
 "This meta key is not supported by :class:`~scrapy.core.downloader.handlers."
 "_httpx.HttpxDownloadHandler`, but the :setting:`DOWNLOAD_BIND_ADDRESS` is "
 "supported by it."
 msgstr ""
 
-#: ../../../topics/request-response.rst:685
+#: ../../../topics/request-response.rst:757
 msgid "download_timeout"
 msgstr ""
 
-#: ../../../topics/request-response.rst:687
+#: ../../../topics/request-response.rst:759
 msgid ""
 "The amount of time (in secs) that the downloader will wait before timing "
 "out. See also: :setting:`DOWNLOAD_TIMEOUT`."
 msgstr ""
 
-#: ../../../topics/request-response.rst:693
+#: ../../../topics/request-response.rst:765
 msgid "download_latency"
 msgstr ""
 
-#: ../../../topics/request-response.rst:695
+#: ../../../topics/request-response.rst:767
 msgid ""
 "The amount of time spent to fetch the response, since the request has been "
 "started, i.e. HTTP message sent over the network. This meta key only becomes "
@@ -1343,32 +1432,32 @@ msgid ""
 "are used to control Scrapy behavior, this one is supposed to be read-only."
 msgstr ""
 
-#: ../../../topics/request-response.rst:703
+#: ../../../topics/request-response.rst:775
 msgid "download_fail_on_dataloss"
 msgstr ""
 
-#: ../../../topics/request-response.rst:705
+#: ../../../topics/request-response.rst:777
 msgid ""
 "Whether or not to fail on broken responses. See: :setting:"
 "`DOWNLOAD_FAIL_ON_DATALOSS`."
 msgstr ""
 
-#: ../../../topics/request-response.rst:711
+#: ../../../topics/request-response.rst:783
 msgid "max_retry_times"
 msgstr ""
 
-#: ../../../topics/request-response.rst:713
+#: ../../../topics/request-response.rst:785
 msgid ""
 "The meta key is used set retry times per request. When initialized, the :"
 "reqmeta:`max_retry_times` meta key takes higher precedence over the :setting:"
 "`RETRY_TIMES` setting."
 msgstr ""
 
-#: ../../../topics/request-response.rst:721
+#: ../../../topics/request-response.rst:793
 msgid "Stopping the download of a Response"
 msgstr ""
 
-#: ../../../topics/request-response.rst:723
+#: ../../../topics/request-response.rst:795
 msgid ""
 "Raising a :exc:`~scrapy.exceptions.StopDownload` exception from a handler "
 "for the :class:`~scrapy.signals.bytes_received` or :class:`~scrapy.signals."
@@ -1376,7 +1465,7 @@ msgid ""
 "the following example:"
 msgstr ""
 
-#: ../../../topics/request-response.rst:727
+#: ../../../topics/request-response.rst:799
 msgid ""
 "import scrapy\n"
 "\n"
@@ -1402,11 +1491,11 @@ msgid ""
 "        raise scrapy.exceptions.StopDownload(fail=False)"
 msgstr ""
 
-#: ../../../topics/request-response.rst:751
+#: ../../../topics/request-response.rst:823
 msgid "which produces the following output::"
 msgstr ""
 
-#: ../../../topics/request-response.rst:753
+#: ../../../topics/request-response.rst:825
 msgid ""
 "2020-05-19 17:26:12 [scrapy.core.engine] INFO: Spider opened\n"
 "2020-05-19 17:26:12 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 "
@@ -1422,233 +1511,48 @@ msgid ""
 "2020-05-19 17:26:13 [scrapy.core.engine] INFO: Closing spider (finished)"
 msgstr ""
 
-#: ../../../topics/request-response.rst:761
+#: ../../../topics/request-response.rst:833
 msgid ""
 "By default, resulting responses are handled by their corresponding errbacks. "
 "To call their callback instead, like in this example, pass ``fail=False`` to "
 "the :exc:`~scrapy.exceptions.StopDownload` exception."
 msgstr ""
 
-#: ../../../topics/request-response.rst:769
+#: ../../../topics/request-response.rst:841
 msgid "Request subclasses"
 msgstr ""
 
-#: ../../../topics/request-response.rst:771
+#: ../../../topics/request-response.rst:843
 msgid ""
 "Here is the list of built-in :class:`~scrapy.Request` subclasses. You can "
 "also subclass it to implement your own custom functionality."
 msgstr ""
 
-#: ../../../topics/request-response.rst:775
-msgid "FormRequest objects"
-msgstr ""
-
-#: ../../../topics/request-response.rst:777
-msgid ""
-"The FormRequest class extends the base :class:`~scrapy.Request` with "
-"functionality for dealing with HTML forms. It uses `lxml.html forms`_  to "
-"pre-populate form fields with form data from :class:`Response` objects."
-msgstr ""
-
-#: ../../../topics/request-response.rst:788
-msgid ""
-"The :class:`~scrapy.FormRequest` class adds a new keyword parameter to the "
-"``__init__()`` method. The remaining arguments are the same as for the :"
-"class:`~scrapy.Request` class and are not documented here."
-msgstr ""
-
-#: ../../../topics/request-response.rst:792
-msgid ""
-"is a dictionary (or iterable of (key, value) tuples) containing HTML Form "
-"data which will be url-encoded and assigned to the body of the request."
-msgstr ""
-
-#: ../../../topics/request-response.rst:797
-msgid ""
-"The :class:`~scrapy.FormRequest` objects support the following class method "
-"in addition to the standard :class:`~scrapy.Request` methods:"
-msgstr ""
-
-#: ../../../topics/request-response.rst:802
-msgid ""
-"Returns a new :class:`~scrapy.FormRequest` object with its form field values "
-"pre-populated with those found in the HTML ``<form>`` element contained in "
-"the given response. For an example see :ref:`topics-request-response-ref-"
-"request-userlogin`."
-msgstr ""
-
-#: ../../../topics/request-response.rst:807
-msgid ""
-"The policy is to automatically simulate a click, by default, on any form "
-"control that looks clickable, like a ``<input type=\"submit\">``.  Even "
-"though this is quite convenient, and often the desired behaviour, sometimes "
-"it can cause problems which could be hard to debug. For example, when "
-"working with forms that are filled and/or submitted using javascript, the "
-"default :meth:`from_response` behaviour may not be the most appropriate. To "
-"disable this behaviour you can set the ``dont_click`` argument to ``True``. "
-"Also, if you want to change the control clicked (instead of disabling it) "
-"you can also use the ``clickdata`` argument."
-msgstr ""
-
-#: ../../../topics/request-response.rst:818
-msgid ""
-"Using this method with select elements which have leading or trailing "
-"whitespace in the option values will not work due to a `bug in lxml`_, which "
-"should be fixed in lxml 3.8 and above."
-msgstr ""
-
-#: ../../../topics/request-response.rst:822
-msgid ""
-"the response containing a HTML form which will be used to pre-populate the "
-"form fields"
-msgstr ""
-
-#: ../../../topics/request-response.rst:826
-msgid "if given, the form with name attribute set to this value will be used."
-msgstr ""
-
-#: ../../../topics/request-response.rst:829
-msgid "if given, the form with id attribute set to this value will be used."
-msgstr ""
-
-#: ../../../topics/request-response.rst:832
-msgid "if given, the first form that matches the xpath will be used."
-msgstr ""
-
-#: ../../../topics/request-response.rst:835
-msgid "if given, the first form that matches the css selector will be used."
-msgstr ""
-
-#: ../../../topics/request-response.rst:838
-msgid ""
-"the number of form to use, when the response contains multiple forms. The "
-"first one (and also the default) is ``0``."
-msgstr ""
-
-#: ../../../topics/request-response.rst:842
-msgid ""
-"fields to override in the form data. If a field was already present in the "
-"response ``<form>`` element, its value is overridden by the one passed in "
-"this parameter. If a value passed in this parameter is ``None``, the field "
-"will not be included in the request, even if it was present in the response "
-"``<form>`` element."
-msgstr ""
-
-#: ../../../topics/request-response.rst:849
-msgid ""
-"attributes to lookup the control clicked. If it's not given, the form data "
-"will be submitted simulating a click on the first clickable element. In "
-"addition to html attributes, the control can be identified by its zero-based "
-"index relative to other submittable inputs inside the form, via the ``nr`` "
-"attribute."
-msgstr ""
-
-#: ../../../topics/request-response.rst:856
-msgid ""
-"If True, the form data will be submitted without clicking in any element."
-msgstr ""
-
-#: ../../../topics/request-response.rst:860
-msgid ""
-"The other parameters of this class method are passed directly to the :class:"
-"`~scrapy.FormRequest` ``__init__()`` method."
-msgstr ""
-
-#: ../../../topics/request-response.rst:866
-msgid "Request usage examples"
-msgstr ""
-
-#: ../../../topics/request-response.rst:869
-msgid "Using FormRequest to send data via HTTP POST"
-msgstr ""
-
-#: ../../../topics/request-response.rst:871
-msgid ""
-"If you want to simulate a HTML Form POST in your spider and send a couple of "
-"key-value fields, you can return a :class:`~scrapy.FormRequest` object (from "
-"your spider) like this:"
-msgstr ""
-
-#: ../../../topics/request-response.rst:876
-msgid ""
-"return [\n"
-"    FormRequest(\n"
-"        url=\"http://www.example.com/post/action\",\n"
-"        formdata={\"name\": \"John Doe\", \"age\": \"27\"},\n"
-"        callback=self.after_post,\n"
-"    )\n"
-"]"
-msgstr ""
-
-#: ../../../topics/request-response.rst:889
-msgid "Using FormRequest.from_response() to simulate a user login"
-msgstr ""
-
-#: ../../../topics/request-response.rst:891
-msgid ""
-"It is usual for web sites to provide pre-populated form fields through "
-"``<input type=\"hidden\">`` elements, such as session related data or "
-"authentication tokens (for login pages). When scraping, you'll want these "
-"fields to be automatically pre-populated and only override a couple of them, "
-"such as the user name and password. You can use the :meth:`.FormRequest."
-"from_response` method for this job. Here's an example spider which uses it:"
-msgstr ""
-
-#: ../../../topics/request-response.rst:898
-msgid ""
-"import scrapy\n"
-"\n"
-"\n"
-"def authentication_failed(response):\n"
-"    # TODO: Check the contents of the response and return True if it failed\n"
-"    # or False if it succeeded.\n"
-"    pass\n"
-"\n"
-"\n"
-"class LoginSpider(scrapy.Spider):\n"
-"    name = \"example.com\"\n"
-"    start_urls = [\"http://www.example.com/users/login.php\"]\n"
-"\n"
-"    def parse(self, response):\n"
-"        return scrapy.FormRequest.from_response(\n"
-"            response,\n"
-"            formdata={\"username\": \"john\", \"password\": \"secret\"},\n"
-"            callback=self.after_login,\n"
-"        )\n"
-"\n"
-"    def after_login(self, response):\n"
-"        if authentication_failed(response):\n"
-"            self.logger.error(\"Login failed\")\n"
-"            return\n"
-"\n"
-"        # continue scraping with authenticated session..."
-msgstr ""
-
-#: ../../../topics/request-response.rst:928
+#: ../../../topics/request-response.rst:847
 msgid "JsonRequest"
 msgstr ""
 
-#: ../../../topics/request-response.rst:930
+#: ../../../topics/request-response.rst:849
 msgid ""
 "The JsonRequest class extends the base :class:`~scrapy.Request` class with "
 "functionality for dealing with JSON requests."
 msgstr ""
 
-#: ../../../topics/request-response.rst:935
+#: ../../../topics/request-response.rst:854
 msgid ""
 "The :class:`JsonRequest` class adds two new keyword parameters to the "
 "``__init__()`` method. The remaining arguments are the same as for the :"
 "class:`~scrapy.Request` class and are not documented here."
 msgstr ""
 
-#: ../../../topics/request-response.rst:939
+#: ../../../topics/request-response.rst:858
 msgid ""
 "Using the :class:`JsonRequest` will set the ``Content-Type`` header to "
 "``application/json`` and ``Accept`` header to ``application/json, text/"
 "javascript, */*; q=0.01``"
 msgstr ""
 
-#: ../../../topics/request-response.rst:942
+#: ../../../topics/request-response.rst:861
 msgid ""
 "is any JSON serializable object that needs to be JSON encoded and assigned "
 "to body. If the :attr:`~scrapy.Request.body` argument is provided this "
@@ -1657,21 +1561,21 @@ msgid ""
 "Request.method` will be set to ``'POST'`` automatically."
 msgstr ""
 
-#: ../../../topics/request-response.rst:949
+#: ../../../topics/request-response.rst:868
 msgid ""
 "Parameters that will be passed to underlying :func:`json.dumps` method which "
 "is used to serialize data into JSON format."
 msgstr ""
 
-#: ../../../topics/request-response.rst:956
+#: ../../../topics/request-response.rst:875
 msgid "JsonRequest usage example"
 msgstr ""
 
-#: ../../../topics/request-response.rst:958
+#: ../../../topics/request-response.rst:877
 msgid "Sending a JSON POST request with a JSON payload:"
 msgstr ""
 
-#: ../../../topics/request-response.rst:961
+#: ../../../topics/request-response.rst:880
 msgid ""
 "data = {\n"
 "    \"name1\": \"value1\",\n"
@@ -1680,7 +1584,7 @@ msgid ""
 "yield JsonRequest(url=\"http://www.example.com/post/action\", data=data)"
 msgstr ""
 
-#: ../../../topics/request-response.rst:971
+#: ../../../topics/request-response.rst:890
 msgid "Response objects"
 msgstr ""
 
@@ -1691,71 +1595,71 @@ msgid ""
 "the Downloader) and fed to the Spiders for processing."
 msgstr ""
 
-#: ../../../topics/request-response.rst:975
+#: ../../../topics/request-response.rst:894
 msgid "the URL of this response"
 msgstr ""
 
-#: ../../../topics/request-response.rst:978
+#: ../../../topics/request-response.rst:897
 msgid "the HTTP status of the response. Defaults to ``200``."
 msgstr ""
 
-#: ../../../topics/request-response.rst:981
+#: ../../../topics/request-response.rst:900
 msgid ""
 "the headers of this response. The dict values can be strings (for single "
 "valued headers) or lists (for multi-valued headers)."
 msgstr ""
 
-#: ../../../topics/request-response.rst:985
+#: ../../../topics/request-response.rst:904
 msgid ""
 "the response body. To access the decoded text as a string, use ``response."
 "text`` from an encoding-aware :ref:`Response subclass <topics-request-"
 "response-ref-response-subclasses>`, such as :class:`TextResponse`."
 msgstr ""
 
-#: ../../../topics/request-response.rst:991
+#: ../../../topics/request-response.rst:910
 msgid ""
 "is a list containing the initial values for the :attr:`Response.flags` "
 "attribute. If given, the list will be shallow copied."
 msgstr ""
 
-#: ../../../topics/request-response.rst:996
+#: ../../../topics/request-response.rst:915
 msgid ""
 "the initial value of the :attr:`Response.request` attribute. This represents "
 "the :class:`~scrapy.Request` that generated this response."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1000
+#: ../../../topics/request-response.rst:919
 msgid "an object representing the server's SSL certificate."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1003
-#: ../../../topics/request-response.rst:1100
+#: ../../../topics/request-response.rst:922
+#: ../../../topics/request-response.rst:1019
 msgid "The IP address of the server from which the Response originated."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1006
+#: ../../../topics/request-response.rst:925
 msgid ""
 "The protocol that was used to download the response. For instance: "
 "\"HTTP/1.0\", \"HTTP/1.1\", \"h2\""
 msgstr ""
 
-#: ../../../topics/request-response.rst:1012
+#: ../../../topics/request-response.rst:931
 msgid "A string containing the URL of the response."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1014
+#: ../../../topics/request-response.rst:933
 msgid ""
 "This attribute is read-only. To change the URL of a Response use :meth:"
 "`replace`."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1019
+#: ../../../topics/request-response.rst:938
 msgid ""
 "An integer representing the HTTP status of the response. Example: ``200``, "
 "``404``."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1024
+#: ../../../topics/request-response.rst:943
 msgid ""
 "A dictionary-like (:class:`scrapy.http.headers.Headers`) object which "
 "contains the response headers. Values can be accessed using :meth:`~scrapy."
@@ -1765,27 +1669,27 @@ msgid ""
 "all cookies in the headers::"
 msgstr ""
 
-#: ../../../topics/request-response.rst:1031
+#: ../../../topics/request-response.rst:950
 msgid "response.headers.getlist('Set-Cookie')"
 msgstr ""
 
-#: ../../../topics/request-response.rst:1035
+#: ../../../topics/request-response.rst:954
 msgid "The response body as bytes."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1037
+#: ../../../topics/request-response.rst:956
 msgid ""
 "If you want the body as a string, use :attr:`TextResponse.text` (only "
 "available in :class:`TextResponse` and subclasses)."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1040
+#: ../../../topics/request-response.rst:959
 msgid ""
 "This attribute is read-only. To change the body of a Response use :meth:"
 "`replace`."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1045
+#: ../../../topics/request-response.rst:964
 msgid ""
 "The :class:`~scrapy.Request` object that generated this response. This "
 "attribute is assigned in the Scrapy engine, after the response and the "
@@ -1793,7 +1697,7 @@ msgid ""
 "downloader-middleware>`. In particular, this means that:"
 msgstr ""
 
-#: ../../../topics/request-response.rst:1050
+#: ../../../topics/request-response.rst:969
 msgid ""
 "HTTP redirections will create a new request from the request before "
 "redirection. It has the majority of the same metadata and original request "
@@ -1801,11 +1705,11 @@ msgid ""
 "propagation of the original request."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1055
+#: ../../../topics/request-response.rst:974
 msgid "Response.request.url doesn't always equal Response.url"
 msgstr ""
 
-#: ../../../topics/request-response.rst:1057
+#: ../../../topics/request-response.rst:976
 msgid ""
 "This attribute is only available in the spider code, and in the :ref:`Spider "
 "Middlewares <topics-spider-middleware>`, but not in Downloader Middlewares "
@@ -1813,41 +1717,41 @@ msgid ""
 "of the :signal:`response_downloaded` signal."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1064
+#: ../../../topics/request-response.rst:983
 msgid ""
 "A shortcut to the :attr:`~scrapy.Request.meta` attribute of the :attr:"
 "`Response.request` object (i.e. ``self.request.meta``)."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1067
+#: ../../../topics/request-response.rst:986
 msgid ""
 "Unlike the :attr:`Response.request` attribute, the :attr:`Response.meta` "
 "attribute is propagated along redirects and retries, so you will get the "
 "original :attr:`.Request.meta` sent from your spider."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1071
+#: ../../../topics/request-response.rst:990
 msgid ":attr:`.Request.meta` attribute"
 msgstr ""
 
-#: ../../../topics/request-response.rst:1075
+#: ../../../topics/request-response.rst:994
 msgid ""
 "A shortcut to the :attr:`~scrapy.Request.cb_kwargs` attribute of the :attr:"
 "`Response.request` object (i.e. ``self.request.cb_kwargs``)."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1078
+#: ../../../topics/request-response.rst:997
 msgid ""
 "Unlike the :attr:`Response.request` attribute, the :attr:`Response."
 "cb_kwargs` attribute is propagated along redirects and retries, so you will "
 "get the original :attr:`.Request.cb_kwargs` sent from your spider."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1082
+#: ../../../topics/request-response.rst:1001
 msgid ":attr:`.Request.cb_kwargs` attribute"
 msgstr ""
 
-#: ../../../topics/request-response.rst:1086
+#: ../../../topics/request-response.rst:1005
 msgid ""
 "A list that contains flags for this response. Flags are labels used for "
 "tagging Responses. For example: ``'cached'``, ``'redirected``', etc. And "
@@ -1855,30 +1759,30 @@ msgid ""
 "method) which is used by the engine for logging."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1093
+#: ../../../topics/request-response.rst:1012
 msgid ""
 "A :class:`twisted.internet.ssl.Certificate` object representing the server's "
 "SSL certificate."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1096
+#: ../../../topics/request-response.rst:1015
 msgid "Only populated for ``https`` responses, ``None`` otherwise."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1102
+#: ../../../topics/request-response.rst:1021
 msgid ""
 "This attribute is currently only populated by the HTTP 1.1 download handler, "
 "i.e. for ``http(s)`` responses. For other handlers, :attr:`ip_address` is "
 "always ``None``."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1108
+#: ../../../topics/request-response.rst:1027
 msgid ""
 "The protocol that was used to download the response. For instance: "
 "\"HTTP/1.0\", \"HTTP/1.1\""
 msgstr ""
 
-#: ../../../topics/request-response.rst:1111
+#: ../../../topics/request-response.rst:1030
 msgid ""
 "This attribute is currently only populated by the HTTP download handlers, i."
 "e. for ``http(s)`` responses. For other handlers, :attr:`protocol` is always "
@@ -1890,30 +1794,30 @@ msgstr ""
 msgid "Currently used by :meth:`Response.replace`."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1119
+#: ../../../topics/request-response.rst:1038
 msgid "Returns a new Response which is a copy of this Response."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1123
+#: ../../../topics/request-response.rst:1042
 msgid ""
 "Returns a Response object with the same members, except for those members "
 "given new values by whichever keyword arguments are specified. The "
 "attribute :attr:`Response.meta` is copied by default."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1129
+#: ../../../topics/request-response.rst:1048
 msgid ""
 "Constructs an absolute url by combining the Response's :attr:`url` with a "
 "possible relative url."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1132
+#: ../../../topics/request-response.rst:1051
 msgid ""
 "This is a wrapper over :func:`~urllib.parse.urljoin`, it's merely an alias "
 "for making this call::"
 msgstr ""
 
-#: ../../../topics/request-response.rst:1135
+#: ../../../topics/request-response.rst:1054
 msgid "urllib.parse.urljoin(response.url, url)"
 msgstr ""
 
@@ -1951,28 +1855,28 @@ msgid ""
 "objects."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1145
+#: ../../../topics/request-response.rst:1064
 msgid "Response subclasses"
 msgstr ""
 
-#: ../../../topics/request-response.rst:1147
+#: ../../../topics/request-response.rst:1066
 msgid ""
 "Here is the list of available built-in Response subclasses. You can also "
 "subclass the Response class to implement your own functionality."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1151
+#: ../../../topics/request-response.rst:1070
 msgid "TextResponse objects"
 msgstr ""
 
-#: ../../../topics/request-response.rst:1155
+#: ../../../topics/request-response.rst:1074
 msgid ""
 ":class:`TextResponse` objects adds encoding capabilities to the base :class:"
 "`Response` class, which is meant to be used only for binary data, such as "
 "images, sounds or any media file."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1159
+#: ../../../topics/request-response.rst:1078
 msgid ""
 ":class:`TextResponse` objects support a new ``__init__()`` method argument, "
 "in addition to the base :class:`Response` objects. The remaining "
@@ -1980,7 +1884,7 @@ msgid ""
 "documented here."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1163
+#: ../../../topics/request-response.rst:1082
 msgid ""
 "is a string which contains the encoding to use for this response. If you "
 "create a :class:`TextResponse` object with a string as body, it will be "
@@ -1989,98 +1893,98 @@ msgid ""
 "instead."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1170
+#: ../../../topics/request-response.rst:1089
 msgid ""
 ":class:`TextResponse` objects support the following attributes in addition "
 "to the standard :class:`Response` ones:"
 msgstr ""
 
-#: ../../../topics/request-response.rst:1175
+#: ../../../topics/request-response.rst:1094
 msgid "Response body, as a string."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1177
+#: ../../../topics/request-response.rst:1096
 msgid ""
 "The same as ``response.body.decode(response.encoding)``, but the result is "
 "cached after the first call, so you can access ``response.text`` multiple "
 "times without extra overhead."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1183
+#: ../../../topics/request-response.rst:1102
 msgid ""
 "``str(response.body)`` is not a correct way to convert the response body "
 "into a string:"
 msgstr ""
 
-#: ../../../topics/request-response.rst:1186
+#: ../../../topics/request-response.rst:1105
 msgid ""
 ">>> str(b\"body\")\n"
 "\"b'body'\""
 msgstr ""
 
-#: ../../../topics/request-response.rst:1194
+#: ../../../topics/request-response.rst:1113
 msgid ""
 "A string with the encoding of this response. The encoding is resolved by "
 "trying the following mechanisms, in order:"
 msgstr ""
 
-#: ../../../topics/request-response.rst:1197
+#: ../../../topics/request-response.rst:1116
 msgid "the encoding passed in the ``__init__()`` method ``encoding`` argument"
 msgstr ""
 
-#: ../../../topics/request-response.rst:1199
+#: ../../../topics/request-response.rst:1118
 msgid ""
 "the encoding declared in the Content-Type HTTP header. If this encoding is "
 "not valid (i.e. unknown), it is ignored and the next resolution mechanism is "
 "tried."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1203
+#: ../../../topics/request-response.rst:1122
 msgid ""
 "the encoding declared in the response body. The TextResponse class doesn't "
 "provide any special functionality for this. However, the :class:"
 "`HtmlResponse` and :class:`XmlResponse` classes do."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1207
+#: ../../../topics/request-response.rst:1126
 msgid ""
 "the encoding inferred by looking at the response body. This is the more "
 "fragile method but also the last one tried."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1212
+#: ../../../topics/request-response.rst:1131
 msgid ""
 "A :class:`~scrapy.Selector` instance using the response as target. The "
 "selector is lazily instantiated on first access."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1217
+#: ../../../topics/request-response.rst:1136
 msgid ""
 ":class:`TextResponse` objects support the following methods in addition to "
 "the standard :class:`Response` ones:"
 msgstr ""
 
-#: ../../../topics/request-response.rst:1222
+#: ../../../topics/request-response.rst:1141
 msgid "A shortcut to ``TextResponse.selector.jmespath(query)``::"
 msgstr ""
 
-#: ../../../topics/request-response.rst:1224
+#: ../../../topics/request-response.rst:1143
 msgid "response.jmespath('object.[*]')"
 msgstr ""
 
-#: ../../../topics/request-response.rst:1228
+#: ../../../topics/request-response.rst:1147
 msgid "A shortcut to ``TextResponse.selector.xpath(query)``::"
 msgstr ""
 
-#: ../../../topics/request-response.rst:1230
+#: ../../../topics/request-response.rst:1149
 msgid "response.xpath('//p')"
 msgstr ""
 
-#: ../../../topics/request-response.rst:1234
+#: ../../../topics/request-response.rst:1153
 msgid "A shortcut to ``TextResponse.selector.css(query)``::"
 msgstr ""
 
-#: ../../../topics/request-response.rst:1236
+#: ../../../topics/request-response.rst:1155
 msgid "response.css('p')"
 msgstr ""
 
@@ -2158,46 +2062,46 @@ msgstr ""
 msgid "Deserialize a JSON document to a Python object."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1244
+#: ../../../topics/request-response.rst:1163
 msgid ""
 "Returns a Python object from deserialized JSON document. The result is "
 "cached after the first call."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1249
+#: ../../../topics/request-response.rst:1168
 msgid ""
 "Constructs an absolute url by combining the Response's base url with a "
 "possible relative url. The base url shall be extracted from the ``<base>`` "
 "tag, or just :attr:`Response.url` if there is no such tag."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1257
+#: ../../../topics/request-response.rst:1176
 msgid "HtmlResponse objects"
 msgstr ""
 
-#: ../../../topics/request-response.rst:1261
+#: ../../../topics/request-response.rst:1180
 msgid ""
 "The :class:`HtmlResponse` class is a subclass of :class:`TextResponse` which "
 "adds encoding auto-discovering support by looking into the HTML `meta http-"
 "equiv`_ attribute.  See :attr:`TextResponse.encoding`."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1268
+#: ../../../topics/request-response.rst:1187
 msgid "XmlResponse objects"
 msgstr ""
 
-#: ../../../topics/request-response.rst:1272
+#: ../../../topics/request-response.rst:1191
 msgid ""
 "The :class:`XmlResponse` class is a subclass of :class:`TextResponse` which "
 "adds encoding auto-discovering support by looking into the XML declaration "
 "line.  See :attr:`TextResponse.encoding`."
 msgstr ""
 
-#: ../../../topics/request-response.rst:1279
+#: ../../../topics/request-response.rst:1198
 msgid "JsonResponse objects"
 msgstr ""
 
-#: ../../../topics/request-response.rst:1283
+#: ../../../topics/request-response.rst:1202
 msgid ""
 "The :class:`JsonResponse` class is a subclass of :class:`TextResponse` that "
 "is used when the response has a `JSON MIME type <https://mimesniff.spec."
