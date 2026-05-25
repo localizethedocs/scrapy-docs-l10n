@@ -294,6 +294,3 @@ msgstr ""
 #: scrapy.utils.python.global_object_name:1
 msgid "Return the full import path of the given object."
 msgstr ""
-
-#~ msgid ":setting:`DNS_RESOLVER`"
-#~ msgstr ":setting:`DNS_RESOLVER`"
