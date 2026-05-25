@@ -258,7 +258,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:142
 msgid "Pydantic models"
-msgstr ""
+msgstr "Pydantic模型"
 
 #: ../../../topics/items.rst:144
 msgid ""
@@ -270,13 +270,13 @@ msgstr ""
 
 #: ../../../topics/items.rst:149
 msgid "Additionally, ``pydantic`` items also allow you to:"
-msgstr ""
+msgstr "此外，``pydantic`` 项目也允许您："
 
 #: ../../../topics/items.rst:151
 msgid ""
 "define the type and default value of each defined field with run-time type "
 "validation."
-msgstr ""
+msgstr "定义每个定义字段的类型和默认值，并进行运行时类型验证。"
 
 #: ../../../topics/items.rst:154
 msgid ""
@@ -289,13 +289,13 @@ msgstr ""
 msgid ""
 "benefit from automatic data validation and conversion based on type "
 "annotations."
-msgstr ""
+msgstr "基于类型注释的自动数据验证和转换的益处。"
 
 #: ../../../topics/items.rst:161
 msgid ""
 "In order to use this type, the `pydantic package <https://docs.pydantic.dev/"
 ">`_ needs to be installed."
-msgstr ""
+msgstr "为了使用此类型，需要安装 \"pydantic包 <https://docs.pydantic.dev/>\"。"
 
 #: ../../../topics/items.rst:166
 msgid ""
@@ -306,12 +306,20 @@ msgid ""
 "    one_field: str = Field(default=\"\", description=\"First field\")\n"
 "    another_field: int = Field(default=0, description=\"Second field\")"
 msgstr ""
+"从 pydantital 导入 BaseModel, 字段\n"
+"\n"
+"\n"
+"class CustomItem(BaseModel):\n"
+"    one_field: str = Field(default=\"\", description=\"First field\")\n"
+"    another_field: int = Field(default=0, description=\"第二个字段\")"
 
 #: ../../../topics/items.rst:175
 msgid ""
 "Unlike other item types, Pydantic models enforce field types at run time and "
 "will raise validation errors for invalid data types."
 msgstr ""
+"与其他项目类型不同，Pydantic模型在运行时强制执行字段类型，并会引起无效数据类"
+"型的验证错误。"
 
 #: ../../../topics/items.rst:179 ../../../topics/items.rst:250
 msgid "Working with Item objects"

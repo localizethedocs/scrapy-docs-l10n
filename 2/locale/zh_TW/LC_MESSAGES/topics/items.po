@@ -238,7 +238,7 @@ msgstr ""
 
 #: ../../../topics/items.rst:142
 msgid "Pydantic models"
-msgstr ""
+msgstr "Pydantic 模型"
 
 #: ../../../topics/items.rst:144
 msgid ""

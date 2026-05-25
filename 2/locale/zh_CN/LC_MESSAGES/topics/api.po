@@ -1313,8 +1313,3 @@ msgid ""
 "Returns ``True`` if no more requests can be sent at the moment, or ``False`` "
 "otherwise."
 msgstr "返回``True`` ，如果目前没有更多的请求可以发送，或者返回``False`` 。"
-
-#~ msgid ""
-#~ "Get a composition of a dictionary-like setting and its `_BASE` "
-#~ "counterpart."
-#~ msgstr "获取字典设置和它的 `_BASE` 对应部分的组合。"
