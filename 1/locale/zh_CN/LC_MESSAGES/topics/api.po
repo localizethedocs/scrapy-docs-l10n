@@ -604,7 +604,7 @@ msgstr ""
 #: scrapy.settings.BaseSettings.getwithbase:1
 msgid ""
 "Get a composition of a dictionary-like setting and its `_BASE` counterpart."
-msgstr "获取字典设置和它的 `_BASE` 对应部分的组合。"
+msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.getwithbase:4
