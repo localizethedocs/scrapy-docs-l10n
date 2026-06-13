@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-11 11:50+0000\n"
+"POT-Creation-Date: 2026-06-08 13:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -376,10 +376,10 @@ msgstr "COOKIES_已启用"
 
 #: ../../../topics/downloader-middleware.rst:237
 #: ../../../topics/downloader-middleware.rst:713
-#: ../../../topics/downloader-middleware.rst:759
-#: ../../../topics/downloader-middleware.rst:874
-#: ../../../topics/downloader-middleware.rst:915
-#: ../../../topics/downloader-middleware.rst:983
+#: ../../../topics/downloader-middleware.rst:770
+#: ../../../topics/downloader-middleware.rst:885
+#: ../../../topics/downloader-middleware.rst:926
+#: ../../../topics/downloader-middleware.rst:994
 msgid "Default: ``True``"
 msgstr "默认: ``True``"
 
@@ -957,7 +957,7 @@ msgstr "HTTPHE_IGNORE_HTTP_CODES"
 
 #: ../../../topics/downloader-middleware.rst:588
 #: ../../../topics/downloader-middleware.rst:671
-#: ../../../topics/downloader-middleware.rst:924
+#: ../../../topics/downloader-middleware.rst:935
 msgid "Default: ``[]``"
 msgstr "默认值： ``[]``"
 
@@ -1164,45 +1164,57 @@ msgid ""
 "Handling of this meta key needs to be implemented inside the :ref:`download "
 "handler <topics-download-handlers>`, so it's not guaranteed to be supported "
 "by all 3rd-party handlers. It's currently unsupported by :class:`~scrapy."
-"core.downloader.handlers._httpx.HttpxDownloadHandler`."
+"core.downloader.handlers.http2.H2DownloadHandler` and :class:`~scrapy.core."
+"downloader.handlers._httpx.HttpxDownloadHandler`."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:751
+#: ../../../topics/downloader-middleware.rst:753
+msgid ""
+"Usually a proxy URL uses the ``http://`` scheme. More rarely, it uses the "
+"``https://`` one. While both kinds of proxy URLs can be used with both HTTP "
+"and HTTPS destination URLs, the specifics of the network exchange are "
+"different for all 4 cases and it's possible that HTTPS proxies are fully or "
+"partially unsupported by a given download handler. Currently, :class:"
+"`~scrapy.core.downloader.handlers.http11.HTTP11DownloadHandler` supports "
+"HTTPS proxies only for HTTP destinations."
+msgstr ""
+
+#: ../../../topics/downloader-middleware.rst:762
 msgid "HttpProxyMiddleware settings"
 msgstr "HttpProxyMiddleware 设置"
 
-#: ../../../topics/downloader-middleware.rst:757
+#: ../../../topics/downloader-middleware.rst:768
 msgid "HTTPPROXY_ENABLED"
 msgstr "HTTPPROXY_已启用"
 
-#: ../../../topics/downloader-middleware.rst:761
+#: ../../../topics/downloader-middleware.rst:772
 msgid "Whether or not to enable the :class:`HttpProxyMiddleware`."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:764
+#: ../../../topics/downloader-middleware.rst:775
 msgid "HTTPPROXY_AUTH_ENCODING"
 msgstr "HTTPPROXY_AUTH_ENCODE"
 
-#: ../../../topics/downloader-middleware.rst:766
+#: ../../../topics/downloader-middleware.rst:777
 msgid "Default: ``\"latin-1\"``"
 msgstr "默认： ``\"latin-1\"``"
 
-#: ../../../topics/downloader-middleware.rst:768
+#: ../../../topics/downloader-middleware.rst:779
 msgid ""
 "The default encoding for proxy authentication on :class:"
 "`HttpProxyMiddleware`."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:771
+#: ../../../topics/downloader-middleware.rst:782
 msgid "OffsiteMiddleware"
 msgstr "离站中间件"
 
-#: ../../../topics/downloader-middleware.rst:780
+#: ../../../topics/downloader-middleware.rst:791
 msgid ""
 "Filters out Requests for URLs outside the domains covered by the spider."
 msgstr "过滤超越拼写器覆盖域外的 URL 请求。"
 
-#: ../../../topics/downloader-middleware.rst:782
+#: ../../../topics/downloader-middleware.rst:793
 msgid ""
 "This middleware filters out every request whose host names aren't in the "
 "spider's :attr:`~scrapy.Spider.allowed_domains` attribute. All subdomains of "
@@ -1211,7 +1223,7 @@ msgid ""
 "``example.com``."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:788
+#: ../../../topics/downloader-middleware.rst:799
 msgid ""
 "When your spider returns a request for a domain not belonging to those "
 "covered by the spider, this middleware will log a debug message similar to "
@@ -1220,7 +1232,7 @@ msgstr ""
 "当你的蜘蛛返回一个不属于蜘蛛所覆盖的域的请求时， 这个中间件将记录一个与此相似"
 "的调试消息："
 
-#: ../../../topics/downloader-middleware.rst:792
+#: ../../../topics/downloader-middleware.rst:803
 msgid ""
 "DEBUG: Filtered offsite request to 'offsite.example': <GET http://offsite."
 "example/some/page.html>"
@@ -1228,7 +1240,7 @@ msgstr ""
 "DEBUG: 已过滤的离站请求为“offsite.example”: <GET http://offsite.example/some/"
 "page.html>"
 
-#: ../../../topics/downloader-middleware.rst:794
+#: ../../../topics/downloader-middleware.rst:805
 msgid ""
 "To avoid filling the log with too much noise, it will only print one of "
 "these messages for each new domain filtered. So, for example, if another "
@@ -1240,14 +1252,14 @@ msgstr ""
 "有另一个请求“离站”。 xample`` 被过滤，将不会打印日志消息。但是如果请求“其"
 "他”。 xample`` 已被过滤，消息将被打印(但只适用于第一次请求过滤)。"
 
-#: ../../../topics/downloader-middleware.rst:800
+#: ../../../topics/downloader-middleware.rst:811
 msgid ""
 "If the spider doesn't define an :attr:`~scrapy.Spider.allowed_domains` "
 "attribute, or the attribute is empty, the offsite middleware will allow all "
 "requests."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:806
+#: ../../../topics/downloader-middleware.rst:817
 msgid ""
 "If the request has the :attr:`~scrapy.Request.dont_filter` attribute set to "
 "``True`` or :attr:`Request.meta` has ``allow_offsite`` set to ``True``, then "
@@ -1255,30 +1267,30 @@ msgid ""
 "listed in allowed domains."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:812
+#: ../../../topics/downloader-middleware.rst:823
 msgid "RedirectMiddleware"
 msgstr "重定向中间件"
 
-#: ../../../topics/downloader-middleware.rst:819
+#: ../../../topics/downloader-middleware.rst:830
 msgid ""
 "This middleware handles redirection of requests based on response status."
 msgstr "这个中间件处理基于响应状态的请求重定向。"
 
-#: ../../../topics/downloader-middleware.rst:823
+#: ../../../topics/downloader-middleware.rst:834
 msgid ""
 "The urls which the request goes through (while being redirected) can be "
 "found in the ``redirect_urls`` :attr:`Request.meta <scrapy.Request.meta>` "
 "key."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:828
+#: ../../../topics/downloader-middleware.rst:839
 msgid ""
 "The reason behind each redirect in :reqmeta:`redirect_urls` can be found in "
 "the ``redirect_reasons`` :attr:`Request.meta <scrapy.Request.meta>` key. For "
 "example: ``[301, 302, 307, 'meta refresh']``."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:832
+#: ../../../topics/downloader-middleware.rst:843
 msgid ""
 "The format of a reason depends on the middleware that handled the "
 "corresponding redirect. For example, :class:`RedirectMiddleware` indicates "
@@ -1286,27 +1298,27 @@ msgid ""
 "`MetaRefreshMiddleware` always uses the ``'meta refresh'`` string as reason."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:837
+#: ../../../topics/downloader-middleware.rst:848
 msgid ""
 "The :class:`RedirectMiddleware` can be configured through the following "
 "settings (see the settings documentation for more info):"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:840
+#: ../../../topics/downloader-middleware.rst:851
 msgid ":setting:`REDIRECT_ENABLED`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:841
+#: ../../../topics/downloader-middleware.rst:852
 msgid ":setting:`REDIRECT_MAX_TIMES`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:845
+#: ../../../topics/downloader-middleware.rst:856
 msgid ""
 "If :attr:`Request.meta <scrapy.Request.meta>` has ``dont_redirect`` key set "
 "to True, the request will be ignored by this middleware."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:848
+#: ../../../topics/downloader-middleware.rst:859
 msgid ""
 "If you want to handle some redirect status codes in your spider, you can "
 "specify these in the ``handle_httpstatus_list`` spider attribute."
@@ -1314,7 +1326,7 @@ msgstr ""
 "如果你想要处理你的蜘蛛中的一些重定向状态代码，你可以在 "
 "``handle_httpstatus_list`` 的属性中指定这些代码。"
 
-#: ../../../topics/downloader-middleware.rst:851
+#: ../../../topics/downloader-middleware.rst:862
 msgid ""
 "For example, if you want the redirect middleware to ignore 301 and 302 "
 "responses (and pass them through to your spider) you can do this:"
@@ -1322,7 +1334,7 @@ msgstr ""
 "例如，如果你想要重定向中间件忽略301和302反应(并将它们传递给你的蜘蛛)，你可以"
 "这样做："
 
-#: ../../../topics/downloader-middleware.rst:854
+#: ../../../topics/downloader-middleware.rst:865
 msgid ""
 "class MySpider(CrawlSpider):\n"
 "    handle_httpstatus_list = [301, 302]"
@@ -1330,7 +1342,7 @@ msgstr ""
 "MySpider(CrawlSpider):\n"
 "    handle_httpstatus_list = [301, 302]"
 
-#: ../../../topics/downloader-middleware.rst:859
+#: ../../../topics/downloader-middleware.rst:870
 msgid ""
 "The ``handle_httpstatus_list`` key of :attr:`Request.meta <scrapy.Request."
 "meta>` can also be used to specify which response codes to allow on a per-"
@@ -1338,27 +1350,27 @@ msgid ""
 "``True`` if you want to allow any response code for a request."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:867
+#: ../../../topics/downloader-middleware.rst:878
 msgid "RedirectMiddleware settings"
 msgstr "重定向中间件设置"
 
-#: ../../../topics/downloader-middleware.rst:872
+#: ../../../topics/downloader-middleware.rst:883
 msgid "REDIRECT_ENABLED"
 msgstr "REDIRECT_已启用"
 
-#: ../../../topics/downloader-middleware.rst:876
+#: ../../../topics/downloader-middleware.rst:887
 msgid "Whether the Redirect middleware will be enabled."
 msgstr "是否启用重定向中间件."
 
-#: ../../../topics/downloader-middleware.rst:881
+#: ../../../topics/downloader-middleware.rst:892
 msgid "REDIRECT_MAX_TIMES"
 msgstr "REDIRECT_MAX_TIMES"
 
-#: ../../../topics/downloader-middleware.rst:883
+#: ../../../topics/downloader-middleware.rst:894
 msgid "Default: ``20``"
 msgstr "默认值： ``20``"
 
-#: ../../../topics/downloader-middleware.rst:885
+#: ../../../topics/downloader-middleware.rst:896
 msgid ""
 "The maximum number of redirections that will be followed for a single "
 "request. If maximum redirections are exceeded, the request is aborted and "
@@ -1366,76 +1378,76 @@ msgid ""
 msgstr ""
 "单个请求所遵循的最大重定向次数。如果超过最大重定向，请求将被中止和忽略。"
 
-#: ../../../topics/downloader-middleware.rst:889
+#: ../../../topics/downloader-middleware.rst:900
 msgid "MetaRefreshMiddleware"
 msgstr "元刷新中间件"
 
-#: ../../../topics/downloader-middleware.rst:893
+#: ../../../topics/downloader-middleware.rst:904
 msgid ""
 "This middleware handles redirection of requests based on meta-refresh html "
 "tag."
 msgstr "此中间件处理基于元刷新html 标签的请求重定向。"
 
-#: ../../../topics/downloader-middleware.rst:895
+#: ../../../topics/downloader-middleware.rst:906
 msgid ""
 "The :class:`MetaRefreshMiddleware` can be configured through the following "
 "settings (see the settings documentation for more info):"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:898
+#: ../../../topics/downloader-middleware.rst:909
 msgid ":setting:`METAREFRESH_ENABLED`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:899
+#: ../../../topics/downloader-middleware.rst:910
 msgid ":setting:`METAREFRESH_IGNORE_TAGS`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:900
+#: ../../../topics/downloader-middleware.rst:911
 msgid ":setting:`METAREFRESH_MAXDELAY`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:902
+#: ../../../topics/downloader-middleware.rst:913
 msgid ""
 "This middleware obey :setting:`REDIRECT_MAX_TIMES` setting, :reqmeta:"
 "`dont_redirect`, :reqmeta:`redirect_urls` and :reqmeta:`redirect_reasons` "
 "request meta keys as described for :class:`RedirectMiddleware`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:908
+#: ../../../topics/downloader-middleware.rst:919
 msgid "MetaRefreshMiddleware settings"
 msgstr "元刷新中间件设置"
 
-#: ../../../topics/downloader-middleware.rst:913
+#: ../../../topics/downloader-middleware.rst:924
 msgid "METAREFRESH_ENABLED"
 msgstr "METAREFRESH_PLAYLIN"
 
-#: ../../../topics/downloader-middleware.rst:917
+#: ../../../topics/downloader-middleware.rst:928
 msgid "Whether the Meta Refresh middleware will be enabled."
 msgstr "Meta 刷新中间件是否启用。"
 
-#: ../../../topics/downloader-middleware.rst:922
+#: ../../../topics/downloader-middleware.rst:933
 msgid "METAREFRESH_IGNORE_TAGS"
 msgstr "METAREFRESH_INTERNATIONAL"
 
-#: ../../../topics/downloader-middleware.rst:926
+#: ../../../topics/downloader-middleware.rst:937
 msgid "Meta tags within these tags are ignored."
 msgstr "忽略这些标签中的元标签。"
 
-#: ../../../topics/downloader-middleware.rst:928
+#: ../../../topics/downloader-middleware.rst:939
 msgid ""
 "The default value of :setting:`METAREFRESH_IGNORE_TAGS` changed from ``[]`` "
 "to ``[\"noscript\"]``."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:935
+#: ../../../topics/downloader-middleware.rst:946
 msgid "METAREFRESH_MAXDELAY"
 msgstr "METAREFRESH_MEXDELAY"
 
-#: ../../../topics/downloader-middleware.rst:937
+#: ../../../topics/downloader-middleware.rst:948
 msgid "Default: ``100``"
 msgstr "默认值： ``100``"
 
-#: ../../../topics/downloader-middleware.rst:939
+#: ../../../topics/downloader-middleware.rst:950
 msgid ""
 "The maximum meta-refresh delay (in seconds) to follow the redirection. Some "
 "sites use meta-refresh for redirecting to a session expired page, so we "
@@ -1444,17 +1456,17 @@ msgstr ""
 "最大元刷新延迟(以秒为单位)以跟随重定向。 有些站点使用元刷新来重定向到会话过期"
 "页面，所以我们限制自动重定向到最大延迟。"
 
-#: ../../../topics/downloader-middleware.rst:944
+#: ../../../topics/downloader-middleware.rst:955
 msgid "RetryMiddleware"
 msgstr "重试中间件"
 
-#: ../../../topics/downloader-middleware.rst:951
+#: ../../../topics/downloader-middleware.rst:962
 msgid ""
 "A middleware to retry failed requests that are potentially caused by "
 "temporary problems such as a connection timeout or HTTP 500 error."
 msgstr "重试失败请求的中间件，如连接超时或 HTTP 500 错误。"
 
-#: ../../../topics/downloader-middleware.rst:954
+#: ../../../topics/downloader-middleware.rst:965
 msgid ""
 "Failed pages are collected on the scraping process and rescheduled at the "
 "end, once the spider has finished crawling all regular (non failed) pages."
@@ -1462,35 +1474,35 @@ msgstr ""
 "在拆解过程中收集失败的页面，并在结束时重新安排时间，一旦旋转器完成整理所有常"
 "规(非失败)页面。"
 
-#: ../../../topics/downloader-middleware.rst:957
+#: ../../../topics/downloader-middleware.rst:968
 msgid ""
 "The :class:`RetryMiddleware` can be configured through the following "
 "settings (see the settings documentation for more info):"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:960
+#: ../../../topics/downloader-middleware.rst:971
 msgid ":setting:`RETRY_ENABLED`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:961
+#: ../../../topics/downloader-middleware.rst:972
 msgid ":setting:`RETRY_TIMES`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:962
+#: ../../../topics/downloader-middleware.rst:973
 msgid ":setting:`RETRY_HTTP_CODES`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:963
+#: ../../../topics/downloader-middleware.rst:974
 msgid ":setting:`RETRY_EXCEPTIONS`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:967
+#: ../../../topics/downloader-middleware.rst:978
 msgid ""
 "If :attr:`Request.meta <scrapy.Request.meta>` has ``dont_retry`` key set to "
 "True, the request will be ignored by this middleware."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:970
+#: ../../../topics/downloader-middleware.rst:981
 msgid ""
 "To retry requests from a spider callback, you can use the :func:"
 "`get_retry_request` function:"
@@ -1577,31 +1589,31 @@ msgid ""
 "related job stats"
 msgstr "*stats_base_key* 是一个字符串，可用作与重试相关的作业统计的基本密钥"
 
-#: ../../../topics/downloader-middleware.rst:976
+#: ../../../topics/downloader-middleware.rst:987
 msgid "RetryMiddleware Settings"
 msgstr "RetryMiddleware 设置"
 
-#: ../../../topics/downloader-middleware.rst:981
+#: ../../../topics/downloader-middleware.rst:992
 msgid "RETRY_ENABLED"
 msgstr "RETRY_已启用"
 
-#: ../../../topics/downloader-middleware.rst:985
+#: ../../../topics/downloader-middleware.rst:996
 msgid "Whether the Retry middleware will be enabled."
 msgstr "是否启用重试中间件."
 
-#: ../../../topics/downloader-middleware.rst:990
+#: ../../../topics/downloader-middleware.rst:1001
 msgid "RETRY_TIMES"
 msgstr "TRY_TIMES"
 
-#: ../../../topics/downloader-middleware.rst:992
+#: ../../../topics/downloader-middleware.rst:1003
 msgid "Default: ``2``"
 msgstr "默认: ``2``"
 
-#: ../../../topics/downloader-middleware.rst:994
+#: ../../../topics/downloader-middleware.rst:1005
 msgid "Maximum number of times to retry, in addition to the first download."
 msgstr "除第一次下载外，重试的最大次数。"
 
-#: ../../../topics/downloader-middleware.rst:996
+#: ../../../topics/downloader-middleware.rst:1007
 msgid ""
 "Maximum number of retries can also be specified per-request using :reqmeta:"
 "`max_retry_times` attribute of :attr:`Request.meta <scrapy.Request.meta>`. "
@@ -1609,36 +1621,36 @@ msgid ""
 "precedence over the :setting:`RETRY_TIMES` setting."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1004
+#: ../../../topics/downloader-middleware.rst:1015
 msgid "RETRY_HTTP_CODES"
 msgstr "RETRY_HTTP_CODES"
 
-#: ../../../topics/downloader-middleware.rst:1006
+#: ../../../topics/downloader-middleware.rst:1017
 msgid "Default: ``[500, 502, 503, 504, 522, 524, 408, 429]``"
 msgstr "默认： ``[500、502、503、504、522、524、408、429]``"
 
-#: ../../../topics/downloader-middleware.rst:1008
+#: ../../../topics/downloader-middleware.rst:1019
 msgid ""
 "Which HTTP response codes to retry. Other errors (DNS lookup issues, "
 "connections lost, etc) are always retried."
 msgstr "要重试的HTTP响应码。其他错误 (DNS 查找问题、连接丢失等) 总是被检索。"
 
-#: ../../../topics/downloader-middleware.rst:1011
+#: ../../../topics/downloader-middleware.rst:1022
 msgid ""
 "In some cases you may want to add 400 to :setting:`RETRY_HTTP_CODES` because "
 "it is a common code used to indicate server overload. It is not included by "
 "default because HTTP specs say so."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1018
+#: ../../../topics/downloader-middleware.rst:1029
 msgid "RETRY_EXCEPTIONS"
 msgstr "RETRY_EXCEPTIONS"
 
-#: ../../../topics/downloader-middleware.rst:1020
+#: ../../../topics/downloader-middleware.rst:1031
 msgid "Default::"
 msgstr "默认：:"
 
-#: ../../../topics/downloader-middleware.rst:1022
+#: ../../../topics/downloader-middleware.rst:1033
 msgid ""
 "[\n"
 "    'scrapy.exceptions.CannotResolveHostError',\n"
@@ -1654,16 +1666,16 @@ msgid ""
 "]"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1035
+#: ../../../topics/downloader-middleware.rst:1046
 msgid "List of exceptions to retry."
 msgstr "需要重试的异常列表。"
 
-#: ../../../topics/downloader-middleware.rst:1037
+#: ../../../topics/downloader-middleware.rst:1048
 msgid ""
 "Each list entry may be an exception type or its import path as a string."
 msgstr "每个列表条目可以是异常类型或导入路径作为字符串。"
 
-#: ../../../topics/downloader-middleware.rst:1039
+#: ../../../topics/downloader-middleware.rst:1050
 msgid ""
 "An exception will not be caught when the exception type is not in :setting:"
 "`RETRY_EXCEPTIONS` or when the maximum number of retries for a request has "
@@ -1672,43 +1684,43 @@ msgid ""
 "DownloaderMiddleware.process_exception`."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1048
+#: ../../../topics/downloader-middleware.rst:1059
 msgid "RETRY_PRIORITY_ADJUST"
 msgstr "TRY_PRIORITY_ADJUST"
 
-#: ../../../topics/downloader-middleware.rst:1050
+#: ../../../topics/downloader-middleware.rst:1061
 msgid "Default: ``-1``"
 msgstr "默认值： ``-1``"
 
-#: ../../../topics/downloader-middleware.rst:1052
+#: ../../../topics/downloader-middleware.rst:1063
 msgid "Adjust retry request priority relative to original request:"
 msgstr "调整重试请求相对于原始请求的优先级："
 
-#: ../../../topics/downloader-middleware.rst:1054
+#: ../../../topics/downloader-middleware.rst:1065
 msgid "a positive priority adjust means higher priority."
 msgstr "积极的优先次序调整意味着更高的优先次序。"
 
-#: ../../../topics/downloader-middleware.rst:1055
+#: ../../../topics/downloader-middleware.rst:1066
 msgid "**a negative priority adjust (default) means lower priority.**"
 msgstr "**负优先级调整 (默认) 意味着较低优先级。**"
 
-#: ../../../topics/downloader-middleware.rst:1061
+#: ../../../topics/downloader-middleware.rst:1072
 msgid "RobotsTxtMiddleware"
 msgstr "机器人Txt中间件"
 
-#: ../../../topics/downloader-middleware.rst:1068
+#: ../../../topics/downloader-middleware.rst:1079
 msgid ""
 "This middleware filters out requests forbidden by the robots.txt exclusion "
 "standard."
 msgstr "此中间件过滤器排除了robots.txt 排除标准禁止的请求。"
 
-#: ../../../topics/downloader-middleware.rst:1071
+#: ../../../topics/downloader-middleware.rst:1082
 msgid ""
 "To make sure Scrapy respects robots.txt make sure the middleware is enabled "
 "and the :setting:`ROBOTSTXT_OBEY` setting is enabled."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1074
+#: ../../../topics/downloader-middleware.rst:1085
 msgid ""
 "The :setting:`ROBOTSTXT_USER_AGENT` setting can be used to specify the user "
 "agent string to use for matching in the robots.txt_ file. If it is ``None``, "
@@ -1717,57 +1729,57 @@ msgid ""
 "agent to use in the robots.txt_ file."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1080
+#: ../../../topics/downloader-middleware.rst:1091
 msgid "This middleware has to be combined with a robots.txt_ parser."
 msgstr "这个中间件必须与 robots.txt_ 解析器合并。"
 
-#: ../../../topics/downloader-middleware.rst:1082
+#: ../../../topics/downloader-middleware.rst:1093
 msgid "Scrapy ships with support for the following robots.txt_ parsers:"
 msgstr "支持下面的 robots.txt_ 解析器的废船："
 
-#: ../../../topics/downloader-middleware.rst:1084
+#: ../../../topics/downloader-middleware.rst:1095
 msgid ":ref:`Protego <protego-parser>` (default)"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1085
+#: ../../../topics/downloader-middleware.rst:1096
 msgid ":ref:`RobotFileParser <python-robotfileparser>`"
 msgstr ":ref:`RobotFileParser <python-robotfileparser>`"
 
-#: ../../../topics/downloader-middleware.rst:1086
+#: ../../../topics/downloader-middleware.rst:1097
 msgid ":ref:`Robotexclusionrulesparser <rerp-parser>`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1088
+#: ../../../topics/downloader-middleware.rst:1099
 msgid ""
 "You can change the robots.txt_ parser with the :setting:`ROBOTSTXT_PARSER` "
 "setting. Or you can also :ref:`implement support for a new parser <support-"
 "for-new-robots-parser>`."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1093
+#: ../../../topics/downloader-middleware.rst:1104
 msgid ""
 "If :attr:`Request.meta <scrapy.Request.meta>` has ``dont_obey_robotstxt`` "
 "key set to True the request will be ignored by this middleware even if :"
 "setting:`ROBOTSTXT_OBEY` is enabled."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1098
+#: ../../../topics/downloader-middleware.rst:1109
 msgid "Parsers vary in several aspects:"
 msgstr "Parsers 在几个方面各有不同："
 
-#: ../../../topics/downloader-middleware.rst:1100
+#: ../../../topics/downloader-middleware.rst:1111
 msgid "Language of implementation"
 msgstr "实施的语文"
 
-#: ../../../topics/downloader-middleware.rst:1102
+#: ../../../topics/downloader-middleware.rst:1113
 msgid "Supported specification"
 msgstr "支持的规范"
 
-#: ../../../topics/downloader-middleware.rst:1104
+#: ../../../topics/downloader-middleware.rst:1115
 msgid "Support for wildcard matching"
 msgstr "支持通配符"
 
-#: ../../../topics/downloader-middleware.rst:1106
+#: ../../../topics/downloader-middleware.rst:1117
 msgid ""
 "Usage of `length based rule <https://developers.google.com/crawling/docs/"
 "robots-txt/robots-txt-spec#order-of-precedence-for-rules>`_: in particular "
@@ -1775,7 +1787,7 @@ msgid ""
 "based on the length of the path trumps the less specific (shorter) rule"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1111
+#: ../../../topics/downloader-middleware.rst:1122
 msgid ""
 "Performance comparison of different parsers is available at `the following "
 "link <https://github.com/scrapy/scrapy/issues/3969>`_."
@@ -1783,52 +1795,52 @@ msgstr ""
 "不同解析器的性能比较可在 `下面的链接 <https://github.com/scrapy/scrapy/"
 "issues/3969>`_上找到。"
 
-#: ../../../topics/downloader-middleware.rst:1117
+#: ../../../topics/downloader-middleware.rst:1128
 msgid "Protego parser"
 msgstr "Protego parser"
 
-#: ../../../topics/downloader-middleware.rst:1119
+#: ../../../topics/downloader-middleware.rst:1130
 msgid "Based on `Protego <https://github.com/scrapy/protego>`_:"
 msgstr "基于 `Protego <https://github.com/scrapy/protego>`_:"
 
-#: ../../../topics/downloader-middleware.rst:1121
-#: ../../../topics/downloader-middleware.rst:1161
+#: ../../../topics/downloader-middleware.rst:1132
+#: ../../../topics/downloader-middleware.rst:1172
 msgid "implemented in Python"
 msgstr "在 Python 中实现"
 
-#: ../../../topics/downloader-middleware.rst:1123
+#: ../../../topics/downloader-middleware.rst:1134
 msgid ""
 "is compliant with `Google's Robots.txt Specification <https://developers."
 "google.com/crawling/docs/robots-txt/robots-txt-spec>`_"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1126
-#: ../../../topics/downloader-middleware.rst:1166
+#: ../../../topics/downloader-middleware.rst:1137
+#: ../../../topics/downloader-middleware.rst:1177
 msgid "supports wildcard matching"
 msgstr "支持通配符"
 
-#: ../../../topics/downloader-middleware.rst:1128
+#: ../../../topics/downloader-middleware.rst:1139
 msgid "uses the length based rule"
 msgstr "使用基于长度的规则"
 
-#: ../../../topics/downloader-middleware.rst:1130
+#: ../../../topics/downloader-middleware.rst:1141
 msgid "Scrapy uses this parser by default."
 msgstr "默认情况下，Scrapy 使用此解析器。"
 
-#: ../../../topics/downloader-middleware.rst:1135
+#: ../../../topics/downloader-middleware.rst:1146
 msgid "RobotFileParser"
 msgstr "RobotFileParser"
 
-#: ../../../topics/downloader-middleware.rst:1137
+#: ../../../topics/downloader-middleware.rst:1148
 msgid "Based on :class:`~urllib.robotparser.RobotFileParser`:"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1139
+#: ../../../topics/downloader-middleware.rst:1150
 msgid "is Python's built-in robots.txt_ parser"
 msgstr "是 Python 内置的 robots.txt_ 解析器"
 
-#: ../../../topics/downloader-middleware.rst:1141
-#: ../../../topics/downloader-middleware.rst:1163
+#: ../../../topics/downloader-middleware.rst:1152
+#: ../../../topics/downloader-middleware.rst:1174
 msgid ""
 "is compliant with `Martijn Koster's 1996 draft specification <https://www."
 "robotstxt.org/norobots-rfc.txt>`_"
@@ -1836,34 +1848,33 @@ msgstr ""
 "符合`Martijn Koster1996年规格草案 <https://www.robotstxt.org/norobots-rfc."
 "txt>`_"
 
-#: ../../../topics/downloader-middleware.rst:1144
-msgid "lacks support for wildcard matching"
-msgstr "不支持通配符"
+#: ../../../topics/downloader-middleware.rst:1155
+msgid "lacks support for wildcard matching (before Python 3.14.5)"
+msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1146
-#: ../../../topics/downloader-middleware.rst:1168
-msgid "doesn't use the length based rule"
-msgstr "不使用基于长度的规则"
+#: ../../../topics/downloader-middleware.rst:1157
+msgid "doesn't use the length based rule (before Python 3.14.5)"
+msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1148
+#: ../../../topics/downloader-middleware.rst:1159
 msgid ""
 "It is faster than Protego and backward-compatible with versions of Scrapy "
 "before 1.8.0."
 msgstr "它比Protego快，比1.8.0之前的废品版本与后向兼容。"
 
-#: ../../../topics/downloader-middleware.rst:1150
+#: ../../../topics/downloader-middleware.rst:1161
 msgid "In order to use this parser, set:"
 msgstr "为了使用此解析器，设置："
 
-#: ../../../topics/downloader-middleware.rst:1152
+#: ../../../topics/downloader-middleware.rst:1163
 msgid ":setting:`ROBOTSTXT_PARSER` to ``scrapy.robotstxt.PythonRobotParser``"
 msgstr ":setting:`ROBOTSTXT_PARSER` to ``scrapy.robotstxt.PythonRobotParser``"
 
-#: ../../../topics/downloader-middleware.rst:1157
+#: ../../../topics/downloader-middleware.rst:1168
 msgid "Robotexclusionrulesparser"
 msgstr "Robotexclusionrules解析器"
 
-#: ../../../topics/downloader-middleware.rst:1159
+#: ../../../topics/downloader-middleware.rst:1170
 msgid ""
 "Based on `Robotexclusionrulesparser <https://pypi.org/project/"
 "robotexclusionrulesparser/>`_:"
@@ -1871,11 +1882,15 @@ msgstr ""
 "基于 `Robotexclusionrulesser <https://pypi.org/project/"
 "robotexclusionrulesparser/>`_:"
 
-#: ../../../topics/downloader-middleware.rst:1170
+#: ../../../topics/downloader-middleware.rst:1179
+msgid "doesn't use the length based rule"
+msgstr "不使用基于长度的规则"
+
+#: ../../../topics/downloader-middleware.rst:1181
 msgid "In order to use this parser:"
 msgstr "要使用此解析器："
 
-#: ../../../topics/downloader-middleware.rst:1172
+#: ../../../topics/downloader-middleware.rst:1183
 msgid ""
 "Install ``Robotexclusionrulesparser`` by running ``pip install "
 "robotexclusionrulesparser``"
@@ -1883,17 +1898,17 @@ msgstr ""
 "运行 ``Robotexclusionrulesparser`` 安装 ``pipp install "
 "robotexclusionrulesparser``"
 
-#: ../../../topics/downloader-middleware.rst:1175
+#: ../../../topics/downloader-middleware.rst:1186
 msgid ""
 "Set :setting:`ROBOTSTXT_PARSER` setting to ``scrapy.robotstxt."
 "RerpRobotParser``"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1181
+#: ../../../topics/downloader-middleware.rst:1192
 msgid "Implementing support for a new parser"
 msgstr "支持新的解析器"
 
-#: ../../../topics/downloader-middleware.rst:1183
+#: ../../../topics/downloader-middleware.rst:1194
 msgid ""
 "You can implement support for a new robots.txt_ parser by subclassing the "
 "abstract base class :class:`~scrapy.robotstxt.RobotParser` and implementing "
@@ -1938,30 +1953,33 @@ msgstr "请求的 crawler"
 msgid "content of a robots.txt_ file."
 msgstr "robots.txt_文件的内容。"
 
-#: ../../../topics/downloader-middleware.rst:1196
+#: ../../../topics/downloader-middleware.rst:1207
 msgid "DownloaderStats"
 msgstr "下载统计"
 
-#: ../../../topics/downloader-middleware.rst:1203
+#: ../../../topics/downloader-middleware.rst:1214
 msgid ""
 "Middleware that stores stats of all requests, responses and exceptions that "
 "pass through it."
 msgstr "存储所有请求、 响应和异常通过的中件的统计信息。"
 
-#: ../../../topics/downloader-middleware.rst:1206
+#: ../../../topics/downloader-middleware.rst:1217
 msgid ""
 "To use this middleware you must enable the :setting:`DOWNLOADER_STATS` "
 "setting."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1210
+#: ../../../topics/downloader-middleware.rst:1221
 msgid "UserAgentMiddleware"
 msgstr "UserAgentMiddleware"
 
-#: ../../../topics/downloader-middleware.rst:1217
+#: ../../../topics/downloader-middleware.rst:1228
 msgid "Middleware that sets the ``User-Agent`` header."
 msgstr "设置 ``User-Agent`` 标题的中间件."
 
-#: ../../../topics/downloader-middleware.rst:1219
+#: ../../../topics/downloader-middleware.rst:1230
 msgid "The header value is taken from the :setting:`USER_AGENT` setting."
 msgstr ""
+
+#~ msgid "lacks support for wildcard matching"
+#~ msgstr "不支持通配符"

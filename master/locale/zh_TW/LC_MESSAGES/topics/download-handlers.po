@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-11 11:50+0000\n"
+"POT-Creation-Date: 2026-06-08 13:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -209,8 +209,8 @@ msgstr ""
 #: ../../../topics/download-handlers.rst:142
 #: ../../../topics/download-handlers.rst:152
 #: ../../../topics/download-handlers.rst:163
-#: ../../../topics/download-handlers.rst:234
-#: ../../../topics/download-handlers.rst:250
+#: ../../../topics/download-handlers.rst:236
+#: ../../../topics/download-handlers.rst:252
 msgid "Lazy: no."
 msgstr ""
 
@@ -249,8 +249,8 @@ msgid "It's implemented using :mod:`twisted.protocols.ftp`."
 msgstr ""
 
 #: ../../../topics/download-handlers.rst:170
-#: ../../../topics/download-handlers.rst:226
-#: ../../../topics/download-handlers.rst:242
+#: ../../../topics/download-handlers.rst:228
+#: ../../../topics/download-handlers.rst:244
 msgid ""
 "This handler is not supported when :setting:`TWISTED_REACTOR_ENABLED` is "
 "``False``."
@@ -265,7 +265,7 @@ msgid "Supported scheme: ``https``."
 msgstr ""
 
 #: ../../../topics/download-handlers.rst:180
-#: ../../../topics/download-handlers.rst:301
+#: ../../../topics/download-handlers.rst:298
 msgid "Lazy: yes."
 msgstr ""
 
@@ -311,63 +311,67 @@ msgid "Known limitations of the HTTP/2 implementation in this handler include:"
 msgstr ""
 
 #: ../../../topics/download-handlers.rst:209
+msgid "No support for proxies."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:211
 msgid ""
 "No support for HTTP/2 Cleartext (h2c), since no major browser supports "
 "HTTP/2 unencrypted (refer `http2 faq`_)."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:212
+#: ../../../topics/download-handlers.rst:214
 msgid ""
 "No setting to specify a maximum `frame size`_ larger than the default value, "
 "16384. Connections to servers that send a larger frame will fail."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:216
+#: ../../../topics/download-handlers.rst:218
 msgid "No support for `server pushes`_, which are ignored."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:218
+#: ../../../topics/download-handlers.rst:220
 msgid ""
 "No support for the :signal:`bytes_received` and :signal:`headers_received` "
 "signals."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:229
+#: ../../../topics/download-handlers.rst:231
 msgid "HTTP11DownloadHandler"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:233
-#: ../../../topics/download-handlers.rst:249
+#: ../../../topics/download-handlers.rst:235
+#: ../../../topics/download-handlers.rst:251
 msgid "Supported schemes: ``http``, ``https``."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:236
-#: ../../../topics/download-handlers.rst:252
+#: ../../../topics/download-handlers.rst:238
+#: ../../../topics/download-handlers.rst:254
 msgid ""
 "This handler supports ``http://host/path`` and ``https://host/path`` URLs "
 "and uses the HTTP/1.1 protocol for them."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:239
+#: ../../../topics/download-handlers.rst:241
 msgid "It's implemented using :mod:`twisted.web.client`."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:245
+#: ../../../topics/download-handlers.rst:247
 msgid "HttpxDownloadHandler"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:255
+#: ../../../topics/download-handlers.rst:257
 msgid ""
 "It's implemented using the ``httpx`` library and needs it to be installed."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:257
+#: ../../../topics/download-handlers.rst:259
 msgid ""
 "If you want to use this handler you need to replace the default ones for the "
 "``http`` and ``https`` schemes:"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:260
+#: ../../../topics/download-handlers.rst:262
 msgid ""
 "DOWNLOAD_HANDLERS = {\n"
 "    \"http\": \"scrapy.core.downloader.handlers._httpx."
@@ -377,23 +381,19 @@ msgid ""
 "}"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:269
+#: ../../../topics/download-handlers.rst:271
 msgid ""
 "This handler is experimental, and not yet recommended for production "
 "environments. Future Scrapy versions may introduce related changes without a "
 "deprecation period or warning or even remove it altogether."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:275
+#: ../../../topics/download-handlers.rst:277
 msgid ""
 "As this handler is based on a different HTTP client implementation compared "
 "to :class:`~.HTTP11DownloadHandler`, it's expected that its behavior on some "
 "websites may be different. Additionally, these are the Scrapy features that "
 "are explicitly not supported when using it:"
-msgstr ""
-
-#: ../../../topics/download-handlers.rst:280
-msgid "Proxy support (the :reqmeta:`proxy` meta key)."
 msgstr ""
 
 #: ../../../topics/download-handlers.rst:282
@@ -405,35 +405,29 @@ msgstr ""
 
 #: ../../../topics/download-handlers.rst:286
 msgid ""
-"The :setting:`DOWNLOADER_CLIENT_TLS_CIPHERS` and :setting:"
-"`DOWNLOADER_CLIENT_TLS_METHOD` settings."
-msgstr ""
-
-#: ../../../topics/download-handlers.rst:289
-msgid ""
 "Settings specific to the Twisted networking or HTTP implementation, like :"
 "setting:`DNS_RESOLVER`."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:292
+#: ../../../topics/download-handlers.rst:289
 msgid ""
 "Using :ref:`non-asyncio reactors <disable-asyncio>` (``httpx`` requires "
 "``asyncio``)."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:296
+#: ../../../topics/download-handlers.rst:293
 msgid "S3DownloadHandler"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:300
+#: ../../../topics/download-handlers.rst:297
 msgid "Supported scheme: ``s3``."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:303
+#: ../../../topics/download-handlers.rst:300
 msgid "This handler supports ``s3://bucket/path`` S3 URIs."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:305
+#: ../../../topics/download-handlers.rst:302
 msgid ""
 "It's implemented using the ``botocore`` library and needs it to be installed."
 msgstr ""

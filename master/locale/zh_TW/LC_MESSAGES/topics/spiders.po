@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-06 09:38+0000\n"
+"POT-Creation-Date: 2026-06-08 13:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -690,20 +690,21 @@ msgstr ""
 
 #: ../../../topics/spiders.rst:458
 msgid ""
-"import scrapy\n"
+"from dataclasses import dataclass\n"
 "\n"
 "\n"
-"class TestItem(scrapy.Item):\n"
-"    id = scrapy.Field()\n"
-"    name = scrapy.Field()\n"
-"    description = scrapy.Field()"
+"@dataclass\n"
+"class TestItem:\n"
+"    id: str | None = None\n"
+"    name: str | None = None\n"
+"    description: str | None = None"
 msgstr ""
 
-#: ../../../topics/spiders.rst:472
+#: ../../../topics/spiders.rst:473
 msgid "CrawlSpider"
 msgstr ""
 
-#: ../../../topics/spiders.rst:476
+#: ../../../topics/spiders.rst:477
 msgid ""
 "This is the most commonly used spider for crawling regular websites, as it "
 "provides a convenient mechanism for following links by defining a set of "
@@ -713,13 +714,13 @@ msgid ""
 "your own spider."
 msgstr ""
 
-#: ../../../topics/spiders.rst:482
+#: ../../../topics/spiders.rst:483
 msgid ""
 "Apart from the attributes inherited from Spider (that you must specify), "
 "this class supports a new attribute:"
 msgstr ""
 
-#: ../../../topics/spiders.rst:487
+#: ../../../topics/spiders.rst:488
 msgid ""
 "Which is a list of one (or more) :class:`Rule` objects.  Each :class:`Rule` "
 "defines a certain behaviour for crawling the site. Rules objects are "
@@ -727,11 +728,11 @@ msgid ""
 "be used, according to the order they're defined in this attribute."
 msgstr ""
 
-#: ../../../topics/spiders.rst:492
+#: ../../../topics/spiders.rst:493
 msgid "This spider also exposes an overridable method:"
 msgstr ""
 
-#: ../../../topics/spiders.rst:496
+#: ../../../topics/spiders.rst:497
 msgid ""
 "This method is called for each response produced for the URLs in the "
 "spider's ``start_urls`` attribute. It allows to parse the initial responses "
@@ -739,11 +740,11 @@ msgid ""
 "`~scrapy.Request` object, or an iterable containing any of them."
 msgstr ""
 
-#: ../../../topics/spiders.rst:503
+#: ../../../topics/spiders.rst:504
 msgid "Crawling rules"
 msgstr ""
 
-#: ../../../topics/spiders.rst:507
+#: ../../../topics/spiders.rst:508
 msgid ""
 "``link_extractor`` is a :ref:`Link Extractor <topics-link-extractors>` "
 "object which defines how links will be extracted from each crawled page. "
@@ -753,7 +754,7 @@ msgid ""
 "arguments will be used, resulting in all links being extracted."
 msgstr ""
 
-#: ../../../topics/spiders.rst:514
+#: ../../../topics/spiders.rst:515
 msgid ""
 "``callback`` is a callable or a string (in which case a method from the "
 "spider object with that name will be used) to be called for each link "
@@ -766,20 +767,20 @@ msgid ""
 "dictionary (under the ``link_text`` key)"
 msgstr ""
 
-#: ../../../topics/spiders.rst:523
+#: ../../../topics/spiders.rst:524
 msgid ""
 "``cb_kwargs`` is a dict containing the keyword arguments to be passed to the "
 "callback function."
 msgstr ""
 
-#: ../../../topics/spiders.rst:526
+#: ../../../topics/spiders.rst:527
 msgid ""
 "``follow`` is a boolean which specifies if links should be followed from "
 "each response extracted with this rule. If ``callback`` is None ``follow`` "
 "defaults to ``True``, otherwise it defaults to ``False``."
 msgstr ""
 
-#: ../../../topics/spiders.rst:530
+#: ../../../topics/spiders.rst:531
 msgid ""
 "``process_links`` is a callable, or a string (in which case a method from "
 "the spider object with that name will be used) which will be called for each "
@@ -787,7 +788,7 @@ msgid ""
 "``link_extractor``. This is mainly used for filtering purposes."
 msgstr ""
 
-#: ../../../topics/spiders.rst:535
+#: ../../../topics/spiders.rst:536
 msgid ""
 "``process_request`` is a callable (or a string, in which case a method from "
 "the spider object with that name will be used) which will be called for "
@@ -797,7 +798,7 @@ msgid ""
 "``Request`` object or ``None`` (to filter out the request)."
 msgstr ""
 
-#: ../../../topics/spiders.rst:542
+#: ../../../topics/spiders.rst:543
 msgid ""
 "``errback`` is a callable or a string (in which case a method from the "
 "spider object with that name will be used) to be called if any exception is "
@@ -806,24 +807,23 @@ msgid ""
 "parameter."
 msgstr ""
 
-#: ../../../topics/spiders.rst:548
+#: ../../../topics/spiders.rst:549
 msgid ""
 "Because of its internal implementation, you must explicitly set callbacks "
 "for new requests when writing :class:`CrawlSpider`-based spiders; unexpected "
 "behaviour can occur otherwise."
 msgstr ""
 
-#: ../../../topics/spiders.rst:553
+#: ../../../topics/spiders.rst:554
 msgid "CrawlSpider example"
 msgstr ""
 
-#: ../../../topics/spiders.rst:555
+#: ../../../topics/spiders.rst:556
 msgid "Let's now take a look at an example CrawlSpider with rules:"
 msgstr ""
 
-#: ../../../topics/spiders.rst:557
+#: ../../../topics/spiders.rst:558
 msgid ""
-"import scrapy\n"
 "from scrapy.spiders import CrawlSpider, Rule\n"
 "from scrapy.linkextractors import LinkExtractor\n"
 "\n"
@@ -848,7 +848,7 @@ msgid ""
 "\n"
 "    def parse_item(self, response):\n"
 "        self.logger.info(\"Hi, this is an item page! %s\", response.url)\n"
-"        item = scrapy.Item()\n"
+"        item = {}\n"
 "        item[\"id\"] = response.xpath('//td[@id=\"item_id\"]/text()')."
 "re(r\"ID: (\\d+)\")\n"
 "        item[\"name\"] = response.xpath('//td[@id=\"item_name\"]/text()')."
@@ -1026,9 +1026,9 @@ msgid ""
 "        )\n"
 "\n"
 "        item = TestItem()\n"
-"        item[\"id\"] = node.xpath(\"@id\").get()\n"
-"        item[\"name\"] = node.xpath(\"name\").get()\n"
-"        item[\"description\"] = node.xpath(\"description\").get()\n"
+"        item.id = node.xpath(\"@id\").get()\n"
+"        item.name = node.xpath(\"name\").get()\n"
+"        item.description = node.xpath(\"description\").get()\n"
 "        return item"
 msgstr ""
 
@@ -1103,9 +1103,9 @@ msgid ""
 "        self.logger.info(\"Hi, this is a row!: %r\", row)\n"
 "\n"
 "        item = TestItem()\n"
-"        item[\"id\"] = row[\"id\"]\n"
-"        item[\"name\"] = row[\"name\"]\n"
-"        item[\"description\"] = row[\"description\"]\n"
+"        item.id = row[\"id\"]\n"
+"        item.name = row[\"name\"]\n"
+"        item.description = row[\"description\"]\n"
 "        return item"
 msgstr ""
 
