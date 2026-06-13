@@ -37,9 +37,9 @@
     "branch" : "master",
     "commit" : 
     {
-      "date" : "2026-05-06 10:42:24 +0200",
-      "hash" : "5223dbe3fdf801a8a3e7877e271f54519ff73f0a",
-      "title" : "Pin pyOpenSSL to the versions allowing mutable contexts. (#7494)"
+      "date" : "2026-06-08 11:54:10 +0200",
+      "hash" : "d9e2f5fbf7da59ea61595cffea5e3399fb9c3574",
+      "title" : "Add settings for TLS min/max version as a replacement for the TLS method (#6546)"
     }
   },
   "type" : "branch",
