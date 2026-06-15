@@ -394,6 +394,3 @@ msgid ""
 "            \"price2\": responses[1][1].css(\".color::text\").get(),\n"
 "        }"
 msgstr ""
-
-#~ msgid "For example:"
-#~ msgstr "例如："

@@ -262,7 +262,7 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:183
 msgid "For example:"
-msgstr ""
+msgstr "例如："
 
 #: ../../../topics/spider-middleware.rst:185
 msgid ""
