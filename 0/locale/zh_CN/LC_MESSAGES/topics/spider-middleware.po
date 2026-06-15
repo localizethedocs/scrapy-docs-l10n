@@ -148,7 +148,7 @@ msgstr ""
 msgid ""
 "This method is called with the results returned from the Spider, after it "
 "has processed the response."
-msgstr "在处理了响应后，这个方法会与从Spider返回的结果一起调用。"
+msgstr ""
 
 #: ../../../topics/spider-middleware.rst:92
 msgid ""
@@ -162,7 +162,7 @@ msgstr "从旋转器生成此输出的响应"
 
 #: ../../../topics/spider-middleware.rst:99
 msgid "the result returned by the spider"
-msgstr "旋转器返回的结果"
+msgstr ""
 
 #: ../../../topics/spider-middleware.rst:103
 msgid "the spider whose result is being processed"
