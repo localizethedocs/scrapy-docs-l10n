@@ -404,8 +404,6 @@ msgid ""
 "the reason ``closespider_timeout``. If zero (or non set), spiders won't be "
 "closed by timeout."
 msgstr ""
-"指定数秒的整数。 如果跳跃器的开启时间超过这个秒数，它将自动关闭，原因是 "
-"``closespider_timeout`` 。 如果为零(或未设置)，则不会超时关闭。"
 
 #: ../../../topics/extensions.rst:273
 msgid "CLOSESPIDER_TIMEOUT_NO_ITEM"
