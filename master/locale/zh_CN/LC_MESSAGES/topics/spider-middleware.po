@@ -274,7 +274,7 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:183
 msgid "For example:"
-msgstr ""
+msgstr "例如："
 
 #: ../../../topics/spider-middleware.rst:185
 msgid ""
@@ -1014,11 +1014,3 @@ msgid ""
 ":setting:`URLLENGTH_LIMIT` - The maximum URL length to allow for crawled "
 "URLs."
 msgstr ""
-
-#~ msgid ""
-#~ "This method is called with the results returned from the Spider, after it "
-#~ "has processed the response."
-#~ msgstr "在处理了响应后，这个方法会与从Spider返回的结果一起调用。"
-
-#~ msgid "the result returned by the spider"
-#~ msgstr "旋转器返回的结果"

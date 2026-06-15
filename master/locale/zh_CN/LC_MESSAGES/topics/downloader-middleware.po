@@ -1980,6 +1980,3 @@ msgstr "设置 ``User-Agent`` 标题的中间件."
 #: ../../../topics/downloader-middleware.rst:1230
 msgid "The header value is taken from the :setting:`USER_AGENT` setting."
 msgstr ""
-
-#~ msgid "lacks support for wildcard matching"
-#~ msgstr "不支持通配符"
