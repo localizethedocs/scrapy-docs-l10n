@@ -1576,7 +1576,7 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:1059
 msgid "lacks support for wildcard matching"
-msgstr "不支持通配符"
+msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:1061
 #: ../../../topics/downloader-middleware.rst:1109
