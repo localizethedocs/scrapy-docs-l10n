@@ -1,0 +1,787 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-08 13:04+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/extensions.rst:5
+msgid "Extensions"
+msgstr "扩展"
+
+#: ../../../topics/extensions.rst:7
+msgid ""
+"Extensions are :ref:`components <topics-components>` that allow inserting "
+"your own custom functionality into Scrapy."
+msgstr ""
+
+#: ../../../topics/extensions.rst:10
+msgid ""
+"Unlike other components, extensions do not have a specific role in Scrapy. "
+"They are “wildcard” components that can be used for anything that does not "
+"fit the role of any other type of component."
+msgstr ""
+"与其他组件不同，扩展在废料中没有特定的角色。 它们是“通配符”组件，可用于任何不"
+"适合任何其他类型组件角色的组件。"
+
+#: ../../../topics/extensions.rst:15
+msgid "Loading and activating extensions"
+msgstr "正在加载和激活扩展"
+
+#: ../../../topics/extensions.rst:17
+msgid ""
+"Extensions are loaded at startup by creating a single instance of the "
+"extension class per spider being run."
+msgstr "每次运行时创建一个单一的扩展类实例，在启动时加载扩展。"
+
+#: ../../../topics/extensions.rst:20
+msgid ""
+"To enable an extension, add it to the :setting:`EXTENSIONS` setting. For "
+"example:"
+msgstr ""
+
+#: ../../../topics/extensions.rst:23
+msgid ""
+"EXTENSIONS = {\n"
+"    \"scrapy.extensions.corestats.CoreStats\": 500,\n"
+"    \"scrapy.extensions.telnet.TelnetConsole\": 500,\n"
+"}"
+msgstr ""
+"EXTENSIS = Power\n"
+"    \"scrapy.extensions.corests.CoreStats\": 500,\n"
+"    \"scrapy.extensions.telnet.TelnetConsole\": 500,\n"
+"}"
+
+#: ../../../topics/extensions.rst:30
+msgid ""
+":setting:`EXTENSIONS` is merged with :setting:`EXTENSIONS_BASE` (not meant "
+"to be overridden), and the priorities in the resulting value determine the "
+"*loading* order."
+msgstr ""
+
+#: ../../../topics/extensions.rst:34
+msgid ""
+"As extensions typically do not depend on each other, their loading order is "
+"irrelevant in most cases. This is why the :setting:`EXTENSIONS_BASE` setting "
+"defines all extensions with the same order (``0``). However, you may need to "
+"carefully use priorities if you add an extension that depends on other "
+"extensions being already loaded."
+msgstr ""
+
+#: ../../../topics/extensions.rst:41
+msgid "Writing your own extension"
+msgstr "写入您自己的扩展"
+
+#: ../../../topics/extensions.rst:43
+msgid "Each extension is a :ref:`component <topics-components>`."
+msgstr ""
+
+#: ../../../topics/extensions.rst:45
+msgid ""
+"Typically, extensions connect to :ref:`signals <topics-signals>` and perform "
+"tasks triggered by them."
+msgstr ""
+
+#: ../../../topics/extensions.rst:49
+msgid "Sample extension"
+msgstr "示例扩展"
+
+#: ../../../topics/extensions.rst:51
+msgid ""
+"Here we will implement a simple extension to illustrate the concepts "
+"described in the previous section. This extension will log a message every "
+"time:"
+msgstr ""
+"我们将在这里执行一个简单的扩展来说明上一节描述的概念。这个扩展将每次记录一条"
+"消息："
+
+#: ../../../topics/extensions.rst:54
+msgid "a spider is opened"
+msgstr "一个蜘蛛已经打开"
+
+#: ../../../topics/extensions.rst:55
+msgid "a spider is closed"
+msgstr "一个蜘蛛已被关闭"
+
+#: ../../../topics/extensions.rst:56
+msgid "a specific number of items are scraped"
+msgstr "特定数量的物品已被擦除"
+
+#: ../../../topics/extensions.rst:58
+msgid ""
+"The extension will be enabled through the ``MYEXT_ENABLED`` setting and the "
+"number of items will be specified through the ``MYEXT_ITEMCOUNT`` setting."
+msgstr ""
+"扩展将通过 ``MYEXT_ENABLED`` 设置启用，项目数量将通过 ``MYEXT_ITEMCOUNT`` 设"
+"置。"
+
+#: ../../../topics/extensions.rst:61
+msgid "Here is the code of such extension:"
+msgstr "这是此扩展的代码："
+
+#: ../../../topics/extensions.rst:63
+msgid ""
+"import logging\n"
+"from scrapy import signals\n"
+"from scrapy.exceptions import NotConfigured\n"
+"\n"
+"logger = logging.getLogger(__name__)\n"
+"\n"
+"\n"
+"class SpiderOpenCloseLogging:\n"
+"    def __init__(self, item_count):\n"
+"        self.item_count = item_count\n"
+"        self.items_scraped = 0\n"
+"\n"
+"    @classmethod\n"
+"    def from_crawler(cls, crawler):\n"
+"        # first check if the extension should be enabled and raise\n"
+"        # NotConfigured otherwise\n"
+"        if not crawler.settings.getbool(\"MYEXT_ENABLED\"):\n"
+"            raise NotConfigured\n"
+"\n"
+"        # get the number of items from settings\n"
+"        item_count = crawler.settings.getint(\"MYEXT_ITEMCOUNT\", 1000)\n"
+"\n"
+"        # instantiate the extension object\n"
+"        ext = cls(item_count)\n"
+"\n"
+"        # connect the extension object to signals\n"
+"        crawler.signals.connect(ext.spider_opened, signal=signals."
+"spider_opened)\n"
+"        crawler.signals.connect(ext.spider_closed, signal=signals."
+"spider_closed)\n"
+"        crawler.signals.connect(ext.item_scraped, signal=signals."
+"item_scraped)\n"
+"\n"
+"        # return the extension object\n"
+"        return ext\n"
+"\n"
+"    def spider_opened(self, spider):\n"
+"        logger.info(\"opened spider %s\", spider.name)\n"
+"\n"
+"    def spider_closed(self, spider):\n"
+"        logger.info(\"closed spider %s\", spider.name)\n"
+"\n"
+"    def item_scraped(self, item, spider):\n"
+"        self.items_scraped += 1\n"
+"        if self.items_scraped % self.item_count == 0:\n"
+"            logger.info(\"scraped %d items\", self.items_scraped)"
+msgstr ""
+
+#: ../../../topics/extensions.rst:113
+msgid "Built-in extensions reference"
+msgstr "内置扩展引用"
+
+#: ../../../topics/extensions.rst:116
+msgid "General purpose extensions"
+msgstr "一般用途扩展"
+
+#: ../../../topics/extensions.rst:119
+msgid "Log Stats extension"
+msgstr "日志统计扩展"
+
+#: ../../../topics/extensions.rst:126
+msgid "Log basic stats like crawled pages and scraped items."
+msgstr "记录基本统计信息，如破解过的页面和被窃的项目。"
+
+#: ../../../topics/extensions.rst:129
+msgid "Core Stats extension"
+msgstr "核心统计扩展"
+
+#: ../../../topics/extensions.rst:136
+msgid ""
+"Enable the collection of core statistics, provided the stats collection is "
+"enabled (see :ref:`topics-stats`)."
+msgstr ""
+
+#: ../../../topics/extensions.rst:139
+msgid "The following stats are collected:"
+msgstr ""
+
+#: ../../../topics/extensions.rst:141
+msgid ""
+"``start_time``: start date/time of the crawl (:class:`~datetime.datetime`)."
+msgstr ""
+
+#: ../../../topics/extensions.rst:142
+msgid ""
+"``finish_time``: end date/time of the crawl (:class:`~datetime.datetime`)."
+msgstr ""
+
+#: ../../../topics/extensions.rst:143
+msgid ""
+"``elapsed_time_seconds``: total crawl duration in seconds (:class:`float`)."
+msgstr ""
+
+#: ../../../topics/extensions.rst:144
+msgid ""
+"``finish_reason``: the closing reason string (e.g. ``\"finished\"``, "
+"``\"closespider_timeout\"``)."
+msgstr ""
+
+#: ../../../topics/extensions.rst:146
+msgid ""
+"``item_scraped_count``: total number of items that passed all pipelines."
+msgstr ""
+
+#: ../../../topics/extensions.rst:147
+msgid "``item_dropped_count``: total number of items dropped by a pipeline."
+msgstr ""
+
+#: ../../../topics/extensions.rst:148
+msgid ""
+"``item_dropped_reasons_count/<ExceptionName>``: per-exception drop count (e."
+"g. ``item_dropped_reasons_count/DropItem``)."
+msgstr ""
+
+#: ../../../topics/extensions.rst:150
+msgid "``response_received_count``: total number of HTTP responses received."
+msgstr ""
+
+#: ../../../topics/extensions.rst:155
+msgid "Log Count extension"
+msgstr "日志计数扩展"
+
+#: ../../../../scrapy/extensions/logcount.py:docstring of
+#: scrapy.extensions.logcount.LogCount:1
+msgid "Install a log handler that counts log messages by level."
+msgstr "安装日志处理程序，按级别记录日志消息。"
+
+#: ../../../../scrapy/extensions/logcount.py:docstring of
+#: scrapy.extensions.logcount.LogCount:3
+msgid ""
+"The handler installed is :class:`scrapy.utils.log.LogCounterHandler`. The "
+"counts are stored in stats as ``log_count/<level>``."
+msgstr ""
+
+#: ../../../topics/extensions.rst:163
+msgid "Telnet console extension"
+msgstr "Telnet 控制台扩展"
+
+#: ../../../topics/extensions.rst:170
+msgid ""
+"Provides a telnet console for getting into a Python interpreter inside the "
+"currently running Scrapy process, which can be very useful for debugging."
+msgstr ""
+"提供一个 telnet 控制台，用于进入当前运行的 Scrapy 进程中的 Python 解释器，这"
+"对调试非常有用。"
+
+#: ../../../topics/extensions.rst:173
+msgid ""
+"The telnet console must be enabled by the :setting:`TELNETCONSOLE_ENABLED` "
+"setting, and the server will listen in the port specified in :setting:"
+"`TELNETCONSOLE_PORT`."
+msgstr ""
+
+#: ../../../topics/extensions.rst:180
+msgid "Memory usage extension"
+msgstr "内存使用扩展"
+
+#: ../../../topics/extensions.rst:187
+msgid "This extension does not work in Windows."
+msgstr "此扩展在 Windows 中不可用。"
+
+#: ../../../topics/extensions.rst:189
+msgid ""
+"Monitors the memory used by the Scrapy process that runs the spider and:"
+msgstr "监视运行旋转器的废料过程所使用的内存，并且："
+
+#: ../../../topics/extensions.rst:191
+msgid ""
+"sends a :signal:`memusage_warning_reached` signal when it exceeds :setting:"
+"`MEMUSAGE_WARNING_MB`"
+msgstr ""
+
+#: ../../../topics/extensions.rst:193
+msgid ""
+"closes the spider with the `\"memusage_exceeded\"` reason when it exceeds :"
+"setting:`MEMUSAGE_LIMIT_MB`"
+msgstr ""
+
+#: ../../../topics/extensions.rst:196
+msgid ""
+"This extension is enabled by the :setting:`MEMUSAGE_ENABLED` setting and can "
+"be configured with the following settings:"
+msgstr ""
+
+#: ../../../topics/extensions.rst:199
+msgid ":setting:`MEMUSAGE_LIMIT_MB`"
+msgstr ""
+
+#: ../../../topics/extensions.rst:200
+msgid ":setting:`MEMUSAGE_WARNING_MB`"
+msgstr ""
+
+#: ../../../topics/extensions.rst:201
+msgid ":setting:`MEMUSAGE_CHECK_INTERVAL_SECONDS`"
+msgstr ""
+
+#: ../../../topics/extensions.rst:204
+msgid "Memory debugger extension"
+msgstr "内存调试器扩展"
+
+#: ../../../topics/extensions.rst:211
+msgid "An extension for debugging memory usage. It collects information about:"
+msgstr "调试内存使用的扩展。它收集有关以下方面的信息："
+
+#: ../../../topics/extensions.rst:213
+msgid "objects uncollected by the Python garbage collector"
+msgstr "Python垃圾收集器未收集的对象"
+
+#: ../../../topics/extensions.rst:214
+msgid ""
+"objects left alive that shouldn't. For more info, see :ref:`topics-leaks-"
+"trackrefs`"
+msgstr ""
+
+#: ../../../topics/extensions.rst:216
+msgid ""
+"To enable this extension, turn on the :setting:`MEMDEBUG_ENABLED` setting. "
+"The info will be stored in the stats."
+msgstr ""
+
+#: ../../../topics/extensions.rst:222
+msgid "Spider state extension"
+msgstr "Spider 状态扩展"
+
+#: ../../../topics/extensions.rst:229
+msgid ""
+"Manages spider state data by loading it before a crawl and saving it after."
+msgstr "将其加载到一个龙格之前并保存到后面来管理旋转器状态数据。"
+
+#: ../../../topics/extensions.rst:231
+msgid ""
+"Give a value to the :setting:`JOBDIR` setting to enable this extension. When "
+"enabled, this extension manages the :attr:`~scrapy.Spider.state` attribute "
+"of your :class:`~scrapy.Spider` instance:"
+msgstr ""
+
+#: ../../../topics/extensions.rst:235
+msgid ""
+"When your spider closes (:signal:`spider_closed`), the contents of its :attr:"
+"`~scrapy.Spider.state` attribute are serialized into a file named ``spider."
+"state`` in the :setting:`JOBDIR` folder."
+msgstr ""
+
+#: ../../../topics/extensions.rst:238
+msgid ""
+"When your spider opens (:signal:`spider_opened`), if a previously-generated "
+"``spider.state`` file exists in the :setting:`JOBDIR` folder, it is loaded "
+"into the :attr:`~scrapy.Spider.state` attribute."
+msgstr ""
+
+#: ../../../topics/extensions.rst:243
+msgid ""
+"For an example, see :ref:`topics-keeping-persistent-state-between-batches`."
+msgstr ""
+
+#: ../../../topics/extensions.rst:246
+msgid "Close spider extension"
+msgstr "关闭蜘蛛扩展"
+
+#: ../../../topics/extensions.rst:253
+msgid ""
+"Closes a spider automatically when some conditions are met, using a specific "
+"closing reason for each condition."
+msgstr "在满足某些条件时自动关闭旋转器，使用每个条件的特定关闭原因。"
+
+#: ../../../topics/extensions.rst:256
+msgid ""
+"The conditions for closing a spider can be configured through the following "
+"settings:"
+msgstr "关闭旋转器的条件可以通过以下设置进行配置："
+
+#: ../../../topics/extensions.rst:259
+msgid ":setting:`CLOSESPIDER_TIMEOUT`"
+msgstr ""
+
+#: ../../../topics/extensions.rst:260
+msgid ":setting:`CLOSESPIDER_TIMEOUT_NO_ITEM`"
+msgstr ""
+
+#: ../../../topics/extensions.rst:261
+msgid ":setting:`CLOSESPIDER_ITEMCOUNT`"
+msgstr ""
+
+#: ../../../topics/extensions.rst:262
+msgid ":setting:`CLOSESPIDER_PAGECOUNT`"
+msgstr ""
+
+#: ../../../topics/extensions.rst:263
+msgid ":setting:`CLOSESPIDER_PAGECOUNT_NO_ITEM`"
+msgstr ""
+
+#: ../../../topics/extensions.rst:264
+msgid ":setting:`CLOSESPIDER_ERRORCOUNT`"
+msgstr ""
+
+#: ../../../topics/extensions.rst:268
+msgid ""
+"When a certain closing condition is met, requests which are currently in the "
+"downloader queue (up to :setting:`CONCURRENT_REQUESTS` requests) are still "
+"processed."
+msgstr ""
+
+#: ../../../topics/extensions.rst:275
+msgid "CLOSESPIDER_TIMEOUT"
+msgstr "PLAYLIST_TIMEOUT"
+
+#: ../../../topics/extensions.rst:277
+msgid "Default: ``0.0``"
+msgstr ""
+
+#: ../../../topics/extensions.rst:279
+msgid ""
+"If the spider remains open for more than this number of seconds, it will be "
+"automatically closed with the reason ``closespider_timeout``. If zero (or "
+"non set), spiders won't be closed by timeout."
+msgstr ""
+
+#: ../../../topics/extensions.rst:286
+msgid "CLOSESPIDER_TIMEOUT_NO_ITEM"
+msgstr "PLAYLIST_DESC"
+
+#: ../../../topics/extensions.rst:288 ../../../topics/extensions.rst:300
+#: ../../../topics/extensions.rst:312 ../../../topics/extensions.rst:324
+#: ../../../topics/extensions.rst:337
+msgid "Default: ``0``"
+msgstr "默认值: ``0``"
+
+#: ../../../topics/extensions.rst:290
+msgid ""
+"An integer which specifies a number of seconds. If the spider has not "
+"produced any items in the last number of seconds, it will be closed with the "
+"reason ``closespider_timeout_no_item``. If zero (or non set), spiders won't "
+"be closed regardless if it hasn't produced any items."
+msgstr ""
+"指定数秒的整数。 如果蜘蛛在最后几秒钟内没有生产任何物品，它将被关闭，原因是 "
+"``closespider_timeout_no_item``。 如果零(或未设置)，则除非没有生产任何物品，"
+"否则将不会关闭。"
+
+#: ../../../topics/extensions.rst:298
+msgid "CLOSESPIDER_ITEMCOUNT"
+msgstr "PLAYLIST_TITLE"
+
+#: ../../../topics/extensions.rst:302
+msgid ""
+"An integer which specifies a number of items. If the spider scrapes more "
+"than that amount and those items are passed by the item pipeline, the spider "
+"will be closed with the reason ``closespider_itemcount``. If zero (or non "
+"set), spiders won't be closed by number of passed items."
+msgstr ""
+"指定项数的整数。 如果旋转器碎片超过该数量，并且这些物品由项目管道传输， 蜘蛛"
+"将被关闭，原因是 ``closespider_itemcount`` 。 如果为零(或未设置)，拼写器将不"
+"会被通过项目的数量关闭。"
+
+#: ../../../topics/extensions.rst:310
+msgid "CLOSESPIDER_PAGECOUNT"
+msgstr "PLAYLIST_DESCRIPTION"
+
+#: ../../../topics/extensions.rst:314
+msgid ""
+"An integer which specifies the maximum number of responses to crawl. If the "
+"spider crawls more than that, the spider will be closed with the reason "
+"``closespider_pagecount``. If zero (or non set), spiders won't be closed by "
+"number of crawled responses."
+msgstr ""
+"一个整数型变量，它指定的 crawl 响应的最大数量。 如果超越那个范围，那个蜘蛛将"
+"被关闭，原因是 ``closespider_pagecount`` 。 如果零(或未设置)，喷雾器将不会因"
+"为被压缩的响应数而关闭。"
+
+#: ../../../topics/extensions.rst:322
+msgid "CLOSESPIDER_PAGECOUNT_NO_ITEM"
+msgstr "PLAYLIST_TITLE"
+
+#: ../../../topics/extensions.rst:326
+msgid ""
+"An integer which specifies the maximum number of consecutive responses to "
+"crawl without items scraped. If the spider crawls more consecutive responses "
+"than that and no items are scraped in the meantime, the spider will be "
+"closed with the reason ``closespider_pagecount_no_item``. If zero (or not "
+"set), spiders won't be closed by number of crawled responses with no items."
+msgstr ""
+"一个整数型变量，它指定了无项目拆卸的连续响应的最大数。 如果旋转器弹头的连续响"
+"应超过连续响应，同时没有物品被打破。 蜘蛛将被关闭，原因是 "
+"``closespider_pagecount_no_item`` 。 如果零(或未设置)，喷雾器将不会被无项目的"
+"被拖动响应数所关闭。"
+
+#: ../../../topics/extensions.rst:335
+msgid "CLOSESPIDER_ERRORCOUNT"
+msgstr "CLESSPIDER_ERRORCOUNT"
+
+#: ../../../topics/extensions.rst:339
+msgid ""
+"An integer which specifies the maximum number of errors to receive before "
+"closing the spider. If the spider generates more than that number of errors, "
+"it will be closed with the reason ``closespider_errorcount``. If zero (or "
+"non set), spiders won't be closed by number of errors."
+msgstr ""
+"在关闭拼写器之前指定接收的最大错误数的整数。 如果蜘蛛生成的错误超过了这个数"
+"量，它将被关闭，原因是 ``closespider_errorcount`` 。 如果零(或未设定)，喷洒器"
+"将不会因数个错误而关闭。"
+
+#: ../../../topics/extensions.rst:351
+msgid "Periodic log extension"
+msgstr "定期日志扩展"
+
+#: ../../../topics/extensions.rst:355
+msgid "This extension periodically logs rich stat data as a JSON object::"
+msgstr "这个扩展定期记录丰富的统计数据为 JSON 对象:"
+
+#: ../../../topics/extensions.rst:357
+msgid ""
+"2023-08-04 02:30:57 [scrapy.extensions.logstats] INFO: Crawled 976 pages (at "
+"162 pages/min), scraped 925 items (at 161 items/min)\n"
+"2023-08-04 02:30:57 [scrapy.extensions.periodic_log] INFO: {\n"
+"    \"delta\": {\n"
+"        \"downloader/request_bytes\": 55582,\n"
+"        \"downloader/request_count\": 162,\n"
+"        \"downloader/request_method_count/GET\": 162,\n"
+"        \"downloader/response_bytes\": 618133,\n"
+"        \"downloader/response_count\": 162,\n"
+"        \"downloader/response_status_count/200\": 162,\n"
+"        \"item_scraped_count\": 161\n"
+"    },\n"
+"    \"stats\": {\n"
+"        \"downloader/request_bytes\": 338243,\n"
+"        \"downloader/request_count\": 992,\n"
+"        \"downloader/request_method_count/GET\": 992,\n"
+"        \"downloader/response_bytes\": 3836736,\n"
+"        \"downloader/response_count\": 976,\n"
+"        \"downloader/response_status_count/200\": 976,\n"
+"        \"item_scraped_count\": 925,\n"
+"        \"log_count/INFO\": 21,\n"
+"        \"log_count/WARNING\": 1,\n"
+"        \"scheduler/dequeued\": 992,\n"
+"        \"scheduler/dequeued/memory\": 992,\n"
+"        \"scheduler/enqueued\": 1050,\n"
+"        \"scheduler/enqueued/memory\": 1050\n"
+"    },\n"
+"    \"time\": {\n"
+"        \"elapsed\": 360.008903,\n"
+"        \"log_interval\": 60.0,\n"
+"        \"log_interval_real\": 60.006694,\n"
+"        \"start_time\": \"2023-08-03 23:24:57\",\n"
+"        \"utcnow\": \"2023-08-03 23:30:57\"\n"
+"    }\n"
+"}"
+msgstr ""
+
+#: ../../../topics/extensions.rst:392
+msgid "This extension logs the following configurable sections:"
+msgstr "此扩展记录以下可配置部分："
+
+#: ../../../topics/extensions.rst:394
+msgid ""
+"``\"delta\"`` shows how some numeric stats have changed since the last stats "
+"log message."
+msgstr "``\"delta\"`` 显示自上次统计日志消息以来一些数字统计有多大变化。"
+
+#: ../../../topics/extensions.rst:397
+msgid ""
+"The :setting:`PERIODIC_LOG_DELTA` setting determines the target stats. They "
+"must have ``int`` or ``float`` values."
+msgstr ""
+
+#: ../../../topics/extensions.rst:400
+msgid "``\"stats\"`` shows the current value of some stats."
+msgstr "``\"stats\"`` 显示了某些统计数据的当前值。"
+
+#: ../../../topics/extensions.rst:402
+msgid "The :setting:`PERIODIC_LOG_STATS` setting determines the target stats."
+msgstr ""
+
+#: ../../../topics/extensions.rst:404
+msgid "``\"time\"`` shows detailed timing data."
+msgstr "``\"time\"`` 会显示详细的计时数据。"
+
+#: ../../../topics/extensions.rst:406
+msgid ""
+"The :setting:`PERIODIC_LOG_TIMING_ENABLED` setting determines whether or not "
+"to show this section."
+msgstr ""
+
+#: ../../../topics/extensions.rst:409
+msgid ""
+"This extension logs data at the start, then on a fixed time interval "
+"configurable through the :setting:`LOGSTATS_INTERVAL` setting, and finally "
+"right before the crawl ends."
+msgstr ""
+
+#: ../../../topics/extensions.rst:414
+msgid "Example extension configuration:"
+msgstr "示例扩展配置："
+
+#: ../../../topics/extensions.rst:416
+msgid ""
+"custom_settings = {\n"
+"    \"LOG_LEVEL\": \"INFO\",\n"
+"    \"PERIODIC_LOG_STATS\": {\n"
+"        \"include\": [\"downloader/\", \"scheduler/\", \"log_count/\", "
+"\"item_scraped_count/\"],\n"
+"    },\n"
+"    \"PERIODIC_LOG_DELTA\": {\"include\": [\"downloader/\"]},\n"
+"    \"PERIODIC_LOG_TIMING_ENABLED\": True,\n"
+"    \"EXTENSIONS\": {\n"
+"        \"scrapy.extensions.periodic_log.PeriodicLog\": 0,\n"
+"    },\n"
+"}"
+msgstr ""
+
+#: ../../../topics/extensions.rst:433
+msgid "PERIODIC_LOG_DELTA"
+msgstr "PERIODIIC_LOG_DELTA"
+
+#: ../../../topics/extensions.rst:435 ../../../topics/extensions.rst:446
+msgid "Default: ``None``"
+msgstr "默认值： ``None``"
+
+#: ../../../topics/extensions.rst:437
+msgid ""
+"``\"PERIODIC_LOG_DELTA\": True`` - show deltas for all ``int`` and ``float`` "
+"stat values."
+msgstr ""
+"``\"PERIODIIC_LOG_DELTA\": True`` - 显示所有的 ``int`` 和 ``float`` 统计数"
+"值。"
+
+#: ../../../topics/extensions.rst:438
+msgid ""
+"``\"PERIODIC_LOG_DELTA\": {\"include\": [\"downloader/\", \"scheduler/\"]}`` "
+"- show deltas for stats with names containing any configured substring."
+msgstr ""
+"``\"PERIODIIC_LOG_DELTA\": {\"include\": [\"downloader\", \"scheduler/\"]}`` "
+"- 显示含有任何已配置子字符串的数据的三角洲。"
+
+#: ../../../topics/extensions.rst:439
+msgid ""
+"``\"PERIODIC_LOG_DELTA\": {\"exclude\": [\"downloader/\"]}`` - show deltas "
+"for all stats with names not containing any configured substring."
+msgstr ""
+"``\"PERIODIIC_LOG_DELTA\": {\"exclude\": [\"downloader/\"]}`` - 为所有不含任"
+"何配置的子字符串的状态显示三角洲。"
+
+#: ../../../topics/extensions.rst:444
+msgid "PERIODIC_LOG_STATS"
+msgstr "PLAYLIST_DESCRIPTION"
+
+#: ../../../topics/extensions.rst:448
+msgid "``\"PERIODIC_LOG_STATS\": True`` - show the current value of all stats."
+msgstr "``\"PERIODIIC_LOG_STATS\": True`` - 显示所有统计状态的当前值。"
+
+#: ../../../topics/extensions.rst:449
+msgid ""
+"``\"PERIODIC_LOG_STATS\": {\"include\": [\"downloader/\", \"scheduler/\"]}`` "
+"- show current values for stats with names containing any configured "
+"substring."
+msgstr ""
+"``\"PERIODIIC_LOG_STATS\": {\"include\": [\"downloader/\", \"scheduler/\"]}"
+"`` - 显示包含任何配置的子字符串的当前统计信息。"
+
+#: ../../../topics/extensions.rst:450
+msgid ""
+"``\"PERIODIC_LOG_STATS\": {\"exclude\": [\"downloader/\"]}`` - show current "
+"values for all stats with names not containing any configured substring."
+msgstr ""
+"``\"PERIODIIC_LOG_STATS\": {\"exclude \": [\"downloader/\"]}`` - 显示所有不含"
+"任何已配置子字符串的统计数据的当前值。"
+
+#: ../../../topics/extensions.rst:456
+msgid "PERIODIC_LOG_TIMING_ENABLED"
+msgstr "PERIODIIC_LOG_TIMING_DESCRIPTION"
+
+#: ../../../topics/extensions.rst:458
+msgid "Default: ``False``"
+msgstr "默认值： ``False``"
+
+#: ../../../topics/extensions.rst:460
+msgid ""
+"``True`` enables logging of timing data (i.e. the ``\"time\"`` section)."
+msgstr "``True`` 能够记录计时数据(例如``\"time\"`` 部分)。"
+
+#: ../../../topics/extensions.rst:464
+msgid "Debugging extensions"
+msgstr "调试扩展"
+
+#: ../../../topics/extensions.rst:467
+msgid "Stack trace dump extension"
+msgstr "堆栈跟踪转储扩展"
+
+#: ../../../topics/extensions.rst:471
+msgid ""
+"Dumps information about the running process when a `SIGQUIT`_ or `SIGUSR2`_ "
+"signal is received. The information dumped is the following:"
+msgstr ""
+"当收到`SIGQUIT`_ 或 `SIGUSR2_ 信号时有关运行过程的信息。丢失的信息如下："
+
+#: ../../../topics/extensions.rst:474
+msgid "engine status (using ``scrapy.utils.engine.get_engine_status()``)"
+msgstr "引擎状态 (使用 ``scrapy.utils.engine.get_engine_status()`` )"
+
+#: ../../../topics/extensions.rst:475
+msgid "live references (see :ref:`topics-leaks-trackrefs`)"
+msgstr ""
+
+#: ../../../topics/extensions.rst:476
+msgid "stack trace of all threads"
+msgstr "所有线程的堆栈跟踪"
+
+#: ../../../topics/extensions.rst:478
+msgid ""
+"After the stack trace and engine status is dumped, the Scrapy process "
+"continues running normally."
+msgstr "堆栈跟踪和引擎状态被倾弃后，废料处理继续正常运行。"
+
+#: ../../../topics/extensions.rst:481
+msgid ""
+"This extension only works on POSIX-compliant platforms (i.e. not Windows), "
+"because the `SIGQUIT`_ and `SIGUSR2`_ signals are not available on Windows."
+msgstr ""
+"这个扩展仅适用于与 POSIX兼容的平台(即不适用于Windows)，因为“SIGQUIT`_ 和 "
+"“SIGUSR2_ 信号”在Windows上不可用。"
+
+#: ../../../topics/extensions.rst:484
+msgid "There are at least two ways to send Scrapy the `SIGQUIT`_ signal:"
+msgstr "至少有两种方式发送废件`SIGQUIT`_ 信号："
+
+#: ../../../topics/extensions.rst:486
+msgid "By pressing Ctrl-\\ while a Scrapy process is running (Linux only?)"
+msgstr "当Scrapy process 正在运行时按 Ctrl \\ (仅限Linux？)"
+
+#: ../../../topics/extensions.rst:487
+msgid ""
+"By running this command (assuming ``<pid>`` is the process id of the Scrapy "
+"process)::"
+msgstr "通过运行此命令(假定``<pid>`` 是Scrapy进程的进程ID)::"
+
+#: ../../../topics/extensions.rst:490
+msgid "kill -QUIT <pid>"
+msgstr "击杀-QUIT <pid>"
+
+#: ../../../topics/extensions.rst:496
+msgid "Debugger extension"
+msgstr "调试器扩展"
+
+#: ../../../topics/extensions.rst:500
+msgid ""
+"Invokes a :doc:`Python debugger <library/pdb>` inside a running Scrapy "
+"process when a `SIGUSR2`_ signal is received. After the debugger is exited, "
+"the Scrapy process continues running normally."
+msgstr ""
+
+#: ../../../topics/extensions.rst:504
+msgid ""
+"This extension only works on POSIX-compliant platforms (i.e. not Windows)."
+msgstr "此扩展仅适用于 POSIX兼容平台(即不适用于 Windows)。"

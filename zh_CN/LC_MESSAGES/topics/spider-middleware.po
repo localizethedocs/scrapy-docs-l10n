@@ -1,0 +1,1016 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-08 13:04+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/spider-middleware.rst:5
+msgid "Spider Middleware"
+msgstr "蜘蛛中间件"
+
+#: ../../../topics/spider-middleware.rst:7
+msgid ""
+"The spider middleware is a framework of hooks into Scrapy's spider "
+"processing mechanism where you can plug custom functionality to process the "
+"responses that are sent to :ref:`topics-spiders` for processing and to "
+"process the requests and items that are generated from spiders."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:15
+msgid "Activating a spider middleware"
+msgstr "激活旋转器中间件"
+
+#: ../../../topics/spider-middleware.rst:17
+msgid ""
+"To activate a spider middleware component, add it to the :setting:"
+"`SPIDER_MIDDLEWARES` setting, which is a dict whose keys are the middleware "
+"class path and their values are the middleware orders."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:21
+msgid "Here's an example:"
+msgstr "下面是一个示例："
+
+#: ../../../topics/spider-middleware.rst:23
+msgid ""
+"SPIDER_MIDDLEWARES = {\n"
+"    \"myproject.middlewares.CustomSpiderMiddleware\": 543,\n"
+"}"
+msgstr ""
+"天基ER_MIDDLEWARES = Power\n"
+"    \"myproject.middlewares.CustomSpiderMiddleware\": 543,\n"
+"}"
+
+#: ../../../topics/spider-middleware.rst:29
+msgid ""
+"The :setting:`SPIDER_MIDDLEWARES` setting is merged with the :setting:"
+"`SPIDER_MIDDLEWARES_BASE` setting defined in Scrapy (and not meant to be "
+"overridden) and then sorted by order to get the final sorted list of enabled "
+"middlewares: the first middleware is the one closer to the engine and the "
+"last is the one closer to the spider. In other words, the :meth:`~scrapy."
+"spidermiddlewares.SpiderMiddleware.process_spider_input` method of each "
+"middleware will be invoked in increasing middleware order (100, 200, "
+"300, ...), and the :meth:`~scrapy.spidermiddlewares.SpiderMiddleware."
+"process_spider_output` method of each middleware will be invoked in "
+"decreasing order."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:40
+msgid ""
+"To decide which order to assign to your middleware see the :setting:"
+"`SPIDER_MIDDLEWARES_BASE` setting and pick a value according to where you "
+"want to insert the middleware. The order does matter because each middleware "
+"performs a different action and your middleware could depend on some "
+"previous (or subsequent) middleware being applied."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:46
+msgid ""
+"If you want to disable a builtin middleware (the ones defined in :setting:"
+"`SPIDER_MIDDLEWARES_BASE`, and enabled by default) you must define it in "
+"your project :setting:`SPIDER_MIDDLEWARES` setting and assign ``None`` as "
+"its value.  For example, if you want to disable the off-site middleware:"
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:51
+msgid ""
+"SPIDER_MIDDLEWARES = {\n"
+"    \"scrapy.spidermiddlewares.referer.RefererMiddleware\": None,\n"
+"    \"myproject.middlewares.CustomRefererSpiderMiddleware\": 700,\n"
+"}"
+msgstr ""
+"天基ER_MIDDLEWARES = own\n"
+"    \"scrapy.spidermiddlewares.referer.Referer.Middlewares\": None,\n"
+"    \"myproject.midglewares.CustomReferersSpiderMiddleware\": 700,\n"
+"}"
+
+#: ../../../topics/spider-middleware.rst:58
+msgid ""
+"Finally, keep in mind that some middlewares may need to be enabled through a "
+"particular setting. See each middleware documentation for more info."
+msgstr ""
+"最后，牢记某些中间件可能需要通过特定的设置启用。请参阅每个中间件文档以获取更"
+"多信息。"
+
+#: ../../../topics/spider-middleware.rst:64
+msgid "Writing your own spider middleware"
+msgstr "写入你自己的蜘蛛中间件"
+
+#: ../../../topics/spider-middleware.rst:66
+msgid ""
+"Each spider middleware is a :ref:`component <topics-components>` that "
+"defines one or more of these methods:"
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:76
+msgid ""
+"Iterate over the output of :meth:`~scrapy.Spider.start` or that of the :meth:"
+"`process_start` method of an earlier spider middleware, overriding it. For "
+"example:"
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:80
+msgid ""
+"async def process_start(self, start):\n"
+"    async for item_or_request in start:\n"
+"        yield item_or_request"
+msgstr ""
+"async def process_start(自己, start):\n"
+"    async for item_or_request in start:\n"
+"        gow item_or_request"
+
+#: ../../../topics/spider-middleware.rst:86
+msgid "You may yield the same type of objects as :meth:`~scrapy.Spider.start`."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:88
+msgid ""
+"To write spider middlewares that work on Scrapy versions lower than 2.13, "
+"define also a synchronous ``process_start_requests()`` method that returns "
+"an iterable. For example:"
+msgstr ""
+"若要在低于2.13的Scrapy 版本上写入可迭代的中间器，请定义一个同步的 "
+"``process_start_requests()`` 方法。例如："
+
+#: ../../../topics/spider-middleware.rst:92
+msgid ""
+"def process_start_requests(self, start, spider):\n"
+"    yield from start"
+msgstr ""
+"def process_start_requests(self, start, spider):\n"
+"    从开始"
+
+#: ../../../topics/spider-middleware.rst:99
+msgid ""
+"This method is called for each response that goes through the spider "
+"middleware and into the spider, for processing."
+msgstr "这个方法需要通过旋转器中间件和旋转器进行处理。"
+
+#: ../../../topics/spider-middleware.rst:102
+msgid ""
+":meth:`process_spider_input` should return ``None`` or raise an exception."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:105
+msgid ""
+"If it returns ``None``, Scrapy will continue processing this response, "
+"executing all other middlewares until, finally, the response is handed to "
+"the spider for processing."
+msgstr ""
+"如果返回 ``None`` ，废纸将继续处理这个响应，执行所有其他中间程序，直到最后将"
+"响应交给蜘蛛处理。"
+
+#: ../../../topics/spider-middleware.rst:109
+msgid ""
+"If it raises an exception, Scrapy won't bother calling any other spider "
+"middleware :meth:`process_spider_input` and will call the request errback if "
+"there is one, otherwise it will start the :meth:`process_spider_exception` "
+"chain. The output of the errback is chained back in the other direction for :"
+"meth:`process_spider_output` to process it, or :meth:"
+"`process_spider_exception` if it raised an exception."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:0
+msgid "Parameters"
+msgstr "参数"
+
+#: ../../../topics/spider-middleware.rst:116
+#: ../../../../scrapy/spidermiddlewares/base.py:docstring of
+#: scrapy.spidermiddlewares.base.BaseSpiderMiddleware.get_processed_item:10
+#: scrapy.spidermiddlewares.base.BaseSpiderMiddleware.get_processed_request:10
+msgid "the response being processed"
+msgstr "正在处理的响应"
+
+#: ../../../topics/spider-middleware.rst:122
+msgid ""
+"This method is an :term:`asynchronous generator` called with the results "
+"from the spider after the spider has processed the response."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:125
+msgid ":ref:`universal-spider-middleware`."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:127
+msgid "the response which generated this output from the spider"
+msgstr "从旋转器生成此输出的响应"
+
+#: ../../../topics/spider-middleware.rst:131
+msgid "the results from the spider"
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:139
+msgid ""
+"Alternative name for :meth:`process_spider_output` used when implementing a :"
+"ref:`universal spider middleware <universal-spider-middleware>`."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:145
+msgid ""
+"This method is called when a spider or :meth:`process_spider_output` method "
+"(from a previous spider middleware) raises an exception."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:148
+msgid ""
+":meth:`process_spider_exception` should return either ``None`` or an "
+"iterable of :class:`~scrapy.Request` or :ref:`item <topics-items>` objects."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:152
+msgid ""
+"If it returns ``None``, Scrapy will continue processing this exception, "
+"executing any other :meth:`process_spider_exception` in the following "
+"middleware components, until no middleware components are left and the "
+"exception reaches the engine (where it's logged and discarded)."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:157
+msgid ""
+"If it returns an iterable the :meth:`process_spider_output` pipeline kicks "
+"in, starting from the next spider middleware, and no other :meth:"
+"`process_spider_exception` will be called."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:161
+msgid "the response being processed when the exception was raised"
+msgstr "异常提起时正在处理的响应"
+
+#: ../../../topics/spider-middleware.rst:165
+msgid "the exception raised"
+msgstr "提出异常了"
+
+#: ../../../topics/spider-middleware.rst:172
+msgid "Universal spider middlewares"
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:174
+msgid ""
+"In Scrapy 2.6.3 and lower, ``process_spider_output()`` must be a "
+"*synchronous* generator."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:177
+msgid ""
+"To support those versions and higher Scrapy versions in the same middleware, "
+"rename your asynchronous :meth:`~SpiderMiddleware.process_spider_output` "
+"method to :meth:`~SpiderMiddleware.process_spider_output_async`, and define "
+"a synchronous ``process_spider_output()`` method to be used by 2.6.3 and "
+"lower versions."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:183
+msgid "For example:"
+msgstr "例如："
+
+#: ../../../topics/spider-middleware.rst:185
+msgid ""
+"class UniversalSpiderMiddleware:\n"
+"    async def process_spider_output_async(self, response, result):\n"
+"        async for r in result:\n"
+"            # ... do something with r\n"
+"            yield r\n"
+"\n"
+"    def process_spider_output(self, response, result):\n"
+"        for r in result:\n"
+"            # ... do something with r\n"
+"            yield r"
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:199
+msgid "Base class for custom spider middlewares"
+msgstr "自定义蜘蛛中间体的基础类"
+
+#: ../../../topics/spider-middleware.rst:201
+msgid ""
+"Scrapy provides a base class for custom spider middlewares. It's not "
+"required to use it but it can help with simplifying middleware "
+"implementations."
+msgstr ""
+
+#: ../../../../scrapy/spidermiddlewares/base.py:docstring of
+#: scrapy.spidermiddlewares.base.BaseSpiderMiddleware:1
+msgid "Optional base class for spider middlewares."
+msgstr "可选的旋转中间层基类"
+
+#: ../../../../scrapy/spidermiddlewares/base.py:docstring of
+#: scrapy.spidermiddlewares.base.BaseSpiderMiddleware:5
+msgid ""
+"This class provides helper methods for asynchronous "
+"``process_spider_output()`` and ``process_start()`` methods. Middlewares "
+"that don't have either of these methods don't need to use this class."
+msgstr ""
+"这个类提供异步的 ``process_spider_output()`` 和 ``process_start()`` 方法的辅"
+"助方法。不需要使用这个类方法的中间路径。"
+
+#: ../../../../scrapy/spidermiddlewares/base.py:docstring of
+#: scrapy.spidermiddlewares.base.BaseSpiderMiddleware:9
+msgid ""
+"You can override the :meth:`~scrapy.spidermiddlewares.base."
+"BaseSpiderMiddleware.get_processed_request` method to add processing code "
+"for requests and the :meth:`~scrapy.spidermiddlewares.base."
+"BaseSpiderMiddleware.get_processed_item` method to add processing code for "
+"items. These methods take a single request or item from the spider output "
+"iterable and return a request or item (the same or a new one), or ``None`` "
+"to remove this request or item from the processing."
+msgstr ""
+
+#: ../../../../scrapy/spidermiddlewares/base.py:docstring of
+#: scrapy.spidermiddlewares.base.BaseSpiderMiddleware.get_processed_item:1
+msgid "Return a processed item from the spider output."
+msgstr "从旋转器输出返回一个处理过的项目。"
+
+#: ../../../../scrapy/spidermiddlewares/base.py:docstring of
+#: scrapy.spidermiddlewares.base.BaseSpiderMiddleware.get_processed_item:3
+msgid ""
+"This method is called with a single item from the start seeds or the spider "
+"output. It should return the same or a different item, or ``None`` to ignore "
+"it."
+msgstr ""
+"这个方法用单个项目来调用起始种子或旋转器输出。 它应该返回相同或不同的物品或 "
+"``None`` 来忽略它。"
+
+#: ../../../../scrapy/spidermiddlewares/base.py:docstring of
+#: scrapy.spidermiddlewares.base.BaseSpiderMiddleware.get_processed_item:7
+msgid "the input item"
+msgstr "输入项"
+
+#: ../../../topics/spider-middleware.rst:0
+msgid "Returns"
+msgstr "返回"
+
+#: ../../../../scrapy/spidermiddlewares/base.py:docstring of
+#: scrapy.spidermiddlewares.base.BaseSpiderMiddleware.get_processed_item:14
+msgid "the processed item or ``None``"
+msgstr "处理过的项目或 ``None``"
+
+#: ../../../../scrapy/spidermiddlewares/base.py:docstring of
+#: scrapy.spidermiddlewares.base.BaseSpiderMiddleware.get_processed_request:1
+msgid "Return a processed request from the spider output."
+msgstr "从旋转器输出返回已处理的请求。"
+
+#: ../../../../scrapy/spidermiddlewares/base.py:docstring of
+#: scrapy.spidermiddlewares.base.BaseSpiderMiddleware.get_processed_request:3
+msgid ""
+"This method is called with a single request from the start seeds or the "
+"spider output. It should return the same or a different request, or ``None`` "
+"to ignore it."
+msgstr ""
+"这个方法用单个请求从起始种子或旋转器输出调用。 它应该返回相同或不同的请求，或"
+"者 ``None`` 忽略它。"
+
+#: ../../../../scrapy/spidermiddlewares/base.py:docstring of
+#: scrapy.spidermiddlewares.base.BaseSpiderMiddleware.get_processed_request:7
+msgid "the input request"
+msgstr "输入请求"
+
+#: ../../../../scrapy/spidermiddlewares/base.py:docstring of
+#: scrapy.spidermiddlewares.base.BaseSpiderMiddleware.get_processed_request:14
+msgid "the processed request or ``None``"
+msgstr "已处理的请求或 ``None``"
+
+#: ../../../topics/spider-middleware.rst:212
+msgid "Built-in spider middleware reference"
+msgstr "内置旋转器中间件引用"
+
+#: ../../../topics/spider-middleware.rst:214
+msgid ""
+"This page describes all spider middleware components that come with Scrapy. "
+"For information on how to use them and how to write your own spider "
+"middleware, see the :ref:`spider middleware usage guide <topics-spider-"
+"middleware>`."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:218
+msgid ""
+"For a list of the components enabled by default (and their orders) see the :"
+"setting:`SPIDER_MIDDLEWARES_BASE` setting."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:222
+msgid "DepthMiddleware"
+msgstr "深中间件"
+
+#: ../../../topics/spider-middleware.rst:229
+msgid ""
+"DepthMiddleware is used for tracking the depth of each Request inside the "
+"site being scraped. It works by setting ``request.meta['depth'] = 0`` "
+"whenever there is no value previously set (usually just the first Request) "
+"and incrementing it by 1 otherwise."
+msgstr ""
+"DepthMiddleware 用于跟踪每个请求在被拆除的站点中的深度。它可以通过设置 "
+"``request来操作。 eta['depth'] = 0`` 当没有之前设置的值 (通常只是第一个请求) "
+"并以其他方式递增。"
+
+#: ../../../topics/spider-middleware.rst:234
+msgid ""
+"It can be used to limit the maximum depth to scrape, control Request "
+"priority based on their depth, and things like that."
+msgstr ""
+"它可以用来限制最大的深度到擦除，根据其深度控制请求优先级以及类似的情况。"
+
+#: ../../../topics/spider-middleware.rst:237
+msgid ""
+"The :class:`DepthMiddleware` can be configured through the following "
+"settings (see the settings documentation for more info):"
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:240
+msgid ""
+":setting:`DEPTH_LIMIT` - The maximum depth that will be allowed to crawl for "
+"any site. If zero, no limit will be imposed."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:242
+msgid ""
+":setting:`DEPTH_STATS_VERBOSE` - Whether to collect the number of requests "
+"for each depth."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:244
+msgid ""
+":setting:`DEPTH_PRIORITY` - Whether to prioritize the requests based on "
+"their depth."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:248
+msgid "HttpErrorMiddleware"
+msgstr "HttpErrorMiddleware"
+
+#: ../../../topics/spider-middleware.rst:255
+msgid ""
+"Filter out unsuccessful (erroneous) HTTP responses so that spiders don't "
+"have to deal with them, which (most of the time) imposes an overhead, "
+"consumes more resources, and makes the spider logic more complex."
+msgstr ""
+"过滤不成功的HTTP响应(错误)，所以拼写器不必处理它们。 (大部分时间)造成间接费"
+"用，消耗更多资源，并使螺旋逻辑更加复杂。"
+
+#: ../../../topics/spider-middleware.rst:259
+msgid ""
+"According to the `HTTP standard`_, successful responses are those whose "
+"status codes are in the 200-300 range."
+msgstr "根据`HTTP标准`_'，成功的答复是其身份码在200-300范围内的那些人。"
+
+#: ../../../topics/spider-middleware.rst:264
+msgid ""
+"If you still want to process response codes outside that range, you can "
+"specify which response codes the spider is able to handle using the "
+"``handle_httpstatus_list`` spider attribute or :setting:"
+"`HTTPERROR_ALLOWED_CODES` setting."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:269
+msgid ""
+"For example, if you want your spider to handle 404 responses you can do this:"
+msgstr "例如，如果你想要你的蜘蛛来处理404个回复，你可以这样做："
+
+#: ../../../topics/spider-middleware.rst:272
+msgid ""
+"from scrapy.spiders import CrawlSpider\n"
+"\n"
+"\n"
+"class MySpider(CrawlSpider):\n"
+"    handle_httpstatus_list = [404]"
+msgstr ""
+"从 scrapy.spiders 导入 CrawlSpider\n"
+"\n"
+"\n"
+"类MySpider(CrawlSpider):\n"
+"    handle_httpstatus_list = [404]"
+
+#: ../../../topics/spider-middleware.rst:284
+msgid ""
+"The ``handle_httpstatus_list`` key of :attr:`Request.meta <scrapy.Request."
+"meta>` can also be used to specify which response codes to allow on a per-"
+"request basis. You can also set the meta key ``handle_httpstatus_all`` to "
+"``True`` if you want to allow any response code for a request, and ``False`` "
+"to disable the effects of the ``handle_httpstatus_all`` key."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:290
+msgid ""
+"Keep in mind, however, that it's usually a bad idea to handle non-200 "
+"responses, unless you really know what you're doing."
+msgstr ""
+"然而，要记住，处理非200个响应通常是一个坏主意，除非你真的知道你在做什么。"
+
+#: ../../../topics/spider-middleware.rst:293
+msgid "For more information see: `HTTP Status Code Definitions`_."
+msgstr "详情见：`HTTP Status Code Definitions`_。"
+
+#: ../../../topics/spider-middleware.rst:298
+msgid "HttpErrorMiddleware settings"
+msgstr "HttpErrorMiddleware 设置"
+
+#: ../../../topics/spider-middleware.rst:303
+msgid "HTTPERROR_ALLOWED_CODES"
+msgstr "HTTPERROR_ALLOWED_CODES"
+
+#: ../../../topics/spider-middleware.rst:305
+msgid "Default: ``[]``"
+msgstr "默认值： ``[]``"
+
+#: ../../../topics/spider-middleware.rst:307
+msgid "Pass all responses with non-200 status codes contained in this list."
+msgstr "通过列表中包含非200条状态码的所有回复。"
+
+#: ../../../topics/spider-middleware.rst:312
+msgid "HTTPERROR_ALLOW_ALL"
+msgstr "HTTPERROR_ALLOW_ALL"
+
+#: ../../../topics/spider-middleware.rst:314
+msgid "Default: ``False``"
+msgstr "默认值： ``False``"
+
+#: ../../../topics/spider-middleware.rst:316
+msgid "Pass all responses, regardless of its status code."
+msgstr "通过所有响应，无论其状态码如何。"
+
+#: ../../../topics/spider-middleware.rst:320
+msgid "RefererMiddleware"
+msgstr "参考中间件"
+
+#: ../../../topics/spider-middleware.rst:327
+msgid ""
+"Populates Request ``Referer`` header, based on the URL of the Response which "
+"generated it."
+msgstr "根据生成响应的 URL 填充请求的 ``Referer`` 标题。"
+
+#: ../../../topics/spider-middleware.rst:331
+msgid "RefererMiddleware settings"
+msgstr "参考中间件设置"
+
+#: ../../../topics/spider-middleware.rst:336
+msgid "REFERER_ENABLED"
+msgstr "REFER_已启用"
+
+#: ../../../topics/spider-middleware.rst:338
+msgid "Default: ``True``"
+msgstr "默认: ``True``"
+
+#: ../../../topics/spider-middleware.rst:340
+msgid "Whether to enable referer middleware."
+msgstr "是否启用审核者中间件。"
+
+#: ../../../topics/spider-middleware.rst:345
+msgid "REFERRER_POLICY"
+msgstr "REFERRER_POLICY"
+
+#: ../../../topics/spider-middleware.rst:347
+msgid "Default: ``'scrapy.spidermiddlewares.referer.DefaultReferrerPolicy'``"
+msgstr "默认值： ``'scrapy.spidermidlewares.referer.DefaultReferrerPolicy'``"
+
+#: ../../../topics/spider-middleware.rst:351
+msgid "`Referrer Policy`_ to apply when populating Request \"Referer\" header."
+msgstr "`Referer Policy`_ 在填充请求“Referer”标题时应用。"
+
+#: ../../../topics/spider-middleware.rst:354
+msgid ""
+"You can also set the Referrer Policy per request, using the special "
+"``\"referrer_policy\"`` :ref:`Request.meta <topics-request-meta>` key, with "
+"the same acceptable values as for the ``REFERRER_POLICY`` setting."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:359
+msgid "Acceptable values for REFERRER_POLICY"
+msgstr "REFERRER_POLICY的可接受值"
+
+#: ../../../topics/spider-middleware.rst:361
+msgid ""
+"either a path to a :class:`scrapy.spidermiddlewares.referer.ReferrerPolicy` "
+"subclass — a custom policy or one of the built-in ones (see classes below),"
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:363
+msgid "or one or more comma-separated standard W3C-defined string values,"
+msgstr "或者一个或多个逗号分隔的标准W3C-定义字符串值。"
+
+#: ../../../topics/spider-middleware.rst:364
+msgid "or the special ``\"scrapy-default\"``."
+msgstr "或者特殊的 ``\"scrapy-default\"`` 。"
+
+#: ../../../topics/spider-middleware.rst:367
+msgid "String value"
+msgstr "字符串值"
+
+#: ../../../topics/spider-middleware.rst:367
+msgid "Class name (as a string)"
+msgstr "类名 (作为字符串)"
+
+#: ../../../topics/spider-middleware.rst:369
+msgid "``\"scrapy-default\"`` (default)"
+msgstr "``\"scrapy-default\"`` (默认)"
+
+#: ../../../topics/spider-middleware.rst:369
+msgid ":class:`scrapy.spidermiddlewares.referer.DefaultReferrerPolicy`"
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:370
+msgid "`\"no-referrer\"`_"
+msgstr "`\"无参考\"_\""
+
+#: ../../../topics/spider-middleware.rst:370
+msgid ":class:`scrapy.spidermiddlewares.referer.NoReferrerPolicy`"
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:371
+msgid "`\"no-referrer-when-downgrade\"`_"
+msgstr "`\"无引用时降级\"_"
+
+#: ../../../topics/spider-middleware.rst:371
+msgid ":class:`scrapy.spidermiddlewares.referer.NoReferrerWhenDowngradePolicy`"
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:372
+msgid "`\"same-origin\"`_"
+msgstr "``相同原始'`_"
+
+#: ../../../topics/spider-middleware.rst:372
+msgid ":class:`scrapy.spidermiddlewares.referer.SameOriginPolicy`"
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:373
+msgid "`\"origin\"`_"
+msgstr "`原始'`_"
+
+#: ../../../topics/spider-middleware.rst:373
+msgid ":class:`scrapy.spidermiddlewares.referer.OriginPolicy`"
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:374
+msgid "`\"strict-origin\"`_"
+msgstr "`严格原始'`_"
+
+#: ../../../topics/spider-middleware.rst:374
+msgid ":class:`scrapy.spidermiddlewares.referer.StrictOriginPolicy`"
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:375
+msgid "`\"origin-when-cross-origin\"`_"
+msgstr "```原产地-交叉原产地'`_"
+
+#: ../../../topics/spider-middleware.rst:375
+msgid ":class:`scrapy.spidermiddlewares.referer.OriginWhenCrossOriginPolicy`"
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:376
+msgid "`\"strict-origin-when-cross-origin\"`_"
+msgstr "``严格原产地-交叉原产地`_"
+
+#: ../../../topics/spider-middleware.rst:376
+msgid ""
+":class:`scrapy.spidermiddlewares.referer.StrictOriginWhenCrossOriginPolicy`"
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:377
+msgid "`\"unsafe-url\"`_"
+msgstr "`\"不安全-url\"_"
+
+#: ../../../topics/spider-middleware.rst:377
+msgid ":class:`scrapy.spidermiddlewares.referer.UnsafeUrlPolicy`"
+msgstr ""
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.ReferrerPolicy:1
+msgid "Abstract base class for referrer policies."
+msgstr "引用策略的抽象基类。"
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.DefaultReferrerPolicy:1
+msgid ""
+"A variant of \"no-referrer-when-downgrade\", with the addition that "
+"\"Referer\" is not sent if the parent request was using ``file://`` or "
+"``s3://`` scheme."
+msgstr ""
+"\"no referrer-when en-downgrade\"的变体，如果父请求使用 ``file://`` 或 "
+"``s3://`` 方案，则\"Referer\"不会被发送。"
+
+#: ../../../topics/spider-middleware.rst:384
+msgid ""
+"Scrapy's default referrer policy — just like `\"no-referrer-when-"
+"downgrade\"`_, the W3C-recommended value for browsers — will send a non-"
+"empty \"Referer\" header from any ``http(s)://`` to any ``https://`` URL, "
+"even if the domain is different."
+msgstr ""
+"Scrapy 的默认引用策略——就像`no referrer-when en-downgrade`_'， 为浏览器推荐"
+"的 W3C 值 — — 将从任何 ``http(s)://`` 中发送一个非空的 \"Referer\" 头到任何 "
+"``https://`` URL，即使域是不同的。"
+
+#: ../../../topics/spider-middleware.rst:389
+msgid ""
+"`\"same-origin\"`_ may be a better choice if you want to remove referrer "
+"information for cross-domain requests."
+msgstr ""
+"`\"相同的原始\"_可能是一个更好的选择，如果您想要移除跨域请求的推荐信息。"
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.NoReferrerPolicy:1
+msgid "https://www.w3.org/TR/referrer-policy/#referrer-policy-no-referrer"
+msgstr "https://www.w3.org/TR/referrer-policy/#referrer-policy-referrer"
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.NoReferrerPolicy:3
+msgid ""
+"The simplest policy is \"no-referrer\", which specifies that no referrer "
+"information is to be sent along with requests made from a particular request "
+"client to any origin. The header will be omitted entirely."
+msgstr ""
+"最简单的政策是“不要提到”， 其中规定不应向任何来源发送推荐人的信息和特定请求客"
+"户的请求。 标题将被完全省略。"
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.NoReferrerWhenDowngradePolicy:1
+msgid ""
+"https://www.w3.org/TR/referrer-policy/#referrer-policy-no-referrer-when-"
+"downgrade"
+msgstr ""
+"https://www.w3.org/TR/referrer-policy/#referrer-policy-no-referrer-when en-"
+"downgrade"
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.NoReferrerWhenDowngradePolicy:3
+msgid ""
+"The \"no-referrer-when-downgrade\" policy sends a full URL along with "
+"requests from a TLS-protected environment settings object to a potentially "
+"trustworthy URL, and requests from clients which are not TLS-protected to "
+"any origin."
+msgstr ""
+"\"不推荐的时候降级\"政策将一个完整的 URL 和来自一个 TLS 保护环境设置对象的请"
+"求发送到一个可能值得信任的 URL。 和来自不受TLS-保护的客户端的请求。"
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.NoReferrerWhenDowngradePolicy:7
+msgid ""
+"Requests from TLS-protected clients to non-potentially trustworthy URLs, on "
+"the other hand, will contain no referrer information. A Referer HTTP header "
+"will not be sent."
+msgstr ""
+"另一方面，由 TLS 保护的客户端向不可信任的 URL 的请求将不包含参考信息。"
+"Referer HTTP 头将不会发送。"
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.NoReferrerWhenDowngradePolicy:11
+msgid ""
+"This is a user agent's default behavior, if no policy is otherwise specified."
+msgstr "这是用户代理的默认行为，如果没有指定其他策略。"
+
+#: ../../../topics/spider-middleware.rst:396
+msgid ""
+"\"no-referrer-when-downgrade\" policy is the W3C-recommended default, and is "
+"used by major web browsers."
+msgstr "\"不推荐当降级时\"策略是 W3C 推荐的默认值，并被主要浏览器使用。"
+
+#: ../../../topics/spider-middleware.rst:399
+msgid ""
+"However, it is NOT Scrapy's default referrer policy (see :class:"
+"`DefaultReferrerPolicy`)."
+msgstr ""
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.SameOriginPolicy:1
+msgid "https://www.w3.org/TR/referrer-policy/#referrer-policy-same-origin"
+msgstr "https://www.w3.org/TR/referrer-policy/#referrer-policy-some-original"
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.SameOriginPolicy:3
+msgid ""
+"The \"same-origin\" policy specifies that a full URL, stripped for use as a "
+"referrer, is sent as referrer information when making same-origin requests "
+"from a particular request client."
+msgstr ""
+"“相同来源”策略规定了一个完整的 URL，用作推荐器， 当从特定请求客户端提出相同来"
+"源请求时，将作为推荐信息发送。"
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.SameOriginPolicy:6
+msgid ""
+"Cross-origin requests, on the other hand, will contain no referrer "
+"information. A Referer HTTP header will not be sent."
+msgstr "另一方面，跨源请求将不包含引用信息。Referer HTTP 标头将不会发送。"
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.OriginPolicy:1
+msgid "https://www.w3.org/TR/referrer-policy/#referrer-policy-origin"
+msgstr ""
+"https://www.w3.org/TR/referrer-policy/#referrer-policy-origin-policy-original"
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.OriginPolicy:3
+msgid ""
+"The \"origin\" policy specifies that only the ASCII serialization of the "
+"origin of the request client is sent as referrer information when making "
+"both same-origin requests and cross-origin requests from a particular "
+"request client."
+msgstr ""
+"“原始”政策规定，在提出相同原始请求和来自特定请求客户的跨原始请求时，只将请求"
+"客户端的 ASCII 序列化作为参考信息发送。"
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.StrictOriginPolicy:1
+msgid "https://www.w3.org/TR/referrer-policy/#referrer-policy-strict-origin"
+msgstr "https://www.w3.org/TR/referrer-policy/#referrer-policy-strict-original"
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.StrictOriginPolicy:3
+msgid ""
+"The \"strict-origin\" policy sends the ASCII serialization of the origin of "
+"the request client when making requests: - from a TLS-protected environment "
+"settings object to a potentially trustworthy URL, and - from non-TLS-"
+"protected environment settings objects to any origin."
+msgstr ""
+"“严格起源”政策在请求时发送请求客户端来源的ASCII序列化：- 从 TLS 受保护的环境"
+"设置对象到一个可能值得信任的 URL， - 从不受TLS-保护的环境设置对象到任何源."
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.StrictOriginPolicy:8
+msgid ""
+"Requests from TLS-protected request clients to non- potentially trustworthy "
+"URLs, on the other hand, will contain no referrer information. A Referer "
+"HTTP header will not be sent."
+msgstr ""
+"另一方面，来自 TLS 保护的请求客户端对不可信的 URL 的请求将不包含参考信息。 "
+"Referer HTTP 头将不会发送。"
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.OriginWhenCrossOriginPolicy:1
+msgid ""
+"https://www.w3.org/TR/referrer-policy/#referrer-policy-origin-when-cross-"
+"origin"
+msgstr ""
+"https://www.w3.org/TR/referrer-policy/#referrer-policy-policy-origin-when-"
+"cross-origin-"
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.OriginWhenCrossOriginPolicy:3
+msgid ""
+"The \"origin-when-cross-origin\" policy specifies that a full URL, stripped "
+"for use as a referrer, is sent as referrer information when making same-"
+"origin requests from a particular request client, and only the ASCII "
+"serialization of the origin of the request client is sent as referrer "
+"information when making cross-origin requests from a particular request "
+"client."
+msgstr ""
+"“原始跨源”政策规定，完整的 URL，可作为推荐人使用， 当从特定请求客户端提出相同"
+"来源请求时，作为推荐信息发送， 并且只有ASCII序列化请求客户端的来源，在从特定"
+"请求客户端提出交叉请求时作为参考信息发送。"
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.StrictOriginWhenCrossOriginPolicy:1
+msgid ""
+"https://www.w3.org/TR/referrer-policy/#referrer-policy-strict-origin-when-"
+"cross-origin"
+msgstr ""
+"https://www.w3.org/TR/referrer-policy/#referrer-policy-strict-origin-when-"
+"cross-origin-"
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.StrictOriginWhenCrossOriginPolicy:3
+msgid ""
+"The \"strict-origin-when-cross-origin\" policy specifies that a full URL, "
+"stripped for use as a referrer, is sent as referrer information when making "
+"same-origin requests from a particular request client, and only the ASCII "
+"serialization of the origin of the request client when making cross-origin "
+"requests:"
+msgstr ""
+"“严格源头跨源”政策规定，完整的 URL，可作为推荐人使用， 当从特定请求客户端提出"
+"相同来源请求时，作为推荐信息发送， 并且只有ASCII在提出跨源请求时将请求客户端"
+"的来源序列化："
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.StrictOriginWhenCrossOriginPolicy:9
+msgid ""
+"from a TLS-protected environment settings object to a potentially "
+"trustworthy URL, and"
+msgstr "从 TLS 受保护的环境设置对象到一个可能值得信任的 URL，和"
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.StrictOriginWhenCrossOriginPolicy:10
+msgid "from non-TLS-protected environment settings objects to any origin."
+msgstr "从非 TLS 保护的环境设置对象到任何来源。"
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.StrictOriginWhenCrossOriginPolicy:12
+msgid ""
+"Requests from TLS-protected clients to non- potentially trustworthy URLs, on "
+"the other hand, will contain no referrer information. A Referer HTTP header "
+"will not be sent."
+msgstr ""
+"另一方面，受TLS保护的客户端对不可信的 URL 的请求将不包含参考信息。 Referer "
+"HTTP 头将不会发送。"
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.UnsafeUrlPolicy:1
+msgid "https://www.w3.org/TR/referrer-policy/#referrer-policy-unsafe-url"
+msgstr "https://www.w3.org/TR/referrer-policy/#referrer-policy-unsafe-url"
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.UnsafeUrlPolicy:3
+msgid ""
+"The \"unsafe-url\" policy specifies that a full URL, stripped for use as a "
+"referrer, is sent along with both cross-origin requests and same-origin "
+"requests made from a particular request client."
+msgstr ""
+"“不安全-url”策略规定，一个完整的 URL，可作为推荐人使用。 与不同来源的请求和来"
+"自特定请求客户的相同请求一起发送。"
+
+#: ../../../../scrapy/spidermiddlewares/referer.py:docstring of
+#: scrapy.spidermiddlewares.referer.UnsafeUrlPolicy:7
+msgid ""
+"Note: The policy's name doesn't lie; it is unsafe. This policy will leak "
+"origins and paths from TLS-protected resources to insecure origins. "
+"Carefully consider the impact of setting such a policy for potentially "
+"sensitive documents."
+msgstr ""
+"注意：该策略的名称不会是假的；它是不安全的。该策略将泄露来源和路径，从受TLS-"
+"保护的资源到不安全的来源。 认真考虑为潜在敏感文件制定这样一项政策所产生的影"
+"响。"
+
+#: ../../../topics/spider-middleware.rst:413
+msgid "\"unsafe-url\" policy is NOT recommended."
+msgstr "不推荐“不安全-url”政策。"
+
+#: ../../../topics/spider-middleware.rst:428
+msgid "REFERRER_POLICIES"
+msgstr "REFERRER_POLICIS"
+
+#: ../../../topics/spider-middleware.rst:432
+msgid "Default: ``{}``"
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:434
+msgid ""
+"A dictionary mapping policy names to import paths of :class:`scrapy."
+"spidermiddlewares.referer.ReferrerPolicy` subclasses, or ``None`` to disable "
+"support for a given policy name."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:438
+msgid ""
+"This allows overriding the policies triggered by the ``Referrer-Policy`` "
+"response header."
+msgstr "这允许覆盖由 ``Referrer-Policy`` 响应头所触发的策略。"
+
+#: ../../../topics/spider-middleware.rst:441
+msgid ""
+"Use ``\"\"`` to override the policy for responses with `no referrer policy "
+"<https://www.w3.org/TR/referrer-policy/#referrer-policy-empty-string>`__."
+msgstr ""
+"使用 ``\"\"`` 来覆盖响应策略与 `no referrer policy <https://www.w3.org/TR/"
+"referrer-policy/#referrer-policy-empty-string>`__。"
+
+#: ../../../topics/spider-middleware.rst:446
+msgid "StartSpiderMiddleware"
+msgstr "StartSpiderMiddleware"
+
+#: ../../../../scrapy/spidermiddlewares/start.py:docstring of
+#: scrapy.spidermiddlewares.start.StartSpiderMiddleware:1
+msgid "Set :reqmeta:`is_start_request`."
+msgstr ""
+
+#: ../../../../scrapy/spidermiddlewares/start.py:docstring of
+#: scrapy.spidermiddlewares.start.StartSpiderMiddleware:6
+msgid "is_start_request"
+msgstr "is_start_request"
+
+#: ../../../../scrapy/spidermiddlewares/start.py:docstring of
+#: scrapy.spidermiddlewares.start.StartSpiderMiddleware:8
+msgid ""
+":attr:`~scrapy.Request.meta` key that is set to ``True`` in :ref:`start "
+"requests <start-requests>`, allowing you to tell start requests apart from "
+"other requests, e.g. in :ref:`downloader middlewares <topics-downloader-"
+"middleware>`."
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:454
+msgid "UrlLengthMiddleware"
+msgstr "UrlLengthMiddleware"
+
+#: ../../../topics/spider-middleware.rst:461
+msgid "Filters out requests with URLs longer than URLLENGTH_LIMIT"
+msgstr "过滤带有URL长于URLLENGTH_LIMIT"
+
+#: ../../../topics/spider-middleware.rst:463
+msgid ""
+"The :class:`UrlLengthMiddleware` can be configured through the following "
+"settings (see the settings documentation for more info):"
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:466
+msgid ""
+":setting:`URLLENGTH_LIMIT` - The maximum URL length to allow for crawled "
+"URLs."
+msgstr ""
