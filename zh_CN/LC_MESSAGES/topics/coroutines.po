@@ -1,0 +1,396 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-08 13:04+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/coroutines.rst:5
+msgid "Coroutines"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:7
+msgid ""
+"Scrapy :ref:`supports <coroutine-support>` the :ref:`coroutine syntax "
+"<async>` (i.e. ``async def``)."
+msgstr ""
+
+#: ../../../topics/coroutines.rst:14
+msgid "Supported callables"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:16
+msgid ""
+"The following callables may be defined as coroutines using ``async def``, "
+"and hence use coroutine syntax (e.g. ``await``, ``async for``, ``async "
+"with``):"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:19
+msgid ""
+"The :meth:`~scrapy.spiders.Spider.start` spider method, which *must* be "
+"defined as an :term:`asynchronous generator`."
+msgstr ""
+
+#: ../../../topics/coroutines.rst:24
+msgid ":class:`~scrapy.Request` callbacks."
+msgstr ""
+
+#: ../../../topics/coroutines.rst:26
+msgid ""
+"The :meth:`process_item` method of :ref:`item pipelines <topics-item-"
+"pipeline>`."
+msgstr ""
+
+#: ../../../topics/coroutines.rst:29
+msgid ""
+"The :meth:`~scrapy.downloadermiddlewares.DownloaderMiddleware."
+"process_request`, :meth:`~scrapy.downloadermiddlewares.DownloaderMiddleware."
+"process_response`, and :meth:`~scrapy.downloadermiddlewares."
+"DownloaderMiddleware.process_exception` methods of :ref:`downloader "
+"middlewares <topics-downloader-middleware-custom>`."
+msgstr ""
+
+#: ../../../topics/coroutines.rst:37
+msgid ""
+"The :meth:`~scrapy.spidermiddlewares.SpiderMiddleware.process_spider_output` "
+"method of :ref:`spider middlewares <topics-spider-middleware>`, which *must* "
+"be defined as an :term:`asynchronous generator` except in :ref:`universal "
+"spider middlewares <universal-spider-middleware>`."
+msgstr ""
+
+#: ../../../topics/coroutines.rst:43
+msgid ""
+"The :meth:`~scrapy.spidermiddlewares.SpiderMiddleware.process_start` method "
+"of :ref:`spider middlewares <custom-spider-middleware>`, which *must* be "
+"defined as an :term:`asynchronous generator`."
+msgstr ""
+
+#: ../../../topics/coroutines.rst:49
+msgid ":ref:`Signal handlers that support deferreds <signal-deferred>`."
+msgstr ""
+
+#: ../../../topics/coroutines.rst:51
+msgid "Methods of :ref:`download handlers <topics-download-handlers>`."
+msgstr ""
+
+#: ../../../topics/coroutines.rst:59
+msgid "Using Deferred-based APIs"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:61
+msgid ""
+"In addition to native coroutine APIs Scrapy has some APIs that return a :"
+"class:`~twisted.internet.defer.Deferred` object or take a user-supplied "
+"function that returns a :class:`~twisted.internet.defer.Deferred` object. "
+"These APIs are also asynchronous but don't yet support native ``async def`` "
+"syntax. In the future we plan to add support for the ``async def`` syntax to "
+"these APIs or replace them with other APIs where changing the existing ones "
+"isn't possible."
+msgstr ""
+
+#: ../../../topics/coroutines.rst:69
+msgid ""
+"These APIs have a coroutine-based implementation and a Deferred-based one:"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:71
+msgid ":class:`scrapy.crawler.Crawler`:"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:73
+msgid ""
+":meth:`~scrapy.crawler.Crawler.crawl_async` (coroutine-based) and :meth:"
+"`~scrapy.crawler.Crawler.crawl` (Deferred-based): the former may be "
+"inconvenient to use in Deferred-based code so both are available, this may "
+"change in a future Scrapy version."
+msgstr ""
+
+#: ../../../topics/coroutines.rst:78
+msgid ""
+":class:`scrapy.crawler.AsyncCrawlerRunner` and its subclass :class:`scrapy."
+"crawler.AsyncCrawlerProcess` (coroutine-based) and :class:`scrapy.crawler."
+"CrawlerRunner` and its subclass :class:`scrapy.crawler.CrawlerProcess` "
+"(Deferred-based): the former doesn't support non-default reactors and so the "
+"latter should be used with those."
+msgstr ""
+
+#: ../../../topics/coroutines.rst:85
+msgid ""
+"The following user-supplied methods can return :class:`~twisted.internet."
+"defer.Deferred` objects (the methods that can also return coroutines are "
+"listed in :ref:`coroutine-support`):"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:89
+msgid "Custom downloader implementations (see :setting:`DOWNLOADER`):"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:91
+msgid "``fetch()``"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:93
+msgid "Custom scheduler implementations (see :setting:`SCHEDULER`):"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:95
+msgid ":meth:`~scrapy.core.scheduler.BaseScheduler.open`"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:97
+msgid ":meth:`~scrapy.core.scheduler.BaseScheduler.close`"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:99
+msgid "Custom dupefilters (see :setting:`DUPEFILTER_CLASS`):"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:101
+msgid "``open()``"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:103
+msgid "``close()``"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:105
+msgid "Custom feed storages (see :setting:`FEED_STORAGES`):"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:107
+msgid "``store()``"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:109
+msgid "Subclasses of :class:`scrapy.pipelines.media.MediaPipeline`:"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:111
+msgid "``media_to_download()``"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:113
+msgid "``item_completed()``"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:115
+msgid ""
+"Custom storages used by subclasses of :class:`scrapy.pipelines.files."
+"FilesPipeline`:"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:118
+msgid "``persist_file()``"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:120
+msgid "``stat_file()``"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:122
+msgid ""
+"In most cases you can use these APIs in code that otherwise uses coroutines, "
+"by wrapping a :class:`~twisted.internet.defer.Deferred` object into a :class:"
+"`~asyncio.Future` object or vice versa. See :ref:`asyncio-await-dfd` for "
+"more information about this."
+msgstr ""
+
+#: ../../../topics/coroutines.rst:127
+msgid ""
+"For example: a custom scheduler needs to define an ``open()`` method that "
+"can return a :class:`~twisted.internet.defer.Deferred` object. You can write "
+"a method that works with Deferreds and returns one directly, or you can "
+"write a coroutine and convert it into a function that returns a Deferred "
+"with :func:`~scrapy.utils.defer.deferred_f_from_coro_f`."
+msgstr ""
+
+#: ../../../topics/coroutines.rst:135
+msgid "General usage"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:137
+msgid "There are several use cases for coroutines in Scrapy."
+msgstr ""
+
+#: ../../../topics/coroutines.rst:139
+msgid ""
+"Code that would return Deferreds when written for previous Scrapy versions, "
+"such as downloader middlewares and signal handlers, can be rewritten to be "
+"shorter and cleaner:"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:143
+msgid ""
+"from itemadapter import ItemAdapter\n"
+"\n"
+"\n"
+"class DbPipeline:\n"
+"    def _update_item(self, data, item):\n"
+"        adapter = ItemAdapter(item)\n"
+"        adapter[\"field\"] = data\n"
+"        return item\n"
+"\n"
+"    def process_item(self, item):\n"
+"        adapter = ItemAdapter(item)\n"
+"        dfd = db.get_some_data(adapter[\"id\"])\n"
+"        dfd.addCallback(self._update_item, item)\n"
+"        return dfd"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:160
+msgid "becomes:"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:162
+msgid ""
+"from itemadapter import ItemAdapter\n"
+"\n"
+"\n"
+"class DbPipeline:\n"
+"    async def process_item(self, item):\n"
+"        adapter = ItemAdapter(item)\n"
+"        adapter[\"field\"] = await db.get_some_data(adapter[\"id\"])\n"
+"        return item"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:173
+msgid ""
+"Coroutines may be used to call asynchronous code. This includes other "
+"coroutines, functions that return Deferreds and functions that return :term:"
+"`awaitable objects <awaitable>` such as :class:`~asyncio.Future`. This means "
+"you can use many useful Python libraries providing such code:"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:179
+msgid ""
+"class MySpiderDeferred(Spider):\n"
+"    # ...\n"
+"    async def parse(self, response):\n"
+"        additional_response = await treq.get(\"https://additional.url\")\n"
+"        additional_data = await treq.content(additional_response)\n"
+"        # ... use response and additional_data to yield items and requests\n"
+"\n"
+"\n"
+"class MySpiderAsyncio(Spider):\n"
+"    # ...\n"
+"    async def parse(self, response):\n"
+"        async with aiohttp.ClientSession() as session:\n"
+"            async with session.get(\"https://additional.url\") as "
+"additional_response:\n"
+"                additional_data = await additional_response.text()\n"
+"        # ... use response and additional_data to yield items and requests"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:197
+msgid ""
+"Many libraries that use coroutines, such as `aio-libs`_, require the :mod:"
+"`asyncio` loop and to use them you need to :doc:`enable asyncio support in "
+"Scrapy<asyncio>`."
+msgstr ""
+
+#: ../../../topics/coroutines.rst:201
+msgid ""
+"If you want to ``await`` on Deferreds while using the asyncio reactor, you "
+"need to :ref:`wrap them<asyncio-await-dfd>`."
+msgstr ""
+
+#: ../../../topics/coroutines.rst:204
+msgid "Common use cases for asynchronous code include:"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:206
+msgid ""
+"requesting data from websites, databases and other services (in :meth:"
+"`~scrapy.spiders.Spider.start`, callbacks, pipelines and middlewares);"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:209
+msgid "storing data in databases (in pipelines and middlewares);"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:210
+msgid ""
+"delaying the spider initialization until some external event (in the :signal:"
+"`spider_opened` handler);"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:212
+msgid ""
+"calling asynchronous Scrapy methods like :meth:`ExecutionEngine.download` "
+"(see :ref:`the screenshot pipeline example<ScreenshotPipeline>`)."
+msgstr ""
+
+#: ../../../topics/coroutines.rst:221
+msgid "Inline requests"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:223
+msgid ""
+"The spider below shows how to send a request and await its response all from "
+"within a spider callback:"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:226
+msgid ""
+"from scrapy import Spider, Request\n"
+"\n"
+"\n"
+"class SingleRequestSpider(Spider):\n"
+"    name = \"single\"\n"
+"    start_urls = [\"https://example.org/product\"]\n"
+"\n"
+"    async def parse(self, response, **kwargs):\n"
+"        additional_request = Request(\"https://example.org/price\")\n"
+"        additional_response = await self.crawler.engine.download_async(\n"
+"            additional_request\n"
+"        )\n"
+"        yield {\n"
+"            \"h1\": response.css(\"h1\").get(),\n"
+"            \"price\": additional_response.css(\"#price\").get(),\n"
+"        }"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:245
+msgid "You can also send multiple requests in parallel:"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:247
+msgid ""
+"import asyncio\n"
+"\n"
+"from scrapy import Spider, Request\n"
+"\n"
+"\n"
+"class MultipleRequestsSpider(Spider):\n"
+"    name = \"multiple\"\n"
+"    start_urls = [\"https://example.com/product\"]\n"
+"\n"
+"    async def parse(self, response, **kwargs):\n"
+"        additional_requests = [\n"
+"            Request(\"https://example.com/price\"),\n"
+"            Request(\"https://example.com/color\"),\n"
+"        ]\n"
+"        tasks = []\n"
+"        for r in additional_requests:\n"
+"            task = self.crawler.engine.download_async(r)\n"
+"            tasks.append(task)\n"
+"        responses = await asyncio.gather(*tasks)\n"
+"        yield {\n"
+"            \"h1\": response.css(\"h1::text\").get(),\n"
+"            \"price\": responses[0][1].css(\".price::text\").get(),\n"
+"            \"price2\": responses[1][1].css(\".color::text\").get(),\n"
+"        }"
+msgstr ""
