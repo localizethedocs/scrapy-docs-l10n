@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-08 13:04+0000\n"
+"POT-Creation-Date: 2026-06-29 13:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -549,102 +549,106 @@ msgid ""
 "the same acceptable values as for the ``REFERRER_POLICY`` setting."
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:359
-msgid "Acceptable values for REFERRER_POLICY"
+#: ../../../topics/spider-middleware.rst:358
+msgid ":ref:`security-credential-leakage`"
 msgstr ""
 
 #: ../../../topics/spider-middleware.rst:361
+msgid "Acceptable values for REFERRER_POLICY"
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:363
 msgid ""
 "either a path to a :class:`scrapy.spidermiddlewares.referer.ReferrerPolicy` "
 "subclass — a custom policy or one of the built-in ones (see classes below),"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:363
+#: ../../../topics/spider-middleware.rst:365
 msgid "or one or more comma-separated standard W3C-defined string values,"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:364
+#: ../../../topics/spider-middleware.rst:366
 msgid "or the special ``\"scrapy-default\"``."
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:367
+#: ../../../topics/spider-middleware.rst:369
 msgid "String value"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:367
+#: ../../../topics/spider-middleware.rst:369
 msgid "Class name (as a string)"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:369
+#: ../../../topics/spider-middleware.rst:371
 msgid "``\"scrapy-default\"`` (default)"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:369
+#: ../../../topics/spider-middleware.rst:371
 msgid ":class:`scrapy.spidermiddlewares.referer.DefaultReferrerPolicy`"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:370
+#: ../../../topics/spider-middleware.rst:372
 msgid "`\"no-referrer\"`_"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:370
+#: ../../../topics/spider-middleware.rst:372
 msgid ":class:`scrapy.spidermiddlewares.referer.NoReferrerPolicy`"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:371
+#: ../../../topics/spider-middleware.rst:373
 msgid "`\"no-referrer-when-downgrade\"`_"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:371
+#: ../../../topics/spider-middleware.rst:373
 msgid ":class:`scrapy.spidermiddlewares.referer.NoReferrerWhenDowngradePolicy`"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:372
+#: ../../../topics/spider-middleware.rst:374
 msgid "`\"same-origin\"`_"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:372
+#: ../../../topics/spider-middleware.rst:374
 msgid ":class:`scrapy.spidermiddlewares.referer.SameOriginPolicy`"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:373
+#: ../../../topics/spider-middleware.rst:375
 msgid "`\"origin\"`_"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:373
+#: ../../../topics/spider-middleware.rst:375
 msgid ":class:`scrapy.spidermiddlewares.referer.OriginPolicy`"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:374
+#: ../../../topics/spider-middleware.rst:376
 msgid "`\"strict-origin\"`_"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:374
+#: ../../../topics/spider-middleware.rst:376
 msgid ":class:`scrapy.spidermiddlewares.referer.StrictOriginPolicy`"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:375
+#: ../../../topics/spider-middleware.rst:377
 msgid "`\"origin-when-cross-origin\"`_"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:375
+#: ../../../topics/spider-middleware.rst:377
 msgid ":class:`scrapy.spidermiddlewares.referer.OriginWhenCrossOriginPolicy`"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:376
+#: ../../../topics/spider-middleware.rst:378
 msgid "`\"strict-origin-when-cross-origin\"`_"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:376
+#: ../../../topics/spider-middleware.rst:378
 msgid ""
 ":class:`scrapy.spidermiddlewares.referer.StrictOriginWhenCrossOriginPolicy`"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:377
+#: ../../../topics/spider-middleware.rst:379
 msgid "`\"unsafe-url\"`_"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:377
+#: ../../../topics/spider-middleware.rst:379
 msgid ":class:`scrapy.spidermiddlewares.referer.UnsafeUrlPolicy`"
 msgstr ""
 
@@ -661,7 +665,7 @@ msgid ""
 "``s3://`` scheme."
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:384
+#: ../../../topics/spider-middleware.rst:386
 msgid ""
 "Scrapy's default referrer policy — just like `\"no-referrer-when-"
 "downgrade\"`_, the W3C-recommended value for browsers — will send a non-"
@@ -669,7 +673,7 @@ msgid ""
 "even if the domain is different."
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:389
+#: ../../../topics/spider-middleware.rst:391
 msgid ""
 "`\"same-origin\"`_ may be a better choice if you want to remove referrer "
 "information for cross-domain requests."
@@ -718,13 +722,13 @@ msgid ""
 "This is a user agent's default behavior, if no policy is otherwise specified."
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:396
+#: ../../../topics/spider-middleware.rst:398
 msgid ""
 "\"no-referrer-when-downgrade\" policy is the W3C-recommended default, and is "
 "used by major web browsers."
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:399
+#: ../../../topics/spider-middleware.rst:401
 msgid ""
 "However, it is NOT Scrapy's default referrer policy (see :class:"
 "`DefaultReferrerPolicy`)."
@@ -863,38 +867,38 @@ msgid ""
 "sensitive documents."
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:413
+#: ../../../topics/spider-middleware.rst:415
 msgid "\"unsafe-url\" policy is NOT recommended."
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:428
+#: ../../../topics/spider-middleware.rst:430
 msgid "REFERRER_POLICIES"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:432
+#: ../../../topics/spider-middleware.rst:434
 msgid "Default: ``{}``"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:434
+#: ../../../topics/spider-middleware.rst:436
 msgid ""
 "A dictionary mapping policy names to import paths of :class:`scrapy."
 "spidermiddlewares.referer.ReferrerPolicy` subclasses, or ``None`` to disable "
 "support for a given policy name."
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:438
+#: ../../../topics/spider-middleware.rst:440
 msgid ""
 "This allows overriding the policies triggered by the ``Referrer-Policy`` "
 "response header."
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:441
+#: ../../../topics/spider-middleware.rst:443
 msgid ""
 "Use ``\"\"`` to override the policy for responses with `no referrer policy "
 "<https://www.w3.org/TR/referrer-policy/#referrer-policy-empty-string>`__."
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:446
+#: ../../../topics/spider-middleware.rst:448
 msgid "StartSpiderMiddleware"
 msgstr ""
 
@@ -917,21 +921,21 @@ msgid ""
 "middleware>`."
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:454
+#: ../../../topics/spider-middleware.rst:456
 msgid "UrlLengthMiddleware"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:461
+#: ../../../topics/spider-middleware.rst:463
 msgid "Filters out requests with URLs longer than URLLENGTH_LIMIT"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:463
+#: ../../../topics/spider-middleware.rst:465
 msgid ""
 "The :class:`UrlLengthMiddleware` can be configured through the following "
 "settings (see the settings documentation for more info):"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:466
+#: ../../../topics/spider-middleware.rst:468
 msgid ""
 ":setting:`URLLENGTH_LIMIT` - The maximum URL length to allow for crawled "
 "URLs."

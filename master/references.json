@@ -37,9 +37,9 @@
     "branch" : "master",
     "commit" : 
     {
-      "date" : "2026-06-08 11:54:10 +0200",
-      "hash" : "d9e2f5fbf7da59ea61595cffea5e3399fb9c3574",
-      "title" : "Add settings for TLS min/max version as a replacement for the TLS method (#6546)"
+      "date" : "2026-06-29 17:21:20 +0500",
+      "hash" : "9559cbee1e7344d9746b2e2164d10a9d6575f9d1",
+      "title" : "Solve timing issues with HTTP cache tests? (#7692)"
     }
   },
   "type" : "branch",

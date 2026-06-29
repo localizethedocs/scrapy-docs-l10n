@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-08 13:04+0000\n"
+"POT-Creation-Date: 2026-06-29 13:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -431,9 +431,10 @@ msgstr ""
 
 #: ../../../topics/practices.rst:350
 msgid ""
-"When running multiple spiders in the same process, :ref:`reactor settings "
-"<reactor-settings>` should not have a different value per spider. Also, :ref:"
-"`pre-crawler settings <pre-crawler-settings>` cannot be defined per spider."
+"When running multiple spiders in the same process, :ref:`logging settings "
+"<logging-settings>` and :ref:`reactor settings <reactor-settings>` should "
+"not have a different value per spider, and :ref:`pre-crawler settings <pre-"
+"crawler-settings>` cannot be defined per spider."
 msgstr ""
 
 #: ../../../topics/practices.rst:355
@@ -495,10 +496,39 @@ msgid ""
 msgstr ""
 
 #: ../../../topics/practices.rst:393
-msgid "Avoiding getting banned"
+msgid "Reducing startup time in large projects"
 msgstr ""
 
 #: ../../../topics/practices.rst:395
+msgid ""
+"When running a spider with ``scrapy crawl``, Scrapy loads all modules listed "
+"in :setting:`SPIDER_MODULES` to find the target spider. In large projects "
+"with many spiders, this can noticeably increase startup time and memory "
+"usage."
+msgstr ""
+
+#: ../../../topics/practices.rst:399
+msgid ""
+"To avoid loading every spider module, override :setting:`SPIDER_MODULES` on "
+"the command line to point only to the module that contains the spider you "
+"want to run:"
+msgstr ""
+
+#: ../../../topics/practices.rst:403
+msgid "scrapy crawl myspider -s SPIDER_MODULES=myproject.spiders.myspider"
+msgstr ""
+
+#: ../../../topics/practices.rst:407
+msgid ""
+"Because :setting:`SPIDER_MODULES` is a list setting, you can include "
+"multiple modules by separating them with commas."
+msgstr ""
+
+#: ../../../topics/practices.rst:413
+msgid "Avoiding getting banned"
+msgstr ""
+
+#: ../../../topics/practices.rst:415
 msgid ""
 "Some websites implement certain measures to prevent bots from crawling them, "
 "with varying degrees of sophistication. Getting around those measures can be "
@@ -506,42 +536,42 @@ msgid ""
 "Please consider contacting `commercial support`_ if in doubt."
 msgstr ""
 
-#: ../../../topics/practices.rst:400
+#: ../../../topics/practices.rst:420
 msgid ""
 "Here are some tips to keep in mind when dealing with these kinds of sites:"
 msgstr ""
 
-#: ../../../topics/practices.rst:402
+#: ../../../topics/practices.rst:422
 msgid ""
 "rotate your user agent from a pool of well-known ones from browsers (Google "
 "around to get a list of them)"
 msgstr ""
 
-#: ../../../topics/practices.rst:404
+#: ../../../topics/practices.rst:424
 msgid ""
 "disable cookies (see :setting:`COOKIES_ENABLED`) as some sites may use "
 "cookies to spot bot behaviour"
 msgstr ""
 
-#: ../../../topics/practices.rst:406
+#: ../../../topics/practices.rst:426
 msgid ""
 "use download delays (2 or higher). See :setting:`DOWNLOAD_DELAY` setting."
 msgstr ""
 
-#: ../../../topics/practices.rst:407
+#: ../../../topics/practices.rst:427
 msgid ""
 "if possible, use `Common Crawl`_ to fetch pages, instead of hitting the "
 "sites directly"
 msgstr ""
 
-#: ../../../topics/practices.rst:409
+#: ../../../topics/practices.rst:429
 msgid ""
 "use a pool of rotating IPs. For example, the free `Tor project`_ or paid "
 "services like `ProxyMesh`_. An open source alternative is `scrapoxy`_, a "
 "super proxy that you can attach your own proxies to."
 msgstr ""
 
-#: ../../../topics/practices.rst:412
+#: ../../../topics/practices.rst:432
 msgid ""
 "for HTTPS websites, if blocking appears related to TLS behavior, consider "
 "adjusting the :setting:`DOWNLOAD_TLS_MIN_VERSION` and :setting:"
@@ -549,15 +579,25 @@ msgid ""
 "differently depending on the TLS method used by the client."
 msgstr ""
 
-#: ../../../topics/practices.rst:416
+#: ../../../topics/practices.rst:436
 msgid ""
 "use a ban avoidance service, such as `Zyte API`_, which provides a `Scrapy "
 "plugin <https://github.com/scrapy-plugins/scrapy-zyte-api>`__ and additional "
 "features, like `AI web scraping <https://www.zyte.com/ai-web-scraping/>`__"
 msgstr ""
 
-#: ../../../topics/practices.rst:420
+#: ../../../topics/practices.rst:440
 msgid ""
 "If you are still unable to prevent your bot getting banned, consider "
 "contacting `commercial support`_."
+msgstr ""
+
+#: ../../../topics/practices.rst:446
+msgid "Static analysis"
+msgstr ""
+
+#: ../../../topics/practices.rst:448
+msgid ""
+"Consider using :doc:`scrapy-lint <scrapy-lint:index>`, a linter for Scrapy "
+"projects that detects common mistakes and anti-patterns."
 msgstr ""

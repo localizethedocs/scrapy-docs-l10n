@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-08 13:04+0000\n"
+"POT-Creation-Date: 2026-06-29 13:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -551,43 +551,33 @@ msgstr ""
 
 #: ../../../topics/spiders.rst:357
 msgid ""
-"A valid use case is to set the http auth credentials used by :class:`~scrapy."
-"downloadermiddlewares.httpauth.HttpAuthMiddleware`::"
-msgstr ""
-
-#: ../../../topics/spiders.rst:360
-msgid "scrapy crawl myspider -a http_user=myuser -a http_pass=mypassword"
-msgstr ""
-
-#: ../../../topics/spiders.rst:362
-msgid ""
 "Spider arguments can also be passed through the Scrapyd ``schedule.json`` "
 "API. See `Scrapyd documentation`_."
 msgstr ""
 
-#: ../../../topics/spiders.rst:368
+#: ../../../topics/spiders.rst:363
 msgid "scrapy-spider-metadata parameters"
 msgstr ""
 
-#: ../../../topics/spiders.rst:370
+#: ../../../topics/spiders.rst:365
 msgid ""
 "Another alternative to pass spider arguments is the library `scrapy-spider-"
 "metadata`_."
 msgstr ""
 
-#: ../../../topics/spiders.rst:372
+#: ../../../topics/spiders.rst:367
 msgid ""
 "This allows for Scrapy spiders to define, validate, document and pre-process "
 "their arguments as Pydantic models."
 msgstr ""
 
-#: ../../../topics/spiders.rst:375
+#: ../../../topics/spiders.rst:370
 msgid ""
 "The example shows how to define typed parameters where a string argument is "
 "automatically converted to an integer:"
 msgstr ""
 
-#: ../../../topics/spiders.rst:378
+#: ../../../topics/spiders.rst:373
 msgid ""
 "import scrapy\n"
 "from pydantic import BaseModel\n"
@@ -620,19 +610,19 @@ msgid ""
 "        }"
 msgstr ""
 
-#: ../../../topics/spiders.rst:409
+#: ../../../topics/spiders.rst:404
 msgid "This spider can be called from the command line::"
 msgstr ""
 
-#: ../../../topics/spiders.rst:411
+#: ../../../topics/spiders.rst:406
 msgid "scrapy crawl bookspider -a pages=2"
 msgstr ""
 
-#: ../../../topics/spiders.rst:416
+#: ../../../topics/spiders.rst:411
 msgid "Start requests"
 msgstr ""
 
-#: ../../../topics/spiders.rst:418
+#: ../../../topics/spiders.rst:413
 msgid ""
 "**Start requests** are :class:`~scrapy.Request` objects yielded from the :"
 "meth:`~scrapy.Spider.start` method of a spider or from the :meth:`~scrapy."
@@ -640,21 +630,21 @@ msgid ""
 "middleware <topics-spider-middleware>`."
 msgstr ""
 
-#: ../../../topics/spiders.rst:423
+#: ../../../topics/spiders.rst:418
 msgid ":ref:`start-request-order`"
 msgstr ""
 
-#: ../../../topics/spiders.rst:428
+#: ../../../topics/spiders.rst:423
 msgid "Delaying start request iteration"
 msgstr ""
 
-#: ../../../topics/spiders.rst:430
+#: ../../../topics/spiders.rst:425
 msgid ""
 "You can override the :meth:`~scrapy.Spider.start` method as follows to pause "
 "its iteration whenever there are scheduled requests:"
 msgstr ""
 
-#: ../../../topics/spiders.rst:433
+#: ../../../topics/spiders.rst:428
 msgid ""
 "async def start(self):\n"
 "    async for item_or_request in super().start():\n"
@@ -663,18 +653,18 @@ msgid ""
 "        yield item_or_request"
 msgstr ""
 
-#: ../../../topics/spiders.rst:441
+#: ../../../topics/spiders.rst:436
 msgid ""
 "This can help minimize the number of requests in the scheduler at any given "
 "time, to minimize resource usage (memory or disk, depending on :setting:"
 "`JOBDIR`)."
 msgstr ""
 
-#: ../../../topics/spiders.rst:448
+#: ../../../topics/spiders.rst:443
 msgid "Generic Spiders"
 msgstr ""
 
-#: ../../../topics/spiders.rst:450
+#: ../../../topics/spiders.rst:445
 msgid ""
 "Scrapy comes with some useful generic spiders that you can use to subclass "
 "your spiders from. Their aim is to provide convenient functionality for a "
@@ -682,13 +672,13 @@ msgid ""
 "certain rules, crawling from `Sitemaps`_, or parsing an XML/CSV feed."
 msgstr ""
 
-#: ../../../topics/spiders.rst:455
+#: ../../../topics/spiders.rst:450
 msgid ""
 "For the examples used in the following spiders, we'll assume you have a "
 "project with a ``TestItem`` declared in a ``myproject.items`` module:"
 msgstr ""
 
-#: ../../../topics/spiders.rst:458
+#: ../../../topics/spiders.rst:453
 msgid ""
 "from dataclasses import dataclass\n"
 "\n"
@@ -700,11 +690,11 @@ msgid ""
 "    description: str | None = None"
 msgstr ""
 
-#: ../../../topics/spiders.rst:473
+#: ../../../topics/spiders.rst:468
 msgid "CrawlSpider"
 msgstr ""
 
-#: ../../../topics/spiders.rst:477
+#: ../../../topics/spiders.rst:472
 msgid ""
 "This is the most commonly used spider for crawling regular websites, as it "
 "provides a convenient mechanism for following links by defining a set of "
@@ -714,13 +704,13 @@ msgid ""
 "your own spider."
 msgstr ""
 
-#: ../../../topics/spiders.rst:483
+#: ../../../topics/spiders.rst:478
 msgid ""
 "Apart from the attributes inherited from Spider (that you must specify), "
 "this class supports a new attribute:"
 msgstr ""
 
-#: ../../../topics/spiders.rst:488
+#: ../../../topics/spiders.rst:483
 msgid ""
 "Which is a list of one (or more) :class:`Rule` objects.  Each :class:`Rule` "
 "defines a certain behaviour for crawling the site. Rules objects are "
@@ -728,11 +718,11 @@ msgid ""
 "be used, according to the order they're defined in this attribute."
 msgstr ""
 
-#: ../../../topics/spiders.rst:493
+#: ../../../topics/spiders.rst:488
 msgid "This spider also exposes an overridable method:"
 msgstr ""
 
-#: ../../../topics/spiders.rst:497
+#: ../../../topics/spiders.rst:492
 msgid ""
 "This method is called for each response produced for the URLs in the "
 "spider's ``start_urls`` attribute. It allows to parse the initial responses "
@@ -740,11 +730,11 @@ msgid ""
 "`~scrapy.Request` object, or an iterable containing any of them."
 msgstr ""
 
-#: ../../../topics/spiders.rst:504
+#: ../../../topics/spiders.rst:499
 msgid "Crawling rules"
 msgstr ""
 
-#: ../../../topics/spiders.rst:508
+#: ../../../topics/spiders.rst:503
 msgid ""
 "``link_extractor`` is a :ref:`Link Extractor <topics-link-extractors>` "
 "object which defines how links will be extracted from each crawled page. "
@@ -754,7 +744,7 @@ msgid ""
 "arguments will be used, resulting in all links being extracted."
 msgstr ""
 
-#: ../../../topics/spiders.rst:515
+#: ../../../topics/spiders.rst:510
 msgid ""
 "``callback`` is a callable or a string (in which case a method from the "
 "spider object with that name will be used) to be called for each link "
@@ -767,20 +757,20 @@ msgid ""
 "dictionary (under the ``link_text`` key)"
 msgstr ""
 
-#: ../../../topics/spiders.rst:524
+#: ../../../topics/spiders.rst:519
 msgid ""
 "``cb_kwargs`` is a dict containing the keyword arguments to be passed to the "
 "callback function."
 msgstr ""
 
-#: ../../../topics/spiders.rst:527
+#: ../../../topics/spiders.rst:522
 msgid ""
 "``follow`` is a boolean which specifies if links should be followed from "
 "each response extracted with this rule. If ``callback`` is None ``follow`` "
 "defaults to ``True``, otherwise it defaults to ``False``."
 msgstr ""
 
-#: ../../../topics/spiders.rst:531
+#: ../../../topics/spiders.rst:526
 msgid ""
 "``process_links`` is a callable, or a string (in which case a method from "
 "the spider object with that name will be used) which will be called for each "
@@ -788,7 +778,7 @@ msgid ""
 "``link_extractor``. This is mainly used for filtering purposes."
 msgstr ""
 
-#: ../../../topics/spiders.rst:536
+#: ../../../topics/spiders.rst:531
 msgid ""
 "``process_request`` is a callable (or a string, in which case a method from "
 "the spider object with that name will be used) which will be called for "
@@ -798,7 +788,7 @@ msgid ""
 "``Request`` object or ``None`` (to filter out the request)."
 msgstr ""
 
-#: ../../../topics/spiders.rst:543
+#: ../../../topics/spiders.rst:538
 msgid ""
 "``errback`` is a callable or a string (in which case a method from the "
 "spider object with that name will be used) to be called if any exception is "
@@ -807,22 +797,22 @@ msgid ""
 "parameter."
 msgstr ""
 
-#: ../../../topics/spiders.rst:549
+#: ../../../topics/spiders.rst:544
 msgid ""
 "Because of its internal implementation, you must explicitly set callbacks "
 "for new requests when writing :class:`CrawlSpider`-based spiders; unexpected "
 "behaviour can occur otherwise."
 msgstr ""
 
-#: ../../../topics/spiders.rst:554
+#: ../../../topics/spiders.rst:549
 msgid "CrawlSpider example"
 msgstr ""
 
-#: ../../../topics/spiders.rst:556
+#: ../../../topics/spiders.rst:551
 msgid "Let's now take a look at an example CrawlSpider with rules:"
 msgstr ""
 
-#: ../../../topics/spiders.rst:558
+#: ../../../topics/spiders.rst:553
 msgid ""
 "from scrapy.spiders import CrawlSpider, Rule\n"
 "from scrapy.linkextractors import LinkExtractor\n"
@@ -869,7 +859,7 @@ msgid ""
 "        return item"
 msgstr ""
 
-#: ../../../topics/spiders.rst:598
+#: ../../../topics/spiders.rst:593
 msgid ""
 "This spider would start crawling example.com's home page, collecting "
 "category links, and item links, parsing the latter with the ``parse_item`` "
@@ -877,11 +867,11 @@ msgid ""
 "using XPath, and an :class:`~scrapy.Item` will be filled with it."
 msgstr ""
 
-#: ../../../topics/spiders.rst:604
+#: ../../../topics/spiders.rst:599
 msgid "XMLFeedSpider"
 msgstr ""
 
-#: ../../../topics/spiders.rst:608
+#: ../../../topics/spiders.rst:603
 msgid ""
 "XMLFeedSpider is designed for parsing XML feeds by iterating through them by "
 "a certain node name.  The iterator can be chosen from: ``iternodes``, "
@@ -891,48 +881,48 @@ msgid ""
 "iterator may be useful when parsing XML with bad markup."
 msgstr ""
 
-#: ../../../topics/spiders.rst:615
+#: ../../../topics/spiders.rst:610
 msgid ""
 "To set the iterator and the tag name, you must define the following class "
 "attributes:"
 msgstr ""
 
-#: ../../../topics/spiders.rst:620
+#: ../../../topics/spiders.rst:615
 msgid "A string which defines the iterator to use. It can be either:"
 msgstr ""
 
-#: ../../../topics/spiders.rst:622
+#: ../../../topics/spiders.rst:617
 msgid "``'iternodes'`` - a fast iterator based on regular expressions"
 msgstr ""
 
-#: ../../../topics/spiders.rst:624
+#: ../../../topics/spiders.rst:619
 msgid ""
 "``'html'`` - an iterator which uses :class:`~scrapy.Selector`. Keep in mind "
 "this uses DOM parsing and must load all DOM in memory which could be a "
 "problem for big feeds"
 msgstr ""
 
-#: ../../../topics/spiders.rst:628
+#: ../../../topics/spiders.rst:623
 msgid ""
 "``'xml'`` - an iterator which uses :class:`~scrapy.Selector`. Keep in mind "
 "this uses DOM parsing and must load all DOM in memory which could be a "
 "problem for big feeds"
 msgstr ""
 
-#: ../../../topics/spiders.rst:632
+#: ../../../topics/spiders.rst:627
 msgid "It defaults to: ``'iternodes'``."
 msgstr ""
 
-#: ../../../topics/spiders.rst:636
+#: ../../../topics/spiders.rst:631
 msgid ""
 "A string with the name of the node (or element) to iterate in. Example::"
 msgstr ""
 
-#: ../../../topics/spiders.rst:638
+#: ../../../topics/spiders.rst:633
 msgid "itertag = 'product'"
 msgstr ""
 
-#: ../../../topics/spiders.rst:642
+#: ../../../topics/spiders.rst:637
 msgid ""
 "A list of ``(prefix, uri)`` tuples which define the namespaces available in "
 "that document that will be processed with this spider. The ``prefix`` and "
@@ -940,16 +930,16 @@ msgid ""
 "`~scrapy.Selector.register_namespace` method."
 msgstr ""
 
-#: ../../../topics/spiders.rst:648
+#: ../../../topics/spiders.rst:643
 msgid ""
 "You can then specify nodes with namespaces in the :attr:`itertag` attribute."
 msgstr ""
 
-#: ../../../topics/spiders.rst:651
+#: ../../../topics/spiders.rst:646
 msgid "Example::"
 msgstr ""
 
-#: ../../../topics/spiders.rst:653
+#: ../../../topics/spiders.rst:648
 msgid ""
 "class YourSpider(XMLFeedSpider):\n"
 "\n"
@@ -958,13 +948,13 @@ msgid ""
 "    # ..."
 msgstr ""
 
-#: ../../../topics/spiders.rst:659
+#: ../../../topics/spiders.rst:654
 msgid ""
 "Apart from these new attributes, this spider has the following overridable "
 "methods too:"
 msgstr ""
 
-#: ../../../topics/spiders.rst:664
+#: ../../../topics/spiders.rst:659
 msgid ""
 "A method that receives the response as soon as it arrives from the spider "
 "middleware, before the spider starts parsing it. It can be used to modify "
@@ -972,7 +962,7 @@ msgid ""
 "also returns a response (it could be the same or another one)."
 msgstr ""
 
-#: ../../../topics/spiders.rst:671
+#: ../../../topics/spiders.rst:666
 msgid ""
 "This method is called for the nodes matching the provided tag name "
 "(``itertag``).  Receives the response and an :class:`~scrapy.Selector` for "
@@ -981,7 +971,7 @@ msgid ""
 "a :class:`~scrapy.Request` object, or an iterable containing any of them."
 msgstr ""
 
-#: ../../../topics/spiders.rst:681
+#: ../../../topics/spiders.rst:676
 msgid ""
 "This method is called for each result (item or request) returned by the "
 "spider, and it's intended to perform any last time processing required "
@@ -990,22 +980,22 @@ msgid ""
 "those results. It must return a list of results (items or requests)."
 msgstr ""
 
-#: ../../../topics/spiders.rst:687
+#: ../../../topics/spiders.rst:682
 msgid ""
 "Because of its internal implementation, you must explicitly set callbacks "
 "for new requests when writing :class:`XMLFeedSpider`-based spiders; "
 "unexpected behaviour can occur otherwise."
 msgstr ""
 
-#: ../../../topics/spiders.rst:693
+#: ../../../topics/spiders.rst:688
 msgid "XMLFeedSpider example"
 msgstr ""
 
-#: ../../../topics/spiders.rst:695
+#: ../../../topics/spiders.rst:690
 msgid "These spiders are pretty easy to use, let's have a look at one example:"
 msgstr ""
 
-#: ../../../topics/spiders.rst:698
+#: ../../../topics/spiders.rst:693
 msgid ""
 "from scrapy.spiders import XMLFeedSpider\n"
 "from myproject.items import TestItem\n"
@@ -1032,7 +1022,7 @@ msgid ""
 "        return item"
 msgstr ""
 
-#: ../../../topics/spiders.rst:722
+#: ../../../topics/spiders.rst:717
 msgid ""
 "Basically what we did up there was to create a spider that downloads a feed "
 "from the given ``start_urls``, and then iterates through each of its "
@@ -1040,34 +1030,34 @@ msgid ""
 "`~scrapy.Item`."
 msgstr ""
 
-#: ../../../topics/spiders.rst:727
+#: ../../../topics/spiders.rst:722
 msgid "CSVFeedSpider"
 msgstr ""
 
-#: ../../../topics/spiders.rst:731
+#: ../../../topics/spiders.rst:726
 msgid ""
 "This spider is very similar to the XMLFeedSpider, except that it iterates "
 "over rows, instead of nodes. The method that gets called in each iteration "
 "is :meth:`parse_row`."
 msgstr ""
 
-#: ../../../topics/spiders.rst:737
+#: ../../../topics/spiders.rst:732
 msgid ""
 "A string with the separator character for each field in the CSV file "
 "Defaults to ``','`` (comma)."
 msgstr ""
 
-#: ../../../topics/spiders.rst:742
+#: ../../../topics/spiders.rst:737
 msgid ""
 "A string with the enclosure character for each field in the CSV file "
 "Defaults to ``'\"'`` (quotation mark)."
 msgstr ""
 
-#: ../../../topics/spiders.rst:747
+#: ../../../topics/spiders.rst:742
 msgid "A list of the column names in the CSV file."
 msgstr ""
 
-#: ../../../topics/spiders.rst:751
+#: ../../../topics/spiders.rst:746
 msgid ""
 "Receives a response and a dict (representing each row) with a key for each "
 "provided (or detected) header of the CSV file.  This spider also gives the "
@@ -1075,17 +1065,17 @@ msgid ""
 "for pre- and post-processing purposes."
 msgstr ""
 
-#: ../../../topics/spiders.rst:757
+#: ../../../topics/spiders.rst:752
 msgid "CSVFeedSpider example"
 msgstr ""
 
-#: ../../../topics/spiders.rst:759
+#: ../../../topics/spiders.rst:754
 msgid ""
 "Let's see an example similar to the previous one, but using a :class:"
 "`CSVFeedSpider`:"
 msgstr ""
 
-#: ../../../topics/spiders.rst:763
+#: ../../../topics/spiders.rst:758
 msgid ""
 "from scrapy.spiders import CSVFeedSpider\n"
 "from myproject.items import TestItem\n"
@@ -1109,86 +1099,86 @@ msgid ""
 "        return item"
 msgstr ""
 
-#: ../../../topics/spiders.rst:788
+#: ../../../topics/spiders.rst:783
 msgid "SitemapSpider"
 msgstr ""
 
-#: ../../../topics/spiders.rst:792
+#: ../../../topics/spiders.rst:787
 msgid ""
 "SitemapSpider allows you to crawl a site by discovering the URLs using "
 "`Sitemaps`_."
 msgstr ""
 
-#: ../../../topics/spiders.rst:795
+#: ../../../topics/spiders.rst:790
 msgid ""
 "It supports nested sitemaps and discovering sitemap urls from `robots.txt`_."
 msgstr ""
 
-#: ../../../topics/spiders.rst:800
+#: ../../../topics/spiders.rst:795
 msgid "A list of urls pointing to the sitemaps whose urls you want to crawl."
 msgstr ""
 
-#: ../../../topics/spiders.rst:802
+#: ../../../topics/spiders.rst:797
 msgid ""
 "You can also point to a `robots.txt`_ and it will be parsed to extract "
 "sitemap urls from it."
 msgstr ""
 
-#: ../../../topics/spiders.rst:807
+#: ../../../topics/spiders.rst:802
 msgid "A list of tuples ``(regex, callback)`` where:"
 msgstr ""
 
-#: ../../../topics/spiders.rst:809
+#: ../../../topics/spiders.rst:804
 msgid ""
 "``regex`` is a regular expression to match urls extracted from sitemaps. "
 "``regex`` can be either a str or a compiled regex object."
 msgstr ""
 
-#: ../../../topics/spiders.rst:812
+#: ../../../topics/spiders.rst:807
 msgid ""
 "callback is the callback to use for processing the urls that match the "
 "regular expression. ``callback`` can be a string (indicating the name of a "
 "spider method) or a callable."
 msgstr ""
 
-#: ../../../topics/spiders.rst:816 ../../../topics/spiders.rst:840
-#: ../../../topics/spiders.rst:858
+#: ../../../topics/spiders.rst:811 ../../../topics/spiders.rst:835
+#: ../../../topics/spiders.rst:853
 msgid "For example::"
 msgstr ""
 
-#: ../../../topics/spiders.rst:818
+#: ../../../topics/spiders.rst:813
 msgid "sitemap_rules = [('/product/', 'parse_product')]"
 msgstr ""
 
-#: ../../../topics/spiders.rst:820
+#: ../../../topics/spiders.rst:815
 msgid ""
 "Rules are applied in order, and only the first one that matches will be used."
 msgstr ""
 
-#: ../../../topics/spiders.rst:823
+#: ../../../topics/spiders.rst:818
 msgid ""
 "If you omit this attribute, all urls found in sitemaps will be processed "
 "with the ``parse`` callback."
 msgstr ""
 
-#: ../../../topics/spiders.rst:828
+#: ../../../topics/spiders.rst:823
 msgid ""
 "A list of regexes of sitemap that should be followed. This is only for sites "
 "that use `Sitemap index files`_ that point to other sitemap files."
 msgstr ""
 
-#: ../../../topics/spiders.rst:832
+#: ../../../topics/spiders.rst:827
 msgid "By default, all sitemaps are followed."
 msgstr ""
 
-#: ../../../topics/spiders.rst:836
+#: ../../../topics/spiders.rst:831
 msgid ""
 "Specifies if alternate links for one ``url`` should be followed. These are "
 "links for the same website in another language passed within the same "
 "``url`` block."
 msgstr ""
 
-#: ../../../topics/spiders.rst:842
+#: ../../../topics/spiders.rst:837
 msgid ""
 "<url>\n"
 "    <loc>http://example.com/</loc>\n"
@@ -1197,24 +1187,24 @@ msgid ""
 "</url>"
 msgstr ""
 
-#: ../../../topics/spiders.rst:847
+#: ../../../topics/spiders.rst:842
 msgid ""
 "With ``sitemap_alternate_links`` set, this would retrieve both URLs. With "
 "``sitemap_alternate_links`` disabled, only ``http://example.com/`` would be "
 "retrieved."
 msgstr ""
 
-#: ../../../topics/spiders.rst:851
+#: ../../../topics/spiders.rst:846
 msgid "Default is ``sitemap_alternate_links`` disabled."
 msgstr ""
 
-#: ../../../topics/spiders.rst:855
+#: ../../../topics/spiders.rst:850
 msgid ""
 "This is a filter function that could be overridden to select sitemap entries "
 "based on their attributes."
 msgstr ""
 
-#: ../../../topics/spiders.rst:860
+#: ../../../topics/spiders.rst:855
 msgid ""
 "<url>\n"
 "    <loc>http://example.com/</loc>\n"
@@ -1222,12 +1212,12 @@ msgid ""
 "</url>"
 msgstr ""
 
-#: ../../../topics/spiders.rst:865
+#: ../../../topics/spiders.rst:860
 msgid ""
 "We can define a ``sitemap_filter`` function to filter ``entries`` by date:"
 msgstr ""
 
-#: ../../../topics/spiders.rst:867
+#: ../../../topics/spiders.rst:862
 msgid ""
 "from datetime import datetime\n"
 "from scrapy.spiders import SitemapSpider\n"
@@ -1245,56 +1235,56 @@ msgid ""
 "                yield entry"
 msgstr ""
 
-#: ../../../topics/spiders.rst:884
+#: ../../../topics/spiders.rst:879
 msgid ""
 "This would retrieve only ``entries`` modified on 2005 and the following "
 "years."
 msgstr ""
 
-#: ../../../topics/spiders.rst:887
+#: ../../../topics/spiders.rst:882
 msgid ""
 "Entries are dict objects extracted from the sitemap document. Usually, the "
 "key is the tag name and the value is the text inside it."
 msgstr ""
 
-#: ../../../topics/spiders.rst:890
+#: ../../../topics/spiders.rst:885
 msgid "It's important to notice that:"
 msgstr ""
 
-#: ../../../topics/spiders.rst:892
+#: ../../../topics/spiders.rst:887
 msgid ""
 "as the loc attribute is required, entries without this tag are discarded"
 msgstr ""
 
-#: ../../../topics/spiders.rst:893
+#: ../../../topics/spiders.rst:888
 msgid ""
 "alternate links are stored in a list with the key ``alternate`` (see "
 "``sitemap_alternate_links``)"
 msgstr ""
 
-#: ../../../topics/spiders.rst:895
+#: ../../../topics/spiders.rst:890
 msgid ""
 "namespaces are removed, so lxml tags named as ``{namespace}tagname`` become "
 "only ``tagname``"
 msgstr ""
 
-#: ../../../topics/spiders.rst:897
+#: ../../../topics/spiders.rst:892
 msgid ""
 "If you omit this method, all entries found in sitemaps will be processed, "
 "observing other attributes and their settings."
 msgstr ""
 
-#: ../../../topics/spiders.rst:902
+#: ../../../topics/spiders.rst:897
 msgid "SitemapSpider examples"
 msgstr ""
 
-#: ../../../topics/spiders.rst:904
+#: ../../../topics/spiders.rst:899
 msgid ""
 "Simplest example: process all urls discovered through sitemaps using the "
 "``parse`` callback:"
 msgstr ""
 
-#: ../../../topics/spiders.rst:907
+#: ../../../topics/spiders.rst:902
 msgid ""
 "from scrapy.spiders import SitemapSpider\n"
 "\n"
@@ -1306,13 +1296,13 @@ msgid ""
 "        pass  # ... scrape item here ..."
 msgstr ""
 
-#: ../../../topics/spiders.rst:918
+#: ../../../topics/spiders.rst:913
 msgid ""
 "Process some urls with certain callback and other urls with a different "
 "callback:"
 msgstr ""
 
-#: ../../../topics/spiders.rst:921
+#: ../../../topics/spiders.rst:916
 msgid ""
 "from scrapy.spiders import SitemapSpider\n"
 "\n"
@@ -1331,13 +1321,13 @@ msgid ""
 "        pass  # ... scrape category ..."
 msgstr ""
 
-#: ../../../topics/spiders.rst:939
+#: ../../../topics/spiders.rst:934
 msgid ""
 "Follow sitemaps defined in the `robots.txt`_ file and only follow sitemaps "
 "whose url contains ``/sitemap_shop``:"
 msgstr ""
 
-#: ../../../topics/spiders.rst:942
+#: ../../../topics/spiders.rst:937
 msgid ""
 "from scrapy.spiders import SitemapSpider\n"
 "\n"
@@ -1353,11 +1343,11 @@ msgid ""
 "        pass  # ... scrape shop here ..."
 msgstr ""
 
-#: ../../../topics/spiders.rst:957
+#: ../../../topics/spiders.rst:952
 msgid "Combine SitemapSpider with other sources of urls:"
 msgstr ""
 
-#: ../../../topics/spiders.rst:959
+#: ../../../topics/spiders.rst:954
 msgid ""
 "from scrapy.spiders import SitemapSpider\n"
 "\n"

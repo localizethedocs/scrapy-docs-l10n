@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-11 11:50+0000\n"
+"POT-Creation-Date: 2026-06-29 13:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -439,18 +439,22 @@ msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.CrawlerRunnerBase.create_crawler:3
-msgid "If ``crawler_or_spidercls`` is a Crawler, it is returned as-is."
+msgid ""
+"If ``crawler_or_spidercls`` is a Crawler, the runner's settings are merged "
+"into it as defaults: for each setting, the runner's value is applied only if "
+"the Crawler does not already have that setting at an equal or higher "
+"priority. The Crawler is then returned."
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
-#: scrapy.crawler.CrawlerRunnerBase.create_crawler:4
+#: scrapy.crawler.CrawlerRunnerBase.create_crawler:7
 msgid ""
 "If ``crawler_or_spidercls`` is a Spider subclass, a new Crawler is "
-"constructed for it."
+"constructed for it using this runner's settings."
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
-#: scrapy.crawler.CrawlerRunnerBase.create_crawler:6
+#: scrapy.crawler.CrawlerRunnerBase.create_crawler:9
 msgid ""
 "If ``crawler_or_spidercls`` is a string, this function finds a spider with "
 "this name in a Scrapy project (using spider loader), then creates a Crawler "
