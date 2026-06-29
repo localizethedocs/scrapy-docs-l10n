@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 09:50+0000\n"
+"POT-Creation-Date: 2026-06-29 13:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -177,11 +177,23 @@ msgid ""
 "page. It is ``False`` by default."
 msgstr ""
 
-#: ../../../topics/jobs.rst:110
+#: ../../../topics/jobs.rst:107
+msgid ""
+"Because requests are serialized with :mod:`pickle`, the objects you store on "
+"a request, such as the values of its :attr:`~scrapy.Request.cb_kwargs` and :"
+"attr:`~scrapy.Request.meta` dictionaries, are deep-copied when the request "
+"is written to and later read back from the job directory. As a result, the "
+"callback receives a *copy* of those objects rather than the original ones, "
+"and changes made to the copy are not reflected in the original object. Keep "
+"this in mind if you rely on sharing mutable state through ``cb_kwargs`` or "
+"``meta``."
+msgstr ""
+
+#: ../../../topics/jobs.rst:119
 msgid "Job directory contents"
 msgstr ""
 
-#: ../../../topics/jobs.rst:112
+#: ../../../topics/jobs.rst:121
 msgid ""
 "The contents of a job directory depend on the components used during the "
 "job. Components known to write in the job directory include the :ref:"
@@ -190,12 +202,12 @@ msgid ""
 "corresponding components for details."
 msgstr ""
 
-#: ../../../topics/jobs.rst:118
+#: ../../../topics/jobs.rst:127
 msgid ""
 "For example, with default settings, the job directory may look like this:"
 msgstr ""
 
-#: ../../../topics/jobs.rst:120
+#: ../../../topics/jobs.rst:129
 msgid ""
 "├── requests.queue\n"
 "|   ├── active.json\n"
@@ -207,11 +219,11 @@ msgid ""
 "└── spider.state"
 msgstr ""
 
-#: ../../../topics/jobs.rst:131
+#: ../../../topics/jobs.rst:140
 msgid "Where:"
 msgstr ""
 
-#: ../../../topics/jobs.rst:133
+#: ../../../topics/jobs.rst:142
 msgid ""
 ":class:`~scrapy.core.scheduler.Scheduler` creates the ``requests.queue/`` "
 "directory and the ``active.json`` file, the latter containing the state data "
@@ -219,19 +231,19 @@ msgid ""
 "DownloaderAwarePriorityQueue.close>` the last time the job was paused."
 msgstr ""
 
-#: ../../../topics/jobs.rst:139
+#: ../../../topics/jobs.rst:148
 msgid ""
 ":class:`~scrapy.pqueues.DownloaderAwarePriorityQueue` creates the "
 "``{hostname}-{hash}`` directories."
 msgstr ""
 
-#: ../../../topics/jobs.rst:142
+#: ../../../topics/jobs.rst:151
 msgid ""
 ":class:`~scrapy.pqueues.ScrapyPriorityQueue` creates the ``{priority}{s?}`` "
 "directories."
 msgstr ""
 
-#: ../../../topics/jobs.rst:145
+#: ../../../topics/jobs.rst:154
 msgid ""
 ":class:`scrapy.squeues.PickleLifoDiskQueue`, a subclass of :class:`queuelib."
 "LifoDiskQueue` that uses :mod:`pickle` to serialize :class:`dict` "
@@ -239,13 +251,13 @@ msgid ""
 "json`` and ``q{00000}`` files."
 msgstr ""
 
-#: ../../../topics/jobs.rst:150
+#: ../../../topics/jobs.rst:159
 msgid ""
 ":class:`~scrapy.dupefilters.RFPDupeFilter` creates the ``requests.seen`` "
 "file."
 msgstr ""
 
-#: ../../../topics/jobs.rst:153
+#: ../../../topics/jobs.rst:162
 msgid ""
 ":class:`~scrapy.extensions.spiderstate.SpiderState` creates the ``spider."
 "state`` file."

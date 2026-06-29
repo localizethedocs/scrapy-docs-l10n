@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-11 11:50+0000\n"
+"POT-Creation-Date: 2026-06-29 13:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -122,62 +122,73 @@ msgstr ""
 
 #: ../../../faq.rst:85
 msgid ""
-"Yes. Support for HTTP proxies is provided (since Scrapy 0.8) through the "
-"HTTP Proxy downloader middleware. See :class:`~scrapy.downloadermiddlewares."
-"httpproxy.HttpProxyMiddleware`."
+"Yes. Support for HTTP proxies is provided through the HTTP Proxy downloader "
+"middleware. See :class:`~scrapy.downloadermiddlewares.httpproxy."
+"HttpProxyMiddleware`."
 msgstr ""
 
 #: ../../../faq.rst:90
-msgid "How can I scrape an item with attributes in different pages?"
+msgid "Does Scrapy work with SOCKS proxies?"
 msgstr ""
 
 #: ../../../faq.rst:92
+msgid ""
+"Yes, when using :class:`~scrapy.core.downloader.handlers._httpx."
+"HttpxDownloadHandler`. See :class:`~scrapy.downloadermiddlewares.httpproxy."
+"HttpProxyMiddleware` and the handler documentation."
+msgstr ""
+
+#: ../../../faq.rst:98
+msgid "How can I scrape an item with attributes in different pages?"
+msgstr ""
+
+#: ../../../faq.rst:100
 msgid "See :ref:`topics-request-response-ref-request-callback-arguments`."
 msgstr ""
 
-#: ../../../faq.rst:95
+#: ../../../faq.rst:103
 msgid "How can I simulate a user login in my spider?"
 msgstr ""
 
-#: ../../../faq.rst:97
+#: ../../../faq.rst:105
 msgid "See :ref:`topics-request-response-ref-request-userlogin`."
 msgstr ""
 
-#: ../../../faq.rst:103
+#: ../../../faq.rst:111
 msgid "Does Scrapy crawl in breadth-first or depth-first order?"
 msgstr ""
 
-#: ../../../faq.rst:105
+#: ../../../faq.rst:113
 msgid ":ref:`DFO by default, but other orders are possible <request-order>`."
 msgstr ""
 
-#: ../../../faq.rst:109
+#: ../../../faq.rst:117
 msgid "My Scrapy crawler has memory leaks. What can I do?"
 msgstr ""
 
-#: ../../../faq.rst:111
+#: ../../../faq.rst:119
 msgid "See :ref:`topics-leaks`."
 msgstr ""
 
-#: ../../../faq.rst:113
+#: ../../../faq.rst:121
 msgid ""
 "Also, Python has a builtin memory leak issue which is described in :ref:"
 "`topics-leaks-without-leaks`."
 msgstr ""
 
-#: ../../../faq.rst:117
+#: ../../../faq.rst:125
 msgid "How can I make Scrapy consume less memory?"
 msgstr ""
 
-#: ../../../faq.rst:119
+#: ../../../faq.rst:127
 msgid "See previous question."
 msgstr ""
 
-#: ../../../faq.rst:122
+#: ../../../faq.rst:130
 msgid "How can I prevent memory errors due to many allowed domains?"
 msgstr ""
 
-#: ../../../faq.rst:124
+#: ../../../faq.rst:132
 msgid ""
 "If you have a spider with a long list of :attr:`~scrapy.Spider."
 "allowed_domains` (e.g. 50,000+), consider replacing the default :class:"
@@ -186,33 +197,33 @@ msgid ""
 "middleware-custom>` that requires less memory. For example:"
 msgstr ""
 
-#: ../../../faq.rst:130
+#: ../../../faq.rst:138
 msgid ""
 "If your domain names are similar enough, use your own regular expression "
 "instead joining the strings in :attr:`~scrapy.Spider.allowed_domains` into a "
 "complex regular expression."
 msgstr ""
 
-#: ../../../faq.rst:134
+#: ../../../faq.rst:142
 msgid ""
 "If you can meet the installation requirements, use pyre2_ instead of "
 "Python’s re_ to compile your URL-filtering regular expression. See :issue:"
 "`1908`."
 msgstr ""
 
-#: ../../../faq.rst:138
+#: ../../../faq.rst:146
 msgid ""
 "See also `other suggestions at StackOverflow <https://stackoverflow.com/"
 "q/36440681>`__."
 msgstr ""
 
-#: ../../../faq.rst:141
+#: ../../../faq.rst:149
 msgid ""
 "Remember to disable :class:`scrapy.downloadermiddlewares.offsite."
 "OffsiteMiddleware` when you enable your custom implementation:"
 msgstr ""
 
-#: ../../../faq.rst:145
+#: ../../../faq.rst:153
 msgid ""
 "DOWNLOADER_MIDDLEWARES = {\n"
 "    \"scrapy.downloadermiddlewares.offsite.OffsiteMiddleware\": None,\n"
@@ -220,63 +231,63 @@ msgid ""
 "}"
 msgstr ""
 
-#: ../../../faq.rst:156
+#: ../../../faq.rst:164
 msgid "Can I use Basic HTTP Authentication in my spiders?"
 msgstr ""
 
-#: ../../../faq.rst:158
+#: ../../../faq.rst:166
 msgid ""
 "Yes, see :class:`~scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware`."
 msgstr ""
 
-#: ../../../faq.rst:161
+#: ../../../faq.rst:169
 msgid ""
 "Why does Scrapy download pages in English instead of my native language?"
 msgstr ""
 
-#: ../../../faq.rst:163
+#: ../../../faq.rst:171
 msgid ""
 "Try changing the default `Accept-Language`_ request header by overriding "
 "the :setting:`DEFAULT_REQUEST_HEADERS` setting."
 msgstr ""
 
-#: ../../../faq.rst:169
+#: ../../../faq.rst:177
 msgid "Where can I find some example Scrapy projects?"
 msgstr ""
 
-#: ../../../faq.rst:171
+#: ../../../faq.rst:179
 msgid "See :ref:`intro-examples`."
 msgstr ""
 
-#: ../../../faq.rst:174
+#: ../../../faq.rst:182
 msgid "Can I run a spider without creating a project?"
 msgstr ""
 
-#: ../../../faq.rst:176
+#: ../../../faq.rst:184
 msgid ""
 "Yes. You can use the :command:`runspider` command. For example, if you have "
 "a spider written in a ``my_spider.py`` file you can run it with::"
 msgstr ""
 
-#: ../../../faq.rst:179
+#: ../../../faq.rst:187
 msgid "scrapy runspider my_spider.py"
 msgstr ""
 
-#: ../../../faq.rst:181
+#: ../../../faq.rst:189
 msgid "See :command:`runspider` command for more info."
 msgstr ""
 
-#: ../../../faq.rst:184
+#: ../../../faq.rst:192
 msgid "I get \"Filtered offsite request\" messages. How can I fix them?"
 msgstr ""
 
-#: ../../../faq.rst:186
+#: ../../../faq.rst:194
 msgid ""
 "Those messages (logged with ``DEBUG`` level) don't necessarily mean there is "
 "a problem, so you may not need to fix them."
 msgstr ""
 
-#: ../../../faq.rst:189
+#: ../../../faq.rst:197
 msgid ""
 "Those messages are thrown by :class:`~scrapy.downloadermiddlewares.offsite."
 "OffsiteMiddleware`, which is a downloader middleware (enabled by default) "
@@ -284,46 +295,46 @@ msgid ""
 "by the spider."
 msgstr ""
 
-#: ../../../faq.rst:195
+#: ../../../faq.rst:203
 msgid "What is the recommended way to deploy a Scrapy crawler in production?"
 msgstr ""
 
-#: ../../../faq.rst:197
+#: ../../../faq.rst:205
 msgid "See :ref:`topics-deploy`."
 msgstr ""
 
-#: ../../../faq.rst:200
+#: ../../../faq.rst:208
 msgid "Can I use JSON for large exports?"
 msgstr ""
 
-#: ../../../faq.rst:202
+#: ../../../faq.rst:210
 msgid ""
 "It'll depend on how large your output is. See :ref:`this warning <json-with-"
 "large-data>` in :class:`~scrapy.exporters.JsonItemExporter` documentation."
 msgstr ""
 
-#: ../../../faq.rst:207
+#: ../../../faq.rst:215
 msgid "Can I return (Twisted) deferreds from signal handlers?"
 msgstr ""
 
-#: ../../../faq.rst:209
+#: ../../../faq.rst:217
 msgid ""
 "Some signals support returning deferreds from their handlers, others don't. "
 "See the :ref:`topics-signals-ref` to know which ones."
 msgstr ""
 
-#: ../../../faq.rst:213
+#: ../../../faq.rst:221
 msgid "What does the response status code 999 mean?"
 msgstr ""
 
-#: ../../../faq.rst:215
+#: ../../../faq.rst:223
 msgid ""
 "999 is a custom response status code used by Yahoo sites to throttle "
 "requests. Try slowing down the crawling speed by using a download delay of "
 "``2`` (or higher) in your spider:"
 msgstr ""
 
-#: ../../../faq.rst:219
+#: ../../../faq.rst:227
 msgid ""
 "from scrapy.spiders import CrawlSpider\n"
 "\n"
@@ -336,82 +347,82 @@ msgid ""
 "    # [ ... rest of the spider code ... ]"
 msgstr ""
 
-#: ../../../faq.rst:231
+#: ../../../faq.rst:239
 msgid ""
 "Or by setting a global download delay in your project with the :setting:"
 "`DOWNLOAD_DELAY` setting."
 msgstr ""
 
-#: ../../../faq.rst:235
+#: ../../../faq.rst:243
 msgid "Can I call ``pdb.set_trace()`` from my spiders to debug them?"
 msgstr ""
 
-#: ../../../faq.rst:237
+#: ../../../faq.rst:245
 msgid ""
 "Yes, but you can also use the Scrapy shell which allows you to quickly "
 "analyze (and even modify) the response being processed by your spider, which "
 "is, quite often, more useful than plain old ``pdb.set_trace()``."
 msgstr ""
 
-#: ../../../faq.rst:241
+#: ../../../faq.rst:249
 msgid "For more info see :ref:`topics-shell-inspect-response`."
 msgstr ""
 
-#: ../../../faq.rst:244
+#: ../../../faq.rst:252
 msgid "Simplest way to dump all my scraped items into a JSON/CSV/XML file?"
 msgstr ""
 
-#: ../../../faq.rst:246
+#: ../../../faq.rst:254
 msgid "To dump into a JSON file::"
 msgstr ""
 
-#: ../../../faq.rst:248
+#: ../../../faq.rst:256
 msgid "scrapy crawl myspider -O items.json"
 msgstr ""
 
-#: ../../../faq.rst:250
+#: ../../../faq.rst:258
 msgid "To dump into a CSV file::"
 msgstr ""
 
-#: ../../../faq.rst:252
+#: ../../../faq.rst:260
 msgid "scrapy crawl myspider -O items.csv"
 msgstr ""
 
-#: ../../../faq.rst:254
+#: ../../../faq.rst:262
 msgid "To dump into an XML file::"
 msgstr ""
 
-#: ../../../faq.rst:256
+#: ../../../faq.rst:264
 msgid "scrapy crawl myspider -O items.xml"
 msgstr ""
 
-#: ../../../faq.rst:258
+#: ../../../faq.rst:266
 msgid "For more information see :ref:`topics-feed-exports`"
 msgstr ""
 
-#: ../../../faq.rst:261
+#: ../../../faq.rst:269
 msgid "What's this huge cryptic ``__VIEWSTATE`` parameter used in some forms?"
 msgstr ""
 
-#: ../../../faq.rst:263
+#: ../../../faq.rst:271
 msgid ""
 "The ``__VIEWSTATE`` parameter is used in sites built with ASP.NET/VB.NET. "
 "For more info on how it works see `this page`_. Also, here's an `example "
 "spider`_ which scrapes one of these sites."
 msgstr ""
 
-#: ../../../faq.rst:271
+#: ../../../faq.rst:279
 msgid "What's the best way to parse big XML/CSV data feeds?"
 msgstr ""
 
-#: ../../../faq.rst:273
+#: ../../../faq.rst:281
 msgid ""
 "Parsing big feeds with XPath selectors can be problematic since they need to "
 "build the DOM of the entire feed in memory, and this can be quite slow and "
 "consume a lot of memory."
 msgstr ""
 
-#: ../../../faq.rst:277
+#: ../../../faq.rst:285
 msgid ""
 "In order to avoid parsing all the entire feed at once in memory, you can use "
 "the :func:`~scrapy.utils.iterators.xmliter_lxml` and :func:`~scrapy.utils."
@@ -448,51 +459,51 @@ msgstr ""
 msgid "quotechar is the character used to enclosure fields on the given obj."
 msgstr ""
 
-#: ../../../faq.rst:287
+#: ../../../faq.rst:295
 msgid "Does Scrapy manage cookies automatically?"
 msgstr ""
 
-#: ../../../faq.rst:289
+#: ../../../faq.rst:297
 msgid ""
 "Yes, Scrapy receives and keeps track of cookies sent by servers, and sends "
 "them back on subsequent requests, like any regular web browser does."
 msgstr ""
 
-#: ../../../faq.rst:292
+#: ../../../faq.rst:300
 msgid "For more info see :ref:`topics-request-response` and :ref:`cookies-mw`."
 msgstr ""
 
-#: ../../../faq.rst:295
+#: ../../../faq.rst:303
 msgid "How can I see the cookies being sent and received from Scrapy?"
 msgstr ""
 
-#: ../../../faq.rst:297
+#: ../../../faq.rst:305
 msgid "Enable the :setting:`COOKIES_DEBUG` setting."
 msgstr ""
 
-#: ../../../faq.rst:300
+#: ../../../faq.rst:308
 msgid "How can I instruct a spider to stop itself?"
 msgstr ""
 
-#: ../../../faq.rst:302
+#: ../../../faq.rst:310
 msgid ""
 "Raise the :exc:`~scrapy.exceptions.CloseSpider` exception from a callback. "
 "For more info see: :exc:`~scrapy.exceptions.CloseSpider`."
 msgstr ""
 
-#: ../../../faq.rst:306
+#: ../../../faq.rst:314
 msgid "How can I prevent my Scrapy bot from getting banned?"
 msgstr ""
 
-#: ../../../faq.rst:308
+#: ../../../faq.rst:316
 msgid "See :ref:`bans`."
 msgstr ""
 
-#: ../../../faq.rst:311
+#: ../../../faq.rst:319
 msgid "Should I use spider arguments or settings to configure my spider?"
 msgstr ""
 
-#: ../../../faq.rst:313
+#: ../../../faq.rst:321
 msgid ""
 "Both :ref:`spider arguments <spiderargs>` and :ref:`settings <topics-"
 "settings>` can be used to configure your spider. There is no strict rule "
@@ -503,7 +514,7 @@ msgid ""
 "a spider)."
 msgstr ""
 
-#: ../../../faq.rst:320
+#: ../../../faq.rst:328
 msgid ""
 "To illustrate with an example, assuming you have a spider that needs to log "
 "into a site to scrape data, and you only want to scrape data from a certain "
@@ -512,20 +523,20 @@ msgid ""
 "a spider argument."
 msgstr ""
 
-#: ../../../faq.rst:327
+#: ../../../faq.rst:335
 msgid ""
 "I'm scraping a XML document and my XPath selector doesn't return any items"
 msgstr ""
 
-#: ../../../faq.rst:329
+#: ../../../faq.rst:337
 msgid "You may need to remove namespaces. See :ref:`removing-namespaces`."
 msgstr ""
 
-#: ../../../faq.rst:335
+#: ../../../faq.rst:343
 msgid "How to split an item into multiple items in an item pipeline?"
 msgstr ""
 
-#: ../../../faq.rst:337
+#: ../../../faq.rst:345
 msgid ""
 ":ref:`Item pipelines <topics-item-pipeline>` cannot yield multiple items per "
 "input item. :ref:`Create a spider middleware <custom-spider-middleware>` "
@@ -533,7 +544,7 @@ msgid ""
 "process_spider_output` method for this purpose. For example:"
 msgstr ""
 
-#: ../../../faq.rst:343
+#: ../../../faq.rst:351
 msgid ""
 "from copy import deepcopy\n"
 "\n"
@@ -551,25 +562,27 @@ msgid ""
 "                yield deepcopy(item)"
 msgstr ""
 
-#: ../../../faq.rst:361
+#: ../../../faq.rst:369
 msgid "Does Scrapy support IPv6 addresses?"
 msgstr ""
 
-#: ../../../faq.rst:363
+#: ../../../faq.rst:371
 msgid ""
-"Yes, by setting :setting:`TWISTED_DNS_RESOLVER` to ``scrapy.resolver."
-"CachingHostnameResolver``. Note that by doing so, you lose the ability to "
-"set a specific timeout for DNS requests (the value of the :setting:"
-"`DNS_TIMEOUT` setting is ignored)."
+"Yes, but when using :class:`~scrapy.core.downloader.handlers.http11."
+"HTTP11DownloadHandler` or :class:`~scrapy.core.downloader.handlers.http2."
+"H2DownloadHandler` you need to set :setting:`TWISTED_DNS_RESOLVER` to "
+"``scrapy.resolver.CachingHostnameResolver``. Note that by doing so, you lose "
+"the ability to set a specific timeout for DNS requests (the value of the :"
+"setting:`DNS_TIMEOUT` setting is ignored)."
 msgstr ""
 
-#: ../../../faq.rst:371
+#: ../../../faq.rst:382
 msgid ""
 "How to deal with ``<class 'ValueError'>: filedescriptor out of range in "
 "select()`` exceptions?"
 msgstr ""
 
-#: ../../../faq.rst:373
+#: ../../../faq.rst:384
 msgid ""
 "This issue `has been reported`_ to appear when running broad crawls in "
 "macOS, where the default Twisted reactor is :class:`twisted.internet."
@@ -577,11 +590,11 @@ msgid ""
 "by using the :setting:`TWISTED_REACTOR` setting."
 msgstr ""
 
-#: ../../../faq.rst:381
+#: ../../../faq.rst:392
 msgid "How can I cancel the download of a given response?"
 msgstr ""
 
-#: ../../../faq.rst:383
+#: ../../../faq.rst:394
 msgid ""
 "In some situations, it might be useful to stop the download of a certain "
 "response. For instance, sometimes you can determine whether or not you need "
@@ -593,11 +606,11 @@ msgid ""
 "download` topic for additional information and examples."
 msgstr ""
 
-#: ../../../faq.rst:395
+#: ../../../faq.rst:406
 msgid "How can I make a blank request?"
 msgstr ""
 
-#: ../../../faq.rst:397
+#: ../../../faq.rst:408
 msgid ""
 "from scrapy import Request\n"
 "\n"
@@ -605,7 +618,7 @@ msgid ""
 "blank_request = Request(\"data:,\")"
 msgstr ""
 
-#: ../../../faq.rst:404
+#: ../../../faq.rst:415
 msgid ""
 "In this case, the URL is set to a data URI scheme. Data URLs allow you to "
 "include data inline within web pages, similar to external resources. The "
@@ -613,12 +626,12 @@ msgid ""
 "to a data URL without any specific content."
 msgstr ""
 
-#: ../../../faq.rst:410
+#: ../../../faq.rst:421
 msgid ""
 "Running ``runspider`` I get ``error: No spider found in file: <filename>``"
 msgstr ""
 
-#: ../../../faq.rst:412
+#: ../../../faq.rst:423
 msgid ""
 "This may happen if your Scrapy project has a spider module with a name that "
 "conflicts with the name of one of the `Python standard library modules`_, "

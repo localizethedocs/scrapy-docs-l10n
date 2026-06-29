@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-08 13:04+0000\n"
+"POT-Creation-Date: 2026-06-29 13:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,11 +68,18 @@ msgid ""
 "}"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:43
+#: ../../../topics/download-handlers.rst:42
+msgid ""
+":ref:`security-unencrypted-protocols` and :ref:`security-local-resources`, "
+"for the security implications of the default ``http``, ``ftp``, ``file`` and "
+"``data`` handlers."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:47
 msgid "Replacing HTTP(S) download handlers"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:45
+#: ../../../topics/download-handlers.rst:49
 msgid ""
 "While Scrapy provides a default handler for ``http`` and ``https`` schemes, "
 "users may want to use a different handler, provided by Scrapy or by some 3rd-"
@@ -80,14 +87,14 @@ msgid ""
 "this."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:50
+#: ../../../topics/download-handlers.rst:54
 msgid ""
 "First of all, as ``http`` and ``https`` are separate schemes, they need "
 "separate entries in the :setting:`DOWNLOAD_HANDLERS` setting, even though "
 "it's likely that the same handler class will be used for both schemes."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:54
+#: ../../../topics/download-handlers.rst:58
 msgid ""
 "Additionally, some of the Scrapy settings, like :setting:`DOWNLOAD_MAXSIZE`, "
 "are honored by the default HTTP(S) handler but not necessarily by "
@@ -95,11 +102,11 @@ msgid ""
 "signal:`bytes_received` and :signal:`headers_received` signals."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:62
+#: ../../../topics/download-handlers.rst:66
 msgid "Lazy instantiation of download handlers"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:64
+#: ../../../topics/download-handlers.rst:68
 msgid ""
 "A download handler can be marked as \"lazy\" by setting its ``lazy`` class "
 "attribute to ``True``. Such handlers are only instantiated when they need to "
@@ -109,36 +116,36 @@ msgid ""
 "handler <.S3DownloadHandler>` is lazy."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:72
+#: ../../../topics/download-handlers.rst:76
 msgid "Writing your own download handler"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:74
+#: ../../../topics/download-handlers.rst:78
 msgid ""
 "A download handler is a :ref:`component <topics-components>` that defines "
 "the following API:"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:82
+#: ../../../topics/download-handlers.rst:86
 msgid ""
 "If ``False``, the handler will be instantiated when Scrapy is initialized."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:85
+#: ../../../topics/download-handlers.rst:89
 msgid ""
 "If ``True``, the handler will only be instantiated when the first request "
 "handled by it needs to be downloaded."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:91
+#: ../../../topics/download-handlers.rst:95
 msgid "Download the given request and return a response."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:96
+#: ../../../topics/download-handlers.rst:100
 msgid "Clean up any resources used by the handler."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:98
+#: ../../../topics/download-handlers.rst:102
 msgid "An optional base class for custom handlers is provided:"
 msgstr ""
 
@@ -147,11 +154,11 @@ msgstr ""
 msgid "Optional base class for download handlers."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:108
+#: ../../../topics/download-handlers.rst:112
 msgid "Exceptions raised by download handlers"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:112
+#: ../../../topics/download-handlers.rst:116
 msgid ""
 "The built-in download handlers raise Scrapy-specific exceptions instead of "
 "implementation-specific ones, so that code that handles these exceptions can "
@@ -194,105 +201,174 @@ msgstr ""
 msgid "Indicates that the URL scheme is not supported."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:134
-msgid "Built-in download handlers reference"
+#: ../../../topics/download-handlers.rst:138
+msgid "Built-in HTTP download handlers reference"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:137
-msgid "DataURIDownloadHandler"
+#: ../../../topics/download-handlers.rst:140
+msgid ""
+"Scrapy ships several handlers for HTTP and HTTPS requests. While all of them "
+"support basic features, they may differ in support of specific Scrapy "
+"features and settings and HTTP protocol features. See the documentation of "
+"specific handlers and specific settings for more information. Additionally, "
+"as the underlying HTTP client implementations differ between handlers, the "
+"behavior of specific websites may be different when doing the same Scrapy "
+"requests but using different handlers."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:141
-msgid "Supported scheme: ``data``."
+#: ../../../topics/download-handlers.rst:148
+msgid ""
+"Here is a comparison of some features of the built-in HTTP handlers, see the "
+"individual handler docs for more differences:"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:142
 #: ../../../topics/download-handlers.rst:152
-#: ../../../topics/download-handlers.rst:163
-#: ../../../topics/download-handlers.rst:236
-#: ../../../topics/download-handlers.rst:252
-msgid "Lazy: no."
+msgid "Feature"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:144
-msgid "This handler supports RFC 2397 ``data:content/type;base64,`` data URIs."
-msgstr ""
-
-#: ../../../topics/download-handlers.rst:147
-msgid "FileDownloadHandler"
-msgstr ""
-
-#: ../../../topics/download-handlers.rst:151
-msgid "Supported scheme: ``file``."
-msgstr ""
-
-#: ../../../topics/download-handlers.rst:154
-msgid ""
-"This handler supports ``file:///path`` local file URIs. It doesn't support "
-"remote files."
-msgstr ""
-
-#: ../../../topics/download-handlers.rst:158
-msgid "FTPDownloadHandler"
-msgstr ""
-
-#: ../../../topics/download-handlers.rst:162
-msgid "Supported scheme: ``ftp``."
-msgstr ""
-
-#: ../../../topics/download-handlers.rst:165
-msgid "This handler supports ``ftp://host/path`` FTP URIs."
-msgstr ""
-
-#: ../../../topics/download-handlers.rst:167
-msgid "It's implemented using :mod:`twisted.protocols.ftp`."
-msgstr ""
-
-#: ../../../topics/download-handlers.rst:170
-#: ../../../topics/download-handlers.rst:228
-#: ../../../topics/download-handlers.rst:244
-msgid ""
-"This handler is not supported when :setting:`TWISTED_REACTOR_ENABLED` is "
-"``False``."
-msgstr ""
-
-#: ../../../topics/download-handlers.rst:175
+#: ../../../topics/download-handlers.rst:152
+#: ../../../topics/download-handlers.rst:174
 msgid "H2DownloadHandler"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:179
+#: ../../../topics/download-handlers.rst:152
+#: ../../../topics/download-handlers.rst:243
+msgid "HTTP11DownloadHandler"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:152
+#: ../../../topics/download-handlers.rst:277
+msgid "HttpxDownloadHandler"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:154
+msgid "Requires asyncio"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:154
+#: ../../../topics/download-handlers.rst:155
+#: ../../../topics/download-handlers.rst:156
+#: ../../../topics/download-handlers.rst:157
+#: ../../../topics/download-handlers.rst:159
+#: ../../../topics/download-handlers.rst:160
+msgid "No"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:154
+#: ../../../topics/download-handlers.rst:155
+#: ../../../topics/download-handlers.rst:156
+#: ../../../topics/download-handlers.rst:157
+#: ../../../topics/download-handlers.rst:159
+#: ../../../topics/download-handlers.rst:160
+#: ../../../topics/download-handlers.rst:212
+#: ../../../topics/download-handlers.rst:214
+#: ../../../topics/download-handlers.rst:261
+#: ../../../topics/download-handlers.rst:265
+#: ../../../topics/download-handlers.rst:313
+msgid "Yes"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:155
+msgid "Requires a reactor"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:156
+msgid "HTTP/1.1"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:157
+#: ../../../topics/download-handlers.rst:212
+#: ../../../topics/download-handlers.rst:263
+#: ../../../topics/download-handlers.rst:315
+msgid "HTTP/2"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:158
+#: ../../../topics/download-handlers.rst:215
+#: ../../../topics/download-handlers.rst:266
+#: ../../../topics/download-handlers.rst:318
+msgid "TLS implementation"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:158
+msgid "``cryptography``"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:158
+msgid "Stdlib ``ssl``"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:159
+#: ../../../topics/download-handlers.rst:210
+#: ../../../topics/download-handlers.rst:261
+#: ../../../topics/download-handlers.rst:313
+msgid "HTTP proxies"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:160
+#: ../../../topics/download-handlers.rst:211
+#: ../../../topics/download-handlers.rst:262
+#: ../../../topics/download-handlers.rst:314
+msgid "SOCKS proxies"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:163
+msgid ""
+"You can find additional HTTP download handlers in the scrapy-download-"
+"handlers-incubator_ package. This package is made by the Scrapy developers "
+"and contains experimental handlers that may be included in some later Scrapy "
+"version but can already be used. Please refer to the documentation of this "
+"package for more information."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:178
 msgid "Supported scheme: ``https``."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:180
-#: ../../../topics/download-handlers.rst:298
-msgid "Lazy: yes."
+#: ../../../topics/download-handlers.rst:179
+#: ../../../topics/download-handlers.rst:387
+msgid ":ref:`Lazy <lazy-download-handlers>`: yes."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:182
+#: ../../../topics/download-handlers.rst:180
+#: ../../../topics/download-handlers.rst:249
+#: ../../../topics/download-handlers.rst:349
+#: ../../../topics/download-handlers.rst:361
+#: ../../../topics/download-handlers.rst:374
+#: ../../../topics/download-handlers.rst:388
+msgid ":ref:`Requires asyncio support <using-asyncio>`: no."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:181
+#: ../../../topics/download-handlers.rst:250
+#: ../../../topics/download-handlers.rst:375
+msgid ":ref:`Requires a Twisted reactor <asyncio-without-reactor>`: yes."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:183
 msgid ""
 "This handler supports ``https://host/path`` URLs and uses the HTTP/2 "
 "protocol for them."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:185
+#: ../../../topics/download-handlers.rst:186
 msgid ""
 "It's implemented using :mod:`twisted.web.client` and the ``h2`` library."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:187
+#: ../../../topics/download-handlers.rst:188
 msgid ""
 "For this handler to work you need to install the ``Twisted[http2]`` extra "
 "dependency."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:190
+#: ../../../topics/download-handlers.rst:191
 msgid ""
 "If you want to use this handler you need to replace the default one for the "
 "``https`` scheme:"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:193
+#: ../../../topics/download-handlers.rst:194
 msgid ""
 "DOWNLOAD_HANDLERS = {\n"
 "    \"https\": \"scrapy.core.downloader.handlers.http2.H2DownloadHandler\",\n"
@@ -300,78 +376,153 @@ msgid ""
 msgstr ""
 
 #: ../../../topics/download-handlers.rst:201
+#: ../../../topics/download-handlers.rst:258
+#: ../../../topics/download-handlers.rst:304
+msgid "Features and limitations"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:205
 msgid ""
 "This handler is experimental, and not yet recommended for production "
 "environments. Future Scrapy versions may introduce related changes without a "
 "deprecation period or warning."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:207
-msgid "Known limitations of the HTTP/2 implementation in this handler include:"
-msgstr ""
-
-#: ../../../topics/download-handlers.rst:209
-msgid "No support for proxies."
+#: ../../../topics/download-handlers.rst:210
+msgid "No (not implemented)"
 msgstr ""
 
 #: ../../../topics/download-handlers.rst:211
-msgid ""
-"No support for HTTP/2 Cleartext (h2c), since no major browser supports "
-"HTTP/2 unencrypted (refer `http2 faq`_)."
+#: ../../../topics/download-handlers.rst:262
+#: ../../../topics/download-handlers.rst:317
+msgid "No (not supported by the library)"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:213
+#: ../../../topics/download-handlers.rst:264
+#: ../../../topics/download-handlers.rst:316
+msgid "``response.certificate``"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:213
+#: ../../../topics/download-handlers.rst:264
+msgid ":class:`twisted.internet.ssl.Certificate` object"
 msgstr ""
 
 #: ../../../topics/download-handlers.rst:214
-msgid ""
-"No setting to specify a maximum `frame size`_ larger than the default value, "
-"16384. Connections to servers that send a larger frame will fail."
+#: ../../../topics/download-handlers.rst:265
+#: ../../../topics/download-handlers.rst:317
+msgid "Per-request ``bindaddress``"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:215
+#: ../../../topics/download-handlers.rst:266
+msgid "``pyOpenSSL``/``cryptography``"
 msgstr ""
 
 #: ../../../topics/download-handlers.rst:218
-msgid "No support for `server pushes`_, which are ignored."
+#: ../../../topics/download-handlers.rst:269
+#: ../../../topics/download-handlers.rst:321
+msgid "Other limitations:"
 msgstr ""
 
 #: ../../../topics/download-handlers.rst:220
+msgid "No support for HTTP/1.1."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:222
+#: ../../../topics/download-handlers.rst:271
+msgid ""
+"IPv6 support requires setting :setting:`TWISTED_DNS_RESOLVER` to ``scrapy."
+"resolver.CachingHostnameResolver``."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:225
 msgid ""
 "No support for the :signal:`bytes_received` and :signal:`headers_received` "
 "signals."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:231
-msgid "HTTP11DownloadHandler"
+#: ../../../topics/download-handlers.rst:228
+msgid "Known limitations of the HTTP/2 support:"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:235
-#: ../../../topics/download-handlers.rst:251
+#: ../../../topics/download-handlers.rst:230
+msgid ""
+"No support for HTTP/2 Cleartext (h2c), since no major browser supports "
+"HTTP/2 unencrypted (refer `http2 faq`_)."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:233
+msgid ""
+"No setting to specify a maximum `frame size`_ larger than the default value, "
+"16384. Connections to servers that send a larger frame will fail."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:236
+msgid "No support for `server pushes`_, which are ignored."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:247
+#: ../../../topics/download-handlers.rst:283
 msgid "Supported schemes: ``http``, ``https``."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:238
-#: ../../../topics/download-handlers.rst:254
+#: ../../../topics/download-handlers.rst:248
+#: ../../../topics/download-handlers.rst:284
+#: ../../../topics/download-handlers.rst:348
+#: ../../../topics/download-handlers.rst:360
+#: ../../../topics/download-handlers.rst:373
+msgid ":ref:`Lazy <lazy-download-handlers>`: no."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:252
 msgid ""
 "This handler supports ``http://host/path`` and ``https://host/path`` URLs "
 "and uses the HTTP/1.1 protocol for them."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:241
+#: ../../../topics/download-handlers.rst:255
 msgid "It's implemented using :mod:`twisted.web.client`."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:247
-msgid "HttpxDownloadHandler"
+#: ../../../topics/download-handlers.rst:263
+msgid "No (implemented as a separate handler)"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:257
+#: ../../../topics/download-handlers.rst:274
+msgid "HTTPS proxies to HTTPS destinations are not supported."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:285
+msgid ":ref:`Requires asyncio support <using-asyncio>`: yes."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:286
+#: ../../../topics/download-handlers.rst:350
+#: ../../../topics/download-handlers.rst:362
+#: ../../../topics/download-handlers.rst:389
+msgid ":ref:`Requires a Twisted reactor <asyncio-without-reactor>`: no."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:288
+msgid ""
+"This handler supports ``http://host/path`` and ``https://host/path`` URLs "
+"and uses the HTTP/1.1 or HTTP/2 protocol for them."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:291
 msgid ""
 "It's implemented using the ``httpx`` library and needs it to be installed."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:259
+#: ../../../topics/download-handlers.rst:293
 msgid ""
 "If you want to use this handler you need to replace the default ones for the "
 "``http`` and ``https`` schemes:"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:262
+#: ../../../topics/download-handlers.rst:296
 msgid ""
 "DOWNLOAD_HANDLERS = {\n"
 "    \"http\": \"scrapy.core.downloader.handlers._httpx."
@@ -381,53 +532,109 @@ msgid ""
 "}"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:271
+#: ../../../topics/download-handlers.rst:308
 msgid ""
 "This handler is experimental, and not yet recommended for production "
 "environments. Future Scrapy versions may introduce related changes without a "
 "deprecation period or warning or even remove it altogether."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:277
-msgid ""
-"As this handler is based on a different HTTP client implementation compared "
-"to :class:`~.HTTP11DownloadHandler`, it's expected that its behavior on some "
-"websites may be different. Additionally, these are the Scrapy features that "
-"are explicitly not supported when using it:"
+#: ../../../topics/download-handlers.rst:314
+msgid "Yes (SOCKS5; requires ``httpx[socks]``)"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:282
-msgid ""
-"Per-request bind address support (the :reqmeta:`bindaddress` meta key). The "
-"global :setting:`DOWNLOAD_BIND_ADDRESS` setting is supported but the port "
-"number, if specified, will be ignored."
+#: ../../../topics/download-handlers.rst:315
+msgid "Yes (requires ``httpx[http2]``)"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:286
-msgid ""
-"Settings specific to the Twisted networking or HTTP implementation, like :"
-"setting:`DNS_RESOLVER`."
+#: ../../../topics/download-handlers.rst:316
+msgid "DER bytes"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:289
-msgid ""
-"Using :ref:`non-asyncio reactors <disable-asyncio>` (``httpx`` requires "
-"``asyncio``)."
+#: ../../../topics/download-handlers.rst:318
+msgid "Standard library ``ssl``"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:293
+#: ../../../topics/download-handlers.rst:323
+msgid ""
+"The handler creates a separate connection pool for each proxy URL (due to "
+"limitations of ``httpx``) which may lead to higher resource usage when using "
+"proxy rotation."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:330
+msgid "HTTPX_HTTP2_ENABLED"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:332
+msgid "Default: ``False``"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:334
+msgid ""
+"Whether to enable HTTP/2 support in this handler. The ``httpx[http2]`` extra "
+"needs to be installed if you want to enable this setting."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:340
+msgid "Built-in non-HTTP download handlers reference"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:343
+msgid "DataURIDownloadHandler"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:347
+msgid "Supported scheme: ``data``."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:352
+msgid "This handler supports RFC 2397 ``data:content/type;base64,`` data URIs."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:355
+msgid "FileDownloadHandler"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:359
+msgid "Supported scheme: ``file``."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:364
+msgid ""
+"This handler supports ``file:///path`` local file URIs. It doesn't support "
+"remote files."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:368
+msgid "FTPDownloadHandler"
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:372
+msgid "Supported scheme: ``ftp``."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:377
+msgid "This handler supports ``ftp://host/path`` FTP URIs."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:379
+msgid "It's implemented using :mod:`twisted.protocols.ftp`."
+msgstr ""
+
+#: ../../../topics/download-handlers.rst:382
 msgid "S3DownloadHandler"
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:297
+#: ../../../topics/download-handlers.rst:386
 msgid "Supported scheme: ``s3``."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:300
+#: ../../../topics/download-handlers.rst:391
 msgid "This handler supports ``s3://bucket/path`` S3 URIs."
 msgstr ""
 
-#: ../../../topics/download-handlers.rst:302
+#: ../../../topics/download-handlers.rst:393
 msgid ""
 "It's implemented using the ``botocore`` library and needs it to be installed."
 msgstr ""
