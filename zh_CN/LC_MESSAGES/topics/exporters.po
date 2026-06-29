@@ -1,0 +1,672 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy 2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-30 09:30+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/exporters.rst:5
+msgid "Item Exporters"
+msgstr "物品导出"
+
+#: ../../../topics/exporters.rst:10
+msgid ""
+"Once you have scraped your items, you often want to persist or export those "
+"items, to use the data in some other application. That is, after all, the "
+"whole purpose of the scraping process."
+msgstr ""
+"一旦你破解了你的项目，你常常想要继续或导出这些项目，以便在其他一些应用程序中"
+"使用数据。 这毕竟是拆解过程的全部目的。"
+
+#: ../../../topics/exporters.rst:14
+msgid ""
+"For this purpose Scrapy provides a collection of Item Exporters for "
+"different output formats, such as XML, CSV or JSON."
+msgstr "为此目的，Scrapy 提供了不同输出格式的物品导出器集，如XML、CSV或JSON。"
+
+#: ../../../topics/exporters.rst:18
+msgid "Using Item Exporters"
+msgstr "使用项目导出"
+
+#: ../../../topics/exporters.rst:20
+msgid ""
+"If you are in a hurry, and just want to use an Item Exporter to output "
+"scraped data see the :ref:`topics-feed-exports`. Otherwise, if you want to "
+"know how Item Exporters work or need more custom functionality (not covered "
+"by the default exports), continue reading below."
+msgstr ""
+
+#: ../../../topics/exporters.rst:25
+msgid ""
+"In order to use an Item Exporter, you  must instantiate it with its required "
+"args. Each Item Exporter requires different arguments, so check each "
+"exporter documentation to be sure, in :ref:`topics-exporters-reference`. "
+"After you have instantiated your exporter, you have to:"
+msgstr ""
+
+#: ../../../topics/exporters.rst:30
+msgid ""
+"1. call the method :meth:`~BaseItemExporter.start_exporting` in order to "
+"signal the beginning of the exporting process"
+msgstr ""
+
+#: ../../../topics/exporters.rst:33
+msgid ""
+"2. call the :meth:`~BaseItemExporter.export_item` method for each item you "
+"want to export"
+msgstr ""
+
+#: ../../../topics/exporters.rst:36
+msgid ""
+"3. and finally call the :meth:`~BaseItemExporter.finish_exporting` to signal "
+"the end of the exporting process"
+msgstr ""
+
+#: ../../../topics/exporters.rst:39
+msgid ""
+"Here you can see an :doc:`Item Pipeline <item-pipeline>` which uses multiple "
+"Item Exporters to group scraped items to different files according to the "
+"value of one of their fields:"
+msgstr ""
+
+#: ../../../topics/exporters.rst:43
+msgid ""
+"from itemadapter import ItemAdapter\n"
+"from scrapy.exporters import XmlItemExporter\n"
+"\n"
+"\n"
+"class PerYearXmlExportPipeline:\n"
+"    \"\"\"Distribute items across multiple XML files according to their "
+"'year' field\"\"\"\n"
+"\n"
+"    def open_spider(self, spider):\n"
+"        self.year_to_exporter = {}\n"
+"\n"
+"    def close_spider(self, spider):\n"
+"        for exporter, xml_file in self.year_to_exporter.values():\n"
+"            exporter.finish_exporting()\n"
+"            xml_file.close()\n"
+"\n"
+"    def _exporter_for_item(self, item):\n"
+"        adapter = ItemAdapter(item)\n"
+"        year = adapter[\"year\"]\n"
+"        if year not in self.year_to_exporter:\n"
+"            xml_file = open(f\"{year}.xml\", \"wb\")\n"
+"            exporter = XmlItemExporter(xml_file)\n"
+"            exporter.start_exporting()\n"
+"            self.year_to_exporter[year] = (exporter, xml_file)\n"
+"        return self.year_to_exporter[year][0]\n"
+"\n"
+"    def process_item(self, item):\n"
+"        exporter = self._exporter_for_item(item)\n"
+"        exporter.export_item(item)\n"
+"        return item"
+msgstr ""
+
+#: ../../../topics/exporters.rst:79
+msgid "Serialization of item fields"
+msgstr "项目字段序列化"
+
+#: ../../../topics/exporters.rst:81
+msgid ""
+"By default, the field values are passed unmodified to the underlying "
+"serialization library, and the decision of how to serialize them is "
+"delegated to each particular serialization library."
+msgstr ""
+"默认情况下，字段值将不被修改传递到底层序列化库， 每个特定的序列化图书馆都将如"
+"何对其进行序列化的决定委托给每个特定的序列化图书馆。"
+
+#: ../../../topics/exporters.rst:85
+msgid ""
+"However, you can customize how each field value is serialized *before it is "
+"passed to the serialization library*."
+msgstr "然而，您可以自定义每个字段值在传递到序列化库之前的序列化方式*。"
+
+#: ../../../topics/exporters.rst:88
+msgid ""
+"There are two ways to customize how a field will be serialized, which are "
+"described next."
+msgstr "有两种方法来定制一个字段的序列化方法，下面描述这两种方法。"
+
+#: ../../../topics/exporters.rst:94
+msgid "1. Declaring a serializer in the field"
+msgstr "1. 声明字段中的序列转换器"
+
+#: ../../../topics/exporters.rst:96
+msgid ""
+"If you use :class:`~scrapy.Item` you can declare a serializer in the :ref:"
+"`field metadata <topics-items-fields>`. The serializer must be a callable "
+"which receives a value and returns its serialized form."
+msgstr ""
+
+#: ../../../topics/exporters.rst:100 ../../../topics/exporters.rst:125
+msgid "Example:"
+msgstr "示例："
+
+#: ../../../topics/exporters.rst:102
+msgid ""
+"import scrapy\n"
+"\n"
+"\n"
+"def serialize_price(value):\n"
+"    return f\"$ {str(value)}\"\n"
+"\n"
+"\n"
+"class Product(scrapy.Item):\n"
+"    name = scrapy.Field()\n"
+"    price = scrapy.Field(serializer=serialize_price)"
+msgstr ""
+
+#: ../../../topics/exporters.rst:117
+msgid "2. Overriding the serialize_field() method"
+msgstr "2. 覆盖 serialize_field() 方法"
+
+#: ../../../topics/exporters.rst:119
+msgid ""
+"You can also override the :meth:`~BaseItemExporter.serialize_field` method "
+"to customize how your field value will be exported."
+msgstr ""
+
+#: ../../../topics/exporters.rst:122
+msgid ""
+"Make sure you call the base class :meth:`~BaseItemExporter.serialize_field` "
+"method after your custom code."
+msgstr ""
+
+#: ../../../topics/exporters.rst:127
+msgid ""
+"from scrapy.exporters import XmlItemExporter\n"
+"\n"
+"\n"
+"class ProductXmlExporter(XmlItemExporter):\n"
+"    def serialize_field(self, field, name, value):\n"
+"        if name == \"price\":\n"
+"            return f\"$ {str(value)}\"\n"
+"        return super().serialize_field(field, name, value)"
+msgstr ""
+"来自废料。 xporters importer XmlItemExporter\n"
+"\n"
+"\n"
+"class ProductXmlExportter(XmlItemExporter):\n"
+"    def serialize_field(自己, field, field, 名字，值：\n"
+"        如果名称== \"价格\"：\n"
+"            return f\"$ {str(value)}\"\n"
+"        return super(). erialize_field(字段，名称，值)"
+
+#: ../../../topics/exporters.rst:141
+msgid "Built-in Item Exporters reference"
+msgstr "内置项目导出器参考"
+
+#: ../../../topics/exporters.rst:143
+msgid ""
+"Here is a list of the Item Exporters bundled with Scrapy. Some of them "
+"contain output examples, which assume you're exporting these two items:"
+msgstr ""
+"这里是一个与废件捆绑在一起的物品导出器列表。其中一些包含输出示例，这些示例假"
+"定您导出这两个物品："
+
+#: ../../../topics/exporters.rst:147
+msgid ""
+"Item(name=\"Color TV\", price=\"1200\")\n"
+"Item(name=\"DVD player\", price=\"200\")"
+msgstr ""
+"Item(name=\"彩色电视\", price=\"1200\")\n"
+"Item(name=\"DVD 播放器\", price=\"200\")"
+
+#: ../../../topics/exporters.rst:153
+msgid "BaseItemExporter"
+msgstr "BaseItemExporter"
+
+#: ../../../topics/exporters.rst:157
+msgid ""
+"This is the (abstract) base class for all Item Exporters. It provides "
+"support for common features used by all (concrete) Item Exporters, such as "
+"defining what fields to export, whether to export empty fields, or which "
+"encoding to use."
+msgstr ""
+"这是所有物品导出者的 (抽象) 基类。 它为所有(混凝土)物项出口商使用的共同特征提"
+"供支持。 例如定义要导出的字段，不管是导出空字段还是使用哪种编码。"
+
+#: ../../../topics/exporters.rst:162
+msgid ""
+"These features can be configured through the ``__init__`` method arguments "
+"which populate their respective instance attributes: :attr:"
+"`fields_to_export`, :attr:`export_empty_fields`, :attr:`encoding`, :attr:"
+"`indent`."
+msgstr ""
+
+#: ../../../topics/exporters.rst:168
+msgid "Exports the given item. This method must be implemented in subclasses."
+msgstr "导出给定项。这个方法必须在子类中实现。"
+
+#: ../../../topics/exporters.rst:172
+msgid ""
+"Return the serialized value for the given field. You can override this "
+"method (in your custom Item Exporters) if you want to control how a "
+"particular field or value will be serialized/exported."
+msgstr ""
+"返回给定字段的序列化值。 如果您想要控制特定字段或值将被序列化/导出的方式，您"
+"可以覆盖此方法(在您的自定义项导出器中)。"
+
+#: ../../../topics/exporters.rst:176
+msgid ""
+"By default, this method looks for a serializer :ref:`declared in the item "
+"field <topics-exporters-serializers>` and returns the result of applying "
+"that serializer to the value. If no serializer is found, it returns the "
+"value unchanged."
+msgstr ""
+
+#: ../../../topics/exporters.rst:0
+msgid "Parameters"
+msgstr "参数"
+
+#: ../../../topics/exporters.rst:181
+msgid ""
+"the field being serialized. If the source :ref:`item object <item-types>` "
+"does not define field metadata, *field* is an empty :class:`dict`."
+msgstr ""
+
+#: ../../../topics/exporters.rst:186
+msgid "the name of the field being serialized"
+msgstr "被序列化的字段名称"
+
+#: ../../../topics/exporters.rst:189
+msgid "the value being serialized"
+msgstr "正在序列化的值"
+
+#: ../../../topics/exporters.rst:193
+msgid ""
+"Signal the beginning of the exporting process. Some exporters may use this "
+"to generate some required header (for example, the :class:"
+"`XmlItemExporter`). You must call this method before exporting any items."
+msgstr ""
+
+#: ../../../topics/exporters.rst:200
+msgid ""
+"Signal the end of the exporting process. Some exporters may use this to "
+"generate some required footer (for example, the :class:`XmlItemExporter`). "
+"You must always call this method after you have no more items to export."
+msgstr ""
+
+#: ../../../topics/exporters.rst:207
+msgid "Fields to export, their order [1]_ and their output names."
+msgstr "要导出的字段，订单 [1]_ 及其输出名称。"
+
+#: ../../../topics/exporters.rst:209
+msgid "Possible values are:"
+msgstr "可能的值为："
+
+#: ../../../topics/exporters.rst:211
+msgid "``None`` (all fields [2]_, default)"
+msgstr "``None`` (所有字段 [2]_, 默认)"
+
+#: ../../../topics/exporters.rst:213
+msgid "A list of fields::"
+msgstr "字段列表:"
+
+#: ../../../topics/exporters.rst:215
+msgid "['field1', 'field2']"
+msgstr "['field 1', 'field 2']"
+
+#: ../../../topics/exporters.rst:217
+msgid "A dict where keys are fields and values are output names::"
+msgstr "键值为字段和值为输出名的词典:"
+
+#: ../../../topics/exporters.rst:219
+msgid "{'field1': 'Field 1', 'field2': 'Field 2'}"
+msgstr "{'field1': 'field 1', 'field 2'}"
+
+#: ../../../topics/exporters.rst:221
+msgid "Not all exporters respect the specified field order."
+msgstr "并非所有出口商都遵守指定的字段顺序。"
+
+#: ../../../topics/exporters.rst:222
+msgid ""
+"When using :ref:`item objects <item-types>` that do not expose all their "
+"possible fields, exporters that do not support exporting a different subset "
+"of fields per item will only export the fields found in the first item "
+"exported."
+msgstr ""
+
+#: ../../../topics/exporters.rst:229
+msgid ""
+"Whether to include empty/unpopulated item fields in the exported data. "
+"Defaults to ``False``. Some exporters (like :class:`CsvItemExporter`) ignore "
+"this attribute and always export all empty fields."
+msgstr ""
+
+#: ../../../topics/exporters.rst:233
+msgid "This option is ignored for dict items."
+msgstr "此选项被忽略用于字典项目。"
+
+#: ../../../topics/exporters.rst:237
+msgid "The output character encoding."
+msgstr "输出字符编码。"
+
+#: ../../../topics/exporters.rst:241
+msgid ""
+"Amount of spaces used to indent the output on each level. Defaults to ``0``."
+msgstr "用于缩进每个级别输出的空格数量。默认值为 ``0`` 。"
+
+#: ../../../topics/exporters.rst:243
+msgid ""
+"``indent=None`` selects the most compact representation, all items in the "
+"same line with no indentation"
+msgstr "``indent=None`` 选择最紧凑的表达式，所有项目都在同一行中没有缩进"
+
+#: ../../../topics/exporters.rst:245
+msgid "``indent<=0`` each item on its own line, no indentation"
+msgstr "``indent<=0`` 每个项目在其自身行中，无缩进"
+
+#: ../../../topics/exporters.rst:246
+msgid ""
+"``indent>0`` each item on its own line, indented with the provided numeric "
+"value"
+msgstr "每个项目在其自身行上的 ``indent>0`` 以提供的数值缩进"
+
+#: ../../../topics/exporters.rst:249
+msgid "PythonItemExporter"
+msgstr "PythonItemExporter"
+
+#: ../../../../scrapy/exporters.py:docstring of
+#: scrapy.exporters.PythonItemExporter:1
+msgid ""
+"This is a base class for item exporters that extends :class:"
+"`BaseItemExporter` with support for nested items."
+msgstr ""
+
+#: ../../../../scrapy/exporters.py:docstring of
+#: scrapy.exporters.PythonItemExporter:4
+msgid ""
+"It serializes items to built-in Python types, so that any serialization "
+"library (e.g. :mod:`json` or msgpack_) can be used on top of it."
+msgstr ""
+
+#: ../../../topics/exporters.rst:257
+msgid "XmlItemExporter"
+msgstr "XmlItemExporter"
+
+#: ../../../topics/exporters.rst:261
+msgid "Exports items in XML format to the specified file object."
+msgstr "将XML格式的项目导出到指定的文件对象。"
+
+#: ../../../topics/exporters.rst:263 ../../../topics/exporters.rst:320
+#: ../../../topics/exporters.rst:355 ../../../topics/exporters.rst:375
+#: ../../../topics/exporters.rst:399 ../../../topics/exporters.rst:428
+msgid ""
+"the file-like object to use for exporting the data. Its ``write`` method "
+"should accept ``bytes`` (a disk file opened in binary mode, a ``io.BytesIO`` "
+"object, etc)"
+msgstr ""
+"用于导出数据的文件类对象。 它的 ``write`` 方法应该接受 ``bytes`` (一个在二进"
+"制模式中打开的磁盘文件，一个 ``io.BytesIO`` 对象等)"
+
+#: ../../../topics/exporters.rst:266
+msgid "The name of root element in the exported XML."
+msgstr "导出的 XML 根元素的名称。"
+
+#: ../../../topics/exporters.rst:269
+msgid "The name of each item element in the exported XML."
+msgstr "导出的 XML 中每个元素的名称。"
+
+#: ../../../topics/exporters.rst:272 ../../../topics/exporters.rst:363
+#: ../../../topics/exporters.rst:378
+msgid ""
+"The additional keyword arguments of this ``__init__`` method are passed to "
+"the :class:`BaseItemExporter` ``__init__`` method."
+msgstr ""
+
+#: ../../../topics/exporters.rst:275 ../../../topics/exporters.rst:342
+#: ../../../topics/exporters.rst:381 ../../../topics/exporters.rst:402
+#: ../../../topics/exporters.rst:431
+msgid "A typical output of this exporter would be::"
+msgstr "出口商的典型产出如下："
+
+#: ../../../topics/exporters.rst:277
+msgid ""
+"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+"<items>\n"
+"  <item>\n"
+"    <name>Color TV</name>\n"
+"    <price>1200</price>\n"
+" </item>\n"
+"  <item>\n"
+"    <name>DVD player</name>\n"
+"    <price>200</price>\n"
+" </item>\n"
+"</items>"
+msgstr ""
+"<?xml version=\"1。 \" encoding=\"utf-8?\n"
+"<items>\n"
+"  <item>\n"
+"    <name></name>\n"
+"    <price>1200</price>\n"
+" </item>\n"
+"  <item>\n"
+"    <name>DVD 播放器</name>\n"
+"    <price>200</price>\n"
+" </item>\n"
+"</items>"
+
+#: ../../../topics/exporters.rst:289
+msgid ""
+"Unless overridden in the :meth:`serialize_field` method, multi-valued fields "
+"are exported by serializing each value inside a ``<value>`` element. This is "
+"for convenience, as multi-valued fields are very common."
+msgstr ""
+
+#: ../../../topics/exporters.rst:293
+msgid "For example, the item::"
+msgstr "例如，项目："
+
+#: ../../../topics/exporters.rst:295
+msgid "Item(name=['John', 'Doe'], age='23')"
+msgstr "项目名称=['John', 'Doe'], 年龄='23'"
+
+#: ../../../topics/exporters.rst:297
+msgid "Would be serialized as::"
+msgstr "序列化为:"
+
+#: ../../../topics/exporters.rst:299
+msgid ""
+"<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
+"<items>\n"
+"  <item>\n"
+"    <name>\n"
+"      <value>John</value>\n"
+"      <value>Doe</value>\n"
+"    </name>\n"
+"    <age>23</age>\n"
+"  </item>\n"
+"</items>"
+msgstr ""
+"<?xml version=\"1。 \" encoding=\"utf-8?\n"
+"<items>\n"
+"  <item>\n"
+"    <name>\n"
+"      <value>John</value>\n"
+"      <value>Doe</value>\n"
+"    </name>\n"
+"    <age></age>\n"
+"  </item>\n"
+"</items>"
+
+#: ../../../topics/exporters.rst:311
+msgid "CsvItemExporter"
+msgstr "CsvItemExporter"
+
+#: ../../../topics/exporters.rst:315
+msgid ""
+"Exports items in CSV format to the given file-like object. If the :attr:"
+"`fields_to_export` attribute is set, it will be used to define the CSV "
+"columns, their order and their column names. The :attr:`export_empty_fields` "
+"attribute has no effect on this exporter."
+msgstr ""
+
+#: ../../../topics/exporters.rst:323
+msgid ""
+"If enabled, makes the exporter output a header line with the field names "
+"taken from :attr:`BaseItemExporter.fields_to_export` or the first exported "
+"item fields."
+msgstr ""
+
+#: ../../../topics/exporters.rst:328
+msgid ""
+"The char (or chars) that will be used for joining multi-valued fields, if "
+"found."
+msgstr "用于加入多值字段的字符(或字符)，如果找到的话。"
+
+#: ../../../topics/exporters.rst:332
+msgid ""
+"The optional string that specifies how encoding and decoding errors are to "
+"be handled. For more information see :class:`io.TextIOWrapper`."
+msgstr ""
+
+#: ../../../topics/exporters.rst:337
+msgid ""
+"The additional keyword arguments of this ``__init__`` method are passed to "
+"the :class:`BaseItemExporter` ``__init__`` method, and the leftover "
+"arguments to the :func:`csv.writer` function, so you can use any :func:`csv."
+"writer` function argument to customize this exporter."
+msgstr ""
+
+#: ../../../topics/exporters.rst:344
+msgid ""
+"product,price\n"
+"Color TV,1200\n"
+"DVD player,200"
+msgstr ""
+"产品,价格\n"
+"彩色电视,1200\n"
+"DVD 播放器 200"
+
+#: ../../../topics/exporters.rst:349
+msgid "PickleItemExporter"
+msgstr "选取物品导出器"
+
+#: ../../../topics/exporters.rst:353
+msgid "Exports items in pickle format to the given file-like object."
+msgstr "将选取格式的项目导出到给定的文件类对象。"
+
+#: ../../../topics/exporters.rst:358
+msgid "The pickle protocol to use."
+msgstr "要使用的小卡协议。"
+
+#: ../../../topics/exporters.rst:361
+msgid "For more information, see :mod:`pickle`."
+msgstr ""
+
+#: ../../../topics/exporters.rst:366
+msgid ""
+"Pickle isn't a human readable format, so no output examples are provided."
+msgstr "Pickle 不是一个可读的人类格式，所以不提供输出示例。"
+
+#: ../../../topics/exporters.rst:369
+msgid "PprintItemExporter"
+msgstr "PprintItemExporter"
+
+#: ../../../topics/exporters.rst:373
+msgid "Exports items in pretty print format to the specified file object."
+msgstr "向指定的文件对象导出精致打印格式的项目。"
+
+#: ../../../topics/exporters.rst:383
+msgid ""
+"{'name': 'Color TV', 'price': '1200'}\n"
+"{'name': 'DVD player', 'price': '200'}"
+msgstr ""
+"{'name': 'Color TV', 'price': '1200'}\n"
+"{'name': 'DVD player', 'price': '200'}"
+
+#: ../../../topics/exporters.rst:386
+msgid "Longer lines (when present) are pretty-formatted."
+msgstr "较长的行数(当存在时)是预格式化的。"
+
+#: ../../../topics/exporters.rst:389
+msgid "JsonItemExporter"
+msgstr "JsonItemExporter"
+
+#: ../../../topics/exporters.rst:393
+msgid ""
+"Exports items in JSON format to the specified file-like object, writing all "
+"objects as a list of objects. The additional ``__init__`` method arguments "
+"are passed to the :class:`BaseItemExporter` ``__init__`` method, and the "
+"leftover arguments to the :class:`~json.JSONEncoder` ``__init__`` method, so "
+"you can use any :class:`~json.JSONEncoder` ``__init__`` method argument to "
+"customize this exporter."
+msgstr ""
+
+#: ../../../topics/exporters.rst:404
+msgid ""
+"[{\"name\": \"Color TV\", \"price\": \"1200\"},\n"
+"{\"name\": \"DVD player\", \"price\": \"200\"}]"
+msgstr ""
+"[{\"name\": \"Color TV\", \"price\": \"1200\"},\n"
+"{\"name\": \"DVD player\", \"price\": \"200\"}]"
+
+#: ../../../topics/exporters.rst:409
+msgid ""
+"JSON is very simple and flexible serialization format, but it doesn't scale "
+"well for large amounts of data since incremental (aka. stream-mode) parsing "
+"is not well supported (if at all) among JSON parsers (on any language), and "
+"most of them just parse the entire object in memory. If you want the power "
+"and simplicity of JSON with a more stream-friendly format, consider using :"
+"class:`JsonLinesItemExporter` instead, or splitting the output in multiple "
+"chunks."
+msgstr ""
+
+#: ../../../topics/exporters.rst:418
+msgid "JsonLinesItemExporter"
+msgstr "JsonLinesItemExporter"
+
+#: ../../../topics/exporters.rst:422
+msgid ""
+"Exports items in JSON format to the specified file-like object, writing one "
+"JSON-encoded item per line. The additional ``__init__`` method arguments are "
+"passed to the :class:`BaseItemExporter` ``__init__`` method, and the "
+"leftover arguments to the :class:`~json.JSONEncoder` ``__init__`` method, so "
+"you can use any :class:`~json.JSONEncoder` ``__init__`` method argument to "
+"customize this exporter."
+msgstr ""
+
+#: ../../../topics/exporters.rst:433
+msgid ""
+"{\"name\": \"Color TV\", \"price\": \"1200\"}\n"
+"{\"name\": \"DVD player\", \"price\": \"200\"}"
+msgstr ""
+"{\"name\": \"Color TV\", \"price\": \"1200\"}\n"
+"{\"name\": \"DVD player\", \"price\": \"200\"}"
+
+#: ../../../topics/exporters.rst:436
+msgid ""
+"Unlike the one produced by :class:`JsonItemExporter`, the format produced by "
+"this exporter is well suited for serializing large amounts of data."
+msgstr ""
+
+#: ../../../topics/exporters.rst:440
+msgid "MarshalItemExporter"
+msgstr "MarshalItemExporter"
+
+#: ../../../../scrapy/exporters.py:docstring of
+#: scrapy.exporters.MarshalItemExporter:1
+msgid "Exports items in a Python-specific binary format (see :mod:`marshal`)."
+msgstr ""
+
+#: ../../../../scrapy/exporters.py:docstring of
+#: scrapy.exporters.MarshalItemExporter:4
+msgid ""
+"The file-like object to use for exporting the data. Its ``write`` method "
+"should accept :class:`bytes` (a disk file opened in binary mode, a :class:"
+"`~io.BytesIO` object, etc)"
+msgstr ""
