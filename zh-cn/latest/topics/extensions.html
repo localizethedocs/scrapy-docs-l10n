@@ -1,0 +1,746 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>扩展 &mdash; Scrapy 2.16.0 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=74c04d93" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://projects.localizethedocs.org/scrapy-docs-l10n/topics/extensions.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=3d1a9160"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+      <script>
+(function () {
+    var DEFAULT_LABEL = 'M↓';
+    var SUCCESS_LABEL = 'Copied';
+    var ERROR_LABEL = 'Error';
+
+    function markdownPathFromCurrentPage(pathname) {
+        if (pathname.endsWith('.html')) {
+            return pathname.slice(0, -5) + '.md';
+        }
+        if (pathname.endsWith('/')) {
+            return pathname + 'index.md';
+        }
+        var lastPart = pathname.split('/').pop() || '';
+        if (!lastPart.includes('.')) {
+            return pathname + '.md';
+        }
+        return pathname + '.md';
+    }
+
+    async function copyToClipboard(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return;
+        }
+        var textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', 'readonly');
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+    }
+
+    function setTemporaryLabel(button, label, previousLabel) {
+        var prev = typeof previousLabel !== 'undefined' ? previousLabel : button.textContent;
+        button.textContent = label;
+        window.setTimeout(function () {
+            button.textContent = prev;
+            button.disabled = false;
+        }, 1000);
+    }
+
+    async function onButtonClick(button) {
+        var previousLabel = button.textContent;
+        button.disabled = true;
+        button.textContent = '...';
+        try {
+            var mdPath = markdownPathFromCurrentPage(window.location.pathname);
+            var response = await fetch(mdPath, { credentials: 'same-origin' });
+            if (!response.ok) {
+                throw new Error('Unable to fetch markdown source');
+            }
+            var markdown = await response.text();
+            await copyToClipboard(markdown);
+            setTemporaryLabel(button, SUCCESS_LABEL, previousLabel);
+        } catch (_error) {
+            setTemporaryLabel(button, ERROR_LABEL, previousLabel);
+        }
+    }
+
+    function addStyles() {
+        var style = document.createElement('style');
+        style.textContent = [
+            '.scrapy-copy-as-markdown {',
+            '  display: inline-block;',
+            '  margin-left: 0.25rem;',
+            '  border: 1px solid #c9d4de;',
+            '  border-radius: 0.45rem;',
+            '  background: #ffffff;',
+            '  color: #233a50;',
+            '  font: inherit;',
+            '  font-size: 0.875rem;',
+            '  line-height: 1;',
+            '  padding: 0.25rem 0.25rem;',
+            '  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);',
+            '  cursor: pointer;',
+            '}',
+            '.scrapy-copy-as-markdown:hover {',
+            '  background: #f3f7fb;',
+            '}',
+            '.scrapy-copy-as-markdown:disabled {',
+            '  opacity: 0.75;',
+            '  cursor: default;',
+            '}',
+            '.scrapy-copy-as-markdown-title-wrapper {',
+            '  display: flex;',
+            '  align-items: center;',
+            '  justify-content: space-between;',
+            '  gap: 1rem;',
+            '  width: 100%;',
+            '}',
+            '.scrapy-copy-as-markdown-title-wrapper h1 {',
+            '  margin: 0;',
+            '}',
+        ].join('\n');
+        document.head.appendChild(style);
+    }
+
+    function addButton() {
+        if (!document.body || document.querySelector('.scrapy-copy-as-markdown')) {
+            return;
+        }
+
+        addStyles();
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'scrapy-copy-as-markdown';
+        button.title = 'Copy this page as Markdown';
+        button.setAttribute('aria-label', 'Copy this page as Markdown');
+        button.textContent = DEFAULT_LABEL;
+        button.addEventListener('click', function () {
+            onButtonClick(button);
+        });
+
+        var h1 = document.querySelector('#main h1') || document.querySelector('h1');
+        if (h1 && h1.parentNode) {
+            var parent = h1.parentNode;
+            var wrapper = document.createElement('div');
+            wrapper.className = 'scrapy-copy-as-markdown-title-wrapper';
+            parent.replaceChild(wrapper, h1);
+            wrapper.appendChild(h1);
+            wrapper.appendChild(button);
+        } else {
+            // fallback: insert at top of body but keep within the first container
+            var container = document.body.firstElementChild || document.body;
+            container.insertBefore(button, container.firstChild);
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', addButton);
+    } else {
+        addButton();
+    }
+})();
+</script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Signals" href="signals.html" />
+    <link rel="prev" title="蜘蛛中间件" href="spider-middleware.html" />
+ 
+<script type="text/javascript" src="../ltd-provenance.js"></script>
+<script type="text/javascript" src="../ltd-current.js"></script>
+<script type="text/javascript" src="../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+
+<a href="https://scrapy.org">scrapy.org</a> / <a href="../index.html">docs</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">First steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/overview.html">Scrapy at a glance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/tutorial.html">碎片教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Basic concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Command line tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spiders.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selectors.html">Selectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="items.html">项目</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loaders.html">Item Loaders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell.html">Scrapy shell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="item-pipeline.html">Item Pipeline</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feed-exports.html">Feed exports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="request-response.html">Requests and Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="link-extractors.html">Link Extractors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">例外</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Built-in services</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">Stats Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telnetconsole.html">Telnet Console</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Solving specific problems</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debug.html">Debugging Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contracts.html">Spiders Contracts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practices.html">Common Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="broad-crawls.html">广泛的爪子</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer-tools.html">Using your browser's Developer Tools for scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic-content.html">Selecting dynamically-loaded content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leaks.html">Debugging memory leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="media-pipeline.html">Downloading and processing files and images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy.html">Deploying Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autothrottle.html">AutoThrottle extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">基准</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jobs.html">Jobs: pausing and resuming crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coroutines.html">Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asyncio.html">asyncio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Scrapy</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addons.html">Add-ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="downloader-middleware.html">下载中间件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spider-middleware.html">蜘蛛中间件</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">扩展</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#loading-and-activating-extensions">正在加载和激活扩展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-your-own-extension">写入您自己的扩展</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sample-extension">示例扩展</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#built-in-extensions-reference">内置扩展引用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general-purpose-extensions">一般用途扩展</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-scrapy.extensions.logstats">日志统计扩展</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-scrapy.extensions.corestats">核心统计扩展</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-scrapy.extensions.logcount">日志计数扩展</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-scrapy.extensions.telnet">Telnet 控制台扩展</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-scrapy.extensions.memusage">内存使用扩展</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-scrapy.extensions.memdebug">内存调试器扩展</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-scrapy.extensions.spiderstate">Spider 状态扩展</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-scrapy.extensions.closespider">关闭蜘蛛扩展</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#periodic-log-extension">定期日志扩展</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-extensions">调试扩展</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#stack-trace-dump-extension">堆栈跟踪转储扩展</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#debugger-extension">调试器扩展</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scheduler.html">Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exporters.html">物品导出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download-handlers.html">Download handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="components.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Core API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">All the rest</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to Scrapy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../versioning.html">Versioning and API stability</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Scrapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">扩展</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/scrapy/scrapy/blob/master/docs/topics/extensions.rst" class="fa fa-github"> 在 GitHub 上编辑</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="extensions">
+<span id="topics-extensions"></span><h1>扩展<a class="headerlink" href="#extensions" title="链接到此标题。"></a></h1>
+<p>Extensions are <a class="reference internal" href="components.html#topics-components"><span class="std std-ref">components</span></a> that allow inserting your
+own custom functionality into Scrapy.</p>
+<p>与其他组件不同，扩展在废料中没有特定的角色。 它们是“通配符”组件，可用于任何不适合任何其他类型组件角色的组件。</p>
+<section id="loading-and-activating-extensions">
+<h2>正在加载和激活扩展<a class="headerlink" href="#loading-and-activating-extensions" title="链接到此标题。"></a></h2>
+<p>每次运行时创建一个单一的扩展类实例，在启动时加载扩展。</p>
+<p>To enable an extension, add it to the <a class="reference internal" href="settings.html#std-setting-EXTENSIONS"><code class="xref std std-setting docutils literal notranslate"><span class="pre">EXTENSIONS</span></code></a> setting. For
+example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">EXTENSIS</span> <span class="o">=</span> <span class="n">Power</span>
+    <span class="s2">&quot;scrapy.extensions.corests.CoreStats&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+    <span class="s2">&quot;scrapy.extensions.telnet.TelnetConsole&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="settings.html#std-setting-EXTENSIONS"><code class="xref std std-setting docutils literal notranslate"><span class="pre">EXTENSIONS</span></code></a> is merged with <a class="reference internal" href="settings.html#std-setting-EXTENSIONS_BASE"><code class="xref std std-setting docutils literal notranslate"><span class="pre">EXTENSIONS_BASE</span></code></a> (not meant to
+be overridden), and the priorities in the resulting value determine the
+<em>loading</em> order.</p>
+<p>As extensions typically do not depend on each other, their loading order is
+irrelevant in most cases. This is why the <a class="reference internal" href="settings.html#std-setting-EXTENSIONS_BASE"><code class="xref std std-setting docutils literal notranslate"><span class="pre">EXTENSIONS_BASE</span></code></a> setting
+defines all extensions with the same order (<code class="docutils literal notranslate"><span class="pre">0</span></code>). However, you may need to
+carefully use priorities if you add an extension that depends on other
+extensions being already loaded.</p>
+</section>
+<section id="writing-your-own-extension">
+<h2>写入您自己的扩展<a class="headerlink" href="#writing-your-own-extension" title="链接到此标题。"></a></h2>
+<p>Each extension is a <a class="reference internal" href="components.html#topics-components"><span class="std std-ref">component</span></a>.</p>
+<p>Typically, extensions connect to <a class="reference internal" href="signals.html#topics-signals"><span class="std std-ref">signals</span></a> and perform
+tasks triggered by them.</p>
+<section id="sample-extension">
+<h3>示例扩展<a class="headerlink" href="#sample-extension" title="链接到此标题。"></a></h3>
+<p>我们将在这里执行一个简单的扩展来说明上一节描述的概念。这个扩展将每次记录一条消息：</p>
+<ul class="simple">
+<li><p>一个蜘蛛已经打开</p></li>
+<li><p>一个蜘蛛已被关闭</p></li>
+<li><p>特定数量的物品已被擦除</p></li>
+</ul>
+<p>扩展将通过 <code class="docutils literal notranslate"><span class="pre">MYEXT_ENABLED</span></code> 设置启用，项目数量将通过 <code class="docutils literal notranslate"><span class="pre">MYEXT_ITEMCOUNT</span></code> 设置。</p>
+<p>这是此扩展的代码：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy</span><span class="w"> </span><span class="kn">import</span> <span class="n">signals</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">NotConfigured</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SpiderOpenCloseLogging</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item_count</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">item_count</span> <span class="o">=</span> <span class="n">item_count</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items_scraped</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_crawler</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">crawler</span><span class="p">):</span>
+        <span class="c1"># first check if the extension should be enabled and raise</span>
+        <span class="c1"># NotConfigured otherwise</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">crawler</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">getbool</span><span class="p">(</span><span class="s2">&quot;MYEXT_ENABLED&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">NotConfigured</span>
+
+        <span class="c1"># get the number of items from settings</span>
+        <span class="n">item_count</span> <span class="o">=</span> <span class="n">crawler</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">getint</span><span class="p">(</span><span class="s2">&quot;MYEXT_ITEMCOUNT&quot;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+        <span class="c1"># instantiate the extension object</span>
+        <span class="n">ext</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">item_count</span><span class="p">)</span>
+
+        <span class="c1"># connect the extension object to signals</span>
+        <span class="n">crawler</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">ext</span><span class="o">.</span><span class="n">spider_opened</span><span class="p">,</span> <span class="n">signal</span><span class="o">=</span><span class="n">signals</span><span class="o">.</span><span class="n">spider_opened</span><span class="p">)</span>
+        <span class="n">crawler</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">ext</span><span class="o">.</span><span class="n">spider_closed</span><span class="p">,</span> <span class="n">signal</span><span class="o">=</span><span class="n">signals</span><span class="o">.</span><span class="n">spider_closed</span><span class="p">)</span>
+        <span class="n">crawler</span><span class="o">.</span><span class="n">signals</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">ext</span><span class="o">.</span><span class="n">item_scraped</span><span class="p">,</span> <span class="n">signal</span><span class="o">=</span><span class="n">signals</span><span class="o">.</span><span class="n">item_scraped</span><span class="p">)</span>
+
+        <span class="c1"># return the extension object</span>
+        <span class="k">return</span> <span class="n">ext</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">spider_opened</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;opened spider </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">spider</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">spider_closed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;closed spider </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">spider</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">item_scraped</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">,</span> <span class="n">spider</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">items_scraped</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">items_scraped</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">item_count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;scraped </span><span class="si">%d</span><span class="s2"> items&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">items_scraped</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="built-in-extensions-reference">
+<span id="topics-extensions-ref"></span><h2>内置扩展引用<a class="headerlink" href="#built-in-extensions-reference" title="链接到此标题。"></a></h2>
+<section id="general-purpose-extensions">
+<h3>一般用途扩展<a class="headerlink" href="#general-purpose-extensions" title="链接到此标题。"></a></h3>
+<section id="module-scrapy.extensions.logstats">
+<span id="log-stats-extension"></span><h4>日志统计扩展<a class="headerlink" href="#module-scrapy.extensions.logstats" title="链接到此标题。"></a></h4>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.extensions.logstats.LogStats">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.extensions.logstats.</span></span><span class="sig-name descname"><span class="pre">LogStats</span></span><a class="reference internal" href="../_modules/scrapy/extensions/logstats.html#LogStats"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.extensions.logstats.LogStats" title="链接到此定义。"></a></dt>
+<dd></dd></dl>
+
+<p>记录基本统计信息，如破解过的页面和被窃的项目。</p>
+</section>
+<section id="module-scrapy.extensions.corestats">
+<span id="core-stats-extension"></span><h4>核心统计扩展<a class="headerlink" href="#module-scrapy.extensions.corestats" title="链接到此标题。"></a></h4>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.extensions.corestats.CoreStats">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.extensions.corestats.</span></span><span class="sig-name descname"><span class="pre">CoreStats</span></span><a class="reference internal" href="../_modules/scrapy/extensions/corestats.html#CoreStats"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.extensions.corestats.CoreStats" title="链接到此定义。"></a></dt>
+<dd></dd></dl>
+
+<p>Enable the collection of core statistics, provided the stats collection is
+enabled (see <a class="reference internal" href="stats.html#topics-stats"><span class="std std-ref">Stats Collection</span></a>).</p>
+</section>
+<section id="module-scrapy.extensions.logcount">
+<span id="log-count-extension"></span><span id="topics-extensions-ref-telnetconsole"></span><h4>日志计数扩展<a class="headerlink" href="#module-scrapy.extensions.logcount" title="链接到此标题。"></a></h4>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.extensions.logcount.LogCount">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.extensions.logcount.</span></span><span class="sig-name descname"><span class="pre">LogCount</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crawler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="api.html#scrapy.crawler.Crawler" title="scrapy.crawler.Crawler"><span class="pre">Crawler</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/scrapy/extensions/logcount.html#LogCount"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.extensions.logcount.LogCount" title="链接到此定义。"></a></dt>
+<dd><p>安装日志处理程序，按级别记录日志消息。</p>
+<p>The handler installed is <code class="xref py py-class docutils literal notranslate"><span class="pre">scrapy.utils.log.LogCounterHandler</span></code>.
+The counts are stored in stats as <code class="docutils literal notranslate"><span class="pre">log_count/&lt;level&gt;</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">在 2.14 版本加入.</span></p>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-scrapy.extensions.telnet">
+<span id="telnet-console-extension"></span><h4>Telnet 控制台扩展<a class="headerlink" href="#module-scrapy.extensions.telnet" title="链接到此标题。"></a></h4>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.extensions.telnet.TelnetConsole">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.extensions.telnet.</span></span><span class="sig-name descname"><span class="pre">TelnetConsole</span></span><a class="reference internal" href="../_modules/scrapy/extensions/telnet.html#TelnetConsole"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.extensions.telnet.TelnetConsole" title="链接到此定义。"></a></dt>
+<dd></dd></dl>
+
+<p>提供一个 telnet 控制台，用于进入当前运行的 Scrapy 进程中的 Python 解释器，这对调试非常有用。</p>
+<p>The telnet console must be enabled by the <a class="reference internal" href="settings.html#std-setting-TELNETCONSOLE_ENABLED"><code class="xref std std-setting docutils literal notranslate"><span class="pre">TELNETCONSOLE_ENABLED</span></code></a>
+setting, and the server will listen in the port specified in
+<a class="reference internal" href="telnetconsole.html#std-setting-TELNETCONSOLE_PORT"><code class="xref std std-setting docutils literal notranslate"><span class="pre">TELNETCONSOLE_PORT</span></code></a>.</p>
+</section>
+<section id="module-scrapy.extensions.memusage">
+<span id="memory-usage-extension"></span><span id="topics-extensions-ref-memusage"></span><h4>内存使用扩展<a class="headerlink" href="#module-scrapy.extensions.memusage" title="链接到此标题。"></a></h4>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.extensions.memusage.MemoryUsage">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.extensions.memusage.</span></span><span class="sig-name descname"><span class="pre">MemoryUsage</span></span><a class="reference internal" href="../_modules/scrapy/extensions/memusage.html#MemoryUsage"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.extensions.memusage.MemoryUsage" title="链接到此定义。"></a></dt>
+<dd></dd></dl>
+
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>此扩展在 Windows 中不可用。</p>
+</div>
+<p>监视运行旋转器的废料过程所使用的内存，并且：</p>
+<ol class="arabic simple">
+<li><p>sends a <a class="reference internal" href="signals.html#std-signal-memusage_warning_reached"><code class="xref std std-signal docutils literal notranslate"><span class="pre">memusage_warning_reached</span></code></a> signal when it exceeds
+<a class="reference internal" href="settings.html#std-setting-MEMUSAGE_WARNING_MB"><code class="xref std std-setting docutils literal notranslate"><span class="pre">MEMUSAGE_WARNING_MB</span></code></a></p></li>
+<li><p>closes the spider with the <cite>&quot;memusage_exceeded&quot;</cite> reason when it exceeds
+<a class="reference internal" href="settings.html#std-setting-MEMUSAGE_LIMIT_MB"><code class="xref std std-setting docutils literal notranslate"><span class="pre">MEMUSAGE_LIMIT_MB</span></code></a></p></li>
+</ol>
+<p>This extension is enabled by the <a class="reference internal" href="settings.html#std-setting-MEMUSAGE_ENABLED"><code class="xref std std-setting docutils literal notranslate"><span class="pre">MEMUSAGE_ENABLED</span></code></a> setting and
+can be configured with the following settings:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="settings.html#std-setting-MEMUSAGE_LIMIT_MB"><code class="xref std std-setting docutils literal notranslate"><span class="pre">MEMUSAGE_LIMIT_MB</span></code></a></p></li>
+<li><p><a class="reference internal" href="settings.html#std-setting-MEMUSAGE_WARNING_MB"><code class="xref std std-setting docutils literal notranslate"><span class="pre">MEMUSAGE_WARNING_MB</span></code></a></p></li>
+<li><p><a class="reference internal" href="settings.html#std-setting-MEMUSAGE_CHECK_INTERVAL_SECONDS"><code class="xref std std-setting docutils literal notranslate"><span class="pre">MEMUSAGE_CHECK_INTERVAL_SECONDS</span></code></a></p></li>
+</ul>
+</section>
+<section id="module-scrapy.extensions.memdebug">
+<span id="memory-debugger-extension"></span><h4>内存调试器扩展<a class="headerlink" href="#module-scrapy.extensions.memdebug" title="链接到此标题。"></a></h4>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.extensions.memdebug.MemoryDebugger">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.extensions.memdebug.</span></span><span class="sig-name descname"><span class="pre">MemoryDebugger</span></span><a class="reference internal" href="../_modules/scrapy/extensions/memdebug.html#MemoryDebugger"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.extensions.memdebug.MemoryDebugger" title="链接到此定义。"></a></dt>
+<dd></dd></dl>
+
+<p>调试内存使用的扩展。它收集有关以下方面的信息：</p>
+<ul class="simple">
+<li><p>Python垃圾收集器未收集的对象</p></li>
+<li><p>objects left alive that shouldn't. For more info, see <a class="reference internal" href="leaks.html#topics-leaks-trackrefs"><span class="std std-ref">Debugging memory leaks with trackref</span></a></p></li>
+</ul>
+<p>To enable this extension, turn on the <a class="reference internal" href="settings.html#std-setting-MEMDEBUG_ENABLED"><code class="xref std std-setting docutils literal notranslate"><span class="pre">MEMDEBUG_ENABLED</span></code></a> setting. The
+info will be stored in the stats.</p>
+</section>
+<section id="module-scrapy.extensions.spiderstate">
+<span id="spider-state-extension"></span><span id="topics-extensions-ref-spiderstate"></span><h4>Spider 状态扩展<a class="headerlink" href="#module-scrapy.extensions.spiderstate" title="链接到此标题。"></a></h4>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.extensions.spiderstate.SpiderState">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.extensions.spiderstate.</span></span><span class="sig-name descname"><span class="pre">SpiderState</span></span><a class="reference internal" href="../_modules/scrapy/extensions/spiderstate.html#SpiderState"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.extensions.spiderstate.SpiderState" title="链接到此定义。"></a></dt>
+<dd></dd></dl>
+
+<p>将其加载到一个龙格之前并保存到后面来管理旋转器状态数据。</p>
+<p>Give a value to the <a class="reference internal" href="settings.html#std-setting-JOBDIR"><code class="xref std std-setting docutils literal notranslate"><span class="pre">JOBDIR</span></code></a> setting to enable this extension.
+When enabled, this extension manages the <a class="reference internal" href="spiders.html#scrapy.Spider.state" title="scrapy.Spider.state"><code class="xref py py-attr docutils literal notranslate"><span class="pre">state</span></code></a>
+attribute of your <a class="reference internal" href="spiders.html#scrapy.Spider" title="scrapy.Spider"><code class="xref py py-class docutils literal notranslate"><span class="pre">Spider</span></code></a> instance:</p>
+<ul class="simple">
+<li><p>When your spider closes (<a class="reference internal" href="signals.html#std-signal-spider_closed"><code class="xref std std-signal docutils literal notranslate"><span class="pre">spider_closed</span></code></a>), the contents of its
+<a class="reference internal" href="spiders.html#scrapy.Spider.state" title="scrapy.Spider.state"><code class="xref py py-attr docutils literal notranslate"><span class="pre">state</span></code></a> attribute are serialized into a file named
+<code class="docutils literal notranslate"><span class="pre">spider.state</span></code> in the <a class="reference internal" href="settings.html#std-setting-JOBDIR"><code class="xref std std-setting docutils literal notranslate"><span class="pre">JOBDIR</span></code></a> folder.</p></li>
+<li><p>When your spider opens (<a class="reference internal" href="signals.html#std-signal-spider_opened"><code class="xref std std-signal docutils literal notranslate"><span class="pre">spider_opened</span></code></a>), if a previously-generated
+<code class="docutils literal notranslate"><span class="pre">spider.state</span></code> file exists in the <a class="reference internal" href="settings.html#std-setting-JOBDIR"><code class="xref std std-setting docutils literal notranslate"><span class="pre">JOBDIR</span></code></a> folder, it is loaded
+into the <a class="reference internal" href="spiders.html#scrapy.Spider.state" title="scrapy.Spider.state"><code class="xref py py-attr docutils literal notranslate"><span class="pre">state</span></code></a> attribute.</p></li>
+</ul>
+<p>For an example, see <a class="reference internal" href="jobs.html#topics-keeping-persistent-state-between-batches"><span class="std std-ref">Keeping persistent state between batches</span></a>.</p>
+</section>
+<section id="module-scrapy.extensions.closespider">
+<span id="close-spider-extension"></span><h4>关闭蜘蛛扩展<a class="headerlink" href="#module-scrapy.extensions.closespider" title="链接到此标题。"></a></h4>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.extensions.closespider.CloseSpider">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.extensions.closespider.</span></span><span class="sig-name descname"><span class="pre">CloseSpider</span></span><a class="reference internal" href="../_modules/scrapy/extensions/closespider.html#CloseSpider"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.extensions.closespider.CloseSpider" title="链接到此定义。"></a></dt>
+<dd></dd></dl>
+
+<p>在满足某些条件时自动关闭旋转器，使用每个条件的特定关闭原因。</p>
+<p>关闭旋转器的条件可以通过以下设置进行配置：</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#std-setting-CLOSESPIDER_TIMEOUT"><code class="xref std std-setting docutils literal notranslate"><span class="pre">CLOSESPIDER_TIMEOUT</span></code></a></p></li>
+<li><p><a class="reference internal" href="#std-setting-CLOSESPIDER_TIMEOUT_NO_ITEM"><code class="xref std std-setting docutils literal notranslate"><span class="pre">CLOSESPIDER_TIMEOUT_NO_ITEM</span></code></a></p></li>
+<li><p><a class="reference internal" href="#std-setting-CLOSESPIDER_ITEMCOUNT"><code class="xref std std-setting docutils literal notranslate"><span class="pre">CLOSESPIDER_ITEMCOUNT</span></code></a></p></li>
+<li><p><a class="reference internal" href="#std-setting-CLOSESPIDER_PAGECOUNT"><code class="xref std std-setting docutils literal notranslate"><span class="pre">CLOSESPIDER_PAGECOUNT</span></code></a></p></li>
+<li><p><a class="reference internal" href="#std-setting-CLOSESPIDER_ERRORCOUNT"><code class="xref std std-setting docutils literal notranslate"><span class="pre">CLOSESPIDER_ERRORCOUNT</span></code></a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>When a certain closing condition is met, requests which are
+currently in the downloader queue (up to <a class="reference internal" href="settings.html#std-setting-CONCURRENT_REQUESTS"><code class="xref std std-setting docutils literal notranslate"><span class="pre">CONCURRENT_REQUESTS</span></code></a>
+requests) are still processed.</p>
+</div>
+<section id="closespider-timeout">
+<span id="std-setting-CLOSESPIDER_TIMEOUT"></span><h5>PLAYLIST_TIMEOUT<a class="headerlink" href="#closespider-timeout" title="链接到此标题。"></a></h5>
+<p>默认值: <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>An integer which specifies a number of seconds. If the spider remains open for
+more than that number of seconds, it will be automatically closed with the
+reason <code class="docutils literal notranslate"><span class="pre">closespider_timeout</span></code>. If zero (or non set), spiders won't be closed by
+timeout.</p>
+</section>
+<section id="closespider-timeout-no-item">
+<span id="std-setting-CLOSESPIDER_TIMEOUT_NO_ITEM"></span><h5>PLAYLIST_DESC<a class="headerlink" href="#closespider-timeout-no-item" title="链接到此标题。"></a></h5>
+<p>默认值: <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>指定数秒的整数。 如果蜘蛛在最后几秒钟内没有生产任何物品，它将被关闭，原因是 <code class="docutils literal notranslate"><span class="pre">closespider_timeout_no_item</span></code>。 如果零(或未设置)，则除非没有生产任何物品，否则将不会关闭。</p>
+</section>
+<section id="closespider-itemcount">
+<span id="std-setting-CLOSESPIDER_ITEMCOUNT"></span><h5>PLAYLIST_TITLE<a class="headerlink" href="#closespider-itemcount" title="链接到此标题。"></a></h5>
+<p>默认值: <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>指定项数的整数。 如果旋转器碎片超过该数量，并且这些物品由项目管道传输， 蜘蛛将被关闭，原因是 <code class="docutils literal notranslate"><span class="pre">closespider_itemcount</span></code> 。 如果为零(或未设置)，拼写器将不会被通过项目的数量关闭。</p>
+</section>
+<section id="closespider-pagecount">
+<span id="std-setting-CLOSESPIDER_PAGECOUNT"></span><h5>PLAYLIST_DESCRIPTION<a class="headerlink" href="#closespider-pagecount" title="链接到此标题。"></a></h5>
+<p>默认值: <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>一个整数型变量，它指定的 crawl 响应的最大数量。 如果超越那个范围，那个蜘蛛将被关闭，原因是 <code class="docutils literal notranslate"><span class="pre">closespider_pagecount</span></code> 。 如果零(或未设置)，喷雾器将不会因为被压缩的响应数而关闭。</p>
+</section>
+<section id="closespider-pagecount-no-item">
+<span id="std-setting-CLOSESPIDER_PAGECOUNT_NO_ITEM"></span><h5>PLAYLIST_TITLE<a class="headerlink" href="#closespider-pagecount-no-item" title="链接到此标题。"></a></h5>
+<p>默认值: <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>一个整数型变量，它指定了无项目拆卸的连续响应的最大数。 如果旋转器弹头的连续响应超过连续响应，同时没有物品被打破。 蜘蛛将被关闭，原因是 <code class="docutils literal notranslate"><span class="pre">closespider_pagecount_no_item</span></code> 。 如果零(或未设置)，喷雾器将不会被无项目的被拖动响应数所关闭。</p>
+</section>
+<section id="closespider-errorcount">
+<span id="std-setting-CLOSESPIDER_ERRORCOUNT"></span><h5>CLESSPIDER_ERRORCOUNT<a class="headerlink" href="#closespider-errorcount" title="链接到此标题。"></a></h5>
+<p>默认值: <code class="docutils literal notranslate"><span class="pre">0</span></code></p>
+<p>在关闭拼写器之前指定接收的最大错误数的整数。 如果蜘蛛生成的错误超过了这个数量，它将被关闭，原因是 <code class="docutils literal notranslate"><span class="pre">closespider_errorcount</span></code> 。 如果零(或未设定)，喷洒器将不会因数个错误而关闭。</p>
+</section>
+</section>
+<section id="periodic-log-extension">
+<span id="module-scrapy.extensions.periodic_log"></span><span id="module-scrapy.extensions.debug"></span><h4>定期日志扩展<a class="headerlink" href="#periodic-log-extension" title="链接到此标题。"></a></h4>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.extensions.periodic_log.PeriodicLog">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.extensions.periodic_log.</span></span><span class="sig-name descname"><span class="pre">PeriodicLog</span></span><a class="reference internal" href="../_modules/scrapy/extensions/periodic_log.html#PeriodicLog"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#scrapy.extensions.periodic_log.PeriodicLog" title="链接到此定义。"></a></dt>
+<dd></dd></dl>
+
+<p>这个扩展定期记录丰富的统计数据为 JSON 对象:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">04</span> <span class="mi">02</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">57</span> <span class="p">[</span><span class="n">scrapy</span><span class="o">.</span><span class="n">extensions</span><span class="o">.</span><span class="n">logstats</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">Crawled</span> <span class="mi">976</span> <span class="n">pages</span> <span class="p">(</span><span class="n">at</span> <span class="mi">162</span> <span class="n">pages</span><span class="o">/</span><span class="nb">min</span><span class="p">),</span> <span class="n">scraped</span> <span class="mi">925</span> <span class="n">items</span> <span class="p">(</span><span class="n">at</span> <span class="mi">161</span> <span class="n">items</span><span class="o">/</span><span class="nb">min</span><span class="p">)</span>
+<span class="mi">2023</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">04</span> <span class="mi">02</span><span class="p">:</span><span class="mi">30</span><span class="p">:</span><span class="mi">57</span> <span class="p">[</span><span class="n">scrapy</span><span class="o">.</span><span class="n">extensions</span><span class="o">.</span><span class="n">periodic_log</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;delta&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;downloader/request_bytes&quot;</span><span class="p">:</span> <span class="mi">55582</span><span class="p">,</span>
+        <span class="s2">&quot;downloader/request_count&quot;</span><span class="p">:</span> <span class="mi">162</span><span class="p">,</span>
+        <span class="s2">&quot;downloader/request_method_count/GET&quot;</span><span class="p">:</span> <span class="mi">162</span><span class="p">,</span>
+        <span class="s2">&quot;downloader/response_bytes&quot;</span><span class="p">:</span> <span class="mi">618133</span><span class="p">,</span>
+        <span class="s2">&quot;downloader/response_count&quot;</span><span class="p">:</span> <span class="mi">162</span><span class="p">,</span>
+        <span class="s2">&quot;downloader/response_status_count/200&quot;</span><span class="p">:</span> <span class="mi">162</span><span class="p">,</span>
+        <span class="s2">&quot;item_scraped_count&quot;</span><span class="p">:</span> <span class="mi">161</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;stats&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;downloader/request_bytes&quot;</span><span class="p">:</span> <span class="mi">338243</span><span class="p">,</span>
+        <span class="s2">&quot;downloader/request_count&quot;</span><span class="p">:</span> <span class="mi">992</span><span class="p">,</span>
+        <span class="s2">&quot;downloader/request_method_count/GET&quot;</span><span class="p">:</span> <span class="mi">992</span><span class="p">,</span>
+        <span class="s2">&quot;downloader/response_bytes&quot;</span><span class="p">:</span> <span class="mi">3836736</span><span class="p">,</span>
+        <span class="s2">&quot;downloader/response_count&quot;</span><span class="p">:</span> <span class="mi">976</span><span class="p">,</span>
+        <span class="s2">&quot;downloader/response_status_count/200&quot;</span><span class="p">:</span> <span class="mi">976</span><span class="p">,</span>
+        <span class="s2">&quot;item_scraped_count&quot;</span><span class="p">:</span> <span class="mi">925</span><span class="p">,</span>
+        <span class="s2">&quot;log_count/INFO&quot;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span>
+        <span class="s2">&quot;log_count/WARNING&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;scheduler/dequeued&quot;</span><span class="p">:</span> <span class="mi">992</span><span class="p">,</span>
+        <span class="s2">&quot;scheduler/dequeued/memory&quot;</span><span class="p">:</span> <span class="mi">992</span><span class="p">,</span>
+        <span class="s2">&quot;scheduler/enqueued&quot;</span><span class="p">:</span> <span class="mi">1050</span><span class="p">,</span>
+        <span class="s2">&quot;scheduler/enqueued/memory&quot;</span><span class="p">:</span> <span class="mi">1050</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;elapsed&quot;</span><span class="p">:</span> <span class="mf">360.008903</span><span class="p">,</span>
+        <span class="s2">&quot;log_interval&quot;</span><span class="p">:</span> <span class="mf">60.0</span><span class="p">,</span>
+        <span class="s2">&quot;log_interval_real&quot;</span><span class="p">:</span> <span class="mf">60.006694</span><span class="p">,</span>
+        <span class="s2">&quot;start_time&quot;</span><span class="p">:</span> <span class="s2">&quot;2023-08-03 23:24:57&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;utcnow&quot;</span><span class="p">:</span> <span class="s2">&quot;2023-08-03 23:30:57&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>此扩展记录以下可配置部分：</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;delta&quot;</span></code> 显示自上次统计日志消息以来一些数字统计有多大变化。</p>
+<p>The <a class="reference internal" href="#std-setting-PERIODIC_LOG_DELTA"><code class="xref std std-setting docutils literal notranslate"><span class="pre">PERIODIC_LOG_DELTA</span></code></a> setting determines the target stats. They
+must have <code class="docutils literal notranslate"><span class="pre">int</span></code> or <code class="docutils literal notranslate"><span class="pre">float</span></code> values.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;stats&quot;</span></code> 显示了某些统计数据的当前值。</p>
+<p>The <a class="reference internal" href="#std-setting-PERIODIC_LOG_STATS"><code class="xref std std-setting docutils literal notranslate"><span class="pre">PERIODIC_LOG_STATS</span></code></a> setting determines the target stats.</p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;time&quot;</span></code> 会显示详细的计时数据。</p>
+<p>The <a class="reference internal" href="#std-setting-PERIODIC_LOG_TIMING_ENABLED"><code class="xref std std-setting docutils literal notranslate"><span class="pre">PERIODIC_LOG_TIMING_ENABLED</span></code></a> setting determines whether or
+not to show this section.</p>
+</li>
+</ul>
+<p>This extension logs data at the start, then on a fixed time interval
+configurable through the <a class="reference internal" href="settings.html#std-setting-LOGSTATS_INTERVAL"><code class="xref std std-setting docutils literal notranslate"><span class="pre">LOGSTATS_INTERVAL</span></code></a> setting, and finally
+right before the crawl ends.</p>
+<p>示例扩展配置：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">custom_settings</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;LOG_LEVEL&quot;</span><span class="p">:</span> <span class="s2">&quot;INFO&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;PERIODIC_LOG_STATS&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;include&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;downloader/&quot;</span><span class="p">,</span> <span class="s2">&quot;scheduler/&quot;</span><span class="p">,</span> <span class="s2">&quot;log_count/&quot;</span><span class="p">,</span> <span class="s2">&quot;item_scraped_count/&quot;</span><span class="p">],</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;PERIODIC_LOG_DELTA&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;include&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;downloader/&quot;</span><span class="p">]},</span>
+    <span class="s2">&quot;PERIODIC_LOG_TIMING_ENABLED&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;EXTENSIONS&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;scrapy.extensions.periodic_log.PeriodicLog&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<section id="periodic-log-delta">
+<span id="std-setting-PERIODIC_LOG_DELTA"></span><h5>PERIODIIC_LOG_DELTA<a class="headerlink" href="#periodic-log-delta" title="链接到此标题。"></a></h5>
+<p>默认值： <code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;PERIODIIC_LOG_DELTA&quot;:</span> <span class="pre">True</span></code> - 显示所有的 <code class="docutils literal notranslate"><span class="pre">int</span></code> 和 <code class="docutils literal notranslate"><span class="pre">float</span></code> 统计数值。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;PERIODIIC_LOG_DELTA&quot;:</span> <span class="pre">{&quot;include&quot;:</span> <span class="pre">[&quot;downloader&quot;,</span> <span class="pre">&quot;scheduler/&quot;]}</span></code> - 显示含有任何已配置子字符串的数据的三角洲。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;PERIODIIC_LOG_DELTA&quot;:</span> <span class="pre">{&quot;exclude&quot;:</span> <span class="pre">[&quot;downloader/&quot;]}</span></code> - 为所有不含任何配置的子字符串的状态显示三角洲。</p></li>
+</ul>
+</section>
+<section id="periodic-log-stats">
+<span id="std-setting-PERIODIC_LOG_STATS"></span><h5>PLAYLIST_DESCRIPTION<a class="headerlink" href="#periodic-log-stats" title="链接到此标题。"></a></h5>
+<p>默认值： <code class="docutils literal notranslate"><span class="pre">None</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;PERIODIIC_LOG_STATS&quot;:</span> <span class="pre">True</span></code> - 显示所有统计状态的当前值。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;PERIODIIC_LOG_STATS&quot;:</span> <span class="pre">{&quot;include&quot;:</span> <span class="pre">[&quot;downloader/&quot;,</span> <span class="pre">&quot;scheduler/&quot;]}</span></code> - 显示包含任何配置的子字符串的当前统计信息。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;PERIODIIC_LOG_STATS&quot;:</span> <span class="pre">{&quot;exclude</span> <span class="pre">&quot;:</span> <span class="pre">[&quot;downloader/&quot;]}</span></code> - 显示所有不含任何已配置子字符串的统计数据的当前值。</p></li>
+</ul>
+</section>
+<section id="periodic-log-timing-enabled">
+<span id="std-setting-PERIODIC_LOG_TIMING_ENABLED"></span><h5>PERIODIIC_LOG_TIMING_DESCRIPTION<a class="headerlink" href="#periodic-log-timing-enabled" title="链接到此标题。"></a></h5>
+<p>默认值： <code class="docutils literal notranslate"><span class="pre">False</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">True</span></code> 能够记录计时数据(例如``&quot;time&quot;`` 部分)。</p>
+</section>
+</section>
+</section>
+<section id="debugging-extensions">
+<h3>调试扩展<a class="headerlink" href="#debugging-extensions" title="链接到此标题。"></a></h3>
+<section id="stack-trace-dump-extension">
+<h4>堆栈跟踪转储扩展<a class="headerlink" href="#stack-trace-dump-extension" title="链接到此标题。"></a></h4>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.extensions.periodic_log.StackTraceDump">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.extensions.periodic_log.</span></span><span class="sig-name descname"><span class="pre">StackTraceDump</span></span><a class="headerlink" href="#scrapy.extensions.periodic_log.StackTraceDump" title="链接到此定义。"></a></dt>
+<dd></dd></dl>
+
+<p>当收到`SIGQUIT`_ 或 <a href="#id1"><span class="problematic" id="id2">`</span></a><a class="reference external" href="https://en.wikipedia.org/wiki/SIGUSR1_and_SIGUSR2">SIGUSR2</a> 信号时有关运行过程的信息。丢失的信息如下：</p>
+<ol class="arabic simple">
+<li><p>引擎状态 (使用 <code class="docutils literal notranslate"><span class="pre">scrapy.utils.engine.get_engine_status()</span></code> )</p></li>
+<li><p>live references (see <a class="reference internal" href="leaks.html#topics-leaks-trackrefs"><span class="std std-ref">Debugging memory leaks with trackref</span></a>)</p></li>
+<li><p>所有线程的堆栈跟踪</p></li>
+</ol>
+<p>堆栈跟踪和引擎状态被倾弃后，废料处理继续正常运行。</p>
+<p>这个扩展仅适用于与 POSIX兼容的平台(即不适用于Windows)，因为“SIGQUIT`_ 和 “<a class="reference external" href="https://en.wikipedia.org/wiki/SIGUSR1_and_SIGUSR2">SIGUSR2</a> 信号”在Windows上不可用。</p>
+<p>至少有两种方式发送废件`SIGQUIT`_ 信号：</p>
+<ol class="arabic">
+<li><p>当Scrapy process 正在运行时按 Ctrl (仅限Linux？)</p></li>
+<li><p>通过运行此命令(假定``&lt;pid&gt;`` 是Scrapy进程的进程ID):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">击杀</span><span class="o">-</span><span class="n">QUIT</span> <span class="o">&lt;</span><span class="n">pid</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="debugger-extension">
+<h4>调试器扩展<a class="headerlink" href="#debugger-extension" title="链接到此标题。"></a></h4>
+<dl class="py class">
+<dt class="sig sig-object py" id="scrapy.extensions.periodic_log.Debugger">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">scrapy.extensions.periodic_log.</span></span><span class="sig-name descname"><span class="pre">Debugger</span></span><a class="headerlink" href="#scrapy.extensions.periodic_log.Debugger" title="链接到此定义。"></a></dt>
+<dd></dd></dl>
+
+<p>Invokes a <a class="reference external" href="https://docs.python.org/3/library/pdb.html" title="(位于 Python v3.14)"><span class="xref std std-doc">Python debugger</span></a> inside a running Scrapy process when a <a class="reference external" href="https://en.wikipedia.org/wiki/SIGUSR1_and_SIGUSR2">SIGUSR2</a>
+signal is received. After the debugger is exited, the Scrapy process continues
+running normally.</p>
+<p>此扩展仅适用于 POSIX兼容平台(即不适用于 Windows)。</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="spider-middleware.html" class="btn btn-neutral float-left" title="蜘蛛中间件" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="signals.html" class="btn btn-neutral float-right" title="Signals" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 Scrapy developers。
+      <span class="lastupdated">最后更新于 6月 29, 2026.
+      </span></p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
