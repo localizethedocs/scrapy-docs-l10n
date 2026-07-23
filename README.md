@@ -1,4 +1,10 @@
 <div align="center">
+<picture>
+  <img height="100" src="https://cdn.jsdelivr.net/gh/localizethedocs/static/logo/scrapy.svg">
+</picture>
+</div>
+
+<div align="center">
 <h1 id="localization-of-scrapy-documentation">Localization of Scrapy Documentation</h1>
 </div>
 
