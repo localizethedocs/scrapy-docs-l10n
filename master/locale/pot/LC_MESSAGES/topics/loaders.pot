@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-08 13:04+0000\n"
+"POT-Creation-Date: 2026-07-27 11:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -130,7 +130,7 @@ msgstr ""
 msgid ""
 "Afterwards, similar calls are used for ``price`` and ``stock`` fields (the "
 "latter using a CSS selector with the :meth:`~ItemLoader.add_css` method), "
-"and finally the ``last_update`` field is populated directly with a literal "
+"and finally the ``last_updated`` field is populated directly with a literal "
 "value (``today``) using a different method: :meth:`~ItemLoader.add_value`."
 msgstr ""
 
@@ -370,7 +370,7 @@ msgid ""
 "strong>\"])\n"
 ">>> il.add_value(\"price\", [\"&euro;\", \"<span>1000</span>\"])\n"
 ">>> il.load_item()\n"
-"{'name': 'Welcome to my website', 'price': '1000'}"
+"Product(name='Welcome to my website', price='1000')"
 msgstr ""
 
 #: ../../../topics/loaders.rst:271
@@ -390,7 +390,7 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:276
 msgid ""
-"Item Loader defaults: :meth:`ItemLoader.default_input_processor` and :meth:"
+"Item Loader defaults: :attr:`ItemLoader.default_input_processor` and :attr:"
 "`ItemLoader.default_output_processor` (least precedence)"
 msgstr ""
 
@@ -461,8 +461,8 @@ msgstr ""
 #: ../../../topics/loaders.rst:325
 msgid ""
 "On Item Loader declaration, for those input/output processors that support "
-"instantiating them with an Item Loader context. :class:`~processor."
-"MapCompose` is one of them:"
+"instantiating them with an Item Loader context. :class:`~itemloaders."
+"processors.MapCompose` is one of them:"
 msgstr ""
 
 #: ../../../topics/loaders.rst:329
@@ -897,8 +897,9 @@ msgid ""
 "footer of a page that looks something like:"
 msgstr ""
 
-#: ../../../topics/loaders.rst:353
-msgid "Example::"
+#: ../../../topics/loaders.rst:353 ../../../topics/loaders.rst:366
+#: ../../../topics/loaders.rst:381
+msgid "Example:"
 msgstr ""
 
 #: ../../../topics/loaders.rst:355
@@ -910,17 +911,13 @@ msgid ""
 "</footer>"
 msgstr ""
 
-#: ../../../topics/loaders.rst:361
+#: ../../../topics/loaders.rst:363
 msgid ""
 "Without nested loaders, you need to specify the full xpath (or css) for each "
 "value that you wish to extract."
 msgstr ""
 
-#: ../../../topics/loaders.rst:364 ../../../topics/loaders.rst:379
-msgid "Example:"
-msgstr ""
-
-#: ../../../topics/loaders.rst:367
+#: ../../../topics/loaders.rst:369
 msgid ""
 "loader = ItemLoader(item=Item())\n"
 "# load stuff not in the footer\n"
@@ -929,14 +926,14 @@ msgid ""
 "loader.load_item()"
 msgstr ""
 
-#: ../../../topics/loaders.rst:375
+#: ../../../topics/loaders.rst:377
 msgid ""
 "Instead, you can create a nested loader with the footer selector and add "
 "values relative to the footer.  The functionality is the same but you avoid "
 "repeating the footer selector."
 msgstr ""
 
-#: ../../../topics/loaders.rst:382
+#: ../../../topics/loaders.rst:384
 msgid ""
 "loader = ItemLoader(item=Item())\n"
 "# load stuff not in the footer\n"
@@ -947,7 +944,7 @@ msgid ""
 "loader.load_item()"
 msgstr ""
 
-#: ../../../topics/loaders.rst:392
+#: ../../../topics/loaders.rst:394
 msgid ""
 "You can nest loaders arbitrarily and they work with either xpath or css "
 "selectors. As a general guideline, use nested loaders when they make your "
@@ -955,11 +952,11 @@ msgid ""
 "difficult to read."
 msgstr ""
 
-#: ../../../topics/loaders.rst:399
+#: ../../../topics/loaders.rst:401
 msgid "Reusing and extending Item Loaders"
 msgstr ""
 
-#: ../../../topics/loaders.rst:401
+#: ../../../topics/loaders.rst:403
 msgid ""
 "As your project grows bigger and acquires more and more spiders, maintenance "
 "becomes a fundamental problem, especially when you have to deal with many "
@@ -967,7 +964,7 @@ msgid ""
 "also wanting to reuse the common processors."
 msgstr ""
 
-#: ../../../topics/loaders.rst:406
+#: ../../../topics/loaders.rst:408
 msgid ""
 "Item Loaders are designed to ease the maintenance burden of parsing rules, "
 "without losing flexibility and, at the same time, providing a convenient "
@@ -976,20 +973,20 @@ msgid ""
 "specific spiders (or groups of spiders)."
 msgstr ""
 
-#: ../../../topics/loaders.rst:412
+#: ../../../topics/loaders.rst:414
 msgid ""
 "Suppose, for example, that some particular site encloses their product names "
 "in three dashes (e.g. ``---Plasma TV---``) and you don't want to end up "
 "scraping those dashes in the final product names."
 msgstr ""
 
-#: ../../../topics/loaders.rst:416
+#: ../../../topics/loaders.rst:418
 msgid ""
 "Here's how you can remove those dashes by reusing and extending the default "
 "Product Item Loader (``ProductLoader``):"
 msgstr ""
 
-#: ../../../topics/loaders.rst:420
+#: ../../../topics/loaders.rst:422
 msgid ""
 "from itemloaders.processors import MapCompose\n"
 "from myproject.ItemLoaders import ProductLoader\n"
@@ -1003,7 +1000,7 @@ msgid ""
 "    name_in = MapCompose(strip_dashes, ProductLoader.name_in)"
 msgstr ""
 
-#: ../../../topics/loaders.rst:433
+#: ../../../topics/loaders.rst:435
 msgid ""
 "Another case where extending Item Loaders can be very helpful is when you "
 "have multiple source formats, for example XML and HTML. In the XML version "
@@ -1011,7 +1008,7 @@ msgid ""
 "it:"
 msgstr ""
 
-#: ../../../topics/loaders.rst:438
+#: ../../../topics/loaders.rst:440
 msgid ""
 "from itemloaders.processors import MapCompose\n"
 "from myproject.ItemLoaders import ProductLoader\n"
@@ -1022,11 +1019,11 @@ msgid ""
 "    name_in = MapCompose(remove_cdata, ProductLoader.name_in)"
 msgstr ""
 
-#: ../../../topics/loaders.rst:448
+#: ../../../topics/loaders.rst:450
 msgid "And that's how you typically extend input processors."
 msgstr ""
 
-#: ../../../topics/loaders.rst:450
+#: ../../../topics/loaders.rst:452
 msgid ""
 "As for output processors, it is more common to declare them in the field "
 "metadata, as they usually depend only on the field and not on each specific "
@@ -1034,7 +1031,7 @@ msgid ""
 "processors-declaring`."
 msgstr ""
 
-#: ../../../topics/loaders.rst:455
+#: ../../../topics/loaders.rst:457
 msgid ""
 "There are many other possible ways to extend, inherit and override your Item "
 "Loaders, and different Item Loaders hierarchies may fit better for different "
