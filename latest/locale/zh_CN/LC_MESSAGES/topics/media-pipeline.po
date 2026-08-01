@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-06 09:35+0000\n"
+"POT-Creation-Date: 2026-07-27 11:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -140,134 +140,134 @@ msgstr ""
 msgid "Enabling your Media Pipeline"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:87
+#: ../../../topics/media-pipeline.rst:84
 msgid ""
 "To enable your media pipeline you must first add it to your project :setting:"
 "`ITEM_PIPELINES` setting."
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:90
+#: ../../../topics/media-pipeline.rst:87
 msgid "For Images Pipeline, use:"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:92
+#: ../../../topics/media-pipeline.rst:89
 msgid "ITEM_PIPELINES = {\"scrapy.pipelines.images.ImagesPipeline\": 1}"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:96
+#: ../../../topics/media-pipeline.rst:93
 msgid "For Files Pipeline, use:"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:98
+#: ../../../topics/media-pipeline.rst:95
 msgid "ITEM_PIPELINES = {\"scrapy.pipelines.files.FilesPipeline\": 1}"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:103
+#: ../../../topics/media-pipeline.rst:100
 msgid "You can also use both the Files and Images Pipeline at the same time."
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:106
+#: ../../../topics/media-pipeline.rst:105
 msgid ""
 "Then, configure the target storage setting to a valid value that will be "
 "used for storing the downloaded images. Otherwise the pipeline will remain "
 "disabled, even if you include it in the :setting:`ITEM_PIPELINES` setting."
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:110
+#: ../../../topics/media-pipeline.rst:109
 msgid "For the Files Pipeline, set the :setting:`FILES_STORE` setting:"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:112
+#: ../../../topics/media-pipeline.rst:111
 msgid "FILES_STORE = \"/path/to/valid/dir\""
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:116
+#: ../../../topics/media-pipeline.rst:115
 msgid "For the Images Pipeline, set the :setting:`IMAGES_STORE` setting:"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:118
+#: ../../../topics/media-pipeline.rst:117
 msgid "IMAGES_STORE = \"/path/to/valid/dir\""
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:125
+#: ../../../topics/media-pipeline.rst:124
 msgid "File Naming"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:128
+#: ../../../topics/media-pipeline.rst:127
 msgid "Default File Naming"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:130
+#: ../../../topics/media-pipeline.rst:129
 msgid ""
 "By default, files are stored using an `SHA-1 hash`_ of their URLs for the "
 "file names."
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:132
+#: ../../../topics/media-pipeline.rst:131
 msgid "For example, the following image URL::"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:134
+#: ../../../topics/media-pipeline.rst:133
 msgid "http://www.example.com/image.jpg"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:136
+#: ../../../topics/media-pipeline.rst:135
 msgid "Whose ``SHA-1 hash`` is::"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:138
+#: ../../../topics/media-pipeline.rst:137
 msgid "3afec3b4765f8f0a07b78f98c07b83f013567a0a"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:140
+#: ../../../topics/media-pipeline.rst:139
 msgid ""
 "Will be downloaded and stored using your chosen :ref:`storage method <topics-"
 "supported-storage>` and the following file name::"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:142
+#: ../../../topics/media-pipeline.rst:141
 msgid "3afec3b4765f8f0a07b78f98c07b83f013567a0a.jpg"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:145
+#: ../../../topics/media-pipeline.rst:144
 msgid "Custom File Naming"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:147
+#: ../../../topics/media-pipeline.rst:146
 msgid ""
 "You may wish to use a different calculated file name for saved files. For "
 "example, classifying an image by including meta in the file name."
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:150
+#: ../../../topics/media-pipeline.rst:149
 msgid ""
 "Customize file names by overriding the ``file_path`` method of your media "
 "pipeline."
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:153
+#: ../../../topics/media-pipeline.rst:152
 msgid "For example, an image pipeline with image URL::"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:155
+#: ../../../topics/media-pipeline.rst:154
 msgid "http://www.example.com/product/images/large/front/0000000004166"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:157
+#: ../../../topics/media-pipeline.rst:156
 msgid ""
 "Can be processed into a file name with a condensed hash and the perspective "
 "``front``::"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:160
+#: ../../../topics/media-pipeline.rst:159
 msgid "00b08510e4_front.jpg"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:162
+#: ../../../topics/media-pipeline.rst:161
 msgid "By overriding ``file_path`` like this:"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:164
+#: ../../../topics/media-pipeline.rst:163
 msgid ""
 "import hashlib\n"
 "\n"
@@ -280,120 +280,120 @@ msgid ""
 "    return image_filename"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:177
+#: ../../../topics/media-pipeline.rst:176
 msgid ""
 "If your custom file name scheme relies on meta data that can vary between "
 "scrapes it may lead to unexpected re-downloading of existing media using new "
 "file names."
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:181
+#: ../../../topics/media-pipeline.rst:180
 msgid ""
 "For example, if your custom file name scheme uses a product title and the "
 "site changes an item's product title between scrapes, Scrapy will re-"
 "download the same media using updated file names."
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:185
+#: ../../../topics/media-pipeline.rst:184
 msgid ""
 "For more information about the ``file_path`` method, see :ref:`topics-media-"
 "pipeline-override`."
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:190
+#: ../../../topics/media-pipeline.rst:189
 msgid "Supported Storage"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:193
+#: ../../../topics/media-pipeline.rst:192
 msgid "File system storage"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:195
+#: ../../../topics/media-pipeline.rst:194
 msgid "File system storage will save files to the following path::"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:197
+#: ../../../topics/media-pipeline.rst:196
 msgid "<IMAGES_STORE>/full/<FILE_NAME>"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:199
+#: ../../../topics/media-pipeline.rst:198
 #: ../../../topics/media-pipeline.rst:445
 msgid "Where:"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:201
+#: ../../../topics/media-pipeline.rst:200
 msgid ""
 "``<IMAGES_STORE>`` is the directory defined in :setting:`IMAGES_STORE` "
 "setting for the Images Pipeline."
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:204
+#: ../../../topics/media-pipeline.rst:203
 msgid ""
 "``full`` is a sub-directory to separate full images from thumbnails (if "
 "used). For more info see :ref:`topics-images-thumbnails`."
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:207
+#: ../../../topics/media-pipeline.rst:206
 msgid ""
 "``<FILE_NAME>`` is the file name assigned to the file.  For more info see :"
 "ref:`topics-file-naming`."
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:213
+#: ../../../topics/media-pipeline.rst:212
 msgid "FTP server storage"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:215
+#: ../../../topics/media-pipeline.rst:214
 msgid ""
 ":setting:`FILES_STORE` and :setting:`IMAGES_STORE` can point to an FTP "
 "server. Scrapy will automatically upload the files to the server."
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:218
+#: ../../../topics/media-pipeline.rst:217
 msgid ""
 ":setting:`FILES_STORE` and :setting:`IMAGES_STORE` should be written in one "
 "of the following forms::"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:221
+#: ../../../topics/media-pipeline.rst:220
 msgid ""
 "ftp://username:password@address:port/path\n"
 "ftp://address:port/path"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:224
+#: ../../../topics/media-pipeline.rst:223
 msgid ""
 "If ``username`` and ``password`` are not provided, they are taken from the :"
 "setting:`FTP_USER` and :setting:`FTP_PASSWORD` settings respectively."
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:227
+#: ../../../topics/media-pipeline.rst:226
 msgid ""
 "FTP supports two different connection modes: active or passive. Scrapy uses "
 "the passive connection mode by default. To use the active connection mode "
 "instead, set the :setting:`FEED_STORAGE_FTP_ACTIVE` setting to ``True``."
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:234
+#: ../../../topics/media-pipeline.rst:233
 msgid "Amazon S3 storage"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:239
+#: ../../../topics/media-pipeline.rst:238
 msgid ""
 "If botocore_ >= 1.13.45 is installed, :setting:`FILES_STORE` and :setting:"
 "`IMAGES_STORE` can represent an Amazon S3 bucket. Scrapy will automatically "
 "upload the files to the bucket."
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:243
+#: ../../../topics/media-pipeline.rst:242
 msgid "For example, this is a valid :setting:`IMAGES_STORE` value:"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:245
+#: ../../../topics/media-pipeline.rst:244
 msgid "IMAGES_STORE = \"s3://bucket/images\""
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:249
+#: ../../../topics/media-pipeline.rst:248
 msgid ""
 "You can modify the Access Control List (ACL) policy used for the stored "
 "files, which is defined by the :setting:`FILES_STORE_S3_ACL` and :setting:"
@@ -401,66 +401,66 @@ msgid ""
 "To make the files publicly available use the ``public-read`` policy:"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:255
+#: ../../../topics/media-pipeline.rst:254
 msgid "IMAGES_STORE_S3_ACL = \"public-read\""
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:259
+#: ../../../topics/media-pipeline.rst:258
 msgid ""
 "For more information, see `canned ACLs`_ in the Amazon S3 Developer Guide."
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:261
+#: ../../../topics/media-pipeline.rst:260
 msgid ""
 "You can also use other S3-like storages. Storages like self-hosted `Minio`_ "
 "or `Zenko CloudServer`_. All you need to do is set endpoint option in you "
 "Scrapy settings:"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:265
+#: ../../../topics/media-pipeline.rst:264
 msgid "AWS_ENDPOINT_URL = \"http://minio.example.com:9000\""
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:269
+#: ../../../topics/media-pipeline.rst:268
 msgid ""
 "For self-hosting you also might feel the need not to use SSL and not to "
 "verify SSL connection:"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:271
+#: ../../../topics/media-pipeline.rst:270
 msgid ""
 "AWS_USE_SSL = False  # or True (None by default)\n"
 "AWS_VERIFY = False  # or True (None by default)"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:285
+#: ../../../topics/media-pipeline.rst:284
 msgid "Google Cloud Storage"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:290
+#: ../../../topics/media-pipeline.rst:289
 msgid ""
 ":setting:`FILES_STORE` and :setting:`IMAGES_STORE` can represent a Google "
 "Cloud Storage bucket. Scrapy will automatically upload the files to the "
 "bucket. (requires `google-cloud-storage`_ )"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:295
+#: ../../../topics/media-pipeline.rst:294
 msgid ""
 "For example, these are valid :setting:`IMAGES_STORE` and :setting:"
 "`GCS_PROJECT_ID` settings:"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:297
+#: ../../../topics/media-pipeline.rst:296
 msgid ""
 "IMAGES_STORE = \"gs://bucket/images/\"\n"
 "GCS_PROJECT_ID = \"project_id\""
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:302
+#: ../../../topics/media-pipeline.rst:301
 msgid "For information about authentication, see this `documentation`_."
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:306
+#: ../../../topics/media-pipeline.rst:305
 msgid ""
 "You can modify the Access Control List (ACL) policy used for the stored "
 "files, which is defined by the :setting:`FILES_STORE_GCS_ACL` and :setting:"
@@ -470,27 +470,27 @@ msgid ""
 "``publicRead`` policy:"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:313
+#: ../../../topics/media-pipeline.rst:312
 msgid "IMAGES_STORE_GCS_ACL = \"publicRead\""
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:317
+#: ../../../topics/media-pipeline.rst:316
 msgid ""
 "For more information, see `Predefined ACLs`_ in the Google Cloud Platform "
 "Developer Guide."
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:322
+#: ../../../topics/media-pipeline.rst:321
 msgid "Usage example"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:329
+#: ../../../topics/media-pipeline.rst:328
 msgid ""
 "In order to use a media pipeline, first :ref:`enable it <topics-media-"
 "pipeline-enabling>`."
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:332
+#: ../../../topics/media-pipeline.rst:331
 msgid ""
 "Then, if a spider returns an :ref:`item object <topics-items>` with the URLs "
 "field (``file_urls`` or ``image_urls``, for the Files or Images Pipeline "
@@ -498,24 +498,24 @@ msgid ""
 "(``files`` or ``images``)."
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:337
+#: ../../../topics/media-pipeline.rst:336
 msgid ""
 "When using :ref:`item types <item-types>` for which fields are defined "
 "beforehand, you must define both the URLs field and the results field. For "
 "example, when using the images pipeline, items must define both the "
-"``image_urls`` and the ``images`` field. For instance, using the :class:"
-"`~scrapy.Item` class:"
+"``image_urls`` and the ``images`` field. For instance, using a dataclass:"
 msgstr ""
 
-#: ../../../topics/media-pipeline.rst:342
+#: ../../../topics/media-pipeline.rst:341
 msgid ""
-"import scrapy\n"
+"from dataclasses import dataclass, field\n"
 "\n"
 "\n"
-"class MyItem(scrapy.Item):\n"
+"@dataclass\n"
+"class MyItem:\n"
 "    # ... other item fields ...\n"
-"    image_urls = scrapy.Field()\n"
-"    images = scrapy.Field()"
+"    image_urls: list[str] = field(default_factory=list)\n"
+"    images: list[dict] = field(default_factory=list)"
 msgstr ""
 
 #: ../../../topics/media-pipeline.rst:352
@@ -1072,4 +1072,32 @@ msgstr ""
 
 #: ../../../topics/media-pipeline.rst:773
 msgid "ITEM_PIPELINES = {\"myproject.pipelines.MyImagesPipeline\": 300}"
+msgstr ""
+
+#: ../../../topics/media-pipeline.rst:778
+msgid "Content-based image filtering pipeline"
+msgstr ""
+
+#: ../../../topics/media-pipeline.rst:780
+msgid ""
+"This example overrides ``get_images()`` to filter images using a classifier, "
+"such as a TensorFlow_ model. Override ``is_valid_image()`` with your "
+"classification logic:"
+msgstr ""
+
+#: ../../../topics/media-pipeline.rst:784
+msgid ""
+"from scrapy.pipelines.images import ImagesPipeline, ImageException\n"
+"\n"
+"\n"
+"class ImageClassifierPipeline(ImagesPipeline):\n"
+"    def is_valid_image(self, image):\n"
+"        raise NotImplementedError\n"
+"\n"
+"    def get_images(self, response, request, info, *, item=None):\n"
+"        for path, image, buf in super().get_images(response, request, info, "
+"item=item):\n"
+"            if not self.is_valid_image(image):\n"
+"                raise ImageException(\"Image does not match criteria\")\n"
+"            yield path, image, buf"
 msgstr ""

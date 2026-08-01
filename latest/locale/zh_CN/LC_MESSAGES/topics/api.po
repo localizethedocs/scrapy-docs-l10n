@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-11 11:49+0000\n"
+"POT-Creation-Date: 2026-07-27 11:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -291,9 +291,8 @@ msgstr "用提供的参数运行一个爬行器。"
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerRunner.crawl:3
-#: scrapy.crawler.CrawlerRunner.crawl:3
 msgid ""
-"It will call the given Crawler's :meth:`~Crawler.crawl` method, while "
+"It will call the given Crawler's :meth:`~Crawler.crawl_async` method, while "
 "keeping track of it so it can be stopped later."
 msgstr ""
 
@@ -372,6 +371,13 @@ msgid ""
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
+#: scrapy.crawler.CrawlerRunner.crawl:3
+msgid ""
+"It will call the given Crawler's :meth:`~Crawler.crawl` method, while "
+"keeping track of it so it can be stopped later."
+msgstr ""
+
+#: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.CrawlerRunner.crawl:10
 msgid "Returns a deferred that is fired when the crawling is finished."
 msgstr "返回一个延迟，当拖拽完成时被发射。"
@@ -445,20 +451,22 @@ msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.CrawlerRunnerBase.create_crawler:3
-msgid "If ``crawler_or_spidercls`` is a Crawler, it is returned as-is."
-msgstr "如果``crawler_or_spidercls`` 是一个 Crawler，那么它将按原样恢复。"
+msgid ""
+"If ``crawler_or_spidercls`` is a Crawler, the runner's settings are merged "
+"into it as defaults: for each setting, the runner's value is applied only if "
+"the Crawler does not already have that setting at an equal or higher "
+"priority. The Crawler is then returned."
+msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
-#: scrapy.crawler.CrawlerRunnerBase.create_crawler:4
+#: scrapy.crawler.CrawlerRunnerBase.create_crawler:7
 msgid ""
 "If ``crawler_or_spidercls`` is a Spider subclass, a new Crawler is "
-"constructed for it."
+"constructed for it using this runner's settings."
 msgstr ""
-"如果``crawler_or_spidercls`` 是一个 Spider 子类，那么就会为它构建一个新的 "
-"Crawler 类。"
 
 #: ../../../../scrapy/crawler.py:docstring of
-#: scrapy.crawler.CrawlerRunnerBase.create_crawler:6
+#: scrapy.crawler.CrawlerRunnerBase.create_crawler:9
 msgid ""
 "If ``crawler_or_spidercls`` is a string, this function finds a spider with "
 "this name in a Scrapy project (using spider loader), then creates a Crawler "
@@ -480,15 +488,14 @@ msgstr ""
 msgid ""
 "When using a reactor it adjusts its pool size to :setting:"
 "`REACTOR_THREADPOOL_MAXSIZE` and installs a DNS resolver based on :setting:"
-"`DNSCACHE_ENABLED`."
+"`TWISTED_DNS_RESOLVER`."
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerProcess.start:9
-#: scrapy.crawler.CrawlerProcess.start:5
 msgid ""
-"If ``stop_after_crawl`` is True, the reactor will be stopped after all "
-"crawlers have finished, using :meth:`join`."
+"If ``stop_after_crawl`` is True, the reactor/event loop will be stopped "
+"after all crawlers have finished, using :meth:`join`."
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
@@ -537,7 +544,14 @@ msgstr ""
 msgid ""
 "This method starts a :mod:`~twisted.internet.reactor`, adjusts its pool size "
 "to :setting:`REACTOR_THREADPOOL_MAXSIZE`, and installs a DNS resolver based "
-"on :setting:`DNSCACHE_ENABLED`."
+"on :setting:`TWISTED_DNS_RESOLVER`."
+msgstr ""
+
+#: ../../../../scrapy/crawler.py:docstring of
+#: scrapy.crawler.CrawlerProcess.start:5
+msgid ""
+"If ``stop_after_crawl`` is True, the reactor will be stopped after all "
+"crawlers have finished, using :meth:`join`."
 msgstr ""
 
 #: ../../../topics/api.rst:129
@@ -666,8 +680,8 @@ msgstr "制作当前设置的深度副本。"
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.copy:3
 msgid ""
-"This method returns a new instance of the :class:`Settings` class, populated "
-"with the same values and their priorities."
+"This method returns a new instance of this class, populated with the same "
+"values and their priorities."
 msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
@@ -684,9 +698,9 @@ msgstr "制作当前设置的副本并转换为字典。"
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.copy_to_dict:3
 msgid ""
-"This method returns a new dict populated with the same values and their "
-"priorities as the current settings."
-msgstr "这个方法返回一个与当前设置相同的值和优先级的新词典。"
+"This method returns a new dict populated with the same values as the current "
+"settings."
+msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.copy_to_dict:6
@@ -737,7 +751,7 @@ msgstr "获取一个设置值而不影响其原始类型。"
 #: scrapy.settings.BaseSettings.getfloat:3
 #: scrapy.settings.BaseSettings.getint:3 scrapy.settings.BaseSettings.getlist:8
 #: scrapy.settings.BaseSettings.getpriority:4
-#: scrapy.settings.BaseSettings.set:7
+#: scrapy.settings.BaseSettings.set:8
 msgid "the setting name"
 msgstr "设置名称"
 
@@ -967,18 +981,18 @@ msgstr "保存一个具有给定优先级的密钥/值属性。"
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.set:3
 msgid ""
-"Settings should be populated *before* configuring the Crawler object "
-"(through the :meth:`~scrapy.crawler.Crawler.configure` method), otherwise "
-"they won't have any effect."
+"Settings should be populated *before* the Crawler object applies them (in "
+"the :meth:`~scrapy.crawler.Crawler.crawl_async` or :meth:`~scrapy.crawler."
+"Crawler.crawl` method), otherwise they won't have any effect."
 msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
-#: scrapy.settings.BaseSettings.set:10
+#: scrapy.settings.BaseSettings.set:11
 msgid "the value to associate with the setting"
 msgstr "要与设置关联的值"
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
-#: scrapy.settings.BaseSettings.set:13
+#: scrapy.settings.BaseSettings.set:14
 msgid ""
 "the priority of the setting. Should be a key of :attr:`~scrapy.settings."
 "SETTINGS_PRIORITIES` or an integer"
@@ -1313,3 +1327,18 @@ msgid ""
 "Returns ``True`` if no more requests can be sent at the moment, or ``False`` "
 "otherwise."
 msgstr "返回``True`` ，如果目前没有更多的请求可以发送，或者返回``False`` 。"
+
+#~ msgid "If ``crawler_or_spidercls`` is a Crawler, it is returned as-is."
+#~ msgstr "如果``crawler_or_spidercls`` 是一个 Crawler，那么它将按原样恢复。"
+
+#~ msgid ""
+#~ "If ``crawler_or_spidercls`` is a Spider subclass, a new Crawler is "
+#~ "constructed for it."
+#~ msgstr ""
+#~ "如果``crawler_or_spidercls`` 是一个 Spider 子类，那么就会为它构建一个新的 "
+#~ "Crawler 类。"
+
+#~ msgid ""
+#~ "This method returns a new dict populated with the same values and their "
+#~ "priorities as the current settings."
+#~ msgstr "这个方法返回一个与当前设置相同的值和优先级的新词典。"

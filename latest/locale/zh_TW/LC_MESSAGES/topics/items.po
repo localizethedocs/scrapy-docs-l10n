@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-11 11:49+0000\n"
+"POT-Creation-Date: 2026-07-27 11:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,6 +104,18 @@ msgid ""
 "A dictionary containing *all declared fields* for this Item, not only those "
 "populated. The keys are the field names and the values are the :class:"
 "`Field` objects used in the :ref:`Item declaration <topics-items-declaring>`."
+msgstr ""
+
+#: ../../../../scrapy/item.py:docstring of scrapy.Item.fields:6
+msgid ""
+"Fields are kept in definition order: fields declared in base classes come "
+"first, followed by fields declared in subclasses, and a field redefined in a "
+"subclass keeps the position of its first definition."
+msgstr ""
+
+#: ../../../../scrapy/item.py:docstring of scrapy.Item.fields:10
+msgid ""
+"Fields are now returned in definition order rather than alphabetical order."
 msgstr ""
 
 #: ../../../topics/items.rst:49

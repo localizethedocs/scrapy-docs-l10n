@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-08 13:04+0000\n"
+"POT-Creation-Date: 2026-07-27 11:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -336,12 +336,10 @@ msgstr "从旋转器输出返回一个处理过的项目。"
 #: ../../../../scrapy/spidermiddlewares/base.py:docstring of
 #: scrapy.spidermiddlewares.base.BaseSpiderMiddleware.get_processed_item:3
 msgid ""
-"This method is called with a single item from the start seeds or the spider "
+"This method is called with a single item from ``start()`` or the spider "
 "output. It should return the same or a different item, or ``None`` to ignore "
 "it."
 msgstr ""
-"这个方法用单个项目来调用起始种子或旋转器输出。 它应该返回相同或不同的物品或 "
-"``None`` 来忽略它。"
 
 #: ../../../../scrapy/spidermiddlewares/base.py:docstring of
 #: scrapy.spidermiddlewares.base.BaseSpiderMiddleware.get_processed_item:7
@@ -365,12 +363,10 @@ msgstr "从旋转器输出返回已处理的请求。"
 #: ../../../../scrapy/spidermiddlewares/base.py:docstring of
 #: scrapy.spidermiddlewares.base.BaseSpiderMiddleware.get_processed_request:3
 msgid ""
-"This method is called with a single request from the start seeds or the "
-"spider output. It should return the same or a different request, or ``None`` "
-"to ignore it."
+"This method is called with a single request from ``start()`` or the spider "
+"output. It should return the same or a different request, or ``None`` to "
+"ignore it."
 msgstr ""
-"这个方法用单个请求从起始种子或旋转器输出调用。 它应该返回相同或不同的请求，或"
-"者 ``None`` 忽略它。"
 
 #: ../../../../scrapy/spidermiddlewares/base.py:docstring of
 #: scrapy.spidermiddlewares.base.BaseSpiderMiddleware.get_processed_request:7
@@ -585,102 +581,106 @@ msgid ""
 "the same acceptable values as for the ``REFERRER_POLICY`` setting."
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:359
+#: ../../../topics/spider-middleware.rst:358
+msgid ":ref:`security-credential-leakage`"
+msgstr ""
+
+#: ../../../topics/spider-middleware.rst:361
 msgid "Acceptable values for REFERRER_POLICY"
 msgstr "REFERRER_POLICY的可接受值"
 
-#: ../../../topics/spider-middleware.rst:361
+#: ../../../topics/spider-middleware.rst:363
 msgid ""
 "either a path to a :class:`scrapy.spidermiddlewares.referer.ReferrerPolicy` "
 "subclass — a custom policy or one of the built-in ones (see classes below),"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:363
+#: ../../../topics/spider-middleware.rst:365
 msgid "or one or more comma-separated standard W3C-defined string values,"
 msgstr "或者一个或多个逗号分隔的标准W3C-定义字符串值。"
 
-#: ../../../topics/spider-middleware.rst:364
+#: ../../../topics/spider-middleware.rst:366
 msgid "or the special ``\"scrapy-default\"``."
 msgstr "或者特殊的 ``\"scrapy-default\"`` 。"
 
-#: ../../../topics/spider-middleware.rst:367
+#: ../../../topics/spider-middleware.rst:369
 msgid "String value"
 msgstr "字符串值"
 
-#: ../../../topics/spider-middleware.rst:367
+#: ../../../topics/spider-middleware.rst:369
 msgid "Class name (as a string)"
 msgstr "类名 (作为字符串)"
 
-#: ../../../topics/spider-middleware.rst:369
+#: ../../../topics/spider-middleware.rst:371
 msgid "``\"scrapy-default\"`` (default)"
 msgstr "``\"scrapy-default\"`` (默认)"
 
-#: ../../../topics/spider-middleware.rst:369
+#: ../../../topics/spider-middleware.rst:371
 msgid ":class:`scrapy.spidermiddlewares.referer.DefaultReferrerPolicy`"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:370
+#: ../../../topics/spider-middleware.rst:372
 msgid "`\"no-referrer\"`_"
 msgstr "`\"无参考\"_\""
 
-#: ../../../topics/spider-middleware.rst:370
+#: ../../../topics/spider-middleware.rst:372
 msgid ":class:`scrapy.spidermiddlewares.referer.NoReferrerPolicy`"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:371
+#: ../../../topics/spider-middleware.rst:373
 msgid "`\"no-referrer-when-downgrade\"`_"
 msgstr "`\"无引用时降级\"_"
 
-#: ../../../topics/spider-middleware.rst:371
+#: ../../../topics/spider-middleware.rst:373
 msgid ":class:`scrapy.spidermiddlewares.referer.NoReferrerWhenDowngradePolicy`"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:372
+#: ../../../topics/spider-middleware.rst:374
 msgid "`\"same-origin\"`_"
 msgstr "``相同原始'`_"
 
-#: ../../../topics/spider-middleware.rst:372
+#: ../../../topics/spider-middleware.rst:374
 msgid ":class:`scrapy.spidermiddlewares.referer.SameOriginPolicy`"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:373
+#: ../../../topics/spider-middleware.rst:375
 msgid "`\"origin\"`_"
 msgstr "`原始'`_"
 
-#: ../../../topics/spider-middleware.rst:373
+#: ../../../topics/spider-middleware.rst:375
 msgid ":class:`scrapy.spidermiddlewares.referer.OriginPolicy`"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:374
+#: ../../../topics/spider-middleware.rst:376
 msgid "`\"strict-origin\"`_"
 msgstr "`严格原始'`_"
 
-#: ../../../topics/spider-middleware.rst:374
+#: ../../../topics/spider-middleware.rst:376
 msgid ":class:`scrapy.spidermiddlewares.referer.StrictOriginPolicy`"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:375
+#: ../../../topics/spider-middleware.rst:377
 msgid "`\"origin-when-cross-origin\"`_"
 msgstr "```原产地-交叉原产地'`_"
 
-#: ../../../topics/spider-middleware.rst:375
+#: ../../../topics/spider-middleware.rst:377
 msgid ":class:`scrapy.spidermiddlewares.referer.OriginWhenCrossOriginPolicy`"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:376
+#: ../../../topics/spider-middleware.rst:378
 msgid "`\"strict-origin-when-cross-origin\"`_"
 msgstr "``严格原产地-交叉原产地`_"
 
-#: ../../../topics/spider-middleware.rst:376
+#: ../../../topics/spider-middleware.rst:378
 msgid ""
 ":class:`scrapy.spidermiddlewares.referer.StrictOriginWhenCrossOriginPolicy`"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:377
+#: ../../../topics/spider-middleware.rst:379
 msgid "`\"unsafe-url\"`_"
 msgstr "`\"不安全-url\"_"
 
-#: ../../../topics/spider-middleware.rst:377
+#: ../../../topics/spider-middleware.rst:379
 msgid ":class:`scrapy.spidermiddlewares.referer.UnsafeUrlPolicy`"
 msgstr ""
 
@@ -699,7 +699,7 @@ msgstr ""
 "\"no referrer-when en-downgrade\"的变体，如果父请求使用 ``file://`` 或 "
 "``s3://`` 方案，则\"Referer\"不会被发送。"
 
-#: ../../../topics/spider-middleware.rst:384
+#: ../../../topics/spider-middleware.rst:386
 msgid ""
 "Scrapy's default referrer policy — just like `\"no-referrer-when-"
 "downgrade\"`_, the W3C-recommended value for browsers — will send a non-"
@@ -710,7 +710,7 @@ msgstr ""
 "的 W3C 值 — — 将从任何 ``http(s)://`` 中发送一个非空的 \"Referer\" 头到任何 "
 "``https://`` URL，即使域是不同的。"
 
-#: ../../../topics/spider-middleware.rst:389
+#: ../../../topics/spider-middleware.rst:391
 msgid ""
 "`\"same-origin\"`_ may be a better choice if you want to remove referrer "
 "information for cross-domain requests."
@@ -768,13 +768,13 @@ msgid ""
 "This is a user agent's default behavior, if no policy is otherwise specified."
 msgstr "这是用户代理的默认行为，如果没有指定其他策略。"
 
-#: ../../../topics/spider-middleware.rst:396
+#: ../../../topics/spider-middleware.rst:398
 msgid ""
 "\"no-referrer-when-downgrade\" policy is the W3C-recommended default, and is "
 "used by major web browsers."
 msgstr "\"不推荐当降级时\"策略是 W3C 推荐的默认值，并被主要浏览器使用。"
 
-#: ../../../topics/spider-middleware.rst:399
+#: ../../../topics/spider-middleware.rst:401
 msgid ""
 "However, it is NOT Scrapy's default referrer policy (see :class:"
 "`DefaultReferrerPolicy`)."
@@ -939,32 +939,32 @@ msgstr ""
 "保护的资源到不安全的来源。 认真考虑为潜在敏感文件制定这样一项政策所产生的影"
 "响。"
 
-#: ../../../topics/spider-middleware.rst:413
+#: ../../../topics/spider-middleware.rst:415
 msgid "\"unsafe-url\" policy is NOT recommended."
 msgstr "不推荐“不安全-url”政策。"
 
-#: ../../../topics/spider-middleware.rst:428
+#: ../../../topics/spider-middleware.rst:430
 msgid "REFERRER_POLICIES"
 msgstr "REFERRER_POLICIS"
 
-#: ../../../topics/spider-middleware.rst:432
+#: ../../../topics/spider-middleware.rst:434
 msgid "Default: ``{}``"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:434
+#: ../../../topics/spider-middleware.rst:436
 msgid ""
 "A dictionary mapping policy names to import paths of :class:`scrapy."
 "spidermiddlewares.referer.ReferrerPolicy` subclasses, or ``None`` to disable "
 "support for a given policy name."
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:438
+#: ../../../topics/spider-middleware.rst:440
 msgid ""
 "This allows overriding the policies triggered by the ``Referrer-Policy`` "
 "response header."
 msgstr "这允许覆盖由 ``Referrer-Policy`` 响应头所触发的策略。"
 
-#: ../../../topics/spider-middleware.rst:441
+#: ../../../topics/spider-middleware.rst:443
 msgid ""
 "Use ``\"\"`` to override the policy for responses with `no referrer policy "
 "<https://www.w3.org/TR/referrer-policy/#referrer-policy-empty-string>`__."
@@ -972,7 +972,7 @@ msgstr ""
 "使用 ``\"\"`` 来覆盖响应策略与 `no referrer policy <https://www.w3.org/TR/"
 "referrer-policy/#referrer-policy-empty-string>`__。"
 
-#: ../../../topics/spider-middleware.rst:446
+#: ../../../topics/spider-middleware.rst:448
 msgid "StartSpiderMiddleware"
 msgstr "StartSpiderMiddleware"
 
@@ -995,22 +995,38 @@ msgid ""
 "middleware>`."
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:454
+#: ../../../topics/spider-middleware.rst:456
 msgid "UrlLengthMiddleware"
 msgstr "UrlLengthMiddleware"
 
-#: ../../../topics/spider-middleware.rst:461
+#: ../../../topics/spider-middleware.rst:463
 msgid "Filters out requests with URLs longer than URLLENGTH_LIMIT"
 msgstr "过滤带有URL长于URLLENGTH_LIMIT"
 
-#: ../../../topics/spider-middleware.rst:463
+#: ../../../topics/spider-middleware.rst:465
 msgid ""
 "The :class:`UrlLengthMiddleware` can be configured through the following "
 "settings (see the settings documentation for more info):"
 msgstr ""
 
-#: ../../../topics/spider-middleware.rst:466
+#: ../../../topics/spider-middleware.rst:468
 msgid ""
 ":setting:`URLLENGTH_LIMIT` - The maximum URL length to allow for crawled "
 "URLs."
 msgstr ""
+
+#~ msgid ""
+#~ "This method is called with a single item from the start seeds or the "
+#~ "spider output. It should return the same or a different item, or ``None`` "
+#~ "to ignore it."
+#~ msgstr ""
+#~ "这个方法用单个项目来调用起始种子或旋转器输出。 它应该返回相同或不同的物品"
+#~ "或 ``None`` 来忽略它。"
+
+#~ msgid ""
+#~ "This method is called with a single request from the start seeds or the "
+#~ "spider output. It should return the same or a different request, or "
+#~ "``None`` to ignore it."
+#~ msgstr ""
+#~ "这个方法用单个请求从起始种子或旋转器输出调用。 它应该返回相同或不同的请"
+#~ "求，或者 ``None`` 忽略它。"

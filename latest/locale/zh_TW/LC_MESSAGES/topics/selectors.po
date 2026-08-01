@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-11 11:49+0000\n"
+"POT-Creation-Date: 2026-07-27 11:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1485,49 +1485,18 @@ msgstr ""
 #: scrapy.selector.unified.Selector:12
 msgid ""
 "``type`` defines the selector type, it can be ``\"html\"``, ``\"xml\"``, "
-"``\"json\"`` or ``None`` (default)."
-msgstr ""
-
-#: ../../../../scrapy/selector/unified.py:docstring of
-#: scrapy.selector.unified.Selector:15
-msgid ""
-"If ``type`` is ``None``, the selector automatically chooses the best type "
-"based on ``response`` type (see below), or defaults to ``\"html\"`` in case "
-"it is used together with ``text``."
+"``\"json\"``, ``\"text\"`` or ``None`` (default). It's passed to :class:"
+"`parsel.Selector` and its meaning is defined there. However, when ``type`` "
+"is ``None``, it is set to ``\"xml\"`` for an :class:`~scrapy.http."
+"XmlResponse` and to ``\"html\"`` otherwise before passing it to :class:"
+"`parsel.Selector`."
 msgstr ""
 
 #: ../../../../scrapy/selector/unified.py:docstring of
 #: scrapy.selector.unified.Selector:19
 msgid ""
-"If ``type`` is ``None`` and a ``response`` is passed, the selector type is "
-"inferred from the response type as follows:"
-msgstr ""
-
-#: ../../../../scrapy/selector/unified.py:docstring of
-#: scrapy.selector.unified.Selector:22
-msgid "``\"html\"`` for :class:`~scrapy.http.HtmlResponse` type"
-msgstr ""
-
-#: ../../../../scrapy/selector/unified.py:docstring of
-#: scrapy.selector.unified.Selector:23
-msgid "``\"xml\"`` for :class:`~scrapy.http.XmlResponse` type"
-msgstr ""
-
-#: ../../../../scrapy/selector/unified.py:docstring of
-#: scrapy.selector.unified.Selector:24
-msgid "``\"json\"`` for :class:`~scrapy.http.TextResponse` type"
-msgstr ""
-
-#: ../../../../scrapy/selector/unified.py:docstring of
-#: scrapy.selector.unified.Selector:25
-msgid "``\"html\"`` for anything else"
-msgstr ""
-
-#: ../../../../scrapy/selector/unified.py:docstring of
-#: scrapy.selector.unified.Selector:27
-msgid ""
-"Otherwise, if ``type`` is set, the selector type will be forced and no "
-"detection will occur."
+"JSON selector support requires ``parsel`` 1.8.0 or higher. With older "
+"versions setting ``type`` to ``\"json\"`` or ``\"text\"`` is not supported."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
