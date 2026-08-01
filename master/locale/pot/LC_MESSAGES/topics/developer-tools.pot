@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 09:50+0000\n"
+"POT-Creation-Date: 2026-07-27 11:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -359,7 +359,6 @@ msgstr ""
 #: ../../../topics/developer-tools.rst:246
 msgid ""
 "import scrapy\n"
-"import json\n"
 "\n"
 "\n"
 "class QuoteSpider(scrapy.Spider):\n"
@@ -369,7 +368,7 @@ msgid ""
 "    start_urls = [\"https://quotes.toscrape.com/api/quotes?page=1\"]\n"
 "\n"
 "    def parse(self, response):\n"
-"        data = json.loads(response.text)\n"
+"        data = response.json()\n"
 "        for quote in data[\"quotes\"]:\n"
 "            yield {\"quote\": quote[\"text\"]}\n"
 "        if data[\"has_next\"]:\n"
@@ -379,7 +378,7 @@ msgid ""
 "            yield scrapy.Request(url=url, callback=self.parse)"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:267
+#: ../../../topics/developer-tools.rst:266
 msgid ""
 "This spider starts at the first page of the quotes-API. With each response, "
 "we parse the ``response.text`` and assign it to ``data``. This lets us "
@@ -391,7 +390,7 @@ msgid ""
 "incremented page-number into our ``url``."
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:279
+#: ../../../topics/developer-tools.rst:278
 msgid ""
 "In more complex websites, it could be difficult to easily reproduce the "
 "requests, as we could need to add ``headers`` or ``cookies`` to make it "
@@ -401,7 +400,7 @@ msgid ""
 "request:"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:286
+#: ../../../topics/developer-tools.rst:285
 msgid ""
 "from scrapy import Request\n"
 "\n"
@@ -421,7 +420,7 @@ msgid ""
 ")"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:300
+#: ../../../topics/developer-tools.rst:299
 msgid ""
 "Alternatively, if you want to know the arguments needed to recreate that "
 "request you can use the :func:`~scrapy.utils.curl.curl_to_request_kwargs` "
@@ -458,13 +457,13 @@ msgstr ""
 msgid "dictionary of Request kwargs"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:306
+#: ../../../topics/developer-tools.rst:305
 msgid ""
 "Note that to translate a cURL command into a Scrapy request, you may use "
 "`curl2scrapy <https://michael-shub.github.io/curl2scrapy/>`_."
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:309
+#: ../../../topics/developer-tools.rst:308
 msgid ""
 "As you can see, with a few inspections in the `Network`-tool we were able to "
 "easily replicate the dynamic requests of the scrolling functionality of the "

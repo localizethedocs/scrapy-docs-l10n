@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-11 11:50+0000\n"
+"POT-Creation-Date: 2026-07-27 11:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -285,9 +285,8 @@ msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerRunner.crawl:3
-#: scrapy.crawler.CrawlerRunner.crawl:3
 msgid ""
-"It will call the given Crawler's :meth:`~Crawler.crawl` method, while "
+"It will call the given Crawler's :meth:`~Crawler.crawl_async` method, while "
 "keeping track of it so it can be stopped later."
 msgstr ""
 
@@ -366,6 +365,13 @@ msgid ""
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
+#: scrapy.crawler.CrawlerRunner.crawl:3
+msgid ""
+"It will call the given Crawler's :meth:`~Crawler.crawl` method, while "
+"keeping track of it so it can be stopped later."
+msgstr ""
+
+#: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.CrawlerRunner.crawl:10
 msgid "Returns a deferred that is fired when the crawling is finished."
 msgstr ""
@@ -439,18 +445,22 @@ msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.CrawlerRunnerBase.create_crawler:3
-msgid "If ``crawler_or_spidercls`` is a Crawler, it is returned as-is."
+msgid ""
+"If ``crawler_or_spidercls`` is a Crawler, the runner's settings are merged "
+"into it as defaults: for each setting, the runner's value is applied only if "
+"the Crawler does not already have that setting at an equal or higher "
+"priority. The Crawler is then returned."
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
-#: scrapy.crawler.CrawlerRunnerBase.create_crawler:4
+#: scrapy.crawler.CrawlerRunnerBase.create_crawler:7
 msgid ""
 "If ``crawler_or_spidercls`` is a Spider subclass, a new Crawler is "
-"constructed for it."
+"constructed for it using this runner's settings."
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
-#: scrapy.crawler.CrawlerRunnerBase.create_crawler:6
+#: scrapy.crawler.CrawlerRunnerBase.create_crawler:9
 msgid ""
 "If ``crawler_or_spidercls`` is a string, this function finds a spider with "
 "this name in a Scrapy project (using spider loader), then creates a Crawler "
@@ -470,15 +480,14 @@ msgstr ""
 msgid ""
 "When using a reactor it adjusts its pool size to :setting:"
 "`REACTOR_THREADPOOL_MAXSIZE` and installs a DNS resolver based on :setting:"
-"`DNSCACHE_ENABLED`."
+"`TWISTED_DNS_RESOLVER`."
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.AsyncCrawlerProcess.start:9
-#: scrapy.crawler.CrawlerProcess.start:5
 msgid ""
-"If ``stop_after_crawl`` is True, the reactor will be stopped after all "
-"crawlers have finished, using :meth:`join`."
+"If ``stop_after_crawl`` is True, the reactor/event loop will be stopped "
+"after all crawlers have finished, using :meth:`join`."
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
@@ -527,7 +536,14 @@ msgstr ""
 msgid ""
 "This method starts a :mod:`~twisted.internet.reactor`, adjusts its pool size "
 "to :setting:`REACTOR_THREADPOOL_MAXSIZE`, and installs a DNS resolver based "
-"on :setting:`DNSCACHE_ENABLED`."
+"on :setting:`TWISTED_DNS_RESOLVER`."
+msgstr ""
+
+#: ../../../../scrapy/crawler.py:docstring of
+#: scrapy.crawler.CrawlerProcess.start:5
+msgid ""
+"If ``stop_after_crawl`` is True, the reactor will be stopped after all "
+"crawlers have finished, using :meth:`join`."
 msgstr ""
 
 #: ../../../topics/api.rst:129
@@ -644,8 +660,8 @@ msgstr ""
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.copy:3
 msgid ""
-"This method returns a new instance of the :class:`Settings` class, populated "
-"with the same values and their priorities."
+"This method returns a new instance of this class, populated with the same "
+"values and their priorities."
 msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
@@ -662,8 +678,8 @@ msgstr ""
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.copy_to_dict:3
 msgid ""
-"This method returns a new dict populated with the same values and their "
-"priorities as the current settings."
+"This method returns a new dict populated with the same values as the current "
+"settings."
 msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
@@ -715,7 +731,7 @@ msgstr ""
 #: scrapy.settings.BaseSettings.getfloat:3
 #: scrapy.settings.BaseSettings.getint:3 scrapy.settings.BaseSettings.getlist:8
 #: scrapy.settings.BaseSettings.getpriority:4
-#: scrapy.settings.BaseSettings.set:7
+#: scrapy.settings.BaseSettings.set:8
 msgid "the setting name"
 msgstr ""
 
@@ -928,18 +944,18 @@ msgstr ""
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.set:3
 msgid ""
-"Settings should be populated *before* configuring the Crawler object "
-"(through the :meth:`~scrapy.crawler.Crawler.configure` method), otherwise "
-"they won't have any effect."
+"Settings should be populated *before* the Crawler object applies them (in "
+"the :meth:`~scrapy.crawler.Crawler.crawl_async` or :meth:`~scrapy.crawler."
+"Crawler.crawl` method), otherwise they won't have any effect."
 msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
-#: scrapy.settings.BaseSettings.set:10
+#: scrapy.settings.BaseSettings.set:11
 msgid "the value to associate with the setting"
 msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
-#: scrapy.settings.BaseSettings.set:13
+#: scrapy.settings.BaseSettings.set:14
 msgid ""
 "the priority of the setting. Should be a key of :attr:`~scrapy.settings."
 "SETTINGS_PRIORITIES` or an integer"
@@ -1036,54 +1052,83 @@ msgstr ""
 msgid "SpiderLoader API"
 msgstr ""
 
-#: ../../../topics/api.rst:177
-msgid ""
-"This class is in charge of retrieving and handling the spider classes "
-"defined across the project."
-msgstr ""
-
-#: ../../../topics/api.rst:180
+#: ../../../topics/api.rst:175
 msgid ""
 "Custom spider loaders can be employed by specifying their path in the :"
-"setting:`SPIDER_LOADER_CLASS` project setting. They must fully implement "
-"the :class:`scrapy.interfaces.ISpiderLoader` interface to guarantee an "
-"errorless execution."
+"setting:`SPIDER_LOADER_CLASS` project setting. They must implement :class:"
+"`SpiderLoaderProtocol`."
 msgstr ""
 
-#: ../../../topics/api.rst:187
+#: ../../../../scrapy/spiderloader.py:docstring of
+#: scrapy.spiderloader.SpiderLoaderProtocol:1
+msgid "Protocol for spider loader implementations."
+msgstr ""
+
+#: ../../../../scrapy/spiderloader.py:docstring of
+#: scrapy.spiderloader.SpiderLoaderProtocol:3
+msgid "See :setting:`SPIDER_LOADER_CLASS`."
+msgstr ""
+
+#: ../../../../scrapy/spiderloader.py:docstring of
+#: scrapy.spiderloader.SpiderLoaderProtocol.find_by_request:1
+msgid "Return the list of spiders names that can handle the given request."
+msgstr ""
+
+#: ../../../../scrapy/spiderloader.py:docstring of
+#: scrapy.spiderloader.SpiderLoaderProtocol.from_settings:1
+msgid "Return an instance of the class for the given settings."
+msgstr ""
+
+#: ../../../../scrapy/spiderloader.py:docstring of
+#: scrapy.spiderloader.SpiderLoader.list:1
+#: scrapy.spiderloader.SpiderLoaderProtocol.list:1
+msgid "Return a list with the names of all spiders available in the project."
+msgstr ""
+
+#: ../../../../scrapy/spiderloader.py:docstring of
+#: scrapy.spiderloader.SpiderLoaderProtocol.load:1
 msgid ""
-"This class method is used by Scrapy to create an instance of the class. It's "
-"called with the current project settings, and it loads the spiders found "
-"recursively in the modules of the :setting:`SPIDER_MODULES` setting."
+"Return the spider class for the given spider name. If the spider name is not "
+"found, it must raise a :exc:`KeyError`."
 msgstr ""
 
-#: ../../../topics/api.rst:192
-msgid "project settings"
-msgstr ""
-
-#: ../../../topics/api.rst:197
+#: ../../../../scrapy/spiderloader.py:docstring of
+#: scrapy.spiderloader.SpiderLoader:1
 msgid ""
-"Get the Spider class with the given name. It'll look into the previously "
-"loaded spiders for a spider class with name ``spider_name`` and will raise a "
-"KeyError if not found."
+"SpiderLoader is a class which locates and loads spiders in a Scrapy project."
 msgstr ""
 
-#: ../../../topics/api.rst:201
-msgid "spider class name"
+#: ../../../../scrapy/spiderloader.py:docstring of
+#: scrapy.spiderloader.SpiderLoader.find_by_request:1
+msgid "Return the list of spider names that can handle the given request."
 msgstr ""
 
-#: ../../../topics/api.rst:206
-msgid "Get the names of the available spiders in the project."
-msgstr ""
-
-#: ../../../topics/api.rst:210
+#: ../../../../scrapy/spiderloader.py:docstring of
+#: scrapy.spiderloader.SpiderLoader.find_by_request:3
 msgid ""
-"List the spiders' names that can handle the given request. Will try to match "
-"the request's url against the domains of the spiders."
+"It will try to match the request's url against the domains of the spiders."
 msgstr ""
 
-#: ../../../topics/api.rst:213
-msgid "queried request"
+#: ../../../../scrapy/spiderloader.py:docstring of
+#: scrapy.spiderloader.SpiderLoader.from_settings:1
+msgid "Create an instance of the class."
+msgstr ""
+
+#: ../../../../scrapy/spiderloader.py:docstring of
+#: scrapy.spiderloader.SpiderLoader.from_settings:3
+msgid ""
+"It's called with the current project settings, and it loads the spiders "
+"found recursively in the modules of the :setting:`SPIDER_MODULES` setting."
+msgstr ""
+
+#: ../../../../scrapy/spiderloader.py:docstring of
+#: scrapy.spiderloader.SpiderLoader.load:1
+msgid "Return the spider class for the given spider name."
+msgstr ""
+
+#: ../../../../scrapy/spiderloader.py:docstring of
+#: scrapy.spiderloader.SpiderLoader.load:3
+msgid "If the spider name is not found, raise a :exc:`KeyError`."
 msgstr ""
 
 #: ../../../../scrapy/spiderloader.py:docstring of
@@ -1091,7 +1136,7 @@ msgstr ""
 msgid "A dummy spider loader that does not load any spiders."
 msgstr ""
 
-#: ../../../topics/api.rst:221
+#: ../../../topics/api.rst:190
 msgid "Signals API"
 msgstr ""
 
@@ -1182,11 +1227,11 @@ msgstr ""
 msgid "See :ref:`start-requests-lazy` for an example."
 msgstr ""
 
-#: ../../../topics/api.rst:231
+#: ../../../topics/api.rst:200
 msgid "Stats Collector API"
 msgstr ""
 
-#: ../../../topics/api.rst:233
+#: ../../../topics/api.rst:202
 msgid ""
 "There are several Stats Collectors available under the :mod:`scrapy."
 "statscollectors` module and they all implement the Stats Collector API "
@@ -1194,64 +1239,64 @@ msgid ""
 "they all inherit from)."
 msgstr ""
 
-#: ../../../topics/api.rst:245
+#: ../../../topics/api.rst:214
 msgid ""
 "Return the value for the given stats key or default if it doesn't exist."
 msgstr ""
 
-#: ../../../topics/api.rst:249
+#: ../../../topics/api.rst:218
 msgid "Get all stats from the currently running spider as a dict."
 msgstr ""
 
-#: ../../../topics/api.rst:253
+#: ../../../topics/api.rst:222
 msgid "Set the given value for the given stats key."
 msgstr ""
 
-#: ../../../topics/api.rst:257
+#: ../../../topics/api.rst:226
 msgid "Override the current stats with the dict passed in ``stats`` argument."
 msgstr ""
 
-#: ../../../topics/api.rst:261
+#: ../../../topics/api.rst:230
 msgid ""
 "Increment the value of the given stats key, by the given count, assuming the "
 "start value given (when it's not set)."
 msgstr ""
 
-#: ../../../topics/api.rst:266
+#: ../../../topics/api.rst:235
 msgid ""
 "Set the given value for the given key only if current value for the same key "
 "is lower than value. If there is no current value for the given key, the "
 "value is always set."
 msgstr ""
 
-#: ../../../topics/api.rst:272
+#: ../../../topics/api.rst:241
 msgid ""
 "Set the given value for the given key only if current value for the same key "
 "is greater than value. If there is no current value for the given key, the "
 "value is always set."
 msgstr ""
 
-#: ../../../topics/api.rst:278
+#: ../../../topics/api.rst:247
 msgid "Clear all stats."
 msgstr ""
 
-#: ../../../topics/api.rst:280
+#: ../../../topics/api.rst:249
 msgid ""
 "The following methods are not part of the stats collection api but instead "
 "used when implementing custom stats collectors:"
 msgstr ""
 
-#: ../../../topics/api.rst:285
+#: ../../../topics/api.rst:254
 msgid "Open the spider for stats collection."
 msgstr ""
 
-#: ../../../topics/api.rst:289
+#: ../../../topics/api.rst:258
 msgid ""
 "Close the spider. After this is called, no more specific stats can be "
 "accessed or collected."
 msgstr ""
 
-#: ../../../topics/api.rst:293
+#: ../../../topics/api.rst:262
 msgid "Engine API"
 msgstr ""
 
