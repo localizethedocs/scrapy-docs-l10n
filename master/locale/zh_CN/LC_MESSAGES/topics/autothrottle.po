@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 09:50+0000\n"
+"POT-Creation-Date: 2026-07-27 11:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -148,7 +148,7 @@ msgstr ""
 #: ../../../topics/autothrottle.rst:77
 msgid ""
 "In Scrapy, the download latency is measured as the time elapsed between "
-"establishing the TCP connection and receiving the HTTP headers."
+"sending the request and receiving the HTTP headers."
 msgstr ""
 
 #: ../../../topics/autothrottle.rst:80
@@ -164,7 +164,7 @@ msgstr ""
 msgid "Prevent specific requests from triggering slot delay adjustments"
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:91
+#: ../../../topics/autothrottle.rst:93
 msgid ""
 "AutoThrottle adjusts the delay of download slots based on the latencies of "
 "responses that belong to that download slot. The only exceptions are non-200 "
@@ -172,14 +172,14 @@ msgid ""
 "ignored if they would decrease that delay."
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:96
+#: ../../../topics/autothrottle.rst:98
 msgid ""
 "You can also set the ``autothrottle_dont_adjust_delay`` request metadata key "
 "to ``True`` in any request to prevent its response latency from impacting "
 "the delay of its download slot:"
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:100
+#: ../../../topics/autothrottle.rst:102
 msgid ""
 "from scrapy import Request\n"
 "\n"
@@ -187,7 +187,7 @@ msgid ""
 "True})"
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:106
+#: ../../../topics/autothrottle.rst:108
 msgid ""
 "Note, however, that AutoThrottle still determines the starting delay of "
 "every download slot by setting the ``download_delay`` attribute on the "
@@ -197,98 +197,98 @@ msgid ""
 "attribute of that download slot, e.g. using :setting:`DOWNLOAD_SLOTS`."
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:114
+#: ../../../topics/autothrottle.rst:116
 msgid "Settings"
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:116
+#: ../../../topics/autothrottle.rst:118
 msgid "The settings used to control the AutoThrottle extension are:"
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:118
+#: ../../../topics/autothrottle.rst:120
 msgid ":setting:`AUTOTHROTTLE_ENABLED`"
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:119
+#: ../../../topics/autothrottle.rst:121
 msgid ":setting:`AUTOTHROTTLE_START_DELAY`"
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:120
+#: ../../../topics/autothrottle.rst:122
 msgid ":setting:`AUTOTHROTTLE_MAX_DELAY`"
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:121
+#: ../../../topics/autothrottle.rst:123
 msgid ":setting:`AUTOTHROTTLE_TARGET_CONCURRENCY`"
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:122
+#: ../../../topics/autothrottle.rst:124
 msgid ":setting:`AUTOTHROTTLE_DEBUG`"
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:123
+#: ../../../topics/autothrottle.rst:125
 msgid ":setting:`CONCURRENT_REQUESTS_PER_DOMAIN`"
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:124
+#: ../../../topics/autothrottle.rst:126
 msgid ":setting:`DOWNLOAD_DELAY`"
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:126
+#: ../../../topics/autothrottle.rst:128
 msgid "For more information see :ref:`autothrottle-algorithm`."
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:131
+#: ../../../topics/autothrottle.rst:133
 msgid "AUTOTHROTTLE_ENABLED"
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:133 ../../../topics/autothrottle.rst:186
+#: ../../../topics/autothrottle.rst:135 ../../../topics/autothrottle.rst:188
 msgid "Default: ``False``"
 msgstr "默认值： ``False``"
 
-#: ../../../topics/autothrottle.rst:135
+#: ../../../topics/autothrottle.rst:137
 msgid "Enables the AutoThrottle extension."
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:140
+#: ../../../topics/autothrottle.rst:142
 msgid "AUTOTHROTTLE_START_DELAY"
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:142
+#: ../../../topics/autothrottle.rst:144
 msgid "Default: ``5.0``"
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:144
+#: ../../../topics/autothrottle.rst:146
 msgid "The initial download delay (in seconds)."
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:149
+#: ../../../topics/autothrottle.rst:151
 msgid "AUTOTHROTTLE_MAX_DELAY"
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:151
+#: ../../../topics/autothrottle.rst:153
 msgid "Default: ``60.0``"
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:153
+#: ../../../topics/autothrottle.rst:155
 msgid ""
 "The maximum download delay (in seconds) to be set in case of high latencies."
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:158
+#: ../../../topics/autothrottle.rst:160
 msgid "AUTOTHROTTLE_TARGET_CONCURRENCY"
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:160
+#: ../../../topics/autothrottle.rst:162
 msgid "Default: ``1.0``"
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:162
+#: ../../../topics/autothrottle.rst:164
 msgid ""
 "Average number of requests Scrapy should be sending in parallel to remote "
 "websites. It must be higher than ``0.0``."
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:165
+#: ../../../topics/autothrottle.rst:167
 msgid ""
 "By default, AutoThrottle adjusts the delay to send a single concurrent "
 "request to each of the remote websites. Set this option to a higher value (e."
@@ -297,7 +297,7 @@ msgid ""
 "crawler more conservative and polite."
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:171
+#: ../../../topics/autothrottle.rst:173
 msgid ""
 "Note that :setting:`CONCURRENT_REQUESTS_PER_DOMAIN` is still respected when "
 "AutoThrottle extension is enabled. This means that if "
@@ -306,18 +306,18 @@ msgid ""
 "concurrent requests."
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:177
+#: ../../../topics/autothrottle.rst:179
 msgid ""
 "At every given time point Scrapy can be sending more or less concurrent "
 "requests than ``AUTOTHROTTLE_TARGET_CONCURRENCY``; it is a suggested value "
 "the crawler tries to approach, not a hard limit."
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:184
+#: ../../../topics/autothrottle.rst:186
 msgid "AUTOTHROTTLE_DEBUG"
 msgstr ""
 
-#: ../../../topics/autothrottle.rst:188
+#: ../../../topics/autothrottle.rst:190
 msgid ""
 "Enable AutoThrottle debug mode which will display stats on every response "
 "received, so you can see how the throttling parameters are being adjusted in "

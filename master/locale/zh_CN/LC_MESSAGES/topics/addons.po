@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-11 11:50+0000\n"
+"POT-Creation-Date: 2026-07-27 11:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,28 +49,28 @@ msgstr ""
 #: ../../../topics/addons.rst:23
 msgid ""
 "This is an example where two add-ons are enabled in a project's ``settings."
-"py``::"
+"py``:"
 msgstr ""
 
-#: ../../../topics/addons.rst:26
+#: ../../../topics/addons.rst:28
 msgid ""
 "ADDONS = {\n"
-"    'path.to.someaddon': 0,\n"
+"    \"path.to.someaddon\": 0,\n"
 "    SomeAddonClass: 1,\n"
 "}"
 msgstr ""
 
-#: ../../../topics/addons.rst:33
+#: ../../../topics/addons.rst:37
 msgid "Writing your own add-ons"
 msgstr ""
 
-#: ../../../topics/addons.rst:35
+#: ../../../topics/addons.rst:39
 msgid ""
 "Add-ons are :ref:`components <topics-components>` that include one or both "
 "of the following methods:"
 msgstr ""
 
-#: ../../../topics/addons.rst:40
+#: ../../../topics/addons.rst:44
 msgid ""
 "This method is called during the initialization of the :class:`~scrapy."
 "crawler.Crawler`. Here, you should perform dependency checks (e.g. for "
@@ -83,55 +83,55 @@ msgstr ""
 msgid "Parameters"
 msgstr "参数"
 
-#: ../../../topics/addons.rst:46 ../../../topics/addons.rst:55
+#: ../../../topics/addons.rst:50 ../../../topics/addons.rst:59
 msgid "The settings object storing Scrapy/component configuration"
 msgstr ""
 
-#: ../../../topics/addons.rst:51
+#: ../../../topics/addons.rst:55
 msgid ""
 "Use this class method instead of the :meth:`update_settings` method to "
 "update :ref:`pre-crawler settings <pre-crawler-settings>` whose value is "
 "used before the :class:`~scrapy.crawler.Crawler` object is created."
 msgstr ""
 
-#: ../../../topics/addons.rst:58
+#: ../../../topics/addons.rst:62
 msgid ""
 "The settings set by the add-on should use the ``addon`` priority (see :ref:"
-"`populating-settings` and :func:`scrapy.settings.BaseSettings.set`)::"
+"`populating-settings` and :func:`scrapy.settings.BaseSettings.set`):"
 msgstr ""
 
-#: ../../../topics/addons.rst:61
+#: ../../../topics/addons.rst:65
 msgid ""
 "class MyAddon:\n"
 "    def update_settings(self, settings):\n"
 "        settings.set(\"DNSCACHE_ENABLED\", True, \"addon\")"
 msgstr ""
 
-#: ../../../topics/addons.rst:65
+#: ../../../topics/addons.rst:71
 msgid ""
 "This allows users to override these settings in the project or spider "
 "configuration."
 msgstr ""
 
-#: ../../../topics/addons.rst:68
+#: ../../../topics/addons.rst:74
 msgid ""
 "When editing the value of a setting instead of overriding it entirely, it is "
 "usually best to leave its priority unchanged. For example, when editing a :"
 "ref:`component priority dictionary <component-priority-dictionaries>`."
 msgstr ""
 
-#: ../../../topics/addons.rst:72
+#: ../../../topics/addons.rst:78
 msgid ""
 "If the ``update_settings`` method raises :exc:`scrapy.exceptions."
 "NotConfigured`, the add-on will be skipped. This makes it easy to enable an "
 "add-on only when some conditions are met."
 msgstr ""
 
-#: ../../../topics/addons.rst:77
+#: ../../../topics/addons.rst:83
 msgid "Fallbacks"
 msgstr ""
 
-#: ../../../topics/addons.rst:79
+#: ../../../topics/addons.rst:85
 msgid ""
 "Some components provided by add-ons need to fall back to \"default\" "
 "implementations, e.g. a custom download handler needs to send the request "
@@ -145,7 +145,7 @@ msgid ""
 "written in the following way:"
 msgstr ""
 
-#: ../../../topics/addons.rst:89
+#: ../../../topics/addons.rst:95
 msgid ""
 "The custom component (e.g. ``MyDownloadHandler``) shouldn't inherit from the "
 "default Scrapy one (e.g. ``scrapy.core.downloader.handlers.http11."
@@ -154,7 +154,7 @@ msgid ""
 "``MY_FALLBACK_DOWNLOAD_HANDLER``), create an instance of it and use it."
 msgstr ""
 
-#: ../../../topics/addons.rst:95
+#: ../../../topics/addons.rst:101
 msgid ""
 "The add-ons that include these components should read the current value of "
 "the default setting (e.g. ``DOWNLOAD_HANDLERS``) in their "
@@ -165,7 +165,7 @@ msgid ""
 "it should not be changed."
 msgstr ""
 
-#: ../../../topics/addons.rst:102
+#: ../../../topics/addons.rst:108
 msgid ""
 "This way, if there are several add-ons that want to modify the same setting, "
 "all of them will fall back to the component from the previous one and then "
@@ -173,15 +173,15 @@ msgid ""
 "the ``ADDONS`` setting."
 msgstr ""
 
-#: ../../../topics/addons.rst:109
+#: ../../../topics/addons.rst:115
 msgid "Add-on examples"
 msgstr ""
 
-#: ../../../topics/addons.rst:111
+#: ../../../topics/addons.rst:117
 msgid "Set some basic configuration:"
 msgstr ""
 
-#: ../../../topics/addons.rst:114
+#: ../../../topics/addons.rst:120
 msgid ""
 "from myproject.pipelines import MyPipeline\n"
 "\n"
@@ -196,7 +196,7 @@ msgid ""
 "        )"
 msgstr ""
 
-#: ../../../topics/addons.rst:129
+#: ../../../topics/addons.rst:135
 msgid ""
 "When editing a :ref:`component priority dictionary <component-priority-"
 "dictionaries>` setting, like :setting:`ITEM_PIPELINES`, consider using "
@@ -206,11 +206,11 @@ msgid ""
 "setdefault_in_component_priority_dict` to avoid mistakes."
 msgstr ""
 
-#: ../../../topics/addons.rst:138
+#: ../../../topics/addons.rst:144
 msgid "Check dependencies:"
 msgstr ""
 
-#: ../../../topics/addons.rst:140
+#: ../../../topics/addons.rst:146
 msgid ""
 "class MyAddon:\n"
 "    def update_settings(self, settings):\n"
@@ -221,11 +221,11 @@ msgid ""
 "        ..."
 msgstr ""
 
-#: ../../../topics/addons.rst:150
+#: ../../../topics/addons.rst:156
 msgid "Access the crawler instance:"
 msgstr ""
 
-#: ../../../topics/addons.rst:152
+#: ../../../topics/addons.rst:158
 msgid ""
 "class MyAddon:\n"
 "    def __init__(self, crawler) -> None:\n"
@@ -239,14 +239,13 @@ msgid ""
 "    def update_settings(self, settings): ..."
 msgstr ""
 
-#: ../../../topics/addons.rst:165
+#: ../../../topics/addons.rst:171
 msgid "Use a fallback component:"
 msgstr ""
 
-#: ../../../topics/addons.rst:167
+#: ../../../topics/addons.rst:173
 msgid ""
 "from scrapy.utils.misc import build_from_crawler, load_object\n"
-"\n"
 "\n"
 "FALLBACK_SETTING = \"MY_FALLBACK_DOWNLOAD_HANDLER\"\n"
 "\n"

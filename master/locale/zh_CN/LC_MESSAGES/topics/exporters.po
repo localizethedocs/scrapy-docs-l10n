@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-08 13:04+0000\n"
+"POT-Creation-Date: 2026-07-27 11:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -315,26 +315,26 @@ msgid "``None`` (all fields [2]_, default)"
 msgstr "``None`` (所有字段 [2]_, 默认)"
 
 #: ../../../topics/exporters.rst:214
-msgid "A list of fields::"
-msgstr "字段列表:"
+msgid "A list of fields:"
+msgstr ""
 
 #: ../../../topics/exporters.rst:216
-msgid "['field1', 'field2']"
-msgstr "['field 1', 'field 2']"
-
-#: ../../../topics/exporters.rst:218
-msgid "A dict where keys are fields and values are output names::"
-msgstr "键值为字段和值为输出名的词典:"
+msgid "[\"field1\", \"field2\"]"
+msgstr ""
 
 #: ../../../topics/exporters.rst:220
-msgid "{'field1': 'Field 1', 'field2': 'Field 2'}"
-msgstr "{'field1': 'field 1', 'field 2'}"
+msgid "A dict where keys are fields and values are output names:"
+msgstr ""
 
 #: ../../../topics/exporters.rst:222
+msgid "{\"field1\": \"Field 1\", \"field2\": \"Field 2\"}"
+msgstr ""
+
+#: ../../../topics/exporters.rst:226
 msgid "Not all exporters respect the specified field order."
 msgstr "并非所有出口商都遵守指定的字段顺序。"
 
-#: ../../../topics/exporters.rst:223
+#: ../../../topics/exporters.rst:227
 msgid ""
 "When using :ref:`item objects <item-types>` that do not expose all their "
 "possible fields, exporters that do not support exporting a different subset "
@@ -342,43 +342,44 @@ msgid ""
 "exported."
 msgstr ""
 
-#: ../../../topics/exporters.rst:230
+#: ../../../topics/exporters.rst:234
 msgid ""
 "Whether to include empty/unpopulated item fields in the exported data. "
 "Defaults to ``False``. Some exporters (like :class:`CsvItemExporter`) ignore "
 "this attribute and always export all empty fields."
 msgstr ""
 
-#: ../../../topics/exporters.rst:234
+#: ../../../topics/exporters.rst:238
 msgid "This option is ignored for dict items."
 msgstr "此选项被忽略用于字典项目。"
 
-#: ../../../topics/exporters.rst:238
+#: ../../../topics/exporters.rst:242
 msgid "The output character encoding."
 msgstr "输出字符编码。"
 
-#: ../../../topics/exporters.rst:242
+#: ../../../topics/exporters.rst:246
 msgid ""
-"Amount of spaces used to indent the output on each level. Defaults to ``0``."
-msgstr "用于缩进每个级别输出的空格数量。默认值为 ``0`` 。"
+"Amount of spaces used to indent the output on each level. Defaults to "
+"``None``."
+msgstr ""
 
-#: ../../../topics/exporters.rst:244
+#: ../../../topics/exporters.rst:248
 msgid ""
 "``indent=None`` selects the most compact representation, all items in the "
 "same line with no indentation"
 msgstr "``indent=None`` 选择最紧凑的表达式，所有项目都在同一行中没有缩进"
 
-#: ../../../topics/exporters.rst:246
+#: ../../../topics/exporters.rst:250
 msgid "``indent<=0`` each item on its own line, no indentation"
 msgstr "``indent<=0`` 每个项目在其自身行中，无缩进"
 
-#: ../../../topics/exporters.rst:247
+#: ../../../topics/exporters.rst:251
 msgid ""
 "``indent>0`` each item on its own line, indented with the provided numeric "
 "value"
 msgstr "每个项目在其自身行上的 ``indent>0`` 以提供的数值缩进"
 
-#: ../../../topics/exporters.rst:250
+#: ../../../topics/exporters.rst:254
 msgid "PythonItemExporter"
 msgstr "PythonItemExporter"
 
@@ -396,17 +397,17 @@ msgid ""
 "library (e.g. :mod:`json` or msgpack_) can be used on top of it."
 msgstr ""
 
-#: ../../../topics/exporters.rst:258
+#: ../../../topics/exporters.rst:262
 msgid "XmlItemExporter"
 msgstr "XmlItemExporter"
 
-#: ../../../topics/exporters.rst:262
+#: ../../../topics/exporters.rst:266
 msgid "Exports items in XML format to the specified file object."
 msgstr "将XML格式的项目导出到指定的文件对象。"
 
-#: ../../../topics/exporters.rst:264 ../../../topics/exporters.rst:321
-#: ../../../topics/exporters.rst:356 ../../../topics/exporters.rst:376
-#: ../../../topics/exporters.rst:400 ../../../topics/exporters.rst:429
+#: ../../../topics/exporters.rst:268 ../../../topics/exporters.rst:333
+#: ../../../topics/exporters.rst:368 ../../../topics/exporters.rst:388
+#: ../../../topics/exporters.rst:414 ../../../topics/exporters.rst:445
 msgid ""
 "the file-like object to use for exporting the data. Its ``write`` method "
 "should accept ``bytes`` (a disk file opened in binary mode, a ``io.BytesIO`` "
@@ -415,28 +416,27 @@ msgstr ""
 "用于导出数据的文件类对象。 它的 ``write`` 方法应该接受 ``bytes`` (一个在二进"
 "制模式中打开的磁盘文件，一个 ``io.BytesIO`` 对象等)"
 
-#: ../../../topics/exporters.rst:267
+#: ../../../topics/exporters.rst:271
 msgid "The name of root element in the exported XML."
 msgstr "导出的 XML 根元素的名称。"
 
-#: ../../../topics/exporters.rst:270
+#: ../../../topics/exporters.rst:274
 msgid "The name of each item element in the exported XML."
 msgstr "导出的 XML 中每个元素的名称。"
 
-#: ../../../topics/exporters.rst:273 ../../../topics/exporters.rst:364
-#: ../../../topics/exporters.rst:379
+#: ../../../topics/exporters.rst:277 ../../../topics/exporters.rst:376
+#: ../../../topics/exporters.rst:391
 msgid ""
 "The additional keyword arguments of this ``__init__`` method are passed to "
 "the :class:`BaseItemExporter` ``__init__`` method."
 msgstr ""
 
-#: ../../../topics/exporters.rst:276 ../../../topics/exporters.rst:343
-#: ../../../topics/exporters.rst:382 ../../../topics/exporters.rst:403
-#: ../../../topics/exporters.rst:432
-msgid "A typical output of this exporter would be::"
-msgstr "出口商的典型产出如下："
+#: ../../../topics/exporters.rst:280 ../../../topics/exporters.rst:394
+#: ../../../topics/exporters.rst:417 ../../../topics/exporters.rst:448
+msgid "A typical output of this exporter would be:"
+msgstr ""
 
-#: ../../../topics/exporters.rst:278
+#: ../../../topics/exporters.rst:282
 msgid ""
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<items>\n"
@@ -462,26 +462,26 @@ msgstr ""
 " </item>\n"
 "</items>"
 
-#: ../../../topics/exporters.rst:290
+#: ../../../topics/exporters.rst:296
 msgid ""
 "Unless overridden in the :meth:`serialize_field` method, multi-valued fields "
 "are exported by serializing each value inside a ``<value>`` element. This is "
 "for convenience, as multi-valued fields are very common."
 msgstr ""
 
-#: ../../../topics/exporters.rst:294
-msgid "For example, the item::"
-msgstr "例如，项目："
-
-#: ../../../topics/exporters.rst:296
-msgid "Item(name=['John', 'Doe'], age='23')"
-msgstr "项目名称=['John', 'Doe'], 年龄='23'"
-
-#: ../../../topics/exporters.rst:298
-msgid "Would be serialized as::"
-msgstr "序列化为:"
-
 #: ../../../topics/exporters.rst:300
+msgid "For example, the item:"
+msgstr ""
+
+#: ../../../topics/exporters.rst:304
+msgid "Item(name=[\"John\", \"Doe\"], age=\"23\")"
+msgstr ""
+
+#: ../../../topics/exporters.rst:308
+msgid "Would be serialized as:"
+msgstr ""
+
+#: ../../../topics/exporters.rst:310
 msgid ""
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<items>\n"
@@ -505,11 +505,11 @@ msgstr ""
 "  </item>\n"
 "</items>"
 
-#: ../../../topics/exporters.rst:312
+#: ../../../topics/exporters.rst:324
 msgid "CsvItemExporter"
 msgstr "CsvItemExporter"
 
-#: ../../../topics/exporters.rst:316
+#: ../../../topics/exporters.rst:328
 msgid ""
 "Exports items in CSV format to the given file-like object. If the :attr:"
 "`fields_to_export` attribute is set, it will be used to define the CSV "
@@ -517,26 +517,26 @@ msgid ""
 "attribute has no effect on this exporter."
 msgstr ""
 
-#: ../../../topics/exporters.rst:324
+#: ../../../topics/exporters.rst:336
 msgid ""
 "If enabled, makes the exporter output a header line with the field names "
 "taken from :attr:`BaseItemExporter.fields_to_export` or the first exported "
 "item fields."
 msgstr ""
 
-#: ../../../topics/exporters.rst:329
+#: ../../../topics/exporters.rst:341
 msgid ""
 "The char (or chars) that will be used for joining multi-valued fields, if "
 "found."
 msgstr "用于加入多值字段的字符(或字符)，如果找到的话。"
 
-#: ../../../topics/exporters.rst:333
+#: ../../../topics/exporters.rst:345
 msgid ""
 "The optional string that specifies how encoding and decoding errors are to "
 "be handled. For more information see :class:`io.TextIOWrapper`."
 msgstr ""
 
-#: ../../../topics/exporters.rst:338
+#: ../../../topics/exporters.rst:350
 msgid ""
 "The additional keyword arguments of this ``__init__`` method are passed to "
 "the :class:`BaseItemExporter` ``__init__`` method, and the leftover "
@@ -544,62 +544,63 @@ msgid ""
 "writer` function argument to customize this exporter."
 msgstr ""
 
-#: ../../../topics/exporters.rst:345
+#: ../../../topics/exporters.rst:355
+msgid "A typical output of this exporter would be::"
+msgstr "出口商的典型产出如下："
+
+#: ../../../topics/exporters.rst:357
 msgid ""
-"product,price\n"
+"name,price\n"
 "Color TV,1200\n"
 "DVD player,200"
 msgstr ""
-"产品,价格\n"
-"彩色电视,1200\n"
-"DVD 播放器 200"
 
-#: ../../../topics/exporters.rst:350
+#: ../../../topics/exporters.rst:362
 msgid "PickleItemExporter"
 msgstr "选取物品导出器"
 
-#: ../../../topics/exporters.rst:354
+#: ../../../topics/exporters.rst:366
 msgid "Exports items in pickle format to the given file-like object."
 msgstr "将选取格式的项目导出到给定的文件类对象。"
 
-#: ../../../topics/exporters.rst:359
+#: ../../../topics/exporters.rst:371
 msgid "The pickle protocol to use."
 msgstr "要使用的小卡协议。"
 
-#: ../../../topics/exporters.rst:362
+#: ../../../topics/exporters.rst:374
 msgid "For more information, see :mod:`pickle`."
 msgstr ""
 
-#: ../../../topics/exporters.rst:367
+#: ../../../topics/exporters.rst:379
 msgid ""
 "Pickle isn't a human readable format, so no output examples are provided."
 msgstr "Pickle 不是一个可读的人类格式，所以不提供输出示例。"
 
-#: ../../../topics/exporters.rst:370
+#: ../../../topics/exporters.rst:382
 msgid "PprintItemExporter"
 msgstr "PprintItemExporter"
 
-#: ../../../topics/exporters.rst:374
+#: ../../../topics/exporters.rst:386
 msgid "Exports items in pretty print format to the specified file object."
 msgstr "向指定的文件对象导出精致打印格式的项目。"
 
-#: ../../../topics/exporters.rst:384
+#: ../../../topics/exporters.rst:396 ../../../topics/exporters.rst:450
 msgid ""
-"{'name': 'Color TV', 'price': '1200'}\n"
-"{'name': 'DVD player', 'price': '200'}"
+"{\"name\": \"Color TV\", \"price\": \"1200\"}\n"
+"{\"name\": \"DVD player\", \"price\": \"200\"}"
 msgstr ""
-"{'name': 'Color TV', 'price': '1200'}\n"
-"{'name': 'DVD player', 'price': '200'}"
+"{\"name\": \"Color TV\", \"price\": \"1200\"}\n"
+"{\"name\": \"DVD player\", \"price\": \"200\"}"
 
-#: ../../../topics/exporters.rst:387
+#: ../../../topics/exporters.rst:401
 msgid "Longer lines (when present) are pretty-formatted."
 msgstr "较长的行数(当存在时)是预格式化的。"
 
-#: ../../../topics/exporters.rst:390
+#: ../../../topics/exporters.rst:404
 msgid "JsonItemExporter"
 msgstr "JsonItemExporter"
 
-#: ../../../topics/exporters.rst:394
+#: ../../../topics/exporters.rst:408
 msgid ""
 "Exports items in JSON format to the specified file-like object, writing all "
 "objects as a list of objects. The additional ``__init__`` method arguments "
@@ -609,7 +610,7 @@ msgid ""
 "customize this exporter."
 msgstr ""
 
-#: ../../../topics/exporters.rst:405
+#: ../../../topics/exporters.rst:419
 msgid ""
 "[{\"name\": \"Color TV\", \"price\": \"1200\"},\n"
 "{\"name\": \"DVD player\", \"price\": \"200\"}]"
@@ -617,7 +618,7 @@ msgstr ""
 "[{\"name\": \"Color TV\", \"price\": \"1200\"},\n"
 "{\"name\": \"DVD player\", \"price\": \"200\"}]"
 
-#: ../../../topics/exporters.rst:410
+#: ../../../topics/exporters.rst:426
 msgid ""
 "JSON is very simple and flexible serialization format, but it doesn't scale "
 "well for large amounts of data since incremental (aka. stream-mode) parsing "
@@ -628,11 +629,11 @@ msgid ""
 "chunks."
 msgstr ""
 
-#: ../../../topics/exporters.rst:419
+#: ../../../topics/exporters.rst:435
 msgid "JsonLinesItemExporter"
 msgstr "JsonLinesItemExporter"
 
-#: ../../../topics/exporters.rst:423
+#: ../../../topics/exporters.rst:439
 msgid ""
 "Exports items in JSON format to the specified file-like object, writing one "
 "JSON-encoded item per line. The additional ``__init__`` method arguments are "
@@ -642,21 +643,13 @@ msgid ""
 "customize this exporter."
 msgstr ""
 
-#: ../../../topics/exporters.rst:434
-msgid ""
-"{\"name\": \"Color TV\", \"price\": \"1200\"}\n"
-"{\"name\": \"DVD player\", \"price\": \"200\"}"
-msgstr ""
-"{\"name\": \"Color TV\", \"price\": \"1200\"}\n"
-"{\"name\": \"DVD player\", \"price\": \"200\"}"
-
-#: ../../../topics/exporters.rst:437
+#: ../../../topics/exporters.rst:455
 msgid ""
 "Unlike the one produced by :class:`JsonItemExporter`, the format produced by "
 "this exporter is well suited for serializing large amounts of data."
 msgstr ""
 
-#: ../../../topics/exporters.rst:441
+#: ../../../topics/exporters.rst:459
 msgid "MarshalItemExporter"
 msgstr "MarshalItemExporter"
 
@@ -672,3 +665,45 @@ msgid ""
 "should accept :class:`bytes` (a disk file opened in binary mode, a :class:"
 "`~io.BytesIO` object, etc)"
 msgstr ""
+
+#~ msgid "A list of fields::"
+#~ msgstr "字段列表:"
+
+#~ msgid "['field1', 'field2']"
+#~ msgstr "['field 1', 'field 2']"
+
+#~ msgid "A dict where keys are fields and values are output names::"
+#~ msgstr "键值为字段和值为输出名的词典:"
+
+#~ msgid "{'field1': 'Field 1', 'field2': 'Field 2'}"
+#~ msgstr "{'field1': 'field 1', 'field 2'}"
+
+#~ msgid ""
+#~ "Amount of spaces used to indent the output on each level. Defaults to "
+#~ "``0``."
+#~ msgstr "用于缩进每个级别输出的空格数量。默认值为 ``0`` 。"
+
+#~ msgid "For example, the item::"
+#~ msgstr "例如，项目："
+
+#~ msgid "Item(name=['John', 'Doe'], age='23')"
+#~ msgstr "项目名称=['John', 'Doe'], 年龄='23'"
+
+#~ msgid "Would be serialized as::"
+#~ msgstr "序列化为:"
+
+#~ msgid ""
+#~ "product,price\n"
+#~ "Color TV,1200\n"
+#~ "DVD player,200"
+#~ msgstr ""
+#~ "产品,价格\n"
+#~ "彩色电视,1200\n"
+#~ "DVD 播放器 200"
+
+#~ msgid ""
+#~ "{'name': 'Color TV', 'price': '1200'}\n"
+#~ "{'name': 'DVD player', 'price': '200'}"
+#~ msgstr ""
+#~ "{'name': 'Color TV', 'price': '1200'}\n"
+#~ "{'name': 'DVD player', 'price': '200'}"

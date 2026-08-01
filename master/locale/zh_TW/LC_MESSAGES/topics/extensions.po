@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-08 13:04+0000\n"
+"POT-Creation-Date: 2026-07-27 11:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -241,7 +241,7 @@ msgstr ""
 msgid "``response_received_count``: total number of HTTP responses received."
 msgstr ""
 
-#: ../../../topics/extensions.rst:155
+#: ../../../topics/extensions.rst:153
 msgid "Log Count extension"
 msgstr ""
 
@@ -505,15 +505,15 @@ msgid ""
 "non set), spiders won't be closed by number of errors."
 msgstr ""
 
-#: ../../../topics/extensions.rst:351
+#: ../../../topics/extensions.rst:348
 msgid "Periodic log extension"
 msgstr ""
 
-#: ../../../topics/extensions.rst:355
+#: ../../../topics/extensions.rst:352
 msgid "This extension periodically logs rich stat data as a JSON object::"
 msgstr ""
 
-#: ../../../topics/extensions.rst:357
+#: ../../../topics/extensions.rst:354
 msgid ""
 "2023-08-04 02:30:57 [scrapy.extensions.logstats] INFO: Crawled 976 pages (at "
 "162 pages/min), scraped 925 items (at 161 items/min)\n"
@@ -552,58 +552,58 @@ msgid ""
 "}"
 msgstr ""
 
-#: ../../../topics/extensions.rst:392
+#: ../../../topics/extensions.rst:389
 msgid "This extension logs the following configurable sections:"
 msgstr ""
 
-#: ../../../topics/extensions.rst:394
+#: ../../../topics/extensions.rst:391
 msgid ""
 "``\"delta\"`` shows how some numeric stats have changed since the last stats "
 "log message."
 msgstr ""
 
-#: ../../../topics/extensions.rst:397
+#: ../../../topics/extensions.rst:394
 msgid ""
 "The :setting:`PERIODIC_LOG_DELTA` setting determines the target stats. They "
 "must have ``int`` or ``float`` values."
 msgstr ""
 
-#: ../../../topics/extensions.rst:400
+#: ../../../topics/extensions.rst:397
 msgid "``\"stats\"`` shows the current value of some stats."
 msgstr ""
 
-#: ../../../topics/extensions.rst:402
+#: ../../../topics/extensions.rst:399
 msgid "The :setting:`PERIODIC_LOG_STATS` setting determines the target stats."
 msgstr ""
 
-#: ../../../topics/extensions.rst:404
+#: ../../../topics/extensions.rst:401
 msgid "``\"time\"`` shows detailed timing data."
 msgstr ""
 
-#: ../../../topics/extensions.rst:406
+#: ../../../topics/extensions.rst:403
 msgid ""
 "The :setting:`PERIODIC_LOG_TIMING_ENABLED` setting determines whether or not "
 "to show this section."
 msgstr ""
 
-#: ../../../topics/extensions.rst:409
+#: ../../../topics/extensions.rst:406
 msgid ""
 "This extension logs data at the start, then on a fixed time interval "
 "configurable through the :setting:`LOGSTATS_INTERVAL` setting, and finally "
 "right before the crawl ends."
 msgstr ""
 
-#: ../../../topics/extensions.rst:414
+#: ../../../topics/extensions.rst:411
 msgid "Example extension configuration:"
 msgstr ""
 
-#: ../../../topics/extensions.rst:416
+#: ../../../topics/extensions.rst:413
 msgid ""
 "custom_settings = {\n"
 "    \"LOG_LEVEL\": \"INFO\",\n"
 "    \"PERIODIC_LOG_STATS\": {\n"
 "        \"include\": [\"downloader/\", \"scheduler/\", \"log_count/\", "
-"\"item_scraped_count/\"],\n"
+"\"item_scraped_count\"],\n"
 "    },\n"
 "    \"PERIODIC_LOG_DELTA\": {\"include\": [\"downloader/\"]},\n"
 "    \"PERIODIC_LOG_TIMING_ENABLED\": True,\n"
@@ -612,80 +612,68 @@ msgid ""
 "    },\n"
 "}"
 msgstr ""
-"custom_settings = {\n"
-"    \"LOG_LEVEL\": \"INFO\",\n"
-"    \"PERIODIC_LOG_STATS\": {\n"
-"        \"include\": [\"downloader/\", \"scheduler/\", \"log_count/\", "
-"\"item_scraped_count/\"],\n"
-"    },\n"
-"    \"PERIODIC_LOG_DELTA\": {\"include\": [\"downloader/\"]},\n"
-"    \"PERIODIC_LOG_TIMING_ENABLED\": True,\n"
-"    \"EXTENSIONS\": {\n"
-"        \"scrapy.extensions.periodic_log.PeriodicLog\": 0,\n"
-"    },\n"
-"}"
 
-#: ../../../topics/extensions.rst:433
+#: ../../../topics/extensions.rst:430
 msgid "PERIODIC_LOG_DELTA"
 msgstr "PERIODIC_LOG_DELTA"
 
-#: ../../../topics/extensions.rst:435 ../../../topics/extensions.rst:446
+#: ../../../topics/extensions.rst:432 ../../../topics/extensions.rst:443
 msgid "Default: ``None``"
 msgstr "預設值：``None``"
 
-#: ../../../topics/extensions.rst:437
+#: ../../../topics/extensions.rst:434
 msgid ""
 "``\"PERIODIC_LOG_DELTA\": True`` - show deltas for all ``int`` and ``float`` "
 "stat values."
 msgstr ""
 
-#: ../../../topics/extensions.rst:438
+#: ../../../topics/extensions.rst:435
 msgid ""
 "``\"PERIODIC_LOG_DELTA\": {\"include\": [\"downloader/\", \"scheduler/\"]}`` "
 "- show deltas for stats with names containing any configured substring."
 msgstr ""
 
-#: ../../../topics/extensions.rst:439
+#: ../../../topics/extensions.rst:436
 msgid ""
 "``\"PERIODIC_LOG_DELTA\": {\"exclude\": [\"downloader/\"]}`` - show deltas "
 "for all stats with names not containing any configured substring."
 msgstr ""
 
-#: ../../../topics/extensions.rst:444
+#: ../../../topics/extensions.rst:441
 msgid "PERIODIC_LOG_STATS"
 msgstr ""
 
-#: ../../../topics/extensions.rst:448
+#: ../../../topics/extensions.rst:445
 msgid "``\"PERIODIC_LOG_STATS\": True`` - show the current value of all stats."
 msgstr ""
 
-#: ../../../topics/extensions.rst:449
+#: ../../../topics/extensions.rst:446
 msgid ""
 "``\"PERIODIC_LOG_STATS\": {\"include\": [\"downloader/\", \"scheduler/\"]}`` "
 "- show current values for stats with names containing any configured "
 "substring."
 msgstr ""
 
-#: ../../../topics/extensions.rst:450
+#: ../../../topics/extensions.rst:447
 msgid ""
 "``\"PERIODIC_LOG_STATS\": {\"exclude\": [\"downloader/\"]}`` - show current "
 "values for all stats with names not containing any configured substring."
 msgstr ""
 
-#: ../../../topics/extensions.rst:456
+#: ../../../topics/extensions.rst:453
 msgid "PERIODIC_LOG_TIMING_ENABLED"
 msgstr ""
 
-#: ../../../topics/extensions.rst:458
+#: ../../../topics/extensions.rst:455
 msgid "Default: ``False``"
 msgstr "預設值：``False``"
 
-#: ../../../topics/extensions.rst:460
+#: ../../../topics/extensions.rst:457
 msgid ""
 "``True`` enables logging of timing data (i.e. the ``\"time\"`` section)."
 msgstr ""
 
-#: ../../../topics/extensions.rst:464
+#: ../../../topics/extensions.rst:461
 msgid "Debugging extensions"
 msgstr ""
 
@@ -756,3 +744,30 @@ msgstr ""
 msgid ""
 "This extension only works on POSIX-compliant platforms (i.e. not Windows)."
 msgstr ""
+
+#~ msgid ""
+#~ "custom_settings = {\n"
+#~ "    \"LOG_LEVEL\": \"INFO\",\n"
+#~ "    \"PERIODIC_LOG_STATS\": {\n"
+#~ "        \"include\": [\"downloader/\", \"scheduler/\", \"log_count/\", "
+#~ "\"item_scraped_count/\"],\n"
+#~ "    },\n"
+#~ "    \"PERIODIC_LOG_DELTA\": {\"include\": [\"downloader/\"]},\n"
+#~ "    \"PERIODIC_LOG_TIMING_ENABLED\": True,\n"
+#~ "    \"EXTENSIONS\": {\n"
+#~ "        \"scrapy.extensions.periodic_log.PeriodicLog\": 0,\n"
+#~ "    },\n"
+#~ "}"
+#~ msgstr ""
+#~ "custom_settings = {\n"
+#~ "    \"LOG_LEVEL\": \"INFO\",\n"
+#~ "    \"PERIODIC_LOG_STATS\": {\n"
+#~ "        \"include\": [\"downloader/\", \"scheduler/\", \"log_count/\", "
+#~ "\"item_scraped_count/\"],\n"
+#~ "    },\n"
+#~ "    \"PERIODIC_LOG_DELTA\": {\"include\": [\"downloader/\"]},\n"
+#~ "    \"PERIODIC_LOG_TIMING_ENABLED\": True,\n"
+#~ "    \"EXTENSIONS\": {\n"
+#~ "        \"scrapy.extensions.periodic_log.PeriodicLog\": 0,\n"
+#~ "    },\n"
+#~ "}"

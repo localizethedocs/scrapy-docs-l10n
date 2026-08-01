@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-08 13:04+0000\n"
+"POT-Creation-Date: 2026-07-27 11:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,8 +40,8 @@ msgstr ""
 
 #: ../../../topics/coroutines.rst:19
 msgid ""
-"The :meth:`~scrapy.spiders.Spider.start` spider method, which *must* be "
-"defined as an :term:`asynchronous generator`."
+"The :meth:`~scrapy.Spider.start` spider method, which *must* be defined as "
+"an :term:`asynchronous generator`."
 msgstr ""
 
 #: ../../../topics/coroutines.rst:24
@@ -314,7 +314,7 @@ msgstr ""
 #: ../../../topics/coroutines.rst:206
 msgid ""
 "requesting data from websites, databases and other services (in :meth:"
-"`~scrapy.spiders.Spider.start`, callbacks, pipelines and middlewares);"
+"`~scrapy.Spider.start`, callbacks, pipelines and middlewares);"
 msgstr ""
 
 #: ../../../topics/coroutines.rst:209
@@ -329,21 +329,22 @@ msgstr ""
 
 #: ../../../topics/coroutines.rst:212
 msgid ""
-"calling asynchronous Scrapy methods like :meth:`ExecutionEngine.download` "
-"(see :ref:`the screenshot pipeline example<ScreenshotPipeline>`)."
-msgstr ""
-
-#: ../../../topics/coroutines.rst:221
-msgid "Inline requests"
+"calling asynchronous Scrapy methods like :meth:`ExecutionEngine."
+"download_async() <scrapy.core.engine.ExecutionEngine.download_async>` (see :"
+"ref:`the screenshot pipeline example <ScreenshotPipeline>`)."
 msgstr ""
 
 #: ../../../topics/coroutines.rst:223
+msgid "Inline requests"
+msgstr ""
+
+#: ../../../topics/coroutines.rst:225
 msgid ""
 "The spider below shows how to send a request and await its response all from "
 "within a spider callback:"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:226
+#: ../../../topics/coroutines.rst:228
 msgid ""
 "from scrapy import Spider, Request\n"
 "\n"
@@ -363,11 +364,11 @@ msgid ""
 "        }"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:245
+#: ../../../topics/coroutines.rst:247
 msgid "You can also send multiple requests in parallel:"
 msgstr ""
 
-#: ../../../topics/coroutines.rst:247
+#: ../../../topics/coroutines.rst:249
 msgid ""
 "import asyncio\n"
 "\n"
@@ -390,7 +391,7 @@ msgid ""
 "        responses = await asyncio.gather(*tasks)\n"
 "        yield {\n"
 "            \"h1\": response.css(\"h1::text\").get(),\n"
-"            \"price\": responses[0][1].css(\".price::text\").get(),\n"
-"            \"price2\": responses[1][1].css(\".color::text\").get(),\n"
+"            \"price\": responses[0].css(\".price::text\").get(),\n"
+"            \"color\": responses[1].css(\".color::text\").get(),\n"
 "        }"
 msgstr ""

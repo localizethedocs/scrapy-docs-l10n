@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-06 09:38+0000\n"
+"POT-Creation-Date: 2026-07-27 11:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -190,11 +190,11 @@ msgstr ""
 #: ../../../../scrapy/core/scheduler.py:docstring of
 #: scrapy.core.scheduler.Scheduler:7
 msgid ""
-"By default, a single, memory-based priority queue is used for all requests. "
-"When using :setting:`JOBDIR`, a disk-based priority queue is also created, "
-"and only unserializable requests are stored in the memory-based priority "
-"queue. For a given priority value, requests in memory take precedence over "
-"requests in disk."
+"By default, memory-based priority queues are used for all requests. When "
+"using :setting:`JOBDIR`, disk-based priority queues are also created, and "
+"only unserializable requests are stored in the memory-based priority queues. "
+"For a given priority value, requests in memory take precedence over requests "
+"in disk."
 msgstr ""
 
 #: ../../../../scrapy/core/scheduler.py:docstring of
@@ -303,8 +303,8 @@ msgstr ""
 #: scrapy.core.scheduler.Scheduler:84
 msgid ""
 "While pending requests are below the configured values of :setting:"
-"`CONCURRENT_REQUESTS`, :setting:`CONCURRENT_REQUESTS_PER_DOMAIN` or :setting:"
-"`CONCURRENT_REQUESTS_PER_IP`, those requests are sent concurrently."
+"`CONCURRENT_REQUESTS` or :setting:`CONCURRENT_REQUESTS_PER_DOMAIN`, those "
+"requests are sent concurrently."
 msgstr ""
 
 #: ../../../../scrapy/core/scheduler.py:docstring of
@@ -494,8 +494,7 @@ msgstr ""
 
 #: ../../../../scrapy/core/scheduler.py:docstring of
 #: scrapy.core.scheduler.Scheduler.open:2
-msgid ""
-"initialize the disk queue if the ``jobdir`` attribute is a valid directory"
+msgid "initialize the disk queue if the ``jobdir`` argument wasn't empty"
 msgstr ""
 
 #: ../../../../scrapy/core/scheduler.py:docstring of
@@ -637,7 +636,8 @@ msgstr ""
 #: scrapy.pqueues.ScrapyPriorityQueue:42
 msgid ""
 "For each combination of the above seen, this class creates an instance of "
-"*downstream_queue_cls* with *key* set to a subdirectory of the persistence "
-"directory, named as the request priority (e.g. ``1``), with an ``s`` suffix "
-"in case of a start request (e.g. ``1s``)."
+"*downstream_queue_cls* (or *start_queue_cls* for start requests if it was "
+"passed) with *key* set to a subdirectory of the persistence directory, named "
+"as the negated request priority (e.g. ``-1``), with an ``s`` suffix in case "
+"of a start request (e.g. ``-1s``)."
 msgstr ""

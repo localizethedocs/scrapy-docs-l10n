@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-06 09:38+0000\n"
+"POT-Creation-Date: 2026-07-27 11:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -447,8 +447,20 @@ msgid ""
 "context:"
 msgstr ""
 
-#: ../../../topics/selectors.rst:311
-msgid "..skip: next .. code-block:: pycon"
+#: ../../../topics/selectors.rst:312
+msgid ""
+">>> response.css(\"#images *::text\").getall()\n"
+"['\\n   ',\n"
+"'Name: My image 1 ',\n"
+"'\\n   ',\n"
+"'Name: My image 2 ',\n"
+"'\\n   ',\n"
+"'Name: My image 3 ',\n"
+"'\\n   ',\n"
+"'Name: My image 4 ',\n"
+"'\\n   ',\n"
+"'Name: My image 5 ',\n"
+"'\\n  ']"
 msgstr ""
 
 #: ../../../topics/selectors.rst:327
@@ -488,8 +500,8 @@ msgid ""
 "'image5.html']"
 msgstr ""
 
-#: ../../../topics/selectors.rst:356 ../../../topics/selectors.rst:1076
-#: ../../../topics/selectors.rst:1118
+#: ../../../topics/selectors.rst:356 ../../../topics/selectors.rst:1073
+#: ../../../topics/selectors.rst:1115
 msgid "See also: :ref:`selecting-attributes`."
 msgstr ""
 
@@ -878,15 +890,14 @@ msgid ""
 "the first of them."
 msgstr ""
 
-#: ../../../topics/selectors.rst:632 ../../../topics/selectors.rst:690
+#: ../../../topics/selectors.rst:632 ../../../topics/selectors.rst:689
 msgid "Example:"
 msgstr "範例："
 
 #: ../../../topics/selectors.rst:634
 msgid ""
 ">>> from scrapy import Selector\n"
-">>> sel = Selector(\n"
-"...     text=\"\"\"\n"
+">>> sel = Selector(text=\"\"\"\n"
 "...     <ul class=\"list\">\n"
 "...         <li>1</li>\n"
 "...         <li>2</li>\n"
@@ -896,64 +907,64 @@ msgid ""
 "...         <li>4</li>\n"
 "...         <li>5</li>\n"
 "...         <li>6</li>\n"
-"...     </ul>\"\"\"\n"
-"... )\n"
+"...     </ul>\"\"\")\n"
+"...\n"
 ">>> xp = lambda x: sel.xpath(x).getall()"
 msgstr ""
 
-#: ../../../topics/selectors.rst:652
+#: ../../../topics/selectors.rst:651
 msgid "This gets all first ``<li>``  elements under whatever it is its parent:"
 msgstr ""
 
-#: ../../../topics/selectors.rst:654
+#: ../../../topics/selectors.rst:653
 msgid ""
 ">>> xp(\"//li[1]\")\n"
 "['<li>1</li>', '<li>4</li>']"
 msgstr ""
 
-#: ../../../topics/selectors.rst:659
+#: ../../../topics/selectors.rst:658
 msgid "And this gets the first ``<li>``  element in the whole document:"
 msgstr ""
 
-#: ../../../topics/selectors.rst:661
+#: ../../../topics/selectors.rst:660
 msgid ""
 ">>> xp(\"(//li)[1]\")\n"
 "['<li>1</li>']"
 msgstr ""
 
-#: ../../../topics/selectors.rst:666
+#: ../../../topics/selectors.rst:665
 msgid "This gets all first ``<li>``  elements under an ``<ul>``  parent:"
 msgstr ""
 
-#: ../../../topics/selectors.rst:668
+#: ../../../topics/selectors.rst:667
 msgid ""
 ">>> xp(\"//ul/li[1]\")\n"
 "['<li>1</li>', '<li>4</li>']"
 msgstr ""
 
-#: ../../../topics/selectors.rst:673
+#: ../../../topics/selectors.rst:672
 msgid ""
 "And this gets the first ``<li>``  element under an ``<ul>``  parent in the "
 "whole document:"
 msgstr ""
 
-#: ../../../topics/selectors.rst:675
+#: ../../../topics/selectors.rst:674
 msgid ""
 ">>> xp(\"(//ul/li)[1]\")\n"
 "['<li>1</li>']"
 msgstr ""
 
-#: ../../../topics/selectors.rst:681
+#: ../../../topics/selectors.rst:680
 msgid "Using text nodes in a condition"
 msgstr ""
 
-#: ../../../topics/selectors.rst:683
+#: ../../../topics/selectors.rst:682
 msgid ""
 "When you need to use the text content as argument to an `XPath string "
 "function`_, avoid using ``.//text()`` and use just ``.`` instead."
 msgstr ""
 
-#: ../../../topics/selectors.rst:686
+#: ../../../topics/selectors.rst:685
 msgid ""
 "This is because the expression ``.//text()`` yields a collection of text "
 "elements -- a *node-set*. And when a node-set is converted to a string, "
@@ -962,7 +973,7 @@ msgid ""
 "element only."
 msgstr ""
 
-#: ../../../topics/selectors.rst:692
+#: ../../../topics/selectors.rst:691
 msgid ""
 ">>> from scrapy import Selector\n"
 ">>> sel = Selector(\n"
@@ -971,11 +982,11 @@ msgid ""
 "... )"
 msgstr ""
 
-#: ../../../topics/selectors.rst:699
+#: ../../../topics/selectors.rst:698
 msgid "Converting a *node-set* to string:"
 msgstr ""
 
-#: ../../../topics/selectors.rst:701
+#: ../../../topics/selectors.rst:700
 msgid ""
 ">>> sel.xpath(\"//a//text()\").getall()  # take a peek at the node-set\n"
 "['Click here to go to the ', 'Next Page']\n"
@@ -983,13 +994,13 @@ msgid ""
 "['Click here to go to the ']"
 msgstr ""
 
-#: ../../../topics/selectors.rst:708
+#: ../../../topics/selectors.rst:707
 msgid ""
 "A *node* converted to a string, however, puts together the text of itself "
 "plus of all its descendants:"
 msgstr ""
 
-#: ../../../topics/selectors.rst:710
+#: ../../../topics/selectors.rst:709
 msgid ""
 ">>> sel.xpath(\"//a[1]\").getall()  # select the first node\n"
 "['<a href=\"#\">Click here to go to the <strong>Next Page</strong></a>']\n"
@@ -997,32 +1008,32 @@ msgid ""
 "['Click here to go to the Next Page']"
 msgstr ""
 
-#: ../../../topics/selectors.rst:717
+#: ../../../topics/selectors.rst:716
 msgid ""
 "So, using the ``.//text()`` node-set won't select anything in this case:"
 msgstr ""
 
-#: ../../../topics/selectors.rst:719
+#: ../../../topics/selectors.rst:718
 msgid ""
 ">>> sel.xpath(\"//a[contains(.//text(), 'Next Page')]\").getall()\n"
 "[]"
 msgstr ""
 
-#: ../../../topics/selectors.rst:724
+#: ../../../topics/selectors.rst:723
 msgid "But using the ``.`` to mean the node, works:"
 msgstr ""
 
-#: ../../../topics/selectors.rst:726
+#: ../../../topics/selectors.rst:725
 msgid ""
 ">>> sel.xpath(\"//a[contains(., 'Next Page')]\").getall()\n"
 "['<a href=\"#\">Click here to go to the <strong>Next Page</strong></a>']"
 msgstr ""
 
-#: ../../../topics/selectors.rst:736
+#: ../../../topics/selectors.rst:735
 msgid "Variables in XPath expressions"
 msgstr ""
 
-#: ../../../topics/selectors.rst:738
+#: ../../../topics/selectors.rst:737
 msgid ""
 "XPath allows you to reference variables in your XPath expressions, using the "
 "``$somevariable`` syntax. This is somewhat similar to parameterized queries "
@@ -1031,50 +1042,50 @@ msgid ""
 "values passed with the query."
 msgstr ""
 
-#: ../../../topics/selectors.rst:744
+#: ../../../topics/selectors.rst:743
 msgid ""
 "Here's an example to match an element based on its \"id\" attribute value, "
 "without hard-coding it (that was shown previously):"
 msgstr ""
 
-#: ../../../topics/selectors.rst:747
+#: ../../../topics/selectors.rst:746
 msgid ""
 ">>> # `$val` used in the expression, a `val` argument needs to be passed\n"
 ">>> response.xpath(\"//div[@id=$val]/a/text()\", val=\"images\").get()\n"
 "'Name: My image 1 '"
 msgstr ""
 
-#: ../../../topics/selectors.rst:753
+#: ../../../topics/selectors.rst:752
 msgid ""
 "Here's another example, to find the \"id\" attribute of a ``<div>`` tag "
 "containing five ``<a>`` children (here we pass the value ``5`` as an "
 "integer):"
 msgstr ""
 
-#: ../../../topics/selectors.rst:756
+#: ../../../topics/selectors.rst:755
 msgid ""
 ">>> response.xpath(\"//div[count(a)=$cnt]/@id\", cnt=5).get()\n"
 "'images'"
 msgstr ""
 
-#: ../../../topics/selectors.rst:761
+#: ../../../topics/selectors.rst:760
 msgid ""
 "All variable references must have a binding value when calling ``.xpath()`` "
 "(otherwise you'll get a ``ValueError: XPath error:`` exception). This is "
 "done by passing as many named arguments as necessary."
 msgstr ""
 
-#: ../../../topics/selectors.rst:765
+#: ../../../topics/selectors.rst:764
 msgid ""
 "`parsel`_, the library powering Scrapy selectors, has more details and "
 "examples on `XPath variables`_."
 msgstr ""
 
-#: ../../../topics/selectors.rst:774
+#: ../../../topics/selectors.rst:773
 msgid "Removing namespaces"
 msgstr ""
 
-#: ../../../topics/selectors.rst:778
+#: ../../../topics/selectors.rst:777
 msgid ""
 "When dealing with scraping projects, it is often quite convenient to get rid "
 "of namespaces altogether and just work with element names, to write more "
@@ -1082,25 +1093,25 @@ msgid ""
 "remove_namespaces` method for that."
 msgstr ""
 
-#: ../../../topics/selectors.rst:783
+#: ../../../topics/selectors.rst:782
 msgid ""
 "Let's show an example that illustrates this with the Python Insider blog "
 "atom feed."
 msgstr ""
 
-#: ../../../topics/selectors.rst:787
+#: ../../../topics/selectors.rst:786
 msgid "First, we open the shell with the url we want to scrape::"
 msgstr ""
 
-#: ../../../topics/selectors.rst:789
+#: ../../../topics/selectors.rst:788
 msgid "$ scrapy shell https://feeds.feedburner.com/PythonInsider"
 msgstr ""
 
-#: ../../../topics/selectors.rst:791
+#: ../../../topics/selectors.rst:790
 msgid "This is how the file starts::"
 msgstr ""
 
-#: ../../../topics/selectors.rst:793
+#: ../../../topics/selectors.rst:792
 msgid ""
 "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
 "<?xml-stylesheet ...\n"
@@ -1114,32 +1125,32 @@ msgid ""
 "  ..."
 msgstr ""
 
-#: ../../../topics/selectors.rst:804
+#: ../../../topics/selectors.rst:803
 msgid ""
 "You can see several namespace declarations including a default ``\"http://"
 "www.w3.org/2005/Atom\"`` and another one using the ``gd:`` prefix for "
 "``\"http://schemas.google.com/g/2005\"``."
 msgstr ""
 
-#: ../../../topics/selectors.rst:810
+#: ../../../topics/selectors.rst:809
 msgid ""
 "Once in the shell we can try selecting all ``<link>`` objects and see that "
 "it doesn't work (because the Atom XML namespace is obfuscating those nodes):"
 msgstr ""
 
-#: ../../../topics/selectors.rst:813
+#: ../../../topics/selectors.rst:812
 msgid ""
 ">>> response.xpath(\"//link\")\n"
 "[]"
 msgstr ""
 
-#: ../../../topics/selectors.rst:818
+#: ../../../topics/selectors.rst:817
 msgid ""
 "But once we call the :meth:`.Selector.remove_namespaces` method, all nodes "
 "can be accessed directly by their names:"
 msgstr ""
 
-#: ../../../topics/selectors.rst:821
+#: ../../../topics/selectors.rst:820
 msgid ""
 ">>> response.selector.remove_namespaces()\n"
 ">>> response.xpath(\"//link\")\n"
@@ -1150,90 +1161,90 @@ msgid ""
 "    ..."
 msgstr ""
 
-#: ../../../topics/selectors.rst:829
+#: ../../../topics/selectors.rst:828
 msgid ""
 "If you wonder why the namespace removal procedure isn't always called by "
 "default instead of having to call it manually, this is because of two "
 "reasons, which, in order of relevance, are:"
 msgstr ""
 
-#: ../../../topics/selectors.rst:833
+#: ../../../topics/selectors.rst:832
 msgid ""
 "Removing namespaces requires to iterate and modify all nodes in the "
 "document, which is a reasonably expensive operation to perform by default "
 "for all documents crawled by Scrapy"
 msgstr ""
 
-#: ../../../topics/selectors.rst:837
+#: ../../../topics/selectors.rst:836
 msgid ""
 "There could be some cases where using namespaces is actually required, in "
 "case some element names clash between namespaces. These cases are very rare "
 "though."
 msgstr ""
 
-#: ../../../topics/selectors.rst:844
+#: ../../../topics/selectors.rst:843
 msgid "Using EXSLT extensions"
 msgstr ""
 
-#: ../../../topics/selectors.rst:846
+#: ../../../topics/selectors.rst:845
 msgid ""
 "Being built atop `lxml`_, Scrapy selectors support some `EXSLT`_ extensions "
 "and come with these pre-registered namespaces to use in XPath expressions:"
 msgstr ""
 
-#: ../../../topics/selectors.rst:851
+#: ../../../topics/selectors.rst:850
 msgid "prefix"
 msgstr ""
 
-#: ../../../topics/selectors.rst:851
+#: ../../../topics/selectors.rst:850
 msgid "namespace"
 msgstr ""
 
-#: ../../../topics/selectors.rst:851
+#: ../../../topics/selectors.rst:850
 msgid "usage"
 msgstr ""
 
-#: ../../../topics/selectors.rst:853
+#: ../../../topics/selectors.rst:852
 msgid "re"
 msgstr ""
 
-#: ../../../topics/selectors.rst:853
+#: ../../../topics/selectors.rst:852
 msgid "\\http://exslt.org/regular-expressions"
 msgstr ""
 
-#: ../../../topics/selectors.rst:853
+#: ../../../topics/selectors.rst:852
 msgid "`regular expressions`_"
 msgstr ""
 
-#: ../../../topics/selectors.rst:854
+#: ../../../topics/selectors.rst:853
 msgid "set"
 msgstr ""
 
-#: ../../../topics/selectors.rst:854
+#: ../../../topics/selectors.rst:853
 msgid "\\http://exslt.org/sets"
 msgstr ""
 
-#: ../../../topics/selectors.rst:854
+#: ../../../topics/selectors.rst:853
 msgid "`set manipulation`_"
 msgstr ""
 
-#: ../../../topics/selectors.rst:858
+#: ../../../topics/selectors.rst:857
 msgid "Regular expressions"
 msgstr ""
 
-#: ../../../topics/selectors.rst:860
+#: ../../../topics/selectors.rst:859
 msgid ""
 "The ``test()`` function, for example, can prove quite useful when XPath's "
 "``starts-with()`` or ``contains()`` are not sufficient."
 msgstr ""
 
-#: ../../../topics/selectors.rst:863
+#: ../../../topics/selectors.rst:862
 msgid ""
 "Example selecting links in list item with a \"class\" attribute ending with "
 "a digit:"
 msgstr ""
 
-#: ../../../topics/selectors.rst:865
+#: ../../../topics/selectors.rst:864
 msgid ""
 ">>> from scrapy import Selector\n"
 ">>> doc = \"\"\"\n"
@@ -1257,7 +1268,7 @@ msgid ""
 "['link1.html', 'link2.html', 'link4.html', 'link5.html']"
 msgstr ""
 
-#: ../../../topics/selectors.rst:885
+#: ../../../topics/selectors.rst:884
 msgid ""
 "C library ``libxslt`` doesn't natively support EXSLT regular expressions so "
 "`lxml`_'s implementation uses hooks to Python's ``re`` module. Thus, using "
@@ -1265,23 +1276,23 @@ msgid ""
 "penalty."
 msgstr ""
 
-#: ../../../topics/selectors.rst:891
+#: ../../../topics/selectors.rst:890
 msgid "Set operations"
 msgstr ""
 
-#: ../../../topics/selectors.rst:893
+#: ../../../topics/selectors.rst:892
 msgid ""
 "These can be handy for excluding parts of a document tree before extracting "
 "text elements for example."
 msgstr ""
 
-#: ../../../topics/selectors.rst:896
+#: ../../../topics/selectors.rst:895
 msgid ""
 "Example extracting microdata (sample content taken from https://schema.org/"
 "Product) with groups of itemscopes and corresponding itemprops:"
 msgstr ""
 
-#: ../../../topics/selectors.rst:901
+#: ../../../topics/selectors.rst:900
 msgid ""
 ">>> doc = \"\"\"\n"
 "... <div itemscope itemtype=\"http://schema.org/Product\">\n"
@@ -1342,11 +1353,9 @@ msgid ""
 ">>> sel = Selector(text=doc, type=\"html\")\n"
 ">>> for scope in sel.xpath(\"//div[@itemscope]\"):\n"
 "...     print(\"current scope:\", scope.xpath(\"@itemtype\").getall())\n"
-"...     props = scope.xpath(\n"
-"...         \"\"\"\n"
+"...     props = scope.xpath(\"\"\"\n"
 "...                 set:difference(./descendant::*/@itemprop,\n"
-"...                                .//*[@itemscope]/*/@itemprop)\"\"\"\n"
-"...     )\n"
+"...                                .//*[@itemscope]/*/@itemprop)\"\"\")\n"
 "...     print(f\"    properties: {props.getall()}\")\n"
 "...     print(\"\")\n"
 "...\n"
@@ -1376,29 +1385,29 @@ msgid ""
 "    properties: ['worstRating', 'ratingValue', 'bestRating']"
 msgstr ""
 
-#: ../../../topics/selectors.rst:982
+#: ../../../topics/selectors.rst:979
 msgid ""
 "Here we first iterate over ``itemscope`` elements, and for each one, we look "
 "for all ``itemprops`` elements and exclude those that are themselves inside "
 "another ``itemscope``."
 msgstr ""
 
-#: ../../../topics/selectors.rst:991
+#: ../../../topics/selectors.rst:988
 msgid "Other XPath extensions"
 msgstr ""
 
-#: ../../../topics/selectors.rst:993
+#: ../../../topics/selectors.rst:990
 msgid ""
 "Scrapy selectors also provide a sorely missed XPath extension function ``has-"
 "class`` that returns ``True`` for nodes that have all of the specified HTML "
 "classes."
 msgstr ""
 
-#: ../../../topics/selectors.rst:997
+#: ../../../topics/selectors.rst:994
 msgid "For the following HTML:"
 msgstr ""
 
-#: ../../../topics/selectors.rst:999
+#: ../../../topics/selectors.rst:996
 msgid ""
 ">>> from scrapy.http import HtmlResponse\n"
 ">>> response = HtmlResponse(\n"
@@ -1417,11 +1426,11 @@ msgid ""
 "... )"
 msgstr ""
 
-#: ../../../topics/selectors.rst:1017
+#: ../../../topics/selectors.rst:1014
 msgid "You can use it like this:"
 msgstr ""
 
-#: ../../../topics/selectors.rst:1019
+#: ../../../topics/selectors.rst:1016
 msgid ""
 ">>> response.xpath('//p[has-class(\"foo\")]')\n"
 "[<Selector query='//p[has-class(\"foo\")]' data='<p class=\"foo bar-"
@@ -1435,7 +1444,7 @@ msgid ""
 "[]"
 msgstr ""
 
-#: ../../../topics/selectors.rst:1029
+#: ../../../topics/selectors.rst:1026
 msgid ""
 "So XPath ``//p[has-class(\"foo\", \"bar-baz\")]`` is roughly equivalent to "
 "CSS ``p.foo.bar-baz``.  Please note, that it is slower in most of the cases, "
@@ -1445,17 +1454,17 @@ msgid ""
 "not easily described with CSS selectors."
 msgstr ""
 
-#: ../../../topics/selectors.rst:1036
+#: ../../../topics/selectors.rst:1033
 msgid ""
 "Parsel also simplifies adding your own XPath extensions with :func:`~parsel."
 "xpathfuncs.set_xpathfunc`."
 msgstr ""
 
-#: ../../../topics/selectors.rst:1042
+#: ../../../topics/selectors.rst:1039
 msgid "Built-in Selectors reference"
 msgstr ""
 
-#: ../../../topics/selectors.rst:1048
+#: ../../../topics/selectors.rst:1045
 msgid "Selector objects"
 msgstr ""
 
@@ -1485,49 +1494,18 @@ msgstr ""
 #: scrapy.selector.unified.Selector:12
 msgid ""
 "``type`` defines the selector type, it can be ``\"html\"``, ``\"xml\"``, "
-"``\"json\"`` or ``None`` (default)."
-msgstr ""
-
-#: ../../../../scrapy/selector/unified.py:docstring of
-#: scrapy.selector.unified.Selector:15
-msgid ""
-"If ``type`` is ``None``, the selector automatically chooses the best type "
-"based on ``response`` type (see below), or defaults to ``\"html\"`` in case "
-"it is used together with ``text``."
+"``\"json\"``, ``\"text\"`` or ``None`` (default). It's passed to :class:"
+"`parsel.Selector` and its meaning is defined there. However, when ``type`` "
+"is ``None``, it is set to ``\"xml\"`` for an :class:`~scrapy.http."
+"XmlResponse` and to ``\"html\"`` otherwise before passing it to :class:"
+"`parsel.Selector`."
 msgstr ""
 
 #: ../../../../scrapy/selector/unified.py:docstring of
 #: scrapy.selector.unified.Selector:19
 msgid ""
-"If ``type`` is ``None`` and a ``response`` is passed, the selector type is "
-"inferred from the response type as follows:"
-msgstr ""
-
-#: ../../../../scrapy/selector/unified.py:docstring of
-#: scrapy.selector.unified.Selector:22
-msgid "``\"html\"`` for :class:`~scrapy.http.HtmlResponse` type"
-msgstr ""
-
-#: ../../../../scrapy/selector/unified.py:docstring of
-#: scrapy.selector.unified.Selector:23
-msgid "``\"xml\"`` for :class:`~scrapy.http.XmlResponse` type"
-msgstr ""
-
-#: ../../../../scrapy/selector/unified.py:docstring of
-#: scrapy.selector.unified.Selector:24
-msgid "``\"json\"`` for :class:`~scrapy.http.TextResponse` type"
-msgstr ""
-
-#: ../../../../scrapy/selector/unified.py:docstring of
-#: scrapy.selector.unified.Selector:25
-msgid "``\"html\"`` for anything else"
-msgstr ""
-
-#: ../../../../scrapy/selector/unified.py:docstring of
-#: scrapy.selector.unified.Selector:27
-msgid ""
-"Otherwise, if ``type`` is set, the selector type will be forced and no "
-"detection will occur."
+"JSON selector support requires ``parsel`` 1.8.0 or higher. With older "
+"versions setting ``type`` to ``\"json\"`` or ``\"text\"`` is not supported."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
@@ -1564,7 +1542,7 @@ msgstr ""
 msgid "selector.xpath('//a[href=$url]', url=\"http://www.example.com\")"
 msgstr ""
 
-#: ../../../topics/selectors.rst:1056
+#: ../../../topics/selectors.rst:1053
 msgid "For convenience, this method can be called as ``response.xpath()``"
 msgstr ""
 
@@ -1586,7 +1564,7 @@ msgid ""
 "`cssselect`_ library and run ``.xpath()`` method."
 msgstr ""
 
-#: ../../../topics/selectors.rst:1062
+#: ../../../topics/selectors.rst:1059
 msgid "For convenience, this method can be called as ``response.css()``"
 msgstr ""
 
@@ -1621,7 +1599,7 @@ msgid ""
 "Options(dict_cls=collections.OrderedDict))"
 msgstr ""
 
-#: ../../../topics/selectors.rst:1068
+#: ../../../topics/selectors.rst:1065
 msgid "For convenience, this method can be called as ``response.jmespath()``"
 msgstr ""
 
@@ -1637,8 +1615,8 @@ msgid ""
 "is unquoted."
 msgstr ""
 
-#: ../../../topics/selectors.rst:1072 ../../../topics/selectors.rst:1106
-#: ../../../topics/selectors.rst:1110
+#: ../../../topics/selectors.rst:1069 ../../../topics/selectors.rst:1103
+#: ../../../topics/selectors.rst:1107
 msgid "See also: :ref:`old-extraction-api`"
 msgstr ""
 
@@ -1705,13 +1683,13 @@ msgstr ""
 msgid "Serialize and return the matched node in a 1-element list of strings."
 msgstr ""
 
-#: ../../../topics/selectors.rst:1090
+#: ../../../topics/selectors.rst:1087
 msgid ""
 "This method is added to Selector for consistency; it is more useful with "
 "SelectorList. See also: :ref:`old-extraction-api`"
 msgstr ""
 
-#: ../../../topics/selectors.rst:1094
+#: ../../../topics/selectors.rst:1091
 msgid "SelectorList objects"
 msgstr ""
 
@@ -1803,15 +1781,15 @@ msgid ""
 "empty, return an empty dict."
 msgstr ""
 
-#: ../../../topics/selectors.rst:1123
+#: ../../../topics/selectors.rst:1120
 msgid "Examples"
 msgstr "範例"
 
-#: ../../../topics/selectors.rst:1128
+#: ../../../topics/selectors.rst:1125
 msgid "Selector examples on HTML response"
 msgstr ""
 
-#: ../../../topics/selectors.rst:1130
+#: ../../../topics/selectors.rst:1127
 msgid ""
 "Here are some :class:`~scrapy.Selector` examples to illustrate several "
 "concepts. In all cases, we assume there is already a :class:`~scrapy."
@@ -1819,74 +1797,74 @@ msgid ""
 "this:"
 msgstr ""
 
-#: ../../../topics/selectors.rst:1134
+#: ../../../topics/selectors.rst:1131
 msgid "sel = Selector(html_response)"
 msgstr ""
 
-#: ../../../topics/selectors.rst:1138
+#: ../../../topics/selectors.rst:1135
 msgid ""
 "Select all ``<h1>`` elements from an HTML response body, returning a list "
 "of :class:`~scrapy.Selector` objects (i.e. a :class:`SelectorList` object):"
 msgstr ""
 
-#: ../../../topics/selectors.rst:1141
+#: ../../../topics/selectors.rst:1138
 msgid "sel.xpath(\"//h1\")"
 msgstr ""
 
-#: ../../../topics/selectors.rst:1145
+#: ../../../topics/selectors.rst:1142
 msgid ""
 "Extract the text of all ``<h1>`` elements from an HTML response body, "
 "returning a list of strings:"
 msgstr ""
 
-#: ../../../topics/selectors.rst:1148
+#: ../../../topics/selectors.rst:1145
 msgid ""
 "sel.xpath(\"//h1\").getall()  # this includes the h1 tag\n"
 "sel.xpath(\"//h1/text()\").getall()  # this excludes the h1 tag"
 msgstr ""
 
-#: ../../../topics/selectors.rst:1153
+#: ../../../topics/selectors.rst:1150
 msgid "Iterate over all ``<p>`` tags and print their class attribute:"
 msgstr ""
 
-#: ../../../topics/selectors.rst:1156
+#: ../../../topics/selectors.rst:1153
 msgid ""
 "for node in sel.xpath(\"//p\"):\n"
 "    print(node.attrib[\"class\"])"
 msgstr ""
 
-#: ../../../topics/selectors.rst:1165
+#: ../../../topics/selectors.rst:1162
 msgid "Selector examples on XML response"
 msgstr ""
 
-#: ../../../topics/selectors.rst:1169
+#: ../../../topics/selectors.rst:1166
 msgid ""
 "Here are some examples to illustrate concepts for :class:`~scrapy.Selector` "
 "objects instantiated with an :class:`~scrapy.http.XmlResponse` object:"
 msgstr ""
 
-#: ../../../topics/selectors.rst:1172
+#: ../../../topics/selectors.rst:1169
 msgid "sel = Selector(xml_response)"
 msgstr ""
 
-#: ../../../topics/selectors.rst:1176
+#: ../../../topics/selectors.rst:1173
 msgid ""
 "Select all ``<product>`` elements from an XML response body, returning a "
 "list of :class:`~scrapy.Selector` objects (i.e. a :class:`SelectorList` "
 "object):"
 msgstr ""
 
-#: ../../../topics/selectors.rst:1179
+#: ../../../topics/selectors.rst:1176
 msgid "sel.xpath(\"//product\")"
 msgstr ""
 
-#: ../../../topics/selectors.rst:1183
+#: ../../../topics/selectors.rst:1180
 msgid ""
 "Extract all prices from a `Google Base XML feed`_ which requires registering "
 "a namespace:"
 msgstr ""
 
-#: ../../../topics/selectors.rst:1186
+#: ../../../topics/selectors.rst:1183
 msgid ""
 "sel.register_namespace(\"g\", \"http://base.google.com/ns/1.0\")\n"
 "sel.xpath(\"//g:price\").getall()"
