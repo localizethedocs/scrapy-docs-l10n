@@ -931,7 +931,7 @@ msgstr ""
 
 #: ../../../topics/spiders.rst:642
 msgid "Example:"
-msgstr ""
+msgstr "示例："
 
 #: ../../../topics/spiders.rst:644
 msgid ""

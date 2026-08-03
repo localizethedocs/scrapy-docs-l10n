@@ -2980,6 +2980,3 @@ msgid ""
 "The following settings are documented elsewhere, please check each specific "
 "case to see how to enable and use them."
 msgstr ""
-
-#~ msgid "Default: ``[]``"
-#~ msgstr "默认值： ``[]``"

@@ -168,9 +168,3 @@ msgid ""
 "object is marked with ``\"download_stopped\"`` in its :attr:`~scrapy.http."
 "Response.flags` attribute."
 msgstr ""
-
-#~ msgid "Parameters"
-#~ msgstr "參數"
-
-#~ msgid "Item pipelines"
-#~ msgstr "項目管線"

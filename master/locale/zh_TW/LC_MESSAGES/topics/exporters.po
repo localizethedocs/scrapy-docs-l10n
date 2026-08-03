@@ -622,9 +622,3 @@ msgid ""
 "should accept :class:`bytes` (a disk file opened in binary mode, a :class:"
 "`~io.BytesIO` object, etc)"
 msgstr ""
-
-#~ msgid "['field1', 'field2']"
-#~ msgstr "['field1', 'field2']"
-
-#~ msgid "{'field1': 'Field 1', 'field2': 'Field 2'}"
-#~ msgstr "{'field1': 'Field 1', 'field2': 'Field 2'}"

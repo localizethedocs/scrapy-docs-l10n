@@ -720,12 +720,3 @@ msgstr "与项目相关的其他类"
 #: ../../../../scrapy/item.py:docstring of scrapy.item.ItemMeta:1
 msgid "Metaclass_ of :class:`Item` that handles field definitions."
 msgstr ""
-
-#~ msgid ""
-#~ ">>> product = Product(name=\"Desktop PC\", price=1000)\n"
-#~ ">>> print(product)\n"
-#~ "Product(name='Desktop PC', price=1000)"
-#~ msgstr ""
-#~ ">>>> product = Product(name=\"Desktop PC\", price=1000)\n"
-#~ ">>>> print(product)\n"
-#~ "Product(name='Desktop PC', price=1000)"

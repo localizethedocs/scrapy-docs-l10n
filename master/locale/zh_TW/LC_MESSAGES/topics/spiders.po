@@ -931,7 +931,7 @@ msgstr ""
 
 #: ../../../topics/spiders.rst:642
 msgid "Example:"
-msgstr ""
+msgstr "範例："
 
 #: ../../../topics/spiders.rst:644
 msgid ""
@@ -1365,9 +1365,3 @@ msgid ""
 "    def parse_other(self, response):\n"
 "        pass  # ... scrape other here ..."
 msgstr ""
-
-#~ msgid "Example::"
-#~ msgstr "範例：\\ ::"
-
-#~ msgid "For example::"
-#~ msgstr "例如：\\ ::\n"

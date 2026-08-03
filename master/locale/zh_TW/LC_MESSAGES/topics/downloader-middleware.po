@@ -534,7 +534,7 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:379
 msgid "Default: ``None``"
-msgstr ""
+msgstr "預設值：``None``"
 
 #: ../../../topics/downloader-middleware.rst:381
 msgid ""
@@ -1925,15 +1925,3 @@ msgstr ""
 #: ../../../topics/downloader-middleware.rst:1288
 msgid "The header value is taken from the :setting:`USER_AGENT` setting."
 msgstr ""
-
-#~ msgid ":setting:`RETRY_ENABLED`"
-#~ msgstr ":setting:`RETRY_ENABLED`"
-
-#~ msgid ":setting:`RETRY_TIMES`"
-#~ msgstr ":setting:`RETRY_TIMES`"
-
-#~ msgid ":setting:`RETRY_HTTP_CODES`"
-#~ msgstr ":setting:`RETRY_HTTP_CODES`"
-
-#~ msgid ":setting:`RETRY_EXCEPTIONS`"
-#~ msgstr ":setting:`RETRY_EXCEPTIONS`"

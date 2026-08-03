@@ -123,7 +123,7 @@ msgstr ""
 #: ../../../../scrapy/contracts/default.py:docstring of
 #: scrapy.contracts.default.ReturnsContract:10
 msgid "For example:"
-msgstr ""
+msgstr "例如："
 
 #: ../../../../scrapy/contracts/default.py:docstring of
 #: scrapy.contracts.default.ReturnsContract:12
@@ -298,6 +298,3 @@ msgid ""
 "        if os.environ.get(\"SCRAPY_CHECK\"):\n"
 "            pass  # Do some scraper adjustments when a check is running"
 msgstr ""
-
-#~ msgid "Parameters"
-#~ msgstr "参数"
