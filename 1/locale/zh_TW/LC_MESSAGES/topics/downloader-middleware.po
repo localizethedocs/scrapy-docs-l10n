@@ -1288,15 +1288,15 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:919
 msgid ":setting:`RETRY_ENABLED`"
-msgstr ":setting:`RETRY_ENABLED`"
+msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:920
 msgid ":setting:`RETRY_TIMES`"
-msgstr ":setting:`RETRY_TIMES`"
+msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:921
 msgid ":setting:`RETRY_HTTP_CODES`"
-msgstr ":setting:`RETRY_HTTP_CODES`"
+msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:925
 msgid ""

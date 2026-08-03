@@ -1317,7 +1317,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:974 ../../../topics/settings.rst:1340
 msgid "Default: ``[]``"
-msgstr "默认值： ``[]``"
+msgstr ""
 
 #: ../../../topics/settings.rst:976
 msgid ""

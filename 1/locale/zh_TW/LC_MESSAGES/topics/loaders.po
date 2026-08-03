@@ -763,7 +763,7 @@ msgstr ""
 #: ../../../topics/loaders.rst:667 ../../../topics/loaders.rst:703
 #: ../../../topics/loaders.rst:767
 msgid "Example::"
-msgstr "範例：\\ ::"
+msgstr ""
 
 #: ../../../topics/loaders.rst:541
 msgid ""

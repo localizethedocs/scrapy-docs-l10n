@@ -256,7 +256,7 @@ msgstr ""
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.CrawlerRunner.create_crawler:3
 msgid "If ``crawler_or_spidercls`` is a Crawler, it is returned as-is."
-msgstr "如果``crawler_or_spidercls`` 是一个 Crawler，那么它将按原样恢复。"
+msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.CrawlerRunner.create_crawler:4
@@ -264,8 +264,6 @@ msgid ""
 "If ``crawler_or_spidercls`` is a Spider subclass, a new Crawler is "
 "constructed for it."
 msgstr ""
-"如果``crawler_or_spidercls`` 是一个 Spider 子类，那么就会为它构建一个新的 "
-"Crawler 类。"
 
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.CrawlerRunner.create_crawler:6
@@ -469,7 +467,7 @@ msgstr "制作当前设置的副本并转换为字典。"
 msgid ""
 "This method returns a new dict populated with the same values and their "
 "priorities as the current settings."
-msgstr "这个方法返回一个与当前设置相同的值和优先级的新词典。"
+msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.copy_to_dict:6
@@ -705,7 +703,7 @@ msgstr "SpiderLoader API"
 msgid ""
 "This class is in charge of retrieving and handling the spider classes "
 "defined across the project."
-msgstr "此类负责检索和处理整个项目定义的蜘蛛类。"
+msgstr ""
 
 #: ../../../topics/api.rst:167
 msgid ""
@@ -724,7 +722,7 @@ msgstr ""
 
 #: ../../../topics/api.rst:179
 msgid "project settings"
-msgstr "项目设置"
+msgstr ""
 
 #: ../../../topics/api.rst:184
 msgid ""
@@ -732,26 +730,24 @@ msgid ""
 "loaded spiders for a spider class with name ``spider_name`` and will raise a "
 "KeyError if not found."
 msgstr ""
-"使用给定的名字获得蜘蛛类。 如果找不到名字为 ``spider_name`` 的 spider 类，它"
-"会发现先前加载的蜘蛛类。如果找不到密钥错误。"
 
 #: ../../../topics/api.rst:188
 msgid "spider class name"
-msgstr "spider 类名称"
+msgstr ""
 
 #: ../../../topics/api.rst:193
 msgid "Get the names of the available spiders in the project."
-msgstr "获取项目中可用蜘蛛的名称。"
+msgstr ""
 
 #: ../../../topics/api.rst:197
 msgid ""
 "List the spiders' names that can handle the given request. Will try to match "
 "the request's url against the domains of the spiders."
-msgstr "列出可以处理给定请求的蜘蛛名称。将尝试匹配请求的URL与蜘蛛的域名。"
+msgstr ""
 
 #: ../../../topics/api.rst:200
 msgid "queried request"
-msgstr "查询请求"
+msgstr ""
 
 #: ../../../topics/api.rst:206
 msgid "Signals API"
