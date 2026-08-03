@@ -437,9 +437,6 @@ msgid ""
 ">>> print(product)\n"
 "Product(name='Desktop PC', price=1000)"
 msgstr ""
-">>>> product = Product(name=\"Desktop PC\", price=1000)\n"
-">>>> print(product)\n"
-"Product(name='Desktop PC', price=1000)"
 
 #: ../../../topics/items.rst:269
 msgid "Getting field values"

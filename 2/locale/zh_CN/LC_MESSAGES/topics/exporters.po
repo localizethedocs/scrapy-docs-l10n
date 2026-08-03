@@ -314,19 +314,19 @@ msgstr "``None`` (所有字段 [2]_, 默认)"
 
 #: ../../../topics/exporters.rst:213
 msgid "A list of fields::"
-msgstr "字段列表:"
+msgstr ""
 
 #: ../../../topics/exporters.rst:215
 msgid "['field1', 'field2']"
-msgstr "['field 1', 'field 2']"
+msgstr ""
 
 #: ../../../topics/exporters.rst:217
 msgid "A dict where keys are fields and values are output names::"
-msgstr "键值为字段和值为输出名的词典:"
+msgstr ""
 
 #: ../../../topics/exporters.rst:219
 msgid "{'field1': 'Field 1', 'field2': 'Field 2'}"
-msgstr "{'field1': 'field 1', 'field 2'}"
+msgstr ""
 
 #: ../../../topics/exporters.rst:221
 msgid "Not all exporters respect the specified field order."
@@ -358,7 +358,7 @@ msgstr "输出字符编码。"
 #: ../../../topics/exporters.rst:241
 msgid ""
 "Amount of spaces used to indent the output on each level. Defaults to ``0``."
-msgstr "用于缩进每个级别输出的空格数量。默认值为 ``0`` 。"
+msgstr ""
 
 #: ../../../topics/exporters.rst:243
 msgid ""
@@ -469,15 +469,15 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:293
 msgid "For example, the item::"
-msgstr "例如，项目："
+msgstr ""
 
 #: ../../../topics/exporters.rst:295
 msgid "Item(name=['John', 'Doe'], age='23')"
-msgstr "项目名称=['John', 'Doe'], 年龄='23'"
+msgstr ""
 
 #: ../../../topics/exporters.rst:297
 msgid "Would be serialized as::"
-msgstr "序列化为:"
+msgstr ""
 
 #: ../../../topics/exporters.rst:299
 msgid ""
@@ -548,9 +548,6 @@ msgid ""
 "Color TV,1200\n"
 "DVD player,200"
 msgstr ""
-"产品,价格\n"
-"彩色电视,1200\n"
-"DVD 播放器 200"
 
 #: ../../../topics/exporters.rst:349
 msgid "PickleItemExporter"
@@ -586,8 +583,6 @@ msgid ""
 "{'name': 'Color TV', 'price': '1200'}\n"
 "{'name': 'DVD player', 'price': '200'}"
 msgstr ""
-"{'name': 'Color TV', 'price': '1200'}\n"
-"{'name': 'DVD player', 'price': '200'}"
 
 #: ../../../topics/exporters.rst:386
 msgid "Longer lines (when present) are pretty-formatted."

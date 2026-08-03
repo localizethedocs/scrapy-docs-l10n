@@ -340,8 +340,6 @@ msgid ""
 "output. It should return the same or a different item, or ``None`` to ignore "
 "it."
 msgstr ""
-"这个方法用单个项目来调用起始种子或旋转器输出。 它应该返回相同或不同的物品或 "
-"``None`` 来忽略它。"
 
 #: ../../../../scrapy/spidermiddlewares/base.py:docstring of
 #: scrapy.spidermiddlewares.base.BaseSpiderMiddleware.get_processed_item:7
@@ -369,8 +367,6 @@ msgid ""
 "spider output. It should return the same or a different request, or ``None`` "
 "to ignore it."
 msgstr ""
-"这个方法用单个请求从起始种子或旋转器输出调用。 它应该返回相同或不同的请求，或"
-"者 ``None`` 忽略它。"
 
 #: ../../../../scrapy/spidermiddlewares/base.py:docstring of
 #: scrapy.spidermiddlewares.base.BaseSpiderMiddleware.get_processed_request:7

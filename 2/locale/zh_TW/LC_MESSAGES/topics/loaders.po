@@ -378,13 +378,6 @@ msgid ""
 ">>> il.load_item()\n"
 "{'name': 'Welcome to my website', 'price': '1000'}"
 msgstr ""
-">>> from scrapy.loader import ItemLoader\n"
-">>> il = ItemLoader(item=Product())\n"
-">>> il.add_value(\"name\", [\"Welcome to my\", \"<strong>website</"
-"strong>\"])\n"
-">>> il.add_value(\"price\", [\"&euro;\", \"<span>1000</span>\"])\n"
-">>> il.load_item()\n"
-"{'name': 'Welcome to my website', 'price': '1000'}"
 
 #: ../../../topics/loaders.rst:264
 msgid ""
@@ -914,7 +907,7 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:346
 msgid "Example::"
-msgstr "範例：\\ ::"
+msgstr ""
 
 #: ../../../topics/loaders.rst:348
 msgid ""

@@ -1371,19 +1371,19 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:971
 msgid ":setting:`RETRY_ENABLED`"
-msgstr ":setting:`RETRY_ENABLED`"
+msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:972
 msgid ":setting:`RETRY_TIMES`"
-msgstr ":setting:`RETRY_TIMES`"
+msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:973
 msgid ":setting:`RETRY_HTTP_CODES`"
-msgstr ":setting:`RETRY_HTTP_CODES`"
+msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:974
 msgid ":setting:`RETRY_EXCEPTIONS`"
-msgstr ":setting:`RETRY_EXCEPTIONS`"
+msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:978
 msgid ""

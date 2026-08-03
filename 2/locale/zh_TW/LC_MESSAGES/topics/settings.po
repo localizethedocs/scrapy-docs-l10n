@@ -2063,7 +2063,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:1562
 msgid "Default: ``[]``"
-msgstr "預設值：``[]``"
+msgstr ""
 
 #: ../../../topics/settings.rst:1564
 msgid ""

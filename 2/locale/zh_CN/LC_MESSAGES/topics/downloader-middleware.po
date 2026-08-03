@@ -496,8 +496,6 @@ msgid ""
 "This middleware authenticates all requests generated from certain spiders "
 "using `Basic access authentication`_ (aka. HTTP auth)."
 msgstr ""
-"此中间件使用 `Basic Access authentication`_ (aka. HTTP auth) 验证某些特定间谍"
-"生成的所有请求。"
 
 #: ../../../topics/downloader-middleware.rst:313
 msgid ""
@@ -509,10 +507,6 @@ msgid ""
 "all requests but you risk leaking your authentication credentials to "
 "unrelated domains."
 msgstr ""
-"为蜘蛛启用 HTTP 身份验证， 将 ``http_user`` 和 ``http_pass`` 的 spider 属性设"
-"置为认证数据和 ``http_auth_domain`` 的 spider 属性设置为需要此身份验证的域(其"
-"子域也将以同样的方式处理)。 你可以将 ``http_auth_domain`` 设置为 ``None`` 以"
-"启用所有请求的身份验证，但是你可能会将你的身份验证证书泄漏到无关的域。"
 
 #: ../../../topics/downloader-middleware.rst:322
 msgid ""
@@ -523,10 +517,6 @@ msgid ""
 "request, which will work for some spiders but not for others. In the future "
 "the middleware will produce an error instead."
 msgstr ""
-"在以前的 Scrapy 版本中，HttpAuthMiddleware 发送了所有请求的身份验证数据。 如"
-"果蜘蛛对几个不同的域提出请求，那将是一个安全问题。 目前如果"
-"``http_auth_domain`` 属性未设定。 中间件将使用第一个请求的域，这个域将适用于"
-"某些间谍，但不适用于另一些间谍。 今后，中间件将产生错误。"
 
 #: ../../../topics/downloader-middleware.rst:329
 #: ../../../topics/downloader-middleware.rst:429
@@ -546,16 +536,6 @@ msgid ""
 "\n"
 "    # .. rest of the spider code omitted ..."
 msgstr ""
-"来自废料。 piders importer CrawlSpider\n"
-"\n"
-"\n"
-"class IntranetSiteSpider(CrawlSpider):\n"
-"    http_user = \"somepass\"\n"
-"    http_pass= \"somepass\"\n"
-"    http_auth_domain = \"intrannet. xample.com\"\n"
-"    name = \"intranet.example.com\"\n"
-"\n"
-"    # ... 剩余的 spider 代码省略..."
 
 #: ../../../topics/downloader-middleware.rst:348
 msgid "HttpCacheMiddleware"
@@ -785,7 +765,7 @@ msgstr "``response_body`` - 纯响应体"
 
 #: ../../../topics/downloader-middleware.rst:462
 msgid "``response_headers`` - the request headers (in raw HTTP format)"
-msgstr "``response_headers`` - 请求标题(原HTTP格式)"
+msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:464
 msgid ""
@@ -1107,8 +1087,6 @@ msgid ""
 "compressed`_ responses, provided that `brotli`_ or `zstandard`_ is "
 "installed, respectively."
 msgstr ""
-"这个中间件还支持解码 `brotli-compressed`_ 和 `zstd-compressed`_ 反应，但条件"
-"是必须安装`brotli`_ 或 `zstandard`_ 。"
 
 #: ../../../topics/downloader-middleware.rst:706
 msgid "HttpCompressionMiddleware Settings"
@@ -1471,8 +1449,6 @@ msgid ""
 "Failed pages are collected on the scraping process and rescheduled at the "
 "end, once the spider has finished crawling all regular (non failed) pages."
 msgstr ""
-"在拆解过程中收集失败的页面，并在结束时重新安排时间，一旦旋转器完成整理所有常"
-"规(非失败)页面。"
 
 #: ../../../topics/downloader-middleware.rst:968
 msgid ""
@@ -1534,14 +1510,6 @@ msgid ""
 "        )\n"
 "        return new_request_or_none"
 msgstr ""
-"def parse(self, response):\n"
-"    if not response.text:\n"
-"        new_request_or_none = get_retry_request(\n"
-"            response.request,\n"
-"            spider=self,\n"
-"            reason='empty',\n"
-"        )\n"
-"        return new_request_or_no"
 
 #: ../../../../scrapy/downloadermiddlewares/retry.py:docstring of
 #: scrapy.downloadermiddlewares.retry.get_retry_request:17
@@ -1895,8 +1863,6 @@ msgid ""
 "Install ``Robotexclusionrulesparser`` by running ``pip install "
 "robotexclusionrulesparser``"
 msgstr ""
-"运行 ``Robotexclusionrulesparser`` 安装 ``pipp install "
-"robotexclusionrulesparser``"
 
 #: ../../../topics/downloader-middleware.rst:1186
 msgid ""
