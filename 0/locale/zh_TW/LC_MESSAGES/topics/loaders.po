@@ -799,7 +799,7 @@ msgstr ""
 #: ../../../topics/loaders.rst:560 ../../../topics/loaders.rst:573
 #: ../../../topics/loaders.rst:609
 msgid "Example::"
-msgstr "範例：\\ ::"
+msgstr ""
 
 #: ../../../topics/loaders.rst:562
 msgid ""

@@ -1048,15 +1048,15 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:723
 msgid ":setting:`RETRY_ENABLED`"
-msgstr ":setting:`RETRY_ENABLED`"
+msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:724
 msgid ":setting:`RETRY_TIMES`"
-msgstr ":setting:`RETRY_TIMES`"
+msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:725
 msgid ":setting:`RETRY_HTTP_CODES`"
-msgstr ":setting:`RETRY_HTTP_CODES`"
+msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:727
 msgid "About HTTP errors to consider:"

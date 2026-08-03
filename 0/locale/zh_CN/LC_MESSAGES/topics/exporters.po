@@ -378,15 +378,15 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:251
 msgid "For example, the item::"
-msgstr "例如，项目："
+msgstr ""
 
 #: ../../../topics/exporters.rst:253
 msgid "Item(name=['John', 'Doe'], age='23')"
-msgstr "项目名称=['John', 'Doe'], 年龄='23'"
+msgstr ""
 
 #: ../../../topics/exporters.rst:255
 msgid "Would be serialized as::"
-msgstr "序列化为:"
+msgstr ""
 
 #: ../../../topics/exporters.rst:257
 msgid ""
@@ -451,9 +451,6 @@ msgid ""
 "Color TV,1200\n"
 "DVD player,200"
 msgstr ""
-"产品,价格\n"
-"彩色电视,1200\n"
-"DVD 播放器 200"
 
 #: ../../../topics/exporters.rst:303
 msgid "PickleItemExporter"
@@ -489,8 +486,6 @@ msgid ""
 "{'name': 'Color TV', 'price': '1200'}\n"
 "{'name': 'DVD player', 'price': '200'}"
 msgstr ""
-"{'name': 'Color TV', 'price': '1200'}\n"
-"{'name': 'DVD player', 'price': '200'}"
 
 #: ../../../topics/exporters.rst:340
 msgid "Longer lines (when present) are pretty-formatted."

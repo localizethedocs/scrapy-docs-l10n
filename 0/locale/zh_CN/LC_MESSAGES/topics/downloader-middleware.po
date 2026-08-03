@@ -418,8 +418,6 @@ msgid ""
 "This middleware authenticates all requests generated from certain spiders "
 "using `Basic access authentication`_ (aka. HTTP auth)."
 msgstr ""
-"此中间件使用 `Basic Access authentication`_ (aka. HTTP auth) 验证某些特定间谍"
-"生成的所有请求。"
 
 #: ../../../topics/downloader-middleware.rst:279
 msgid ""
@@ -657,7 +655,7 @@ msgstr "``response_body`` - 纯响应体"
 
 #: ../../../topics/downloader-middleware.rst:396
 msgid "``response_headers`` - the request headers (in raw HTTP format)"
-msgstr "``response_headers`` - 请求标题(原HTTP格式)"
+msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:397
 msgid ""

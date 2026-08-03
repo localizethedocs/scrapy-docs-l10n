@@ -806,7 +806,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:577 ../../../topics/settings.rst:806
 msgid "Default: ``[]``"
-msgstr "默认值： ``[]``"
+msgstr ""
 
 #: ../../../topics/settings.rst:579
 msgid ""
