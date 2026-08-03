@@ -302,7 +302,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:216
 msgid "['field1', 'field2']"
-msgstr "['field1', 'field2']"
+msgstr ""
 
 #: ../../../topics/exporters.rst:218
 msgid "A dict where keys are fields and values are output names::"
@@ -310,7 +310,7 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:220
 msgid "{'field1': 'Field 1', 'field2': 'Field 2'}"
-msgstr "{'field1': 'Field 1', 'field2': 'Field 2'}"
+msgstr ""
 
 #: ../../../topics/exporters.rst:222
 msgid "Not all exporters respect the specified field order."

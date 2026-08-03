@@ -544,7 +544,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:367
 msgid "Logging settings"
-msgstr ""
+msgstr "日誌紀錄設定"
 
 #: ../../../topics/settings.rst:369
 msgid ""
@@ -566,19 +566,19 @@ msgstr ""
 
 #: ../../../topics/settings.rst:380
 msgid ":setting:`LOG_ENABLED`"
-msgstr ""
+msgstr ":setting:`LOG_ENABLED`"
 
 #: ../../../topics/settings.rst:381
 msgid ":setting:`LOG_ENCODING`"
-msgstr ""
+msgstr ":setting:`LOG_ENCODING`"
 
 #: ../../../topics/settings.rst:382
 msgid ":setting:`LOG_FILE`"
-msgstr ""
+msgstr ":setting:`LOG_FILE`"
 
 #: ../../../topics/settings.rst:383
 msgid ":setting:`LOG_FILE_APPEND`"
-msgstr ""
+msgstr ":setting:`LOG_FILE_APPEND`"
 
 #: ../../../topics/settings.rst:384
 msgid ":setting:`LOG_FORMAT`"
@@ -2178,7 +2178,7 @@ msgstr ""
 
 #: ../../../topics/settings.rst:1656
 msgid "Default: ``[]``"
-msgstr "預設值：``[]``"
+msgstr ""
 
 #: ../../../topics/settings.rst:1658
 msgid ""

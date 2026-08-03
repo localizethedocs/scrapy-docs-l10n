@@ -568,7 +568,7 @@ msgstr ""
 
 #: ../../../topics/download-handlers.rst:334
 msgid "Default: ``False``"
-msgstr ""
+msgstr "默认值： ``False``"
 
 #: ../../../topics/download-handlers.rst:336
 msgid ""

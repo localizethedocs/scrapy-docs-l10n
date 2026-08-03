@@ -534,7 +534,7 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:379
 msgid "Default: ``None``"
-msgstr ""
+msgstr "預設值：``None``"
 
 #: ../../../topics/downloader-middleware.rst:381
 msgid ""
@@ -1436,19 +1436,19 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:1023
 msgid ":setting:`RETRY_ENABLED`"
-msgstr ":setting:`RETRY_ENABLED`"
+msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:1024
 msgid ":setting:`RETRY_TIMES`"
-msgstr ":setting:`RETRY_TIMES`"
+msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:1025
 msgid ":setting:`RETRY_HTTP_CODES`"
-msgstr ":setting:`RETRY_HTTP_CODES`"
+msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:1026
 msgid ":setting:`RETRY_EXCEPTIONS`"
-msgstr ":setting:`RETRY_EXCEPTIONS`"
+msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:1030
 msgid ""

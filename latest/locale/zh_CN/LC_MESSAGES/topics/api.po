@@ -1095,7 +1095,7 @@ msgstr "SpiderLoader API"
 msgid ""
 "This class is in charge of retrieving and handling the spider classes "
 "defined across the project."
-msgstr "此类负责检索和处理整个项目定义的蜘蛛类。"
+msgstr ""
 
 #: ../../../topics/api.rst:180
 msgid ""
@@ -1114,7 +1114,7 @@ msgstr ""
 
 #: ../../../topics/api.rst:192
 msgid "project settings"
-msgstr "项目设置"
+msgstr ""
 
 #: ../../../topics/api.rst:197
 msgid ""
@@ -1122,26 +1122,24 @@ msgid ""
 "loaded spiders for a spider class with name ``spider_name`` and will raise a "
 "KeyError if not found."
 msgstr ""
-"使用给定的名字获得蜘蛛类。 如果找不到名字为 ``spider_name`` 的 spider 类，它"
-"会发现先前加载的蜘蛛类。如果找不到密钥错误。"
 
 #: ../../../topics/api.rst:201
 msgid "spider class name"
-msgstr "spider 类名称"
+msgstr ""
 
 #: ../../../topics/api.rst:206
 msgid "Get the names of the available spiders in the project."
-msgstr "获取项目中可用蜘蛛的名称。"
+msgstr ""
 
 #: ../../../topics/api.rst:210
 msgid ""
 "List the spiders' names that can handle the given request. Will try to match "
 "the request's url against the domains of the spiders."
-msgstr "列出可以处理给定请求的蜘蛛名称。将尝试匹配请求的URL与蜘蛛的域名。"
+msgstr ""
 
 #: ../../../topics/api.rst:213
 msgid "queried request"
-msgstr "查询请求"
+msgstr ""
 
 #: ../../../../scrapy/spiderloader.py:docstring of
 #: scrapy.spiderloader.DummySpiderLoader:1
@@ -1327,18 +1325,3 @@ msgid ""
 "Returns ``True`` if no more requests can be sent at the moment, or ``False`` "
 "otherwise."
 msgstr "返回``True`` ，如果目前没有更多的请求可以发送，或者返回``False`` 。"
-
-#~ msgid "If ``crawler_or_spidercls`` is a Crawler, it is returned as-is."
-#~ msgstr "如果``crawler_or_spidercls`` 是一个 Crawler，那么它将按原样恢复。"
-
-#~ msgid ""
-#~ "If ``crawler_or_spidercls`` is a Spider subclass, a new Crawler is "
-#~ "constructed for it."
-#~ msgstr ""
-#~ "如果``crawler_or_spidercls`` 是一个 Spider 子类，那么就会为它构建一个新的 "
-#~ "Crawler 类。"
-
-#~ msgid ""
-#~ "This method returns a new dict populated with the same values and their "
-#~ "priorities as the current settings."
-#~ msgstr "这个方法返回一个与当前设置相同的值和优先级的新词典。"
