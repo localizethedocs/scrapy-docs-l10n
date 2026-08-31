@@ -1,0 +1,648 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-TW" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>scrapy.http.request.form &mdash; Scrapy 2.17.0 說明文件</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/custom.css?v=74c04d93" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://projects.localizethedocs.org/scrapy-docs-l10n/_modules/scrapy/http/request/form.html" />
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=d247250d"></script>
+      <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../../../_static/translations.js?v=cbf116e0"></script>
+      <script>
+(function () {
+    var DEFAULT_LABEL = 'M↓';
+    var SUCCESS_LABEL = 'Copied';
+    var ERROR_LABEL = 'Error';
+
+    function markdownPathFromCurrentPage(pathname) {
+        if (pathname.endsWith('.html')) {
+            return pathname.slice(0, -5) + '.md';
+        }
+        if (pathname.endsWith('/')) {
+            return pathname + 'index.md';
+        }
+        var lastPart = pathname.split('/').pop() || '';
+        if (!lastPart.includes('.')) {
+            return pathname + '.md';
+        }
+        return pathname + '.md';
+    }
+
+    async function copyToClipboard(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return;
+        }
+        var textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', 'readonly');
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+    }
+
+    function setTemporaryLabel(button, label, previousLabel) {
+        var prev = typeof previousLabel !== 'undefined' ? previousLabel : button.textContent;
+        button.textContent = label;
+        window.setTimeout(function () {
+            button.textContent = prev;
+            button.disabled = false;
+        }, 1000);
+    }
+
+    async function onButtonClick(button) {
+        var previousLabel = button.textContent;
+        button.disabled = true;
+        button.textContent = '...';
+        try {
+            var mdPath = markdownPathFromCurrentPage(window.location.pathname);
+            var response = await fetch(mdPath, { credentials: 'same-origin' });
+            if (!response.ok) {
+                throw new Error('Unable to fetch markdown source');
+            }
+            var markdown = await response.text();
+            await copyToClipboard(markdown);
+            setTemporaryLabel(button, SUCCESS_LABEL, previousLabel);
+        } catch (_error) {
+            setTemporaryLabel(button, ERROR_LABEL, previousLabel);
+        }
+    }
+
+    function addStyles() {
+        var style = document.createElement('style');
+        style.textContent = [
+            '.scrapy-copy-as-markdown {',
+            '  display: inline-block;',
+            '  margin-left: 0.25rem;',
+            '  border: 1px solid #c9d4de;',
+            '  border-radius: 0.45rem;',
+            '  background: #ffffff;',
+            '  color: #233a50;',
+            '  font: inherit;',
+            '  font-size: 0.875rem;',
+            '  line-height: 1;',
+            '  padding: 0.25rem 0.25rem;',
+            '  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);',
+            '  cursor: pointer;',
+            '}',
+            '.scrapy-copy-as-markdown:hover {',
+            '  background: #f3f7fb;',
+            '}',
+            '.scrapy-copy-as-markdown:disabled {',
+            '  opacity: 0.75;',
+            '  cursor: default;',
+            '}',
+            '.scrapy-copy-as-markdown-title-wrapper {',
+            '  display: flex;',
+            '  align-items: center;',
+            '  justify-content: space-between;',
+            '  gap: 1rem;',
+            '  width: 100%;',
+            '}',
+            '.scrapy-copy-as-markdown-title-wrapper h1 {',
+            '  margin: 0;',
+            '}',
+        ].join('\n');
+        document.head.appendChild(style);
+    }
+
+    function addButton() {
+        if (!document.body || document.querySelector('.scrapy-copy-as-markdown')) {
+            return;
+        }
+
+        addStyles();
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'scrapy-copy-as-markdown';
+        button.title = 'Copy this page as Markdown';
+        button.setAttribute('aria-label', 'Copy this page as Markdown');
+        button.textContent = DEFAULT_LABEL;
+        button.addEventListener('click', function () {
+            onButtonClick(button);
+        });
+
+        var h1 = document.querySelector('#main h1') || document.querySelector('h1');
+        if (h1 && h1.parentNode) {
+            var parent = h1.parentNode;
+            var wrapper = document.createElement('div');
+            wrapper.className = 'scrapy-copy-as-markdown-title-wrapper';
+            parent.replaceChild(wrapper, h1);
+            wrapper.appendChild(h1);
+            wrapper.appendChild(button);
+        } else {
+            // fallback: insert at top of body but keep within the first container
+            var container = document.body.firstElementChild || document.body;
+            container.insertBefore(button, container.firstChild);
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', addButton);
+    } else {
+        addButton();
+    }
+})();
+</script>
+      <script src="../../../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="search" title="搜尋" href="../../../../search.html" />
+ 
+<script type="text/javascript" src="../../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+
+<a href="https://scrapy.org">scrapy.org</a> / <a href="../../../../index.html">docs</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">First steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro/overview.html">Scrapy 速覽</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro/install.html">安裝指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro/tutorial.html">Scrapy 教學</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../intro/examples.html">範例</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">基礎概念</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/commands.html">命令行工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/spiders.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/selectors.html">Selectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/items.html">項目</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/loaders.html">項目載入器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/shell.html">Scrapy 外殼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/item-pipeline.html">項目管線</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/feed-exports.html">Feed exports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/request-response.html">Requests and Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/link-extractors.html">連結提取器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/settings.html">設定</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/exceptions.html">Exceptions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">內建服務</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/stats.html">Stats Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/telnetconsole.html">Telnet Console</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">解決特定問題</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/debug.html">Debugging Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/contracts.html">Spiders Contracts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/practices.html">Common Practices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/broad-crawls.html">Broad Crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/developer-tools.html">使用您的瀏覽器開發者工具進行網頁擷取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/dynamic-content.html">Selecting dynamically-loaded content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/leaks.html">Debugging memory leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/media-pipeline.html">下載並處理檔案和影像</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/deploy.html">Deploying Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/autothrottle.html">AutoThrottle extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/benchmarking.html">基準測試</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/jobs.html">Jobs: pausing and resuming crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/coroutines.html">Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/asyncio.html">asyncio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Scrapy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/architecture.html">架構概覽</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/addons.html">Add-ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/downloader-middleware.html">Downloader Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/spider-middleware.html">Spider Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/scheduler.html">Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/exporters.html">項目匯出器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/download-handlers.html">Download handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/components.html">組件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../topics/api.html">核心 API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">所有測試</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../news.html">發行備註</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing.html">Contributing to Scrapy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../versioning.html">Versioning and API stability</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Scrapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">模組原始碼</a></li>
+          <li class="breadcrumb-item"><a href="../request.html">scrapy.http.request</a></li>
+      <li class="breadcrumb-item active">scrapy.http.request.form</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>scrapy.http.request.form 的原始碼</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This module implements the FormRequest class which is a more convenient class</span>
+<span class="sd">(than Request) to generate Requests based on form data.</span>
+
+<span class="sd">See documentation in docs/topics/request-response.rst</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Iterable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">ClassVar</span><span class="p">,</span> <span class="n">TypeAlias</span><span class="p">,</span> <span class="n">cast</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlencode</span><span class="p">,</span> <span class="n">urljoin</span><span class="p">,</span> <span class="n">urlsplit</span><span class="p">,</span> <span class="n">urlunsplit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">warnings</span><span class="w"> </span><span class="kn">import</span> <span class="n">warn</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">parsel.csstranslator</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTMLTranslator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">w3lib.html</span><span class="w"> </span><span class="kn">import</span> <span class="n">strip_html5_whitespace</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.exceptions</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScrapyDeprecationWarning</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.http.request</span><span class="w"> </span><span class="kn">import</span> <span class="n">Request</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.utils.python</span><span class="w"> </span><span class="kn">import</span> <span class="n">is_listlike</span><span class="p">,</span> <span class="n">to_bytes</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="c1"># typing.Self requires Python 3.11</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">lxml.html</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+        <span class="n">FormElement</span><span class="p">,</span>
+        <span class="n">InputElement</span><span class="p">,</span>
+        <span class="n">MultipleSelectOptions</span><span class="p">,</span>
+        <span class="n">SelectElement</span><span class="p">,</span>
+        <span class="n">TextareaElement</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>
+
+    <span class="kn">from</span><span class="w"> </span><span class="nn">scrapy.http.response.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">TextResponse</span>
+
+<span class="n">FormdataVType</span><span class="p">:</span> <span class="n">TypeAlias</span> <span class="o">=</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+<span class="n">FormdataKVType</span><span class="p">:</span> <span class="n">TypeAlias</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">FormdataVType</span><span class="p">]</span>
+<span class="n">FormdataType</span><span class="p">:</span> <span class="n">TypeAlias</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">FormdataVType</span><span class="p">]</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">FormdataKVType</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span>
+
+
+<div class="viewcode-block" id="FormRequest">
+<a class="viewcode-back" href="../../../../topics/request-response.html#scrapy.FormRequest">[文件]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">FormRequest</span><span class="p">(</span><span class="n">Request</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A :class:`~scrapy.Request` subclass with a ``formdata`` parameter that</span>
+<span class="sd">    url-encodes the given data and assigns it to the request, which makes it</span>
+<span class="sd">    convenient to send arbitrary form data via HTTP POST or GET without an HTML</span>
+<span class="sd">    ``&lt;form&gt;`` element to parse.</span>
+
+<span class="sd">    .. note:: To build a request from an HTML ``&lt;form&gt;`` element found in a</span>
+<span class="sd">       response, use :doc:`form2request &lt;form2request:index&gt;` instead. See</span>
+<span class="sd">       :ref:`form`.</span>
+
+<span class="sd">    The remaining arguments are the same as for the :class:`~scrapy.Request`</span>
+<span class="sd">    class and are not documented here.</span>
+
+<span class="sd">    :param formdata: a dictionary (or iterable of (key, value) tuples)</span>
+<span class="sd">       containing HTML form data which will be url-encoded. If</span>
+<span class="sd">       :attr:`~scrapy.Request.method` is not given and ``formdata`` is</span>
+<span class="sd">       provided, the method is set to ``&quot;POST&quot;`` and the data is assigned to</span>
+<span class="sd">       the request body; if the method is ``&quot;GET&quot;``, the data is added to the</span>
+<span class="sd">       URL query string instead.</span>
+<span class="sd">    :type formdata: dict or collections.abc.Iterable</span>
+
+<span class="sd">    To send data via HTTP POST, simulating an HTML form submission, return a</span>
+<span class="sd">    :class:`~scrapy.FormRequest` object from your spider:</span>
+
+<span class="sd">    .. skip: next</span>
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        return [</span>
+<span class="sd">            FormRequest(</span>
+<span class="sd">                url=&quot;http://www.example.com/post/action&quot;,</span>
+<span class="sd">                formdata={&quot;name&quot;: &quot;John Doe&quot;, &quot;age&quot;: &quot;27&quot;},</span>
+<span class="sd">                callback=self.after_post,</span>
+<span class="sd">            )</span>
+<span class="sd">        ]</span>
+
+<span class="sd">    To send the data in the URL query string instead, use the ``GET`` method:</span>
+
+<span class="sd">    .. skip: next</span>
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        return [</span>
+<span class="sd">            FormRequest(</span>
+<span class="sd">                url=&quot;http://www.example.com/search&quot;,</span>
+<span class="sd">                method=&quot;GET&quot;,</span>
+<span class="sd">                formdata={&quot;q&quot;: &quot;keyword&quot;, &quot;page&quot;: &quot;1&quot;},</span>
+<span class="sd">                callback=self.parse_results,</span>
+<span class="sd">            )</span>
+<span class="sd">        ]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">()</span>
+
+    <span class="n">valid_form_methods</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">formdata</span><span class="p">:</span> <span class="n">FormdataType</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">formdata</span> <span class="ow">and</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;method&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;method&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;POST&quot;</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">formdata</span><span class="p">:</span>
+            <span class="n">items</span> <span class="o">=</span> <span class="n">formdata</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">formdata</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="n">formdata</span>
+            <span class="n">form_query_str</span> <span class="o">=</span> <span class="n">_urlencode</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;POST&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span>
+                    <span class="sa">b</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;application/x-www-form-urlencoded&quot;</span>
+                <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_set_body</span><span class="p">(</span><span class="n">form_query_str</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_set_url</span><span class="p">(</span>
+                    <span class="n">urlunsplit</span><span class="p">(</span><span class="n">urlsplit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">_replace</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">form_query_str</span><span class="p">))</span>
+                <span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_response</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">response</span><span class="p">:</span> <span class="n">TextResponse</span><span class="p">,</span>
+        <span class="n">formname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">formid</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">formnumber</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">formdata</span><span class="p">:</span> <span class="n">FormdataType</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">clickdata</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">dont_click</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">formxpath</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">formcss</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
+        <span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;FormRequest.from_response() is deprecated. Use the form2request &quot;</span>
+            <span class="s2">&quot;library instead.&quot;</span><span class="p">,</span>
+            <span class="n">ScrapyDeprecationWarning</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">formcss</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">formxpath</span> <span class="o">=</span> <span class="n">HTMLTranslator</span><span class="p">()</span><span class="o">.</span><span class="n">css_to_xpath</span><span class="p">(</span><span class="n">formcss</span><span class="p">)</span>
+
+        <span class="n">form</span> <span class="o">=</span> <span class="n">_get_form</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">formname</span><span class="p">,</span> <span class="n">formid</span><span class="p">,</span> <span class="n">formnumber</span><span class="p">,</span> <span class="n">formxpath</span><span class="p">)</span>
+        <span class="n">formdata</span> <span class="o">=</span> <span class="n">_get_inputs</span><span class="p">(</span><span class="n">form</span><span class="p">,</span> <span class="n">formdata</span><span class="p">,</span> <span class="n">dont_click</span><span class="p">,</span> <span class="n">clickdata</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">_get_form_url</span><span class="p">(</span><span class="n">form</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;url&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+
+        <span class="n">method</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;method&quot;</span><span class="p">,</span> <span class="n">form</span><span class="o">.</span><span class="n">method</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">method</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">method</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">valid_form_methods</span><span class="p">:</span>
+                <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;GET&quot;</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">formdata</span><span class="o">=</span><span class="n">formdata</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_form_url</span><span class="p">(</span><span class="n">form</span><span class="p">:</span> <span class="n">FormElement</span><span class="p">,</span> <span class="n">url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">assert</span> <span class="n">form</span><span class="o">.</span><span class="n">base_url</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>  <span class="c1"># typing</span>
+    <span class="k">if</span> <span class="n">url</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;action&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">action</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">form</span><span class="o">.</span><span class="n">base_url</span>
+        <span class="k">return</span> <span class="n">urljoin</span><span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">base_url</span><span class="p">,</span> <span class="n">strip_html5_whitespace</span><span class="p">(</span><span class="n">action</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">urljoin</span><span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">base_url</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_urlencode</span><span class="p">(</span><span class="n">seq</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">FormdataKVType</span><span class="p">],</span> <span class="n">enc</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="n">to_bytes</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">enc</span><span class="p">),</span> <span class="n">to_bytes</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">enc</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">vs</span> <span class="ow">in</span> <span class="n">seq</span>
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">(</span><span class="n">vs</span> <span class="k">if</span> <span class="n">is_listlike</span><span class="p">(</span><span class="n">vs</span><span class="p">)</span> <span class="k">else</span> <span class="p">[</span><span class="n">cast</span><span class="p">(</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">vs</span><span class="p">)])</span>
+    <span class="p">]</span>
+    <span class="k">return</span> <span class="n">urlencode</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">doseq</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_form</span><span class="p">(</span>
+    <span class="n">response</span><span class="p">:</span> <span class="n">TextResponse</span><span class="p">,</span>
+    <span class="n">formname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">formid</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">formnumber</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">formxpath</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FormElement</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find the wanted form element within the given response.&quot;&quot;&quot;</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">selector</span><span class="o">.</span><span class="n">root</span>
+    <span class="n">forms</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s2">&quot;//form&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">forms</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No &lt;form&gt; element found in </span><span class="si">{</span><span class="n">response</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">formname</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;//form[@name=&quot;</span><span class="si">{</span><span class="n">formname</span><span class="si">}</span><span class="s1">&quot;]&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="s2">&quot;FormElement&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="n">formid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;//form[@id=&quot;</span><span class="si">{</span><span class="n">formid</span><span class="si">}</span><span class="s1">&quot;]&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="s2">&quot;FormElement&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1"># Get form element from xpath, if not found, go up</span>
+    <span class="k">if</span> <span class="n">formxpath</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">nodes</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="n">formxpath</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">nodes</span><span class="p">:</span>
+            <span class="n">el</span> <span class="o">=</span> <span class="n">nodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">el</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s2">&quot;form&quot;</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="s2">&quot;FormElement&quot;</span><span class="p">,</span> <span class="n">el</span><span class="p">)</span>
+                <span class="n">el</span> <span class="o">=</span> <span class="n">el</span><span class="o">.</span><span class="n">getparent</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">el</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">break</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No &lt;form&gt; element found with </span><span class="si">{</span><span class="n">formxpath</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># If we get here, it means that either formname was None or invalid</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">forms</span><span class="p">[</span><span class="n">formnumber</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Form number </span><span class="si">{</span><span class="n">formnumber</span><span class="si">}</span><span class="s2"> not found in </span><span class="si">{</span><span class="n">response</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
+    <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="s2">&quot;FormElement&quot;</span><span class="p">,</span> <span class="n">form</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_inputs</span><span class="p">(</span>
+    <span class="n">form</span><span class="p">:</span> <span class="n">FormElement</span><span class="p">,</span>
+    <span class="n">formdata</span><span class="p">:</span> <span class="n">FormdataType</span><span class="p">,</span>
+    <span class="n">dont_click</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+    <span class="n">clickdata</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">FormdataKVType</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a list of key-value pairs for the inputs found in the given form.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">formdata_keys</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">formdata</span> <span class="ow">or</span> <span class="p">())</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;formdata should be a dict or iterable of tuples&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">formdata</span><span class="p">:</span>
+        <span class="n">formdata</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span>
+        <span class="s2">&quot;descendant::textarea&quot;</span>
+        <span class="s2">&quot;|descendant::select&quot;</span>
+        <span class="s2">&quot;|descendant::input[not(@type) or @type[&quot;</span>
+        <span class="s1">&#39; not(re:test(., &quot;^(?:submit|image|reset)$&quot;, &quot;i&quot;))&#39;</span>
+        <span class="s2">&quot; and (../@checked or&quot;</span>
+        <span class="s1">&#39;  not(re:test(., &quot;^(?:checkbox|radio)$&quot;, &quot;i&quot;)))]]&#39;</span><span class="p">,</span>
+        <span class="n">namespaces</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;re&quot;</span><span class="p">:</span> <span class="s2">&quot;http://exslt.org/regular-expressions&quot;</span><span class="p">},</span>
+    <span class="p">)</span>
+    <span class="n">values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">FormdataKVType</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">v</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">(</span><span class="n">_value</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="ow">and</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">formdata_keys</span>
+    <span class="p">]</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">dont_click</span><span class="p">:</span>
+        <span class="n">clickable</span> <span class="o">=</span> <span class="n">_get_clickable</span><span class="p">(</span><span class="n">clickdata</span><span class="p">,</span> <span class="n">form</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">clickable</span> <span class="ow">and</span> <span class="n">clickable</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">formdata</span> <span class="ow">and</span> <span class="n">clickable</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">clickable</span><span class="p">)</span>
+
+    <span class="n">formdata_items</span> <span class="o">=</span> <span class="n">formdata</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">formdata</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="n">formdata</span>
+    <span class="n">values</span><span class="o">.</span><span class="n">extend</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">formdata_items</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">values</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_value</span><span class="p">(</span>
+    <span class="n">ele</span><span class="p">:</span> <span class="n">InputElement</span> <span class="o">|</span> <span class="n">SelectElement</span> <span class="o">|</span> <span class="n">TextareaElement</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">MultipleSelectOptions</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">ele</span><span class="o">.</span><span class="n">name</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">ele</span><span class="o">.</span><span class="n">value</span>
+    <span class="k">if</span> <span class="n">ele</span><span class="o">.</span><span class="n">tag</span> <span class="o">==</span> <span class="s2">&quot;select&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_select_value</span><span class="p">(</span><span class="n">cast</span><span class="p">(</span><span class="s2">&quot;SelectElement&quot;</span><span class="p">,</span> <span class="n">ele</span><span class="p">),</span> <span class="n">n</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">n</span><span class="p">,</span> <span class="n">v</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_select_value</span><span class="p">(</span>
+    <span class="n">ele</span><span class="p">:</span> <span class="n">SelectElement</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">MultipleSelectOptions</span> <span class="o">|</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">MultipleSelectOptions</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
+    <span class="n">multiple</span> <span class="o">=</span> <span class="n">ele</span><span class="o">.</span><span class="n">multiple</span>
+    <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">multiple</span><span class="p">:</span>
+        <span class="c1"># Match browser behaviour on simple select tag without options selected</span>
+        <span class="c1"># And for select tags without options</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">ele</span><span class="o">.</span><span class="n">value_options</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">o</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">if</span> <span class="n">o</span> <span class="k">else</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">n</span><span class="p">,</span> <span class="n">v</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_get_clickable</span><span class="p">(</span>
+    <span class="n">clickdata</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">form</span><span class="p">:</span> <span class="n">FormElement</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns the clickable element specified in clickdata,</span>
+<span class="sd">    if the latter is given. If not, it returns the first</span>
+<span class="sd">    clickable element found</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">clickables</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+        <span class="n">form</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span>
+            <span class="s1">&#39;descendant::input[re:test(@type, &quot;^(submit|image)$&quot;, &quot;i&quot;)]&#39;</span>
+            <span class="s1">&#39;|descendant::button[not(@type) or re:test(@type, &quot;^submit$&quot;, &quot;i&quot;)]&#39;</span><span class="p">,</span>
+            <span class="n">namespaces</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;re&quot;</span><span class="p">:</span> <span class="s2">&quot;http://exslt.org/regular-expressions&quot;</span><span class="p">},</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">clickables</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="c1"># If we don&#39;t have clickdata, we just use the first clickable element</span>
+    <span class="k">if</span> <span class="n">clickdata</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">el</span> <span class="o">=</span> <span class="n">clickables</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">el</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">),</span> <span class="n">el</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="c1"># If clickdata is given, we compare it to the clickable elements to find a</span>
+    <span class="c1"># match. We first look to see if the number is specified in clickdata,</span>
+    <span class="c1"># because that uniquely identifies the element</span>
+    <span class="n">nr</span> <span class="o">=</span> <span class="n">clickdata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;nr&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nr</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">el</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">form</span><span class="o">.</span><span class="n">inputs</span><span class="p">)[</span><span class="n">nr</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">cast</span><span class="p">(</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">el</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)),</span> <span class="n">el</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="c1"># We didn&#39;t find it, so now we build an XPath expression out of the other</span>
+    <span class="c1"># arguments, because they can be used as such</span>
+    <span class="n">xpath</span> <span class="o">=</span> <span class="s2">&quot;.//*&quot;</span> <span class="o">+</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[@</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">=&quot;</span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1">&quot;]&#39;</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">clickdata</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+    <span class="n">el</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="n">xpath</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">el</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">el</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">),</span> <span class="n">el</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">el</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Multiple elements found (</span><span class="si">{</span><span class="n">el</span><span class="si">!r}</span><span class="s2">) matching the &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;criteria in clickdata: </span><span class="si">{</span><span class="n">clickdata</span><span class="si">!r}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No clickable element matching clickdata: </span><span class="si">{</span><span class="n">clickdata</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Scrapy developers.
+      <span class="lastupdated">最後更新於 8月 31, 2026。
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

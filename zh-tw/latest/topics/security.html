@@ -1,0 +1,501 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-TW" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security &mdash; Scrapy 2.17.0 說明文件</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=74c04d93" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://projects.localizethedocs.org/scrapy-docs-l10n/topics/security.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d247250d"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/translations.js?v=cbf116e0"></script>
+      <script>
+(function () {
+    var DEFAULT_LABEL = 'M↓';
+    var SUCCESS_LABEL = 'Copied';
+    var ERROR_LABEL = 'Error';
+
+    function markdownPathFromCurrentPage(pathname) {
+        if (pathname.endsWith('.html')) {
+            return pathname.slice(0, -5) + '.md';
+        }
+        if (pathname.endsWith('/')) {
+            return pathname + 'index.md';
+        }
+        var lastPart = pathname.split('/').pop() || '';
+        if (!lastPart.includes('.')) {
+            return pathname + '.md';
+        }
+        return pathname + '.md';
+    }
+
+    async function copyToClipboard(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return;
+        }
+        var textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', 'readonly');
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+    }
+
+    function setTemporaryLabel(button, label, previousLabel) {
+        var prev = typeof previousLabel !== 'undefined' ? previousLabel : button.textContent;
+        button.textContent = label;
+        window.setTimeout(function () {
+            button.textContent = prev;
+            button.disabled = false;
+        }, 1000);
+    }
+
+    async function onButtonClick(button) {
+        var previousLabel = button.textContent;
+        button.disabled = true;
+        button.textContent = '...';
+        try {
+            var mdPath = markdownPathFromCurrentPage(window.location.pathname);
+            var response = await fetch(mdPath, { credentials: 'same-origin' });
+            if (!response.ok) {
+                throw new Error('Unable to fetch markdown source');
+            }
+            var markdown = await response.text();
+            await copyToClipboard(markdown);
+            setTemporaryLabel(button, SUCCESS_LABEL, previousLabel);
+        } catch (_error) {
+            setTemporaryLabel(button, ERROR_LABEL, previousLabel);
+        }
+    }
+
+    function addStyles() {
+        var style = document.createElement('style');
+        style.textContent = [
+            '.scrapy-copy-as-markdown {',
+            '  display: inline-block;',
+            '  margin-left: 0.25rem;',
+            '  border: 1px solid #c9d4de;',
+            '  border-radius: 0.45rem;',
+            '  background: #ffffff;',
+            '  color: #233a50;',
+            '  font: inherit;',
+            '  font-size: 0.875rem;',
+            '  line-height: 1;',
+            '  padding: 0.25rem 0.25rem;',
+            '  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);',
+            '  cursor: pointer;',
+            '}',
+            '.scrapy-copy-as-markdown:hover {',
+            '  background: #f3f7fb;',
+            '}',
+            '.scrapy-copy-as-markdown:disabled {',
+            '  opacity: 0.75;',
+            '  cursor: default;',
+            '}',
+            '.scrapy-copy-as-markdown-title-wrapper {',
+            '  display: flex;',
+            '  align-items: center;',
+            '  justify-content: space-between;',
+            '  gap: 1rem;',
+            '  width: 100%;',
+            '}',
+            '.scrapy-copy-as-markdown-title-wrapper h1 {',
+            '  margin: 0;',
+            '}',
+        ].join('\n');
+        document.head.appendChild(style);
+    }
+
+    function addButton() {
+        if (!document.body || document.querySelector('.scrapy-copy-as-markdown')) {
+            return;
+        }
+
+        addStyles();
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'scrapy-copy-as-markdown';
+        button.title = 'Copy this page as Markdown';
+        button.setAttribute('aria-label', 'Copy this page as Markdown');
+        button.textContent = DEFAULT_LABEL;
+        button.addEventListener('click', function () {
+            onButtonClick(button);
+        });
+
+        var h1 = document.querySelector('#main h1') || document.querySelector('h1');
+        if (h1 && h1.parentNode) {
+            var parent = h1.parentNode;
+            var wrapper = document.createElement('div');
+            wrapper.className = 'scrapy-copy-as-markdown-title-wrapper';
+            parent.replaceChild(wrapper, h1);
+            wrapper.appendChild(h1);
+            wrapper.appendChild(button);
+        } else {
+            // fallback: insert at top of body but keep within the first container
+            var container = document.body.firstElementChild || document.body;
+            container.insertBefore(button, container.firstChild);
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', addButton);
+    } else {
+        addButton();
+    }
+})();
+</script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜尋" href="../search.html" />
+    <link rel="next" title="Broad Crawls" href="broad-crawls.html" />
+    <link rel="prev" title="Common Practices" href="practices.html" />
+ 
+<script type="text/javascript" src="../ltd-provenance.js"></script>
+<script type="text/javascript" src="../ltd-current.js"></script>
+<script type="text/javascript" src="../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../ltd-flyout.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+
+
+<a href="https://scrapy.org">scrapy.org</a> / <a href="../index.html">docs</a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">First steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro/overview.html">Scrapy 速覽</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/install.html">安裝指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/tutorial.html">Scrapy 教學</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/examples.html">範例</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">基礎概念</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">命令行工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spiders.html">Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selectors.html">Selectors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="items.html">項目</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loaders.html">項目載入器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shell.html">Scrapy 外殼</a></li>
+<li class="toctree-l1"><a class="reference internal" href="item-pipeline.html">項目管線</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feed-exports.html">Feed exports</a></li>
+<li class="toctree-l1"><a class="reference internal" href="request-response.html">Requests and Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="link-extractors.html">連結提取器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">設定</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">內建服務</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stats.html">Stats Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="telnetconsole.html">Telnet Console</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">解決特定問題</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debug.html">Debugging Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contracts.html">Spiders Contracts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="practices.html">Common Practices</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#treat-responses-as-untrusted-input">Treat responses as untrusted input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tls-connections">TLS connections</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#certificate-verification">Certificate verification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#protocol-versions-and-ciphers">Protocol versions and ciphers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#unencrypted-protocols">Unencrypted protocols</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#local-and-non-network-resources">Local and non-network resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#telnet-console">Telnet console</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#credential-leakage-across-domains">Credential leakage across domains</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="broad-crawls.html">Broad Crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developer-tools.html">使用您的瀏覽器開發者工具進行網頁擷取</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dynamic-content.html">Selecting dynamically-loaded content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leaks.html">Debugging memory leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="media-pipeline.html">下載並處理檔案和影像</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy.html">Deploying Spiders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autothrottle.html">AutoThrottle extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">基準測試</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jobs.html">Jobs: pausing and resuming crawls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coroutines.html">Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asyncio.html">asyncio</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Scrapy</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">架構概覽</a></li>
+<li class="toctree-l1"><a class="reference internal" href="addons.html">Add-ons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="downloader-middleware.html">Downloader Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spider-middleware.html">Spider Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signals.html">Signals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scheduler.html">Scheduler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exporters.html">項目匯出器</a></li>
+<li class="toctree-l1"><a class="reference internal" href="download-handlers.html">Download handlers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="components.html">組件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">核心 API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">所有測試</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../news.html">發行備註</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to Scrapy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../versioning.html">Versioning and API stability</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Scrapy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Security</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/scrapy/scrapy/blob/master/docs/topics/security.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="security">
+<span id="id1"></span><h1>Security<a class="headerlink" href="#security" title="連結到這個標頭"></a></h1>
+<p>Scrapy defaults are optimized for web scraping, not for the security posture
+that you might expect from software that handles untrusted input or runs in a
+shared or exposed environment. Some common security practices are unnecessary
+for many scraping use cases, and a few can even prevent valid ones (for
+example, sites that you must scrape may use misconfigured TLS certificates or
+serve content over unencrypted protocols).</p>
+<p>This page highlights the Scrapy defaults that have security implications, so
+that you can make an informed decision about whether to keep them, and explains
+how to harden them along with the trade-offs involved.</p>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>None of the options below are silver bullets. Which of them make sense
+depends on your threat model: whether the URLs you crawl come from trusted
+sources, whether the machine running Scrapy is exposed to a network you do
+not control, whether the data you handle is sensitive, and so on.</p>
+</div>
+<section id="treat-responses-as-untrusted-input">
+<span id="security-untrusted-responses"></span><h2>Treat responses as untrusted input<a class="headerlink" href="#treat-responses-as-untrusted-input" title="連結到這個標頭"></a></h2>
+<p>Regardless of any setting, remember that response data comes from servers you
+do not control, even when you trust the site you are crawling, as responses may
+be tampered with in transit or the server itself may be compromised.</p>
+<p>Never pass response data to functions that can execute code or otherwise act on
+their input in an unsafe way, such as <a class="reference external" href="https://docs.python.org/3/library/functions.html#eval" title="(in Python v3.14)"><code class="xref py py-func docutils literal notranslate"><span class="pre">eval()</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#exec" title="(in Python v3.14)"><code class="xref py py-func docutils literal notranslate"><span class="pre">exec()</span></code></a>, or
+<a class="reference external" href="https://docs.python.org/3/library/pickle.html#pickle.loads" title="(in Python v3.14)"><code class="xref py py-func docutils literal notranslate"><span class="pre">pickle.loads()</span></code></a>, and be careful when writing response data to paths
+derived from the response itself.</p>
+</section>
+<section id="tls-connections">
+<h2>TLS connections<a class="headerlink" href="#tls-connections" title="連結到這個標頭"></a></h2>
+<section id="certificate-verification">
+<span id="security-certificate-verification"></span><h3>Certificate verification<a class="headerlink" href="#certificate-verification" title="連結到這個標頭"></a></h3>
+<p>By default Scrapy does <strong>not</strong> verify the TLS certificate of HTTPS servers, as
+controlled by the <a class="reference internal" href="settings.html#std-setting-DOWNLOAD_VERIFY_CERTIFICATES"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOAD_VERIFY_CERTIFICATES</span></code></a> setting (default:
+<code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
+<p>This default favors reach over security: many sites that are otherwise fine to
+scrape have expired, self-signed, or otherwise invalid certificates, and
+verifying certificates would make requests to them fail.</p>
+<p>If the integrity of the connection matters to you (for example, to detect
+man-in-the-middle attacks), set:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DOWNLOAD_VERIFY_CERTIFICATES</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Pro:</strong> requests to servers with invalid or untrusted certificates fail
+instead of silently succeeding, protecting you from some man-in-the-middle
+attacks.</p></li>
+<li><p><strong>Con:</strong> you can no longer scrape sites with misconfigured certificates
+without re-disabling verification for them.</p></li>
+</ul>
+</section>
+<section id="protocol-versions-and-ciphers">
+<span id="security-tls-protocols-ciphers"></span><h3>Protocol versions and ciphers<a class="headerlink" href="#protocol-versions-and-ciphers" title="連結到這個標頭"></a></h3>
+<p>You can restrict the TLS protocol versions that Scrapy accepts through the
+<a class="reference internal" href="settings.html#std-setting-DOWNLOAD_TLS_MIN_VERSION"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOAD_TLS_MIN_VERSION</span></code></a> and <a class="reference internal" href="settings.html#std-setting-DOWNLOAD_TLS_MAX_VERSION"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOAD_TLS_MAX_VERSION</span></code></a>
+settings, e.g. to reject obsolete protocol versions.</p>
+<p>By default Scrapy uses the OpenSSL <code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code> cipher list
+(<a class="reference internal" href="settings.html#std-setting-DOWNLOADER_CLIENT_TLS_CIPHERS"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOADER_CLIENT_TLS_CIPHERS</span></code></a>), which favors compatibility and still
+allows some older, weaker ciphers. Set it to <code class="docutils literal notranslate"><span class="pre">None</span></code> to instead use the curated
+cipher list of the underlying TLS implementation (Twisted), which excludes weak
+ciphers:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DOWNLOADER_CLIENT_TLS_CIPHERS</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Pro:</strong> connections that would negotiate a weak cipher fail instead of
+succeeding.</p></li>
+<li><p><strong>Con:</strong> you can no longer connect to servers that only support the excluded
+ciphers.</p></li>
+</ul>
+</section>
+</section>
+<section id="unencrypted-protocols">
+<span id="security-unencrypted-protocols"></span><h2>Unencrypted protocols<a class="headerlink" href="#unencrypted-protocols" title="連結到這個標頭"></a></h2>
+<p>By default Scrapy enables download handlers for unencrypted protocols, namely
+<code class="docutils literal notranslate"><span class="pre">http://</span></code> and <code class="docutils literal notranslate"><span class="pre">ftp://</span></code> (see <a class="reference internal" href="settings.html#std-setting-DOWNLOAD_HANDLERS_BASE"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOAD_HANDLERS_BASE</span></code></a>). Data sent
+and received over these protocols, including any credentials, travels in plain
+text and can be read or modified by anyone on the network path.</p>
+<p>If you only crawl over encrypted protocols, you can disable the unencrypted
+ones so that no request can accidentally be sent unencrypted:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DOWNLOAD_HANDLERS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;http&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s2">&quot;ftp&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Pro:</strong> a misconfigured or maliciously-redirected request cannot leak data
+over an unencrypted connection, as such requests fail instead.</p></li>
+<li><p><strong>Con:</strong> you can no longer crawl resources that are only available over those
+protocols.</p></li>
+</ul>
+<p>Note that disabling the <code class="docutils literal notranslate"><span class="pre">http</span></code> handler also prevents plain-HTTP requests that
+result from following an <code class="docutils literal notranslate"><span class="pre">http://</span></code> redirect or link, which is often the point
+of disabling it.</p>
+</section>
+<section id="local-and-non-network-resources">
+<span id="security-local-resources"></span><h2>Local and non-network resources<a class="headerlink" href="#local-and-non-network-resources" title="連結到這個標頭"></a></h2>
+<p>By default Scrapy enables download handlers for the <code class="docutils literal notranslate"><span class="pre">file://</span></code> and <code class="docutils literal notranslate"><span class="pre">data:</span></code>
+schemes (see <a class="reference internal" href="settings.html#std-setting-DOWNLOAD_HANDLERS_BASE"><code class="xref std std-setting docutils literal notranslate"><span class="pre">DOWNLOAD_HANDLERS_BASE</span></code></a>). The <code class="docutils literal notranslate"><span class="pre">file://</span></code> handler reads
+arbitrary files from the local filesystem, limited only by the permissions of
+the process running Scrapy.</p>
+<p>This is convenient (for example, to parse a local HTML file), but it is a risk
+if any of the URLs you schedule come from an untrusted source: a crafted
+<code class="docutils literal notranslate"><span class="pre">file:///etc/passwd</span></code> URL could read local files.</p>
+<p>If you do not need them, disable these handlers:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DOWNLOAD_HANDLERS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;file&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Pro:</strong> crawled URLs cannot be used to read local files or inline data.</p></li>
+<li><p><strong>Con:</strong> you can no longer fetch <code class="docutils literal notranslate"><span class="pre">file://</span></code> or <code class="docutils literal notranslate"><span class="pre">data:</span></code> URLs.</p></li>
+</ul>
+<p>More generally, if you crawl URLs from untrusted sources, consider validating
+their schemes (and, where applicable, their hosts) before scheduling requests,
+to avoid server-side request forgery (SSRF) and similar issues.</p>
+</section>
+<section id="telnet-console">
+<span id="security-telnet"></span><h2>Telnet console<a class="headerlink" href="#telnet-console" title="連結到這個標頭"></a></h2>
+<p>Scrapy enables the <a class="reference internal" href="telnetconsole.html#topics-telnetconsole"><span class="std std-ref">telnet console</span></a> by default
+(<a class="reference internal" href="settings.html#std-setting-TELNETCONSOLE_ENABLED"><code class="xref std std-setting docutils literal notranslate"><span class="pre">TELNETCONSOLE_ENABLED</span></code></a>). The telnet console is a Python shell
+running inside the Scrapy process, so anyone who can connect to it can run
+arbitrary code in that process.</p>
+<p>By default the console binds to <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code> (<a class="reference internal" href="telnetconsole.html#std-setting-TELNETCONSOLE_HOST"><code class="xref std std-setting docutils literal notranslate"><span class="pre">TELNETCONSOLE_HOST</span></code></a>)
+and is protected by a username (<a class="reference internal" href="telnetconsole.html#std-setting-TELNETCONSOLE_USERNAME"><code class="xref std std-setting docutils literal notranslate"><span class="pre">TELNETCONSOLE_USERNAME</span></code></a>, default
+<code class="docutils literal notranslate"><span class="pre">scrapy</span></code>) and an automatically generated password
+(<a class="reference internal" href="telnetconsole.html#std-setting-TELNETCONSOLE_PASSWORD"><code class="xref std std-setting docutils literal notranslate"><span class="pre">TELNETCONSOLE_PASSWORD</span></code></a>), so it is only reachable from the local
+machine.</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>Telnet does not provide any transport-layer security, so the
+username/password authentication does not protect the credentials or the
+session from anyone able to observe the traffic. Never expose the telnet
+console over an untrusted network by changing <a class="reference internal" href="telnetconsole.html#std-setting-TELNETCONSOLE_HOST"><code class="xref std std-setting docutils literal notranslate"><span class="pre">TELNETCONSOLE_HOST</span></code></a>
+to a non-local address.</p>
+</div>
+<p>If you do not use the telnet console, disable it entirely:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">TELNETCONSOLE_ENABLED</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Pro:</strong> removes a local code-execution surface and one less listening port.</p></li>
+<li><p><strong>Con:</strong> you can no longer <a class="reference internal" href="telnetconsole.html#topics-telnetconsole"><span class="std std-ref">inspect and control a running crawler</span></a> through it.</p></li>
+</ul>
+</section>
+<section id="credential-leakage-across-domains">
+<span id="security-credential-leakage"></span><h2>Credential leakage across domains<a class="headerlink" href="#credential-leakage-across-domains" title="連結到這個標頭"></a></h2>
+<p>Some Scrapy features attach credentials or other sensitive headers to requests,
+and a crawl that spans multiple domains can leak them to unintended hosts:</p>
+<ul class="simple">
+<li><p>HTTP authentication credentials set through
+<a class="reference internal" href="downloader-middleware.html#scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware" title="scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware"><code class="xref py py-class docutils literal notranslate"><span class="pre">HttpAuthMiddleware</span></code></a> are only
+sent to the domain set in <a class="reference internal" href="downloader-middleware.html#std-setting-HTTPAUTH_DOMAIN"><code class="xref std std-setting docutils literal notranslate"><span class="pre">HTTPAUTH_DOMAIN</span></code></a>. Leave this set to the
+intended domain rather than <code class="docutils literal notranslate"><span class="pre">None</span></code> so that credentials are not sent to
+every domain you crawl.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Referer</span></code> header may disclose the URLs you crawl to other sites. The
+default <a class="reference internal" href="spider-middleware.html#std-setting-REFERRER_POLICY"><code class="xref std std-setting docutils literal notranslate"><span class="pre">REFERRER_POLICY</span></code></a> already avoids sending the referrer from
+HTTPS to HTTP, but you can tighten it further (for example, to
+<code class="docutils literal notranslate"><span class="pre">same-origin</span></code> or <code class="docutils literal notranslate"><span class="pre">no-referrer</span></code>) if needed.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="practices.html" class="btn btn-neutral float-left" title="Common Practices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="broad-crawls.html" class="btn btn-neutral float-right" title="Broad Crawls" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Scrapy developers.
+      <span class="lastupdated">最後更新於 8月 31, 2026。
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
