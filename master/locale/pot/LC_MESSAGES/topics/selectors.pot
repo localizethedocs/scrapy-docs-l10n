@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:53+0000\n"
+"POT-Creation-Date: 2026-08-31 16:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -500,8 +500,7 @@ msgid ""
 "'image5.html']"
 msgstr ""
 
-#: ../../../topics/selectors.rst:356 ../../../topics/selectors.rst:1073
-#: ../../../topics/selectors.rst:1115
+#: ../../../topics/selectors.rst:356 ../../../topics/selectors.rst:1115
 msgid "See also: :ref:`selecting-attributes`."
 msgstr ""
 
@@ -1468,227 +1467,6 @@ msgstr ""
 msgid "Selector objects"
 msgstr ""
 
-#: ../../../../scrapy/selector/unified.py:docstring of
-#: scrapy.selector.unified.Selector:1
-msgid ""
-"An instance of :class:`Selector` is a wrapper over response to select "
-"certain parts of its content."
-msgstr ""
-
-#: ../../../../scrapy/selector/unified.py:docstring of
-#: scrapy.selector.unified.Selector:4
-msgid ""
-"``response`` is an :class:`~scrapy.http.HtmlResponse` or an :class:`~scrapy."
-"http.XmlResponse` object that will be used for selecting and extracting data."
-msgstr ""
-
-#: ../../../../scrapy/selector/unified.py:docstring of
-#: scrapy.selector.unified.Selector:8
-msgid ""
-"``text`` is a unicode string or utf-8 encoded text for cases when a "
-"``response`` isn't available. Using ``text`` and ``response`` together is "
-"undefined behavior."
-msgstr ""
-
-#: ../../../../scrapy/selector/unified.py:docstring of
-#: scrapy.selector.unified.Selector:12
-msgid ""
-"``type`` defines the selector type, it can be ``\"html\"``, ``\"xml\"``, "
-"``\"json\"``, ``\"text\"`` or ``None`` (default). It's passed to :class:"
-"`parsel.Selector` and its meaning is defined there. However, when ``type`` "
-"is ``None``, it is set to ``\"xml\"`` for an :class:`~scrapy.http."
-"XmlResponse` and to ``\"html\"`` otherwise before passing it to :class:"
-"`parsel.Selector`."
-msgstr ""
-
-#: ../../../../scrapy/selector/unified.py:docstring of
-#: scrapy.selector.unified.Selector:19
-msgid ""
-"JSON selector support requires ``parsel`` 1.8.0 or higher. With older "
-"versions setting ``type`` to ``\"json\"`` or ``\"text\"`` is not supported."
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
-#: of parsel.selector.Selector.xpath:1
-msgid ""
-"Find nodes matching the xpath ``query`` and return the result as a :class:"
-"`SelectorList` instance with all elements flattened. List elements "
-"implement :class:`Selector` interface too."
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
-#: of parsel.selector.Selector.xpath:5
-msgid "``query`` is a string containing the XPATH query to apply."
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
-#: of parsel.selector.Selector.xpath:7 parsel.selector.SelectorList.xpath:6
-msgid ""
-"``namespaces`` is an optional ``prefix: namespace-uri`` mapping (dict) for "
-"additional prefixes to those registered with ``register_namespace(prefix, "
-"uri)``. Contrary to ``register_namespace()``, these prefixes are not saved "
-"for future calls."
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
-#: of parsel.selector.Selector.xpath:12 parsel.selector.SelectorList.xpath:11
-msgid ""
-"Any additional named arguments can be used to pass values for XPath "
-"variables in the XPath expression, e.g.::"
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
-#: of parsel.selector.Selector.xpath:15 parsel.selector.SelectorList.xpath:14
-msgid "selector.xpath('//a[href=$url]', url=\"http://www.example.com\")"
-msgstr ""
-
-#: ../../../topics/selectors.rst:1053
-msgid "For convenience, this method can be called as ``response.xpath()``"
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
-#: of parsel.selector.Selector.css:1
-msgid ""
-"Apply the given CSS selector and return a :class:`SelectorList` instance."
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
-#: of parsel.selector.Selector.css:3
-msgid "``query`` is a string containing the CSS selector to apply."
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
-#: of parsel.selector.Selector.css:5
-msgid ""
-"In the background, CSS queries are translated into XPath queries using "
-"`cssselect`_ library and run ``.xpath()`` method."
-msgstr ""
-
-#: ../../../topics/selectors.rst:1059
-msgid "For convenience, this method can be called as ``response.css()``"
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
-#: of parsel.selector.Selector.jmespath:1
-msgid ""
-"Find objects matching the JMESPath ``query`` and return the result as a :"
-"class:`SelectorList` instance with all elements flattened. List elements "
-"implement :class:`Selector` interface too."
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
-#: of parsel.selector.Selector.jmespath:5
-msgid ""
-"``query`` is a string containing the `JMESPath <https://jmespath.org/>`_ "
-"query to apply."
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
-#: of parsel.selector.Selector.jmespath:8
-#: parsel.selector.SelectorList.jmespath:6
-msgid ""
-"Any additional named arguments are passed to the underlying ``jmespath."
-"search`` call, e.g.::"
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
-#: of parsel.selector.Selector.jmespath:11
-#: parsel.selector.SelectorList.jmespath:9
-msgid ""
-"selector.jmespath('author.name', options=jmespath."
-"Options(dict_cls=collections.OrderedDict))"
-msgstr ""
-
-#: ../../../topics/selectors.rst:1065
-msgid "For convenience, this method can be called as ``response.jmespath()``"
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
-#: of parsel.selector.Selector.get:1
-msgid "Serialize and return the matched nodes."
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
-#: of parsel.selector.Selector.get:3
-msgid ""
-"For HTML and XML, the result is always a string, and percent-encoded content "
-"is unquoted."
-msgstr ""
-
-#: ../../../topics/selectors.rst:1069 ../../../topics/selectors.rst:1103
-#: ../../../topics/selectors.rst:1107
-msgid "See also: :ref:`old-extraction-api`"
-msgstr ""
-
-#: ../../../../scrapy/__init__.py:docstring of scrapy.Selector.attrib:1
-msgid ""
-"Return the attributes dictionary for underlying element. For JSON selectors, "
-"return an empty dict."
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
-#: of parsel.selector.Selector.re:1
-msgid "Apply the given regex and return a list of strings with the matches."
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
-#: of parsel.selector.Selector.re:4
-msgid ""
-"``regex`` can be either a compiled regular expression or a string which will "
-"be compiled to a regular expression using ``re.compile(regex)``."
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
-#: of parsel.selector.Selector.re:7 parsel.selector.Selector.re_first:5
-msgid ""
-"By default, character entity references are replaced by their corresponding "
-"character (except for ``&amp;`` and ``&lt;``). Passing ``replace_entities`` "
-"as ``False`` switches off these replacements."
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
-#: of parsel.selector.Selector.re_first:1
-msgid ""
-"Apply the given regex and return the first string which matches. If there is "
-"no match, return the default value (``None`` if the argument is not "
-"provided)."
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
-#: of parsel.selector.Selector.register_namespace:1
-msgid ""
-"Register the given namespace to be used in this :class:`Selector`. Without "
-"registering namespaces you can't select or extract data from non-standard "
-"namespaces. See :ref:`selector-examples-xml`."
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
-#: of parsel.selector.Selector.remove_namespaces:1
-msgid ""
-"Remove all namespaces, allowing to traverse the document using namespace-"
-"less xpaths. See :ref:`removing-namespaces`. For JSON selectors, this method "
-"does nothing."
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
-#: of parsel.selector.Selector.__bool__:1
-msgid ""
-"Return ``True`` if there is any real content selected or ``False`` "
-"otherwise.  In other words, the boolean value of a :class:`Selector` is "
-"given by the contents it selects."
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
-#: of parsel.selector.Selector.getall:1
-msgid "Serialize and return the matched node in a 1-element list of strings."
-msgstr ""
-
-#: ../../../topics/selectors.rst:1087
-msgid ""
-"This method is added to Selector for consistency; it is more useful with "
-"SelectorList. See also: :ref:`old-extraction-api`"
-msgstr ""
-
 #: ../../../topics/selectors.rst:1091
 msgid "SelectorList objects"
 msgstr ""
@@ -1710,6 +1488,27 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
 #: of parsel.selector.SelectorList.xpath:4
 msgid "``xpath`` is the same argument as the one in :meth:`Selector.xpath`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
+#: of parsel.selector.SelectorList.xpath:6
+msgid ""
+"``namespaces`` is an optional ``prefix: namespace-uri`` mapping (dict) for "
+"additional prefixes to those registered with ``register_namespace(prefix, "
+"uri)``. Contrary to ``register_namespace()``, these prefixes are not saved "
+"for future calls."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
+#: of parsel.selector.SelectorList.xpath:11
+msgid ""
+"Any additional named arguments can be used to pass values for XPath "
+"variables in the XPath expression, e.g.::"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
+#: of parsel.selector.SelectorList.xpath:14
+msgid "selector.xpath('//a[href=$url]', url=\"http://www.example.com\")"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
@@ -1737,10 +1536,28 @@ msgid "``query`` is the same argument as the one in :meth:`Selector.jmespath`."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
+#: of parsel.selector.SelectorList.jmespath:6
+msgid ""
+"Any additional named arguments are passed to the underlying ``jmespath."
+"search`` call, e.g.::"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
+#: of parsel.selector.SelectorList.jmespath:9
+msgid ""
+"selector.jmespath('author.name', options=jmespath."
+"Options(dict_cls=collections.OrderedDict))"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring
 #: of parsel.selector.SelectorList.getall:1
 msgid ""
 "Call the ``.get()`` method for each element is this list and return their "
 "results flattened, as a list of strings."
+msgstr ""
+
+#: ../../../topics/selectors.rst:1103 ../../../topics/selectors.rst:1107
+msgid "See also: :ref:`old-extraction-api`"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.12/site-packages/parsel/selector.py:docstring

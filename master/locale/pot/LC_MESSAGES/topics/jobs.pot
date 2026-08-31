@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:53+0000\n"
+"POT-Creation-Date: 2026-08-31 16:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,7 +67,7 @@ msgstr ""
 #: ../../../topics/jobs.rst:31
 msgid ""
 "This directory must *not* be shared by different spiders, or even different "
-"jobs of the same spider."
+"jobs of the same spider. See :ref:`job-dir-spider-name`."
 msgstr ""
 
 #: ../../../topics/jobs.rst:34
@@ -100,10 +100,36 @@ msgid ""
 msgstr ""
 
 #: ../../../topics/jobs.rst:55
-msgid "Keeping persistent state between batches"
+msgid "Deriving the job directory from the spider name"
 msgstr ""
 
 #: ../../../topics/jobs.rst:57
+msgid ""
+"One way to keep job directories apart is to build the path in :meth:`~scrapy."
+"Spider.update_settings`, so that a group of spiders shares the same path "
+"except for the spider name:"
+msgstr ""
+
+#: ../../../topics/jobs.rst:61
+msgid ""
+"from pathlib import Path\n"
+"\n"
+"from scrapy import Spider\n"
+"\n"
+"\n"
+"class BaseSpider(Spider):\n"
+"    @classmethod\n"
+"    def update_settings(cls, settings):\n"
+"        super().update_settings(settings)\n"
+"        settings.set(\"JOBDIR\", str(Path(\"crawls\", cls.name)), "
+"priority=\"spider\")"
+msgstr ""
+
+#: ../../../topics/jobs.rst:78
+msgid "Keeping persistent state between batches"
+msgstr ""
+
+#: ../../../topics/jobs.rst:80
 msgid ""
 "Sometimes you'll want to keep some persistent spider state between pause/"
 "resume batches. You can use the ``spider.state`` attribute for that, which "
@@ -112,34 +138,34 @@ msgid ""
 "attribute from the job directory, when the spider starts and stops."
 msgstr ""
 
-#: ../../../topics/jobs.rst:63
+#: ../../../topics/jobs.rst:86
 msgid ""
 "Here's an example of a callback that uses the spider state (other spider "
 "code is omitted for brevity):"
 msgstr ""
 
-#: ../../../topics/jobs.rst:66
+#: ../../../topics/jobs.rst:89
 msgid ""
 "def parse_item(self, response):\n"
 "    # parse item here\n"
 "    self.state[\"items_count\"] = self.state.get(\"items_count\", 0) + 1"
 msgstr ""
 
-#: ../../../topics/jobs.rst:73
+#: ../../../topics/jobs.rst:96
 msgid "Persistence gotchas"
 msgstr ""
 
-#: ../../../topics/jobs.rst:75
+#: ../../../topics/jobs.rst:98
 msgid ""
 "There are a few things to keep in mind if you want to be able to use the "
 "Scrapy persistence support:"
 msgstr ""
 
-#: ../../../topics/jobs.rst:79
+#: ../../../topics/jobs.rst:102
 msgid "Pause limitations"
 msgstr ""
 
-#: ../../../topics/jobs.rst:81
+#: ../../../topics/jobs.rst:104
 msgid ""
 "Job pausing and resuming is only supported when the spider is paused by "
 "stopping it cleanly. Forced, sudden or otherwise unclean shutdown can lead "
@@ -147,37 +173,55 @@ msgid ""
 "resuming correctly."
 msgstr ""
 
-#: ../../../topics/jobs.rst:87
+#: ../../../topics/jobs.rst:110
+msgid "Scrapy version changes"
+msgstr ""
+
+#: ../../../topics/jobs.rst:112
+msgid ""
+"The contents of a job directory are an implementation detail of the Scrapy "
+"version that wrote them. A job must be resumed with the same Scrapy version "
+"that paused it; after upgrading or downgrading Scrapy, start a new job with "
+"a new job directory."
+msgstr ""
+
+#: ../../../topics/jobs.rst:118
 msgid "Cookies expiration"
 msgstr ""
 
-#: ../../../topics/jobs.rst:89
+#: ../../../topics/jobs.rst:120
 msgid ""
 "Cookies may expire. So, if you don't resume your spider quickly the requests "
 "scheduled may no longer work. This won't be an issue if your spider doesn't "
 "rely on cookies."
 msgstr ""
 
-#: ../../../topics/jobs.rst:96
+#: ../../../topics/jobs.rst:127
 msgid "Request serialization"
 msgstr ""
 
-#: ../../../topics/jobs.rst:98
+#: ../../../topics/jobs.rst:129
 msgid ""
 "For persistence to work, :class:`~scrapy.Request` objects must be "
-"serializable with :mod:`pickle`, except for the ``callback`` and ``errback`` "
-"values passed to their ``__init__`` method, which must be methods of the "
-"running :class:`~scrapy.Spider` class."
+"serializable with :mod:`pickle`, except for the :ref:`callback <callbacks>` "
+"and :ref:`errback <errbacks>` values passed to their ``__init__`` method, "
+"which must be methods of the running :class:`~scrapy.Spider` class."
 msgstr ""
 
-#: ../../../topics/jobs.rst:103
+#: ../../../topics/jobs.rst:135
+msgid ""
+"Requests that cannot be serialized are kept in memory only: they are still "
+"sent, but they are lost when the crawl is paused."
+msgstr ""
+
+#: ../../../topics/jobs.rst:138
 msgid ""
 "If you wish to log the requests that couldn't be serialized, you can set "
 "the :setting:`SCHEDULER_DEBUG` setting to ``True`` in the project's settings "
 "page. It is ``False`` by default."
 msgstr ""
 
-#: ../../../topics/jobs.rst:107
+#: ../../../topics/jobs.rst:142
 msgid ""
 "Because requests are serialized with :mod:`pickle`, the objects you store on "
 "a request, such as the values of its :attr:`~scrapy.Request.cb_kwargs` and :"
@@ -189,11 +233,11 @@ msgid ""
 "``meta``."
 msgstr ""
 
-#: ../../../topics/jobs.rst:119
+#: ../../../topics/jobs.rst:154
 msgid "Job directory contents"
 msgstr ""
 
-#: ../../../topics/jobs.rst:121
+#: ../../../topics/jobs.rst:156
 msgid ""
 "The contents of a job directory depend on the components used during the "
 "job. Components known to write in the job directory include the :ref:"
@@ -202,12 +246,12 @@ msgid ""
 "corresponding components for details."
 msgstr ""
 
-#: ../../../topics/jobs.rst:127
+#: ../../../topics/jobs.rst:162
 msgid ""
 "For example, with default settings, the job directory may look like this:"
 msgstr ""
 
-#: ../../../topics/jobs.rst:129
+#: ../../../topics/jobs.rst:164
 msgid ""
 "├── requests.queue\n"
 "|   ├── active.json\n"
@@ -219,11 +263,11 @@ msgid ""
 "└── spider.state"
 msgstr ""
 
-#: ../../../topics/jobs.rst:140
+#: ../../../topics/jobs.rst:175
 msgid "Where:"
 msgstr ""
 
-#: ../../../topics/jobs.rst:142
+#: ../../../topics/jobs.rst:177
 msgid ""
 ":class:`~scrapy.core.scheduler.Scheduler` creates the ``requests.queue/`` "
 "directory and the ``active.json`` file, the latter containing the state data "
@@ -231,19 +275,19 @@ msgid ""
 "DownloaderAwarePriorityQueue.close>` the last time the job was paused."
 msgstr ""
 
-#: ../../../topics/jobs.rst:148
+#: ../../../topics/jobs.rst:183
 msgid ""
 ":class:`~scrapy.pqueues.DownloaderAwarePriorityQueue` creates the "
 "``{hostname}-{hash}`` directories."
 msgstr ""
 
-#: ../../../topics/jobs.rst:151
+#: ../../../topics/jobs.rst:186
 msgid ""
 ":class:`~scrapy.pqueues.ScrapyPriorityQueue` creates the ``{priority}{s?}`` "
 "directories."
 msgstr ""
 
-#: ../../../topics/jobs.rst:154
+#: ../../../topics/jobs.rst:189
 msgid ""
 ":class:`scrapy.squeues.PickleFifoDiskQueue`, a subclass of :class:`queuelib."
 "FifoDiskQueue` that uses :mod:`pickle` to serialize :class:`dict` "
@@ -251,13 +295,13 @@ msgid ""
 "json`` and ``q{00000}`` files."
 msgstr ""
 
-#: ../../../topics/jobs.rst:159
+#: ../../../topics/jobs.rst:194
 msgid ""
 ":class:`~scrapy.dupefilters.RFPDupeFilter` creates the ``requests.seen`` "
 "file."
 msgstr ""
 
-#: ../../../topics/jobs.rst:162
+#: ../../../topics/jobs.rst:197
 msgid ""
 ":class:`~scrapy.extensions.spiderstate.SpiderState` creates the ``spider."
 "state`` file."

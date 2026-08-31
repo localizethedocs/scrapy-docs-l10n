@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:53+0000\n"
+"POT-Creation-Date: 2026-08-31 16:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -621,6 +621,18 @@ msgid "Scrapy provides unified helpers for some of these examples:"
 msgstr ""
 
 #: ../../../../scrapy/utils/asyncio.py:docstring of
+#: scrapy.utils.asyncio.sleep:1
+msgid "Sleep for *seconds*."
+msgstr ""
+
+#: ../../../../scrapy/utils/asyncio.py:docstring of
+#: scrapy.utils.asyncio.sleep:5
+msgid ""
+"This uses either :func:`asyncio.sleep` or :func:`~twisted.internet.task."
+"deferLater`, depending on whether asyncio support is available."
+msgstr ""
+
+#: ../../../../scrapy/utils/asyncio.py:docstring of
 #: scrapy.utils.asyncio.call_later:1
 msgid "Schedule a function to be called after a delay."
 msgstr ""
@@ -678,7 +690,7 @@ msgid ""
 "threads.deferToThread`, depending on whether asyncio support is available."
 msgstr ""
 
-#: ../../../topics/asyncio.rst:275
+#: ../../../topics/asyncio.rst:276
 msgid ""
 "If your code needs to know whether the reactor is available, you can either "
 "check for the value of the :setting:`TWISTED_REACTOR_ENABLED` setting (you "
@@ -709,7 +721,7 @@ msgid ""
 "that one."
 msgstr ""
 
-#: ../../../topics/asyncio.rst:282
+#: ../../../topics/asyncio.rst:283
 msgid ""
 "In general, code that doesn't use the reactor (directly or indirectly) can "
 "be used unmodified both with the asyncio reactor and without a reactor. This "
@@ -717,11 +729,11 @@ msgid ""
 "in :ref:`asyncio-await-dfd`."
 msgstr ""
 
-#: ../../../topics/asyncio.rst:288
+#: ../../../topics/asyncio.rst:289
 msgid "Troubleshooting"
 msgstr ""
 
-#: ../../../topics/asyncio.rst:290
+#: ../../../topics/asyncio.rst:291
 msgid ""
 "**ImportError: Import of twisted.internet.reactor is forbidden when running "
 "without a Twisted reactor [...]:** Scrapy is configured to run without a "
@@ -733,7 +745,7 @@ msgid ""
 "should be enough to fix the problematic imports."
 msgstr ""
 
-#: ../../../topics/asyncio.rst:299
+#: ../../../topics/asyncio.rst:300
 msgid ""
 "**RuntimeError: TWISTED_REACTOR_ENABLED is False but a Twisted reactor is "
 "installed:** Scrapy is configured to run without a reactor, but a reactor is "
@@ -742,7 +754,7 @@ msgid ""
 "settings>`, it's currently unsupported."
 msgstr ""
 
-#: ../../../topics/asyncio.rst:305
+#: ../../../topics/asyncio.rst:306
 msgid ""
 "**RuntimeError: We expected a Twisted reactor to be installed but it isn't:"
 "** Scrapy is configured to run with a reactor and not to install one, but a "
@@ -751,7 +763,7 @@ msgid ""
 "settings <spider-settings>`, it's currently unsupported."
 msgstr ""
 
-#: ../../../topics/asyncio.rst:311
+#: ../../../topics/asyncio.rst:312
 msgid ""
 "**RuntimeError: <class> doesn't support TWISTED_REACTOR_ENABLED=False:** The "
 "listed class cannot be used with :setting:`TWISTED_REACTOR_ENABLED` set to "
@@ -759,11 +771,11 @@ msgid ""
 "<asyncio-without-reactor>` or the documentation of the affected class."
 msgstr ""
 
-#: ../../../topics/asyncio.rst:320
+#: ../../../topics/asyncio.rst:321
 msgid "Windows-specific notes"
 msgstr ""
 
-#: ../../../topics/asyncio.rst:322
+#: ../../../topics/asyncio.rst:323
 msgid ""
 "The Windows implementation of :mod:`asyncio` can use two event loop "
 "implementations, :class:`~asyncio.ProactorEventLoop` (default) and :class:"
@@ -771,13 +783,13 @@ msgid ""
 "SelectorEventLoop` works with Twisted."
 msgstr ""
 
-#: ../../../topics/asyncio.rst:327
+#: ../../../topics/asyncio.rst:328
 msgid ""
 "Scrapy changes the event loop class to :class:`~asyncio.SelectorEventLoop` "
 "automatically when installing the asyncio reactor."
 msgstr ""
 
-#: ../../../topics/asyncio.rst:330
+#: ../../../topics/asyncio.rst:331
 msgid ""
 "Other libraries you use may require :class:`~asyncio.ProactorEventLoop`, e."
 "g. because it supports subprocesses (this is the case with `playwright`_), "
@@ -785,28 +797,28 @@ msgid ""
 "able to use them on WSL or native Linux)."
 msgstr ""
 
-#: ../../../topics/asyncio.rst:336
+#: ../../../topics/asyncio.rst:337
 msgid ""
 "This problem doesn't apply when not using the reactor, see :ref:`asyncio-"
 "without-reactor`."
 msgstr ""
 
-#: ../../../topics/asyncio.rst:345
+#: ../../../topics/asyncio.rst:346
 msgid "Using custom asyncio loops"
 msgstr ""
 
-#: ../../../topics/asyncio.rst:347
+#: ../../../topics/asyncio.rst:348
 msgid ""
 "You can also use custom asyncio event loops with the asyncio reactor. Set "
 "the :setting:`ASYNCIO_EVENT_LOOP` setting to the import path of the desired "
 "event loop class to use it instead of the default asyncio event loop."
 msgstr ""
 
-#: ../../../topics/asyncio.rst:355
+#: ../../../topics/asyncio.rst:356
 msgid "Switching to a non-asyncio reactor"
 msgstr ""
 
-#: ../../../topics/asyncio.rst:357
+#: ../../../topics/asyncio.rst:358
 msgid ""
 "If for some reason your code doesn't work with the asyncio reactor, you can "
 "use a different reactor by setting the :setting:`TWISTED_REACTOR` setting to "

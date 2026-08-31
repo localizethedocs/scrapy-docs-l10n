@@ -37,9 +37,9 @@
     "branch" : "master",
     "commit" : 
     {
-      "date" : "2026-07-27 12:19:12 +0200",
-      "hash" : "cec86f216e02072b2e9ed5b032810e061143277c",
-      "title" : "Remove remaining cross-imports in test modules. (#7782)"
+      "date" : "2026-08-28 14:53:18 +0500",
+      "hash" : "53eb8d60bcd0160633f6513478f958ed5a457363",
+      "title" : "Expose the scheduler as a public engine property (#8099)"
     }
   },
   "type" : "branch",

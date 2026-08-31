@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:53+0000\n"
+"POT-Creation-Date: 2026-08-31 16:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,32 +25,33 @@ msgstr ""
 msgid ""
 "The downloader middleware is a framework of hooks into Scrapy's request/"
 "response processing.  It's a light, low-level system for globally altering "
-"Scrapy's requests and responses."
+"Scrapy's requests and responses at the HTTP level. See :ref:`concepts` for a "
+"rundown of other alternatives."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:14
+#: ../../../topics/downloader-middleware.rst:15
 msgid "Activating a downloader middleware"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:16
+#: ../../../topics/downloader-middleware.rst:17
 msgid ""
 "To activate a downloader middleware component, add it to the :setting:"
 "`DOWNLOADER_MIDDLEWARES` setting, which is a dict whose keys are the "
 "middleware class paths and their values are the middleware orders."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:20
+#: ../../../topics/downloader-middleware.rst:21
 msgid "Here's an example:"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:22
+#: ../../../topics/downloader-middleware.rst:23
 msgid ""
 "DOWNLOADER_MIDDLEWARES = {\n"
 "    \"myproject.middlewares.CustomDownloaderMiddleware\": 543,\n"
 "}"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:28
+#: ../../../topics/downloader-middleware.rst:29
 msgid ""
 "The :setting:`DOWNLOADER_MIDDLEWARES` setting is merged with the :setting:"
 "`DOWNLOADER_MIDDLEWARES_BASE` setting defined in Scrapy (and not meant to be "
@@ -64,7 +65,7 @@ msgid ""
 "order."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:38
+#: ../../../topics/downloader-middleware.rst:39
 msgid ""
 "To decide which order to assign to your middleware see the :setting:"
 "`DOWNLOADER_MIDDLEWARES_BASE` setting and pick a value according to where "
@@ -73,7 +74,7 @@ msgid ""
 "some previous (or subsequent) middleware being applied."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:44
+#: ../../../topics/downloader-middleware.rst:45
 msgid ""
 "If you want to disable a built-in middleware (the ones defined in :setting:"
 "`DOWNLOADER_MIDDLEWARES_BASE` and enabled by default) you must define it in "
@@ -81,7 +82,7 @@ msgid ""
 "as its value.  For example, if you want to disable the user-agent middleware:"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:49
+#: ../../../topics/downloader-middleware.rst:50
 msgid ""
 "DOWNLOADER_MIDDLEWARES = {\n"
 "    \"myproject.middlewares.CustomDownloaderMiddleware\": 543,\n"
@@ -89,49 +90,49 @@ msgid ""
 "}"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:56
+#: ../../../topics/downloader-middleware.rst:57
 msgid ""
 "Finally, keep in mind that some middlewares may need to be enabled through a "
 "particular setting. See each middleware documentation for more info."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:62
+#: ../../../topics/downloader-middleware.rst:63
 msgid "Writing your own downloader middleware"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:64
+#: ../../../topics/downloader-middleware.rst:65
 msgid ""
 "Each downloader middleware is a :ref:`component <topics-components>` that "
 "defines one or more of these methods:"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:71
+#: ../../../topics/downloader-middleware.rst:72
 msgid ""
 "Any of the downloader middleware methods may be defined as a coroutine "
 "function (``async def``)."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:76
+#: ../../../topics/downloader-middleware.rst:77
 msgid ""
 "This method is called for each request that goes through the download "
 "middleware."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:79
+#: ../../../topics/downloader-middleware.rst:80
 msgid ""
 ":meth:`process_request` should either: return ``None``, return a :class:"
 "`~scrapy.http.Response` object, return a :class:`~scrapy.Request` object, or "
 "raise :exc:`~scrapy.exceptions.IgnoreRequest`."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:83
+#: ../../../topics/downloader-middleware.rst:84
 msgid ""
 "If it returns ``None``, Scrapy will continue processing this request, "
 "executing all other middlewares until, finally, the appropriate downloader "
 "handler is called the request performed (and its response downloaded)."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:87
+#: ../../../topics/downloader-middleware.rst:88
 msgid ""
 "If it returns a :class:`~scrapy.http.Response` object, Scrapy won't bother "
 "calling *any* other :meth:`process_request` or :meth:`process_exception` "
@@ -140,7 +141,7 @@ msgid ""
 "called on every response."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:92
+#: ../../../topics/downloader-middleware.rst:93
 msgid ""
 "If it returns a :class:`~scrapy.Request` object, Scrapy will stop calling :"
 "meth:`process_request` methods and reschedule the returned request. Once the "
@@ -148,7 +149,7 @@ msgid ""
 "be called on the downloaded response."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:97
+#: ../../../topics/downloader-middleware.rst:98
 msgid ""
 "If it raises an :exc:`~scrapy.exceptions.IgnoreRequest` exception, the :meth:"
 "`process_exception` methods of installed downloader middleware will be "
@@ -161,25 +162,25 @@ msgstr ""
 msgid "Parameters"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:103
+#: ../../../topics/downloader-middleware.rst:104
 msgid "the request being processed"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:108
+#: ../../../topics/downloader-middleware.rst:109
 msgid ""
 ":meth:`process_response` should either: return a :class:`~scrapy.http."
 "Response` object, return a :class:`~scrapy.Request` object or raise a :exc:"
 "`~scrapy.exceptions.IgnoreRequest` exception."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:112
+#: ../../../topics/downloader-middleware.rst:113
 msgid ""
 "If it returns a :class:`~scrapy.http.Response` (it could be the same given "
 "response, or a brand-new one), that response will continue to be processed "
 "with the :meth:`process_response` of the next middleware in the chain."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:116
+#: ../../../topics/downloader-middleware.rst:117
 msgid ""
 "If it returns a :class:`~scrapy.Request` object, the middleware chain is "
 "halted and the returned request is rescheduled to be downloaded in the "
@@ -187,7 +188,7 @@ msgid ""
 "`process_request`."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:120
+#: ../../../topics/downloader-middleware.rst:121
 msgid ""
 "If it raises an :exc:`~scrapy.exceptions.IgnoreRequest` exception, the "
 "errback function of the request (``Request.errback``) is called. If no code "
@@ -195,15 +196,15 @@ msgid ""
 "exceptions)."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:124
+#: ../../../topics/downloader-middleware.rst:125
 msgid "the request that originated the response"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:127
+#: ../../../topics/downloader-middleware.rst:128
 msgid "the response being processed"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:132
+#: ../../../topics/downloader-middleware.rst:133
 msgid ""
 "Scrapy calls :meth:`process_exception` when a :ref:`download handler <topics-"
 "download-handlers>` or a :meth:`process_request` (from a downloader "
@@ -211,13 +212,13 @@ msgid ""
 "IgnoreRequest` exception)."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:137
+#: ../../../topics/downloader-middleware.rst:138
 msgid ""
 ":meth:`process_exception` should return: either ``None``, a :class:`~scrapy."
 "http.Response` object, or a :class:`~scrapy.Request` object."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:140
+#: ../../../topics/downloader-middleware.rst:141
 msgid ""
 "If it returns ``None``, Scrapy will continue processing this exception, "
 "executing any other :meth:`process_exception` methods of installed "
@@ -225,7 +226,7 @@ msgid ""
 "kicks in."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:144
+#: ../../../topics/downloader-middleware.rst:145
 msgid ""
 "If it returns a :class:`~scrapy.http.Response` object, the :meth:"
 "`process_response` method chain of installed middleware is started, and "
@@ -233,7 +234,7 @@ msgid ""
 "middleware."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:148
+#: ../../../topics/downloader-middleware.rst:149
 msgid ""
 "If it returns a :class:`~scrapy.Request` object, the returned request is "
 "rescheduled to be downloaded in the future. This stops the execution of :"
@@ -241,19 +242,87 @@ msgid ""
 "response would."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:153
+#: ../../../topics/downloader-middleware.rst:154
 msgid "the request that generated the exception"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:156
+#: ../../../topics/downloader-middleware.rst:157
 msgid "the raised exception"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:162
+#: ../../../topics/downloader-middleware.rst:163
+msgid "Downloading a request from a downloader middleware"
+msgstr ""
+
+#: ../../../topics/downloader-middleware.rst:165
+msgid ""
+"A downloader middleware can download a request of its own while it processes "
+"another one, e.g. to fetch something that the request it is processing "
+"needs. The built-in :ref:`robots.txt middleware <topics-dlmw-robots>` does "
+"that: it holds each request while it downloads the ``robots.txt`` file of "
+"its website."
+msgstr ""
+
+#: ../../../topics/downloader-middleware.rst:170
+msgid ""
+"Use :meth:`crawler.engine.download_async() <scrapy.core.engine."
+"ExecutionEngine.download_async>` for that:"
+msgstr ""
+
+#: ../../../topics/downloader-middleware.rst:173
+msgid ""
+"from scrapy import Request\n"
+"from scrapy.http.request import NO_CALLBACK\n"
+"\n"
+"\n"
+"class TokenMiddleware:\n"
+"    def __init__(self, crawler):\n"
+"        self.crawler = crawler\n"
+"        self.token = None\n"
+"\n"
+"    @classmethod\n"
+"    def from_crawler(cls, crawler):\n"
+"        return cls(crawler)\n"
+"\n"
+"    async def process_request(self, request):\n"
+"        if request.meta.get(\"dont_obey_robotstxt\"):\n"
+"            return\n"
+"        if self.token is None:\n"
+"            response = await self.crawler.engine.download_async(\n"
+"                Request(\n"
+"                    \"https://example.com/token\",\n"
+"                    callback=NO_CALLBACK,\n"
+"                    meta={\"dont_obey_robotstxt\": True},\n"
+"                )\n"
+"            )\n"
+"            self.token = response.text\n"
+"        request.headers[\"Authorization\"] = self.token"
+msgstr ""
+
+#: ../../../topics/downloader-middleware.rst:202
+msgid ""
+"Requests that you download this way go through the downloader middleware "
+"chain as well, including your own middleware and the :ref:`robots.txt "
+"middleware <topics-dlmw-robots>`, which holds a request until the ``robots."
+"txt`` file of its website arrives. Be careful not to introduce deadlocks: a "
+"request that you download must not end up waiting for the request that is "
+"waiting for it. Hence :reqmeta:`dont_obey_robotstxt` above, which makes both "
+"middlewares let the token request through."
+msgstr ""
+
+#: ../../../topics/downloader-middleware.rst:210
+msgid ""
+"While the first token response is in transit, ``process_request`` runs for "
+"other requests as well, and the middleware above downloads a token for each "
+"of them. Cache the task that downloads the token, and not only its result, "
+"to download the token only once."
+msgstr ""
+
+#: ../../../topics/downloader-middleware.rst:218
 msgid "Built-in downloader middleware reference"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:164
+#: ../../../topics/downloader-middleware.rst:220
 msgid ""
 "This page describes all downloader middleware components that come with "
 "Scrapy. For information on how to use them and how to write your own "
@@ -261,202 +330,58 @@ msgid ""
 "<topics-downloader-middleware>`."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:169
+#: ../../../topics/downloader-middleware.rst:225
 msgid ""
 "For a list of the components enabled by default (and their orders) see the :"
 "setting:`DOWNLOADER_MIDDLEWARES_BASE` setting."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:175
+#: ../../../topics/downloader-middleware.rst:229
 msgid "CookiesMiddleware"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:182
-msgid ""
-"This middleware enables working with sites that require cookies, such as "
-"those that use sessions. It keeps track of cookies sent by web servers, and "
-"sends them back on subsequent requests (from that spider), just like web "
-"browsers do."
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:187
-msgid ""
-"When non-UTF8 encoded byte sequences are passed to a :class:`~scrapy."
-"Request`, the ``CookiesMiddleware`` will log a warning. Refer to :ref:"
-"`topics-logging-advanced-customization` to customize the logging behaviour."
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:192
-msgid ""
-"Cookies set via the ``Cookie`` header are not considered by the :ref:"
-"`cookies-mw`. If you need to set cookies for a request, use the :class:"
-"`Request.cookies <scrapy.Request>` parameter. This is a known current "
-"limitation that is being worked on."
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:197
-msgid "The following settings can be used to configure the cookie middleware:"
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:199
-msgid ":setting:`COOKIES_ENABLED`"
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:200
-msgid ":setting:`COOKIES_DEBUG`"
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:205
-msgid "Multiple cookie sessions per spider"
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:207
-msgid ""
-"There is support for keeping multiple cookie sessions per spider by using "
-"the :reqmeta:`cookiejar` Request meta key. By default it uses a single "
-"cookie jar (session), but you can pass an identifier to use different ones."
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:211
-msgid "For example:"
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:214
-msgid ""
-"for i, url in enumerate(urls):\n"
-"    yield scrapy.Request(url, meta={\"cookiejar\": i}, callback=self."
-"parse_page)"
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:219
-msgid ""
-"Keep in mind that the :reqmeta:`cookiejar` meta key is not \"sticky\". You "
-"need to keep passing it along on subsequent requests. For example:"
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:222
-msgid ""
-"def parse_page(self, response):\n"
-"    # do some processing\n"
-"    return scrapy.Request(\n"
-"        \"http://www.example.com/otherpage\",\n"
-"        meta={\"cookiejar\": response.meta[\"cookiejar\"]},\n"
-"        callback=self.parse_other_page,\n"
-"    )"
+#: ../../../topics/downloader-middleware.rst:231
+msgid "See :ref:`cookies`."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:235
-msgid "COOKIES_ENABLED"
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:237
-#: ../../../topics/downloader-middleware.rst:759
-#: ../../../topics/downloader-middleware.rst:821
-#: ../../../topics/downloader-middleware.rst:938
-#: ../../../topics/downloader-middleware.rst:979
-#: ../../../topics/downloader-middleware.rst:1036
-msgid "Default: ``True``"
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:239
-msgid ""
-"Whether to enable the cookies middleware. If disabled, no cookies will be "
-"sent to web servers."
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:242
-msgid ""
-"Notice that despite the value of :setting:`COOKIES_ENABLED` setting if "
-"``Request.``:reqmeta:`meta['dont_merge_cookies'] <dont_merge_cookies>` "
-"evaluates to ``True`` the request cookies will **not** be sent to the web "
-"server and received cookies in :class:`~scrapy.http.Response` will **not** "
-"be merged with the existing cookies."
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:248
-msgid ""
-"For more detailed information see the ``cookies`` parameter in :class:"
-"`~scrapy.Request`."
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:254
-msgid "COOKIES_DEBUG"
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:256
-#: ../../../topics/downloader-middleware.rst:602
-#: ../../../topics/downloader-middleware.rst:643
-#: ../../../topics/downloader-middleware.rst:689
-#: ../../../topics/downloader-middleware.rst:699
-msgid "Default: ``False``"
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:258
-msgid ""
-"If enabled, Scrapy will log all cookies sent in requests (i.e. ``Cookie`` "
-"header) and all cookies received in responses (i.e. ``Set-Cookie`` header)."
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:261
-msgid "Here's an example of a log with :setting:`COOKIES_DEBUG` enabled::"
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:263
-msgid ""
-"2011-04-06 14:35:10-0300 [scrapy.core.engine] INFO: Spider opened\n"
-"2011-04-06 14:35:10-0300 [scrapy.downloadermiddlewares.cookies] DEBUG: "
-"Sending cookies to: <GET http://www.diningcity.com/netherlands/index.html>\n"
-"        Cookie: clientlanguage_nl=en_EN\n"
-"2011-04-06 14:35:14-0300 [scrapy.downloadermiddlewares.cookies] DEBUG: "
-"Received cookies from: <200 http://www.diningcity.com/netherlands/index."
-"html>\n"
-"        Set-Cookie: JSESSIONID=B~FA4DC0C496C8762AE4F1A620EAB34F38; Path=/\n"
-"        Set-Cookie: ip_isocode=US\n"
-"        Set-Cookie: clientlanguage_nl=en_EN; Expires=Thu, 07-Apr-2011 "
-"21:21:34 GMT; Path=/\n"
-"2011-04-06 14:49:50-0300 [scrapy.core.engine] DEBUG: Crawled (200) <GET "
-"http://www.diningcity.com/netherlands/index.html> (referer: None)\n"
-"[...]"
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:275
 msgid "DefaultHeadersMiddleware"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:282
+#: ../../../topics/downloader-middleware.rst:242
 msgid ""
 "This middleware sets all default requests headers specified in the :setting:"
 "`DEFAULT_REQUEST_HEADERS` setting."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:286
+#: ../../../topics/downloader-middleware.rst:246
 msgid "DownloadTimeoutMiddleware"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:293
+#: ../../../topics/downloader-middleware.rst:253
 msgid ""
 "This middleware sets the download timeout for requests specified in the :"
 "setting:`DOWNLOAD_TIMEOUT` setting."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:298
+#: ../../../topics/downloader-middleware.rst:258
 msgid ""
 "You can also set download timeout per-request using the :reqmeta:"
 "`download_timeout` :attr:`.Request.meta` key; this is supported even when "
 "DownloadTimeoutMiddleware is disabled."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:303
+#: ../../../topics/downloader-middleware.rst:263
 msgid "HttpAuthMiddleware"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:310
+#: ../../../topics/downloader-middleware.rst:270
 msgid ""
 "This middleware authenticates requests using `Basic access authentication`_ "
 "(aka. HTTP auth)."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:313
+#: ../../../topics/downloader-middleware.rst:273
 msgid ""
 "Use the :setting:`HTTPAUTH_USER`, :setting:`HTTPAUTH_PASS`, and :setting:"
 "`HTTPAUTH_DOMAIN` settings to configure it. You can also override the "
@@ -464,12 +389,12 @@ msgid ""
 "`http_user`, :reqmeta:`http_pass`, and :reqmeta:`http_auth_domain`."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:318
+#: ../../../topics/downloader-middleware.rst:278
 msgid ""
 "Example using settings (e.g. in :attr:`~scrapy.Spider.custom_settings`):"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:320
+#: ../../../topics/downloader-middleware.rst:280
 msgid ""
 "from scrapy.spiders import CrawlSpider\n"
 "\n"
@@ -485,11 +410,11 @@ msgid ""
 "    # .. rest of the spider code omitted ..."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:335
+#: ../../../topics/downloader-middleware.rst:295
 msgid "Example using per-request meta:"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:337
+#: ../../../topics/downloader-middleware.rst:297
 msgid ""
 "async def start(self):\n"
 "    yield Request(\n"
@@ -502,112 +427,112 @@ msgid ""
 "    )"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:352
+#: ../../../topics/downloader-middleware.rst:312
 msgid "HTTPAUTH_USER"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:356
-#: ../../../topics/downloader-middleware.rst:368
+#: ../../../topics/downloader-middleware.rst:316
+#: ../../../topics/downloader-middleware.rst:328
 msgid "Default: ``\"\"``"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:358
+#: ../../../topics/downloader-middleware.rst:318
 msgid ""
 "The username to use for HTTP basic authentication, applied to all requests "
 "whose URL matches :setting:`HTTPAUTH_DOMAIN`."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:364
+#: ../../../topics/downloader-middleware.rst:324
 msgid "HTTPAUTH_PASS"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:370
+#: ../../../topics/downloader-middleware.rst:330
 msgid "The password to use for HTTP basic authentication."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:375
+#: ../../../topics/downloader-middleware.rst:335
 msgid "HTTPAUTH_DOMAIN"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:379
+#: ../../../topics/downloader-middleware.rst:339
 msgid "Default: ``None``"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:381
+#: ../../../topics/downloader-middleware.rst:341
 msgid ""
 "The domain (and its subdomains) to which HTTP basic authentication "
 "credentials are sent. Set to ``None`` to send credentials with all requests, "
 "but be aware that this risks leaking credentials to unrelated domains."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:385
+#: ../../../topics/downloader-middleware.rst:345
 msgid ""
 "This setting must be explicitly configured whenever :setting:`HTTPAUTH_USER` "
 "or :setting:`HTTPAUTH_PASS` is set."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:388
+#: ../../../topics/downloader-middleware.rst:348
 msgid ":ref:`security-credential-leakage`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:394
+#: ../../../topics/downloader-middleware.rst:354
 msgid "HttpCacheMiddleware"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:401
+#: ../../../topics/downloader-middleware.rst:361
 msgid ""
 "This middleware provides low-level cache to all HTTP requests and responses. "
 "It has to be combined with a cache storage backend as well as a cache policy."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:404
+#: ../../../topics/downloader-middleware.rst:364
 msgid "Scrapy ships with the following HTTP cache storage backends:"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:406
+#: ../../../topics/downloader-middleware.rst:366
 msgid ":ref:`httpcache-storage-fs`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:407
+#: ../../../topics/downloader-middleware.rst:367
 msgid ":ref:`httpcache-storage-dbm`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:409
+#: ../../../topics/downloader-middleware.rst:369
 msgid ""
 "You can change the HTTP cache storage backend with the :setting:"
 "`HTTPCACHE_STORAGE` setting. Or you can also :ref:`implement your own "
 "storage backend. <httpcache-storage-custom>`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:412
+#: ../../../topics/downloader-middleware.rst:372
 msgid "Scrapy ships with two HTTP cache policies:"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:414
+#: ../../../topics/downloader-middleware.rst:374
 msgid ":ref:`httpcache-policy-rfc2616`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:415
+#: ../../../topics/downloader-middleware.rst:375
 msgid ":ref:`httpcache-policy-dummy`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:417
+#: ../../../topics/downloader-middleware.rst:377
 msgid ""
 "You can change the HTTP cache policy with the :setting:`HTTPCACHE_POLICY` "
 "setting. Or you can also implement your own policy."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:422
+#: ../../../topics/downloader-middleware.rst:382
 msgid ""
 "You can also avoid caching a response on every policy using :reqmeta:"
 "`dont_cache` meta key equals ``True``."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:430
+#: ../../../topics/downloader-middleware.rst:390
 msgid "Dummy policy (default)"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:434
+#: ../../../topics/downloader-middleware.rst:394
 msgid ""
 "This policy has no awareness of any HTTP Cache-Control directives. Every "
 "request and its corresponding response are cached.  When the same request is "
@@ -615,7 +540,7 @@ msgid ""
 "Internet."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:439
+#: ../../../topics/downloader-middleware.rst:399
 msgid ""
 "The Dummy policy is useful for testing spiders faster (without having to "
 "wait for downloads every time) and for trying your spider offline, when an "
@@ -623,161 +548,161 @@ msgid ""
 "spider run *exactly as it ran before*."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:448
+#: ../../../topics/downloader-middleware.rst:408
 msgid "RFC2616 policy"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:452
+#: ../../../topics/downloader-middleware.rst:412
 msgid ""
 "This policy provides a RFC2616 compliant HTTP cache, i.e. with HTTP Cache-"
 "Control awareness, aimed at production and used in continuous runs to avoid "
 "downloading unmodified data (to save bandwidth and speed up crawls)."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:457
+#: ../../../topics/downloader-middleware.rst:417
 msgid "What is implemented:"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:459
+#: ../../../topics/downloader-middleware.rst:419
 msgid ""
 "Do not attempt to store responses/requests with ``no-store`` cache-control "
 "directive set"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:460
+#: ../../../topics/downloader-middleware.rst:420
 msgid ""
 "Do not serve responses from cache if ``no-cache`` cache-control directive is "
 "set even for fresh responses"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:461
+#: ../../../topics/downloader-middleware.rst:421
 msgid "Compute freshness lifetime from ``max-age`` cache-control directive"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:462
+#: ../../../topics/downloader-middleware.rst:422
 msgid "Compute freshness lifetime from ``Expires`` response header"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:463
+#: ../../../topics/downloader-middleware.rst:423
 msgid ""
 "Compute freshness lifetime from ``Last-Modified`` response header (heuristic "
 "used by Firefox)"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:464
+#: ../../../topics/downloader-middleware.rst:424
 msgid "Compute current age from ``Age`` response header"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:465
+#: ../../../topics/downloader-middleware.rst:425
 msgid "Compute current age from ``Date`` header"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:466
+#: ../../../topics/downloader-middleware.rst:426
 msgid "Revalidate stale responses based on ``Last-Modified`` response header"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:467
+#: ../../../topics/downloader-middleware.rst:427
 msgid "Revalidate stale responses based on ``ETag`` response header"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:468
+#: ../../../topics/downloader-middleware.rst:428
 msgid "Set ``Date`` header for any received response missing it"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:469
+#: ../../../topics/downloader-middleware.rst:429
 msgid "Support ``max-stale`` cache-control directive in requests"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:471
+#: ../../../topics/downloader-middleware.rst:431
 msgid ""
 "This allows spiders to be configured with the full RFC2616 cache policy, but "
 "avoid revalidation on a request-by-request basis, while remaining conformant "
 "with the HTTP spec."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:475
+#: ../../../topics/downloader-middleware.rst:435
 msgid "Example:"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:477
+#: ../../../topics/downloader-middleware.rst:437
 msgid ""
 "Add ``Cache-Control: max-stale=600`` to Request headers to accept responses "
 "that have exceeded their expiration time by no more than 600 seconds."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:480
+#: ../../../topics/downloader-middleware.rst:440
 msgid "See also: RFC2616, 14.9.3"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:482
+#: ../../../topics/downloader-middleware.rst:442
 msgid "What is missing:"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:484
+#: ../../../topics/downloader-middleware.rst:444
 msgid ""
 "``Pragma: no-cache`` support https://www.w3.org/Protocols/rfc2616/rfc2616-"
 "sec14.html#sec14.9.1"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:485
+#: ../../../topics/downloader-middleware.rst:445
 msgid ""
 "``Vary`` header support https://www.w3.org/Protocols/rfc2616/rfc2616-sec13."
 "html#sec13.6"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:486
+#: ../../../topics/downloader-middleware.rst:446
 msgid ""
 "Invalidation after updates or deletes https://www.w3.org/Protocols/rfc2616/"
 "rfc2616-sec13.html#sec13.10"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:487
+#: ../../../topics/downloader-middleware.rst:447
 msgid "... probably others .."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:493
+#: ../../../topics/downloader-middleware.rst:453
 msgid "Filesystem storage backend (default)"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:497
+#: ../../../topics/downloader-middleware.rst:457
 msgid "File system storage backend is available for the HTTP cache middleware."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:499
+#: ../../../topics/downloader-middleware.rst:459
 msgid ""
 "Each request/response pair is stored in a different directory containing the "
 "following files:"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:502
+#: ../../../topics/downloader-middleware.rst:462
 msgid "``request_body`` - the plain request body"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:504
+#: ../../../topics/downloader-middleware.rst:464
 msgid "``request_headers`` - the request headers (in raw HTTP format)"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:506
+#: ../../../topics/downloader-middleware.rst:466
 msgid "``response_body`` - the plain response body"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:508
+#: ../../../topics/downloader-middleware.rst:468
 msgid "``response_headers`` - the response headers (in raw HTTP format)"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:510
+#: ../../../topics/downloader-middleware.rst:470
 msgid ""
 "``meta`` - some metadata of this cache resource in Python ``repr()`` format "
 "(grep-friendly format)"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:513
+#: ../../../topics/downloader-middleware.rst:473
 msgid ""
 "``pickled_meta`` - the same metadata in ``meta`` but pickled for more "
 "efficient deserialization"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:516
+#: ../../../topics/downloader-middleware.rst:476
 msgid ""
 "The directory name is made from the request fingerprint (see ``scrapy.utils."
 "request.fingerprint``), and one level of subdirectories is used to avoid "
@@ -785,236 +710,250 @@ msgid ""
 "many file systems). An example directory could be::"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:521
+#: ../../../topics/downloader-middleware.rst:481
 msgid ""
 "/path/to/cache/dir/example.com/72/72811f648e718090f041317756c03adb0ada46c7"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:526
+#: ../../../topics/downloader-middleware.rst:486
 msgid "DBM storage backend"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:530
+#: ../../../topics/downloader-middleware.rst:490
 msgid "A DBM_ storage backend is also available for the HTTP cache middleware."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:532
+#: ../../../topics/downloader-middleware.rst:492
 msgid ""
 "By default, it uses the :mod:`dbm`, but you can change it with the :setting:"
 "`HTTPCACHE_DBM_MODULE` setting."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:538
+#: ../../../topics/downloader-middleware.rst:498
 msgid "Writing your own storage backend"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:540
+#: ../../../topics/downloader-middleware.rst:500
 msgid ""
 "You can implement a cache storage backend by creating a Python class that "
 "defines the methods described below."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:549
+#: ../../../topics/downloader-middleware.rst:509
 msgid ""
 "This method gets called after a spider has been opened for crawling. It "
 "handles the :signal:`spider_opened` signal."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:552
+#: ../../../topics/downloader-middleware.rst:512
 msgid "the spider which has been opened"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:557
+#: ../../../topics/downloader-middleware.rst:517
 msgid ""
 "This method gets called after a spider has been closed. It handles the :"
 "signal:`spider_closed` signal."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:560
+#: ../../../topics/downloader-middleware.rst:520
 msgid "the spider which has been closed"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:565
+#: ../../../topics/downloader-middleware.rst:525
 msgid "Return response if present in cache, or ``None`` otherwise."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:567
+#: ../../../topics/downloader-middleware.rst:527
+msgid ""
+"If this method raises an exception, e.g. because the cache entry is "
+"corrupted, the middleware logs a warning and handles the request as a cache "
+"miss."
+msgstr ""
+
+#: ../../../topics/downloader-middleware.rst:531
 msgid "the spider which generated the request"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:570
+#: ../../../topics/downloader-middleware.rst:534
 msgid "the request to find cached response for"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:575
+#: ../../../topics/downloader-middleware.rst:539
 msgid "Store the given response in the cache."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:577
+#: ../../../topics/downloader-middleware.rst:541
 msgid "the spider for which the response is intended"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:580
+#: ../../../topics/downloader-middleware.rst:544
 msgid "the corresponding request the spider generated"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:583
+#: ../../../topics/downloader-middleware.rst:547
 msgid "the response to store in the cache"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:586
+#: ../../../topics/downloader-middleware.rst:550
 msgid "In order to use your storage backend, set:"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:588
+#: ../../../topics/downloader-middleware.rst:552
 msgid ""
 ":setting:`HTTPCACHE_STORAGE` to the Python import path of your custom "
 "storage class."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:592
+#: ../../../topics/downloader-middleware.rst:556
 msgid "HTTPCache middleware settings"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:594
+#: ../../../topics/downloader-middleware.rst:558
 msgid ""
 ":class:`~scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware` can be "
 "configured through the following settings:"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:600
+#: ../../../topics/downloader-middleware.rst:564
 msgid "HTTPCACHE_ENABLED"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:604
+#: ../../../topics/downloader-middleware.rst:566
+#: ../../../topics/downloader-middleware.rst:607
+#: ../../../topics/downloader-middleware.rst:653
+#: ../../../topics/downloader-middleware.rst:663
+msgid "Default: ``False``"
+msgstr ""
+
+#: ../../../topics/downloader-middleware.rst:568
 msgid "Whether the HTTP cache will be enabled."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:609
+#: ../../../topics/downloader-middleware.rst:573
 msgid "HTTPCACHE_EXPIRATION_SECS"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:611
+#: ../../../topics/downloader-middleware.rst:575
 msgid "Default: ``0``"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:613
+#: ../../../topics/downloader-middleware.rst:577
 msgid "Expiration time for cached requests, in seconds."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:615
+#: ../../../topics/downloader-middleware.rst:579
 msgid ""
 "Cached requests older than this time will be re-downloaded. If zero, cached "
 "requests will never expire."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:621
+#: ../../../topics/downloader-middleware.rst:585
 msgid "HTTPCACHE_DIR"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:623
+#: ../../../topics/downloader-middleware.rst:587
 msgid "Default: ``'httpcache'``"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:625
+#: ../../../topics/downloader-middleware.rst:589
 msgid ""
 "The directory to use for storing the (low-level) HTTP cache. If empty, the "
 "HTTP cache will be disabled. If a relative path is given, is taken relative "
 "to the project data dir. For more info see: :ref:`topics-project-structure`."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:632
+#: ../../../topics/downloader-middleware.rst:596
 msgid "HTTPCACHE_IGNORE_HTTP_CODES"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:634
-#: ../../../topics/downloader-middleware.rst:717
+#: ../../../topics/downloader-middleware.rst:598
+#: ../../../topics/downloader-middleware.rst:681
 msgid "Default: ``[]``"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:636
+#: ../../../topics/downloader-middleware.rst:600
 msgid "Don't cache response with these HTTP codes."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:641
+#: ../../../topics/downloader-middleware.rst:605
 msgid "HTTPCACHE_IGNORE_MISSING"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:645
+#: ../../../topics/downloader-middleware.rst:609
 msgid ""
 "If enabled, requests not found in the cache will be ignored instead of "
 "downloaded."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:650
+#: ../../../topics/downloader-middleware.rst:614
 msgid "HTTPCACHE_IGNORE_SCHEMES"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:652
+#: ../../../topics/downloader-middleware.rst:616
 msgid "Default: ``['file']``"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:654
+#: ../../../topics/downloader-middleware.rst:618
 msgid "Don't cache responses with these URI schemes."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:659
+#: ../../../topics/downloader-middleware.rst:623
 msgid "HTTPCACHE_STORAGE"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:661
+#: ../../../topics/downloader-middleware.rst:625
 msgid "Default: ``'scrapy.extensions.httpcache.FilesystemCacheStorage'``"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:663
+#: ../../../topics/downloader-middleware.rst:627
 msgid "The class which implements the cache storage backend."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:668
+#: ../../../topics/downloader-middleware.rst:632
 msgid "HTTPCACHE_DBM_MODULE"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:670
+#: ../../../topics/downloader-middleware.rst:634
 msgid "Default: ``'dbm'``"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:672
+#: ../../../topics/downloader-middleware.rst:636
 msgid ""
 "The database module to use in the :ref:`DBM storage backend <httpcache-"
 "storage-dbm>`. This setting is specific to the DBM backend."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:678
+#: ../../../topics/downloader-middleware.rst:642
 msgid "HTTPCACHE_POLICY"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:680
+#: ../../../topics/downloader-middleware.rst:644
 msgid "Default: ``'scrapy.extensions.httpcache.DummyPolicy'``"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:682
+#: ../../../topics/downloader-middleware.rst:646
 msgid "The class which implements the cache policy."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:687
+#: ../../../topics/downloader-middleware.rst:651
 msgid "HTTPCACHE_GZIP"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:691
+#: ../../../topics/downloader-middleware.rst:655
 msgid ""
 "If enabled, will compress all cached data with gzip. This setting is "
 "specific to the Filesystem backend."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:697
+#: ../../../topics/downloader-middleware.rst:661
 msgid "HTTPCACHE_ALWAYS_STORE"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:701
+#: ../../../topics/downloader-middleware.rst:665
 msgid "If enabled, will cache pages unconditionally."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:703
+#: ../../../topics/downloader-middleware.rst:667
 msgid ""
 "A spider may wish to have all responses available in the cache, for future "
 "use with ``Cache-Control: max-stale``, for instance. The DummyPolicy caches "
@@ -1022,22 +961,22 @@ msgid ""
 "policy is desirable."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:708
+#: ../../../topics/downloader-middleware.rst:672
 msgid ""
 "This setting still respects ``Cache-Control: no-store`` directives in "
 "responses. If you don't want that, filter ``no-store`` out of the Cache-"
 "Control headers in responses you feed to the cache middleware."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:715
+#: ../../../topics/downloader-middleware.rst:679
 msgid "HTTPCACHE_IGNORE_RESPONSE_CACHE_CONTROLS"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:719
+#: ../../../topics/downloader-middleware.rst:683
 msgid "List of Cache-Control directives in responses to be ignored."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:721
+#: ../../../topics/downloader-middleware.rst:685
 msgid ""
 "Sites often set \"no-store\", \"no-cache\", \"must-revalidate\", etc., but "
 "get upset at the traffic a spider can generate if it actually respects those "
@@ -1045,71 +984,72 @@ msgid ""
 "are known to be unimportant for the sites being crawled."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:726
+#: ../../../topics/downloader-middleware.rst:690
 msgid ""
 "We assume that the spider will not issue Cache-Control directives in "
 "requests unless it actually needs them, so directives in requests are not "
 "filtered."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:733
+#: ../../../topics/downloader-middleware.rst:697
 msgid "HttpCompressionMiddleware"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:740
+#: ../../../topics/downloader-middleware.rst:704
 msgid ""
-"This middleware allows compressed (gzip, deflate) traffic to be sent/"
-"received from web sites."
+"This middleware allows compressed (gzip, deflate, `brotli`_, `zstd`_) "
+"traffic to be sent/received from web sites."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:743
-msgid ""
-"This middleware also supports decoding `brotli-compressed`_ responses with "
-"the :ref:`brotli <extras>` extra, and `zstd-compressed`_ responses with the :"
-"ref:`zstd <extras>` extra."
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:752
+#: ../../../topics/downloader-middleware.rst:712
 msgid "HttpCompressionMiddleware Settings"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:757
+#: ../../../topics/downloader-middleware.rst:717
 msgid "COMPRESSION_ENABLED"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:761
+#: ../../../topics/downloader-middleware.rst:719
+#: ../../../topics/downloader-middleware.rst:781
+#: ../../../topics/downloader-middleware.rst:902
+#: ../../../topics/downloader-middleware.rst:943
+#: ../../../topics/downloader-middleware.rst:1000
+msgid "Default: ``True``"
+msgstr ""
+
+#: ../../../topics/downloader-middleware.rst:721
 msgid "Whether the Compression middleware will be enabled."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:765
+#: ../../../topics/downloader-middleware.rst:725
 msgid "HttpProxyMiddleware"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:774
+#: ../../../topics/downloader-middleware.rst:734
 msgid ""
 "This middleware sets the HTTP proxy to use for requests, by setting the :"
 "reqmeta:`proxy` meta value for :class:`~scrapy.Request` objects."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:777
+#: ../../../topics/downloader-middleware.rst:737
 msgid ""
 "Like the Python standard library module :mod:`urllib.request`, it obeys the "
 "following environment variables:"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:780
+#: ../../../topics/downloader-middleware.rst:740
 msgid "``http_proxy``"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:781
+#: ../../../topics/downloader-middleware.rst:741
 msgid "``https_proxy``"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:782
+#: ../../../topics/downloader-middleware.rst:742
 msgid "``no_proxy``"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:784
+#: ../../../topics/downloader-middleware.rst:744
 msgid ""
 "You can also set the meta key :reqmeta:`proxy` per-request, to a value like "
 "``http://some_proxy_server:port`` or ``http://username:"
@@ -1118,7 +1058,7 @@ msgid ""
 "will also ignore ``no_proxy`` environment variable."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:791
+#: ../../../topics/downloader-middleware.rst:751
 msgid ""
 "Handling of this meta key needs to be implemented inside the :ref:`download "
 "handler <topics-download-handlers>`, so it's not guaranteed to be supported "
@@ -1126,7 +1066,7 @@ msgid ""
 "core.downloader.handlers.http2.H2DownloadHandler`."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:798
+#: ../../../topics/downloader-middleware.rst:758
 msgid ""
 "Usually a proxy URL uses the ``http://`` scheme. More rarely, it uses the "
 "``https://`` one. While both kinds of proxy URLs can be used with both HTTP "
@@ -1137,7 +1077,7 @@ msgid ""
 "HTTPS proxies only for HTTP destinations."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:808
+#: ../../../topics/downloader-middleware.rst:768
 msgid ""
 "If the download handler supports it, you can use a SOCKS proxy URL (e.g. "
 "``socks5://username:password@some_proxy_server:port``). :class:`~scrapy.core."
@@ -1145,111 +1085,60 @@ msgid ""
 "while other built-in handlers don't."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:814
+#: ../../../topics/downloader-middleware.rst:774
 msgid "HttpProxyMiddleware settings"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:819
+#: ../../../topics/downloader-middleware.rst:779
 msgid "HTTPPROXY_ENABLED"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:823
+#: ../../../topics/downloader-middleware.rst:783
 msgid "Whether or not to enable the :class:`HttpProxyMiddleware`."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:828
+#: ../../../topics/downloader-middleware.rst:788
 msgid "HTTPPROXY_AUTH_ENCODING"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:830
+#: ../../../topics/downloader-middleware.rst:790
 msgid "Default: ``\"latin-1\"``"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:832
+#: ../../../topics/downloader-middleware.rst:792
 msgid ""
 "The default encoding for proxy authentication on :class:"
 "`HttpProxyMiddleware`."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:835
+#: ../../../topics/downloader-middleware.rst:795
 msgid "OffsiteMiddleware"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:844
-msgid ""
-"Filters out Requests for URLs outside the domains covered by the spider."
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:846
-msgid ""
-"This middleware filters out every request whose host names aren't in the "
-"spider's :attr:`~scrapy.Spider.allowed_domains` attribute. All subdomains of "
-"any domain in the list are also allowed. E.g. the rule ``www.example.org`` "
-"will also allow ``bob.www.example.org`` but not ``www2.example.com`` nor "
-"``example.com``."
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:852
-msgid ""
-"When your spider returns a request for a domain not belonging to those "
-"covered by the spider, this middleware will log a debug message similar to "
-"this one::"
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:856
-msgid ""
-"DEBUG: Filtered offsite request to 'offsite.example': <GET http://offsite."
-"example/some/page.html>"
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:858
-msgid ""
-"To avoid filling the log with too much noise, it will only print one of "
-"these messages for each new domain filtered. So, for example, if another "
-"request for ``offsite.example`` is filtered, no log message will be printed. "
-"But if a request for ``other.example`` is filtered, a message will be "
-"printed (but only for the first request filtered)."
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:864
-msgid ""
-"If the spider doesn't define an :attr:`~scrapy.Spider.allowed_domains` "
-"attribute, or the attribute is empty, the offsite middleware will allow all "
-"requests."
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:870
-msgid ""
-"If the request has the :attr:`~scrapy.Request.dont_filter` attribute set to "
-"``True`` or :attr:`Request.meta <scrapy.Request.meta>` has ``allow_offsite`` "
-"set to ``True``, then the OffsiteMiddleware will allow the request even if "
-"its domain is not listed in allowed domains."
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:876
+#: ../../../topics/downloader-middleware.rst:805
 msgid "RedirectMiddleware"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:883
+#: ../../../topics/downloader-middleware.rst:812
 msgid ""
 "This middleware handles redirection of requests based on response status."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:887
+#: ../../../topics/downloader-middleware.rst:816
 msgid ""
 "The urls which the request goes through (while being redirected) can be "
 "found in the ``redirect_urls`` :attr:`Request.meta <scrapy.Request.meta>` "
 "key."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:892
+#: ../../../topics/downloader-middleware.rst:821
 msgid ""
 "The reason behind each redirect in :reqmeta:`redirect_urls` can be found in "
 "the ``redirect_reasons`` :attr:`Request.meta <scrapy.Request.meta>` key. For "
 "example: ``[301, 302, 307, 'meta refresh']``."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:896
+#: ../../../topics/downloader-middleware.rst:825
 msgid ""
 "The format of a reason depends on the middleware that handled the "
 "corresponding redirect. For example, :class:`RedirectMiddleware` indicates "
@@ -1257,45 +1146,45 @@ msgid ""
 "`MetaRefreshMiddleware` always uses the ``'meta refresh'`` string as reason."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:901
+#: ../../../topics/downloader-middleware.rst:830
 msgid ""
 "The :class:`RedirectMiddleware` can be configured through the following "
 "settings (see the settings documentation for more info):"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:904
+#: ../../../topics/downloader-middleware.rst:833
 msgid ":setting:`REDIRECT_ENABLED`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:905
+#: ../../../topics/downloader-middleware.rst:834
 msgid ":setting:`REDIRECT_MAX_TIMES`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:909
+#: ../../../topics/downloader-middleware.rst:838
 msgid ""
 "If :attr:`Request.meta <scrapy.Request.meta>` has ``dont_redirect`` key set "
 "to True, the request will be ignored by this middleware."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:912
+#: ../../../topics/downloader-middleware.rst:841
 msgid ""
 "If you want to handle some redirect status codes in your spider, you can "
 "specify these in the ``handle_httpstatus_list`` spider attribute."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:915
+#: ../../../topics/downloader-middleware.rst:844
 msgid ""
 "For example, if you want the redirect middleware to ignore 301 and 302 "
 "responses (and pass them through to your spider) you can do this:"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:918
+#: ../../../topics/downloader-middleware.rst:847
 msgid ""
 "class MySpider(CrawlSpider):\n"
 "    handle_httpstatus_list = [301, 302]"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:923
+#: ../../../topics/downloader-middleware.rst:852
 msgid ""
 "The ``handle_httpstatus_list`` key of :attr:`Request.meta <scrapy.Request."
 "meta>` can also be used to specify which response codes to allow on a per-"
@@ -1303,247 +1192,206 @@ msgid ""
 "``True`` if you want to allow any response code for a request."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:931
+#: ../../../topics/downloader-middleware.rst:858
+msgid ""
+"To decide whether to follow a redirect based on its target URL, subclass :"
+"class:`RedirectMiddleware` and override :meth:`~scrapy.downloadermiddlewares."
+"DownloaderMiddleware.process_response`:"
+msgstr ""
+
+#: ../../../topics/downloader-middleware.rst:862
+msgid ""
+"import re\n"
+"\n"
+"from scrapy import Request\n"
+"from scrapy.downloadermiddlewares.redirect import RedirectMiddleware\n"
+"from scrapy.exceptions import IgnoreRequest\n"
+"\n"
+"\n"
+"class AllowedRedirectMiddleware(RedirectMiddleware):\n"
+"    def process_response(self, request, response, spider):\n"
+"        result = super().process_response(request, response, spider)\n"
+"        if isinstance(result, Request) and not re.search(r\"/product/\", "
+"result.url):\n"
+"            raise IgnoreRequest(f\"Redirect target not allowed: {result."
+"url}\")\n"
+"        return result"
+msgstr ""
+
+#: ../../../topics/downloader-middleware.rst:878
+msgid ""
+"Enable it in place of :class:`RedirectMiddleware`, using the same priority:"
+msgstr ""
+
+#: ../../../topics/downloader-middleware.rst:880
+msgid ""
+"from scrapy import Spider\n"
+"\n"
+"\n"
+"class MySpider(Spider):\n"
+"    custom_settings = {\n"
+"        \"DOWNLOADER_MIDDLEWARES\": {\n"
+"            \"scrapy.downloadermiddlewares.redirect.RedirectMiddleware\": "
+"None,\n"
+"            \"myproject.middlewares.AllowedRedirectMiddleware\": 600,\n"
+"        }\n"
+"    }"
+msgstr ""
+
+#: ../../../topics/downloader-middleware.rst:895
 msgid "RedirectMiddleware settings"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:936
+#: ../../../topics/downloader-middleware.rst:900
 msgid "REDIRECT_ENABLED"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:940
+#: ../../../topics/downloader-middleware.rst:904
 msgid "Whether the Redirect middleware will be enabled."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:945
+#: ../../../topics/downloader-middleware.rst:909
 msgid "REDIRECT_MAX_TIMES"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:947
+#: ../../../topics/downloader-middleware.rst:911
 msgid "Default: ``20``"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:949
+#: ../../../topics/downloader-middleware.rst:913
 msgid ""
 "The maximum number of redirections that will be followed for a single "
 "request. If maximum redirections are exceeded, the request is aborted and "
 "ignored."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:953
+#: ../../../topics/downloader-middleware.rst:917
 msgid "MetaRefreshMiddleware"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:957
+#: ../../../topics/downloader-middleware.rst:921
 msgid ""
 "This middleware handles redirection of requests based on meta-refresh html "
 "tag."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:959
+#: ../../../topics/downloader-middleware.rst:923
 msgid ""
 "The :class:`MetaRefreshMiddleware` can be configured through the following "
 "settings (see the settings documentation for more info):"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:962
+#: ../../../topics/downloader-middleware.rst:926
 msgid ":setting:`METAREFRESH_ENABLED`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:963
+#: ../../../topics/downloader-middleware.rst:927
 msgid ":setting:`METAREFRESH_IGNORE_TAGS`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:964
+#: ../../../topics/downloader-middleware.rst:928
 msgid ":setting:`METAREFRESH_MAXDELAY`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:966
+#: ../../../topics/downloader-middleware.rst:930
 msgid ""
 "This middleware obey :setting:`REDIRECT_MAX_TIMES` setting, :reqmeta:"
 "`dont_redirect`, :reqmeta:`redirect_urls` and :reqmeta:`redirect_reasons` "
 "request meta keys as described for :class:`RedirectMiddleware`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:972
+#: ../../../topics/downloader-middleware.rst:936
 msgid "MetaRefreshMiddleware settings"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:977
+#: ../../../topics/downloader-middleware.rst:941
 msgid "METAREFRESH_ENABLED"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:981
+#: ../../../topics/downloader-middleware.rst:945
 msgid "Whether the Meta Refresh middleware will be enabled."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:986
+#: ../../../topics/downloader-middleware.rst:950
 msgid "METAREFRESH_IGNORE_TAGS"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:988
+#: ../../../topics/downloader-middleware.rst:952
 msgid "Default: ``[\"noscript\"]``"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:990
+#: ../../../topics/downloader-middleware.rst:954
 msgid "Meta tags within these tags are ignored."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:992
+#: ../../../topics/downloader-middleware.rst:956
 msgid ""
 "The default value of :setting:`METAREFRESH_IGNORE_TAGS` changed from ``[]`` "
 "to ``[\"noscript\"]``."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:999
+#: ../../../topics/downloader-middleware.rst:963
 msgid "METAREFRESH_MAXDELAY"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1001
+#: ../../../topics/downloader-middleware.rst:965
 msgid "Default: ``100``"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1003
+#: ../../../topics/downloader-middleware.rst:967
 msgid ""
 "The maximum meta-refresh delay (in seconds) to follow the redirection. Some "
 "sites use meta-refresh for redirecting to a session expired page, so we "
 "restrict automatic redirection to the maximum delay."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1008
+#: ../../../topics/downloader-middleware.rst:972
 msgid "RetryMiddleware"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1015
+#: ../../../topics/downloader-middleware.rst:979
 msgid ""
 "A middleware to retry failed requests that are potentially caused by "
 "temporary problems such as a connection timeout or HTTP 500 error."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1020
+#: ../../../topics/downloader-middleware.rst:984
 msgid ""
 "If :attr:`Request.meta <scrapy.Request.meta>` has ``dont_retry`` key set to "
 "True, the request will be ignored by this middleware."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1023
+#: ../../../topics/downloader-middleware.rst:987
 msgid ""
 "To retry requests from a spider callback, you can use the :func:"
 "`get_retry_request` function:"
 msgstr ""
 
-#: ../../../../scrapy/downloadermiddlewares/retry.py:docstring of
-#: scrapy.downloadermiddlewares.retry.get_retry_request:1
-msgid ""
-"Returns a new :class:`~scrapy.Request` object to retry the specified "
-"request, or ``None`` if retries of the specified request have been exhausted."
-msgstr ""
-
-#: ../../../../scrapy/downloadermiddlewares/retry.py:docstring of
-#: scrapy.downloadermiddlewares.retry.get_retry_request:5
-msgid ""
-"For example, in a :class:`~scrapy.Spider` callback, you could use it as "
-"follows:"
-msgstr ""
-
-#: ../../../../scrapy/downloadermiddlewares/retry.py:docstring of
-#: scrapy.downloadermiddlewares.retry.get_retry_request:8
-msgid ""
-"def parse(self, response):\n"
-"    if not response.text:\n"
-"        new_request_or_none = get_retry_request(\n"
-"            response.request,\n"
-"            spider=self,\n"
-"            reason=\"empty\",\n"
-"        )\n"
-"        return new_request_or_none"
-msgstr ""
-
-#: ../../../../scrapy/downloadermiddlewares/retry.py:docstring of
-#: scrapy.downloadermiddlewares.retry.get_retry_request:19
-msgid ""
-"*spider* is the :class:`~scrapy.Spider` instance which is asking for the "
-"retry request. It is used to access the :ref:`settings <topics-settings>` "
-"and :ref:`stats <topics-stats>`, and to provide extra logging context (see :"
-"func:`logging.debug`)."
-msgstr ""
-
-#: ../../../../scrapy/downloadermiddlewares/retry.py:docstring of
-#: scrapy.downloadermiddlewares.retry.get_retry_request:24
-msgid ""
-"*reason* is a string, an :class:`Exception` subclass or an :class:"
-"`Exception` object that indicates the reason why the request needs to be "
-"retried. It is used to name retry stats."
-msgstr ""
-
-#: ../../../../scrapy/downloadermiddlewares/retry.py:docstring of
-#: scrapy.downloadermiddlewares.retry.get_retry_request:28
-msgid ""
-"*max_retry_times* is a number that determines the maximum number of times "
-"that *request* can be retried. If not specified or ``None``, the number is "
-"read from the :reqmeta:`max_retry_times` meta key of the request. If the :"
-"reqmeta:`max_retry_times` meta key is not defined or ``None``, the number is "
-"read from the :setting:`RETRY_TIMES` setting."
-msgstr ""
-
-#: ../../../../scrapy/downloadermiddlewares/retry.py:docstring of
-#: scrapy.downloadermiddlewares.retry.get_retry_request:34
-msgid ""
-"*priority_adjust* is a number that determines how the priority of the new "
-"request changes in relation to *request*. If not specified, the number is "
-"read from the :setting:`RETRY_PRIORITY_ADJUST` setting."
-msgstr ""
-
-#: ../../../../scrapy/downloadermiddlewares/retry.py:docstring of
-#: scrapy.downloadermiddlewares.retry.get_retry_request:38
-msgid "*logger* is the logging.Logger object to be used when logging messages"
-msgstr ""
-
-#: ../../../../scrapy/downloadermiddlewares/retry.py:docstring of
-#: scrapy.downloadermiddlewares.retry.get_retry_request:40
-msgid ""
-"*give_up_log_level* is the :ref:`logging level <levels>` used for the "
-"message logged when a request exceeds its retries. See :setting:"
-"`RETRY_GIVE_UP_LOG_LEVEL` for details."
-msgstr ""
-
-#: ../../../../scrapy/downloadermiddlewares/retry.py:docstring of
-#: scrapy.downloadermiddlewares.retry.get_retry_request:44
-msgid "The *give_up_log_level* parameter."
-msgstr ""
-
-#: ../../../../scrapy/downloadermiddlewares/retry.py:docstring of
-#: scrapy.downloadermiddlewares.retry.get_retry_request:47
-msgid ""
-"*stats_base_key* is a string to be used as the base key for the retry-"
-"related job stats"
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:1029
+#: ../../../topics/downloader-middleware.rst:993
 msgid "RetryMiddleware Settings"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1034
+#: ../../../topics/downloader-middleware.rst:998
 msgid "RETRY_ENABLED"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1038
+#: ../../../topics/downloader-middleware.rst:1002
 msgid "Whether the Retry middleware will be enabled."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1043
+#: ../../../topics/downloader-middleware.rst:1007
 msgid "RETRY_TIMES"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1045
+#: ../../../topics/downloader-middleware.rst:1009
 msgid "Default: ``2``"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1047
+#: ../../../topics/downloader-middleware.rst:1011
 msgid "Maximum number of times to retry, in addition to the first download."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1049
+#: ../../../topics/downloader-middleware.rst:1013
 msgid ""
 "Maximum number of retries can also be specified per-request using :reqmeta:"
 "`max_retry_times` attribute of :attr:`Request.meta <scrapy.Request.meta>`. "
@@ -1551,36 +1399,36 @@ msgid ""
 "precedence over the :setting:`RETRY_TIMES` setting."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1057
+#: ../../../topics/downloader-middleware.rst:1021
 msgid "RETRY_HTTP_CODES"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1059
+#: ../../../topics/downloader-middleware.rst:1023
 msgid "Default: ``[500, 502, 503, 504, 522, 524, 408, 429]``"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1061
+#: ../../../topics/downloader-middleware.rst:1025
 msgid ""
 "Which HTTP response codes to retry. Other errors (DNS lookup issues, "
 "connections lost, etc) are always retried."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1064
+#: ../../../topics/downloader-middleware.rst:1028
 msgid ""
 "In some cases you may want to add 400 to :setting:`RETRY_HTTP_CODES` because "
 "it is a common code used to indicate server overload. It is not included by "
 "default because HTTP specs say so."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1071
+#: ../../../topics/downloader-middleware.rst:1035
 msgid "RETRY_EXCEPTIONS"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1073
+#: ../../../topics/downloader-middleware.rst:1037
 msgid "Default::"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1075
+#: ../../../topics/downloader-middleware.rst:1039
 msgid ""
 "[\n"
 "    'scrapy.exceptions.CannotResolveHostError',\n"
@@ -1596,16 +1444,16 @@ msgid ""
 "]"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1088
+#: ../../../topics/downloader-middleware.rst:1052
 msgid "List of exceptions to retry."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1090
+#: ../../../topics/downloader-middleware.rst:1054
 msgid ""
 "Each list entry may be an exception type or its import path as a string."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1092
+#: ../../../topics/downloader-middleware.rst:1056
 msgid ""
 "An exception will not be caught when the exception type is not in :setting:"
 "`RETRY_EXCEPTIONS` or when the maximum number of retries for a request has "
@@ -1614,67 +1462,67 @@ msgid ""
 "DownloaderMiddleware.process_exception`."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1101
+#: ../../../topics/downloader-middleware.rst:1065
 msgid "RETRY_GIVE_UP_LOG_LEVEL"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1105
+#: ../../../topics/downloader-middleware.rst:1069
 msgid "Default: ``\"ERROR\"``"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1107
+#: ../../../topics/downloader-middleware.rst:1071
 msgid ""
 ":ref:`Logging level <levels>` used for the message logged when a request "
 "exceeds its retries."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1110
+#: ../../../topics/downloader-middleware.rst:1074
 msgid ""
 "Can be a level name (e.g. ``\"WARNING\"``) or a number (e.g. ``logging."
 "WARNING`` or ``30``)."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1113
+#: ../../../topics/downloader-middleware.rst:1077
 msgid "See also: :reqmeta:`give_up_log_level`, :func:`get_retry_request`."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1118
+#: ../../../topics/downloader-middleware.rst:1082
 msgid "RETRY_PRIORITY_ADJUST"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1120
+#: ../../../topics/downloader-middleware.rst:1084
 msgid "Default: ``-1``"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1122
+#: ../../../topics/downloader-middleware.rst:1086
 msgid "Adjust retry request priority relative to original request:"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1124
+#: ../../../topics/downloader-middleware.rst:1088
 msgid "a positive priority adjust means higher priority."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1125
+#: ../../../topics/downloader-middleware.rst:1089
 msgid "**a negative priority adjust (default) means lower priority.**"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1131
+#: ../../../topics/downloader-middleware.rst:1095
 msgid "RobotsTxtMiddleware"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1138
+#: ../../../topics/downloader-middleware.rst:1102
 msgid ""
 "This middleware filters out requests forbidden by the robots.txt exclusion "
 "standard."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1141
+#: ../../../topics/downloader-middleware.rst:1105
 msgid ""
 "To make sure Scrapy respects robots.txt make sure the middleware is enabled "
 "and the :setting:`ROBOTSTXT_OBEY` setting is enabled."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1144
+#: ../../../topics/downloader-middleware.rst:1108
 msgid ""
 "The :setting:`ROBOTSTXT_USER_AGENT` setting can be used to specify the user "
 "agent string to use for matching in the robots.txt_ file. If it is ``None``, "
@@ -1683,57 +1531,57 @@ msgid ""
 "agent to use in the robots.txt_ file."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1150
+#: ../../../topics/downloader-middleware.rst:1114
 msgid "This middleware has to be combined with a robots.txt_ parser."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1152
+#: ../../../topics/downloader-middleware.rst:1116
 msgid "Scrapy ships with support for the following robots.txt_ parsers:"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1154
+#: ../../../topics/downloader-middleware.rst:1118
 msgid ":ref:`Protego <protego-parser>` (default)"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1155
+#: ../../../topics/downloader-middleware.rst:1119
 msgid ":ref:`RobotFileParser <python-robotfileparser>`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1156
+#: ../../../topics/downloader-middleware.rst:1120
 msgid ":ref:`Robotexclusionrulesparser <rerp-parser>`"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1158
+#: ../../../topics/downloader-middleware.rst:1122
 msgid ""
 "You can change the robots.txt_ parser with the :setting:`ROBOTSTXT_PARSER` "
 "setting. Or you can also :ref:`implement support for a new parser <support-"
 "for-new-robots-parser>`."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1163
+#: ../../../topics/downloader-middleware.rst:1127
 msgid ""
 "If :attr:`Request.meta <scrapy.Request.meta>` has ``dont_obey_robotstxt`` "
 "key set to True the request will be ignored by this middleware even if :"
 "setting:`ROBOTSTXT_OBEY` is enabled."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1168
+#: ../../../topics/downloader-middleware.rst:1132
 msgid "Parsers vary in several aspects:"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1170
+#: ../../../topics/downloader-middleware.rst:1134
 msgid "Language of implementation"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1172
+#: ../../../topics/downloader-middleware.rst:1136
 msgid "Supported specification"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1174
+#: ../../../topics/downloader-middleware.rst:1138
 msgid "Support for wildcard matching"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1176
+#: ../../../topics/downloader-middleware.rst:1140
 msgid ""
 "Usage of `length based rule <https://developers.google.com/crawling/docs/"
 "robots-txt/robots-txt-spec#order-of-precedence-for-rules>`_: in particular "
@@ -1741,182 +1589,148 @@ msgid ""
 "based on the length of the path trumps the less specific (shorter) rule"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1181
+#: ../../../topics/downloader-middleware.rst:1145
 msgid ""
 "Performance comparison of different parsers is available at `the following "
 "link <https://github.com/scrapy/scrapy/issues/3969>`_."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1187
+#: ../../../topics/downloader-middleware.rst:1151
 msgid "Protego parser"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1189
+#: ../../../topics/downloader-middleware.rst:1153
 msgid "Based on `Protego <https://github.com/scrapy/protego>`_:"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1191
-#: ../../../topics/downloader-middleware.rst:1231
+#: ../../../topics/downloader-middleware.rst:1155
+#: ../../../topics/downloader-middleware.rst:1195
 msgid "implemented in Python"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1193
+#: ../../../topics/downloader-middleware.rst:1157
 msgid ""
 "is compliant with `Google's Robots.txt Specification <https://developers."
 "google.com/crawling/docs/robots-txt/robots-txt-spec>`_"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1196
-#: ../../../topics/downloader-middleware.rst:1236
+#: ../../../topics/downloader-middleware.rst:1160
+#: ../../../topics/downloader-middleware.rst:1200
 msgid "supports wildcard matching"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1198
+#: ../../../topics/downloader-middleware.rst:1162
 msgid "uses the length based rule"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1200
+#: ../../../topics/downloader-middleware.rst:1164
 msgid "Scrapy uses this parser by default."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1205
+#: ../../../topics/downloader-middleware.rst:1169
 msgid "RobotFileParser"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1207
+#: ../../../topics/downloader-middleware.rst:1171
 msgid "Based on :class:`~urllib.robotparser.RobotFileParser`:"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1209
+#: ../../../topics/downloader-middleware.rst:1173
 msgid "is Python's built-in robots.txt_ parser"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1211
-#: ../../../topics/downloader-middleware.rst:1233
+#: ../../../topics/downloader-middleware.rst:1175
+#: ../../../topics/downloader-middleware.rst:1197
 msgid ""
 "is compliant with `Martijn Koster's 1996 draft specification <https://www."
 "robotstxt.org/norobots-rfc.txt>`_"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1214
+#: ../../../topics/downloader-middleware.rst:1178
 msgid "lacks support for wildcard matching (before Python 3.14.5)"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1216
+#: ../../../topics/downloader-middleware.rst:1180
 msgid "doesn't use the length based rule (before Python 3.14.5)"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1218
+#: ../../../topics/downloader-middleware.rst:1182
 msgid ""
 "It is faster than Protego and backward-compatible with versions of Scrapy "
 "before 1.8.0."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1220
+#: ../../../topics/downloader-middleware.rst:1184
 msgid "In order to use this parser, set:"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1222
+#: ../../../topics/downloader-middleware.rst:1186
 msgid ":setting:`ROBOTSTXT_PARSER` to ``scrapy.robotstxt.PythonRobotParser``"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1227
+#: ../../../topics/downloader-middleware.rst:1191
 msgid "Robotexclusionrulesparser"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1229
+#: ../../../topics/downloader-middleware.rst:1193
 msgid ""
 "Based on `Robotexclusionrulesparser <https://pypi.org/project/"
 "robotexclusionrulesparser/>`_:"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1238
+#: ../../../topics/downloader-middleware.rst:1202
 msgid "doesn't use the length based rule"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1240
+#: ../../../topics/downloader-middleware.rst:1204
 msgid "In order to use this parser:"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1242
+#: ../../../topics/downloader-middleware.rst:1206
 msgid "Install the :ref:`robotparser <extras>` extra."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1244
+#: ../../../topics/downloader-middleware.rst:1208
 msgid ""
 "Set :setting:`ROBOTSTXT_PARSER` setting to ``scrapy.robotstxt."
 "RerpRobotParser``"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1250
+#: ../../../topics/downloader-middleware.rst:1214
 msgid "Implementing support for a new parser"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1252
+#: ../../../topics/downloader-middleware.rst:1216
 msgid ""
 "You can implement support for a new robots.txt_ parser by subclassing the "
 "abstract base class :class:`~scrapy.robotstxt.RobotParser` and implementing "
 "the methods described below."
 msgstr ""
 
-#: ../../../../scrapy/robotstxt.py:docstring of
-#: scrapy.robotstxt.RobotParser.allowed:1
-msgid ""
-"Return ``True`` if  ``user_agent`` is allowed to crawl ``url``, otherwise "
-"return ``False``."
-msgstr ""
-
-#: ../../../../scrapy/robotstxt.py:docstring of
-#: scrapy.robotstxt.RobotParser.allowed:3
-msgid "Absolute URL"
-msgstr ""
-
-#: ../../../../scrapy/robotstxt.py:docstring of
-#: scrapy.robotstxt.RobotParser.allowed:6
-msgid "User agent"
-msgstr ""
-
-#: ../../../../scrapy/robotstxt.py:docstring of
-#: scrapy.robotstxt.RobotParser.from_crawler:1
-msgid ""
-"Parse the content of a robots.txt_ file as bytes. This must be a class "
-"method. It must return a new instance of the parser backend."
-msgstr ""
-
-#: ../../../../scrapy/robotstxt.py:docstring of
-#: scrapy.robotstxt.RobotParser.from_crawler:4
-msgid "crawler which made the request"
-msgstr ""
-
-#: ../../../../scrapy/robotstxt.py:docstring of
-#: scrapy.robotstxt.RobotParser.from_crawler:7
-msgid "content of a robots.txt_ file."
-msgstr ""
-
-#: ../../../topics/downloader-middleware.rst:1265
+#: ../../../topics/downloader-middleware.rst:1229
 msgid "DownloaderStats"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1272
+#: ../../../topics/downloader-middleware.rst:1236
 msgid ""
 "Middleware that stores stats of all requests, responses and exceptions that "
 "pass through it."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1275
+#: ../../../topics/downloader-middleware.rst:1239
 msgid ""
 "To use this middleware you must enable the :setting:`DOWNLOADER_STATS` "
 "setting."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1279
+#: ../../../topics/downloader-middleware.rst:1243
 msgid "UserAgentMiddleware"
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1286
+#: ../../../topics/downloader-middleware.rst:1250
 msgid "Middleware that sets the ``User-Agent`` header."
 msgstr ""
 
-#: ../../../topics/downloader-middleware.rst:1288
+#: ../../../topics/downloader-middleware.rst:1252
 msgid "The header value is taken from the :setting:`USER_AGENT` setting."
 msgstr ""

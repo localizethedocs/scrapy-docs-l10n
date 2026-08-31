@@ -1,0 +1,182 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-31 16:35+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/cookies.rst:6
+msgid "Cookies"
+msgstr ""
+
+#: ../../../topics/cookies.rst:8
+msgid ""
+"Scrapy keeps track of the cookies that websites set and sends them back on "
+"later requests to those websites, just like a web browser does. That is the "
+"job of :class:`~scrapy.downloadermiddlewares.cookies.CookiesMiddleware`, "
+"which is enabled by default."
+msgstr ""
+
+#: ../../../topics/cookies.rst:15
+msgid "Setting cookies on a request"
+msgstr ""
+
+#: ../../../topics/cookies.rst:21
+msgid ""
+"Use the ``cookies`` parameter of :class:`~scrapy.Request` to send cookies of "
+"your own, either as a dict:"
+msgstr ""
+
+#: ../../../topics/cookies.rst:24
+msgid ""
+"request = Request(\n"
+"    url=\"https://example.com\",\n"
+"    cookies={\"currency\": \"USD\", \"country\": \"UY\"},\n"
+")"
+msgstr ""
+
+#: ../../../topics/cookies.rst:31
+msgid "Or as a list of dicts, which also lets you set cookie attributes:"
+msgstr ""
+
+#: ../../../topics/cookies.rst:33
+msgid ""
+"request = Request(\n"
+"    url=\"https://example.com\",\n"
+"    cookies=[\n"
+"        {\n"
+"            \"name\": \"currency\",\n"
+"            \"value\": \"USD\",\n"
+"            \"domain\": \"example.com\",\n"
+"            \"path\": \"/currency\",\n"
+"            \"secure\": True,\n"
+"        },\n"
+"    ],\n"
+")"
+msgstr ""
+
+#: ../../../topics/cookies.rst:48
+msgid ""
+"Setting attributes is only useful if the cookies are stored for later "
+"requests, i.e. if :reqmeta:`dont_merge_cookies` is not enabled."
+msgstr ""
+
+#: ../../../topics/cookies.rst:51
+msgid ""
+"Cookies set through the ``Cookie`` header are not handled by :class:`~scrapy."
+"downloadermiddlewares.cookies.CookiesMiddleware`, which drops that header."
+msgstr ""
+
+#: ../../../topics/cookies.rst:55
+msgid ""
+"When a cookie name or value is a byte sequence that is not UTF-8 encoded, "
+"the cookie is dropped and a warning is logged. See :ref:`topics-logging-"
+"advanced-customization` to customize the logging behavior."
+msgstr ""
+
+#: ../../../topics/cookies.rst:64
+msgid "Multiple cookie sessions per spider"
+msgstr ""
+
+#: ../../../topics/cookies.rst:66
+msgid ""
+"By default all requests share a single cookie jar (session). To use "
+"different ones, pass an identifier in the :reqmeta:`cookiejar` request meta "
+"key:"
+msgstr ""
+
+#: ../../../topics/cookies.rst:70
+msgid ""
+"for i, url in enumerate(urls):\n"
+"    yield Request(url, meta={\"cookiejar\": i}, callback=self.parse_page)"
+msgstr ""
+
+#: ../../../topics/cookies.rst:75
+msgid ""
+"The :reqmeta:`cookiejar` meta key is not \"sticky\", so you need to keep "
+"passing it along on subsequent requests:"
+msgstr ""
+
+#: ../../../topics/cookies.rst:78
+msgid ""
+"def parse_page(self, response):\n"
+"    return Request(\n"
+"        \"https://example.com/otherpage\",\n"
+"        meta={\"cookiejar\": response.meta[\"cookiejar\"]},\n"
+"        callback=self.parse_other_page,\n"
+"    )"
+msgstr ""
+
+#: ../../../topics/cookies.rst:91
+msgid "Skipping the cookie jar for a request"
+msgstr ""
+
+#: ../../../topics/cookies.rst:93
+msgid ""
+"Set the :reqmeta:`dont_merge_cookies` request meta key to ``True`` to keep a "
+"request from touching the cookie jar in either direction: no stored cookie "
+"is sent with the request, and no cookie received in the response is stored. "
+"The cookies of the request itself are ignored as well."
+msgstr ""
+
+#: ../../../topics/cookies.rst:102
+msgid "COOKIES_ENABLED"
+msgstr ""
+
+#: ../../../topics/cookies.rst:104
+msgid "Default: ``True``"
+msgstr ""
+
+#: ../../../topics/cookies.rst:106
+msgid ""
+"Whether to enable :class:`~scrapy.downloadermiddlewares.cookies."
+"CookiesMiddleware`. If disabled, no cookies are sent to web servers."
+msgstr ""
+
+#: ../../../topics/cookies.rst:113
+msgid "COOKIES_DEBUG"
+msgstr ""
+
+#: ../../../topics/cookies.rst:115
+msgid "Default: ``False``"
+msgstr ""
+
+#: ../../../topics/cookies.rst:117
+msgid ""
+"If enabled, Scrapy logs all cookies sent in requests (i.e. the ``Cookie`` "
+"header) and all cookies received in responses (i.e. the ``Set-Cookie`` "
+"header)::"
+msgstr ""
+
+#: ../../../topics/cookies.rst:121
+msgid ""
+"2011-04-06 14:35:10-0300 [scrapy.core.engine] INFO: Spider opened\n"
+"2011-04-06 14:35:10-0300 [scrapy.downloadermiddlewares.cookies] DEBUG: "
+"Sending cookies to: <GET http://www.diningcity.com/netherlands/index.html>\n"
+"        Cookie: clientlanguage_nl=en_EN\n"
+"2011-04-06 14:35:14-0300 [scrapy.downloadermiddlewares.cookies] DEBUG: "
+"Received cookies from: <200 http://www.diningcity.com/netherlands/index."
+"html>\n"
+"        Set-Cookie: JSESSIONID=B~FA4DC0C496C8762AE4F1A620EAB34F38; Path=/\n"
+"        Set-Cookie: ip_isocode=US\n"
+"        Set-Cookie: clientlanguage_nl=en_EN; Expires=Thu, 07-Apr-2011 "
+"21:21:34 GMT; Path=/\n"
+"2011-04-06 14:49:50-0300 [scrapy.core.engine] DEBUG: Crawled (200) <GET "
+"http://www.diningcity.com/netherlands/index.html> (referer: None)\n"
+"[...]"
+msgstr ""
+
+#: ../../../topics/cookies.rst:133
+msgid "CookiesMiddleware"
+msgstr ""

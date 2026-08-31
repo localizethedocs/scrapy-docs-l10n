@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:53+0000\n"
+"POT-Creation-Date: 2026-08-31 16:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -233,11 +233,42 @@ msgstr ""
 msgid "``settings`` - the current :ref:`Scrapy settings <topics-settings>`"
 msgstr ""
 
-#: ../../../topics/shell.rst:148
-msgid "Example of shell session"
+#: ../../../topics/shell.rst:150
+msgid "Adding your own objects"
 msgstr ""
 
 #: ../../../topics/shell.rst:152
+msgid ""
+"To define additional objects, or to run code every time a response is "
+"fetched, write a :ref:`custom project command <topics-commands>` in a module "
+"called ``shell``, which overrides the :command:`shell` command, and override "
+"its ``update_vars`` method. It is called on start and after every ``fetch``, "
+"and it receives the mapping of variable names to objects:"
+msgstr ""
+
+#: ../../../topics/shell.rst:158
+msgid ""
+"from scrapy.commands.shell import Command as ShellCommand\n"
+"\n"
+"\n"
+"class Command(ShellCommand):\n"
+"    def update_vars(self, vars):\n"
+"        from myproject.utils import parse_product\n"
+"\n"
+"        vars[\"parse_product\"] = parse_product\n"
+"        if vars[\"response\"] is not None:\n"
+"            vars[\"product\"] = parse_product(vars[\"response\"])"
+msgstr ""
+
+#: ../../../topics/shell.rst:171
+msgid "``response`` is ``None`` when the shell is started without a URL."
+msgstr ""
+
+#: ../../../topics/shell.rst:174
+msgid "Example of shell session"
+msgstr ""
+
+#: ../../../topics/shell.rst:178
 msgid ""
 "Here's an example of a typical shell session where we start by scraping the "
 "https://www.scrapy.org/ page, and then proceed to scrape the https://old."
@@ -246,7 +277,7 @@ msgid ""
 "systems) or Ctrl-Z in Windows."
 msgstr ""
 
-#: ../../../topics/shell.rst:158
+#: ../../../topics/shell.rst:184
 msgid ""
 "Keep in mind that the data extracted here may not be the same when you try "
 "it, as those pages are not static and could have changed by the time you "
@@ -254,37 +285,37 @@ msgid ""
 "how the Scrapy shell works."
 msgstr ""
 
-#: ../../../topics/shell.rst:163
+#: ../../../topics/shell.rst:189
 msgid "First, we launch the shell::"
 msgstr ""
 
-#: ../../../topics/shell.rst:165
+#: ../../../topics/shell.rst:191
 msgid "scrapy shell 'https://scrapy.org' --nolog"
 msgstr ""
 
-#: ../../../topics/shell.rst:169
+#: ../../../topics/shell.rst:195
 msgid ""
 "Remember to always enclose URLs in quotes when running the Scrapy shell from "
 "the command line, otherwise URLs containing arguments (i.e. the ``&`` "
 "character) will not work."
 msgstr ""
 
-#: ../../../topics/shell.rst:173
+#: ../../../topics/shell.rst:199
 msgid "On Windows, use double quotes instead::"
 msgstr ""
 
-#: ../../../topics/shell.rst:175
+#: ../../../topics/shell.rst:201
 msgid "scrapy shell \"https://scrapy.org\" --nolog"
 msgstr ""
 
-#: ../../../topics/shell.rst:178
+#: ../../../topics/shell.rst:204
 msgid ""
 "Then, the shell fetches the URL (using the Scrapy downloader) and prints the "
 "list of available objects and useful shortcuts (you'll notice that these "
 "lines all start with the ``[s]`` prefix)::"
 msgstr ""
 
-#: ../../../topics/shell.rst:182
+#: ../../../topics/shell.rst:208
 msgid ""
 "[s] Available Scrapy objects:\n"
 "[s]   scrapy     scrapy module (contains scrapy.Request, scrapy.Selector, "
@@ -306,11 +337,11 @@ msgid ""
 ">>>"
 msgstr ""
 
-#: ../../../topics/shell.rst:199
+#: ../../../topics/shell.rst:225
 msgid "After that, we can start playing with the objects:"
 msgstr ""
 
-#: ../../../topics/shell.rst:201
+#: ../../../topics/shell.rst:227
 msgid ""
 ">>> response.xpath(\"//title/text()\").get()\n"
 "'Scrapy | A Fast and Powerful Scraping and Web Crawling Framework'\n"
@@ -358,27 +389,27 @@ msgid ""
 "'X-Xss-Protection': ['1; mode=block']}"
 msgstr ""
 
-#: ../../../topics/shell.rst:248
+#: ../../../topics/shell.rst:274
 msgid "Invoking the shell from spiders to inspect responses"
 msgstr ""
 
-#: ../../../topics/shell.rst:250
+#: ../../../topics/shell.rst:276
 msgid ""
 "Sometimes you want to inspect the responses that are being processed in a "
 "certain point of your spider, if only to check that response you expect is "
 "getting there."
 msgstr ""
 
-#: ../../../topics/shell.rst:254
+#: ../../../topics/shell.rst:280
 msgid ""
 "This can be achieved by using the ``scrapy.shell.inspect_response`` function."
 msgstr ""
 
-#: ../../../topics/shell.rst:256
+#: ../../../topics/shell.rst:282
 msgid "Here's an example of how you would call it from your spider:"
 msgstr ""
 
-#: ../../../topics/shell.rst:258
+#: ../../../topics/shell.rst:284
 msgid ""
 "import scrapy\n"
 "\n"
@@ -401,11 +432,11 @@ msgid ""
 "        # Rest of parsing code."
 msgstr ""
 
-#: ../../../topics/shell.rst:282
+#: ../../../topics/shell.rst:308
 msgid "When you run the spider, you will get something similar to this::"
 msgstr ""
 
-#: ../../../topics/shell.rst:284
+#: ../../../topics/shell.rst:310
 msgid ""
 "2014-01-23 17:48:31-0400 [scrapy.core.engine] DEBUG: Crawled (200) <GET "
 "http://example.com> (referer: None)\n"
@@ -419,35 +450,35 @@ msgid ""
 "'http://example.org'"
 msgstr ""
 
-#: ../../../topics/shell.rst:293
+#: ../../../topics/shell.rst:319
 msgid "Then, you can check if the extraction code is working:"
 msgstr ""
 
-#: ../../../topics/shell.rst:295
+#: ../../../topics/shell.rst:321
 msgid ""
 ">>> response.xpath('//h1[@class=\"fn\"]')\n"
 "[]"
 msgstr ""
 
-#: ../../../topics/shell.rst:300
+#: ../../../topics/shell.rst:326
 msgid ""
 "Nope, it doesn't. So you can open the response in your web browser and see "
 "if it's the response you were expecting:"
 msgstr ""
 
-#: ../../../topics/shell.rst:303
+#: ../../../topics/shell.rst:329
 msgid ""
 ">>> view(response)\n"
 "True"
 msgstr ""
 
-#: ../../../topics/shell.rst:308
+#: ../../../topics/shell.rst:334
 msgid ""
 "Finally you hit Ctrl-D (or Ctrl-Z in Windows) to exit the shell and resume "
 "the crawling::"
 msgstr ""
 
-#: ../../../topics/shell.rst:311
+#: ../../../topics/shell.rst:337
 msgid ""
 ">>> ^D\n"
 "2014-01-23 17:50:03-0400 [scrapy.core.engine] DEBUG: Crawled (200) <GET "
@@ -455,7 +486,7 @@ msgid ""
 "..."
 msgstr ""
 
-#: ../../../topics/shell.rst:317
+#: ../../../topics/shell.rst:343
 msgid ""
 "Note that you can't use the ``fetch`` shortcut here since the Scrapy engine "
 "is blocked by the shell. However, after you leave the shell, the spider will "
