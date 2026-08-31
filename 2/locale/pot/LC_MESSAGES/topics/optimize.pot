@@ -1,0 +1,531 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy 2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-31 16:28+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/optimize.rst:5
+msgid "Optimization"
+msgstr ""
+
+#: ../../../topics/optimize.rst:7
+msgid ""
+"A crawl goes as fast as its slowest part allows. :ref:`Find out which part "
+"that is <optimize-bottleneck>` before changing any setting."
+msgstr ""
+
+#: ../../../topics/optimize.rst:10
+msgid ""
+":ref:`Broad crawls <broad-crawls>` have their own set of recommended "
+"adjustments."
+msgstr ""
+
+#: ../../../topics/optimize.rst:16
+msgid "Finding the bottleneck"
+msgstr ""
+
+#: ../../../topics/optimize.rst:18
+msgid ""
+"The bottleneck depends on the spider: on the same machine, one crawl can be "
+"limited by its own parsing code and another by the target website. So "
+"measure the crawl that you want to optimize."
+msgstr ""
+
+#: ../../../topics/optimize.rst:22
+msgid ""
+":class:`~scrapy.extensions.logstats.LogStats` reports crawl speed every :"
+"setting:`LOGSTATS_INTERVAL` seconds:"
+msgstr ""
+
+#: ../../../topics/optimize.rst:25
+msgid ""
+"[scrapy.extensions.logstats] INFO: Crawled 1200 pages (at 60 pages/min), "
+"scraped 1150 items (at 58 items/min)"
+msgstr ""
+
+#: ../../../topics/optimize.rst:29
+msgid ""
+"A rate that stays flat as you raise :setting:`CONCURRENT_REQUESTS` means "
+"something else is the limit."
+msgstr ""
+
+#: ../../../topics/optimize.rst:34
+msgid "Reading the engine status"
+msgstr ""
+
+#: ../../../topics/optimize.rst:36
+msgid ""
+"The :ref:`telnet console <topics-telnetconsole>` reports, through ``est()``, "
+"what every part of the engine is doing at a given moment:"
+msgstr ""
+
+#: ../../../topics/optimize.rst:39
+msgid ""
+"len(engine.downloader.active)                   : 16\n"
+"len(engine._slot.scheduler.mqs)                 : 92\n"
+"len(engine.scraper.slot.active)                 : 0\n"
+"engine.scraper.slot.active_size                 : 0\n"
+"engine.scraper.slot.needs_backout()             : False"
+msgstr ""
+
+#: ../../../topics/optimize.rst:47
+msgid "Take a few readings at different points of the crawl:"
+msgstr ""
+
+#: ../../../topics/optimize.rst:49
+msgid ""
+"``len(engine.downloader.active)`` stays at :setting:`CONCURRENT_REQUESTS`: "
+"the downloader is the limit. You are waiting on the network or on the target "
+"website. See :ref:`optimize-concurrency`."
+msgstr ""
+
+#: ../../../topics/optimize.rst:53
+msgid ""
+"``len(engine.downloader.active)`` stays below :setting:`CONCURRENT_REQUESTS` "
+"while the scheduler queues (``mqs``, ``dqs``) hold requests: something "
+"throttles those requests before they reach the downloader, usually :setting:"
+"`CONCURRENT_REQUESTS_PER_DOMAIN`, :setting:`DOWNLOAD_DELAY` or :ref:"
+"`AutoThrottle <topics-autothrottle>`."
+msgstr ""
+
+#: ../../../topics/optimize.rst:59
+msgid ""
+"Both the downloader and the scheduler queues stay near empty: your spider is "
+"not producing requests fast enough. A crawl that walks pagination one page "
+"at a time cannot use more concurrency than it creates. See :ref:`optimize-"
+"requests`."
+msgstr ""
+
+#: ../../../topics/optimize.rst:64
+msgid ""
+"``needs_backout()`` is ``True``, or ``active_size`` approaches :setting:"
+"`SCRAPER_SLOT_MAX_ACTIVE_SIZE`: responses arrive faster than your callbacks "
+"and :ref:`item pipelines <topics-item-pipeline>` handle them. The bottleneck "
+"is your own code."
+msgstr ""
+
+#: ../../../topics/optimize.rst:69
+msgid ""
+"``len(engine._slot.scheduler.mqs)`` grows without settling: the crawl "
+"discovers requests faster than it downloads them. This is what makes long "
+"crawls run out of memory."
+msgstr ""
+
+#: ../../../topics/optimize.rst:75
+msgid "Reading resource usage"
+msgstr ""
+
+#: ../../../topics/optimize.rst:77
+msgid "CPU"
+msgstr ""
+
+#: ../../../topics/optimize.rst:78
+msgid ""
+"Scrapy runs in a single process, and everything except DNS resolution and "
+"code you explicitly move to a thread runs in a single thread. One CPU core "
+"is the ceiling; a process sitting at 100% of a core is CPU-bound no matter "
+"how many cores the machine has."
+msgstr ""
+
+#: ../../../topics/optimize.rst:83
+msgid ""
+"Use a sampling profiler, such as py-spy_, to find out which code is spending "
+"that CPU. :ref:`Selectors <topics-selectors>` and item pipelines are the "
+"usual answer."
+msgstr ""
+
+#: ../../../topics/optimize.rst:89
+msgid "Memory"
+msgstr ""
+
+#: ../../../topics/optimize.rst:90
+msgid ""
+"The :ref:`memory usage extension <topics-extensions-ref-memusage>` records :"
+"stat:`memusage/startup` and :stat:`memusage/max`. A :stat:`memusage/max` far "
+"above :stat:`memusage/startup` is expected; what matters is whether it keeps "
+"growing for as long as the crawl runs."
+msgstr ""
+
+#: ../../../topics/optimize.rst:95
+msgid ""
+"Growth that tracks ``len(engine._slot.scheduler.mqs)`` is a scheduling "
+"problem, covered in :ref:`optimize-memory`. Growth that does not is a :ref:"
+"`memory leak <topics-leaks>`."
+msgstr ""
+
+#: ../../../topics/optimize.rst:99
+msgid "Network"
+msgstr ""
+
+#: ../../../topics/optimize.rst:100
+msgid ""
+"Compare :stat:`downloader/response_bytes` over the crawl time against your "
+"available bandwidth. Saturated bandwidth caps concurrency regardless of any "
+"setting."
+msgstr ""
+
+#: ../../../topics/optimize.rst:104
+msgid ""
+"DNS resolution is separate: it runs on a thread pool of :setting:"
+"`REACTOR_THREADPOOL_MAXSIZE` threads, and results are cached (:setting:"
+"`DNSCACHE_ENABLED`, :setting:`DNSCACHE_SIZE`). It only becomes a limit of "
+"its own when there are many different domains to resolve, as in :ref:`broad "
+"crawls <broad-crawls>`, where it shows up as slow starts and DNS timeouts."
+msgstr ""
+
+#: ../../../topics/optimize.rst:111
+msgid "Disk"
+msgstr ""
+
+#: ../../../topics/optimize.rst:112
+msgid ""
+":ref:`Feed exports <topics-feed-exports>` write to disk on most crawls, "
+"although item data is usually small enough for that not to matter. The ones "
+"to suspect are :class:`~scrapy.downloadermiddlewares.httpcache."
+"HttpCacheMiddleware` and the :ref:`media pipelines <topics-media-pipeline>`, "
+"which write whole responses, and :setting:`JOBDIR`, which writes every "
+"scheduled request."
+msgstr ""
+
+#: ../../../topics/optimize.rst:123
+msgid "Sending more requests at a time"
+msgstr ""
+
+#: ../../../topics/optimize.rst:125
+msgid ""
+":setting:`CONCURRENT_REQUESTS` caps how many requests are being downloaded "
+"at any given moment, :setting:`CONCURRENT_REQUESTS_PER_DOMAIN` caps how many "
+"of those may target the same domain, and :setting:`DOWNLOAD_DELAY` sets a "
+"minimum wait between two consecutive requests to the same domain. A project "
+"generated by :command:`startproject` gets one request per second per domain "
+"out of these."
+msgstr ""
+
+#: ../../../topics/optimize.rst:131
+msgid ""
+"Raise them to crawl a single website faster, and see :ref:`broad-crawls-"
+"concurrency` to spread requests across many websites instead."
+msgstr ""
+
+#: ../../../topics/optimize.rst:135
+msgid ""
+"The limit that matters, though, is the one the target website tolerates. "
+"Exceeding it gets you throttled, served errors or banned, all of which make "
+"the crawl slower than a lower concurrency would have been. To find that "
+"limit:"
+msgstr ""
+
+#: ../../../topics/optimize.rst:139
+msgid ""
+"Read the :ref:`robots.txt <topics-dlmw-robots>` file of the website. Scrapy "
+"does not act on its ``Crawl-delay`` and ``Request-rate`` directives, so when "
+"they are present, translate them into :setting:`DOWNLOAD_DELAY` and "
+"concurrency settings yourself."
+msgstr ""
+
+#: ../../../topics/optimize.rst:144
+msgid ""
+"Check the traffic that the website already gets, using a service like "
+"`SimilarWeb`_ or `Cloudflare Radar`_. A rate that is a rounding error next "
+"to what the website serves anyway is unlikely to be a problem for it."
+msgstr ""
+
+#: ../../../topics/optimize.rst:151
+msgid ""
+"Look for a documented way in. An API, a bulk export or a search endpoint is "
+"both faster for you and cheaper for the website than crawling its pages, and "
+"the terms of service may state a rate."
+msgstr ""
+
+#: ../../../topics/optimize.rst:155
+msgid ""
+"Crawl when the website is idle, in its own timezone, so that the capacity "
+"you take is capacity nobody else wanted."
+msgstr ""
+
+#: ../../../topics/optimize.rst:158
+msgid ""
+"Raise concurrency gradually and watch the website respond. :stat:`downloader/"
+"response_status_count/{status_code}` counts for 429, 503 or the ban page of "
+"the website, growing :stat:`retry/count`, or a :ref:`download latency "
+"<download-latency>` that climbs as you push harder, all mean you have gone "
+"past the limit."
+msgstr ""
+
+#: ../../../topics/optimize.rst:168
+msgid "Producing requests faster"
+msgstr ""
+
+#: ../../../topics/optimize.rst:170
+msgid ""
+"A spider that discovers its requests one response at a time keeps the "
+"downloader idle no matter how high you set :setting:`CONCURRENT_REQUESTS`. "
+"To put more requests in the scheduler earlier:"
+msgstr ""
+
+#: ../../../topics/optimize.rst:174
+msgid ""
+"Request every page at once when you can work out how many there are, e.g. "
+"from a page count or from a result count and a page size in the first "
+"response, instead of following a link to the next page on every response."
+msgstr ""
+
+#: ../../../topics/optimize.rst:178
+msgid ""
+"Get URLs from a source that lists many of them at once, such as a sitemap or "
+"a search or export endpoint of the target website. For a crawl that needs "
+"nothing else, :class:`~scrapy.spiders.SitemapSpider` reads sitemaps for you."
+msgstr ""
+
+#: ../../../topics/optimize.rst:183
+msgid ""
+"Raise the :attr:`~scrapy.Request.priority` of pagination requests, so that "
+"they are downloaded before the requests that they compete with, and discover "
+"the rest of the crawl sooner."
+msgstr ""
+
+#: ../../../topics/optimize.rst:187
+msgid ""
+"Each of these trades memory for speed: a request produced before the "
+"downloader can take it waits in the scheduler, or on disk if you set :"
+"setting:`JOBDIR`. Pushed far enough, they turn memory or disk into your new "
+"bottleneck, which is why :ref:`optimize-memory` recommends the reverse of "
+"the last point."
+msgstr ""
+
+#: ../../../topics/optimize.rst:196
+msgid "Lowering resource usage"
+msgstr ""
+
+#: ../../../topics/optimize.rst:201
+msgid "Lowering memory usage"
+msgstr ""
+
+#: ../../../topics/optimize.rst:203
+msgid "Lower :setting:`SCRAPER_SLOT_MAX_ACTIVE_SIZE`."
+msgstr ""
+
+#: ../../../topics/optimize.rst:205
+msgid ""
+"Lower :setting:`DOWNLOAD_MAXSIZE`, which allows a single response to take up "
+"to 1 GiB of memory by default, multiplied by your concurrency. Set :setting:"
+"`DOWNLOAD_WARNSIZE` first to find out whether the website actually serves "
+"responses that big."
+msgstr ""
+
+#: ../../../topics/optimize.rst:210
+msgid ""
+"Lower the number of :ref:`scheduled requests <topics-scheduler>` held in "
+"memory:"
+msgstr ""
+
+#: ../../../topics/optimize.rst:213
+msgid ""
+"Increase the :attr:`~scrapy.Request.priority` of requests whose :attr:"
+"`~scrapy.Request.callback` cannot yield additional requests."
+msgstr ""
+
+#: ../../../topics/optimize.rst:216
+msgid ""
+"For example, the following spider uses a higher priority (1) for book "
+"requests than for pagination requests:"
+msgstr ""
+
+#: ../../../topics/optimize.rst:219
+msgid ""
+"from scrapy import Spider\n"
+"\n"
+"\n"
+"class BooksToScrapeComSpider(Spider):\n"
+"    name = \"books_toscrape_com\"\n"
+"    start_urls = [\n"
+"        \"http://books.toscrape.com/catalogue/category/books/mystery_3/index."
+"html\"\n"
+"    ]\n"
+"\n"
+"    def parse(self, response):\n"
+"        next_page_links = response.css(\".next a\")\n"
+"        yield from response.follow_all(next_page_links)\n"
+"        book_links = response.css(\"article a\")\n"
+"        yield from response.follow_all(book_links, callback=self.parse_book, "
+"priority=1)\n"
+"\n"
+"    def parse_book(self, response):\n"
+"        yield {\n"
+"            \"name\": response.css(\"h1::text\").get(),\n"
+"            \"price\": response.css(\".price_color::text\").re_first(\"£(."
+"*)\"),\n"
+"            \"url\": response.url,\n"
+"        }"
+msgstr ""
+
+#: ../../../topics/optimize.rst:243
+msgid ""
+"If the number of request-yielding, low-priority requests scheduled at any "
+"given time is lower than concurrency settings (:setting:"
+"`CONCURRENT_REQUESTS_PER_DOMAIN` or :setting:`CONCURRENT_REQUESTS`), as in "
+"the example above, this can slow down your crawl by turning those requests "
+"into a bottleneck."
+msgstr ""
+
+#: ../../../topics/optimize.rst:249
+msgid ""
+"If you have many :ref:`start requests <start-requests>`, consider :ref:"
+"`delaying their iteration <start-requests-lazy>`."
+msgstr ""
+
+#: ../../../topics/optimize.rst:252
+msgid "Set :setting:`JOBDIR` to offload all scheduled requests to disk."
+msgstr ""
+
+#: ../../../topics/optimize.rst:254
+msgid "Be on the lookout for :ref:`memory leaks <topics-leaks>`."
+msgstr ""
+
+#: ../../../topics/optimize.rst:258
+msgid "Lowering network usage"
+msgstr ""
+
+#: ../../../topics/optimize.rst:260
+msgid ""
+"Enable :class:`~scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware` "
+"while developing your spider, so that re-runs do not download the same "
+"responses again."
+msgstr ""
+
+#: ../../../topics/optimize.rst:266
+msgid "Lowering CPU usage"
+msgstr ""
+
+#: ../../../topics/optimize.rst:268
+msgid "Set :setting:`LOG_LEVEL` to ``\"INFO\"`` or higher."
+msgstr ""
+
+#: ../../../topics/optimize.rst:270
+msgid ""
+"Restrict what you parse. A :ref:`selector <topics-selectors>` over a smaller "
+"part of the response, or a single query whose result you reuse, beats "
+"repeated queries over the whole document."
+msgstr ""
+
+#: ../../../topics/optimize.rst:276
+msgid "Other tips"
+msgstr ""
+
+#: ../../../topics/optimize.rst:278
+msgid ""
+"Try :ref:`using the asyncio reactor <install-asyncio>` with uvloop_ as :ref:"
+"`custom event loop <using-custom-loops>`, i.e. setting :setting:"
+"`ASYNCIO_EVENT_LOOP` to ``\"uvloop.Loop\"``."
+msgstr ""
+
+#: ../../../topics/optimize.rst:284
+msgid ""
+"Alternatively, try :ref:`switching to a non-asyncio reactor <disable-"
+"asyncio>`."
+msgstr ""
+
+#: ../../../topics/optimize.rst:287
+msgid "Disable unused :ref:`components <topics-components>`."
+msgstr ""
+
+#: ../../../topics/optimize.rst:289
+msgid ""
+"For example, set :setting:`COOKIES_ENABLED` to ``False`` unless you need "
+"cookies."
+msgstr ""
+
+#: ../../../topics/optimize.rst:292
+msgid ""
+"Split the crawl across separate processes to use more than one CPU core. "
+"See :ref:`distributed-crawls`."
+msgstr ""
+
+#: ../../../topics/optimize.rst:300
+msgid "Speeding up broad crawls"
+msgstr ""
+
+#: ../../../topics/optimize.rst:302
+msgid ""
+"While Scrapy is well suited for **broad crawls**, i.e. crawls that target "
+"many websites, the default :ref:`settings <topics-settings>` are optimized "
+"for crawls targeting a single website."
+msgstr ""
+
+#: ../../../topics/optimize.rst:306
+msgid "For broad crawls, consider these adjustments:"
+msgstr ""
+
+#: ../../../topics/optimize.rst:310
+msgid "Increase the global concurrency:"
+msgstr ""
+
+#: ../../../topics/optimize.rst:312
+msgid ""
+"Set :setting:`CONCURRENT_REQUESTS` as close to :setting:"
+"`CONCURRENT_REQUESTS_PER_DOMAIN` × [number of target domains] (e.g. 8 × 10 "
+"domains = 80 concurrent requests) as your CPU and memory allow."
+msgstr ""
+
+#: ../../../topics/optimize.rst:317
+msgid ""
+"Increase :setting:`SCRAPER_SLOT_MAX_ACTIVE_SIZE` when increasing :setting:"
+"`CONCURRENT_REQUESTS` stops making a difference."
+msgstr ""
+
+#: ../../../topics/optimize.rst:322
+msgid ""
+"If memory is a bottleneck, see if :ref:`crawling in BFO order <bfo>` lowers "
+"memory usage."
+msgstr ""
+
+#: ../../../topics/optimize.rst:325
+msgid "Improve DNS resolution speed:"
+msgstr ""
+
+#: ../../../topics/optimize.rst:327
+msgid ""
+"Set up your own DNS server, with a local cache and upstream to a `large DNS "
+"server`_, to avoid slowing down your network."
+msgstr ""
+
+#: ../../../topics/optimize.rst:332
+msgid ""
+"Increase :setting:`REACTOR_THREADPOOL_MAXSIZE` to the minimum value that "
+"avoids DNS resolution timeouts and makes a noticeable positive impact in "
+"crawl speed."
+msgstr ""
+
+#: ../../../topics/optimize.rst:336
+msgid "Lower the negative impact of some responses:"
+msgstr ""
+
+#: ../../../topics/optimize.rst:338
+msgid ""
+"Set :setting:`RETRY_ENABLED` to ``False`` or, if you need retries, consider "
+"lowering :setting:`RETRY_TIMES`."
+msgstr ""
+
+#: ../../../topics/optimize.rst:341
+msgid ""
+"Lower :setting:`DOWNLOAD_TIMEOUT` to a more reasonable value, to discard "
+"stuck requests more quickly."
+msgstr ""
+
+#: ../../../topics/optimize.rst:344
+msgid ""
+"Set :setting:`REDIRECT_ENABLED` to ``False`` unless you want to follow "
+"redirects."
+msgstr ""

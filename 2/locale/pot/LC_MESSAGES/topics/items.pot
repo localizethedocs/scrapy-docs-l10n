@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy 2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-11 11:31+0000\n"
+"POT-Creation-Date: 2026-08-31 16:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,108 +44,68 @@ msgstr ""
 msgid ""
 "Scrapy supports the following types of items, via the `itemadapter`_ "
 "library: :ref:`dictionaries <dict-items>`, :ref:`Item objects <item-"
-"objects>`, :ref:`dataclass objects <dataclass-items>`, and :ref:`attrs "
-"objects <attrs-items>`."
+"objects>`, :ref:`dataclass objects <dataclass-items>`, :ref:`attrs objects "
+"<attrs-items>` and :ref:`Pydantic models <pydantic-items>`."
 msgstr ""
 
-#: ../../../topics/items.rst:33
+#: ../../../topics/items.rst:34
 msgid "Dictionaries"
 msgstr ""
 
-#: ../../../topics/items.rst:35
+#: ../../../topics/items.rst:36
 msgid "As an item type, :class:`dict` is convenient and familiar."
 msgstr ""
 
-#: ../../../topics/items.rst:40
+#: ../../../topics/items.rst:41
 msgid "Item objects"
 msgstr ""
 
-#: ../../../topics/items.rst:42
+#: ../../../topics/items.rst:43
 msgid ""
 ":class:`Item` provides a :class:`dict`-like API plus additional features "
 "that make it the most feature-complete item type:"
 msgstr ""
 
-#: ../../../../scrapy/item.py:docstring of scrapy.item.Item:1
-msgid "Base class for scraped items."
-msgstr ""
-
-#: ../../../../scrapy/item.py:docstring of scrapy.item.Item:3
-msgid ""
-"In Scrapy, an object is considered an ``item`` if it's supported by the "
-"`itemadapter`_ library. For example, when the output of a spider callback is "
-"evaluated, only such objects are passed to :ref:`item pipelines <topics-item-"
-"pipeline>`. :class:`Item` is one of the classes supported by `itemadapter`_ "
-"by default."
-msgstr ""
-
-#: ../../../../scrapy/item.py:docstring of scrapy.item.Item:9
-msgid ""
-"Items must declare :class:`Field` attributes, which are processed and stored "
-"in the ``fields`` attribute. This restricts the set of allowed field names "
-"and prevents typos, raising ``KeyError`` when referring to undefined fields. "
-"Additionally, fields can be used to define metadata and control the way data "
-"is processed internally. Please refer to the :ref:`documentation about "
-"fields <topics-items-fields>` for additional information."
-msgstr ""
-
-#: ../../../../scrapy/item.py:docstring of scrapy.item.Item:16
-msgid ""
-"Unlike instances of :class:`dict`, instances of :class:`Item` may be :ref:"
-"`tracked <topics-leaks-trackrefs>` to debug memory leaks."
-msgstr ""
-
-#: ../../../../scrapy/item.py:docstring of scrapy.item.Item.deepcopy:1
-msgid "Return a :func:`~copy.deepcopy` of this item."
-msgstr ""
-
-#: ../../../../scrapy/item.py:docstring of scrapy.Item.fields:1
-msgid ""
-"A dictionary containing *all declared fields* for this Item, not only those "
-"populated. The keys are the field names and the values are the :class:"
-"`Field` objects used in the :ref:`Item declaration <topics-items-declaring>`."
-msgstr ""
-
-#: ../../../topics/items.rst:49
+#: ../../../topics/items.rst:50
 msgid ""
 ":class:`Item` objects replicate the standard :class:`dict` API, including "
 "its ``__init__`` method."
 msgstr ""
 
-#: ../../../topics/items.rst:52
+#: ../../../topics/items.rst:53
 msgid ":class:`Item` allows the defining of field names, so that:"
 msgstr ""
 
-#: ../../../topics/items.rst:54
+#: ../../../topics/items.rst:55
 msgid ""
 ":class:`KeyError` is raised when using undefined field names (i.e. prevents "
 "typos going unnoticed)"
 msgstr ""
 
-#: ../../../topics/items.rst:57
+#: ../../../topics/items.rst:58
 msgid ""
 ":ref:`Item exporters <topics-exporters>` can export all fields by default "
 "even if the first scraped object does not have values for all of them"
 msgstr ""
 
-#: ../../../topics/items.rst:61
+#: ../../../topics/items.rst:62
 msgid ""
 ":class:`Item` also allows the defining of field metadata, which can be used "
 "to :ref:`customize serialization <topics-exporters-field-serialization>`."
 msgstr ""
 
-#: ../../../topics/items.rst:64
+#: ../../../topics/items.rst:65
 msgid ""
-":mod:`trackref` tracks :class:`Item` objects to help find memory leaks (see :"
-"ref:`topics-leaks-trackrefs`)."
+":mod:`scrapy.utils.trackref` tracks :class:`Item` objects to help find "
+"memory leaks (see :ref:`topics-leaks-trackrefs`)."
 msgstr ""
 
-#: ../../../topics/items.rst:67 ../../../topics/items.rst:94
-#: ../../../topics/items.rst:126 ../../../topics/items.rst:164
+#: ../../../topics/items.rst:68 ../../../topics/items.rst:95
+#: ../../../topics/items.rst:127 ../../../topics/items.rst:165
 msgid "Example:"
 msgstr ""
 
-#: ../../../topics/items.rst:69
+#: ../../../topics/items.rst:70
 msgid ""
 "from scrapy.item import Item, Field\n"
 "\n"
@@ -155,11 +115,11 @@ msgid ""
 "    another_field = Field()"
 msgstr ""
 
-#: ../../../topics/items.rst:81
+#: ../../../topics/items.rst:82
 msgid "Dataclass objects"
 msgstr ""
 
-#: ../../../topics/items.rst:83
+#: ../../../topics/items.rst:84
 msgid ""
 ":func:`~dataclasses.dataclass` allows the defining of item classes with "
 "field names, so that :ref:`item exporters <topics-exporters>` can export all "
@@ -167,22 +127,22 @@ msgid ""
 "all of them."
 msgstr ""
 
-#: ../../../topics/items.rst:87
+#: ../../../topics/items.rst:88
 msgid "Additionally, ``dataclass`` items also allow you to:"
 msgstr ""
 
-#: ../../../topics/items.rst:89 ../../../topics/items.rst:119
+#: ../../../topics/items.rst:90 ../../../topics/items.rst:120
 msgid "define the type and default value of each defined field."
 msgstr ""
 
-#: ../../../topics/items.rst:91
+#: ../../../topics/items.rst:92
 msgid ""
 "define custom field metadata through :func:`dataclasses.field`, which can be "
 "used to :ref:`customize serialization <topics-exporters-field-"
 "serialization>`."
 msgstr ""
 
-#: ../../../topics/items.rst:96
+#: ../../../topics/items.rst:97
 msgid ""
 "from dataclasses import dataclass\n"
 "\n"
@@ -193,15 +153,15 @@ msgid ""
 "    another_field: int"
 msgstr ""
 
-#: ../../../topics/items.rst:106
+#: ../../../topics/items.rst:107
 msgid "Field types are not enforced at run time."
 msgstr ""
 
-#: ../../../topics/items.rst:111
+#: ../../../topics/items.rst:112
 msgid "attr.s objects"
 msgstr ""
 
-#: ../../../topics/items.rst:113
+#: ../../../topics/items.rst:114
 msgid ""
 ":func:`attr.s` allows the defining of item classes with field names, so "
 "that :ref:`item exporters <topics-exporters>` can export all fields by "
@@ -209,23 +169,23 @@ msgid ""
 "them."
 msgstr ""
 
-#: ../../../topics/items.rst:117
+#: ../../../topics/items.rst:118
 msgid "Additionally, ``attr.s`` items also allow to:"
 msgstr ""
 
-#: ../../../topics/items.rst:121
+#: ../../../topics/items.rst:122
 msgid ""
 "define custom field :ref:`metadata <attrs:metadata>`, which can be used to :"
 "ref:`customize serialization <topics-exporters-field-serialization>`."
 msgstr ""
 
-#: ../../../topics/items.rst:124
+#: ../../../topics/items.rst:125
 msgid ""
 "In order to use this type, the :doc:`attrs package <attrs:index>` needs to "
 "be installed."
 msgstr ""
 
-#: ../../../topics/items.rst:128
+#: ../../../topics/items.rst:129
 msgid ""
 "import attr\n"
 "\n"
@@ -236,11 +196,11 @@ msgid ""
 "    another_field = attr.ib()"
 msgstr ""
 
-#: ../../../topics/items.rst:142
+#: ../../../topics/items.rst:143
 msgid "Pydantic models"
 msgstr ""
 
-#: ../../../topics/items.rst:144
+#: ../../../topics/items.rst:145
 msgid ""
 "`Pydantic <https://docs.pydantic.dev/>`_ models allow the defining of item "
 "classes with field names, so that :ref:`item exporters <topics-exporters>` "
@@ -248,36 +208,36 @@ msgid ""
 "have values for all of them."
 msgstr ""
 
-#: ../../../topics/items.rst:149
+#: ../../../topics/items.rst:150
 msgid "Additionally, ``pydantic`` items also allow you to:"
 msgstr ""
 
-#: ../../../topics/items.rst:151
+#: ../../../topics/items.rst:152
 msgid ""
 "define the type and default value of each defined field with run-time type "
 "validation."
 msgstr ""
 
-#: ../../../topics/items.rst:154
+#: ../../../topics/items.rst:155
 msgid ""
 "define custom field metadata through `pydantic.Field <https://docs.pydantic."
 "dev/latest/concepts/fields/>`_, which can be used to :ref:`customize "
 "serialization <topics-exporters-field-serialization>`."
 msgstr ""
 
-#: ../../../topics/items.rst:158
+#: ../../../topics/items.rst:159
 msgid ""
 "benefit from automatic data validation and conversion based on type "
 "annotations."
 msgstr ""
 
-#: ../../../topics/items.rst:161
+#: ../../../topics/items.rst:162
 msgid ""
 "In order to use this type, the `pydantic package <https://docs.pydantic.dev/"
 ">`_ needs to be installed."
 msgstr ""
 
-#: ../../../topics/items.rst:166
+#: ../../../topics/items.rst:167
 msgid ""
 "from pydantic import BaseModel, Field\n"
 "\n"
@@ -287,27 +247,27 @@ msgid ""
 "    another_field: int = Field(default=0, description=\"Second field\")"
 msgstr ""
 
-#: ../../../topics/items.rst:175
+#: ../../../topics/items.rst:176
 msgid ""
 "Unlike other item types, Pydantic models enforce field types at run time and "
 "will raise validation errors for invalid data types."
 msgstr ""
 
-#: ../../../topics/items.rst:179 ../../../topics/items.rst:250
+#: ../../../topics/items.rst:180 ../../../topics/items.rst:251
 msgid "Working with Item objects"
 msgstr ""
 
-#: ../../../topics/items.rst:184
+#: ../../../topics/items.rst:185
 msgid "Declaring Item subclasses"
 msgstr ""
 
-#: ../../../topics/items.rst:186
+#: ../../../topics/items.rst:187
 msgid ""
 "Item subclasses are declared using a simple class definition syntax and :"
 "class:`Field` objects. Here is an example:"
 msgstr ""
 
-#: ../../../topics/items.rst:189
+#: ../../../topics/items.rst:190
 msgid ""
 "import scrapy\n"
 "\n"
@@ -320,25 +280,25 @@ msgid ""
 "    last_updated = scrapy.Field(serializer=str)"
 msgstr ""
 
-#: ../../../topics/items.rst:201
+#: ../../../topics/items.rst:202
 msgid ""
 "Those familiar with `Django`_ will notice that Scrapy Items are declared "
 "similar to `Django Models`_, except that Scrapy Items are much simpler as "
 "there is no concept of different field types."
 msgstr ""
 
-#: ../../../topics/items.rst:212
+#: ../../../topics/items.rst:213
 msgid "Declaring fields"
 msgstr ""
 
-#: ../../../topics/items.rst:214
+#: ../../../topics/items.rst:215
 msgid ""
 ":class:`Field` objects are used to specify metadata for each field. For "
 "example, the serializer function for the ``last_updated`` field illustrated "
 "in the example above."
 msgstr ""
 
-#: ../../../topics/items.rst:218
+#: ../../../topics/items.rst:219
 msgid ""
 "You can specify any kind of metadata for each field. There is no restriction "
 "on the values accepted by :class:`Field` objects. For this same reason, "
@@ -352,56 +312,43 @@ msgid ""
 "documentation to see which metadata keys are used by each component."
 msgstr ""
 
-#: ../../../topics/items.rst:229
+#: ../../../topics/items.rst:230
 msgid ""
 "It's important to note that the :class:`Field` objects used to declare the "
 "item do not stay assigned as class attributes. Instead, they can be accessed "
 "through the :attr:`~scrapy.Item.fields` attribute."
 msgstr ""
 
-#: ../../../../scrapy/item.py:docstring of scrapy.item.Field:1
-msgid "Container of field metadata"
-msgstr ""
-
-#: ../../../topics/items.rst:235
-msgid ""
-"The :class:`Field` class is just an alias to the built-in :class:`dict` "
-"class and doesn't provide any extra functionality or attributes. In other "
-"words, :class:`Field` objects are plain-old Python dicts. A separate class "
-"is used to support the :ref:`item declaration syntax <topics-items-"
-"declaring>` based on class attributes."
-msgstr ""
-
-#: ../../../topics/items.rst:241
+#: ../../../topics/items.rst:242
 msgid ""
 "Field metadata can also be declared for ``dataclass`` and ``attrs`` items. "
 "Please refer to the documentation for `dataclasses.field`_ and `attr.ib`_ "
 "for additional information."
 msgstr ""
 
-#: ../../../topics/items.rst:254
+#: ../../../topics/items.rst:255
 msgid ""
 "Here are some examples of common tasks performed with items, using the "
 "``Product`` item :ref:`declared above  <topics-items-declaring>`. You will "
 "notice the API is very similar to the :class:`dict` API."
 msgstr ""
 
-#: ../../../topics/items.rst:259
+#: ../../../topics/items.rst:260
 msgid "Creating items"
 msgstr ""
 
-#: ../../../topics/items.rst:261
+#: ../../../topics/items.rst:262
 msgid ""
 ">>> product = Product(name=\"Desktop PC\", price=1000)\n"
 ">>> print(product)\n"
-"Product(name='Desktop PC', price=1000)"
+"{'name': 'Desktop PC', 'price': 1000}"
 msgstr ""
 
-#: ../../../topics/items.rst:269
+#: ../../../topics/items.rst:270
 msgid "Getting field values"
 msgstr ""
 
-#: ../../../topics/items.rst:271
+#: ../../../topics/items.rst:272
 msgid ""
 ">>> product[\"name\"]\n"
 "Desktop PC\n"
@@ -440,11 +387,11 @@ msgid ""
 "False"
 msgstr ""
 
-#: ../../../topics/items.rst:311
+#: ../../../topics/items.rst:312
 msgid "Setting field values"
 msgstr ""
 
-#: ../../../topics/items.rst:313
+#: ../../../topics/items.rst:314
 msgid ""
 ">>> product[\"last_updated\"] = \"today\"\n"
 ">>> product[\"last_updated\"]\n"
@@ -456,15 +403,15 @@ msgid ""
 "KeyError: 'Product does not support field: lala'"
 msgstr ""
 
-#: ../../../topics/items.rst:326
+#: ../../../topics/items.rst:327
 msgid "Accessing all populated values"
 msgstr ""
 
-#: ../../../topics/items.rst:328
+#: ../../../topics/items.rst:329
 msgid "To access all populated values, just use the typical :class:`dict` API:"
 msgstr ""
 
-#: ../../../topics/items.rst:330
+#: ../../../topics/items.rst:331
 msgid ""
 ">>> product.keys()\n"
 "['price', 'name']\n"
@@ -473,24 +420,24 @@ msgid ""
 "[('price', 1000), ('name', 'Desktop PC')]"
 msgstr ""
 
-#: ../../../topics/items.rst:342
+#: ../../../topics/items.rst:343
 msgid "Copying items"
 msgstr ""
 
-#: ../../../topics/items.rst:344
+#: ../../../topics/items.rst:345
 msgid ""
 "To copy an item, you must first decide whether you want a shallow copy or a "
 "deep copy."
 msgstr ""
 
-#: ../../../topics/items.rst:347
+#: ../../../topics/items.rst:348
 msgid ""
 "If your item contains :term:`mutable` values like lists or dictionaries, a "
 "shallow copy will keep references to the same mutable values across all "
 "different copies."
 msgstr ""
 
-#: ../../../topics/items.rst:351
+#: ../../../topics/items.rst:352
 msgid ""
 "For example, if you have an item with a list of tags, and you create a "
 "shallow copy of that item, both the original item and the copy have the same "
@@ -498,44 +445,49 @@ msgid ""
 "to the other item as well."
 msgstr ""
 
-#: ../../../topics/items.rst:356
+#: ../../../topics/items.rst:357
 msgid "If that is not the desired behavior, use a deep copy instead."
 msgstr ""
 
-#: ../../../topics/items.rst:358
+#: ../../../topics/items.rst:359
 msgid "See :mod:`copy` for more information."
 msgstr ""
 
-#: ../../../topics/items.rst:360
+#: ../../../topics/items.rst:361
 msgid ""
 "To create a shallow copy of an item, you can either call :meth:`~scrapy.Item."
 "copy` on an existing item (``product2 = product.copy()``) or instantiate "
 "your item class from an existing item (``product2 = Product(product)``)."
 msgstr ""
 
-#: ../../../topics/items.rst:365
+#: ../../../topics/items.rst:366
 msgid ""
 "To create a deep copy, call :meth:`~scrapy.Item.deepcopy` instead "
 "(``product2 = product.deepcopy()``)."
 msgstr ""
 
-#: ../../../topics/items.rst:370
+#: ../../../topics/items.rst:371
 msgid "Other common tasks"
 msgstr ""
 
-#: ../../../topics/items.rst:372
+#: ../../../topics/items.rst:373
 msgid "Creating dicts from items:"
 msgstr ""
 
-#: ../../../topics/items.rst:374
+#: ../../../topics/items.rst:375
 msgid ""
 ">>> dict(product)  # create a dict from all populated values\n"
-"{'price': 1000, 'name': 'Desktop PC'}\n"
-"\n"
-"Creating items from dicts:\n"
-"\n"
+"{'price': 1000, 'name': 'Desktop PC'}"
+msgstr ""
+
+#: ../../../topics/items.rst:380
+msgid "Creating items from dicts:"
+msgstr ""
+
+#: ../../../topics/items.rst:382
+msgid ""
 ">>> Product({\"name\": \"Laptop PC\", \"price\": 1500})\n"
-"Product(price=1500, name='Laptop PC')\n"
+"{'name': 'Laptop PC', 'price': 1500}\n"
 "\n"
 ">>> Product({\"name\": \"Laptop PC\", \"lala\": 1500})  # warning: unknown "
 "field in dict\n"
@@ -544,50 +496,50 @@ msgid ""
 "KeyError: 'Product does not support field: lala'"
 msgstr ""
 
-#: ../../../topics/items.rst:391
+#: ../../../topics/items.rst:394
 msgid "Extending Item subclasses"
 msgstr ""
 
-#: ../../../topics/items.rst:393
+#: ../../../topics/items.rst:396
 msgid ""
 "You can extend Items (to add more fields or to change some metadata for some "
 "fields) by declaring a subclass of your original Item."
 msgstr ""
 
-#: ../../../topics/items.rst:396
+#: ../../../topics/items.rst:399
 msgid "For example:"
 msgstr ""
 
-#: ../../../topics/items.rst:398
+#: ../../../topics/items.rst:401
 msgid ""
 "class DiscountedProduct(Product):\n"
 "    discount_percent = scrapy.Field(serializer=str)\n"
 "    discount_expiration_date = scrapy.Field()"
 msgstr ""
 
-#: ../../../topics/items.rst:404
+#: ../../../topics/items.rst:407
 msgid ""
 "You can also extend field metadata by using the previous field metadata and "
 "appending more values, or changing existing values, like this:"
 msgstr ""
 
-#: ../../../topics/items.rst:407
+#: ../../../topics/items.rst:410
 msgid ""
 "class SpecificProduct(Product):\n"
 "    name = scrapy.Field(Product.fields[\"name\"], serializer=my_serializer)"
 msgstr ""
 
-#: ../../../topics/items.rst:412
+#: ../../../topics/items.rst:415
 msgid ""
 "That adds (or replaces) the ``serializer`` metadata key for the ``name`` "
 "field, keeping all the previously existing metadata values."
 msgstr ""
 
-#: ../../../topics/items.rst:421
+#: ../../../topics/items.rst:424
 msgid "Supporting All Item Types"
 msgstr ""
 
-#: ../../../topics/items.rst:423
+#: ../../../topics/items.rst:426
 msgid ""
 "In code that receives an item, such as methods of :ref:`item pipelines "
 "<topics-item-pipeline>` or :ref:`spider middlewares <topics-spider-"
@@ -595,7 +547,7 @@ msgid ""
 "ItemAdapter` class to write code that works for any supported item type."
 msgstr ""
 
-#: ../../../topics/items.rst:430
+#: ../../../topics/items.rst:433
 msgid "Other classes related to items"
 msgstr ""
 

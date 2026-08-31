@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy 2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-11 11:31+0000\n"
+"POT-Creation-Date: 2026-08-31 16:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -505,54 +505,53 @@ msgstr ""
 
 #: ../../../contributing.rst:326
 msgid ""
-"Tests are implemented using the :doc:`Twisted unit-testing framework "
-"<twisted:development/test-standard>`. Running tests requires :doc:`tox <tox:"
+"Tests are implemented using pytest_. Running tests requires :doc:`tox <tox:"
 "index>`."
 msgstr ""
 
-#: ../../../contributing.rst:333
+#: ../../../contributing.rst:334
 msgid "Running tests"
 msgstr ""
 
-#: ../../../contributing.rst:335
+#: ../../../contributing.rst:336
 msgid "To run all tests::"
 msgstr ""
 
-#: ../../../contributing.rst:337
+#: ../../../contributing.rst:338
 msgid "tox"
 msgstr ""
 
-#: ../../../contributing.rst:339
+#: ../../../contributing.rst:340
 msgid "To run a specific test (say ``tests/test_loader.py``) use:"
 msgstr ""
 
-#: ../../../contributing.rst:341
+#: ../../../contributing.rst:342
 msgid "``tox -- tests/test_loader.py``"
 msgstr ""
 
-#: ../../../contributing.rst:343
+#: ../../../contributing.rst:344
 msgid ""
 "To run the tests on a specific :doc:`tox <tox:index>` environment, use ``-e "
 "<name>`` with an environment name from ``tox.ini``. For example, to run the "
 "tests with Python 3.10 use::"
 msgstr ""
 
-#: ../../../contributing.rst:347
+#: ../../../contributing.rst:348
 msgid "tox -e py310"
 msgstr ""
 
-#: ../../../contributing.rst:349
+#: ../../../contributing.rst:350
 msgid ""
 "You can also specify a comma-separated list of environments, and use :ref:"
 "`tox’s parallel mode <tox:parallel_mode>` to run the tests on multiple "
 "environments in parallel::"
 msgstr ""
 
-#: ../../../contributing.rst:353
+#: ../../../contributing.rst:354
 msgid "tox -e py39,py310 -p auto"
 msgstr ""
 
-#: ../../../contributing.rst:355
+#: ../../../contributing.rst:356
 msgid ""
 "To pass command-line options to :doc:`pytest <pytest:index>`, add them after "
 "``--`` in your call to :doc:`tox <tox:index>`. Using ``--`` overrides the "
@@ -560,62 +559,90 @@ msgid ""
 "those default positional arguments (``scrapy tests``) after ``--`` as well::"
 msgstr ""
 
-#: ../../../contributing.rst:360
+#: ../../../contributing.rst:361
 msgid "tox -- scrapy tests -x  # stop after first failure"
 msgstr ""
 
-#: ../../../contributing.rst:362
+#: ../../../contributing.rst:363
 msgid ""
 "You can also use the `pytest-xdist`_ plugin. For example, to run all tests "
 "on the Python 3.10 :doc:`tox <tox:index>` environment using all your CPU "
 "cores::"
 msgstr ""
 
-#: ../../../contributing.rst:365
+#: ../../../contributing.rst:366
 msgid "tox -e py310 -- scrapy tests -n auto"
 msgstr ""
 
-#: ../../../contributing.rst:367
+#: ../../../contributing.rst:368
 msgid ""
 "To see coverage report install :doc:`coverage <coverage:index>` (``pip "
 "install coverage``) and run:"
 msgstr ""
 
-#: ../../../contributing.rst:370
+#: ../../../contributing.rst:371
 msgid "``coverage report``"
 msgstr ""
 
-#: ../../../contributing.rst:372
+#: ../../../contributing.rst:373
 msgid ""
 "see output of ``coverage --help`` for more options like html or xml report."
 msgstr ""
 
 #: ../../../contributing.rst:375
+msgid ""
+"Some tests need a ``mitmdump`` executable (from mitmproxy_) to test against "
+"a fully featured proxy server; they are skipped when one cannot be found "
+"(``mitmproxy`` is intentionally not a test dependency that would be "
+"installed into test venvs, as that sometimes leads to various dependency "
+"conflicts). To run these tests, make ``mitmdump`` available in one of these "
+"ways:"
+msgstr ""
+
+#: ../../../contributing.rst:381
+msgid ""
+"install ``mitmproxy`` so that ``mitmdump`` is on your ``PATH``, e.g. with "
+"pipx_ (``pipx install mitmproxy``) or uv_ (``uv tool install mitmproxy``);"
+msgstr ""
+
+#: ../../../contributing.rst:384
+msgid ""
+"have uv_ installed, in which case the tests will run ``uvx --from mitmproxy "
+"mitmdump``;"
+msgstr ""
+
+#: ../../../contributing.rst:387
+msgid ""
+"set the ``MITMDUMP`` environment variable to the path of a ``mitmdump`` "
+"executable."
+msgstr ""
+
+#: ../../../contributing.rst:391
 msgid "Writing tests"
 msgstr ""
 
-#: ../../../contributing.rst:377
+#: ../../../contributing.rst:393
 msgid ""
 "All functionality (including new features and bug fixes) must include a test "
 "case to check that it works as expected, so please include tests for your "
 "patches if you want them to get accepted sooner."
 msgstr ""
 
-#: ../../../contributing.rst:381
+#: ../../../contributing.rst:397
 msgid ""
 "Scrapy uses unit-tests, which are located in the `tests/`_ directory. Their "
 "module name typically resembles the full path of the module they're testing. "
 "For example, the item loaders code is in::"
 msgstr ""
 
-#: ../../../contributing.rst:385
+#: ../../../contributing.rst:401
 msgid "scrapy.loader"
 msgstr ""
 
-#: ../../../contributing.rst:387
+#: ../../../contributing.rst:403
 msgid "And their unit-tests are in::"
 msgstr ""
 
-#: ../../../contributing.rst:389
+#: ../../../contributing.rst:405
 msgid "tests/test_loader.py"
 msgstr ""
