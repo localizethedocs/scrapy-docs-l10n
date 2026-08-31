@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy 2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 09:30+0000\n"
+"POT-Creation-Date: 2026-08-31 16:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -206,8 +206,16 @@ msgid ""
 "\n"
 "\n"
 "def parse_details(self, response):\n"
-"    if \"item name\" not in response.body:\n"
+"    if \"item name\" not in response.text:\n"
 "        open_in_browser(response)"
+msgstr ""
+
+#: ../../../../scrapy/utils/response.py:docstring of
+#: scrapy.utils.response.open_in_browser:17
+msgid ""
+"On the Windows Subsystem for Linux, set the ``BROWSER`` environment variable "
+"to `wslview <https://github.com/wslutilities/wslu>`_ to open the response in "
+"a Windows browser, which cannot read Linux paths otherwise."
 msgstr ""
 
 #: ../../../topics/debug.rst:139
@@ -236,16 +244,103 @@ msgid "For more information, check the :ref:`topics-logging` section."
 msgstr ""
 
 #: ../../../topics/debug.rst:159
+msgid "Inspecting live traffic"
+msgstr ""
+
+#: ../../../topics/debug.rst:161
+msgid ""
+"Sometimes it's important to see what exactly was sent to the server or "
+"received from it, such as header values, formatting and order (Scrapy cannot "
+"log this, as underlying HTTP libraries produce the final values for request "
+"headers and canonicalize response ones) or TLS handshake details. There are "
+"two ways to see and log the real traffic of a running spider:"
+msgstr ""
+
+#: ../../../topics/debug.rst:167
+msgid ""
+"Capture the traffic with a tool such as Wireshark_. As your requests likely "
+"use TLS, you will need to decrypt the traffic (see the `Wireshark TLS "
+"documentation`_ for detailed instructions). You will need the encryption key "
+"which you can save as described in :ref:`debug-tls`. As this way of "
+"capturing traffic is passive, it cannot interfere with the spider."
+msgstr ""
+
+#: ../../../topics/debug.rst:173
+msgid ""
+"Use mitmproxy_ between the spider and the server, as described below. This "
+"is easier to set up and in addition to inspecting the traffic allows "
+"modifying it, but it's not passive: there is now a connection between Scrapy "
+"and mitmproxy and another one between mitmproxy and the server instead of a "
+"direct connection between Scrapy and the server. Due to this, low-level "
+"connection behavior is different from normal crawls, which may change the "
+"server behavior, and you cannot easily use mitmproxy and regular proxies in "
+"the same crawl."
+msgstr ""
+
+#: ../../../topics/debug.rst:183
+msgid "Using mitmdump"
+msgstr ""
+
+#: ../../../topics/debug.rst:185
+msgid ""
+"You should refer to the mitmproxy documentation for more details, additional "
+"interception modes and advanced features but here is one simple way to use "
+"it. First, run a ``mitmdump`` instance (it will use the port 8080 by "
+"default), asking it to log the traffic details on the terminal (``--flow-"
+"detail 2`` will log headers but not bodies):"
+msgstr ""
+
+#: ../../../topics/debug.rst:191
+msgid "mitmdump --flow-detail 2"
+msgstr ""
+
+#: ../../../topics/debug.rst:195
+msgid ""
+"Then configure ``http://127.0.0.1:8080`` as a proxy in your spider using :"
+"class:`~scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware`:"
+msgstr ""
+
+#: ../../../topics/debug.rst:198
+msgid "https_proxy=http://127.0.0.1:8080 scrapy crawl myspider"
+msgstr ""
+
+#: ../../../topics/debug.rst:202
+msgid ""
+"To inspect only some requests, set their :reqmeta:`proxy` meta key instead."
+msgstr ""
+
+#: ../../../topics/debug.rst:211
+msgid "Decrypting TLS traffic"
+msgstr ""
+
+#: ../../../topics/debug.rst:213
+msgid ""
+"Scrapy writes the session keys of its HTTPS connections to the file that the "
+"``SSLKEYLOGFILE`` environment variable points to, using the `NSS key log "
+"format`_ that traffic analysis tools such as Wireshark understand."
+msgstr ""
+
+#: ../../../topics/debug.rst:219
+msgid "SSLKEYLOGFILE=/tmp/sslkeylog scrapy crawl myspider"
+msgstr ""
+
+#: ../../../topics/debug.rst:225
+msgid ""
+"Anyone who can read the key log file can decrypt the traffic of the "
+"connections recorded in it, including any credentials that they carry."
+msgstr ""
+
+#: ../../../topics/debug.rst:231
 msgid "Visual Studio Code"
 msgstr ""
 
-#: ../../../topics/debug.rst:163
+#: ../../../topics/debug.rst:235
 msgid ""
 "To debug spiders with Visual Studio Code you can use the following ``launch."
 "json``::"
 msgstr ""
 
-#: ../../../topics/debug.rst:165
+#: ../../../topics/debug.rst:237
 msgid ""
 "{\n"
 "    \"version\": \"0.1.0\",\n"
@@ -265,7 +360,7 @@ msgid ""
 "}"
 msgstr ""
 
-#: ../../../topics/debug.rst:183
+#: ../../../topics/debug.rst:255
 msgid ""
 "Also, make sure you enable \"User Uncaught Exceptions\", to catch exceptions "
 "in your Scrapy spider."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy 2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 09:30+0000\n"
+"POT-Creation-Date: 2026-08-31 16:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,13 +32,13 @@ msgstr ""
 
 #: ../../../topics/stats.rst:13
 msgid ""
-"However, the Stats Collector is always available, so you can always import "
-"it in your module and use its API (to increment or set new stat keys), "
-"regardless of whether the stats collection is enabled or not. If it's "
-"disabled, the API will still work but it won't collect anything. This is "
-"aimed at simplifying the stats collector usage: you should spend no more "
-"than one line of code for collecting stats in your spider, Scrapy extension, "
-"or whatever code you're using the Stats Collector from."
+"The Stats Collector API is always available, so you can always use it (to "
+"increment or set new stat keys), regardless of whether the stats collection "
+"is enabled or not. If it's disabled, the API will still work but it won't "
+"collect anything. This is aimed at simplifying the stats collector usage: "
+"you should spend no more than one line of code for collecting stats in your "
+"spider, Scrapy extension, or whatever code you're using the Stats Collector "
+"from."
 msgstr ""
 
 #: ../../../topics/stats.rst:21
@@ -48,23 +48,20 @@ msgid ""
 msgstr ""
 
 #: ../../../topics/stats.rst:24
-msgid ""
-"The Stats Collector keeps a stats table per open spider which is "
-"automatically opened when the spider is opened, and closed when the spider "
-"is closed."
+msgid "See :ref:`topics-stats-reference` below for the stats that Scrapy sets."
 msgstr ""
 
-#: ../../../topics/stats.rst:30
+#: ../../../topics/stats.rst:29
 msgid "Common Stats Collector uses"
 msgstr ""
 
-#: ../../../topics/stats.rst:32
+#: ../../../topics/stats.rst:31
 msgid ""
 "Access the stats collector through the :attr:`~scrapy.crawler.Crawler.stats` "
 "attribute. Here is an example of an extension that access stats:"
 msgstr ""
 
-#: ../../../topics/stats.rst:35
+#: ../../../topics/stats.rst:34
 msgid ""
 "class ExtensionThatAccessStats:\n"
 "    def __init__(self, stats):\n"
@@ -75,64 +72,64 @@ msgid ""
 "        return cls(crawler.stats)"
 msgstr ""
 
-#: ../../../topics/stats.rst:47
+#: ../../../topics/stats.rst:46
 msgid "Set stat value:"
 msgstr ""
 
-#: ../../../topics/stats.rst:49
+#: ../../../topics/stats.rst:48
 msgid "stats.set_value(\"hostname\", socket.gethostname())"
 msgstr ""
 
-#: ../../../topics/stats.rst:53
+#: ../../../topics/stats.rst:52
 msgid "Increment stat value:"
 msgstr ""
 
-#: ../../../topics/stats.rst:55
+#: ../../../topics/stats.rst:54
 msgid "stats.inc_value(\"custom_count\")"
 msgstr ""
 
-#: ../../../topics/stats.rst:59
+#: ../../../topics/stats.rst:58
 msgid "Set stat value only if greater than previous:"
 msgstr ""
 
-#: ../../../topics/stats.rst:61
+#: ../../../topics/stats.rst:60
 msgid "stats.max_value(\"max_items_scraped\", value)"
 msgstr ""
 
-#: ../../../topics/stats.rst:65
+#: ../../../topics/stats.rst:64
 msgid "Set stat value only if lower than previous:"
 msgstr ""
 
-#: ../../../topics/stats.rst:67
+#: ../../../topics/stats.rst:66
 msgid "stats.min_value(\"min_free_memory_percent\", value)"
 msgstr ""
 
-#: ../../../topics/stats.rst:71
+#: ../../../topics/stats.rst:70
 msgid "Get stat value:"
 msgstr ""
 
-#: ../../../topics/stats.rst:73
+#: ../../../topics/stats.rst:72
 msgid ""
 ">>> stats.get_value(\"custom_count\")\n"
 "1"
 msgstr ""
 
-#: ../../../topics/stats.rst:78
+#: ../../../topics/stats.rst:77
 msgid "Get all stats:"
 msgstr ""
 
-#: ../../../topics/stats.rst:80
+#: ../../../topics/stats.rst:79
 msgid ""
 ">>> stats.get_stats()\n"
 "{'custom_count': 1, 'start_time': datetime.datetime(2009, 7, 14, 21, 47, 28, "
 "977139)}"
 msgstr ""
 
-#: ../../../topics/stats.rst:88
+#: ../../../topics/stats.rst:87
 msgid "Available Stats Collectors"
 msgstr ""
 
-#: ../../../topics/stats.rst:90
+#: ../../../topics/stats.rst:91
 msgid ""
 "Besides the basic :class:`StatsCollector` there are other Stats Collectors "
 "available in Scrapy which extend the basic Stats Collector. You can select "
@@ -140,37 +137,952 @@ msgid ""
 "default Stats Collector used is the :class:`MemoryStatsCollector`."
 msgstr ""
 
-#: ../../../topics/stats.rst:98
+#: ../../../topics/stats.rst:97
 msgid "MemoryStatsCollector"
 msgstr ""
 
-#: ../../../topics/stats.rst:102
-msgid ""
-"A simple stats collector that keeps the stats of the last scraping run (for "
-"each spider) in memory, after they're closed. The stats can be accessed "
-"through the :attr:`spider_stats` attribute, which is a dict keyed by spider "
-"domain name."
-msgstr ""
-
-#: ../../../topics/stats.rst:107
-msgid "This is the default Stats Collector used in Scrapy."
-msgstr ""
-
-#: ../../../topics/stats.rst:111
-msgid ""
-"A dict of dicts (keyed by spider name) containing the stats of the last "
-"scraping run for each spider."
-msgstr ""
-
-#: ../../../topics/stats.rst:115
+#: ../../../topics/stats.rst:103
 msgid "DummyStatsCollector"
 msgstr ""
 
-#: ../../../topics/stats.rst:119
+#: ../../../topics/stats.rst:110
+msgid "Built-in stats reference"
+msgstr ""
+
+#: ../../../topics/stats.rst:112
 msgid ""
-"A Stats collector which does nothing but is very efficient (because it does "
-"nothing). This stats collector can be set via the :setting:`STATS_CLASS` "
-"setting, to disable stats collect in order to improve performance. However, "
-"the performance penalty of stats collection is usually marginal compared to "
-"other Scrapy workload like parsing pages."
+"Scrapy sets the following :ref:`stats <topics-stats>`. Components other than "
+"those built into Scrapy may set additional stats; see their documentation."
+msgstr ""
+
+#: ../../../topics/stats.rst:115
+msgid ""
+"Stat keys that contain a ``{placeholder}`` below stand for a family of "
+"stats, one per actual value of the placeholder."
+msgstr ""
+
+#: ../../../topics/stats.rst:118
+msgid ""
+"Most stats are set by a specific :ref:`component <topics-components>`, and "
+"are only present if that component is enabled and its code path is reached. "
+"A stat that is missing from :meth:`~scrapy.statscollectors.StatsCollector."
+"get_stats` output is equivalent to a counter of 0."
+msgstr ""
+
+#: ../../../topics/stats.rst:126
+msgid "``depth/request_ignored_count``"
+msgstr ""
+
+#: ../../../topics/stats.rst:127
+msgid "Number of requests dropped for exceeding :setting:`DEPTH_LIMIT`."
+msgstr ""
+
+#: ../../../topics/stats.rst:129 ../../../topics/stats.rst:581
+msgid "Set by :class:`~scrapy.spidermiddlewares.depth.DepthMiddleware`."
+msgstr ""
+
+#: ../../../topics/stats.rst:133
+msgid "``downloader/exception_count``"
+msgstr ""
+
+#: ../../../topics/stats.rst:134
+msgid "Number of exceptions raised while downloading requests."
+msgstr ""
+
+#: ../../../topics/stats.rst:136 ../../../topics/stats.rst:145
+#: ../../../topics/stats.rst:159 ../../../topics/stats.rst:171
+#: ../../../topics/stats.rst:180 ../../../topics/stats.rst:197
+#: ../../../topics/stats.rst:210 ../../../topics/stats.rst:218
+msgid "Set by :class:`~scrapy.downloadermiddlewares.stats.DownloaderStats`."
+msgstr ""
+
+#: ../../../topics/stats.rst:140
+msgid "``downloader/exception_type_count/{exception_type}``"
+msgstr ""
+
+#: ../../../topics/stats.rst:141
+msgid ""
+"Number of exceptions raised while downloading requests, per exception type, "
+"where ``{exception_type}`` is the import path of the exception class, e.g. "
+"``twisted.internet.error.DNSLookupError``."
+msgstr ""
+
+#: ../../../topics/stats.rst:149
+msgid "``downloader/request_bytes``"
+msgstr ""
+
+#: ../../../topics/stats.rst:150
+msgid ""
+"Total size, in bytes, of the requests sent, counting the request line, the "
+"headers and the body. As with :stat:`downloader/request_count`, requests "
+"served from the cache are also counted."
+msgstr ""
+
+#: ../../../topics/stats.rst:154
+msgid ""
+"It is an approximation, reconstructed from each :class:`~scrapy.Request` "
+"object instead of measured on the wire, so it does not account for the "
+"actual bytes that the :ref:`download handler <topics-download-handlers>` "
+"sends, e.g. transport-level overhead."
+msgstr ""
+
+#: ../../../topics/stats.rst:163
+msgid "``downloader/request_count``"
+msgstr ""
+
+#: ../../../topics/stats.rst:164
+msgid "Number of requests sent."
+msgstr ""
+
+#: ../../../topics/stats.rst:166
+msgid ""
+"Requests that :class:`~scrapy.downloadermiddlewares.httpcache."
+"HttpCacheMiddleware` serves from the cache are also counted, even though "
+"they are never sent, because it handles requests after :class:`~scrapy."
+"downloadermiddlewares.stats.DownloaderStats`."
+msgstr ""
+
+#: ../../../topics/stats.rst:175
+msgid "``downloader/request_method_count/{method}``"
+msgstr ""
+
+#: ../../../topics/stats.rst:176
+msgid ""
+"Number of requests sent, per HTTP method, e.g. ``GET`` or ``POST``. As with :"
+"stat:`downloader/request_count`, requests served from the cache are also "
+"counted."
+msgstr ""
+
+#: ../../../topics/stats.rst:184
+msgid "``downloader/response_bytes``"
+msgstr ""
+
+#: ../../../topics/stats.rst:185
+msgid ""
+"Total size, in bytes, of the responses received, counting the status line, "
+"the headers and the body. It covers the same responses as :stat:`downloader/"
+"response_count`."
+msgstr ""
+
+#: ../../../topics/stats.rst:189
+msgid ""
+"The body is counted as received, i.e. still compressed for responses that "
+"used ``Content-Encoding``, because :class:`~scrapy.downloadermiddlewares."
+"stats.DownloaderStats` handles responses before :class:`~scrapy."
+"downloadermiddlewares.httpcompression.HttpCompressionMiddleware` "
+"decompresses them. See :stat:`httpcompression/response_bytes` for "
+"decompressed sizes."
+msgstr ""
+
+#: ../../../topics/stats.rst:201
+msgid "``downloader/response_count``"
+msgstr ""
+
+#: ../../../topics/stats.rst:202
+msgid "Number of responses received."
+msgstr ""
+
+#: ../../../topics/stats.rst:204
+msgid ""
+"It counts responses that :class:`~scrapy.downloadermiddlewares.httpcache."
+"HttpCacheMiddleware` serves from the cache, even though they do not come "
+"from the network, and responses that a downloader middleware consumes before "
+"they reach your spider, e.g. redirect responses that :class:`~scrapy."
+"downloadermiddlewares.redirect.RedirectMiddleware` turns into new requests. "
+"Compare with :stat:`response_received_count`."
+msgstr ""
+
+#: ../../../topics/stats.rst:214
+msgid "``downloader/response_status_count/{status_code}``"
+msgstr ""
+
+#: ../../../topics/stats.rst:215
+msgid ""
+"Number of responses received, per HTTP status code, e.g. ``200`` or ``404``. "
+"It covers the same responses as :stat:`downloader/response_count`."
+msgstr ""
+
+#: ../../../topics/stats.rst:222
+msgid "``dupefilter/filtered``"
+msgstr ""
+
+#: ../../../topics/stats.rst:223
+msgid "Number of requests dropped as duplicates."
+msgstr ""
+
+#: ../../../topics/stats.rst:225
+msgid "Set by :class:`~scrapy.dupefilters.RFPDupeFilter`."
+msgstr ""
+
+#: ../../../topics/stats.rst:229
+msgid "``elapsed_time_seconds``"
+msgstr ""
+
+#: ../../../topics/stats.rst:230
+msgid ""
+"Time, as a :class:`float`, in seconds, between the :signal:`spider_opened` "
+"and the :signal:`spider_closed` signals."
+msgstr ""
+
+#: ../../../topics/stats.rst:233 ../../../topics/stats.rst:311
+#: ../../../topics/stats.rst:319 ../../../topics/stats.rst:455
+#: ../../../topics/stats.rst:473 ../../../topics/stats.rst:482
+#: ../../../topics/stats.rst:595 ../../../topics/stats.rst:750
+msgid "Set by :class:`~scrapy.extensions.corestats.CoreStats`."
+msgstr ""
+
+#: ../../../topics/stats.rst:237
+msgid "``feedexport/failed_count/{storage}``"
+msgstr ""
+
+#: ../../../topics/stats.rst:238
+msgid ""
+"Number of :ref:`feeds <topics-feed-exports>` that could not be stored, per :"
+"ref:`storage backend <topics-feed-storage-backends>`, where ``{storage}`` is "
+"the class name of the storage backend, e.g. ``FileFeedStorage``."
+msgstr ""
+
+#: ../../../topics/stats.rst:244
+msgid "``feedexport/success_count/{storage}``"
+msgstr ""
+
+#: ../../../topics/stats.rst:245
+msgid ""
+"Number of :ref:`feeds <topics-feed-exports>` stored successfully, per :ref:"
+"`storage backend <topics-feed-storage-backends>`, where ``{storage}`` is the "
+"class name of the storage backend, e.g. ``FileFeedStorage``."
+msgstr ""
+
+#: ../../../topics/stats.rst:251
+msgid "``file_count``"
+msgstr ""
+
+#: ../../../topics/stats.rst:252
+msgid ""
+"Number of files handled by the :ref:`media pipelines <topics-media-"
+"pipeline>`."
+msgstr ""
+
+#: ../../../topics/stats.rst:257
+msgid "``file_status_count/{status}``"
+msgstr ""
+
+#: ../../../topics/stats.rst:258
+msgid ""
+"Number of files handled by the :ref:`media pipelines <topics-media-"
+"pipeline>`, per status, where ``{status}`` is one of:"
+msgstr ""
+
+#: ../../../topics/stats.rst:261
+msgid "``downloaded``: the file was downloaded."
+msgstr ""
+
+#: ../../../topics/stats.rst:263
+msgid ""
+"``cached``: the file came from the :class:`~scrapy.downloadermiddlewares."
+"httpcache.HttpCacheMiddleware` cache."
+msgstr ""
+
+#: ../../../topics/stats.rst:267
+msgid ""
+"``uptodate``: the file was already in the storage backend and had not :ref:"
+"`expired <file-expiration>`, so it was not downloaded again."
+msgstr ""
+
+#: ../../../topics/stats.rst:272
+msgid "``finish_reason``"
+msgstr ""
+
+#: ../../../topics/stats.rst:273
+msgid ""
+"String indicating why the crawl finished. It matches the *reason* argument "
+"of the :signal:`spider_closed` signal."
+msgstr ""
+
+#: ../../../topics/stats.rst:276
+msgid "Scrapy uses the following reasons:"
+msgstr ""
+
+#: ../../../topics/stats.rst:278
+msgid ""
+"``cancelled``: the spider was closed without a more specific reason, e.g. "
+"because :exc:`~scrapy.exceptions.CloseSpider` was raised without one."
+msgstr ""
+
+#: ../../../topics/stats.rst:282
+msgid "``closespider_errorcount``: see :setting:`CLOSESPIDER_ERRORCOUNT`."
+msgstr ""
+
+#: ../../../topics/stats.rst:284
+msgid "``closespider_itemcount``: see :setting:`CLOSESPIDER_ITEMCOUNT`."
+msgstr ""
+
+#: ../../../topics/stats.rst:286
+msgid "``closespider_pagecount``: see :setting:`CLOSESPIDER_PAGECOUNT`."
+msgstr ""
+
+#: ../../../topics/stats.rst:288
+msgid ""
+"``closespider_pagecount_no_item``: see :setting:"
+"`CLOSESPIDER_PAGECOUNT_NO_ITEM`."
+msgstr ""
+
+#: ../../../topics/stats.rst:291
+msgid "``closespider_timeout``: see :setting:`CLOSESPIDER_TIMEOUT`."
+msgstr ""
+
+#: ../../../topics/stats.rst:293
+msgid ""
+"``closespider_timeout_no_item``: see :setting:`CLOSESPIDER_TIMEOUT_NO_ITEM`."
+msgstr ""
+
+#: ../../../topics/stats.rst:296
+msgid ""
+"``finished``: the spider became idle with no pending requests, i.e. it "
+"finished normally."
+msgstr ""
+
+#: ../../../topics/stats.rst:299
+msgid "``memusage_exceeded``: see :setting:`MEMUSAGE_LIMIT_MB`."
+msgstr ""
+
+#: ../../../topics/stats.rst:301
+msgid ""
+"``shutdown``: the crawl was interrupted, e.g. by a system signal such as "
+"``SIGINT`` (:kbd:`Ctrl-C`)."
+msgstr ""
+
+#: ../../../topics/stats.rst:304
+msgid ""
+"``start_error``: :meth:`~scrapy.Spider.start` raised an exception, so some :"
+"ref:`start requests <start-requests>` may never have been sent, see :ref:"
+"`start-error`."
+msgstr ""
+
+#: ../../../topics/stats.rst:308
+msgid ""
+"Third-party components and your own code may use any other reason, e.g. by "
+"raising :exc:`~scrapy.exceptions.CloseSpider` with it."
+msgstr ""
+
+#: ../../../topics/stats.rst:315
+msgid "``finish_time``"
+msgstr ""
+
+#: ../../../topics/stats.rst:316
+msgid ""
+"Timezone-aware :class:`~datetime.datetime` object, in UTC, indicating when "
+"the :signal:`spider_closed` signal was sent."
+msgstr ""
+
+#: ../../../topics/stats.rst:323
+msgid "``httpcache/errorrecovery``"
+msgstr ""
+
+#: ../../../topics/stats.rst:324
+msgid ""
+"Number of times that a stale cached response was used because downloading a "
+"fresh response raised an exception."
+msgstr ""
+
+#: ../../../topics/stats.rst:327 ../../../topics/stats.rst:340
+#: ../../../topics/stats.rst:347 ../../../topics/stats.rst:355
+#: ../../../topics/stats.rst:363 ../../../topics/stats.rst:378
+#: ../../../topics/stats.rst:386 ../../../topics/stats.rst:394
+#: ../../../topics/stats.rst:401 ../../../topics/stats.rst:413
+msgid ""
+"Set by :class:`~scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware`."
+msgstr ""
+
+#: ../../../topics/stats.rst:331
+msgid "``httpcache/firsthand``"
+msgstr ""
+
+#: ../../../topics/stats.rst:332
+msgid ""
+"Number of responses that were downloaded without a matching cache entry to "
+"validate against, i.e. responses for requests counted in :stat:`httpcache/"
+"miss`."
+msgstr ""
+
+#: ../../../topics/stats.rst:336
+msgid ""
+"It is lower than :stat:`httpcache/miss` when some of those requests yield no "
+"response, either because they are dropped (see :stat:`httpcache/ignore`) or "
+"because their download fails."
+msgstr ""
+
+#: ../../../topics/stats.rst:344
+msgid "``httpcache/hit``"
+msgstr ""
+
+#: ../../../topics/stats.rst:345
+msgid "Number of requests served from the cache."
+msgstr ""
+
+#: ../../../topics/stats.rst:351
+msgid "``httpcache/ignore``"
+msgstr ""
+
+#: ../../../topics/stats.rst:352
+msgid ""
+"Number of requests dropped because they were not in the cache and :setting:"
+"`HTTPCACHE_IGNORE_MISSING` is ``True``."
+msgstr ""
+
+#: ../../../topics/stats.rst:359
+msgid "``httpcache/invalidate``"
+msgstr ""
+
+#: ../../../topics/stats.rst:360
+msgid ""
+"Number of times that a cached response failed validation and was replaced "
+"with a freshly downloaded response."
+msgstr ""
+
+#: ../../../topics/stats.rst:367
+msgid "``httpcache/miss``"
+msgstr ""
+
+#: ../../../topics/stats.rst:368
+msgid ""
+"Number of requests for which no cache entry could be read, either because "
+"there was none or because reading it failed, in which case the request is "
+"also counted in :stat:`httpcache/retrieve_error`. Those requests are "
+"downloaded (see :stat:`httpcache/firsthand`), or dropped if :setting:"
+"`HTTPCACHE_IGNORE_MISSING` is ``True`` (see :stat:`httpcache/ignore`)."
+msgstr ""
+
+#: ../../../topics/stats.rst:375
+msgid ""
+"Requests with a stale cache entry are not counted here; see :stat:`httpcache/"
+"revalidate` and :stat:`httpcache/invalidate`."
+msgstr ""
+
+#: ../../../topics/stats.rst:382
+msgid "``httpcache/retrieve_error``"
+msgstr ""
+
+#: ../../../topics/stats.rst:383
+msgid ""
+"Number of cache entries that could not be read, and hence were treated as "
+"cache misses. Those requests are also counted in :stat:`httpcache/miss`."
+msgstr ""
+
+#: ../../../topics/stats.rst:390
+msgid "``httpcache/revalidate``"
+msgstr ""
+
+#: ../../../topics/stats.rst:391
+msgid ""
+"Number of times that a cached response was successfully validated against "
+"the target server, and hence used instead of the fresh response."
+msgstr ""
+
+#: ../../../topics/stats.rst:398
+msgid "``httpcache/store``"
+msgstr ""
+
+#: ../../../topics/stats.rst:399
+msgid "Number of responses stored in the cache."
+msgstr ""
+
+#: ../../../topics/stats.rst:405
+msgid "``httpcache/uncacheable``"
+msgstr ""
+
+#: ../../../topics/stats.rst:406
+msgid ""
+"Number of responses not stored in the cache because the :setting:"
+"`HTTPCACHE_POLICY` did not allow it."
+msgstr ""
+
+#: ../../../topics/stats.rst:409
+msgid ""
+"Every response considered for caching is counted either here or in :stat:"
+"`httpcache/store`, so ``httpcache/store + httpcache/uncacheable`` equals "
+"``httpcache/firsthand + httpcache/invalidate``."
+msgstr ""
+
+#: ../../../topics/stats.rst:417
+msgid "``httpcompression/response_bytes``"
+msgstr ""
+
+#: ../../../topics/stats.rst:418
+msgid ""
+"Total size, in bytes, of decompressed response bodies, counting only the "
+"body and only responses that were actually decompressed. Compare with :stat:"
+"`downloader/response_bytes`."
+msgstr ""
+
+#: ../../../topics/stats.rst:422 ../../../topics/stats.rst:430
+msgid ""
+"Set by :class:`~scrapy.downloadermiddlewares.httpcompression."
+"HttpCompressionMiddleware`."
+msgstr ""
+
+#: ../../../topics/stats.rst:427
+msgid "``httpcompression/response_count``"
+msgstr ""
+
+#: ../../../topics/stats.rst:428
+msgid "Number of decompressed responses."
+msgstr ""
+
+#: ../../../topics/stats.rst:435
+msgid "``httperror/response_ignored_count``"
+msgstr ""
+
+#: ../../../topics/stats.rst:436
+msgid "Number of responses dropped because of their HTTP status code."
+msgstr ""
+
+#: ../../../topics/stats.rst:438 ../../../topics/stats.rst:446
+msgid ""
+"Set by :class:`~scrapy.spidermiddlewares.httperror.HttpErrorMiddleware`."
+msgstr ""
+
+#: ../../../topics/stats.rst:442
+msgid "``httperror/response_ignored_status_count/{status_code}``"
+msgstr ""
+
+#: ../../../topics/stats.rst:443
+msgid ""
+"Number of responses dropped because of their HTTP status code, per HTTP "
+"status code, e.g. ``404``."
+msgstr ""
+
+#: ../../../topics/stats.rst:450
+msgid "``item_dropped_count``"
+msgstr ""
+
+#: ../../../topics/stats.rst:451
+msgid ""
+"Number of items dropped by an :ref:`item pipeline <topics-item-pipeline>`, i."
+"e. number of times that the :signal:`item_dropped` signal was sent."
+msgstr ""
+
+#: ../../../topics/stats.rst:459
+msgid "``item_dropped_reasons_count/{exception}``"
+msgstr ""
+
+#: ../../../topics/stats.rst:460
+msgid ""
+"Number of items dropped, per exception, where ``{exception}`` is the class "
+"name of the exception that caused the item to be dropped."
+msgstr ""
+
+#: ../../../topics/stats.rst:463
+msgid ""
+"Only :exc:`~scrapy.exceptions.DropItem` and its subclasses drop items, and "
+"each one is counted under its own class name, e.g. "
+"``item_dropped_reasons_count/DropItem`` for :exc:`~scrapy.exceptions."
+"DropItem` itself and ``item_dropped_reasons_count/MyDropItem`` for a "
+"``MyDropItem`` subclass of it. Any other exception raised by an :ref:`item "
+"pipeline <topics-item-pipeline>` triggers the :signal:`item_error` signal "
+"instead of :signal:`item_dropped`, and is not counted here or in :stat:"
+"`item_dropped_count`."
+msgstr ""
+
+#: ../../../topics/stats.rst:477
+msgid "``item_scraped_count``"
+msgstr ""
+
+#: ../../../topics/stats.rst:478
+msgid ""
+"Number of items that passed all :ref:`item pipelines <topics-item-"
+"pipeline>`, i.e. number of times that the :signal:`item_scraped` signal was "
+"sent."
+msgstr ""
+
+#: ../../../topics/stats.rst:486
+msgid "``items_per_minute``"
+msgstr ""
+
+#: ../../../topics/stats.rst:487
+msgid "Average number of items scraped per minute during the crawl."
+msgstr ""
+
+#: ../../../topics/stats.rst:489 ../../../topics/stats.rst:602
+msgid "It is ``None`` if the crawl took less than a minute."
+msgstr ""
+
+#: ../../../topics/stats.rst:491 ../../../topics/stats.rst:604
+msgid "Set by :class:`~scrapy.extensions.logstats.LogStats`."
+msgstr ""
+
+#: ../../../topics/stats.rst:495
+msgid "``log_count/{level}``"
+msgstr ""
+
+#: ../../../topics/stats.rst:496
+msgid ""
+"Number of log messages, per logging level name, e.g. ``INFO`` or ``WARNING``."
+msgstr ""
+
+#: ../../../topics/stats.rst:499
+msgid "Only messages that the :setting:`LOG_LEVEL` setting allows are counted."
+msgstr ""
+
+#: ../../../topics/stats.rst:501
+msgid "Set by :class:`~scrapy.extensions.logcount.LogCount`."
+msgstr ""
+
+#: ../../../topics/stats.rst:505
+msgid "``memdebug/gc_garbage_count``"
+msgstr ""
+
+#: ../../../topics/stats.rst:506
+msgid "Number of objects in :data:`gc.garbage` when the spider is closed."
+msgstr ""
+
+#: ../../../topics/stats.rst:508 ../../../topics/stats.rst:520
+msgid ""
+"Set by :class:`~scrapy.extensions.memdebug.MemoryDebugger`, which requires :"
+"setting:`MEMDEBUG_ENABLED` to be ``True``."
+msgstr ""
+
+#: ../../../topics/stats.rst:513
+msgid "``memdebug/live_refs/{cls}``"
+msgstr ""
+
+#: ../../../topics/stats.rst:514
+msgid ""
+"Number of live objects of class ``{cls}`` when the spider is closed, as "
+"reported by :ref:`trackref <topics-leaks-trackrefs>`, e.g. ``memdebug/"
+"live_refs/HtmlResponse``."
+msgstr ""
+
+#: ../../../topics/stats.rst:518
+msgid "Only set for classes with at least 1 live object."
+msgstr ""
+
+#: ../../../topics/stats.rst:525
+msgid "``memusage/limit_reached``"
+msgstr ""
+
+#: ../../../topics/stats.rst:526
+msgid ""
+"``1`` if memory usage exceeded :setting:`MEMUSAGE_LIMIT_MB`, which also "
+"stops the crawl."
+msgstr ""
+
+#: ../../../topics/stats.rst:529 ../../../topics/stats.rst:536
+#: ../../../topics/stats.rst:543 ../../../topics/stats.rst:550
+msgid "Set by :class:`~scrapy.extensions.memusage.MemoryUsage`."
+msgstr ""
+
+#: ../../../topics/stats.rst:533
+msgid "``memusage/max``"
+msgstr ""
+
+#: ../../../topics/stats.rst:534
+msgid "Maximum peak memory usage, in bytes, observed during the crawl."
+msgstr ""
+
+#: ../../../topics/stats.rst:540
+msgid "``memusage/startup``"
+msgstr ""
+
+#: ../../../topics/stats.rst:541
+msgid "Peak memory usage, in bytes, when the engine started."
+msgstr ""
+
+#: ../../../topics/stats.rst:547
+msgid "``memusage/warning_reached``"
+msgstr ""
+
+#: ../../../topics/stats.rst:548
+msgid "``1`` if memory usage exceeded :setting:`MEMUSAGE_WARNING_MB`."
+msgstr ""
+
+#: ../../../topics/stats.rst:554
+msgid "``offsite/domains``"
+msgstr ""
+
+#: ../../../topics/stats.rst:555
+msgid ""
+"Number of distinct domains for which at least 1 request was dropped for "
+"being offsite."
+msgstr ""
+
+#: ../../../topics/stats.rst:558 ../../../topics/stats.rst:565
+msgid ""
+"Set by :class:`~scrapy.downloadermiddlewares.offsite.OffsiteMiddleware`."
+msgstr ""
+
+#: ../../../topics/stats.rst:562
+msgid "``offsite/filtered``"
+msgstr ""
+
+#: ../../../topics/stats.rst:563
+msgid "Number of requests dropped for being offsite."
+msgstr ""
+
+#: ../../../topics/stats.rst:569
+msgid "``request_depth_count/{depth}``"
+msgstr ""
+
+#: ../../../topics/stats.rst:570
+msgid ""
+"Number of requests scheduled at depth ``{depth}``, e.g. "
+"``request_depth_count/2``."
+msgstr ""
+
+#: ../../../topics/stats.rst:573
+msgid ""
+"Set by :class:`~scrapy.spidermiddlewares.depth.DepthMiddleware`, which "
+"requires :setting:`DEPTH_STATS_VERBOSE` to be ``True`` for this stat."
+msgstr ""
+
+#: ../../../topics/stats.rst:578
+msgid "``request_depth_max``"
+msgstr ""
+
+#: ../../../topics/stats.rst:579
+msgid "Maximum depth reached."
+msgstr ""
+
+#: ../../../topics/stats.rst:585
+msgid "``response_received_count``"
+msgstr ""
+
+#: ../../../topics/stats.rst:586
+msgid ""
+"Number of responses received, i.e. number of times that the :signal:"
+"`response_received` signal was sent."
+msgstr ""
+
+#: ../../../topics/stats.rst:589
+msgid ""
+"Unlike :stat:`downloader/response_count`, it does not count responses that a "
+"downloader middleware consumes before they reach the engine, e.g. redirect "
+"responses that :class:`~scrapy.downloadermiddlewares.redirect."
+"RedirectMiddleware` turns into new requests. Both count responses that :"
+"class:`~scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware` serves "
+"from the cache."
+msgstr ""
+
+#: ../../../topics/stats.rst:599
+msgid "``responses_per_minute``"
+msgstr ""
+
+#: ../../../topics/stats.rst:600
+msgid "Average number of responses received per minute during the crawl."
+msgstr ""
+
+#: ../../../topics/stats.rst:608
+msgid "``retry/count``"
+msgstr ""
+
+#: ../../../topics/stats.rst:609
+msgid "Number of requests retried."
+msgstr ""
+
+#: ../../../topics/stats.rst:611 ../../../topics/stats.rst:620
+#: ../../../topics/stats.rst:630
+msgid ""
+"Set by :func:`~scrapy.downloadermiddlewares.retry.get_retry_request`, which :"
+"class:`~scrapy.downloadermiddlewares.retry.RetryMiddleware` uses."
+msgstr ""
+
+#: ../../../topics/stats.rst:616
+msgid "``retry/max_reached``"
+msgstr ""
+
+#: ../../../topics/stats.rst:617
+msgid ""
+"Number of requests that were not retried because they had already been "
+"retried :setting:`RETRY_TIMES` times."
+msgstr ""
+
+#: ../../../topics/stats.rst:625
+msgid "``retry/reason_count/{reason}``"
+msgstr ""
+
+#: ../../../topics/stats.rst:626
+msgid ""
+"Number of requests retried, per reason, e.g. ``retry/reason_count/twisted."
+"internet.error.TimeoutError`` or ``retry/reason_count/504 Gateway Time-out``."
+msgstr ""
+
+#: ../../../topics/stats.rst:633
+msgid ""
+"Code calling :func:`~scrapy.downloadermiddlewares.retry.get_retry_request` "
+"may pass a custom *stats_base_key*, in which case ``retry`` is replaced with "
+"that key in the 3 stats above."
+msgstr ""
+
+#: ../../../topics/stats.rst:640
+msgid "``robotstxt/exception_count/{exception_type}``"
+msgstr ""
+
+#: ../../../topics/stats.rst:641
+msgid ""
+"Number of exceptions raised while downloading ``robots.txt`` files, per "
+"exception type, where ``{exception_type}`` is the string representation of "
+"the exception class, e.g. ``<class 'twisted.internet.error."
+"DNSLookupError'>``."
+msgstr ""
+
+#: ../../../topics/stats.rst:646 ../../../topics/stats.rst:654
+#: ../../../topics/stats.rst:663 ../../../topics/stats.rst:671
+#: ../../../topics/stats.rst:680
+msgid ""
+"Set by :class:`~scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware`."
+msgstr ""
+
+#: ../../../topics/stats.rst:651
+msgid "``robotstxt/forbidden``"
+msgstr ""
+
+#: ../../../topics/stats.rst:652
+msgid "Number of requests dropped for being disallowed by ``robots.txt``."
+msgstr ""
+
+#: ../../../topics/stats.rst:659
+msgid "``robotstxt/request_count``"
+msgstr ""
+
+#: ../../../topics/stats.rst:660
+msgid ""
+"Number of ``robots.txt`` files requested, i.e. 1 per network location for "
+"which at least 1 request was sent."
+msgstr ""
+
+#: ../../../topics/stats.rst:668
+msgid "``robotstxt/response_count``"
+msgstr ""
+
+#: ../../../topics/stats.rst:669
+msgid "Number of ``robots.txt`` responses received."
+msgstr ""
+
+#: ../../../topics/stats.rst:676
+msgid "``robotstxt/response_status_count/{status_code}``"
+msgstr ""
+
+#: ../../../topics/stats.rst:677
+msgid ""
+"Number of ``robots.txt`` responses received, per HTTP status code, e.g. "
+"``404``."
+msgstr ""
+
+#: ../../../topics/stats.rst:685
+msgid "``scheduler/dequeued``"
+msgstr ""
+
+#: ../../../topics/stats.rst:686
+msgid "Number of requests read from the :ref:`scheduler <topics-scheduler>`."
+msgstr ""
+
+#: ../../../topics/stats.rst:690
+msgid "``scheduler/dequeued/disk``"
+msgstr ""
+
+#: ../../../topics/stats.rst:691
+msgid ""
+"Number of requests read from the disk queue of the :ref:`scheduler <topics-"
+"scheduler>`."
+msgstr ""
+
+#: ../../../topics/stats.rst:696
+msgid "``scheduler/dequeued/memory``"
+msgstr ""
+
+#: ../../../topics/stats.rst:697
+msgid ""
+"Number of requests read from the memory queue of the :ref:`scheduler <topics-"
+"scheduler>`."
+msgstr ""
+
+#: ../../../topics/stats.rst:702
+msgid "``scheduler/enqueued``"
+msgstr ""
+
+#: ../../../topics/stats.rst:703
+msgid "Number of requests stored into the :ref:`scheduler <topics-scheduler>`."
+msgstr ""
+
+#: ../../../topics/stats.rst:707
+msgid "``scheduler/enqueued/disk``"
+msgstr ""
+
+#: ../../../topics/stats.rst:708
+msgid ""
+"Number of requests stored into the disk queue of the :ref:`scheduler <topics-"
+"scheduler>`."
+msgstr ""
+
+#: ../../../topics/stats.rst:713
+msgid "``scheduler/enqueued/memory``"
+msgstr ""
+
+#: ../../../topics/stats.rst:714
+msgid ""
+"Number of requests stored into the memory queue of the :ref:`scheduler "
+"<topics-scheduler>`."
+msgstr ""
+
+#: ../../../topics/stats.rst:719
+msgid "``scheduler/unserializable``"
+msgstr ""
+
+#: ../../../topics/stats.rst:720
+msgid ""
+"Number of requests that could not be stored into the disk queue of the :ref:"
+"`scheduler <topics-scheduler>` because they could not be :ref:`serialized "
+"<request-serialization>`, and hence were stored into the memory queue "
+"instead."
+msgstr ""
+
+#: ../../../topics/stats.rst:727
+msgid "``spider_exceptions/count``"
+msgstr ""
+
+#: ../../../topics/stats.rst:728
+msgid ""
+"Number of unhandled exceptions raised by spider callbacks or by :meth:"
+"`~scrapy.Spider.start`."
+msgstr ""
+
+#: ../../../topics/stats.rst:731 ../../../topics/stats.rst:741
+msgid ""
+"Set by the :ref:`engine <topics-architecture>` and the :ref:`scraper <topics-"
+"architecture>`."
+msgstr ""
+
+#: ../../../topics/stats.rst:736
+msgid "``spider_exceptions/{exception}``"
+msgstr ""
+
+#: ../../../topics/stats.rst:737
+msgid ""
+"Same as :stat:`spider_exceptions/count`, per exception, where ``{exception}"
+"`` is the class name of the exception, e.g. ``spider_exceptions/ValueError``."
+msgstr ""
+
+#: ../../../topics/stats.rst:746
+msgid "``start_time``"
+msgstr ""
+
+#: ../../../topics/stats.rst:747
+msgid ""
+"Timezone-aware :class:`~datetime.datetime` object, in UTC, indicating when "
+"the :signal:`spider_opened` signal was sent."
+msgstr ""
+
+#: ../../../topics/stats.rst:754
+msgid "``urllength/request_ignored_count``"
+msgstr ""
+
+#: ../../../topics/stats.rst:755
+msgid ""
+"Number of requests dropped for having a URL longer than :setting:"
+"`URLLENGTH_LIMIT`."
+msgstr ""
+
+#: ../../../topics/stats.rst:758
+msgid ""
+"Set by :class:`~scrapy.spidermiddlewares.urllength.UrlLengthMiddleware`."
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy 2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-08 12:47+0000\n"
+"POT-Creation-Date: 2026-08-31 16:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -225,7 +225,7 @@ msgid ""
 msgstr ""
 
 #: ../../../topics/dynamic-content.rst:134
-msgid "selector = Selector(data[\"html\"])"
+msgid "selector = Selector(text=data[\"html\"])"
 msgstr ""
 
 #: ../../../topics/dynamic-content.rst:138

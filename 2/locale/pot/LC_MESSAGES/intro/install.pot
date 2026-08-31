@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy 2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 09:30+0000\n"
+"POT-Creation-Date: 2026-08-31 16:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,7 +46,7 @@ msgstr ""
 msgid "To install Scrapy using ``conda``, run::"
 msgstr ""
 
-#: ../../../intro/install.rst:26 ../../../intro/install.rst:109
+#: ../../../intro/install.rst:26 ../../../intro/install.rst:155
 msgid "conda install -c conda-forge scrapy"
 msgstr ""
 
@@ -56,7 +56,7 @@ msgid ""
 "packages, you can install Scrapy and its dependencies from PyPI with::"
 msgstr ""
 
-#: ../../../intro/install.rst:31 ../../../intro/install.rst:211
+#: ../../../intro/install.rst:31 ../../../intro/install.rst:257
 msgid "pip install Scrapy"
 msgstr ""
 
@@ -171,80 +171,192 @@ msgid ""
 "dependencies that you may need to install beforehand)."
 msgstr ""
 
-#: ../../../intro/install.rst:96
-msgid "Platform specific installation notes"
+#: ../../../intro/install.rst:95
+msgid "Optional extras"
+msgstr ""
+
+#: ../../../intro/install.rst:97
+msgid ""
+"Scrapy provides optional :ref:`extras <pypug:dependency-specifiers-extras>` "
+"that install additional dependencies to enable specific features. To install "
+"Scrapy with one or more extras, list them in square brackets:"
 msgstr ""
 
 #: ../../../intro/install.rst:101
+msgid "pip install scrapy[s3,images]"
+msgstr ""
+
+#: ../../../intro/install.rst:105
+msgid "The following extras are available:"
+msgstr ""
+
+#: ../../../intro/install.rst:110
+msgid "Extra"
+msgstr ""
+
+#: ../../../intro/install.rst:111
+msgid "Provides"
+msgstr ""
+
+#: ../../../intro/install.rst:112
+msgid "``bpython``"
+msgstr ""
+
+#: ../../../intro/install.rst:113
+msgid ":ref:`bpython shell <shell-config>`"
+msgstr ""
+
+#: ../../../intro/install.rst:114
+msgid "``gcs``"
+msgstr ""
+
+#: ../../../intro/install.rst:115
+msgid ""
+":ref:`Google Cloud Storage <topics-feed-storage-gcs>` for :ref:`feed exports "
+"<topics-feed-exports>` and :ref:`media pipelines <media-pipeline-gcs>`"
+msgstr ""
+
+#: ../../../intro/install.rst:118
+msgid "``httpx``"
+msgstr ""
+
+#: ../../../intro/install.rst:119
+msgid ":ref:`httpx-handler`, including its HTTP/2 and SOCKS proxy support"
+msgstr ""
+
+#: ../../../intro/install.rst:120
+msgid "``images``"
+msgstr ""
+
+#: ../../../intro/install.rst:121
+msgid ":ref:`Images pipeline <images-pipeline>`"
+msgstr ""
+
+#: ../../../intro/install.rst:122
+msgid "``ipython``"
+msgstr ""
+
+#: ../../../intro/install.rst:123
+msgid ":ref:`IPython shell <shell-config>`"
+msgstr ""
+
+#: ../../../intro/install.rst:124
+msgid "``ptpython``"
+msgstr ""
+
+#: ../../../intro/install.rst:125
+msgid ":ref:`ptpython shell <shell-config>`"
+msgstr ""
+
+#: ../../../intro/install.rst:126
+msgid "``robotparser``"
+msgstr ""
+
+#: ../../../intro/install.rst:127
+msgid ":ref:`Robotexclusionrulesparser robots.txt parsing <rerp-parser>`"
+msgstr ""
+
+#: ../../../intro/install.rst:128
+msgid "``s3``"
+msgstr ""
+
+#: ../../../intro/install.rst:129
+msgid ""
+":ref:`Amazon S3 <topics-feed-storage-s3>` storage for :ref:`feed exports "
+"<topics-feed-exports>`, :ref:`media pipelines <media-pipelines-s3>`, and :"
+"ref:`S3 downloads <s3-handler>`"
+msgstr ""
+
+#: ../../../intro/install.rst:133
+msgid "``twisted-http2``"
+msgstr ""
+
+#: ../../../intro/install.rst:134
+msgid ":ref:`twisted-http2-handler`"
+msgstr ""
+
+#: ../../../intro/install.rst:135
+msgid "``uvloop``"
+msgstr ""
+
+#: ../../../intro/install.rst:136
+msgid "`uvloop <https://github.com/MagicStack/uvloop>`_ event loop"
+msgstr ""
+
+#: ../../../intro/install.rst:142
+msgid "Platform specific installation notes"
+msgstr ""
+
+#: ../../../intro/install.rst:147
 msgid "Windows"
 msgstr ""
 
-#: ../../../intro/install.rst:103
+#: ../../../intro/install.rst:149
 msgid ""
 "Though it's possible to install Scrapy on Windows using pip, we recommend "
 "you install `Anaconda`_ or `Miniconda`_ and use the package from the `conda-"
 "forge`_ channel, which will avoid most installation issues."
 msgstr ""
 
-#: ../../../intro/install.rst:107
+#: ../../../intro/install.rst:153
 msgid ""
 "Once you've installed `Anaconda`_ or `Miniconda`_, install Scrapy with::"
 msgstr ""
 
-#: ../../../intro/install.rst:111
+#: ../../../intro/install.rst:157
 msgid "To install Scrapy on Windows using ``pip``:"
 msgstr ""
 
-#: ../../../intro/install.rst:114
+#: ../../../intro/install.rst:160
 msgid ""
 "This installation method requires “Microsoft Visual C++” for installing some "
 "Scrapy dependencies, which demands significantly more disk space than "
 "Anaconda."
 msgstr ""
 
-#: ../../../intro/install.rst:117
+#: ../../../intro/install.rst:163
 msgid ""
 "Download and execute `Microsoft C++ Build Tools`_ to install the Visual "
 "Studio Installer."
 msgstr ""
 
-#: ../../../intro/install.rst:119
+#: ../../../intro/install.rst:165
 msgid "Run the Visual Studio Installer."
 msgstr ""
 
-#: ../../../intro/install.rst:121
+#: ../../../intro/install.rst:167
 msgid "Under the Workloads section, select **C++ build tools**."
 msgstr ""
 
-#: ../../../intro/install.rst:123
+#: ../../../intro/install.rst:169
 msgid ""
 "Check the installation details and make sure following packages are selected "
 "as optional components:"
 msgstr ""
 
-#: ../../../intro/install.rst:125
+#: ../../../intro/install.rst:171
 msgid "**MSVC**  (e.g MSVC v142 - VS 2019 C++ x64/x86 build tools (v14.23) )"
 msgstr ""
 
-#: ../../../intro/install.rst:127
+#: ../../../intro/install.rst:173
 msgid "**Windows SDK**  (e.g Windows 10 SDK (10.0.18362.0))"
 msgstr ""
 
-#: ../../../intro/install.rst:129
+#: ../../../intro/install.rst:175
 msgid "Install the Visual Studio Build Tools."
 msgstr ""
 
-#: ../../../intro/install.rst:131
+#: ../../../intro/install.rst:177
 msgid ""
 "Now, you should be able to :ref:`install Scrapy <intro-install-scrapy>` "
 "using ``pip``."
 msgstr ""
 
-#: ../../../intro/install.rst:136
+#: ../../../intro/install.rst:182
 msgid "Ubuntu 14.04 or above"
 msgstr ""
 
-#: ../../../intro/install.rst:138
+#: ../../../intro/install.rst:184
 msgid ""
 "Scrapy is currently tested with recent-enough versions of lxml, twisted and "
 "pyOpenSSL, and is compatible with recent Ubuntu distributions. But it should "
@@ -252,55 +364,55 @@ msgid ""
 "potential issues with TLS connections."
 msgstr ""
 
-#: ../../../intro/install.rst:143
+#: ../../../intro/install.rst:189
 msgid ""
 "**Don't** use the ``python-scrapy`` package provided by Ubuntu, they are "
 "typically too old and slow to catch up with the latest Scrapy release."
 msgstr ""
 
-#: ../../../intro/install.rst:147
+#: ../../../intro/install.rst:193
 msgid ""
 "To install Scrapy on Ubuntu (or Ubuntu-based) systems, you need to install "
 "these dependencies::"
 msgstr ""
 
-#: ../../../intro/install.rst:150
+#: ../../../intro/install.rst:196
 msgid ""
 "sudo apt-get install python3 python3-dev python3-pip libxml2-dev libxslt1-"
 "dev zlib1g-dev libffi-dev libssl-dev"
 msgstr ""
 
-#: ../../../intro/install.rst:152
+#: ../../../intro/install.rst:198
 msgid ""
 "``python3-dev``, ``zlib1g-dev``, ``libxml2-dev`` and ``libxslt1-dev`` are "
 "required for ``lxml``"
 msgstr ""
 
-#: ../../../intro/install.rst:154
+#: ../../../intro/install.rst:200
 msgid "``libssl-dev`` and ``libffi-dev`` are required for ``cryptography``"
 msgstr ""
 
-#: ../../../intro/install.rst:156
+#: ../../../intro/install.rst:202
 msgid ""
 "Inside a :ref:`virtualenv <intro-using-virtualenv>`, you can install Scrapy "
 "with ``pip`` after that::"
 msgstr ""
 
-#: ../../../intro/install.rst:159
+#: ../../../intro/install.rst:205
 msgid "pip install scrapy"
 msgstr ""
 
-#: ../../../intro/install.rst:162
+#: ../../../intro/install.rst:208
 msgid ""
 "The same non-Python dependencies can be used to install Scrapy in Debian "
 "Jessie (8.0) and above."
 msgstr ""
 
-#: ../../../intro/install.rst:169
+#: ../../../intro/install.rst:215
 msgid "macOS"
 msgstr ""
 
-#: ../../../intro/install.rst:171
+#: ../../../intro/install.rst:217
 msgid ""
 "Building Scrapy's dependencies requires the presence of a C compiler and "
 "development headers. On macOS this is typically provided by Apple’s Xcode "
@@ -308,11 +420,11 @@ msgid ""
 "window and run::"
 msgstr ""
 
-#: ../../../intro/install.rst:176
+#: ../../../intro/install.rst:222
 msgid "xcode-select --install"
 msgstr ""
 
-#: ../../../intro/install.rst:178
+#: ../../../intro/install.rst:224
 msgid ""
 "There's a `known issue <https://github.com/pypa/pip/issues/2468>`_ that "
 "prevents ``pip`` from updating system packages. This has to be addressed to "
@@ -320,71 +432,71 @@ msgid ""
 "solutions:"
 msgstr ""
 
-#: ../../../intro/install.rst:183
+#: ../../../intro/install.rst:229
 msgid ""
 "*(Recommended)* **Don't** use system Python. Install a new, updated version "
 "that doesn't conflict with the rest of your system. Here's how to do it "
 "using the `homebrew`_ package manager:"
 msgstr ""
 
-#: ../../../intro/install.rst:187
+#: ../../../intro/install.rst:233
 msgid "Install `homebrew`_ following the instructions in https://brew.sh/"
 msgstr ""
 
-#: ../../../intro/install.rst:189
+#: ../../../intro/install.rst:235
 msgid ""
 "Update your ``PATH`` variable to state that homebrew packages should be used "
 "before system packages (Change ``.bashrc`` to ``.zshrc`` accordingly if "
 "you're using `zsh`_ as default shell)::"
 msgstr ""
 
-#: ../../../intro/install.rst:193
+#: ../../../intro/install.rst:239
 msgid "echo \"export PATH=/usr/local/bin:/usr/local/sbin:$PATH\" >> ~/.bashrc"
 msgstr ""
 
-#: ../../../intro/install.rst:195
+#: ../../../intro/install.rst:241
 msgid "Reload ``.bashrc`` to ensure the changes have taken place::"
 msgstr ""
 
-#: ../../../intro/install.rst:197
+#: ../../../intro/install.rst:243
 msgid "source ~/.bashrc"
 msgstr ""
 
-#: ../../../intro/install.rst:199
+#: ../../../intro/install.rst:245
 msgid "Install python::"
 msgstr ""
 
-#: ../../../intro/install.rst:201
+#: ../../../intro/install.rst:247
 msgid "brew install python"
 msgstr ""
 
-#: ../../../intro/install.rst:203
+#: ../../../intro/install.rst:249
 msgid ""
 "*(Optional)* :ref:`Install Scrapy inside a Python virtual environment <intro-"
 "using-virtualenv>`."
 msgstr ""
 
-#: ../../../intro/install.rst:206
+#: ../../../intro/install.rst:252
 msgid ""
 "This method is a workaround for the above macOS issue, but it's an overall "
 "good practice for managing dependencies and can complement the first method."
 msgstr ""
 
-#: ../../../intro/install.rst:209
+#: ../../../intro/install.rst:255
 msgid "After any of these workarounds you should be able to install Scrapy::"
 msgstr ""
 
-#: ../../../intro/install.rst:215
+#: ../../../intro/install.rst:261
 msgid "PyPy"
 msgstr ""
 
-#: ../../../intro/install.rst:217
+#: ../../../intro/install.rst:263
 msgid ""
 "We recommend using the latest PyPy version. For PyPy3, only Linux "
 "installation was tested."
 msgstr ""
 
-#: ../../../intro/install.rst:220
+#: ../../../intro/install.rst:266
 msgid ""
 "Most Scrapy dependencies now have binary wheels for CPython, but not for "
 "PyPy. This means that these dependencies will be built during installation. "
@@ -397,30 +509,30 @@ msgid ""
 "PyPy on Windows is not tested."
 msgstr ""
 
-#: ../../../intro/install.rst:230
+#: ../../../intro/install.rst:276
 msgid ""
 "You can check that Scrapy is installed correctly by running ``scrapy "
 "bench``. If this command gives errors such as ``TypeError: ... got 2 "
-"unexpected keyword arguments``, this means that setuptools was unable to "
-"pick up one PyPy-specific dependency. To fix this issue, run ``pip install "
+"unexpected keyword arguments``, this means that the ``PyPyDispatcher`` "
+"dependency wasn't installed. To fix this issue, run ``pip install "
 "'PyPyDispatcher>=2.1.0'``."
 msgstr ""
 
-#: ../../../intro/install.rst:240
+#: ../../../intro/install.rst:286
 msgid "Troubleshooting"
 msgstr ""
 
-#: ../../../intro/install.rst:243
+#: ../../../intro/install.rst:289
 msgid "AttributeError: 'module' object has no attribute 'OP_NO_TLSv1_1'"
 msgstr ""
 
-#: ../../../intro/install.rst:245
+#: ../../../intro/install.rst:291
 msgid ""
 "After you install or upgrade Scrapy, Twisted or pyOpenSSL, you may get an "
 "exception with the following traceback::"
 msgstr ""
 
-#: ../../../intro/install.rst:248
+#: ../../../intro/install.rst:294
 msgid ""
 "[…]\n"
 "  File \"[…]/site-packages/twisted/protocols/tls.py\", line 63, in <module>\n"
@@ -431,23 +543,23 @@ msgid ""
 "AttributeError: 'module' object has no attribute 'OP_NO_TLSv1_1'"
 msgstr ""
 
-#: ../../../intro/install.rst:255
+#: ../../../intro/install.rst:301
 msgid ""
 "The reason you get this exception is that your system or virtual environment "
 "has a version of pyOpenSSL that your version of Twisted does not support."
 msgstr ""
 
-#: ../../../intro/install.rst:258
+#: ../../../intro/install.rst:304
 msgid ""
 "To install a version of pyOpenSSL that your version of Twisted supports, "
 "reinstall Twisted with the :code:`tls` extra option::"
 msgstr ""
 
-#: ../../../intro/install.rst:261
+#: ../../../intro/install.rst:307
 msgid "pip install twisted[tls]"
 msgstr ""
 
-#: ../../../intro/install.rst:263
+#: ../../../intro/install.rst:309
 msgid ""
 "For details, see `Issue #2473 <https://github.com/scrapy/scrapy/"
 "issues/2473>`_."
