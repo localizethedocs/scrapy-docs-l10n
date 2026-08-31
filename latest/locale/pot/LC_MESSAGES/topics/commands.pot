@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-06 09:35+0000\n"
+"POT-Creation-Date: 2026-08-31 16:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -134,23 +134,34 @@ msgid ""
 "default = myproject.settings"
 msgstr ""
 
-#: ../../../topics/commands.rst:79
+#: ../../../topics/commands.rst:76
+msgid ""
+"The project name also appears elsewhere by default. :setting:"
+"`SPIDER_MODULES` and :setting:`NEWSPIDER_MODULE` reference the project "
+"module itself, so they must match its actual location. :setting:`BOT_NAME` "
+"defaults to the same name but is just an identifier, and the capitalized "
+"project-name prefix of class names in :file:`middlewares.py` and :file:"
+"`pipelines.py` is only a naming convention; neither needs to match the "
+"module name."
+msgstr ""
+
+#: ../../../topics/commands.rst:86
 msgid "Sharing the root directory between projects"
 msgstr ""
 
-#: ../../../topics/commands.rst:81
+#: ../../../topics/commands.rst:88
 msgid ""
 "A project root directory, the one that contains the ``scrapy.cfg``, may be "
 "shared by multiple Scrapy projects, each with its own settings module."
 msgstr ""
 
-#: ../../../topics/commands.rst:84
+#: ../../../topics/commands.rst:91
 msgid ""
 "In that case, you must define one or more aliases for those settings modules "
 "under ``[settings]`` in your ``scrapy.cfg`` file:"
 msgstr ""
 
-#: ../../../topics/commands.rst:87
+#: ../../../topics/commands.rst:94
 msgid ""
 "[settings]\n"
 "default = myproject1.settings\n"
@@ -158,14 +169,14 @@ msgid ""
 "project2 = myproject2.settings"
 msgstr ""
 
-#: ../../../topics/commands.rst:94
+#: ../../../topics/commands.rst:101
 msgid ""
 "By default, the ``scrapy`` command-line tool will use the ``default`` "
 "settings. Use the ``SCRAPY_PROJECT`` environment variable to specify a "
 "different project for ``scrapy`` to use::"
 msgstr ""
 
-#: ../../../topics/commands.rst:98
+#: ../../../topics/commands.rst:105
 msgid ""
 "$ scrapy settings --get BOT_NAME\n"
 "Project 1 Bot\n"
@@ -174,17 +185,17 @@ msgid ""
 "Project 2 Bot"
 msgstr ""
 
-#: ../../../topics/commands.rst:106
+#: ../../../topics/commands.rst:113
 msgid "Using the ``scrapy`` tool"
 msgstr ""
 
-#: ../../../topics/commands.rst:108
+#: ../../../topics/commands.rst:115
 msgid ""
 "You can start by running the Scrapy tool with no arguments and it will print "
 "some usage help and the available commands::"
 msgstr ""
 
-#: ../../../topics/commands.rst:111
+#: ../../../topics/commands.rst:118
 msgid ""
 "Scrapy X.Y - no active project\n"
 "\n"
@@ -192,19 +203,19 @@ msgid ""
 "  scrapy <command> [options] [args]\n"
 "\n"
 "Available commands:\n"
-"  crawl         Run a spider\n"
 "  fetch         Fetch a URL using the Scrapy downloader\n"
+"  runspider     Run a spider from a Python file, no project required\n"
 "[...]"
 msgstr ""
 
-#: ../../../topics/commands.rst:121
+#: ../../../topics/commands.rst:128
 msgid ""
 "The first line will print the currently active project if you're inside a "
 "Scrapy project. In this example it was run from outside a project. If run "
 "from inside a project it would have printed something like this::"
 msgstr ""
 
-#: ../../../topics/commands.rst:125
+#: ../../../topics/commands.rst:132
 msgid ""
 "Scrapy X.Y - project: myproject\n"
 "\n"
@@ -214,60 +225,60 @@ msgid ""
 "[...]"
 msgstr ""
 
-#: ../../../topics/commands.rst:133
+#: ../../../topics/commands.rst:140
 msgid "Creating projects"
 msgstr ""
 
-#: ../../../topics/commands.rst:135
+#: ../../../topics/commands.rst:142
 msgid ""
 "The first thing you typically do with the ``scrapy`` tool is create your "
 "Scrapy project::"
 msgstr ""
 
-#: ../../../topics/commands.rst:138
+#: ../../../topics/commands.rst:145
 msgid "scrapy startproject myproject [project_dir]"
 msgstr ""
 
-#: ../../../topics/commands.rst:140
+#: ../../../topics/commands.rst:147
 msgid ""
 "That will create a Scrapy project under the ``project_dir`` directory. If "
 "``project_dir`` wasn't specified, ``project_dir`` will be the same as "
 "``myproject``."
 msgstr ""
 
-#: ../../../topics/commands.rst:143
+#: ../../../topics/commands.rst:150
 msgid "Next, you go inside the new project directory::"
 msgstr ""
 
-#: ../../../topics/commands.rst:145
+#: ../../../topics/commands.rst:152
 msgid "cd project_dir"
 msgstr ""
 
-#: ../../../topics/commands.rst:147
+#: ../../../topics/commands.rst:154
 msgid ""
 "And you're ready to use the ``scrapy`` command to manage and control your "
 "project from there."
 msgstr ""
 
-#: ../../../topics/commands.rst:151
+#: ../../../topics/commands.rst:158
 msgid "Controlling projects"
 msgstr ""
 
-#: ../../../topics/commands.rst:153
+#: ../../../topics/commands.rst:160
 msgid ""
 "You use the ``scrapy`` tool from inside your projects to control and manage "
 "them."
 msgstr ""
 
-#: ../../../topics/commands.rst:156
+#: ../../../topics/commands.rst:163
 msgid "For example, to create a new spider::"
 msgstr ""
 
-#: ../../../topics/commands.rst:158
+#: ../../../topics/commands.rst:165
 msgid "scrapy genspider mydomain mydomain.com"
 msgstr ""
 
-#: ../../../topics/commands.rst:160
+#: ../../../topics/commands.rst:167
 msgid ""
 "Some Scrapy commands (like :command:`crawl`) must be run from inside a "
 "Scrapy project. See the :ref:`commands reference <topics-commands-ref>` "
@@ -275,7 +286,7 @@ msgid ""
 "projects, and which not."
 msgstr ""
 
-#: ../../../topics/commands.rst:164
+#: ../../../topics/commands.rst:171
 msgid ""
 "Also keep in mind that some commands may have slightly different behaviours "
 "when running them from inside projects. For example, the fetch command will "
@@ -285,30 +296,30 @@ msgid ""
 "be used to check how spiders are downloading pages."
 msgstr ""
 
-#: ../../../topics/commands.rst:174
+#: ../../../topics/commands.rst:181
 msgid "Available tool commands"
 msgstr ""
 
-#: ../../../topics/commands.rst:176
+#: ../../../topics/commands.rst:183
 msgid ""
 "This section contains a list of the available built-in commands with a "
 "description and some usage examples. Remember, you can always get more info "
 "about each command by running::"
 msgstr ""
 
-#: ../../../topics/commands.rst:180
+#: ../../../topics/commands.rst:187
 msgid "scrapy <command> -h"
 msgstr ""
 
-#: ../../../topics/commands.rst:182
+#: ../../../topics/commands.rst:189
 msgid "And you can see all available commands with::"
 msgstr ""
 
-#: ../../../topics/commands.rst:184
+#: ../../../topics/commands.rst:191
 msgid "scrapy -h"
 msgstr ""
 
-#: ../../../topics/commands.rst:186
+#: ../../../topics/commands.rst:193
 msgid ""
 "There are two kinds of commands, those that only work from inside a Scrapy "
 "project (Project-specific commands) and those that also work without an "
@@ -317,113 +328,113 @@ msgid ""
 "overridden settings)."
 msgstr ""
 
-#: ../../../topics/commands.rst:192
+#: ../../../topics/commands.rst:199
 msgid "Global commands:"
 msgstr ""
 
-#: ../../../topics/commands.rst:194
+#: ../../../topics/commands.rst:201
 msgid ":command:`startproject`"
 msgstr ""
 
-#: ../../../topics/commands.rst:195
+#: ../../../topics/commands.rst:202
 msgid ":command:`genspider`"
 msgstr ""
 
-#: ../../../topics/commands.rst:196
+#: ../../../topics/commands.rst:203
 msgid ":command:`settings`"
 msgstr ""
 
-#: ../../../topics/commands.rst:197 ../../../topics/commands.rst:598
+#: ../../../topics/commands.rst:204 ../../../topics/commands.rst:626
 msgid ":command:`runspider`"
 msgstr ""
 
-#: ../../../topics/commands.rst:198 ../../../topics/commands.rst:599
+#: ../../../topics/commands.rst:205 ../../../topics/commands.rst:627
 msgid ":command:`shell`"
 msgstr ""
 
-#: ../../../topics/commands.rst:199 ../../../topics/commands.rst:596
+#: ../../../topics/commands.rst:206 ../../../topics/commands.rst:624
 msgid ":command:`fetch`"
 msgstr ""
 
-#: ../../../topics/commands.rst:200 ../../../topics/commands.rst:600
+#: ../../../topics/commands.rst:207 ../../../topics/commands.rst:628
 msgid ":command:`view`"
 msgstr ""
 
-#: ../../../topics/commands.rst:201
+#: ../../../topics/commands.rst:208
 msgid ":command:`version`"
 msgstr ""
 
-#: ../../../topics/commands.rst:203
-msgid "Project-only commands:"
-msgstr ""
-
-#: ../../../topics/commands.rst:205 ../../../topics/commands.rst:595
-msgid ":command:`crawl`"
-msgstr ""
-
-#: ../../../topics/commands.rst:206 ../../../topics/commands.rst:594
-msgid ":command:`check`"
-msgstr ""
-
-#: ../../../topics/commands.rst:207
-msgid ":command:`list`"
-msgstr ""
-
-#: ../../../topics/commands.rst:208
-msgid ":command:`edit`"
-msgstr ""
-
-#: ../../../topics/commands.rst:209 ../../../topics/commands.rst:597
-msgid ":command:`parse`"
-msgstr ""
-
-#: ../../../topics/commands.rst:210 ../../../topics/commands.rst:593
+#: ../../../topics/commands.rst:209 ../../../topics/commands.rst:621
 msgid ":command:`bench`"
 msgstr ""
 
+#: ../../../topics/commands.rst:211
+msgid "Project-only commands:"
+msgstr ""
+
+#: ../../../topics/commands.rst:213 ../../../topics/commands.rst:623
+msgid ":command:`crawl`"
+msgstr ""
+
+#: ../../../topics/commands.rst:214 ../../../topics/commands.rst:622
+msgid ":command:`check`"
+msgstr ""
+
 #: ../../../topics/commands.rst:215
+msgid ":command:`list`"
+msgstr ""
+
+#: ../../../topics/commands.rst:216
+msgid ":command:`edit`"
+msgstr ""
+
+#: ../../../topics/commands.rst:217 ../../../topics/commands.rst:625
+msgid ":command:`parse`"
+msgstr ""
+
+#: ../../../topics/commands.rst:222
 msgid "startproject"
 msgstr ""
 
-#: ../../../topics/commands.rst:217
+#: ../../../topics/commands.rst:224
 msgid "Syntax: ``scrapy startproject <project_name> [project_dir]``"
 msgstr ""
 
-#: ../../../topics/commands.rst:218 ../../../topics/commands.rst:234
-#: ../../../topics/commands.rst:362 ../../../topics/commands.rst:406
-#: ../../../topics/commands.rst:429 ../../../topics/commands.rst:534
-#: ../../../topics/commands.rst:554 ../../../topics/commands.rst:570
-#: ../../../topics/commands.rst:581
+#: ../../../topics/commands.rst:225 ../../../topics/commands.rst:241
+#: ../../../topics/commands.rst:385 ../../../topics/commands.rst:433
+#: ../../../topics/commands.rst:456 ../../../topics/commands.rst:561
+#: ../../../topics/commands.rst:581 ../../../topics/commands.rst:598
+#: ../../../topics/commands.rst:609
 msgid "Requires project: *no*"
 msgstr ""
 
-#: ../../../topics/commands.rst:220
+#: ../../../topics/commands.rst:227
 msgid ""
 "Creates a new Scrapy project named ``project_name``, under the "
 "``project_dir`` directory. If ``project_dir`` wasn't specified, "
 "``project_dir`` will be the same as ``project_name``."
 msgstr ""
 
-#: ../../../topics/commands.rst:224 ../../../topics/commands.rst:238
-#: ../../../topics/commands.rst:331 ../../../topics/commands.rst:352
-#: ../../../topics/commands.rst:418 ../../../topics/commands.rst:446
-#: ../../../topics/commands.rst:511
+#: ../../../topics/commands.rst:231 ../../../topics/commands.rst:245
+#: ../../../topics/commands.rst:354 ../../../topics/commands.rst:375
+#: ../../../topics/commands.rst:445 ../../../topics/commands.rst:473
+#: ../../../topics/commands.rst:538
 msgid "Usage example::"
 msgstr ""
 
-#: ../../../topics/commands.rst:226
+#: ../../../topics/commands.rst:233
 msgid "$ scrapy startproject myproject"
 msgstr ""
 
-#: ../../../topics/commands.rst:231
+#: ../../../topics/commands.rst:238
 msgid "genspider"
 msgstr ""
 
-#: ../../../topics/commands.rst:233
+#: ../../../topics/commands.rst:240
 msgid "Syntax: ``scrapy genspider [-t template] <name> <domain or URL>``"
 msgstr ""
 
-#: ../../../topics/commands.rst:236
+#: ../../../topics/commands.rst:243
 msgid ""
 "Creates a new spider in the current folder or in the current project's "
 "``spiders`` folder, if called from inside a project. The ``<name>`` "
@@ -431,7 +442,7 @@ msgid ""
 "to generate the ``allowed_domains`` and ``start_urls`` spider's attributes."
 msgstr ""
 
-#: ../../../topics/commands.rst:240
+#: ../../../topics/commands.rst:247
 msgid ""
 "$ scrapy genspider -l\n"
 "Available templates:\n"
@@ -447,7 +458,7 @@ msgid ""
 "Created spider 'scrapyorg' using template 'crawl'"
 msgstr ""
 
-#: ../../../topics/commands.rst:253
+#: ../../../topics/commands.rst:260
 msgid ""
 "This is just a convenient shortcut command for creating spiders based on pre-"
 "defined templates, but certainly not the only way to create spiders. You can "
@@ -455,58 +466,61 @@ msgid ""
 "command."
 msgstr ""
 
-#: ../../../topics/commands.rst:261
+#: ../../../topics/commands.rst:268
 msgid "crawl"
 msgstr ""
 
-#: ../../../topics/commands.rst:263
+#: ../../../topics/commands.rst:270
 msgid "Syntax: ``scrapy crawl <spider>``"
 msgstr ""
 
-#: ../../../topics/commands.rst:264 ../../../topics/commands.rst:295
-#: ../../../topics/commands.rst:326 ../../../topics/commands.rst:343
-#: ../../../topics/commands.rst:470
+#: ../../../topics/commands.rst:271 ../../../topics/commands.rst:304
+#: ../../../topics/commands.rst:349 ../../../topics/commands.rst:366
+#: ../../../topics/commands.rst:497
 msgid "Requires project: *yes*"
 msgstr ""
 
-#: ../../../topics/commands.rst:266
-msgid "Start crawling using a spider."
+#: ../../../topics/commands.rst:273
+msgid ""
+"Start crawling using the spider with the given :attr:`~scrapy.Spider.name`, "
+"which must be one of those that :command:`list` reports. To run a spider "
+"from a file instead, use :command:`runspider`."
 msgstr ""
 
-#: ../../../topics/commands.rst:268 ../../../topics/commands.rst:376
-#: ../../../topics/commands.rst:412 ../../../topics/commands.rst:436
-#: ../../../topics/commands.rst:475
+#: ../../../topics/commands.rst:277 ../../../topics/commands.rst:399
+#: ../../../topics/commands.rst:439 ../../../topics/commands.rst:463
+#: ../../../topics/commands.rst:502
 msgid "Supported options:"
 msgstr ""
 
-#: ../../../topics/commands.rst:270
+#: ../../../topics/commands.rst:279
 msgid "``-h, --help``: show a help message and exit"
 msgstr ""
 
-#: ../../../topics/commands.rst:272
+#: ../../../topics/commands.rst:281
 msgid "``-a NAME=VALUE``: set a spider argument (may be repeated)"
 msgstr ""
 
-#: ../../../topics/commands.rst:274
+#: ../../../topics/commands.rst:283
 msgid ""
 "``--output FILE`` or ``-o FILE``: append scraped items to the end of FILE "
 "(use - for stdout). To define the output format, set a colon at the end of "
 "the output URI (i.e. ``-o FILE:FORMAT``)"
 msgstr ""
 
-#: ../../../topics/commands.rst:276
+#: ../../../topics/commands.rst:285
 msgid ""
 "``--overwrite-output FILE`` or ``-O FILE``: dump scraped items into FILE, "
 "overwriting any existing file. To define the output format, set a colon at "
 "the end of the output URI (i.e. ``-O FILE:FORMAT``)"
 msgstr ""
 
-#: ../../../topics/commands.rst:278 ../../../topics/commands.rst:301
-#: ../../../topics/commands.rst:384
+#: ../../../topics/commands.rst:287 ../../../topics/commands.rst:310
+#: ../../../topics/commands.rst:407
 msgid "Usage examples::"
 msgstr ""
 
-#: ../../../topics/commands.rst:280
+#: ../../../topics/commands.rst:289
 msgid ""
 "$ scrapy crawl myspider\n"
 "[ ... myspider starts crawling ... ]\n"
@@ -520,19 +534,19 @@ msgid ""
 "overwriting the original content... ]"
 msgstr ""
 
-#: ../../../topics/commands.rst:292
+#: ../../../topics/commands.rst:301
 msgid "check"
 msgstr ""
 
-#: ../../../topics/commands.rst:294
+#: ../../../topics/commands.rst:303
 msgid "Syntax: ``scrapy check [-l] <spider>``"
 msgstr ""
 
-#: ../../../topics/commands.rst:297
+#: ../../../topics/commands.rst:306
 msgid "Run contract checks."
 msgstr ""
 
-#: ../../../topics/commands.rst:303
+#: ../../../topics/commands.rst:312
 msgid ""
 "$ scrapy check -l\n"
 "first_spider\n"
@@ -543,74 +557,88 @@ msgid ""
 "  * parse_item\n"
 "\n"
 "$ scrapy check\n"
-"[FAILED] first_spider:parse_item\n"
-">>> 'RetailPricex' field is missing\n"
+"F.F.\n"
+"======================================================================\n"
+"FAIL: [first_spider] parse (@returns post-hook)\n"
+"----------------------------------------------------------------------\n"
+"Traceback (most recent call last):\n"
+"  ...\n"
+"scrapy.exceptions.ContractFail: Returned 92 requests, expected 0..4\n"
 "\n"
-"[FAILED] first_spider:parse\n"
-">>> Returned 92 requests, expected 0..4"
+"======================================================================\n"
+"FAIL: [first_spider] parse_item (@scrapes post-hook)\n"
+"----------------------------------------------------------------------\n"
+"Traceback (most recent call last):\n"
+"  ...\n"
+"scrapy.exceptions.ContractFail: Missing fields: RetailPricex\n"
+"\n"
+"----------------------------------------------------------------------\n"
+"Ran 4 contracts in 0.174s\n"
+"\n"
+"FAILED (failures=2)"
 msgstr ""
 
-#: ../../../topics/commands.rst:323
+#: ../../../topics/commands.rst:346
 msgid "list"
 msgstr ""
 
-#: ../../../topics/commands.rst:325
+#: ../../../topics/commands.rst:348
 msgid "Syntax: ``scrapy list``"
 msgstr ""
 
-#: ../../../topics/commands.rst:328
+#: ../../../topics/commands.rst:351
 msgid ""
 "List all available spiders in the current project. The output is one spider "
 "per line."
 msgstr ""
 
-#: ../../../topics/commands.rst:333
+#: ../../../topics/commands.rst:356
 msgid ""
 "$ scrapy list\n"
 "spider1\n"
 "spider2"
 msgstr ""
 
-#: ../../../topics/commands.rst:340
+#: ../../../topics/commands.rst:363
 msgid "edit"
 msgstr ""
 
-#: ../../../topics/commands.rst:342
+#: ../../../topics/commands.rst:365
 msgid "Syntax: ``scrapy edit <spider>``"
 msgstr ""
 
-#: ../../../topics/commands.rst:345
+#: ../../../topics/commands.rst:368
 msgid ""
 "Edit the given spider using the editor defined in the ``EDITOR`` environment "
 "variable or (if unset) the :setting:`EDITOR` setting."
 msgstr ""
 
-#: ../../../topics/commands.rst:348
+#: ../../../topics/commands.rst:371
 msgid ""
 "This command is provided only as a convenient shortcut for the most common "
 "case, the developer is of course free to choose any tool or IDE to write and "
 "debug spiders."
 msgstr ""
 
-#: ../../../topics/commands.rst:354
+#: ../../../topics/commands.rst:377
 msgid "$ scrapy edit spider1"
 msgstr ""
 
-#: ../../../topics/commands.rst:359
+#: ../../../topics/commands.rst:382
 msgid "fetch"
 msgstr ""
 
-#: ../../../topics/commands.rst:361
+#: ../../../topics/commands.rst:384
 msgid "Syntax: ``scrapy fetch <url>``"
 msgstr ""
 
-#: ../../../topics/commands.rst:364
+#: ../../../topics/commands.rst:387
 msgid ""
 "Downloads the given URL using the Scrapy downloader and writes the contents "
 "to standard output."
 msgstr ""
 
-#: ../../../topics/commands.rst:367
+#: ../../../topics/commands.rst:390
 msgid ""
 "The interesting thing about this command is that it fetches the page the way "
 "the spider would download it. For example, if the spider has a "
@@ -618,84 +646,88 @@ msgid ""
 "one."
 msgstr ""
 
-#: ../../../topics/commands.rst:371
+#: ../../../topics/commands.rst:394
 msgid ""
 "So this command can be used to \"see\" how your spider would fetch a certain "
 "page."
 msgstr ""
 
-#: ../../../topics/commands.rst:373
+#: ../../../topics/commands.rst:396
 msgid ""
 "If used outside a project, no particular per-spider behaviour would be "
 "applied and it will just use the default Scrapy downloader settings."
 msgstr ""
 
-#: ../../../topics/commands.rst:378 ../../../topics/commands.rst:414
-#: ../../../topics/commands.rst:438 ../../../topics/commands.rst:477
+#: ../../../topics/commands.rst:401 ../../../topics/commands.rst:441
+#: ../../../topics/commands.rst:465 ../../../topics/commands.rst:504
 msgid ""
 "``--spider=SPIDER``: bypass spider autodetection and force use of specific "
 "spider"
 msgstr ""
 
-#: ../../../topics/commands.rst:380
+#: ../../../topics/commands.rst:403
 msgid ""
-"``--headers``: print the response's HTTP headers instead of the response's "
-"body"
+"``--headers``: print the request's and response's HTTP headers instead of "
+"the response's body"
 msgstr ""
 
-#: ../../../topics/commands.rst:382 ../../../topics/commands.rst:416
+#: ../../../topics/commands.rst:405 ../../../topics/commands.rst:443
 msgid ""
 "``--no-redirect``: do not follow HTTP 3xx redirects (default is to follow "
 "them)"
 msgstr ""
 
-#: ../../../topics/commands.rst:386
+#: ../../../topics/commands.rst:409
 msgid ""
 "$ scrapy fetch --nolog http://www.example.com/some/page.html\n"
 "[ ... html content here ... ]\n"
 "\n"
 "$ scrapy fetch --nolog --headers http://www.example.com/\n"
-"{'Accept-Ranges': ['bytes'],\n"
-" 'Age': ['1263   '],\n"
-" 'Connection': ['close     '],\n"
-" 'Content-Length': ['596'],\n"
-" 'Content-Type': ['text/html; charset=UTF-8'],\n"
-" 'Date': ['Wed, 18 Aug 2010 23:59:46 GMT'],\n"
-" 'Etag': ['\"573c1-254-48c9c87349680\"'],\n"
-" 'Last-Modified': ['Fri, 30 Jul 2010 15:30:18 GMT'],\n"
-" 'Server': ['Apache/2.2.3 (CentOS)']}"
+"> Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\n"
+"> Accept-Language: en\n"
+"> User-Agent: Scrapy/2.16.0 (+https://scrapy.org)\n"
+"> Accept-Encoding: gzip, deflate, br, zstd\n"
+">\n"
+"< Date: Wed, 08 Jul 2026 06:15:01 GMT\n"
+"< Content-Type: text/html\n"
+"< Server: cloudflare\n"
+"< Last-Modified: Wed, 01 Jul 2026 17:50:18 GMT\n"
+"< Allow: GET, HEAD\n"
+"< Cf-Cache-Status: HIT\n"
+"< Age: 8184\n"
+"< Cf-Ray: a17cf3b80eddf141-DME"
 msgstr ""
 
-#: ../../../topics/commands.rst:403
+#: ../../../topics/commands.rst:430
 msgid "view"
 msgstr ""
 
-#: ../../../topics/commands.rst:405
+#: ../../../topics/commands.rst:432
 msgid "Syntax: ``scrapy view <url>``"
 msgstr ""
 
-#: ../../../topics/commands.rst:408
+#: ../../../topics/commands.rst:435
 msgid ""
 "Opens the given URL in a browser, as your Scrapy spider would \"see\" it. "
 "Sometimes spiders see pages differently from regular users, so this can be "
 "used to check what the spider \"sees\" and confirm it's what you expect."
 msgstr ""
 
-#: ../../../topics/commands.rst:420
+#: ../../../topics/commands.rst:447
 msgid ""
 "$ scrapy view http://www.example.com/some/page.html\n"
 "[ ... browser starts ... ]"
 msgstr ""
 
-#: ../../../topics/commands.rst:426
+#: ../../../topics/commands.rst:453
 msgid "shell"
 msgstr ""
 
-#: ../../../topics/commands.rst:428
+#: ../../../topics/commands.rst:455
 msgid "Syntax: ``scrapy shell [url]``"
 msgstr ""
 
-#: ../../../topics/commands.rst:431
+#: ../../../topics/commands.rst:458
 msgid ""
 "Starts the Scrapy shell for the given URL (if given) or empty if no URL is "
 "given. Also supports UNIX-style local file paths, either relative with ``./"
@@ -703,11 +735,11 @@ msgid ""
 "more info."
 msgstr ""
 
-#: ../../../topics/commands.rst:440
+#: ../../../topics/commands.rst:467
 msgid "``-c code``: evaluate the code in the shell, print the result and exit"
 msgstr ""
 
-#: ../../../topics/commands.rst:442
+#: ../../../topics/commands.rst:469
 msgid ""
 "``--no-redirect``: do not follow HTTP 3xx redirects (default is to follow "
 "them); this only affects the URL you may pass as argument on the command "
@@ -715,7 +747,7 @@ msgid ""
 "redirects by default."
 msgstr ""
 
-#: ../../../topics/commands.rst:448
+#: ../../../topics/commands.rst:475
 msgid ""
 "$ scrapy shell http://www.example.com/some/page.html\n"
 "[ ... scrapy shell starts ... ]\n"
@@ -736,81 +768,82 @@ msgid ""
 "(302, 'http://httpbin.org/redirect-to?url=http%3A%2F%2Fexample.com%2F')"
 msgstr ""
 
-#: ../../../topics/commands.rst:467
+#: ../../../topics/commands.rst:494
 msgid "parse"
 msgstr ""
 
-#: ../../../topics/commands.rst:469
+#: ../../../topics/commands.rst:496
 msgid "Syntax: ``scrapy parse <url> [options]``"
 msgstr ""
 
-#: ../../../topics/commands.rst:472
+#: ../../../topics/commands.rst:499
 msgid ""
 "Fetches the given URL and parses it with the spider that handles it, using "
 "the method passed with the ``--callback`` option, or ``parse`` if not given."
 msgstr ""
 
-#: ../../../topics/commands.rst:479
-msgid "``--a NAME=VALUE``: set spider argument (may be repeated)"
+#: ../../../topics/commands.rst:506
+msgid "``-a NAME=VALUE``: set spider argument (may be repeated)"
 msgstr ""
 
-#: ../../../topics/commands.rst:481
+#: ../../../topics/commands.rst:508
 msgid ""
 "``--callback`` or ``-c``: spider method to use as callback for parsing the "
 "response"
 msgstr ""
 
-#: ../../../topics/commands.rst:484
+#: ../../../topics/commands.rst:511
 msgid ""
 "``--meta`` or ``-m``: additional request meta that will be passed to the "
 "callback request. This must be a valid json string. Example: --"
 "meta='{\"foo\" : \"bar\"}'"
 msgstr ""
 
-#: ../../../topics/commands.rst:487
+#: ../../../topics/commands.rst:514
 msgid ""
 "``--cbkwargs``: additional keyword arguments that will be passed to the "
 "callback. This must be a valid json string. Example: --cbkwargs='{\"foo\" : "
 "\"bar\"}'"
 msgstr ""
 
-#: ../../../topics/commands.rst:490
-msgid "``--pipelines``: process items through pipelines"
+#: ../../../topics/commands.rst:517
+msgid ""
+"``--pipelines``: :ref:`process items through pipelines <test-item-pipeline>`"
 msgstr ""
 
-#: ../../../topics/commands.rst:492
+#: ../../../topics/commands.rst:519
 msgid ""
 "``--rules`` or ``-r``: use :class:`~scrapy.spiders.CrawlSpider` rules to "
 "discover the callback (i.e. spider method) to use for parsing the response"
 msgstr ""
 
-#: ../../../topics/commands.rst:496
+#: ../../../topics/commands.rst:523
 msgid "``--noitems``: don't show scraped items"
 msgstr ""
 
-#: ../../../topics/commands.rst:498
+#: ../../../topics/commands.rst:525
 msgid "``--nolinks``: don't show extracted links"
 msgstr ""
 
-#: ../../../topics/commands.rst:500
+#: ../../../topics/commands.rst:527
 msgid "``--nocolour``: avoid using pygments to colorize the output"
 msgstr ""
 
-#: ../../../topics/commands.rst:502
+#: ../../../topics/commands.rst:529
 msgid ""
 "``--depth`` or ``-d``: depth level for which the requests should be followed "
 "recursively (default: 1)"
 msgstr ""
 
-#: ../../../topics/commands.rst:505
+#: ../../../topics/commands.rst:532
 msgid "``--verbose`` or ``-v``: display information for each depth level"
 msgstr ""
 
-#: ../../../topics/commands.rst:507
+#: ../../../topics/commands.rst:534
 msgid "``--output`` or ``-o``: dump scraped items to a file"
 msgstr ""
 
-#: ../../../topics/commands.rst:513
+#: ../../../topics/commands.rst:540
 msgid ""
 "$ scrapy parse http://www.example.com/ -c parse_item\n"
 "[ ... scrapy log lines crawling example.com spider ... ]\n"
@@ -827,29 +860,29 @@ msgid ""
 "[]"
 msgstr ""
 
-#: ../../../topics/commands.rst:531
+#: ../../../topics/commands.rst:558
 msgid "settings"
 msgstr ""
 
-#: ../../../topics/commands.rst:533
+#: ../../../topics/commands.rst:560
 msgid "Syntax: ``scrapy settings [options]``"
 msgstr ""
 
-#: ../../../topics/commands.rst:536
+#: ../../../topics/commands.rst:563
 msgid "Get the value of a Scrapy setting."
 msgstr ""
 
-#: ../../../topics/commands.rst:538
+#: ../../../topics/commands.rst:565
 msgid ""
 "If used inside a project it'll show the project setting value, otherwise "
 "it'll show the default Scrapy value for that setting."
 msgstr ""
 
-#: ../../../topics/commands.rst:541 ../../../topics/commands.rst:559
+#: ../../../topics/commands.rst:568 ../../../topics/commands.rst:587
 msgid "Example usage::"
 msgstr ""
 
-#: ../../../topics/commands.rst:543
+#: ../../../topics/commands.rst:570
 msgid ""
 "$ scrapy settings --get BOT_NAME\n"
 "scrapybot\n"
@@ -857,63 +890,66 @@ msgid ""
 "0"
 msgstr ""
 
-#: ../../../topics/commands.rst:551
+#: ../../../topics/commands.rst:578
 msgid "runspider"
 msgstr ""
 
-#: ../../../topics/commands.rst:553
+#: ../../../topics/commands.rst:580
 msgid "Syntax: ``scrapy runspider <spider_file.py>``"
 msgstr ""
 
-#: ../../../topics/commands.rst:556
+#: ../../../topics/commands.rst:583
 msgid ""
-"Run a spider self-contained in a Python file, without having to create a "
-"project."
+"Run the spider defined in the given Python file, without requiring a project."
 msgstr ""
 
-#: ../../../topics/commands.rst:561
+#: ../../../topics/commands.rst:585
+msgid "Supported options: the same as :command:`crawl`."
+msgstr ""
+
+#: ../../../topics/commands.rst:589
 msgid ""
 "$ scrapy runspider myspider.py\n"
 "[ ... spider starts crawling ... ]"
 msgstr ""
 
-#: ../../../topics/commands.rst:567
+#: ../../../topics/commands.rst:595
 msgid "version"
 msgstr ""
 
-#: ../../../topics/commands.rst:569
+#: ../../../topics/commands.rst:597
 msgid "Syntax: ``scrapy version [-v]``"
 msgstr ""
 
-#: ../../../topics/commands.rst:572
+#: ../../../topics/commands.rst:600
 msgid ""
 "Prints the Scrapy version. If used with ``-v`` it also prints Python, "
 "Twisted and Platform info, which is useful for bug reports."
 msgstr ""
 
-#: ../../../topics/commands.rst:578
+#: ../../../topics/commands.rst:606
 msgid "bench"
 msgstr ""
 
-#: ../../../topics/commands.rst:580
+#: ../../../topics/commands.rst:608
 msgid "Syntax: ``scrapy bench``"
 msgstr ""
 
-#: ../../../topics/commands.rst:583
+#: ../../../topics/commands.rst:611
 msgid "Run a quick benchmark test. :ref:`benchmarking`."
 msgstr ""
 
-#: ../../../topics/commands.rst:588
+#: ../../../topics/commands.rst:616
 msgid "Commands that run a crawl"
 msgstr ""
 
-#: ../../../topics/commands.rst:590
+#: ../../../topics/commands.rst:618
 msgid ""
 "Many commands need to run a crawl of some kind, running either a user-"
 "provided spider or a special internal one:"
 msgstr ""
 
-#: ../../../topics/commands.rst:602
+#: ../../../topics/commands.rst:630
 msgid ""
 "They use an internal instance of :class:`scrapy.crawler.AsyncCrawlerProcess` "
 "or :class:`scrapy.crawler.CrawlerProcess` for this. In most cases this "
@@ -922,75 +958,81 @@ msgid ""
 "important."
 msgstr ""
 
-#: ../../../topics/commands.rst:607
+#: ../../../topics/commands.rst:635
 msgid ""
 "Scrapy decides which of these two classes to use based on the value of the :"
-"setting:`TWISTED_REACTOR` setting. If the setting value is the default one "
-"(``'twisted.internet.asyncioreactor.AsyncioSelectorReactor'``), :class:"
-"`~scrapy.crawler.AsyncCrawlerProcess` will be used, otherwise :class:"
-"`~scrapy.crawler.CrawlerProcess` will be used. The :ref:`spider settings "
-"<spider-settings>` are not taken into account when doing this, as they are "
-"loaded after this decision is made. This may cause an error if the project-"
-"level setting is set to :ref:`the asyncio reactor <install-asyncio>` (:ref:"
-"`explicitly <project-settings>` or :ref:`by using the Scrapy default "
-"<default-settings>`) and :ref:`the setting of the spider being run <spider-"
-"settings>` is set to :ref:`a different one <disable-asyncio>`, because :"
-"class:`~scrapy.crawler.AsyncCrawlerProcess` only supports the asyncio "
-"reactor. In this case you should set the :setting:`FORCE_CRAWLER_PROCESS` "
-"setting to ``True`` (at the project level or via the command line) so that "
-"Scrapy uses :class:`~scrapy.crawler.CrawlerProcess` which supports all "
-"reactors."
+"setting:`TWISTED_REACTOR` and :setting:`TWISTED_REACTOR_ENABLED` settings. "
+"With :setting:`TWISTED_REACTOR_ENABLED` set to ``False`` it will use :class:"
+"`~scrapy.crawler.AsyncCrawlerProcess`. Otherwise, if the :setting:"
+"`TWISTED_REACTOR` value is the default one (``'twisted.internet."
+"asyncioreactor.AsyncioSelectorReactor'``), :class:`~scrapy.crawler."
+"AsyncCrawlerProcess` will be used, otherwise :class:`~scrapy.crawler."
+"CrawlerProcess` will be used. The :ref:`spider settings <spider-settings>` "
+"are not taken into account when doing this, as they are loaded after this "
+"decision is made. This may cause an error if the project-level setting is "
+"set to :ref:`the asyncio reactor <install-asyncio>` (:ref:`explicitly "
+"<project-settings>` or :ref:`by using the Scrapy default <default-"
+"settings>`) and :ref:`the setting of the spider being run <spider-settings>` "
+"is set to :ref:`a different one <disable-asyncio>`, because :class:`~scrapy."
+"crawler.AsyncCrawlerProcess` only supports the asyncio reactor. In this case "
+"you should set the :setting:`FORCE_CRAWLER_PROCESS` setting to ``True`` (at "
+"the project level or via the command line) so that Scrapy uses :class:"
+"`~scrapy.crawler.CrawlerProcess` which supports all reactors."
 msgstr ""
 
-#: ../../../topics/commands.rst:624
+#: ../../../topics/commands.rst:655
 msgid "Custom project commands"
 msgstr ""
 
-#: ../../../topics/commands.rst:626
+#: ../../../topics/commands.rst:657
 msgid ""
 "You can also add your custom project commands by using the :setting:"
 "`COMMANDS_MODULE` setting. See the Scrapy commands in `scrapy/commands`_ for "
 "examples on how to implement your commands."
 msgstr ""
 
-#: ../../../topics/commands.rst:634
+#: ../../../topics/commands.rst:665
 msgid "COMMANDS_MODULE"
 msgstr ""
 
-#: ../../../topics/commands.rst:636
+#: ../../../topics/commands.rst:667
 msgid "Default: ``''`` (empty string)"
 msgstr ""
 
-#: ../../../topics/commands.rst:638
+#: ../../../topics/commands.rst:669
 msgid ""
 "A module to use for looking up custom Scrapy commands. This is used to add "
 "custom commands for your Scrapy project."
 msgstr ""
 
-#: ../../../topics/commands.rst:641
+#: ../../../topics/commands.rst:672
 msgid "Example:"
 msgstr ""
 
-#: ../../../topics/commands.rst:643
+#: ../../../topics/commands.rst:674
 msgid "COMMANDS_MODULE = \"mybot.commands\""
 msgstr ""
 
-#: ../../../topics/commands.rst:650
+#: ../../../topics/commands.rst:678
+msgid "This is a :ref:`pre-crawler setting <pre-crawler-settings>`."
+msgstr ""
+
+#: ../../../topics/commands.rst:683
 msgid "Register commands via setup.py entry points"
 msgstr ""
 
-#: ../../../topics/commands.rst:652
+#: ../../../topics/commands.rst:685
 msgid ""
 "You can also add Scrapy commands from an external library by adding a "
 "``scrapy.commands`` section in the entry points of the library ``setup.py`` "
 "file."
 msgstr ""
 
-#: ../../../topics/commands.rst:656
+#: ../../../topics/commands.rst:689
 msgid "The following example adds ``my_command`` command:"
 msgstr ""
 
-#: ../../../topics/commands.rst:660
+#: ../../../topics/commands.rst:693
 msgid ""
 "from setuptools import setup, find_packages\n"
 "\n"

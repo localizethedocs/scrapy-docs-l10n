@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:52+0000\n"
+"POT-Creation-Date: 2026-08-31 16:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -196,26 +196,104 @@ msgid ""
 msgstr ""
 
 #: ../../../topics/exporters.rst:142
-msgid "Built-in Item Exporters reference"
+msgid "Writing your own item exporter"
 msgstr ""
 
 #: ../../../topics/exporters.rst:144
+msgid ""
+"To write an item exporter, subclass :class:`BaseItemExporter` and implement :"
+"meth:`~BaseItemExporter.export_item`, where :meth:`~BaseItemExporter."
+"get_serialized_fields` gives you the ``(name, value)`` pairs to export."
+msgstr ""
+
+#: ../../../topics/exporters.rst:149
+msgid ""
+"To make your exporter available to the :ref:`feed exports <topics-feed-"
+"exports>`, list it in the :setting:`FEED_EXPORTERS` setting. Feed exports :"
+"ref:`build <from-crawler>` it with the output file as the first positional "
+"argument, and with the ``fields``, ``encoding`` and ``indent`` :ref:`feed "
+"options <feed-options>` and every key of ``item_export_kwargs`` as keyword "
+"arguments, so your ``__init__`` method must forward unknown keyword "
+"arguments to :class:`BaseItemExporter`."
+msgstr ""
+
+#: ../../../topics/exporters.rst:157
+msgid ""
+"The file object belongs to whoever opened it, i.e. to the feed storage in "
+"the case of feed exports, which also closes it. If you need a text file, for "
+"example to use :func:`csv.writer` or another Python API that does not accept "
+"a binary file, wrap it with :class:`io.TextIOWrapper` and call :meth:`~io."
+"TextIOBase.detach` on the wrapper in :meth:`~BaseItemExporter."
+"finish_exporting`; otherwise the wrapper closes the underlying file when it "
+"is garbage-collected."
+msgstr ""
+
+#: ../../../topics/exporters.rst:165
+msgid ""
+"For example, the following item exporter writes items as blocks of ``name: "
+"value`` lines:"
+msgstr ""
+
+#: ../../../topics/exporters.rst:168
+msgid ""
+"from io import TextIOWrapper\n"
+"\n"
+"from scrapy.exporters import BaseItemExporter\n"
+"\n"
+"\n"
+"class TextItemExporter(BaseItemExporter):\n"
+"    def __init__(self, file, item_separator=\"\\n\", **kwargs):\n"
+"        super().__init__(**kwargs)\n"
+"        self.item_separator = item_separator\n"
+"        self.stream = TextIOWrapper(\n"
+"            file, encoding=self.encoding or \"utf-8\", write_through=True\n"
+"        )\n"
+"\n"
+"    def export_item(self, item):\n"
+"        for name, value in self.get_serialized_fields(item):\n"
+"            print(f\"{name}: {value}\", file=self.stream)\n"
+"        self.stream.write(self.item_separator)\n"
+"\n"
+"    def finish_exporting(self):\n"
+"        self.stream.detach()"
+msgstr ""
+
+#: ../../../topics/exporters.rst:191
+msgid "To use it as the ``txt`` feed format:"
+msgstr ""
+
+#: ../../../topics/exporters.rst:193
+msgid ""
+"FEED_EXPORTERS = {\"txt\": \"myproject.exporters.TextItemExporter\"}\n"
+"FEEDS = {\n"
+"    \"items.txt\": {\n"
+"        \"format\": \"txt\",\n"
+"        \"item_export_kwargs\": {\"item_separator\": \"---\\n\"},\n"
+"    },\n"
+"}"
+msgstr ""
+
+#: ../../../topics/exporters.rst:206
+msgid "Built-in Item Exporters reference"
+msgstr ""
+
+#: ../../../topics/exporters.rst:208
 msgid ""
 "Here is a list of the Item Exporters bundled with Scrapy. Some of them "
 "contain output examples, which assume you're exporting these two items:"
 msgstr ""
 
-#: ../../../topics/exporters.rst:148
+#: ../../../topics/exporters.rst:212
 msgid ""
 "Item(name=\"Color TV\", price=\"1200\")\n"
 "Item(name=\"DVD player\", price=\"200\")"
 msgstr ""
 
-#: ../../../topics/exporters.rst:154
+#: ../../../topics/exporters.rst:218
 msgid "BaseItemExporter"
 msgstr ""
 
-#: ../../../topics/exporters.rst:158
+#: ../../../topics/exporters.rst:222
 msgid ""
 "This is the (abstract) base class for all Item Exporters. It provides "
 "support for common features used by all (concrete) Item Exporters, such as "
@@ -223,7 +301,7 @@ msgid ""
 "encoding to use."
 msgstr ""
 
-#: ../../../topics/exporters.rst:163
+#: ../../../topics/exporters.rst:227
 msgid ""
 "These features can be configured through the ``__init__`` method arguments "
 "which populate their respective instance attributes: :attr:"
@@ -231,18 +309,18 @@ msgid ""
 "`indent`."
 msgstr ""
 
-#: ../../../topics/exporters.rst:169
+#: ../../../topics/exporters.rst:233
 msgid "Exports the given item. This method must be implemented in subclasses."
 msgstr ""
 
-#: ../../../topics/exporters.rst:173
+#: ../../../topics/exporters.rst:239
 msgid ""
 "Return the serialized value for the given field. You can override this "
 "method (in your custom Item Exporters) if you want to control how a "
 "particular field or value will be serialized/exported."
 msgstr ""
 
-#: ../../../topics/exporters.rst:177
+#: ../../../topics/exporters.rst:243
 msgid ""
 "By default, this method looks for a serializer :ref:`declared in the item "
 "field <topics-exporters-serializers>` and returns the result of applying "
@@ -254,67 +332,81 @@ msgstr ""
 msgid "Parameters"
 msgstr ""
 
-#: ../../../topics/exporters.rst:182
+#: ../../../topics/exporters.rst:248
 msgid ""
 "the field being serialized. If the source :ref:`item object <item-types>` "
 "does not define field metadata, *field* is an empty :class:`dict`."
 msgstr ""
 
-#: ../../../topics/exporters.rst:187
+#: ../../../topics/exporters.rst:253
 msgid "the name of the field being serialized"
 msgstr ""
 
-#: ../../../topics/exporters.rst:190
+#: ../../../topics/exporters.rst:256
 msgid "the value being serialized"
 msgstr ""
 
-#: ../../../topics/exporters.rst:194
+#: ../../../topics/exporters.rst:260
 msgid ""
 "Signal the beginning of the exporting process. Some exporters may use this "
 "to generate some required header (for example, the :class:"
 "`XmlItemExporter`). You must call this method before exporting any items."
 msgstr ""
 
-#: ../../../topics/exporters.rst:201
+#: ../../../topics/exporters.rst:267
 msgid ""
 "Signal the end of the exporting process. Some exporters may use this to "
 "generate some required footer (for example, the :class:`XmlItemExporter`). "
 "You must always call this method after you have no more items to export."
 msgstr ""
 
-#: ../../../topics/exporters.rst:208
+#: ../../../topics/exporters.rst:274
 msgid "Fields to export, their order [1]_ and their output names."
 msgstr ""
 
-#: ../../../topics/exporters.rst:210
+#: ../../../topics/exporters.rst:276
 msgid "Possible values are:"
 msgstr ""
 
-#: ../../../topics/exporters.rst:212
+#: ../../../topics/exporters.rst:278
 msgid "``None`` (all fields [2]_, default)"
 msgstr ""
 
-#: ../../../topics/exporters.rst:214
-msgid "A list of fields::"
+#: ../../../topics/exporters.rst:280
+msgid ""
+"Fields are exported in declaration order, i.e. the order in which they are "
+"defined in the :ref:`item class <item-types>`. For :class:`dict` items, "
+"which have no declared fields, the key order of each item is used instead."
 msgstr ""
 
-#: ../../../topics/exporters.rst:216
-msgid "['field1', 'field2']"
+#: ../../../topics/exporters.rst:285
+msgid ""
+"Fields of non-\\ :class:`dict` items used to be exported in the order in "
+"which they had been populated, except in :class:`CsvItemExporter`, which has "
+"always used declaration order."
 msgstr ""
 
-#: ../../../topics/exporters.rst:218
-msgid "A dict where keys are fields and values are output names::"
+#: ../../../topics/exporters.rst:290
+msgid "A list of fields:"
 msgstr ""
 
-#: ../../../topics/exporters.rst:220
-msgid "{'field1': 'Field 1', 'field2': 'Field 2'}"
+#: ../../../topics/exporters.rst:292
+msgid "[\"field1\", \"field2\"]"
 msgstr ""
 
-#: ../../../topics/exporters.rst:222
+#: ../../../topics/exporters.rst:296
+msgid "A dict where keys are fields and values are output names:"
+msgstr ""
+
+#: ../../../topics/exporters.rst:298
+msgid "{\"field1\": \"Field 1\", \"field2\": \"Field 2\"}"
+msgstr ""
+
+#: ../../../topics/exporters.rst:302
 msgid "Not all exporters respect the specified field order."
 msgstr ""
 
-#: ../../../topics/exporters.rst:223
+#: ../../../topics/exporters.rst:303
 msgid ""
 "When using :ref:`item objects <item-types>` that do not expose all their "
 "possible fields, exporters that do not support exporting a different subset "
@@ -322,99 +414,85 @@ msgid ""
 "exported."
 msgstr ""
 
-#: ../../../topics/exporters.rst:230
+#: ../../../topics/exporters.rst:310
 msgid ""
 "Whether to include empty/unpopulated item fields in the exported data. "
 "Defaults to ``False``. Some exporters (like :class:`CsvItemExporter`) ignore "
 "this attribute and always export all empty fields."
 msgstr ""
 
-#: ../../../topics/exporters.rst:234
+#: ../../../topics/exporters.rst:314
 msgid "This option is ignored for dict items."
 msgstr ""
 
-#: ../../../topics/exporters.rst:238
+#: ../../../topics/exporters.rst:318
 msgid "The output character encoding."
 msgstr ""
 
-#: ../../../topics/exporters.rst:242
+#: ../../../topics/exporters.rst:322
 msgid ""
-"Amount of spaces used to indent the output on each level. Defaults to ``0``."
+"Amount of spaces used to indent the output on each level. Defaults to "
+"``None``."
 msgstr ""
 
-#: ../../../topics/exporters.rst:244
+#: ../../../topics/exporters.rst:324
 msgid ""
 "``indent=None`` selects the most compact representation, all items in the "
 "same line with no indentation"
 msgstr ""
 
-#: ../../../topics/exporters.rst:246
+#: ../../../topics/exporters.rst:326
 msgid "``indent<=0`` each item on its own line, no indentation"
 msgstr ""
 
-#: ../../../topics/exporters.rst:247
+#: ../../../topics/exporters.rst:327
 msgid ""
 "``indent>0`` each item on its own line, indented with the provided numeric "
 "value"
 msgstr ""
 
-#: ../../../topics/exporters.rst:250
+#: ../../../topics/exporters.rst:330
 msgid "PythonItemExporter"
 msgstr ""
 
-#: ../../../../scrapy/exporters.py:docstring of
-#: scrapy.exporters.PythonItemExporter:1
-msgid ""
-"This is a base class for item exporters that extends :class:"
-"`BaseItemExporter` with support for nested items."
-msgstr ""
-
-#: ../../../../scrapy/exporters.py:docstring of
-#: scrapy.exporters.PythonItemExporter:4
-msgid ""
-"It serializes items to built-in Python types, so that any serialization "
-"library (e.g. :mod:`json` or msgpack_) can be used on top of it."
-msgstr ""
-
-#: ../../../topics/exporters.rst:258
+#: ../../../topics/exporters.rst:338
 msgid "XmlItemExporter"
 msgstr ""
 
-#: ../../../topics/exporters.rst:262
+#: ../../../topics/exporters.rst:342
 msgid "Exports items in XML format to the specified file object."
 msgstr ""
 
-#: ../../../topics/exporters.rst:264 ../../../topics/exporters.rst:321
-#: ../../../topics/exporters.rst:356 ../../../topics/exporters.rst:376
-#: ../../../topics/exporters.rst:400 ../../../topics/exporters.rst:429
+#: ../../../topics/exporters.rst:344 ../../../topics/exporters.rst:409
+#: ../../../topics/exporters.rst:444 ../../../topics/exporters.rst:464
+#: ../../../topics/exporters.rst:490 ../../../topics/exporters.rst:521
 msgid ""
 "the file-like object to use for exporting the data. Its ``write`` method "
 "should accept ``bytes`` (a disk file opened in binary mode, a ``io.BytesIO`` "
 "object, etc)"
 msgstr ""
 
-#: ../../../topics/exporters.rst:267
+#: ../../../topics/exporters.rst:347
 msgid "The name of root element in the exported XML."
 msgstr ""
 
-#: ../../../topics/exporters.rst:270
+#: ../../../topics/exporters.rst:350
 msgid "The name of each item element in the exported XML."
 msgstr ""
 
-#: ../../../topics/exporters.rst:273 ../../../topics/exporters.rst:364
-#: ../../../topics/exporters.rst:379
+#: ../../../topics/exporters.rst:353 ../../../topics/exporters.rst:452
+#: ../../../topics/exporters.rst:467
 msgid ""
 "The additional keyword arguments of this ``__init__`` method are passed to "
 "the :class:`BaseItemExporter` ``__init__`` method."
 msgstr ""
 
-#: ../../../topics/exporters.rst:276 ../../../topics/exporters.rst:343
-#: ../../../topics/exporters.rst:382 ../../../topics/exporters.rst:403
-#: ../../../topics/exporters.rst:432
-msgid "A typical output of this exporter would be::"
+#: ../../../topics/exporters.rst:356 ../../../topics/exporters.rst:470
+#: ../../../topics/exporters.rst:493 ../../../topics/exporters.rst:524
+msgid "A typical output of this exporter would be:"
 msgstr ""
 
-#: ../../../topics/exporters.rst:278
+#: ../../../topics/exporters.rst:358
 msgid ""
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<items>\n"
@@ -429,26 +507,26 @@ msgid ""
 "</items>"
 msgstr ""
 
-#: ../../../topics/exporters.rst:290
+#: ../../../topics/exporters.rst:372
 msgid ""
 "Unless overridden in the :meth:`serialize_field` method, multi-valued fields "
 "are exported by serializing each value inside a ``<value>`` element. This is "
 "for convenience, as multi-valued fields are very common."
 msgstr ""
 
-#: ../../../topics/exporters.rst:294
-msgid "For example, the item::"
+#: ../../../topics/exporters.rst:376
+msgid "For example, the item:"
 msgstr ""
 
-#: ../../../topics/exporters.rst:296
-msgid "Item(name=['John', 'Doe'], age='23')"
+#: ../../../topics/exporters.rst:380
+msgid "Item(name=[\"John\", \"Doe\"], age=\"23\")"
 msgstr ""
 
-#: ../../../topics/exporters.rst:298
-msgid "Would be serialized as::"
+#: ../../../topics/exporters.rst:384
+msgid "Would be serialized as:"
 msgstr ""
 
-#: ../../../topics/exporters.rst:300
+#: ../../../topics/exporters.rst:386
 msgid ""
 "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
 "<items>\n"
@@ -462,11 +540,11 @@ msgid ""
 "</items>"
 msgstr ""
 
-#: ../../../topics/exporters.rst:312
+#: ../../../topics/exporters.rst:400
 msgid "CsvItemExporter"
 msgstr ""
 
-#: ../../../topics/exporters.rst:316
+#: ../../../topics/exporters.rst:404
 msgid ""
 "Exports items in CSV format to the given file-like object. If the :attr:"
 "`fields_to_export` attribute is set, it will be used to define the CSV "
@@ -474,26 +552,26 @@ msgid ""
 "attribute has no effect on this exporter."
 msgstr ""
 
-#: ../../../topics/exporters.rst:324
+#: ../../../topics/exporters.rst:412
 msgid ""
 "If enabled, makes the exporter output a header line with the field names "
 "taken from :attr:`BaseItemExporter.fields_to_export` or the first exported "
 "item fields."
 msgstr ""
 
-#: ../../../topics/exporters.rst:329
+#: ../../../topics/exporters.rst:417
 msgid ""
 "The char (or chars) that will be used for joining multi-valued fields, if "
 "found."
 msgstr ""
 
-#: ../../../topics/exporters.rst:333
+#: ../../../topics/exporters.rst:421
 msgid ""
 "The optional string that specifies how encoding and decoding errors are to "
 "be handled. For more information see :class:`io.TextIOWrapper`."
 msgstr ""
 
-#: ../../../topics/exporters.rst:338
+#: ../../../topics/exporters.rst:426
 msgid ""
 "The additional keyword arguments of this ``__init__`` method are passed to "
 "the :class:`BaseItemExporter` ``__init__`` method, and the leftover "
@@ -501,57 +579,61 @@ msgid ""
 "writer` function argument to customize this exporter."
 msgstr ""
 
-#: ../../../topics/exporters.rst:345
+#: ../../../topics/exporters.rst:431
+msgid "A typical output of this exporter would be::"
+msgstr ""
+
+#: ../../../topics/exporters.rst:433
 msgid ""
-"product,price\n"
+"name,price\n"
 "Color TV,1200\n"
 "DVD player,200"
 msgstr ""
 
-#: ../../../topics/exporters.rst:350
+#: ../../../topics/exporters.rst:438
 msgid "PickleItemExporter"
 msgstr ""
 
-#: ../../../topics/exporters.rst:354
+#: ../../../topics/exporters.rst:442
 msgid "Exports items in pickle format to the given file-like object."
 msgstr ""
 
-#: ../../../topics/exporters.rst:359
+#: ../../../topics/exporters.rst:447
 msgid "The pickle protocol to use."
 msgstr ""
 
-#: ../../../topics/exporters.rst:362
+#: ../../../topics/exporters.rst:450
 msgid "For more information, see :mod:`pickle`."
 msgstr ""
 
-#: ../../../topics/exporters.rst:367
+#: ../../../topics/exporters.rst:455
 msgid ""
 "Pickle isn't a human readable format, so no output examples are provided."
 msgstr ""
 
-#: ../../../topics/exporters.rst:370
+#: ../../../topics/exporters.rst:458
 msgid "PprintItemExporter"
 msgstr ""
 
-#: ../../../topics/exporters.rst:374
+#: ../../../topics/exporters.rst:462
 msgid "Exports items in pretty print format to the specified file object."
 msgstr ""
 
-#: ../../../topics/exporters.rst:384
+#: ../../../topics/exporters.rst:472 ../../../topics/exporters.rst:526
 msgid ""
-"{'name': 'Color TV', 'price': '1200'}\n"
-"{'name': 'DVD player', 'price': '200'}"
+"{\"name\": \"Color TV\", \"price\": \"1200\"}\n"
+"{\"name\": \"DVD player\", \"price\": \"200\"}"
 msgstr ""
 
-#: ../../../topics/exporters.rst:387
+#: ../../../topics/exporters.rst:477
 msgid "Longer lines (when present) are pretty-formatted."
 msgstr ""
 
-#: ../../../topics/exporters.rst:390
+#: ../../../topics/exporters.rst:480
 msgid "JsonItemExporter"
 msgstr ""
 
-#: ../../../topics/exporters.rst:394
+#: ../../../topics/exporters.rst:484
 msgid ""
 "Exports items in JSON format to the specified file-like object, writing all "
 "objects as a list of objects. The additional ``__init__`` method arguments "
@@ -561,13 +643,13 @@ msgid ""
 "customize this exporter."
 msgstr ""
 
-#: ../../../topics/exporters.rst:405
+#: ../../../topics/exporters.rst:495
 msgid ""
 "[{\"name\": \"Color TV\", \"price\": \"1200\"},\n"
 "{\"name\": \"DVD player\", \"price\": \"200\"}]"
 msgstr ""
 
-#: ../../../topics/exporters.rst:410
+#: ../../../topics/exporters.rst:502
 msgid ""
 "JSON is very simple and flexible serialization format, but it doesn't scale "
 "well for large amounts of data since incremental (aka. stream-mode) parsing "
@@ -578,11 +660,11 @@ msgid ""
 "chunks."
 msgstr ""
 
-#: ../../../topics/exporters.rst:419
+#: ../../../topics/exporters.rst:511
 msgid "JsonLinesItemExporter"
 msgstr ""
 
-#: ../../../topics/exporters.rst:423
+#: ../../../topics/exporters.rst:515
 msgid ""
 "Exports items in JSON format to the specified file-like object, writing one "
 "JSON-encoded item per line. The additional ``__init__`` method arguments are "
@@ -592,31 +674,12 @@ msgid ""
 "customize this exporter."
 msgstr ""
 
-#: ../../../topics/exporters.rst:434
-msgid ""
-"{\"name\": \"Color TV\", \"price\": \"1200\"}\n"
-"{\"name\": \"DVD player\", \"price\": \"200\"}"
-msgstr ""
-
-#: ../../../topics/exporters.rst:437
+#: ../../../topics/exporters.rst:531
 msgid ""
 "Unlike the one produced by :class:`JsonItemExporter`, the format produced by "
 "this exporter is well suited for serializing large amounts of data."
 msgstr ""
 
-#: ../../../topics/exporters.rst:441
+#: ../../../topics/exporters.rst:535
 msgid "MarshalItemExporter"
-msgstr ""
-
-#: ../../../../scrapy/exporters.py:docstring of
-#: scrapy.exporters.MarshalItemExporter:1
-msgid "Exports items in a Python-specific binary format (see :mod:`marshal`)."
-msgstr ""
-
-#: ../../../../scrapy/exporters.py:docstring of
-#: scrapy.exporters.MarshalItemExporter:4
-msgid ""
-"The file-like object to use for exporting the data. Its ``write`` method "
-"should accept :class:`bytes` (a disk file opened in binary mode, a :class:"
-"`~io.BytesIO` object, etc)"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-11 11:49+0000\n"
+"POT-Creation-Date: 2026-08-31 16:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,8 +66,7 @@ msgid ""
 "\n"
 "    @classmethod\n"
 "    def from_crawler(cls, crawler, *args, **kwargs):\n"
-"        spider = super(DmozSpider, cls).from_crawler(crawler, *args, "
-"**kwargs)\n"
+"        spider = super().from_crawler(crawler, *args, **kwargs)\n"
 "        crawler.signals.connect(spider.spider_closed, signal=signals."
 "spider_closed)\n"
 "        return spider\n"
@@ -80,10 +79,21 @@ msgid ""
 msgstr ""
 
 #: ../../../topics/signals.rst:50
-msgid "Asynchronous signal handlers"
+msgid "Handler order"
 msgstr ""
 
 #: ../../../topics/signals.rst:52
+msgid ""
+"The order in which the handlers of a signal run is undefined, and :ref:"
+"`asynchronous handlers <signal-deferred>` run concurrently. If two actions "
+"must happen in a given order, run both from a single handler, in that order."
+msgstr ""
+
+#: ../../../topics/signals.rst:59
+msgid "Asynchronous signal handlers"
+msgstr ""
+
+#: ../../../topics/signals.rst:61
 msgid ""
 "Some signals support returning :class:`~twisted.internet.defer.Deferred` or :"
 "term:`awaitable objects <awaitable>` from their handlers, allowing you to "
@@ -92,12 +102,14 @@ msgid ""
 "to finish."
 msgstr ""
 
-#: ../../../topics/signals.rst:58
+#: ../../../topics/signals.rst:67
 msgid "Let's take an example using :ref:`coroutines <topics-coroutines>`:"
 msgstr ""
 
-#: ../../../topics/signals.rst:61
+#: ../../../topics/signals.rst:70
 msgid ""
+"import json\n"
+"\n"
 "import scrapy\n"
 "import treq\n"
 "\n"
@@ -108,8 +120,7 @@ msgid ""
 "\n"
 "    @classmethod\n"
 "    def from_crawler(cls, crawler, *args, **kwargs):\n"
-"        spider = super(SignalSpider, cls).from_crawler(crawler, *args, "
-"**kwargs)\n"
+"        spider = super().from_crawler(crawler, *args, **kwargs)\n"
 "        crawler.signals.connect(spider.item_scraped, signal=signals."
 "item_scraped)\n"
 "        return spider\n"
@@ -133,87 +144,97 @@ msgid ""
 "            }"
 msgstr ""
 
-#: ../../../topics/signals.rst:95
+#: ../../../topics/signals.rst:106
 msgid ""
 "See the :ref:`topics-signals-ref` below to know which signals support :class:"
 "`~twisted.internet.defer.Deferred` and :term:`awaitable objects <awaitable>`."
 msgstr ""
 
-#: ../../../topics/signals.rst:101
+#: ../../../topics/signals.rst:112
 msgid "Built-in signals reference"
 msgstr ""
 
-#: ../../../topics/signals.rst:106
+#: ../../../topics/signals.rst:117
 msgid "Here's the list of Scrapy built-in signals and their meaning."
 msgstr ""
 
-#: ../../../topics/signals.rst:110
+#: ../../../topics/signals.rst:121
 msgid "Engine signals"
 msgstr ""
 
-#: ../../../topics/signals.rst:113
+#: ../../../topics/signals.rst:124
 msgid "engine_started"
 msgstr ""
 
-#: ../../../topics/signals.rst:118
+#: ../../../topics/signals.rst:129
 msgid "Sent when the Scrapy engine has started crawling."
 msgstr ""
 
-#: ../../../topics/signals.rst:120 ../../../topics/signals.rst:135
-#: ../../../topics/signals.rst:173 ../../../topics/signals.rst:194
-#: ../../../topics/signals.rst:220 ../../../topics/signals.rst:249
-#: ../../../topics/signals.rst:273 ../../../topics/signals.rst:342
-#: ../../../topics/signals.rst:357
+#: ../../../topics/signals.rst:131 ../../../topics/signals.rst:146
+#: ../../../topics/signals.rst:193 ../../../topics/signals.rst:214
+#: ../../../topics/signals.rst:240 ../../../topics/signals.rst:269
+#: ../../../topics/signals.rst:300 ../../../topics/signals.rst:376
+#: ../../../topics/signals.rst:391 ../../../topics/signals.rst:552
 msgid "This signal supports :ref:`asynchronous handlers <signal-deferred>`."
 msgstr ""
 
-#: ../../../topics/signals.rst:122
+#: ../../../topics/signals.rst:133
 msgid ""
 "This signal may be fired *after* the :signal:`spider_opened` signal, "
 "depending on how the spider was started. So **don't** rely on this signal "
 "getting fired before :signal:`spider_opened`."
 msgstr ""
 
-#: ../../../topics/signals.rst:127
+#: ../../../topics/signals.rst:138
 msgid "engine_stopped"
 msgstr ""
 
-#: ../../../topics/signals.rst:132
+#: ../../../topics/signals.rst:143
 msgid ""
 "Sent when the Scrapy engine is stopped (for example, when a crawling process "
 "has finished)."
 msgstr ""
 
-#: ../../../topics/signals.rst:138
+#: ../../../topics/signals.rst:149
 msgid "scheduler_empty"
 msgstr ""
 
-#: ../../../topics/signals.rst:143
+#: ../../../topics/signals.rst:154
 msgid ""
 "Sent whenever the engine asks for a pending request from the :ref:`scheduler "
 "<topics-scheduler>` (i.e. calls its :meth:`~scrapy.core.scheduler."
 "BaseScheduler.next_request` method) and the scheduler returns none."
 msgstr ""
 
-#: ../../../topics/signals.rst:148
+#: ../../../topics/signals.rst:159
 msgid "See :ref:`start-requests-lazy` for an example."
 msgstr ""
 
-#: ../../../topics/signals.rst:150 ../../../topics/signals.rst:304
-#: ../../../topics/signals.rst:323 ../../../topics/signals.rst:369
-#: ../../../topics/signals.rst:388 ../../../topics/signals.rst:408
-#: ../../../topics/signals.rst:424 ../../../topics/signals.rst:441
-#: ../../../topics/signals.rst:466 ../../../topics/signals.rst:491
-#: ../../../topics/signals.rst:518 ../../../topics/signals.rst:542
+#: ../../../topics/signals.rst:161
+msgid ""
+"Only wait for this signal from :meth:`~scrapy.Spider.start`. While no "
+"request can be sent, e.g. while the responses being parsed exceed :setting:"
+"`SCRAPER_SLOT_MAX_ACTIVE_SIZE`, the engine does not ask the scheduler for "
+"requests, and hence this signal is not sent. So waiting for it from a :ref:"
+"`callback <callbacks>` can hang the crawl, because the response being parsed "
+"is itself one of the responses that may be blocking requests."
+msgstr ""
+
+#: ../../../topics/signals.rst:170 ../../../topics/signals.rst:331
+#: ../../../topics/signals.rst:355 ../../../topics/signals.rst:403
+#: ../../../topics/signals.rst:422 ../../../topics/signals.rst:442
+#: ../../../topics/signals.rst:458 ../../../topics/signals.rst:475
+#: ../../../topics/signals.rst:500 ../../../topics/signals.rst:525
+#: ../../../topics/signals.rst:573 ../../../topics/signals.rst:597
 msgid ""
 "This signal does not support :ref:`asynchronous handlers <signal-deferred>`."
 msgstr ""
 
-#: ../../../topics/signals.rst:154
+#: ../../../topics/signals.rst:174
 msgid "Item signals"
 msgstr ""
 
-#: ../../../topics/signals.rst:157
+#: ../../../topics/signals.rst:177
 msgid ""
 "As at max :setting:`CONCURRENT_ITEMS` items are processed in parallel, many "
 "deferreds are fired together using :class:`~twisted.internet.defer."
@@ -222,11 +243,11 @@ msgid ""
 "for the next batch of scraped items."
 msgstr ""
 
-#: ../../../topics/signals.rst:165
+#: ../../../topics/signals.rst:185
 msgid "item_scraped"
 msgstr ""
 
-#: ../../../topics/signals.rst:170
+#: ../../../topics/signals.rst:190
 msgid ""
 "Sent when an item has been scraped, after it has passed all the :ref:`topics-"
 "item-pipeline` stages (without being dropped)."
@@ -236,93 +257,93 @@ msgstr ""
 msgid "Parameters"
 msgstr ""
 
-#: ../../../topics/signals.rst:175
+#: ../../../topics/signals.rst:195
 msgid "the scraped item"
 msgstr ""
 
-#: ../../../topics/signals.rst:178 ../../../topics/signals.rst:199
+#: ../../../topics/signals.rst:198 ../../../topics/signals.rst:219
 msgid "the spider which scraped the item"
 msgstr ""
 
-#: ../../../topics/signals.rst:181
+#: ../../../topics/signals.rst:201
 msgid ""
 "the response from where the item was scraped, or ``None`` if it was yielded "
 "from :meth:`~scrapy.Spider.start`."
 msgstr ""
 
-#: ../../../topics/signals.rst:186
+#: ../../../topics/signals.rst:206
 msgid "item_dropped"
 msgstr ""
 
-#: ../../../topics/signals.rst:191
+#: ../../../topics/signals.rst:211
 msgid ""
 "Sent after an item has been dropped from the :ref:`topics-item-pipeline` "
 "when some stage raised a :exc:`~scrapy.exceptions.DropItem` exception."
 msgstr ""
 
-#: ../../../topics/signals.rst:196
+#: ../../../topics/signals.rst:216
 msgid "the item dropped from the :ref:`topics-item-pipeline`"
 msgstr ""
 
-#: ../../../topics/signals.rst:202
+#: ../../../topics/signals.rst:222
 msgid ""
 "the response from where the item was dropped, or ``None`` if it was yielded "
 "from :meth:`~scrapy.Spider.start`."
 msgstr ""
 
-#: ../../../topics/signals.rst:206
+#: ../../../topics/signals.rst:226
 msgid ""
 "the exception (which must be a :exc:`~scrapy.exceptions.DropItem` subclass) "
 "which caused the item to be dropped"
 msgstr ""
 
-#: ../../../topics/signals.rst:212
+#: ../../../topics/signals.rst:232
 msgid "item_error"
 msgstr ""
 
-#: ../../../topics/signals.rst:217
+#: ../../../topics/signals.rst:237
 msgid ""
 "Sent when a :ref:`topics-item-pipeline` generates an error (i.e. raises an "
 "exception), except :exc:`~scrapy.exceptions.DropItem` exception."
 msgstr ""
 
-#: ../../../topics/signals.rst:222
+#: ../../../topics/signals.rst:242
 msgid "the item that caused the error in the :ref:`topics-item-pipeline`"
 msgstr ""
 
-#: ../../../topics/signals.rst:225
+#: ../../../topics/signals.rst:245
 msgid ""
 "the response being processed when the exception was raised, or ``None`` if "
 "it was yielded from :meth:`~scrapy.Spider.start`."
 msgstr ""
 
-#: ../../../topics/signals.rst:230 ../../../topics/signals.rst:331
+#: ../../../topics/signals.rst:250 ../../../topics/signals.rst:365
 msgid "the spider which raised the exception"
 msgstr ""
 
-#: ../../../topics/signals.rst:233 ../../../topics/signals.rst:325
+#: ../../../topics/signals.rst:253 ../../../topics/signals.rst:357
 msgid "the exception raised"
 msgstr ""
 
-#: ../../../topics/signals.rst:238
+#: ../../../topics/signals.rst:258
 msgid "Spider signals"
 msgstr ""
 
-#: ../../../topics/signals.rst:241
+#: ../../../topics/signals.rst:261
 msgid "spider_closed"
 msgstr ""
 
-#: ../../../topics/signals.rst:246
+#: ../../../topics/signals.rst:266
 msgid ""
 "Sent after a spider has been closed. This can be used to release per-spider "
 "resources reserved on :signal:`spider_opened`."
 msgstr ""
 
-#: ../../../topics/signals.rst:251
+#: ../../../topics/signals.rst:271
 msgid "the spider which has been closed"
 msgstr ""
 
-#: ../../../topics/signals.rst:254
+#: ../../../topics/signals.rst:274
 msgid ""
 "a string which describes the reason why the spider was closed. If it was "
 "closed because the spider has completed scraping, the reason is "
@@ -333,56 +354,67 @@ msgid ""
 "reason will be ``'shutdown'``."
 msgstr ""
 
-#: ../../../topics/signals.rst:264
+#: ../../../topics/signals.rst:284
 msgid "spider_opened"
 msgstr ""
 
-#: ../../../topics/signals.rst:269
+#: ../../../topics/signals.rst:289
 msgid ""
 "Sent after a spider has been opened for crawling. This is typically used to "
 "reserve per-spider resources, but can be used for any task that needs to be "
 "performed when a spider is opened."
 msgstr ""
 
-#: ../../../topics/signals.rst:275
+#: ../../../topics/signals.rst:293
+msgid "Added support for :exc:`~scrapy.exceptions.CloseSpider`."
+msgstr ""
+
+#: ../../../topics/signals.rst:296
+msgid ""
+"You may raise a :exc:`~scrapy.exceptions.CloseSpider` exception to close the "
+"spider before it starts crawling, e.g. if a resource that the spider needs "
+"is unavailable."
+msgstr ""
+
+#: ../../../topics/signals.rst:302
 msgid "the spider which has been opened"
 msgstr ""
 
-#: ../../../topics/signals.rst:279
+#: ../../../topics/signals.rst:306
 msgid "spider_idle"
 msgstr ""
 
-#: ../../../topics/signals.rst:284
+#: ../../../topics/signals.rst:311
 msgid ""
 "Sent when a spider has gone idle, which means the spider has no further:"
 msgstr ""
 
-#: ../../../topics/signals.rst:286
+#: ../../../topics/signals.rst:313
 msgid "requests waiting to be downloaded"
 msgstr ""
 
-#: ../../../topics/signals.rst:287
+#: ../../../topics/signals.rst:314
 msgid "requests scheduled"
 msgstr ""
 
-#: ../../../topics/signals.rst:288
+#: ../../../topics/signals.rst:315
 msgid "items being processed in the item pipeline"
 msgstr ""
 
-#: ../../../topics/signals.rst:290
+#: ../../../topics/signals.rst:317
 msgid ""
 "If the idle state persists after all handlers of this signal have finished, "
 "the engine starts closing the spider. After the spider has finished closing, "
 "the :signal:`spider_closed` signal is sent."
 msgstr ""
 
-#: ../../../topics/signals.rst:294
+#: ../../../topics/signals.rst:321
 msgid ""
 "You may raise a :exc:`~scrapy.exceptions.DontCloseSpider` exception to "
 "prevent the spider from being closed."
 msgstr ""
 
-#: ../../../topics/signals.rst:297
+#: ../../../topics/signals.rst:324
 msgid ""
 "Alternatively, you may raise a :exc:`~scrapy.exceptions.CloseSpider` "
 "exception to provide a custom spider closing reason. An idle handler is the "
@@ -391,11 +423,11 @@ msgid ""
 "'too_few_results' instead of 'finished')."
 msgstr ""
 
-#: ../../../topics/signals.rst:306
+#: ../../../topics/signals.rst:333
 msgid "the spider which has gone idle"
 msgstr ""
 
-#: ../../../topics/signals.rst:309
+#: ../../../topics/signals.rst:336
 msgid ""
 "Scheduling some requests in your :signal:`spider_idle` handler does **not** "
 "guarantee that it can prevent the spider from being closed, although it "
@@ -404,137 +436,146 @@ msgid ""
 "duplication)."
 msgstr ""
 
-#: ../../../topics/signals.rst:316
+#: ../../../topics/signals.rst:343
 msgid "spider_error"
 msgstr ""
 
-#: ../../../topics/signals.rst:321
+#: ../../../topics/signals.rst:348
 msgid ""
-"Sent when a spider callback generates an error (i.e. raises an exception)."
+"Sent when a spider callback or the :meth:`~scrapy.Spider.start` method of a "
+"spider generates an error (i.e. raises an exception)."
 msgstr ""
 
-#: ../../../topics/signals.rst:328
-msgid "the response being processed when the exception was raised"
+#: ../../../topics/signals.rst:351
+msgid ""
+"Exceptions from :meth:`~scrapy.Spider.start` are also reported, see :ref:"
+"`start-error`."
 msgstr ""
 
-#: ../../../topics/signals.rst:335
+#: ../../../topics/signals.rst:360
+msgid ""
+"the response being processed when the exception was raised, or ``None`` if "
+"the exception came from :meth:`~scrapy.Spider.start`."
+msgstr ""
+
+#: ../../../topics/signals.rst:369
 msgid "feed_slot_closed"
 msgstr ""
 
-#: ../../../topics/signals.rst:340
+#: ../../../topics/signals.rst:374
 msgid "Sent when a :ref:`feed exports <topics-feed-exports>` slot is closed."
 msgstr ""
 
-#: ../../../topics/signals.rst:344
+#: ../../../topics/signals.rst:378
 msgid "the slot closed"
 msgstr ""
 
-#: ../../../topics/signals.rst:348
+#: ../../../topics/signals.rst:382
 msgid "feed_exporter_closed"
 msgstr ""
 
-#: ../../../topics/signals.rst:353
+#: ../../../topics/signals.rst:387
 msgid ""
 "Sent when the :ref:`feed exports <topics-feed-exports>` extension is closed, "
 "during the handling of the :signal:`spider_closed` signal by the extension, "
 "after all feed exporting has been handled."
 msgstr ""
 
-#: ../../../topics/signals.rst:360
+#: ../../../topics/signals.rst:394
 msgid "memusage_warning_reached"
 msgstr ""
 
-#: ../../../topics/signals.rst:366
+#: ../../../topics/signals.rst:400
 msgid ""
 "Sent by the :class:`~scrapy.extensions.memusage.MemoryUsage` extension when "
 "the memory usage reaches the warning threshold (:setting:"
 "`MEMUSAGE_WARNING_MB`)."
 msgstr ""
 
-#: ../../../topics/signals.rst:373
+#: ../../../topics/signals.rst:407
 msgid "Request signals"
 msgstr ""
 
-#: ../../../topics/signals.rst:376
+#: ../../../topics/signals.rst:410
 msgid "request_scheduled"
 msgstr ""
 
-#: ../../../topics/signals.rst:381
+#: ../../../topics/signals.rst:415
 msgid ""
 "Sent when the engine is asked to schedule a :class:`~scrapy.Request`, to be "
 "downloaded later, before the request reaches the :ref:`scheduler <topics-"
 "scheduler>`."
 msgstr ""
 
-#: ../../../topics/signals.rst:385
+#: ../../../topics/signals.rst:419
 msgid ""
 "Raise :exc:`~scrapy.exceptions.IgnoreRequest` to drop a request before it "
 "reaches the scheduler."
 msgstr ""
 
-#: ../../../topics/signals.rst:390
+#: ../../../topics/signals.rst:424
 msgid "Allow dropping requests with :exc:`~scrapy.exceptions.IgnoreRequest`."
 msgstr ""
 
-#: ../../../topics/signals.rst:393 ../../../topics/signals.rst:410
+#: ../../../topics/signals.rst:427 ../../../topics/signals.rst:444
 msgid "the request that reached the scheduler"
 msgstr ""
 
-#: ../../../topics/signals.rst:396 ../../../topics/signals.rst:413
-#: ../../../topics/signals.rst:429 ../../../topics/signals.rst:446
+#: ../../../topics/signals.rst:430 ../../../topics/signals.rst:447
+#: ../../../topics/signals.rst:463 ../../../topics/signals.rst:480
 msgid "the spider that yielded the request"
 msgstr ""
 
-#: ../../../topics/signals.rst:400
+#: ../../../topics/signals.rst:434
 msgid "request_dropped"
 msgstr ""
 
-#: ../../../topics/signals.rst:405
+#: ../../../topics/signals.rst:439
 msgid ""
 "Sent when a :class:`~scrapy.Request`, scheduled by the engine to be "
 "downloaded later, is rejected by the scheduler."
 msgstr ""
 
-#: ../../../topics/signals.rst:417
+#: ../../../topics/signals.rst:451
 msgid "request_reached_downloader"
 msgstr ""
 
-#: ../../../topics/signals.rst:422
+#: ../../../topics/signals.rst:456
 msgid "Sent when a :class:`~scrapy.Request` reached downloader."
 msgstr ""
 
-#: ../../../topics/signals.rst:426
+#: ../../../topics/signals.rst:460
 msgid "the request that reached downloader"
 msgstr ""
 
-#: ../../../topics/signals.rst:433
+#: ../../../topics/signals.rst:467
 msgid "request_left_downloader"
 msgstr ""
 
-#: ../../../topics/signals.rst:438
+#: ../../../topics/signals.rst:472
 msgid ""
 "Sent when a :class:`~scrapy.Request` leaves the downloader, even in case of "
 "failure."
 msgstr ""
 
-#: ../../../topics/signals.rst:443
+#: ../../../topics/signals.rst:477
 msgid "the request that reached the downloader"
 msgstr ""
 
-#: ../../../topics/signals.rst:450
+#: ../../../topics/signals.rst:484
 msgid "bytes_received"
 msgstr ""
 
-#: ../../../topics/signals.rst:455
+#: ../../../topics/signals.rst:489
 msgid ""
-"Sent by the HTTP 1.1 and S3 download handlers when a group of bytes is "
-"received for a specific request. This signal might be fired multiple times "
-"for the same request, with partial data each time. For instance, a possible "
-"scenario for a 25 kb response would be two signals fired with 10 kb of data, "
-"and a final one with 5 kb of data."
+"Sent by some download handlers when a group of bytes is received for a "
+"specific request. This signal might be fired multiple times for the same "
+"request, with partial data each time. For instance, a possible scenario for "
+"a 25 kb response would be two signals fired with 10 kb of data, and a final "
+"one with 5 kb of data."
 msgstr ""
 
-#: ../../../topics/signals.rst:461 ../../../topics/signals.rst:486
+#: ../../../topics/signals.rst:495 ../../../topics/signals.rst:520
 msgid ""
 "Handlers for this signal can stop the download of a response while it is in "
 "progress by raising the :exc:`~scrapy.exceptions.StopDownload` exception. "
@@ -542,79 +583,98 @@ msgid ""
 "additional information and examples."
 msgstr ""
 
-#: ../../../topics/signals.rst:468
+#: ../../../topics/signals.rst:502
 msgid "the data received by the download handler"
 msgstr ""
 
-#: ../../../topics/signals.rst:471 ../../../topics/signals.rst:499
+#: ../../../topics/signals.rst:505 ../../../topics/signals.rst:533
 msgid "the request that generated the download"
 msgstr ""
 
-#: ../../../topics/signals.rst:474 ../../../topics/signals.rst:502
+#: ../../../topics/signals.rst:508 ../../../topics/signals.rst:536
 msgid "the spider associated with the response"
 msgstr ""
 
-#: ../../../topics/signals.rst:478
+#: ../../../topics/signals.rst:512
 msgid "headers_received"
 msgstr ""
 
-#: ../../../topics/signals.rst:483
+#: ../../../topics/signals.rst:517
 msgid ""
-"Sent by the HTTP 1.1 and S3 download handlers when the response headers are "
-"available for a given request, before downloading any additional content."
+"Sent by some download handlers when the response headers are available for a "
+"given request, before downloading any additional content."
 msgstr ""
 
-#: ../../../topics/signals.rst:493
+#: ../../../topics/signals.rst:527
 msgid "the headers received by the download handler"
 msgstr ""
 
-#: ../../../topics/signals.rst:496
+#: ../../../topics/signals.rst:530
 msgid "expected size of the response body, in bytes"
 msgstr ""
 
-#: ../../../topics/signals.rst:507
+#: ../../../topics/signals.rst:540
+msgid "robots_parsed"
+msgstr ""
+
+#: ../../../topics/signals.rst:547
+msgid ""
+"Sent by :class:`~scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware` "
+"after it downloads and parses a :file:`robots.txt` file, for the host that "
+"*request* targets."
+msgstr ""
+
+#: ../../../topics/signals.rst:554
+msgid "the parser holding the parsed :file:`robots.txt` contents"
+msgstr ""
+
+#: ../../../topics/signals.rst:557
+msgid "the request that triggered the :file:`robots.txt` download"
+msgstr ""
+
+#: ../../../topics/signals.rst:562
 msgid "Response signals"
 msgstr ""
 
-#: ../../../topics/signals.rst:510
+#: ../../../topics/signals.rst:565
 msgid "response_received"
 msgstr ""
 
-#: ../../../topics/signals.rst:515
+#: ../../../topics/signals.rst:570
 msgid ""
 "Sent when the engine receives a new :class:`~scrapy.http.Response` from the "
 "downloader."
 msgstr ""
 
-#: ../../../topics/signals.rst:520
+#: ../../../topics/signals.rst:575
 msgid "the response received"
 msgstr ""
 
-#: ../../../topics/signals.rst:523 ../../../topics/signals.rst:547
+#: ../../../topics/signals.rst:578 ../../../topics/signals.rst:602
 msgid "the request that generated the response"
 msgstr ""
 
-#: ../../../topics/signals.rst:526 ../../../topics/signals.rst:550
+#: ../../../topics/signals.rst:581 ../../../topics/signals.rst:605
 msgid "the spider for which the response is intended"
 msgstr ""
 
-#: ../../../topics/signals.rst:529
+#: ../../../topics/signals.rst:584
 msgid ""
 "The ``request`` argument might not contain the original request that reached "
 "the downloader, if a :ref:`topics-downloader-middleware` modifies the :class:"
 "`~scrapy.http.Response` object and sets a specific ``request`` attribute."
 msgstr ""
 
-#: ../../../topics/signals.rst:535
+#: ../../../topics/signals.rst:590
 msgid "response_downloaded"
 msgstr ""
 
-#: ../../../topics/signals.rst:540
+#: ../../../topics/signals.rst:595
 msgid ""
 "Sent by the downloader right after a :class:`~scrapy.http.Response` is "
 "downloaded."
 msgstr ""
 
-#: ../../../topics/signals.rst:544
+#: ../../../topics/signals.rst:599
 msgid "the response downloaded"
 msgstr ""

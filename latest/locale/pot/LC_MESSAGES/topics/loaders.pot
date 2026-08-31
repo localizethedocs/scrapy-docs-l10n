@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:52+0000\n"
+"POT-Creation-Date: 2026-08-31 16:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -130,7 +130,7 @@ msgstr ""
 msgid ""
 "Afterwards, similar calls are used for ``price`` and ``stock`` fields (the "
 "latter using a CSS selector with the :meth:`~ItemLoader.add_css` method), "
-"and finally the ``last_update`` field is populated directly with a literal "
+"and finally the ``last_updated`` field is populated directly with a literal "
 "value (``today``) using a different method: :meth:`~ItemLoader.add_value`."
 msgstr ""
 
@@ -370,7 +370,7 @@ msgid ""
 "strong>\"])\n"
 ">>> il.add_value(\"price\", [\"&euro;\", \"<span>1000</span>\"])\n"
 ">>> il.load_item()\n"
-"{'name': 'Welcome to my website', 'price': '1000'}"
+"Product(name='Welcome to my website', price='1000')"
 msgstr ""
 
 #: ../../../topics/loaders.rst:271
@@ -390,7 +390,7 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:276
 msgid ""
-"Item Loader defaults: :meth:`ItemLoader.default_input_processor` and :meth:"
+"Item Loader defaults: :attr:`ItemLoader.default_input_processor` and :attr:"
 "`ItemLoader.default_output_processor` (least precedence)"
 msgstr ""
 
@@ -461,8 +461,8 @@ msgstr ""
 #: ../../../topics/loaders.rst:325
 msgid ""
 "On Item Loader declaration, for those input/output processors that support "
-"instantiating them with an Item Loader context. :class:`~processor."
-"MapCompose` is one of them:"
+"instantiating them with an Item Loader context. :class:`~itemloaders."
+"processors.MapCompose` is one of them:"
 msgstr ""
 
 #: ../../../topics/loaders.rst:329
@@ -473,417 +473,6 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:338
 msgid "ItemLoader objects"
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: scrapy.loader.ItemLoader:1
-msgid ""
-"A user-friendly abstraction to populate an :ref:`item <topics-items>` with "
-"data by applying :ref:`field processors <topics-loaders-processors>` to "
-"scraped data. When instantiated with a ``selector`` or a ``response`` it "
-"supports data extraction from web pages using :ref:`selectors <topics-"
-"selectors>`."
-msgstr ""
-
-#: ../../../topics/loaders.rst:0
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.add_css:0 itemloaders.ItemLoader.add_jmes:0
-#: itemloaders.ItemLoader.add_xpath:0 itemloaders.ItemLoader.get_css:0
-#: itemloaders.ItemLoader.get_jmes:0 itemloaders.ItemLoader.get_value:0
-#: itemloaders.ItemLoader.get_xpath:0
-msgid "Parameters"
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: scrapy.loader.ItemLoader:6
-msgid ""
-"The item instance to populate using subsequent calls to :meth:`~ItemLoader."
-"add_xpath`, :meth:`~ItemLoader.add_css`, or :meth:`~ItemLoader.add_value`."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: scrapy.loader.ItemLoader:11
-msgid ""
-"The selector to extract data from, when using the :meth:`add_xpath`, :meth:"
-"`add_css`, :meth:`replace_xpath`, or :meth:`replace_css` method."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: scrapy.loader.ItemLoader:16
-msgid ""
-"The response used to construct the selector using the :attr:"
-"`default_selector_class`, unless the selector argument is given, in which "
-"case this argument is ignored."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: scrapy.loader.ItemLoader:21
-msgid ""
-"If no item is given, one is instantiated automatically using the class in :"
-"attr:`default_item_class`."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: scrapy.loader.ItemLoader:24
-msgid ""
-"The item, selector, response and remaining keyword arguments are assigned to "
-"the Loader context (accessible through the :attr:`context` attribute)."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: scrapy.loader.ItemLoader:29
-msgid ""
-"The item object being parsed by this Item Loader. This is mostly used as a "
-"property so, when attempting to override this value, you may want to check "
-"out :attr:`default_item_class` first."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: scrapy.loader.ItemLoader:35
-msgid ""
-"The currently active :ref:`Context <loaders-context>` of this Item Loader."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: scrapy.loader.ItemLoader:39
-msgid ""
-"An :ref:`item <topics-items>` class (or factory), used to instantiate items "
-"when not given in the ``__init__`` method."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: scrapy.loader.ItemLoader:44
-msgid ""
-"The default input processor to use for those fields which don't specify one."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: scrapy.loader.ItemLoader:49
-msgid ""
-"The default output processor to use for those fields which don't specify one."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: scrapy.loader.ItemLoader:54
-msgid ""
-"The class used to construct the :attr:`selector` of this :class:"
-"`ItemLoader`, if only a response is given in the ``__init__`` method. If a "
-"selector is given in the ``__init__`` method this attribute is ignored. This "
-"attribute is sometimes overridden in subclasses."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: scrapy.loader.ItemLoader:61
-msgid ""
-"The :class:`~scrapy.Selector` object to extract data from. It's either the "
-"selector given in the ``__init__`` method or one created from the response "
-"given in the ``__init__`` method using the :attr:`default_selector_class`. "
-"This attribute is meant to be read-only."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.add_css:1
-msgid ""
-"Similar to :meth:`ItemLoader.add_value` but receives a CSS selector instead "
-"of a value, which is used to extract a list of unicode strings from the "
-"selector associated with this :class:`ItemLoader`."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.add_css:5
-msgid "See :meth:`get_css` for ``kwargs``."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.add_css:7 itemloaders.ItemLoader.get_css:5
-msgid "the CSS selector to extract data from"
-msgstr ""
-
-#: ../../../topics/loaders.rst:0
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.add_css:0 itemloaders.ItemLoader.add_jmes:0
-#: itemloaders.ItemLoader.add_value:0 itemloaders.ItemLoader.add_xpath:0
-msgid "Returns"
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.add_css:10 itemloaders.ItemLoader.add_jmes:10
-#: itemloaders.ItemLoader.add_value:13 itemloaders.ItemLoader.add_xpath:10
-#: itemloaders.ItemLoader.replace_css:3 itemloaders.ItemLoader.replace_jmes:3
-#: itemloaders.ItemLoader.replace_value:4
-#: itemloaders.ItemLoader.replace_xpath:3
-msgid "The current ItemLoader instance for method chaining."
-msgstr ""
-
-#: ../../../topics/loaders.rst:0
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.add_css:0 itemloaders.ItemLoader.add_jmes:0
-#: itemloaders.ItemLoader.add_value:0 itemloaders.ItemLoader.add_xpath:0
-msgid "Return type"
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.add_css:13 itemloaders.ItemLoader.add_jmes:13
-#: itemloaders.ItemLoader.add_value:16 itemloaders.ItemLoader.add_xpath:13
-#: itemloaders.ItemLoader.get_css:12 itemloaders.ItemLoader.get_jmes:12
-#: itemloaders.ItemLoader.get_xpath:12
-msgid "Examples::"
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.add_css:15
-msgid ""
-"# HTML snippet: <p class=\"product-name\">Color TV</p>\n"
-"loader.add_css('name', 'p.product-name')\n"
-"# HTML snippet: <p id=\"price\">the price is $1200</p>\n"
-"loader.add_css('price', 'p#price', re='the price is (.*)')"
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.add_jmes:1
-msgid ""
-"Similar to :meth:`ItemLoader.add_value` but receives a JMESPath selector "
-"instead of a value, which is used to extract a list of unicode strings from "
-"the selector associated with this :class:`ItemLoader`."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.add_jmes:5
-msgid "See :meth:`get_jmes` for ``kwargs``."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.add_jmes:7 itemloaders.ItemLoader.get_jmes:5
-msgid "the JMESPath selector to extract data from"
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.add_jmes:15
-msgid ""
-"# HTML snippet: {\"name\": \"Color TV\"}\n"
-"loader.add_jmes('name')\n"
-"# HTML snippet: {\"price\": the price is $1200\"}\n"
-"loader.add_jmes('price', TakeFirst(), re='the price is (.*)')"
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.add_value:1
-msgid "Process and then add the given ``value`` for the given field."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.add_value:3
-msgid ""
-"The value is first passed through :meth:`get_value` by giving the "
-"``processors`` and ``kwargs``, and then passed through the :ref:`field input "
-"processor <processors>` and its result appended to the data collected for "
-"that field. If the field already contains collected data, the new data is "
-"added."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.add_value:9
-msgid ""
-"The given ``field_name`` can be ``None``, in which case values for multiple "
-"fields may be added. And the processed value should be a dict with "
-"field_name mapped to values."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.add_value:18
-msgid ""
-"loader.add_value('name', 'Color TV')\n"
-"loader.add_value('colours', ['white', 'blue'])\n"
-"loader.add_value('length', '100')\n"
-"loader.add_value('name', 'name: foo', TakeFirst(), re='name: (.+)')\n"
-"loader.add_value(None, {'name': 'foo', 'sex': 'male'})"
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.add_xpath:1
-msgid ""
-"Similar to :meth:`ItemLoader.add_value` but receives an XPath instead of a "
-"value, which is used to extract a list of strings from the selector "
-"associated with this :class:`ItemLoader`."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.add_xpath:5
-msgid "See :meth:`get_xpath` for ``kwargs``."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.add_xpath:7 itemloaders.ItemLoader.get_xpath:5
-msgid "the XPath to extract data from"
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.add_xpath:15
-msgid ""
-"# HTML snippet: <p class=\"product-name\">Color TV</p>\n"
-"loader.add_xpath('name', '//p[@class=\"product-name\"]')\n"
-"# HTML snippet: <p id=\"price\">the price is $1200</p>\n"
-"loader.add_xpath('price', '//p[@id=\"price\"]', re='the price is (.*)')"
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.get_collected_values:1
-msgid "Return the collected values for the given field."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.get_css:1
-msgid ""
-"Similar to :meth:`ItemLoader.get_value` but receives a CSS selector instead "
-"of a value, which is used to extract a list of unicode strings from the "
-"selector associated with this :class:`ItemLoader`."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.get_css:8
-msgid ""
-"a regular expression to use for extracting data from the selected CSS region"
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.get_css:14
-msgid ""
-"# HTML snippet: <p class=\"product-name\">Color TV</p>\n"
-"loader.get_css('p.product-name')\n"
-"# HTML snippet: <p id=\"price\">the price is $1200</p>\n"
-"loader.get_css('p#price', TakeFirst(), re='the price is (.*)')"
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.get_jmes:1
-msgid ""
-"Similar to :meth:`ItemLoader.get_value` but receives a JMESPath selector "
-"instead of a value, which is used to extract a list of unicode strings from "
-"the selector associated with this :class:`ItemLoader`."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.get_jmes:8
-msgid ""
-"a regular expression to use for extracting data from the selected JMESPath"
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.get_jmes:14
-msgid ""
-"# HTML snippet: {\"name\": \"Color TV\"}\n"
-"loader.get_jmes('name')\n"
-"# HTML snippet: {\"price\": the price is $1200\"}\n"
-"loader.get_jmes('price', TakeFirst(), re='the price is (.*)')"
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.get_output_value:1
-msgid ""
-"Return the collected values parsed using the output processor, for the given "
-"field. This method doesn't populate or modify the item at all."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.get_value:1
-msgid ""
-"Process the given ``value`` by the given ``processors`` and keyword "
-"arguments."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.get_value:4
-msgid "Available keyword arguments:"
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.get_value:6
-msgid ""
-"a regular expression to use for extracting data from the given value using :"
-"func:`~parsel.utils.extract_regex` method, applied before processors"
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.get_value:11
-msgid "Examples:"
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.get_xpath:1
-msgid ""
-"Similar to :meth:`ItemLoader.get_value` but receives an XPath instead of a "
-"value, which is used to extract a list of unicode strings from the selector "
-"associated with this :class:`ItemLoader`."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.get_xpath:8
-msgid ""
-"a regular expression to use for extracting data from the selected XPath "
-"region"
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.get_xpath:14
-msgid ""
-"# HTML snippet: <p class=\"product-name\">Color TV</p>\n"
-"loader.get_xpath('//p[@class=\"product-name\"]')\n"
-"# HTML snippet: <p id=\"price\">the price is $1200</p>\n"
-"loader.get_xpath('//p[@id=\"price\"]', TakeFirst(), re='the price is (.*)')"
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.load_item:1
-msgid ""
-"Populate the item with the data collected so far, and return it. The data "
-"collected is first passed through the :ref:`output processors <processors>` "
-"to get the final value to assign to each item field."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.nested_css:1
-msgid ""
-"Create a nested loader with a css selector. The supplied selector is applied "
-"relative to selector associated with this :class:`ItemLoader`. The nested "
-"loader shares the item with the parent :class:`ItemLoader` so calls to :meth:"
-"`add_xpath`, :meth:`add_value`, :meth:`replace_value`, etc. will behave as "
-"expected."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.nested_xpath:1
-msgid ""
-"Create a nested loader with an xpath selector. The supplied selector is "
-"applied relative to selector associated with this :class:`ItemLoader`. The "
-"nested loader shares the item with the parent :class:`ItemLoader` so calls "
-"to :meth:`add_xpath`, :meth:`add_value`, :meth:`replace_value`, etc. will "
-"behave as expected."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.replace_css:1
-msgid ""
-"Similar to :meth:`add_css` but replaces collected data instead of adding it."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.replace_jmes:1
-msgid ""
-"Similar to :meth:`add_jmes` but replaces collected data instead of adding it."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.replace_value:1
-msgid ""
-"Similar to :meth:`add_value` but replaces the collected data with the new "
-"value instead of adding it."
-msgstr ""
-
-#: ../../../../scrapy/loader/__init__.py:docstring of
-#: itemloaders.ItemLoader.replace_xpath:1
-msgid ""
-"Similar to :meth:`add_xpath` but replaces collected data instead of adding "
-"it."
 msgstr ""
 
 #: ../../../topics/loaders.rst:347
@@ -897,8 +486,9 @@ msgid ""
 "footer of a page that looks something like:"
 msgstr ""
 
-#: ../../../topics/loaders.rst:353
-msgid "Example::"
+#: ../../../topics/loaders.rst:353 ../../../topics/loaders.rst:366
+#: ../../../topics/loaders.rst:381
+msgid "Example:"
 msgstr ""
 
 #: ../../../topics/loaders.rst:355
@@ -910,17 +500,13 @@ msgid ""
 "</footer>"
 msgstr ""
 
-#: ../../../topics/loaders.rst:361
+#: ../../../topics/loaders.rst:363
 msgid ""
 "Without nested loaders, you need to specify the full xpath (or css) for each "
 "value that you wish to extract."
 msgstr ""
 
-#: ../../../topics/loaders.rst:364 ../../../topics/loaders.rst:379
-msgid "Example:"
-msgstr ""
-
-#: ../../../topics/loaders.rst:367
+#: ../../../topics/loaders.rst:369
 msgid ""
 "loader = ItemLoader(item=Item())\n"
 "# load stuff not in the footer\n"
@@ -929,14 +515,14 @@ msgid ""
 "loader.load_item()"
 msgstr ""
 
-#: ../../../topics/loaders.rst:375
+#: ../../../topics/loaders.rst:377
 msgid ""
 "Instead, you can create a nested loader with the footer selector and add "
 "values relative to the footer.  The functionality is the same but you avoid "
 "repeating the footer selector."
 msgstr ""
 
-#: ../../../topics/loaders.rst:382
+#: ../../../topics/loaders.rst:384
 msgid ""
 "loader = ItemLoader(item=Item())\n"
 "# load stuff not in the footer\n"
@@ -947,7 +533,7 @@ msgid ""
 "loader.load_item()"
 msgstr ""
 
-#: ../../../topics/loaders.rst:392
+#: ../../../topics/loaders.rst:394
 msgid ""
 "You can nest loaders arbitrarily and they work with either xpath or css "
 "selectors. As a general guideline, use nested loaders when they make your "
@@ -955,11 +541,11 @@ msgid ""
 "difficult to read."
 msgstr ""
 
-#: ../../../topics/loaders.rst:399
+#: ../../../topics/loaders.rst:401
 msgid "Reusing and extending Item Loaders"
 msgstr ""
 
-#: ../../../topics/loaders.rst:401
+#: ../../../topics/loaders.rst:403
 msgid ""
 "As your project grows bigger and acquires more and more spiders, maintenance "
 "becomes a fundamental problem, especially when you have to deal with many "
@@ -967,7 +553,7 @@ msgid ""
 "also wanting to reuse the common processors."
 msgstr ""
 
-#: ../../../topics/loaders.rst:406
+#: ../../../topics/loaders.rst:408
 msgid ""
 "Item Loaders are designed to ease the maintenance burden of parsing rules, "
 "without losing flexibility and, at the same time, providing a convenient "
@@ -976,20 +562,20 @@ msgid ""
 "specific spiders (or groups of spiders)."
 msgstr ""
 
-#: ../../../topics/loaders.rst:412
+#: ../../../topics/loaders.rst:414
 msgid ""
 "Suppose, for example, that some particular site encloses their product names "
 "in three dashes (e.g. ``---Plasma TV---``) and you don't want to end up "
 "scraping those dashes in the final product names."
 msgstr ""
 
-#: ../../../topics/loaders.rst:416
+#: ../../../topics/loaders.rst:418
 msgid ""
 "Here's how you can remove those dashes by reusing and extending the default "
 "Product Item Loader (``ProductLoader``):"
 msgstr ""
 
-#: ../../../topics/loaders.rst:420
+#: ../../../topics/loaders.rst:422
 msgid ""
 "from itemloaders.processors import MapCompose\n"
 "from myproject.ItemLoaders import ProductLoader\n"
@@ -1003,7 +589,7 @@ msgid ""
 "    name_in = MapCompose(strip_dashes, ProductLoader.name_in)"
 msgstr ""
 
-#: ../../../topics/loaders.rst:433
+#: ../../../topics/loaders.rst:435
 msgid ""
 "Another case where extending Item Loaders can be very helpful is when you "
 "have multiple source formats, for example XML and HTML. In the XML version "
@@ -1011,7 +597,7 @@ msgid ""
 "it:"
 msgstr ""
 
-#: ../../../topics/loaders.rst:438
+#: ../../../topics/loaders.rst:440
 msgid ""
 "from itemloaders.processors import MapCompose\n"
 "from myproject.ItemLoaders import ProductLoader\n"
@@ -1022,11 +608,11 @@ msgid ""
 "    name_in = MapCompose(remove_cdata, ProductLoader.name_in)"
 msgstr ""
 
-#: ../../../topics/loaders.rst:448
+#: ../../../topics/loaders.rst:450
 msgid "And that's how you typically extend input processors."
 msgstr ""
 
-#: ../../../topics/loaders.rst:450
+#: ../../../topics/loaders.rst:452
 msgid ""
 "As for output processors, it is more common to declare them in the field "
 "metadata, as they usually depend only on the field and not on each specific "
@@ -1034,7 +620,7 @@ msgid ""
 "processors-declaring`."
 msgstr ""
 
-#: ../../../topics/loaders.rst:455
+#: ../../../topics/loaders.rst:457
 msgid ""
 "There are many other possible ways to extend, inherit and override your Item "
 "Loaders, and different Item Loaders hierarchies may fit better for different "
