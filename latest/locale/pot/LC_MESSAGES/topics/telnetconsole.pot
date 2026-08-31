@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:52+0000\n"
+"POT-Creation-Date: 2026-08-31 16:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,9 +68,9 @@ msgstr ""
 
 #: ../../../topics/telnetconsole.rst:39
 msgid ""
-"The telnet console listens in the TCP port defined in the :setting:"
-"`TELNETCONSOLE_PORT` setting, which defaults to ``6023``. To access the "
-"console you need to type::"
+"The telnet console listens on the first available TCP port from the range "
+"defined in the :setting:`TELNETCONSOLE_PORT` setting, which defaults to "
+"``[6023, 6073]``. To access the console you need to type::"
 msgstr ""
 
 #: ../../../topics/telnetconsole.rst:43
@@ -226,8 +226,8 @@ msgstr ""
 
 #: ../../../topics/telnetconsole.rst:110
 msgid ""
-"You can use the ``est()`` method of the Scrapy engine to quickly show its "
-"state using the telnet console::"
+"You can use the ``est()`` method provided by the console to quickly show the "
+"engine status::"
 msgstr ""
 
 #: ../../../topics/telnetconsole.rst:113

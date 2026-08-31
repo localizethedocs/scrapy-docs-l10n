@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-08 13:04+0000\n"
+"POT-Creation-Date: 2026-08-31 16:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -188,99 +188,55 @@ msgstr ""
 msgid ""
 "Downloader middlewares are specific hooks that sit between the Engine and "
 "the Downloader and process requests when they pass from the Engine to the "
-"Downloader, and responses that pass from Downloader to the Engine."
-msgstr ""
-
-#: ../../../topics/architecture.rst:130
-msgid "Use a Downloader middleware if you need to do one of the following:"
-msgstr ""
-
-#: ../../../topics/architecture.rst:132
-msgid ""
-"process a request just before it is sent to the Downloader (i.e. right "
-"before Scrapy sends the request to the website);"
-msgstr ""
-
-#: ../../../topics/architecture.rst:134
-msgid "change received response before passing it to a spider;"
+"Downloader, and responses that pass from Downloader to the Engine. See :ref:"
+"`concepts` for when to use one, and :ref:`topics-downloader-middleware` for "
+"more information."
 msgstr ""
 
 #: ../../../topics/architecture.rst:135
-msgid "send a new Request instead of passing received response to a spider;"
-msgstr ""
-
-#: ../../../topics/architecture.rst:136
-msgid "pass response to a spider without fetching a web page;"
-msgstr ""
-
-#: ../../../topics/architecture.rst:137
-msgid "silently drop some requests."
-msgstr ""
-
-#: ../../../topics/architecture.rst:139
-msgid "For more information see :ref:`topics-downloader-middleware`."
-msgstr ""
-
-#: ../../../topics/architecture.rst:144
 msgid "Spider middlewares"
 msgstr ""
 
-#: ../../../topics/architecture.rst:146
+#: ../../../topics/architecture.rst:137
 msgid ""
 "Spider middlewares are specific hooks that sit between the Engine and the "
 "Spiders and are able to process spider input (responses) and output (items "
-"and requests)."
+"and requests). See :ref:`concepts` for when to use one, and :ref:`topics-"
+"spider-middleware` for more information."
 msgstr ""
 
-#: ../../../topics/architecture.rst:150
-msgid "Use a Spider middleware if you need to"
+#: ../../../topics/architecture.rst:145
+msgid "Extensions"
+msgstr ""
+
+#: ../../../topics/architecture.rst:147
+msgid ""
+"Extensions do not have a specific role in the data flow like the other "
+"components above. See :ref:`concepts` for when to use one, and :ref:`topics-"
+"extensions` for more information."
 msgstr ""
 
 #: ../../../topics/architecture.rst:152
-msgid ""
-"post-process output of spider callbacks - change/add/remove requests or "
-"items;"
-msgstr ""
-
-#: ../../../topics/architecture.rst:153
-msgid "post-process start requests or items;"
-msgstr ""
-
-#: ../../../topics/architecture.rst:154
-msgid "handle spider exceptions;"
-msgstr ""
-
-#: ../../../topics/architecture.rst:155
-msgid ""
-"call errback instead of callback for some of the requests based on response "
-"content."
-msgstr ""
-
-#: ../../../topics/architecture.rst:158
-msgid "For more information see :ref:`topics-spider-middleware`."
-msgstr ""
-
-#: ../../../topics/architecture.rst:161
 msgid "Event-driven networking"
 msgstr ""
 
-#: ../../../topics/architecture.rst:163
+#: ../../../topics/architecture.rst:154
 msgid ""
 "Scrapy is written with `Twisted`_, a popular event-driven networking "
 "framework for Python. Thus, it's implemented using a non-blocking (aka "
 "asynchronous) code for concurrency."
 msgstr ""
 
-#: ../../../topics/architecture.rst:167
+#: ../../../topics/architecture.rst:158
 msgid ""
 "For more information about asynchronous programming and Twisted see these "
 "links:"
 msgstr ""
 
-#: ../../../topics/architecture.rst:170
+#: ../../../topics/architecture.rst:161
 msgid ":doc:`twisted:core/howto/defer-intro`"
 msgstr ""
 
-#: ../../../topics/architecture.rst:171
+#: ../../../topics/architecture.rst:162
 msgid "`Twisted Introduction - Krondo`_"
 msgstr ""
