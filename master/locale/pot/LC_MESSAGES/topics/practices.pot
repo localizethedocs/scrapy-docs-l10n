@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:53+0000\n"
+"POT-Creation-Date: 2026-08-31 16:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -451,10 +451,19 @@ msgid ""
 msgstr ""
 
 #: ../../../topics/practices.rst:364
+msgid ""
+"Each call to ``crawl()`` creates its own :class:`~scrapy.crawler.Crawler`, "
+"with its own instances of the downloader and spider middlewares and its own "
+"resolved :ref:`settings <topics-settings>`, including :ref:`spider settings "
+"<spider-settings>`. Nothing from one of these is shared with the other "
+"spiders running in the same process."
+msgstr ""
+
+#: ../../../topics/practices.rst:370
 msgid "Here is an example that runs multiple spiders simultaneously:"
 msgstr ""
 
-#: ../../../topics/practices.rst:366
+#: ../../../topics/practices.rst:372
 msgid ""
 "import scrapy\n"
 "from scrapy.crawler import AsyncCrawlerProcess\n"
@@ -479,11 +488,11 @@ msgid ""
 "finished"
 msgstr ""
 
-#: ../../../topics/practices.rst:389
+#: ../../../topics/practices.rst:395
 msgid "Same example using :class:`~scrapy.crawler.AsyncCrawlerRunner`:"
 msgstr ""
 
-#: ../../../topics/practices.rst:391
+#: ../../../topics/practices.rst:397
 msgid ""
 "import scrapy\n"
 "from scrapy.crawler import AsyncCrawlerRunner\n"
@@ -515,13 +524,13 @@ msgid ""
 "react(deferred_f_from_coro_f(crawl))"
 msgstr ""
 
-#: ../../../topics/practices.rst:423
+#: ../../../topics/practices.rst:429
 msgid ""
 "Same example but running the spiders sequentially by awaiting until each one "
 "finishes before starting the next one:"
 msgstr ""
 
-#: ../../../topics/practices.rst:426
+#: ../../../topics/practices.rst:432
 msgid ""
 "import scrapy\n"
 "from scrapy.crawler import AsyncCrawlerRunner\n"
@@ -552,7 +561,7 @@ msgid ""
 "react(deferred_f_from_coro_f(crawl))"
 msgstr ""
 
-#: ../../../topics/practices.rst:456
+#: ../../../topics/practices.rst:462
 msgid ""
 "When running multiple spiders in the same process, :ref:`logging settings "
 "<logging-settings>` and :ref:`reactor settings <reactor-settings>` should "
@@ -560,55 +569,73 @@ msgid ""
 "crawler-settings>` cannot be defined per spider."
 msgstr ""
 
-#: ../../../topics/practices.rst:461
+#: ../../../topics/practices.rst:467
+msgid ""
+"Every other setting applies to each crawler separately. This includes "
+"concurrency and politeness settings, such as :setting:"
+"`CONCURRENT_REQUESTS`, :setting:`CONCURRENT_REQUESTS_PER_DOMAIN` and :"
+"setting:`DOWNLOAD_DELAY`, and :ref:`AutoThrottle <topics-autothrottle>` also "
+"throttles each crawler separately. When crawling simultaneously, divide "
+"those values by the number of crawlers to keep the combined load on your "
+"hardware and on target websites unchanged."
+msgstr ""
+
+#: ../../../topics/practices.rst:475
+msgid ""
+"Because of this, running the same spider several times in the same process "
+"multiplies those limits instead of increasing crawling capacity. To crawl "
+"faster, raise :setting:`CONCURRENT_REQUESTS` on a single crawler."
+msgstr ""
+
+#: ../../../topics/practices.rst:479
 msgid ":ref:`run-from-script`."
 msgstr ""
 
-#: ../../../topics/practices.rst:468
+#: ../../../topics/practices.rst:486
 msgid "Distributed crawls"
 msgstr ""
 
-#: ../../../topics/practices.rst:470
+#: ../../../topics/practices.rst:488
 msgid ""
 "Scrapy doesn't provide any built-in facility for running crawls in a "
 "distributed (multi-server) manner. However, there are some ways to "
 "distribute crawls, which vary depending on how you plan to distribute them."
 msgstr ""
 
-#: ../../../topics/practices.rst:474
+#: ../../../topics/practices.rst:492
 msgid ""
 "If you have many spiders, the obvious way to distribute the load is to setup "
 "many Scrapyd instances and distribute spider runs among those."
 msgstr ""
 
-#: ../../../topics/practices.rst:477
+#: ../../../topics/practices.rst:495
 msgid ""
 "If you instead want to run a single (big) spider through many machines, what "
 "you usually do is partition the URLs to crawl and send them to each separate "
 "spider. Here is a concrete example:"
 msgstr ""
 
-#: ../../../topics/practices.rst:481
+#: ../../../topics/practices.rst:499
 msgid ""
 "First, you prepare the list of URLs to crawl and put them into separate "
 "files/urls::"
 msgstr ""
 
-#: ../../../topics/practices.rst:484
+#: ../../../topics/practices.rst:502
 msgid ""
 "http://somedomain.com/urls-to-crawl/spider1/part1.list\n"
 "http://somedomain.com/urls-to-crawl/spider1/part2.list\n"
 "http://somedomain.com/urls-to-crawl/spider1/part3.list"
 msgstr ""
 
-#: ../../../topics/practices.rst:488
+#: ../../../topics/practices.rst:506
 msgid ""
 "Then you fire a spider run on 3 different Scrapyd servers. The spider would "
 "receive a (spider) argument ``part`` with the number of the partition to "
 "crawl::"
 msgstr ""
 
-#: ../../../topics/practices.rst:492
+#: ../../../topics/practices.rst:510
 msgid ""
 "curl http://scrapy1.mycompany.com:6800/schedule.json -d project=myproject -d "
 "spider=spider1 -d part=1\n"
@@ -618,11 +645,11 @@ msgid ""
 "spider=spider1 -d part=3"
 msgstr ""
 
-#: ../../../topics/practices.rst:499
+#: ../../../topics/practices.rst:517
 msgid "Reducing startup time in large projects"
 msgstr ""
 
-#: ../../../topics/practices.rst:501
+#: ../../../topics/practices.rst:519
 msgid ""
 "When running a spider with ``scrapy crawl``, Scrapy loads all modules listed "
 "in :setting:`SPIDER_MODULES` to find the target spider. In large projects "
@@ -630,96 +657,108 @@ msgid ""
 "usage."
 msgstr ""
 
-#: ../../../topics/practices.rst:505
+#: ../../../topics/practices.rst:523
 msgid ""
 "To avoid loading every spider module, override :setting:`SPIDER_MODULES` on "
 "the command line to point only to the module that contains the spider you "
 "want to run:"
 msgstr ""
 
-#: ../../../topics/practices.rst:509
+#: ../../../topics/practices.rst:527
 msgid "scrapy crawl myspider -s SPIDER_MODULES=myproject.spiders.myspider"
 msgstr ""
 
-#: ../../../topics/practices.rst:513
+#: ../../../topics/practices.rst:531
 msgid ""
 "Because :setting:`SPIDER_MODULES` is a list setting, you can include "
 "multiple modules by separating them with commas."
 msgstr ""
 
-#: ../../../topics/practices.rst:519
+#: ../../../topics/practices.rst:537
 msgid "Avoiding getting banned"
 msgstr ""
 
-#: ../../../topics/practices.rst:521
+#: ../../../topics/practices.rst:539
 msgid ""
-"Some websites implement certain measures to prevent bots from crawling them, "
-"with varying degrees of sophistication. Getting around those measures can be "
-"difficult and tricky, and may sometimes require special infrastructure. "
-"Please consider contacting `commercial support`_ if in doubt."
+"Websites tell regular visitors and crawlers apart by how their traffic "
+"looks: the headers it carries, how fast it arrives, how many requests come "
+"from the same place. Traffic that stands out can be blocked even when the "
+"crawling itself would be welcome."
 msgstr ""
 
-#: ../../../topics/practices.rst:526
+#: ../../../topics/practices.rst:544
 msgid ""
-"Here are some tips to keep in mind when dealing with these kinds of sites:"
+"Where the website allows crawling, the most effective thing you can do is "
+"make yourself known: set :setting:`USER_AGENT` to a value that identifies "
+"you and lets its owners reach you, so that they can ask you to adjust your "
+"crawler rather than block it."
 msgstr ""
 
-#: ../../../topics/practices.rst:528
+#: ../../../topics/practices.rst:549
 msgid ""
-"rotate your user agent from a pool of well-known ones from browsers (Google "
-"around to get a list of them)"
-msgstr ""
-
-#: ../../../topics/practices.rst:530
-msgid ""
-"disable cookies (see :setting:`COOKIES_ENABLED`) as some sites may use "
-"cookies to spot bot behaviour"
-msgstr ""
-
-#: ../../../topics/practices.rst:532
-msgid ""
-"use download delays (2 or higher). See :setting:`DOWNLOAD_DELAY` setting."
-msgstr ""
-
-#: ../../../topics/practices.rst:533
-msgid ""
-"if possible, use `Common Crawl`_ to fetch pages, instead of hitting the "
-"sites directly"
-msgstr ""
-
-#: ../../../topics/practices.rst:535
-msgid ""
-"use a pool of rotating IPs. For example, the free `Tor project`_ or paid "
-"services like `ProxyMesh`_. An open source alternative is `scrapoxy`_, a "
-"super proxy that you can attach your own proxies to."
-msgstr ""
-
-#: ../../../topics/practices.rst:538
-msgid ""
-"for HTTPS websites, if blocking appears related to TLS behavior, consider "
-"adjusting the :setting:`DOWNLOAD_TLS_MIN_VERSION` and :setting:"
-"`DOWNLOAD_TLS_MAX_VERSION` settings, since some websites may respond "
-"differently depending on the TLS method used by the client."
-msgstr ""
-
-#: ../../../topics/practices.rst:542
-msgid ""
-"use a ban avoidance service, such as `Zyte API`_, which provides a `Scrapy "
-"plugin <https://github.com/scrapy-plugins/scrapy-zyte-api>`__ and additional "
-"features, like `AI web scraping <https://www.zyte.com/ai-web-scraping/>`__"
-msgstr ""
-
-#: ../../../topics/practices.rst:546
-msgid ""
-"If you are still unable to prevent your bot getting banned, consider "
-"contacting `commercial support`_."
+"Where that is not enough, the following make your traffic resemble that of a "
+"regular visitor:"
 msgstr ""
 
 #: ../../../topics/practices.rst:552
-msgid "Static analysis"
+msgid ""
+"rotate your user agent among those of common browsers, so that your requests "
+"do not all look alike (search the web for an up-to-date list)"
 msgstr ""
 
 #: ../../../topics/practices.rst:554
+msgid ""
+"disable cookies (see :setting:`COOKIES_ENABLED`), so that a session "
+"identifier does not tie all your requests together"
+msgstr ""
+
+#: ../../../topics/practices.rst:556
+msgid ""
+"space out your requests, 2 seconds apart or more, with the :setting:"
+"`DOWNLOAD_DELAY` setting, to keep your pace closer to that of a person "
+"browsing"
+msgstr ""
+
+#: ../../../topics/practices.rst:559
+msgid ""
+"where possible, read pages from `Common Crawl`_, which sends no traffic to "
+"the website at all"
+msgstr ""
+
+#: ../../../topics/practices.rst:561
+msgid ""
+"spread your requests over a pool of IP addresses, so that none of them "
+"accounts for your whole crawl. For example, the free `Tor project`_ or paid "
+"services like `ProxyMesh`_."
+msgstr ""
+
+#: ../../../topics/practices.rst:564
+msgid ""
+"match the TLS behavior of a browser: some websites respond differently "
+"depending on the TLS version of the client, which you can adjust with the :"
+"setting:`DOWNLOAD_TLS_MIN_VERSION` and :setting:`DOWNLOAD_TLS_MAX_VERSION` "
+"settings."
+msgstr ""
+
+#: ../../../topics/practices.rst:568
+msgid ""
+"let a service take care of all of the above, such as `Zyte API`_, which "
+"provides a `Scrapy plugin <https://github.com/scrapy-plugins/scrapy-zyte-"
+"api>`__ and additional features, like `AI web scraping <https://www.zyte.com/"
+"ai-web-scraping/>`__"
+msgstr ""
+
+#: ../../../topics/practices.rst:573
+msgid ""
+"If your crawler still gets blocked, consider contacting `commercial "
+"support`_."
+msgstr ""
+
+#: ../../../topics/practices.rst:578
+msgid "Static analysis"
+msgstr ""
+
+#: ../../../topics/practices.rst:580
 msgid ""
 "Consider using :doc:`scrapy-lint <scrapy-lint:index>`, a linter for Scrapy "
 "projects that detects common mistakes and anti-patterns."

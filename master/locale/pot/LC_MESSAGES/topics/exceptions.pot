@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:53+0000\n"
+"POT-Creation-Date: 2026-08-31 16:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,22 +30,27 @@ msgstr ""
 #: ../../../../scrapy/exceptions.py:docstring of
 #: scrapy.exceptions.CloseSpider:1
 msgid ""
-"Raised from a :ref:`spider callback <topics-spiders>` to request the spider "
-"to be closed/stopped."
+"Raised from a :ref:`spider callback <topics-spiders>`, or while the spider "
+"is starting, to request the spider to be closed/stopped."
 msgstr ""
 
 #: ../../../../scrapy/exceptions.py:docstring of
 #: scrapy.exceptions.CloseSpider:4
+msgid "Added support for raising it while the spider is starting."
+msgstr ""
+
+#: ../../../../scrapy/exceptions.py:docstring of
+#: scrapy.exceptions.CloseSpider:7
 msgid "*reason* is a string with the reason for closing."
 msgstr ""
 
 #: ../../../../scrapy/exceptions.py:docstring of
-#: scrapy.exceptions.CloseSpider:6
+#: scrapy.exceptions.CloseSpider:9
 msgid "For example:"
 msgstr ""
 
 #: ../../../../scrapy/exceptions.py:docstring of
-#: scrapy.exceptions.CloseSpider:8
+#: scrapy.exceptions.CloseSpider:11
 msgid ""
 "def parse_page(self, response):\n"
 "    if \"Bandwidth exceeded\" in response.text:\n"

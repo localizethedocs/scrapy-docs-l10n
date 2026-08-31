@@ -1,0 +1,165 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-31 16:35+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/concepts.rst:5
+msgid "Scrapy's building blocks"
+msgstr ""
+
+#: ../../../topics/concepts.rst:7
+msgid ""
+"Scrapy splits the work of crawling and scraping across a handful of pieces, "
+"each responsible for one part of the problem. Placing a given piece of "
+"custom logic where it belongs keeps that logic reusable across spiders and "
+"the project easy to follow — this separation is what lets Scrapy scale from "
+"a single spider to large, maintainable projects, rather than one script per "
+"site."
+msgstr ""
+
+#: ../../../topics/concepts.rst:14
+msgid ""
+"This page is a quick map of those pieces, what problem each one solves, and "
+"when to reach for it."
+msgstr ""
+
+#: ../../../topics/concepts.rst:18
+msgid "Spiders"
+msgstr ""
+
+#: ../../../topics/concepts.rst:20
+msgid ""
+"A :ref:`spider <topics-spiders>` defines which requests to send and how to "
+"parse their responses. It is where a scraping project usually starts: one "
+"spider per site (or group of similar sites), yielding :ref:`items <topics-"
+"items>` and further requests as it parses each response."
+msgstr ""
+
+#: ../../../topics/concepts.rst:26
+msgid "Items"
+msgstr ""
+
+#: ../../../topics/concepts.rst:28
+msgid ""
+"An :ref:`item <topics-items>` is the data you extract, as a plain key-value "
+"object. Spiders yield them, and everything downstream (item pipelines, feed "
+"exports) works with them regardless of which item type a project uses."
+msgstr ""
+
+#: ../../../topics/concepts.rst:33
+msgid "Settings"
+msgstr ""
+
+#: ../../../topics/concepts.rst:35
+msgid ""
+":ref:`Settings <topics-settings>` configure everything else on this page: "
+"which middlewares and extensions are enabled and in what order, how item "
+"pipelines behave, feed export destinations, and Scrapy's own defaults. "
+"Settings are usually project-wide, but a spider can override them for itself "
+"alone through :attr:`~scrapy.Spider.custom_settings`, which is often the "
+"simplest way to turn something project-wide, such as a downloader "
+"middleware, into behavior that only applies to the spiders that need it."
+msgstr ""
+
+#: ../../../topics/concepts.rst:44
+msgid "Downloader middleware"
+msgstr ""
+
+#: ../../../topics/concepts.rst:46
+msgid ""
+"A :ref:`downloader middleware <topics-downloader-middleware>` sees every "
+"request Scrapy sends and every response it receives, regardless of which "
+"spider is running — though a spider can narrow that to itself alone through :"
+"attr:`~scrapy.Spider.custom_settings`. Reach for one when the logic is about "
+"the HTTP layer itself, such as adding proxies or authentication headers, "
+"retrying or redirecting based on the response, or short-circuiting a request "
+"without hitting the network."
+msgstr ""
+
+#: ../../../topics/concepts.rst:55
+msgid "Spider middleware"
+msgstr ""
+
+#: ../../../topics/concepts.rst:57
+msgid ""
+"A :ref:`spider middleware <topics-spider-middleware>` sits between the "
+"engine and a spider's callbacks, processing the responses going in and the "
+"items and requests coming out. Reach for one to post-process what a spider "
+"produces (filtering items, adding requests, handling exceptions) without "
+"changing the spider's own parsing code, especially when the same post-"
+"processing should apply across several spiders."
+msgstr ""
+
+#: ../../../topics/concepts.rst:65
+msgid "Item pipelines"
+msgstr ""
+
+#: ../../../topics/concepts.rst:67
+msgid ""
+"An :ref:`item pipeline <topics-item-pipeline>` processes items after a "
+"spider yields them: cleaning up fields, validating data, dropping "
+"duplicates, or storing items in a database. This is the usual place for "
+"anything that acts on a *scraped item* rather than on a request or response."
+msgstr ""
+
+#: ../../../topics/concepts.rst:73
+msgid "Feed exports"
+msgstr ""
+
+#: ../../../topics/concepts.rst:75
+msgid ""
+":ref:`Feed exports <topics-feed-exports>` write scraped items straight to a "
+"file or storage (JSON, CSV, XML, and more) without any custom code. Reach "
+"for them before writing an item pipeline if all you need is to dump the "
+"scraped items somewhere."
+msgstr ""
+
+#: ../../../topics/concepts.rst:81
+msgid "Extensions"
+msgstr ""
+
+#: ../../../topics/concepts.rst:83
+msgid ""
+"An :ref:`extension <topics-extensions>` is the wildcard: use it for "
+"functionality that does not fit any of the roles above, such as collecting "
+"stats, enforcing a memory limit, or logging crawl progress. Extensions "
+"typically hook into :ref:`signals <topics-signals>` rather than into the "
+"request/response/item flow."
+msgstr ""
+
+#: ../../../topics/concepts.rst:90
+msgid "Signals"
+msgstr ""
+
+#: ../../../topics/concepts.rst:92
+msgid ""
+":ref:`Signals <topics-signals>` notify your code when something happens "
+"during a crawl, such as a spider opening or closing, or a response being "
+"downloaded. Extensions are the usual place to connect to them, but any "
+"component can."
+msgstr ""
+
+#: ../../../topics/concepts.rst:97
+msgid "Other components"
+msgstr ""
+
+#: ../../../topics/concepts.rst:99
+msgid ""
+"The pieces above are what most projects touch directly. Scrapy has more of "
+"them under the hood, such as download handlers, the scheduler, and feed "
+"storages, that most projects never need to customize; see :ref:`topics-"
+"components` for the full list."
+msgstr ""

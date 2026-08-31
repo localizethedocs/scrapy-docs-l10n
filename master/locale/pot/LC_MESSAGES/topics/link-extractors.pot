@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:53+0000\n"
+"POT-Creation-Date: 2026-08-31 16:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -228,7 +228,11 @@ msgid ""
 "false\">Link text</a>  .. highlight:: python  You can use the following "
 "function in ``process_value``:  .. code-block:: python      def "
 "process_value(value):         m = re.search(r\"javascript:goToPage\\('(."
-"*?)'\", value)         if m:             return m.group(1)"
+"*?)'\", value)         if m:             return m.group(1)  "
+"``process_value`` is called before the filtering parameters, such as "
+"``allow`` and ``deny``, which match the value that it returns. To drop links "
+"based on their final URL, use the ``process_links`` parameter of :class:"
+"`~scrapy.spiders.Rule`, which only receives links that those parameters kept."
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
@@ -267,7 +271,16 @@ msgid ""
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
-#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:111
+#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:109
+msgid ""
+"``process_value`` is called before the filtering parameters, such as "
+"``allow`` and ``deny``, which match the value that it returns. To drop links "
+"based on their final URL, use the ``process_links`` parameter of :class:"
+"`~scrapy.spiders.Rule`, which only receives links that those parameters kept."
+msgstr ""
+
+#: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
+#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:117
 msgid ""
 "whether to strip whitespaces from extracted attributes. According to HTML5 "
 "standard, leading and trailing whitespaces must be stripped from ``href`` "

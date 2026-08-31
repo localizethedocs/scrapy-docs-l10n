@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:53+0000\n"
+"POT-Creation-Date: 2026-08-31 16:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,124 +54,30 @@ msgstr ""
 msgid "You can use the following contracts:"
 msgstr ""
 
-#: ../../../../scrapy/contracts/default.py:docstring of
-#: scrapy.contracts.default.UrlContract:1
-msgid ""
-"Sets (``@url``) the sample URL used when checking the other contract "
-"conditions of a callback."
-msgstr ""
-
-#: ../../../../scrapy/contracts/default.py:docstring of
-#: scrapy.contracts.default.UrlContract:4
-msgid ""
-"This contract is mandatory: callbacks lacking it are ignored when running "
-"the checks."
-msgstr ""
-
-#: ../../../../scrapy/contracts/default.py:docstring of
-#: scrapy.contracts.default.UrlContract:7
-msgid "@url url"
-msgstr ""
-
-#: ../../../../scrapy/contracts/default.py:docstring of
-#: scrapy.contracts.default.CallbackKeywordArgumentsContract:1
-msgid ""
-"Sets (``@cb_kwargs``) the :attr:`cb_kwargs <scrapy.Request.cb_kwargs>` "
-"attribute of the sample request."
-msgstr ""
-
-#: ../../../../scrapy/contracts/default.py:docstring of
-#: scrapy.contracts.default.CallbackKeywordArgumentsContract:4
-#: scrapy.contracts.default.MetadataContract:4
-msgid "Its value must be a valid JSON dictionary."
-msgstr ""
-
-#: ../../../../scrapy/contracts/default.py:docstring of
-#: scrapy.contracts.default.CallbackKeywordArgumentsContract:6
-msgid "@cb_kwargs {\"arg1\": \"value1\", \"arg2\": \"value2\", ...}"
-msgstr ""
-
-#: ../../../../scrapy/contracts/default.py:docstring of
-#: scrapy.contracts.default.MetadataContract:1
-msgid ""
-"Sets (``@meta``) the :attr:`meta <scrapy.Request.meta>` attribute of the "
-"sample request."
-msgstr ""
-
-#: ../../../../scrapy/contracts/default.py:docstring of
-#: scrapy.contracts.default.MetadataContract:6
-msgid "@meta {\"arg1\": \"value1\", \"arg2\": \"value2\", ...}"
-msgstr ""
-
-#: ../../../../scrapy/contracts/default.py:docstring of
-#: scrapy.contracts.default.ReturnsContract:1
-msgid ""
-"Sets (``@returns``) lower and upper bounds for the items and requests "
-"returned by a callback."
-msgstr ""
-
-#: ../../../../scrapy/contracts/default.py:docstring of
-#: scrapy.contracts.default.ReturnsContract:4
-msgid "The upper bound is optional:"
-msgstr ""
-
-#: ../../../../scrapy/contracts/default.py:docstring of
-#: scrapy.contracts.default.ReturnsContract:6
-msgid "@returns item(s)|request(s) [min [max]]"
-msgstr ""
-
-#: ../../../../scrapy/contracts/default.py:docstring of
-#: scrapy.contracts.default.ReturnsContract:10
-msgid "For example:"
-msgstr ""
-
-#: ../../../../scrapy/contracts/default.py:docstring of
-#: scrapy.contracts.default.ReturnsContract:12
-msgid ""
-"@returns request\n"
-"@returns request 2\n"
-"@returns request 2 10\n"
-"@returns request 0 10"
-msgstr ""
-
-#: ../../../../scrapy/contracts/default.py:docstring of
-#: scrapy.contracts.default.ReturnsContract:19
-msgid "Set both bounds to the same value to require an exact number:"
-msgstr ""
-
-#: ../../../../scrapy/contracts/default.py:docstring of
-#: scrapy.contracts.default.ReturnsContract:21
-msgid "@returns request 2 2"
-msgstr ""
-
-#: ../../../../scrapy/contracts/default.py:docstring of
-#: scrapy.contracts.default.ScrapesContract:1
-msgid ""
-"Checks (``@scrapes``) that all items returned by a callback have the "
-"specified fields."
-msgstr ""
-
-#: ../../../../scrapy/contracts/default.py:docstring of
-#: scrapy.contracts.default.ScrapesContract:4
-msgid "@scrapes field_1 field_2 ..."
-msgstr ""
-
 #: ../../../topics/contracts.rst:43
-msgid "Use the :command:`check` command to run the contract checks."
-msgstr ""
-
-#: ../../../topics/contracts.rst:46
-msgid "Custom Contracts"
+msgid ""
+"Use the :command:`check` command to run the contract checks. It ignores :"
+"setting:`ITEM_PIPELINES` and :setting:`FEEDS`, since contracts check the "
+"output of callbacks instead of sending it to item processing; use the ``-s`` "
+"command-line option to set them back for a check run."
 msgstr ""
 
 #: ../../../topics/contracts.rst:48
+msgid ":setting:`ITEM_PIPELINES` and :setting:`FEEDS` are now ignored."
+msgstr ""
+
+#: ../../../topics/contracts.rst:52
+msgid "Custom Contracts"
+msgstr ""
+
+#: ../../../topics/contracts.rst:54
 msgid ""
 "If you find you need more power than the built-in Scrapy contracts you can "
 "create and load your own contracts in the project by using the :setting:"
 "`SPIDER_CONTRACTS` setting:"
 msgstr ""
 
-#: ../../../topics/contracts.rst:52
+#: ../../../topics/contracts.rst:58
 msgid ""
 "SPIDER_CONTRACTS = {\n"
 "    \"myproject.contracts.ResponseCheck\": 10,\n"
@@ -179,64 +85,13 @@ msgid ""
 "}"
 msgstr ""
 
-#: ../../../topics/contracts.rst:59
+#: ../../../topics/contracts.rst:65
 msgid ""
 "Each contract must inherit from :class:`~scrapy.contracts.Contract` and can "
 "override three methods:"
 msgstr ""
 
-#: ../../../../scrapy/contracts/__init__.py:docstring of
-#: scrapy.contracts.Contract:1
-msgid "Base class for :ref:`custom contracts <topics-contracts>`."
-msgstr ""
-
-#: ../../../../scrapy/contracts/__init__.py:docstring of
-#: scrapy.contracts.Contract:3
-msgid "*method* is the callback function to which the contract is associated."
-msgstr ""
-
-#: ../../../../scrapy/contracts/__init__.py:docstring of
-#: scrapy.contracts.Contract:5
-msgid ""
-"*args* is the list of arguments passed into the docstring, separated by "
-"whitespace."
-msgstr ""
-
-#: ../../../../scrapy/contracts/__init__.py:docstring of
-#: scrapy.contracts.Contract:8
-msgid ""
-"Subclasses may override :meth:`adjust_request_args`, and define a "
-"``pre_process`` method or a ``post_process`` method, or both."
-msgstr ""
-
-#: ../../../../scrapy/contracts/__init__.py:docstring of
-#: scrapy.contracts.Contract.adjust_request_args:1
-msgid ""
-"Receive a ``dict`` with the default arguments for the sample request and "
-"return it, either unmodified or with changes."
-msgstr ""
-
-#: ../../../../scrapy/contracts/__init__.py:docstring of
-#: scrapy.contracts.Contract.adjust_request_args:4
-msgid ""
-":class:`~scrapy.Request` is used by default, but this can be changed with "
-"the ``request_cls`` attribute. If multiple contracts in the chain define "
-"this attribute, the last one is used."
-msgstr ""
-
-#: ../../../topics/contracts.rst:70
-msgid ""
-"This allows hooking in various checks on the response received from the "
-"sample request, before it's being passed to the callback."
-msgstr ""
-
-#: ../../../topics/contracts.rst:75
-msgid ""
-"This allows processing the output of the callback. Iterators are converted "
-"to lists before being passed to this hook."
-msgstr ""
-
-#: ../../../topics/contracts.rst:78
+#: ../../../topics/contracts.rst:84
 msgid ""
 "Raise :class:`~scrapy.exceptions.ContractFail` from :class:`~scrapy."
 "contracts.Contract.pre_process` or :class:`~scrapy.contracts.Contract."
@@ -248,13 +103,13 @@ msgstr ""
 msgid "Error raised in case of a failing contract"
 msgstr ""
 
-#: ../../../topics/contracts.rst:84
+#: ../../../topics/contracts.rst:90
 msgid ""
 "Here is a demo contract which checks the presence of a custom header in the "
 "response received:"
 msgstr ""
 
-#: ../../../topics/contracts.rst:88
+#: ../../../topics/contracts.rst:94
 msgid ""
 "from scrapy.contracts import Contract\n"
 "from scrapy.exceptions import ContractFail\n"
@@ -274,18 +129,18 @@ msgid ""
 "                raise ContractFail(\"X-CustomHeader not present\")"
 msgstr ""
 
-#: ../../../topics/contracts.rst:110
+#: ../../../topics/contracts.rst:116
 msgid "Detecting check runs"
 msgstr ""
 
-#: ../../../topics/contracts.rst:112
+#: ../../../topics/contracts.rst:118
 msgid ""
 "When ``scrapy check`` is running, the ``SCRAPY_CHECK`` environment variable "
 "is set to the ``true`` string. You can use :data:`os.environ` to perform any "
 "change to your spiders or your settings when ``scrapy check`` is used:"
 msgstr ""
 
-#: ../../../topics/contracts.rst:116
+#: ../../../topics/contracts.rst:122
 msgid ""
 "import os\n"
 "import scrapy\n"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:53+0000\n"
+"POT-Creation-Date: 2026-08-31 16:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,58 +64,6 @@ msgstr ""
 msgid ""
 ":class:`Item` provides a :class:`dict`-like API plus additional features "
 "that make it the most feature-complete item type:"
-msgstr ""
-
-#: ../../../../scrapy/item.py:docstring of scrapy.item.Item:1
-msgid "Base class for scraped items."
-msgstr ""
-
-#: ../../../../scrapy/item.py:docstring of scrapy.item.Item:3
-msgid ""
-"In Scrapy, an object is considered an ``item`` if it's supported by the "
-"`itemadapter`_ library. For example, when the output of a spider callback is "
-"evaluated, only such objects are passed to :ref:`item pipelines <topics-item-"
-"pipeline>`. :class:`Item` is one of the classes supported by `itemadapter`_ "
-"by default."
-msgstr ""
-
-#: ../../../../scrapy/item.py:docstring of scrapy.item.Item:9
-msgid ""
-"Items must declare :class:`Field` attributes, which are processed and stored "
-"in the ``fields`` attribute. This restricts the set of allowed field names "
-"and prevents typos, raising ``KeyError`` when referring to undefined fields. "
-"Additionally, fields can be used to define metadata and control the way data "
-"is processed internally. Please refer to the :ref:`documentation about "
-"fields <topics-items-fields>` for additional information."
-msgstr ""
-
-#: ../../../../scrapy/item.py:docstring of scrapy.item.Item:16
-msgid ""
-"Unlike instances of :class:`dict`, instances of :class:`Item` may be :ref:"
-"`tracked <topics-leaks-trackrefs>` to debug memory leaks."
-msgstr ""
-
-#: ../../../../scrapy/item.py:docstring of scrapy.item.Item.deepcopy:1
-msgid "Return a :func:`~copy.deepcopy` of this item."
-msgstr ""
-
-#: ../../../../scrapy/item.py:docstring of scrapy.Item.fields:1
-msgid ""
-"A dictionary containing *all declared fields* for this Item, not only those "
-"populated. The keys are the field names and the values are the :class:"
-"`Field` objects used in the :ref:`Item declaration <topics-items-declaring>`."
-msgstr ""
-
-#: ../../../../scrapy/item.py:docstring of scrapy.Item.fields:6
-msgid ""
-"Fields are kept in definition order: fields declared in base classes come "
-"first, followed by fields declared in subclasses, and a field redefined in a "
-"subclass keeps the position of its first definition."
-msgstr ""
-
-#: ../../../../scrapy/item.py:docstring of scrapy.Item.fields:10
-msgid ""
-"Fields are now returned in definition order rather than alphabetical order."
 msgstr ""
 
 #: ../../../topics/items.rst:50
@@ -369,19 +317,6 @@ msgid ""
 "It's important to note that the :class:`Field` objects used to declare the "
 "item do not stay assigned as class attributes. Instead, they can be accessed "
 "through the :attr:`~scrapy.Item.fields` attribute."
-msgstr ""
-
-#: ../../../../scrapy/item.py:docstring of scrapy.item.Field:1
-msgid "Container of field metadata"
-msgstr ""
-
-#: ../../../topics/items.rst:236
-msgid ""
-"The :class:`Field` class is just an alias to the built-in :class:`dict` "
-"class and doesn't provide any extra functionality or attributes. In other "
-"words, :class:`Field` objects are plain-old Python dicts. A separate class "
-"is used to support the :ref:`item declaration syntax <topics-items-"
-"declaring>` based on class attributes."
 msgstr ""
 
 #: ../../../topics/items.rst:242
