@@ -1,0 +1,469 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2008-2013, Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy 0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-09 06:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../index.rst:5
+msgid "Scrapy |version| documentation"
+msgstr ""
+
+#: ../../../index.rst:7
+msgid "This documentation contains everything you need to know about Scrapy."
+msgstr ""
+
+#: ../../../index.rst:10
+msgid "Getting help"
+msgstr ""
+
+#: ../../../index.rst:12
+msgid "Having trouble? We'd like to help!"
+msgstr ""
+
+#: ../../../index.rst:14
+msgid "Try the :doc:`FAQ <faq>` -- it's got answers to some common questions."
+msgstr ""
+
+#: ../../../index.rst:15
+msgid ""
+"Looking for specific information? Try the :ref:`genindex` or :ref:`modindex`."
+msgstr ""
+
+#: ../../../index.rst:16
+msgid ""
+"Search for information in the `archives of the scrapy-users mailing list`_, "
+"or `post a question`_."
+msgstr ""
+
+#: ../../../index.rst:18
+msgid "Ask a question in the `#scrapy IRC channel`_."
+msgstr ""
+
+#: ../../../index.rst:19
+msgid "Report bugs with Scrapy in our `issue tracker`_."
+msgstr ""
+
+#: ../../../index.rst:28
+msgid "First steps"
+msgstr ""
+
+#: ../../../index.rst:39
+msgid ":doc:`intro/overview`"
+msgstr ""
+
+#: ../../../index.rst:39
+msgid "Understand what Scrapy is and how it can help you."
+msgstr ""
+
+#: ../../../index.rst:42
+msgid ":doc:`intro/install`"
+msgstr ""
+
+#: ../../../index.rst:42
+msgid "Get Scrapy installed on your computer."
+msgstr ""
+
+#: ../../../index.rst:45
+msgid ":doc:`intro/tutorial`"
+msgstr ""
+
+#: ../../../index.rst:45
+msgid "Write your first Scrapy project."
+msgstr ""
+
+#: ../../../index.rst:48
+msgid ":doc:`intro/examples`"
+msgstr ""
+
+#: ../../../index.rst:48
+msgid "Learn more by playing with a pre-made Scrapy project."
+msgstr ""
+
+#: ../../../index.rst:53
+msgid "Basic concepts"
+msgstr ""
+
+#: ../../../index.rst:69 ../../../index.rst:232
+msgid ":doc:`topics/commands`"
+msgstr ""
+
+#: ../../../index.rst:69
+msgid "Learn about the command-line tool used to manage your Scrapy project."
+msgstr ""
+
+#: ../../../index.rst:72
+msgid ":doc:`topics/items`"
+msgstr ""
+
+#: ../../../index.rst:72
+msgid "Define the data you want to scrape."
+msgstr ""
+
+#: ../../../index.rst:75
+msgid ":doc:`topics/spiders`"
+msgstr ""
+
+#: ../../../index.rst:75
+msgid "Write the rules to crawl your websites."
+msgstr ""
+
+#: ../../../index.rst:78
+msgid ":doc:`topics/selectors`"
+msgstr ""
+
+#: ../../../index.rst:78
+msgid "Extract the data from web pages using XPath."
+msgstr ""
+
+#: ../../../index.rst:81
+msgid ":doc:`topics/shell`"
+msgstr ""
+
+#: ../../../index.rst:81
+msgid "Test your extraction code in an interactive environment."
+msgstr ""
+
+#: ../../../index.rst:84
+msgid ":doc:`topics/loaders`"
+msgstr ""
+
+#: ../../../index.rst:84
+msgid "Populate your items with the extracted data."
+msgstr ""
+
+#: ../../../index.rst:87
+msgid ":doc:`topics/item-pipeline`"
+msgstr ""
+
+#: ../../../index.rst:87
+msgid "Post-process and store your scraped data."
+msgstr ""
+
+#: ../../../index.rst:90
+msgid ":doc:`topics/feed-exports`"
+msgstr ""
+
+#: ../../../index.rst:90
+msgid "Output your scraped data using different formats and storages."
+msgstr ""
+
+#: ../../../index.rst:93
+msgid ":doc:`topics/link-extractors`"
+msgstr ""
+
+#: ../../../index.rst:93
+msgid "Convenient classes to extract links to follow from pages."
+msgstr ""
+
+#: ../../../index.rst:96
+msgid "Built-in services"
+msgstr ""
+
+#: ../../../index.rst:108
+msgid ":doc:`topics/logging`"
+msgstr ""
+
+#: ../../../index.rst:108
+msgid "Understand the simple logging facility provided by Scrapy."
+msgstr ""
+
+#: ../../../index.rst:111
+msgid ":doc:`topics/stats`"
+msgstr ""
+
+#: ../../../index.rst:111
+msgid "Collect statistics about your scraping crawler."
+msgstr ""
+
+#: ../../../index.rst:114
+msgid ":doc:`topics/email`"
+msgstr ""
+
+#: ../../../index.rst:114
+msgid "Send email notifications when certain events occur."
+msgstr ""
+
+#: ../../../index.rst:117
+msgid ":doc:`topics/telnetconsole`"
+msgstr ""
+
+#: ../../../index.rst:117
+msgid "Inspect a running crawler using a built-in Python console."
+msgstr ""
+
+#: ../../../index.rst:121
+msgid ":doc:`topics/webservice`"
+msgstr ""
+
+#: ../../../index.rst:120
+msgid "Monitor and control a crawler using a web service."
+msgstr ""
+
+#: ../../../index.rst:124
+msgid "Solving specific problems"
+msgstr ""
+
+#: ../../../index.rst:146
+msgid ":doc:`faq`"
+msgstr ""
+
+#: ../../../index.rst:146
+msgid "Get answers to most frequently asked questions."
+msgstr ""
+
+#: ../../../index.rst:149
+msgid ":doc:`topics/debug`"
+msgstr ""
+
+#: ../../../index.rst:149
+msgid "Learn how to debug common problems of your scrapy spider."
+msgstr ""
+
+#: ../../../index.rst:152
+msgid ":doc:`topics/contracts`"
+msgstr ""
+
+#: ../../../index.rst:152
+msgid "Learn how to use contracts for testing your spiders."
+msgstr ""
+
+#: ../../../index.rst:155
+msgid ":doc:`topics/practices`"
+msgstr ""
+
+#: ../../../index.rst:155
+msgid "Get familiar with some Scrapy common practices."
+msgstr ""
+
+#: ../../../index.rst:158
+msgid ":doc:`topics/broad-crawls`"
+msgstr ""
+
+#: ../../../index.rst:158
+msgid "Tune Scrapy for crawling a lot domains in parallel."
+msgstr ""
+
+#: ../../../index.rst:161
+msgid ":doc:`topics/firefox`"
+msgstr ""
+
+#: ../../../index.rst:161
+msgid "Learn how to scrape with Firefox and some useful add-ons."
+msgstr ""
+
+#: ../../../index.rst:164
+msgid ":doc:`topics/firebug`"
+msgstr ""
+
+#: ../../../index.rst:164
+msgid "Learn how to scrape efficiently using Firebug."
+msgstr ""
+
+#: ../../../index.rst:167
+msgid ":doc:`topics/leaks`"
+msgstr ""
+
+#: ../../../index.rst:167
+msgid "Learn how to find and get rid of memory leaks in your crawler."
+msgstr ""
+
+#: ../../../index.rst:170
+msgid ":doc:`topics/images`"
+msgstr ""
+
+#: ../../../index.rst:170
+msgid "Download static images associated with your scraped items."
+msgstr ""
+
+#: ../../../index.rst:173
+msgid ":doc:`topics/ubuntu`"
+msgstr ""
+
+#: ../../../index.rst:173
+msgid "Install latest Scrapy packages easily on Ubuntu"
+msgstr ""
+
+#: ../../../index.rst:176
+msgid ":doc:`topics/scrapyd`"
+msgstr ""
+
+#: ../../../index.rst:176
+msgid "Deploying your Scrapy project in production."
+msgstr ""
+
+#: ../../../index.rst:179
+msgid ":doc:`topics/autothrottle`"
+msgstr ""
+
+#: ../../../index.rst:179
+msgid "Adjust crawl rate dynamically based on load."
+msgstr ""
+
+#: ../../../index.rst:182
+msgid ":doc:`topics/benchmarking`"
+msgstr ""
+
+#: ../../../index.rst:182
+msgid "Check how Scrapy performs on your hardware."
+msgstr ""
+
+#: ../../../index.rst:185
+msgid ":doc:`topics/jobs`"
+msgstr ""
+
+#: ../../../index.rst:185
+msgid "Learn how to pause and resume crawls for large spiders."
+msgstr ""
+
+#: ../../../index.rst:188
+msgid ":doc:`topics/djangoitem`"
+msgstr ""
+
+#: ../../../index.rst:188
+msgid "Write scraped items using Django models."
+msgstr ""
+
+#: ../../../index.rst:193
+msgid "Extending Scrapy"
+msgstr ""
+
+#: ../../../index.rst:205
+msgid ":doc:`topics/architecture`"
+msgstr ""
+
+#: ../../../index.rst:205
+msgid "Understand the Scrapy architecture."
+msgstr ""
+
+#: ../../../index.rst:208
+msgid ":doc:`topics/downloader-middleware`"
+msgstr ""
+
+#: ../../../index.rst:208
+msgid "Customize how pages get requested and downloaded."
+msgstr ""
+
+#: ../../../index.rst:211
+msgid ":doc:`topics/spider-middleware`"
+msgstr ""
+
+#: ../../../index.rst:211
+msgid "Customize the input and output of your spiders."
+msgstr ""
+
+#: ../../../index.rst:214
+msgid ":doc:`topics/extensions`"
+msgstr ""
+
+#: ../../../index.rst:214
+msgid "Extend Scrapy with your custom functionality"
+msgstr ""
+
+#: ../../../index.rst:217
+msgid ":doc:`topics/api`"
+msgstr ""
+
+#: ../../../index.rst:217
+msgid "Use it on extensions and middlewares to extend Scrapy functionality"
+msgstr ""
+
+#: ../../../index.rst:220
+msgid "Reference"
+msgstr ""
+
+#: ../../../index.rst:232
+msgid ""
+"Learn about the command-line tool and see all :ref:`available commands "
+"<topics-commands-ref>`."
+msgstr ""
+
+#: ../../../index.rst:235
+msgid ":doc:`topics/request-response`"
+msgstr ""
+
+#: ../../../index.rst:235
+msgid "Understand the classes used to represent HTTP requests and responses."
+msgstr ""
+
+#: ../../../index.rst:238
+msgid ":doc:`topics/settings`"
+msgstr ""
+
+#: ../../../index.rst:238
+msgid ""
+"Learn how to configure Scrapy and see all :ref:`available settings <topics-"
+"settings-ref>`."
+msgstr ""
+
+#: ../../../index.rst:241
+msgid ":doc:`topics/signals`"
+msgstr ""
+
+#: ../../../index.rst:241
+msgid "See all available signals and how to work with them."
+msgstr ""
+
+#: ../../../index.rst:244
+msgid ":doc:`topics/exceptions`"
+msgstr ""
+
+#: ../../../index.rst:244
+msgid "See all available exceptions and their meaning."
+msgstr ""
+
+#: ../../../index.rst:248
+msgid ":doc:`topics/exporters`"
+msgstr ""
+
+#: ../../../index.rst:247
+msgid "Quickly export your scraped items to a file (XML, CSV, etc)."
+msgstr ""
+
+#: ../../../index.rst:251
+msgid "All the rest"
+msgstr ""
+
+#: ../../../index.rst:262
+msgid ":doc:`news`"
+msgstr ""
+
+#: ../../../index.rst:262
+msgid "See what has changed in recent Scrapy versions."
+msgstr ""
+
+#: ../../../index.rst:265
+msgid ":doc:`contributing`"
+msgstr ""
+
+#: ../../../index.rst:265
+msgid "Learn how to contribute to the Scrapy project."
+msgstr ""
+
+#: ../../../index.rst:268
+msgid ":doc:`versioning`"
+msgstr ""
+
+#: ../../../index.rst:268
+msgid "Understand Scrapy versioning and API stability."
+msgstr ""
+
+#: ../../../index.rst:270
+msgid ":doc:`experimental/index`"
+msgstr ""
+
+#: ../../../index.rst:271
+msgid "Learn about bleeding-edge features."
+msgstr ""
