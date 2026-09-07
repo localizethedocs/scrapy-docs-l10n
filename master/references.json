@@ -37,9 +37,9 @@
     "branch" : "master",
     "commit" : 
     {
-      "date" : "2026-07-27 12:19:12 +0200",
-      "hash" : "cec86f216e02072b2e9ed5b032810e061143277c",
-      "title" : "Remove remaining cross-imports in test modules. (#7782)"
+      "date" : "2026-09-07 16:48:21 +0500",
+      "hash" : "f44abb91f6a0d7666eba0d1d25a0f63503fb7c7a",
+      "title" : "Infer the FEEDS format from the feed URI's file extension when not set (#8031)"
     }
   },
   "type" : "branch",
