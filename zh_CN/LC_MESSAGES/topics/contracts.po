@@ -1,0 +1,300 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-27 11:53+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/contracts.rst:5
+msgid "Spiders Contracts"
+msgstr ""
+
+#: ../../../topics/contracts.rst:7
+msgid ""
+"Testing spiders can get particularly annoying and while nothing prevents you "
+"from writing unit tests the task gets cumbersome quickly. Scrapy offers an "
+"integrated way of testing your spiders by the means of contracts."
+msgstr ""
+
+#: ../../../topics/contracts.rst:11
+msgid ""
+"This allows you to test each callback of your spider by hardcoding a sample "
+"url and check various constraints for how the callback processes the "
+"response. Each contract is prefixed with an ``@`` and included in the "
+"docstring. See the following example:"
+msgstr ""
+
+#: ../../../topics/contracts.rst:16
+msgid ""
+"def parse(self, response):\n"
+"    \"\"\"\n"
+"    This function parses a sample response. Some contracts are mingled\n"
+"    with this docstring.\n"
+"\n"
+"    @url http://www.example.com/s?field-keywords=selfish+gene\n"
+"    @returns items 1 16\n"
+"    @returns requests 0 0\n"
+"    @scrapes Title Author Year Price\n"
+"    \"\"\""
+msgstr ""
+
+#: ../../../topics/contracts.rst:29
+msgid "You can use the following contracts:"
+msgstr ""
+
+#: ../../../../scrapy/contracts/default.py:docstring of
+#: scrapy.contracts.default.UrlContract:1
+msgid ""
+"Sets (``@url``) the sample URL used when checking the other contract "
+"conditions of a callback."
+msgstr ""
+
+#: ../../../../scrapy/contracts/default.py:docstring of
+#: scrapy.contracts.default.UrlContract:4
+msgid ""
+"This contract is mandatory: callbacks lacking it are ignored when running "
+"the checks."
+msgstr ""
+
+#: ../../../../scrapy/contracts/default.py:docstring of
+#: scrapy.contracts.default.UrlContract:7
+msgid "@url url"
+msgstr ""
+
+#: ../../../../scrapy/contracts/default.py:docstring of
+#: scrapy.contracts.default.CallbackKeywordArgumentsContract:1
+msgid ""
+"Sets (``@cb_kwargs``) the :attr:`cb_kwargs <scrapy.Request.cb_kwargs>` "
+"attribute of the sample request."
+msgstr ""
+
+#: ../../../../scrapy/contracts/default.py:docstring of
+#: scrapy.contracts.default.CallbackKeywordArgumentsContract:4
+#: scrapy.contracts.default.MetadataContract:4
+msgid "Its value must be a valid JSON dictionary."
+msgstr ""
+
+#: ../../../../scrapy/contracts/default.py:docstring of
+#: scrapy.contracts.default.CallbackKeywordArgumentsContract:6
+msgid "@cb_kwargs {\"arg1\": \"value1\", \"arg2\": \"value2\", ...}"
+msgstr ""
+
+#: ../../../../scrapy/contracts/default.py:docstring of
+#: scrapy.contracts.default.MetadataContract:1
+msgid ""
+"Sets (``@meta``) the :attr:`meta <scrapy.Request.meta>` attribute of the "
+"sample request."
+msgstr ""
+
+#: ../../../../scrapy/contracts/default.py:docstring of
+#: scrapy.contracts.default.MetadataContract:6
+msgid "@meta {\"arg1\": \"value1\", \"arg2\": \"value2\", ...}"
+msgstr ""
+
+#: ../../../../scrapy/contracts/default.py:docstring of
+#: scrapy.contracts.default.ReturnsContract:1
+msgid ""
+"Sets (``@returns``) lower and upper bounds for the items and requests "
+"returned by a callback."
+msgstr ""
+
+#: ../../../../scrapy/contracts/default.py:docstring of
+#: scrapy.contracts.default.ReturnsContract:4
+msgid "The upper bound is optional:"
+msgstr ""
+
+#: ../../../../scrapy/contracts/default.py:docstring of
+#: scrapy.contracts.default.ReturnsContract:6
+msgid "@returns item(s)|request(s) [min [max]]"
+msgstr ""
+
+#: ../../../../scrapy/contracts/default.py:docstring of
+#: scrapy.contracts.default.ReturnsContract:10
+msgid "For example:"
+msgstr "例如："
+
+#: ../../../../scrapy/contracts/default.py:docstring of
+#: scrapy.contracts.default.ReturnsContract:12
+msgid ""
+"@returns request\n"
+"@returns request 2\n"
+"@returns request 2 10\n"
+"@returns request 0 10"
+msgstr ""
+
+#: ../../../../scrapy/contracts/default.py:docstring of
+#: scrapy.contracts.default.ReturnsContract:19
+msgid "Set both bounds to the same value to require an exact number:"
+msgstr ""
+
+#: ../../../../scrapy/contracts/default.py:docstring of
+#: scrapy.contracts.default.ReturnsContract:21
+msgid "@returns request 2 2"
+msgstr ""
+
+#: ../../../../scrapy/contracts/default.py:docstring of
+#: scrapy.contracts.default.ScrapesContract:1
+msgid ""
+"Checks (``@scrapes``) that all items returned by a callback have the "
+"specified fields."
+msgstr ""
+
+#: ../../../../scrapy/contracts/default.py:docstring of
+#: scrapy.contracts.default.ScrapesContract:4
+msgid "@scrapes field_1 field_2 ..."
+msgstr ""
+
+#: ../../../topics/contracts.rst:43
+msgid "Use the :command:`check` command to run the contract checks."
+msgstr ""
+
+#: ../../../topics/contracts.rst:46
+msgid "Custom Contracts"
+msgstr ""
+
+#: ../../../topics/contracts.rst:48
+msgid ""
+"If you find you need more power than the built-in Scrapy contracts you can "
+"create and load your own contracts in the project by using the :setting:"
+"`SPIDER_CONTRACTS` setting:"
+msgstr ""
+
+#: ../../../topics/contracts.rst:52
+msgid ""
+"SPIDER_CONTRACTS = {\n"
+"    \"myproject.contracts.ResponseCheck\": 10,\n"
+"    \"myproject.contracts.ItemValidate\": 10,\n"
+"}"
+msgstr ""
+
+#: ../../../topics/contracts.rst:59
+msgid ""
+"Each contract must inherit from :class:`~scrapy.contracts.Contract` and can "
+"override three methods:"
+msgstr ""
+
+#: ../../../../scrapy/contracts/__init__.py:docstring of
+#: scrapy.contracts.Contract:1
+msgid "Base class for :ref:`custom contracts <topics-contracts>`."
+msgstr ""
+
+#: ../../../../scrapy/contracts/__init__.py:docstring of
+#: scrapy.contracts.Contract:3
+msgid "*method* is the callback function to which the contract is associated."
+msgstr ""
+
+#: ../../../../scrapy/contracts/__init__.py:docstring of
+#: scrapy.contracts.Contract:5
+msgid ""
+"*args* is the list of arguments passed into the docstring, separated by "
+"whitespace."
+msgstr ""
+
+#: ../../../../scrapy/contracts/__init__.py:docstring of
+#: scrapy.contracts.Contract:8
+msgid ""
+"Subclasses may override :meth:`adjust_request_args`, and define a "
+"``pre_process`` method or a ``post_process`` method, or both."
+msgstr ""
+
+#: ../../../../scrapy/contracts/__init__.py:docstring of
+#: scrapy.contracts.Contract.adjust_request_args:1
+msgid ""
+"Receive a ``dict`` with the default arguments for the sample request and "
+"return it, either unmodified or with changes."
+msgstr ""
+
+#: ../../../../scrapy/contracts/__init__.py:docstring of
+#: scrapy.contracts.Contract.adjust_request_args:4
+msgid ""
+":class:`~scrapy.Request` is used by default, but this can be changed with "
+"the ``request_cls`` attribute. If multiple contracts in the chain define "
+"this attribute, the last one is used."
+msgstr ""
+
+#: ../../../topics/contracts.rst:70
+msgid ""
+"This allows hooking in various checks on the response received from the "
+"sample request, before it's being passed to the callback."
+msgstr ""
+
+#: ../../../topics/contracts.rst:75
+msgid ""
+"This allows processing the output of the callback. Iterators are converted "
+"to lists before being passed to this hook."
+msgstr ""
+
+#: ../../../topics/contracts.rst:78
+msgid ""
+"Raise :class:`~scrapy.exceptions.ContractFail` from :class:`~scrapy."
+"contracts.Contract.pre_process` or :class:`~scrapy.contracts.Contract."
+"post_process` if expectations are not met:"
+msgstr ""
+
+#: ../../../../scrapy/exceptions.py:docstring of
+#: scrapy.exceptions.ContractFail:1
+msgid "Error raised in case of a failing contract"
+msgstr ""
+
+#: ../../../topics/contracts.rst:84
+msgid ""
+"Here is a demo contract which checks the presence of a custom header in the "
+"response received:"
+msgstr ""
+
+#: ../../../topics/contracts.rst:88
+msgid ""
+"from scrapy.contracts import Contract\n"
+"from scrapy.exceptions import ContractFail\n"
+"\n"
+"\n"
+"class HasHeaderContract(Contract):\n"
+"    \"\"\"\n"
+"    Demo contract which checks the presence of a custom header\n"
+"    @has_header X-CustomHeader\n"
+"    \"\"\"\n"
+"\n"
+"    name = \"has_header\"\n"
+"\n"
+"    def pre_process(self, response):\n"
+"        for header in self.args:\n"
+"            if header not in response.headers:\n"
+"                raise ContractFail(\"X-CustomHeader not present\")"
+msgstr ""
+
+#: ../../../topics/contracts.rst:110
+msgid "Detecting check runs"
+msgstr ""
+
+#: ../../../topics/contracts.rst:112
+msgid ""
+"When ``scrapy check`` is running, the ``SCRAPY_CHECK`` environment variable "
+"is set to the ``true`` string. You can use :data:`os.environ` to perform any "
+"change to your spiders or your settings when ``scrapy check`` is used:"
+msgstr ""
+
+#: ../../../topics/contracts.rst:116
+msgid ""
+"import os\n"
+"import scrapy\n"
+"\n"
+"\n"
+"class ExampleSpider(scrapy.Spider):\n"
+"    name = \"example\"\n"
+"\n"
+"    def __init__(self):\n"
+"        if os.environ.get(\"SCRAPY_CHECK\"):\n"
+"            pass  # Do some scraper adjustments when a check is running"
+msgstr ""
