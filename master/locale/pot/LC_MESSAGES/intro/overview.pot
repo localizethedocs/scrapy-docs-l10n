@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:53+0000\n"
+"POT-Creation-Date: 2026-09-14 15:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -233,12 +233,15 @@ msgstr ""
 
 #: ../../../intro/overview.rst:137
 msgid ""
-"A :ref:`Telnet console <topics-telnetconsole>` for hooking into a Python "
-"console running inside your Scrapy process, to introspect and debug your "
-"crawler"
+"Several ways to :ref:`execute code inside a Scrapy process <connect-live-"
+"crawl>`, to introspect and debug it."
 msgstr ""
 
-#: ../../../intro/overview.rst:141
+#: ../../../intro/overview.rst:140
+msgid "An official :ref:`plugin for coding agents <agents>`."
+msgstr ""
+
+#: ../../../intro/overview.rst:142
 msgid ""
 "Plus other goodies like reusable spiders to crawl sites from `Sitemaps`_ and "
 "XML/CSV feeds, a media pipeline for :ref:`automatically downloading images "
@@ -246,11 +249,11 @@ msgid ""
 "items, a caching DNS resolver, and much more!"
 msgstr ""
 
-#: ../../../intro/overview.rst:147
+#: ../../../intro/overview.rst:148
 msgid "What's next?"
 msgstr ""
 
-#: ../../../intro/overview.rst:149
+#: ../../../intro/overview.rst:150
 msgid ""
 "The next steps for you are to :ref:`install Scrapy <intro-install>`, :ref:"
 "`follow through the tutorial <intro-tutorial>` to learn how to create a full-"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:53+0000\n"
+"POT-Creation-Date: 2026-09-14 15:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,8 +47,8 @@ msgid ""
 "tracking objects references called :ref:`trackref <topics-leaks-trackrefs>`, "
 "and you can also use a third-party library called :ref:`muppy <topics-leaks-"
 "muppy>` for more advanced memory debugging (see below for more info). Both "
-"mechanisms must be used from the :ref:`Telnet Console <topics-"
-"telnetconsole>`."
+"mechanisms must be used after :ref:`connecting to a live crawl <connect-live-"
+"crawl>`."
 msgstr ""
 
 #: ../../../topics/leaks.rst:26
@@ -278,11 +278,11 @@ msgid ""
 ">>> prefs(ignore=Spider)"
 msgstr ""
 
-#: ../../../topics/leaks.rst:186
+#: ../../../topics/leaks.rst:185
 msgid "scrapy.utils.trackref module"
 msgstr ""
 
-#: ../../../topics/leaks.rst:188
+#: ../../../topics/leaks.rst:187
 msgid ""
 "Here are the functions available in the :mod:`~scrapy.utils.trackref` module."
 msgstr ""
@@ -326,11 +326,11 @@ msgid ""
 "class name."
 msgstr ""
 
-#: ../../../topics/leaks.rst:203
+#: ../../../topics/leaks.rst:202
 msgid "Debugging memory leaks with muppy"
 msgstr ""
 
-#: ../../../topics/leaks.rst:205
+#: ../../../topics/leaks.rst:204
 msgid ""
 "``trackref`` provides a very convenient mechanism for tracking down memory "
 "leaks, but it only keeps track of the objects that are more likely to cause "
@@ -340,25 +340,25 @@ msgid ""
 "resource: the muppy library."
 msgstr ""
 
-#: ../../../topics/leaks.rst:212
+#: ../../../topics/leaks.rst:211
 msgid "You can use muppy from `Pympler`_."
 msgstr ""
 
-#: ../../../topics/leaks.rst:216
+#: ../../../topics/leaks.rst:215
 msgid "If you use ``pip``, you can install muppy with the following command::"
 msgstr ""
 
-#: ../../../topics/leaks.rst:218
+#: ../../../topics/leaks.rst:217
 msgid "pip install Pympler"
 msgstr ""
 
-#: ../../../topics/leaks.rst:220
+#: ../../../topics/leaks.rst:219
 msgid ""
 "Here's an example to view all Python objects available in the heap using "
 "muppy:"
 msgstr ""
 
-#: ../../../topics/leaks.rst:224
+#: ../../../topics/leaks.rst:223
 msgid ""
 ">>> from pympler import muppy\n"
 ">>> all_objects = muppy.get_objects()\n"
@@ -386,15 +386,15 @@ msgid ""
 "                         <class 'int |        1425 |     43.20 KB"
 msgstr ""
 
-#: ../../../topics/leaks.rst:253
+#: ../../../topics/leaks.rst:252
 msgid "For more info about muppy, refer to the `muppy documentation`_."
 msgstr ""
 
-#: ../../../topics/leaks.rst:260
+#: ../../../topics/leaks.rst:259
 msgid "Leaks without leaks"
 msgstr ""
 
-#: ../../../topics/leaks.rst:262
+#: ../../../topics/leaks.rst:261
 msgid ""
 "Sometimes, you may notice that the memory usage of your Scrapy process will "
 "only increase, but never decrease. Unfortunately, this could happen even "
@@ -404,31 +404,31 @@ msgid ""
 "see:"
 msgstr ""
 
-#: ../../../topics/leaks.rst:268
+#: ../../../topics/leaks.rst:267
 msgid ""
 "`Python Memory Management <https://www.evanjones.ca/python-memory.html>`_"
 msgstr ""
 
-#: ../../../topics/leaks.rst:269
+#: ../../../topics/leaks.rst:268
 msgid ""
 "`Python Memory Management Part 2 <https://www.evanjones.ca/python-memory-"
 "part2.html>`_"
 msgstr ""
 
-#: ../../../topics/leaks.rst:270
+#: ../../../topics/leaks.rst:269
 msgid ""
 "`Python Memory Management Part 3 <https://www.evanjones.ca/python-memory-"
 "part3.html>`_"
 msgstr ""
 
-#: ../../../topics/leaks.rst:272
+#: ../../../topics/leaks.rst:271
 msgid ""
 "The improvements proposed by Evan Jones, which are detailed in `this "
 "paper`_, got merged in Python 2.5, but this only reduces the problem, it "
 "doesn't fix it completely. To quote the paper:"
 msgstr ""
 
-#: ../../../topics/leaks.rst:276
+#: ../../../topics/leaks.rst:275
 msgid ""
 "*Unfortunately, this patch can only free an arena if there are no more "
 "objects allocated in it anymore. This means that fragmentation is a large "
@@ -439,7 +439,7 @@ msgid ""
 "memory. This would require significant changes to the Python interpreter.*"
 msgstr ""
 
-#: ../../../topics/leaks.rst:286
+#: ../../../topics/leaks.rst:285
 msgid ""
 "To keep memory consumption reasonable you can split the job into several "
 "smaller jobs or enable :ref:`persistent job queue <topics-jobs>` and stop/"
