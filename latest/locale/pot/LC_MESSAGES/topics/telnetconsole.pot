@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:52+0000\n"
+"POT-Creation-Date: 2026-09-14 15:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,8 +58,8 @@ msgid ""
 "``False``."
 msgstr ""
 
-#: ../../../topics/telnetconsole.rst:32 ../../../topics/telnetconsole.rst:195
-msgid ":ref:`security-telnet`"
+#: ../../../topics/telnetconsole.rst:32
+msgid ":ref:`security-telnet`, :ref:`using-mcp-server`"
 msgstr ""
 
 #: ../../../topics/telnetconsole.rst:37
@@ -68,9 +68,9 @@ msgstr ""
 
 #: ../../../topics/telnetconsole.rst:39
 msgid ""
-"The telnet console listens in the TCP port defined in the :setting:"
-"`TELNETCONSOLE_PORT` setting, which defaults to ``6023``. To access the "
-"console you need to type::"
+"The telnet console listens on the first available TCP port from the range "
+"defined in the :setting:`TELNETCONSOLE_PORT` setting, which defaults to "
+"``[6023, 6073]``. To access the console you need to type::"
 msgstr ""
 
 #: ../../../topics/telnetconsole.rst:43
@@ -226,8 +226,8 @@ msgstr ""
 
 #: ../../../topics/telnetconsole.rst:110
 msgid ""
-"You can use the ``est()`` method of the Scrapy engine to quickly show its "
-"state using the telnet console::"
+"You can use the ``est()`` method provided by the console to quickly show the "
+"engine status::"
 msgstr ""
 
 #: ../../../topics/telnetconsole.rst:113
@@ -243,8 +243,8 @@ msgid ""
 "engine.spider_is_idle()                         : False\n"
 "engine._slot.closing                            : False\n"
 "len(engine._slot.inprogress)                    : 16\n"
-"len(engine._slot.scheduler.dqs or [])           : 0\n"
-"len(engine._slot.scheduler.mqs)                 : 92\n"
+"len(engine.scheduler.dqs or [])                 : 0\n"
+"len(engine.scheduler.mqs)                       : 92\n"
 "len(engine.scraper.slot.queue)                  : 0\n"
 "len(engine.scraper.slot.active)                 : 0\n"
 "engine.scraper.slot.active_size                 : 0\n"
@@ -341,6 +341,10 @@ msgstr ""
 
 #: ../../../topics/telnetconsole.rst:193
 msgid "The interface the telnet console should listen on"
+msgstr ""
+
+#: ../../../topics/telnetconsole.rst:195
+msgid ":ref:`security-telnet`"
 msgstr ""
 
 #: ../../../topics/telnetconsole.rst:201
