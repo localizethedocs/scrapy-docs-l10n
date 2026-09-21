@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 09:50+0000\n"
+"POT-Creation-Date: 2026-09-21 15:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,9 +55,9 @@ msgstr ""
 
 #: ../../../topics/deploy.rst:27
 msgid ""
-"To deploy spiders to Scrapyd, you can use the scrapyd-deploy tool provided "
-"by the `scrapyd-client`_ package. Please refer to the `scrapyd-deploy "
-"documentation`_ for more information."
+"To deploy spiders to Scrapyd, you can use the ``scrapyd-deploy`` tool "
+"provided by the `scrapyd-client`_ package. Please refer to the `scrapyd-"
+"deploy documentation`_ for more information."
 msgstr ""
 
 #: ../../../topics/deploy.rst:31
@@ -76,14 +76,15 @@ msgstr ""
 
 #: ../../../topics/deploy.rst:41
 msgid ""
-"Zyte Scrapy Cloud removes the need to setup and monitor servers and provides "
-"a nice UI to manage spiders and review scraped items, logs and stats."
+"Zyte Scrapy Cloud removes the need to set up and monitor servers and "
+"provides a nice UI to manage spiders and review scraped items, logs and "
+"stats."
 msgstr ""
 
 #: ../../../topics/deploy.rst:44
 msgid ""
-"To deploy spiders to Zyte Scrapy Cloud you can use the `shub`_ command line "
-"tool. Please refer to the `Zyte Scrapy Cloud documentation`_ for more "
+"To deploy spiders to Zyte Scrapy Cloud, you can use the ``shub`` command-"
+"line tool. Please refer to the `Zyte Scrapy Cloud documentation`_ for more "
 "information."
 msgstr ""
 

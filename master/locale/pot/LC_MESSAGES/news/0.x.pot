@@ -1,0 +1,3135 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-21 15:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../news/0.x.rst:4
+msgid "Scrapy 0.x release notes"
+msgstr ""
+
+#: ../../../news/0.x.rst:7
+msgid "Scrapy 0.24.6 (2015-04-20)"
+msgstr ""
+
+#: ../../../news/0.x.rst:9
+msgid "encode invalid xpath with unicode_escape under PY2 (:commit:`07cb3e5`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:10
+msgid ""
+"fix IPython shell scope issue and load IPython user config (:commit:"
+"`2c8e573`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:11
+msgid "Fix small typo in the docs (:commit:`d694019`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:12
+msgid "Fix small typo (:commit:`f92fa83`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:13
+msgid ""
+"Converted sel.xpath() calls to response.xpath() in Extracting the data (:"
+"commit:`c2c6d15`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:17
+msgid "Scrapy 0.24.5 (2015-02-25)"
+msgstr ""
+
+#: ../../../news/0.x.rst:19
+msgid ""
+"Support new _getEndpoint Agent signatures on Twisted 15.0.0 (:commit:"
+"`540b9bc`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:20
+msgid "DOC a couple more references are fixed (:commit:`b4c454b`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:21
+msgid "DOC fix a reference (:commit:`e3c1260`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:22
+msgid "t.i.b.ThreadedResolver is now a new-style class (:commit:`9e13f42`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:23
+msgid ""
+"S3DownloadHandler: fix auth for requests with quoted paths/query params (:"
+"commit:`cdb9a0b`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:24
+msgid ""
+"fixed the variable types in mailsender documentation (:commit:`bb3a848`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:25
+msgid "Reset items_scraped instead of item_count (:commit:`edb07a4`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:26
+msgid ""
+"Tentative attention message about what document to read for contributions (:"
+"commit:`7ee6f7a`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:27
+msgid "mitmproxy 0.10.1 needs netlib 0.10.1 too (:commit:`874fcdd`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:28
+msgid ""
+"pin mitmproxy 0.10.1 as >0.11 does not work with tests (:commit:`c6b21f0`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:29
+msgid ""
+"Test the parse command locally instead of against an external url (:commit:"
+"`c3a6628`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:30
+msgid ""
+"Patches Twisted issue while closing the connection pool on "
+"HTTPDownloadHandler (:commit:`d0bf957`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:31
+msgid "Updates documentation on dynamic item classes. (:commit:`eeb589a`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:32
+msgid "Merge pull request #943 from Lazar-T/patch-3 (:commit:`5fdab02`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:33
+msgid "typo (:commit:`b0ae199`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:34
+msgid "pywin32 is required by Twisted. closes #937 (:commit:`5cb0cfb`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:35
+msgid "Update install.rst (:commit:`781286b`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:36
+msgid "Merge pull request #928 from Lazar-T/patch-1 (:commit:`b415d04`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:37
+msgid "comma instead of fullstop (:commit:`627b9ba`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:38
+msgid "Merge pull request #885 from jsma/patch-1 (:commit:`de909ad`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:39
+msgid "Update request-response.rst (:commit:`3f3263d`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:40
+msgid ""
+"SgmlLinkExtractor - fix for parsing <area> tag with Unicode present (:commit:"
+"`49b40f0`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:43
+msgid "Scrapy 0.24.4 (2014-08-09)"
+msgstr ""
+
+#: ../../../news/0.x.rst:45
+msgid ""
+"pem file is used by mockserver and required by scrapy bench (:commit:"
+"`5eddc68b63`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:46
+msgid "scrapy bench needs scrapy.tests* (:commit:`d6cb999`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:49
+msgid "Scrapy 0.24.3 (2014-08-09)"
+msgstr ""
+
+#: ../../../news/0.x.rst:51
+msgid "no need to waste travis-ci time on py3 for 0.24 (:commit:`8e080c1`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:52
+msgid "Update installation docs (:commit:`1d0c096`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:53
+msgid "There is a trove classifier for Scrapy framework! (:commit:`4c701d7`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:54
+msgid ""
+"update other places where w3lib version is mentioned (:commit:`d109c13`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:55
+msgid "Update w3lib requirement to 1.8.0 (:commit:`39d2ce5`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:56
+msgid ""
+"Use w3lib.html.replace_entities() (remove_entities() is deprecated) (:commit:"
+"`180d3ad`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:57
+msgid "set zip_safe=False (:commit:`a51ee8b`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:58
+msgid "do not ship tests package (:commit:`ee3b371`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:59
+msgid "scrapy.bat is not needed anymore (:commit:`c3861cf`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:60
+msgid "Modernize setup.py (:commit:`362e322`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:61
+msgid "headers can not handle non-string values (:commit:`94a5c65`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:62
+msgid "fix ftp test cases (:commit:`a274a7f`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:63
+msgid ""
+"The sum up of travis-ci builds are taking like 50min to complete (:commit:"
+"`ae1e2cc`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:64
+msgid "Update shell.rst typo (:commit:`e49c96a`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:65
+msgid "removes weird indentation in the shell results (:commit:`1ca489d`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:66
+msgid ""
+"improved explanations, clarified blog post as source, added link for XPath "
+"string functions in the spec (:commit:`65c8f05`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:67
+msgid ""
+"renamed UserTimeoutError and ServerTimeouterror #583 (:commit:`037f6ab`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:68
+msgid "adding some xpath tips to selectors docs (:commit:`2d103e0`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:69
+msgid ""
+"fix tests to account for https://github.com/scrapy/w3lib/pull/23 (:commit:"
+"`f8d366a`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:70
+msgid "get_func_args maximum recursion fix #728 (:commit:`81344ea`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:71
+msgid ""
+"Updated input/output processor example according to #560. (:commit:`f7c4ea8`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:72
+msgid "Fixed Python syntax in tutorial. (:commit:`db59ed9`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:73
+msgid "Add test case for tunneling proxy (:commit:`f090260`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:74
+msgid ""
+"Bugfix for leaking Proxy-Authorization header to remote host when using "
+"tunneling (:commit:`d8793af`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:75
+msgid ""
+"Extract links from XHTML documents with MIME-Type \"application/xml\" (:"
+"commit:`ed1f376`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:76
+msgid "Merge pull request #793 from roysc/patch-1 (:commit:`91a1106`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:77
+msgid "Fix typo in commands.rst (:commit:`743e1e2`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:78
+msgid "better testcase for settings.overrides.setdefault (:commit:`e22daaf`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:79
+msgid ""
+"Using CRLF as line marker according to http 1.1 definition (:commit:"
+"`5ec430b`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:82
+msgid "Scrapy 0.24.2 (2014-07-08)"
+msgstr ""
+
+#: ../../../news/0.x.rst:84
+msgid ""
+"Use a mutable mapping to proxy deprecated settings.overrides and settings."
+"defaults attribute (:commit:`e5e8133`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:85
+msgid "there is not support for python3 yet (:commit:`3cd6146`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:86
+msgid ""
+"Update python compatible version set to Debian packages (:commit:`fa5d76b`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:87
+msgid "DOC fix formatting in release notes (:commit:`c6a9e20`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:90
+msgid "Scrapy 0.24.1 (2014-06-27)"
+msgstr ""
+
+#: ../../../news/0.x.rst:92
+msgid ""
+"Fix deprecated CrawlerSettings and increase backward compatibility with ."
+"defaults attribute (:commit:`8e3f20a`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:97
+msgid "Scrapy 0.24.0 (2014-06-26)"
+msgstr ""
+
+#: ../../../news/0.x.rst:100 ../../../news/0.x.rst:216
+#: ../../../news/0.x.rst:272
+msgid "Enhancements"
+msgstr ""
+
+#: ../../../news/0.x.rst:102
+msgid "Improve Scrapy top-level namespace (:gh:`494`, :gh:`684`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:103
+msgid "Add selector shortcuts to responses (:gh:`554`, :gh:`690`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:104
+msgid ""
+"Add new lxml based LinkExtractor to replace unmaintained SgmlLinkExtractor (:"
+"gh:`559`, :gh:`761`, :gh:`763`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:106
+msgid ""
+"Cleanup settings API - part of per-spider settings **GSoC project** (:gh:"
+"`737`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:107
+msgid "Add UTF8 encoding header to templates (:gh:`688`, :gh:`762`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:108
+msgid "Telnet console now binds to 127.0.0.1 by default (:gh:`699`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:109
+msgid "Update Debian/Ubuntu install instructions (:gh:`509`, :gh:`549`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:110
+msgid "Disable smart strings in lxml XPath evaluations (:gh:`535`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:111
+msgid ""
+"Restore filesystem based cache as default for http cache middleware (:gh:"
+"`541`, :gh:`500`, :gh:`571`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:113
+msgid "Expose current crawler in Scrapy shell (:gh:`557`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:114
+msgid "Improve testsuite comparing CSV and XML exporters (:gh:`570`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:115
+msgid "New ``offsite/filtered`` and ``offsite/domains`` stats (:gh:`566`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:116
+msgid "Support process_links as generator in CrawlSpider (:gh:`555`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:117
+msgid "Verbose logging and new stats counters for DupeFilter (:gh:`553`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:118
+msgid "Add a mimetype parameter to ``MailSender.send()`` (:gh:`602`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:119
+msgid "Generalize file pipeline log messages (:gh:`622`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:120
+msgid ""
+"Replace unencodeable codepoints with html entities in SGMLLinkExtractor (:gh:"
+"`565`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:121
+msgid ""
+"Converted SEP documents to rst format (:gh:`629`, :gh:`630`, :gh:`638`, :gh:"
+"`632`, :gh:`636`, :gh:`640`, :gh:`635`, :gh:`634`, :gh:`639`, :gh:`637`, :gh:"
+"`631`, :gh:`633`, :gh:`641`, :gh:`642`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:125
+msgid ""
+"Tests and docs for clickdata's nr index in FormRequest (:gh:`646`, :gh:`645`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:126
+msgid ""
+"Allow to disable a downloader handler just like any other component (:gh:"
+"`650`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:127
+msgid "Log when a request is discarded after too many redirections (:gh:`654`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:128
+msgid ""
+"Log error responses if they are not handled by spider callbacks (:gh:`612`, :"
+"gh:`656`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:130
+msgid "Add content-type check to http compression mw (:gh:`193`, :gh:`660`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:131
+msgid "Run pypy tests using latest pypi from ppa (:gh:`674`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:132
+msgid "Run test suite using pytest instead of trial (:gh:`679`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:133
+msgid "Build docs and check for dead links in tox environment (:gh:`687`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:134
+msgid "Make scrapy.version_info a tuple of integers (:gh:`681`, :gh:`692`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:135
+msgid ""
+"Infer exporter's output format from filename extensions (:gh:`546`, :gh:"
+"`659`, :gh:`760`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:137
+msgid ""
+"Support case-insensitive domains in ``url_is_from_any_domain()`` (:gh:`693`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:138
+msgid "Remove pep8 warnings in project and spider templates (:gh:`698`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:139
+msgid "Tests and docs for ``request_fingerprint`` function (:gh:`597`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:140
+msgid "Update SEP-19 for GSoC project ``per-spider settings`` (:gh:`705`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:141
+msgid "Set exit code to non-zero when contracts fails (:gh:`727`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:142
+msgid ""
+"Add a setting to control what class is instantiated as Downloader component "
+"(:gh:`738`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:144
+msgid "Pass response in ``item_dropped`` signal (:gh:`724`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:145
+msgid "Improve ``scrapy check`` contracts command (:gh:`733`, :gh:`752`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:146
+msgid "Document ``spider.closed()`` shortcut (:gh:`719`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:147
+msgid "Document ``request_scheduled`` signal (:gh:`746`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:148
+msgid "Add a note about reporting security issues (:gh:`697`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:149
+msgid "Add LevelDB http cache storage backend (:gh:`626`, :gh:`500`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:150
+msgid "Sort spider list output of ``scrapy list`` command (:gh:`742`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:151
+msgid ""
+"Multiple documentation enhancements and fixes (:gh:`575`, :gh:`587`, :gh:"
+"`590`, :gh:`596`, :gh:`610`, :gh:`617`, :gh:`618`, :gh:`627`, :gh:`613`, :gh:"
+"`643`, :gh:`654`, :gh:`675`, :gh:`663`, :gh:`711`, :gh:`714`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:157 ../../../news/0.x.rst:300
+msgid "Bugfixes"
+msgstr ""
+
+#: ../../../news/0.x.rst:159
+msgid ""
+"Encode unicode URL value when creating Links in RegexLinkExtractor (:gh:"
+"`561`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:160
+msgid "Ignore None values in ItemLoader processors (:gh:`556`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:161
+msgid ""
+"Fix link text when there is an inner tag in SGMLLinkExtractor and "
+"HtmlParserLinkExtractor (:gh:`485`, :gh:`574`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:163
+msgid ""
+"Fix wrong checks on subclassing of deprecated classes (:gh:`581`, :gh:`584`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:165
+msgid "Handle errors caused by inspect.stack() failures (:gh:`582`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:166
+msgid "Fix a reference to unexistent engine attribute (:gh:`593`, :gh:`594`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:167
+msgid "Fix dynamic itemclass example usage of type() (:gh:`603`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:168
+msgid "Use lucasdemarchi/codespell to fix typos (:gh:`628`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:169
+msgid ""
+"Fix default value of attrs argument in SgmlLinkExtractor to be tuple (:gh:"
+"`661`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:170
+msgid "Fix XXE flaw in sitemap reader (:gh:`676`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:171
+msgid "Fix engine to support filtered start requests (:gh:`707`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:172
+msgid "Fix offsite middleware case on urls with no hostnames (:gh:`745`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:173
+msgid "Testsuite doesn't require PIL anymore (:gh:`585`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:177
+msgid "Scrapy 0.22.2 (2014-02-14)"
+msgstr ""
+
+#: ../../../news/0.x.rst:179
+msgid ""
+"fix a reference to unexistent engine.slots. closes #593 (:commit:`13c099a`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:180
+msgid "downloaderMW doc typo (spiderMW doc copy remnant) (:commit:`8ae11bf`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:181
+msgid "Correct typos (:commit:`1346037`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:184
+msgid "Scrapy 0.22.1 (2014-02-08)"
+msgstr ""
+
+#: ../../../news/0.x.rst:186
+msgid ""
+"localhost666 can resolve under certain circumstances (:commit:`2ec2279`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:187
+msgid "test inspect.stack failure (:commit:`cc3eda3`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:188
+msgid "Handle cases when inspect.stack() fails (:commit:`8cb44f9`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:189
+msgid ""
+"Fix wrong checks on subclassing of deprecated classes. closes #581 (:commit:"
+"`46d98d6`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:190
+msgid "Docs: 4-space indent for final spider example (:commit:`13846de`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:191
+msgid ""
+"Fix HtmlParserLinkExtractor and tests after #485 merge (:commit:`368a946`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:192
+msgid ""
+"BaseSgmlLinkExtractor: Fixed the missing space when the link has an inner "
+"tag (:commit:`b566388`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:193
+msgid ""
+"BaseSgmlLinkExtractor: Added unit test of a link with an inner tag (:commit:"
+"`c1cb418`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:194
+msgid ""
+"BaseSgmlLinkExtractor: Fixed unknown_endtag() so that it only set "
+"current_link=None when the end tag match the opening tag (:commit:`7e4d627`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:195
+msgid "Fix tests for Travis-CI build (:commit:`76c7e20`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:196
+msgid ""
+"replace unencodeable codepoints with html entities. fixes #562 and #285 (:"
+"commit:`5f87b17`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:197
+msgid ""
+"RegexLinkExtractor: encode URL unicode value when creating Links (:commit:"
+"`d0ee545`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:198
+msgid ""
+"Updated the tutorial crawl output with latest output. (:commit:`8da65de`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:199
+msgid ""
+"Updated shell docs with the crawler reference and fixed the actual shell "
+"output. (:commit:`875b9ab`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:200
+msgid "PEP8 minor edits. (:commit:`f89efaf`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:201
+msgid "Expose current crawler in the Scrapy shell. (:commit:`5349cec`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:202
+msgid "Unused re import and PEP8 minor edits. (:commit:`387f414`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:203
+msgid "Ignore None's values when using the ItemLoader. (:commit:`0632546`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:204
+msgid ""
+"DOC Fixed HTTPCACHE_STORAGE typo in the default value which is now "
+"Filesystem instead Dbm. (:commit:`cde9a8c`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:205
+msgid "show Ubuntu setup instructions as literal code (:commit:`fb5c9c5`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:206
+msgid "Update Ubuntu installation instructions (:commit:`70fb105`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:207
+msgid "Merge pull request #550 from stray-leone/patch-1 (:commit:`6f70b6a`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:208
+msgid "modify the version of Scrapy Ubuntu package (:commit:`725900d`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:209
+msgid "fix 0.22.0 release date (:commit:`af0219a`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:210
+msgid ""
+"fix typos in news.rst and remove (not released yet) header (:commit:"
+"`b7f58f4`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:213
+msgid "Scrapy 0.22.0 (2014-01-17)"
+msgstr ""
+
+#: ../../../news/0.x.rst:218
+msgid ""
+"[**Backward incompatible**] Switched HTTPCacheMiddleware backend to "
+"filesystem (:gh:`541`) To restore old backend set ``HTTPCACHE_STORAGE`` to "
+"``scrapy.contrib.httpcache.DbmCacheStorage``"
+msgstr ""
+
+#: ../../../news/0.x.rst:220
+msgid "Proxy \\https:// urls using CONNECT method (:gh:`392`, :gh:`397`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:221
+msgid ""
+"Add a middleware to crawl ajax crawlable pages as defined by google (:gh:"
+"`343`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:222
+msgid ""
+"Rename scrapy.spider.BaseSpider to scrapy.spider.Spider (:gh:`510`, :gh:"
+"`519`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:223
+msgid "Selectors register EXSLT namespaces by default (:gh:`472`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:224
+msgid "Unify item loaders similar to selectors renaming (:gh:`461`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:225
+msgid "Make ``RFPDupeFilter`` class easily subclassable (:gh:`533`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:226
+msgid "Improve test coverage and forthcoming Python 3 support (:gh:`525`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:227
+msgid ""
+"Promote startup info on settings and middleware to INFO level (:gh:`520`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:228
+msgid "Support partials in ``get_func_args`` util (:gh:`506`, :gh:`504`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:229
+msgid "Allow running individual tests via tox (:gh:`503`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:230
+msgid "Update extensions ignored by link extractors (:gh:`498`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:231
+msgid "Add middleware methods to get files/images/thumbs paths (:gh:`490`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:232
+msgid "Improve offsite middleware tests (:gh:`478`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:233
+msgid ""
+"Add a way to skip default Referer header set by RefererMiddleware (:gh:`475`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:234
+msgid ""
+"Do not send ``x-gzip`` in default ``Accept-Encoding`` header (:gh:`469`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:235
+msgid "Support defining http error handling using settings (:gh:`466`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:236
+msgid "Use modern python idioms wherever you find legacies (:gh:`497`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:237
+msgid ""
+"Improve and correct documentation (:gh:`527`, :gh:`524`, :gh:`521`, :gh:"
+"`517`, :gh:`512`, :gh:`505`, :gh:`502`, :gh:`489`, :gh:`465`, :gh:`460`, :gh:"
+"`425`, :gh:`536`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:242
+msgid "Fixes"
+msgstr ""
+
+#: ../../../news/0.x.rst:244
+msgid "Update Selector class imports in CrawlSpider template (:gh:`484`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:245
+msgid "Fix unexistent reference to ``engine.slots`` (:gh:`464`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:246
+msgid ""
+"Do not try to call ``body_as_unicode()`` on a non-TextResponse instance (:gh:"
+"`462`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:247
+msgid ""
+"Warn when subclassing XPathItemLoader, previously it only warned on "
+"instantiation. (:gh:`523`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:249
+msgid ""
+"Warn when subclassing XPathSelector, previously it only warned on "
+"instantiation. (:gh:`537`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:251
+msgid "Multiple fixes to memory stats (:gh:`531`, :gh:`530`, :gh:`529`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:252
+msgid "Fix overriding url in ``FormRequest.from_response()`` (:gh:`507`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:253
+msgid "Fix tests runner under pip 1.5 (:gh:`513`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:254
+msgid "Fix logging error when spider name is unicode (:gh:`479`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:257
+msgid "Scrapy 0.20.2 (2013-12-09)"
+msgstr ""
+
+#: ../../../news/0.x.rst:259
+msgid "Update CrawlSpider Template with Selector changes (:commit:`6d1457d`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:260
+msgid "fix method name in tutorial. closes GH-480 (:commit:`b4fc359`"
+msgstr ""
+
+#: ../../../news/0.x.rst:263
+msgid "Scrapy 0.20.1 (2013-11-28)"
+msgstr ""
+
+#: ../../../news/0.x.rst:265
+msgid ""
+"include_package_data is required to build wheels from published sources (:"
+"commit:`5ba1ad5`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:266
+msgid ""
+"process_parallel was leaking the failures on its internal deferreds.  closes "
+"#458 (:commit:`419a780`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:269
+msgid "Scrapy 0.20.0 (2013-11-08)"
+msgstr ""
+
+#: ../../../news/0.x.rst:274
+msgid "New Selector's API including CSS selectors (:gh:`395` and :gh:`426`),"
+msgstr ""
+
+#: ../../../news/0.x.rst:275
+msgid ""
+"Request/Response url/body attributes are now immutable (modifying them had "
+"been deprecated for a long time)"
+msgstr ""
+
+#: ../../../news/0.x.rst:277
+msgid ":setting:`ITEM_PIPELINES` is now defined as a dict (instead of a list)"
+msgstr ""
+
+#: ../../../news/0.x.rst:278
+msgid "Sitemap spider can fetch alternate URLs (:gh:`360`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:279
+msgid ""
+"``Selector.remove_namespaces()`` now remove namespaces from element's "
+"attributes. (:gh:`416`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:280
+msgid ""
+"Paved the road for Python 3.3+ (:gh:`435`, :gh:`436`, :gh:`431`, :gh:`452`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:281
+msgid ""
+"New item exporter using native python types with nesting support (:gh:`366`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:282
+msgid ""
+"Tune HTTP1.1 pool size so it matches concurrency defined by settings (:"
+"commit:`b43b5f575`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:283
+msgid ""
+"scrapy.mail.MailSender now can connect over TLS or upgrade using STARTTLS (:"
+"gh:`327`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:284
+msgid ""
+"New FilesPipeline with functionality factored out from ImagesPipeline (:gh:"
+"`370`, :gh:`409`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:285
+msgid "Recommend Pillow instead of PIL for image handling (:gh:`317`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:286
+msgid "Added Debian packages for Ubuntu Quantal and Raring (:commit:`86230c0`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:287
+msgid "Mock server (used for tests) can listen for HTTPS requests (:gh:`410`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:288
+msgid ""
+"Remove multi spider support from multiple core components (:gh:`422`, :gh:"
+"`421`, :gh:`420`, :gh:`419`, :gh:`423`, :gh:`418`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:290
+msgid ""
+"Travis-CI now tests Scrapy changes against development versions of ``w3lib`` "
+"and ``queuelib`` python packages."
+msgstr ""
+
+#: ../../../news/0.x.rst:291
+msgid "Add pypy 2.1 to continuous integration tests (:commit:`ecfa7431`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:292
+msgid ""
+"Pylinted, pep8 and removed old-style exceptions from source (:gh:`430`, :gh:"
+"`432`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:293
+msgid "Use importlib for parametric imports (:gh:`445`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:294
+msgid ""
+"Handle a regression introduced in Python 2.7.5 that affects XmlItemExporter "
+"(:gh:`372`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:295
+msgid "Bugfix crawling shutdown on SIGINT (:gh:`450`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:296
+msgid ""
+"Do not submit ``reset`` type inputs in FormRequest.from_response (:commit:"
+"`b326b87`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:297
+msgid ""
+"Do not silence download errors when request errback raises an exception (:"
+"commit:`684cfc0`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:302
+msgid "Fix tests under Django 1.6 (:commit:`b6bed44c`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:303
+msgid ""
+"Lot of bugfixes to retry middleware under disconnections using HTTP 1.1 "
+"download handler"
+msgstr ""
+
+#: ../../../news/0.x.rst:304
+msgid "Fix inconsistencies among Twisted releases (:gh:`406`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:305
+msgid "Fix Scrapy shell bugs (:gh:`418`, :gh:`407`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:306
+msgid "Fix invalid variable name in setup.py (:gh:`429`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:307
+msgid "Fix tutorial references (:gh:`387`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:308
+msgid "Improve request-response docs (:gh:`391`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:309
+msgid ""
+"Improve best practices docs (:gh:`399`, :gh:`400`, :gh:`401`, :gh:`402`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:310
+msgid "Improve django integration docs (:gh:`404`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:311
+msgid "Document ``bindaddress`` request meta (:commit:`37c24e01d7`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:312
+msgid "Improve ``Request`` class documentation (:gh:`226`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:315
+msgid "Other"
+msgstr ""
+
+#: ../../../news/0.x.rst:317
+msgid "Dropped Python 2.6 support (:gh:`448`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:318
+msgid ""
+"Add :doc:`cssselect <cssselect:index>` python package as install dependency"
+msgstr ""
+
+#: ../../../news/0.x.rst:319
+msgid ""
+"Drop libxml2 and multi selector's backend support, `lxml`_ is required from "
+"now on."
+msgstr ""
+
+#: ../../../news/0.x.rst:320
+msgid ""
+"Minimum Twisted version increased to 10.0.0, dropped Twisted 8.0 support."
+msgstr ""
+
+#: ../../../news/0.x.rst:321
+msgid "Running test suite now requires ``mock`` python library (:gh:`390`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:325
+msgid "Thanks"
+msgstr ""
+
+#: ../../../news/0.x.rst:327
+msgid "Thanks to everyone who contribute to this release!"
+msgstr ""
+
+#: ../../../news/0.x.rst:329
+msgid "List of contributors sorted by number of commits::"
+msgstr ""
+
+#: ../../../news/0.x.rst:331
+msgid ""
+"69 Daniel Graña <dangra@...>\n"
+"37 Pablo Hoffman <pablo@...>\n"
+"13 Mikhail Korobov <kmike84@...>\n"
+" 9 Alex Cepoi <alex.cepoi@...>\n"
+" 9 alexanderlukanin13 <alexander.lukanin.13@...>\n"
+" 8 Rolando Espinoza La fuente <darkrho@...>\n"
+" 8 Lukasz Biedrycki <lukasz.biedrycki@...>\n"
+" 6 Nicolas Ramirez <nramirez.uy@...>\n"
+" 3 Paul Tremberth <paul.tremberth@...>\n"
+" 2 Martin Olveyra <molveyra@...>\n"
+" 2 Stefan <misc@...>\n"
+" 2 Rolando Espinoza <darkrho@...>\n"
+" 2 Loren Davie <loren@...>\n"
+" 2 irgmedeiros <irgmedeiros@...>\n"
+" 1 Stefan Koch <taikano@...>\n"
+" 1 Stefan <cct@...>\n"
+" 1 scraperdragon <dragon@...>\n"
+" 1 Kumara Tharmalingam <ktharmal@...>\n"
+" 1 Francesco Piccinno <stack.box@...>\n"
+" 1 Marcos Campal <duendex@...>\n"
+" 1 Dragon Dave <dragon@...>\n"
+" 1 Capi Etheriel <barraponto@...>\n"
+" 1 cacovsky <amarquesferraz@...>\n"
+" 1 Berend Iwema <berend@...>"
+msgstr ""
+
+#: ../../../news/0.x.rst:357
+msgid "Scrapy 0.18.4 (2013-10-10)"
+msgstr ""
+
+#: ../../../news/0.x.rst:359
+msgid "IPython refuses to update the namespace. fix #396 (:commit:`3d32c4f`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:360
+msgid ""
+"Fix AlreadyCalledError replacing a request in shell command. closes #407 (:"
+"commit:`b1d8919`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:361
+msgid "Fix ``start_requests()`` laziness and early hangs (:commit:`89faf52`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:364
+msgid "Scrapy 0.18.3 (2013-10-03)"
+msgstr ""
+
+#: ../../../news/0.x.rst:366
+msgid "fix regression on lazy evaluation of start requests (:commit:`12693a5`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:367
+msgid "forms: do not submit reset inputs (:commit:`e429f63`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:368
+msgid ""
+"increase unittest timeouts to decrease travis false positive failures (:"
+"commit:`912202e`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:369
+msgid "backport master fixes to json exporter (:commit:`cfc2d46`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:370
+msgid ""
+"Fix permission and set umask before generating sdist tarball (:commit:"
+"`06149e0`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:373
+msgid "Scrapy 0.18.2 (2013-09-03)"
+msgstr ""
+
+#: ../../../news/0.x.rst:375
+msgid ""
+"Backport ``scrapy check`` command fixes and backward compatible multi "
+"crawler process(:gh:`339`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:379
+msgid "Scrapy 0.18.1 (2013-08-27)"
+msgstr ""
+
+#: ../../../news/0.x.rst:381
+msgid "remove extra import added by cherry picked changes (:commit:`d20304e`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:382
+msgid "fix crawling tests under twisted pre 11.0.0 (:commit:`1994f38`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:383
+msgid "py26 can not format zero length fields {} (:commit:`abf756f`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:384
+msgid "test PotentiaDataLoss errors on unbound responses (:commit:`b15470d`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:385
+msgid ""
+"Treat responses without content-length or Transfer-Encoding as good "
+"responses (:commit:`c4bf324`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:386
+msgid ""
+"do no include ResponseFailed if http11 handler is not enabled (:commit:"
+"`6cbe684`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:387
+msgid ""
+"New HTTP client wraps connection lost in ResponseFailed exception. fix #373 "
+"(:commit:`1a20bba`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:388
+msgid "limit travis-ci build matrix (:commit:`3b01bb8`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:389
+msgid "Merge pull request #375 from peterarenot/patch-1 (:commit:`fa766d7`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:390
+msgid "Fixed so it refers to the correct folder (:commit:`3283809`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:391
+msgid "added Quantal & Raring to support Ubuntu releases (:commit:`1411923`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:392
+msgid ""
+"fix retry middleware which didn't retry certain connection errors after the "
+"upgrade to http1 client, closes GH-373 (:commit:`bb35ed0`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:393
+msgid "fix XmlItemExporter in Python 2.7.4 and 2.7.5 (:commit:`de3e451`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:394
+msgid "minor updates to 0.18 release notes (:commit:`c45e5f1`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:395
+msgid "fix contributors list format (:commit:`0b60031`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:398
+msgid "Scrapy 0.18.0 (2013-08-09)"
+msgstr ""
+
+#: ../../../news/0.x.rst:400
+msgid ""
+"Lot of improvements to testsuite run using Tox, including a way to test on "
+"pypi"
+msgstr ""
+
+#: ../../../news/0.x.rst:401
+msgid "Handle GET parameters for AJAX crawlable urls (:commit:`3fe2a32`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:402
+msgid "Use lxml recover option to parse sitemaps (:gh:`347`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:403
+msgid "Bugfix cookie merging by hostname and not by netloc (:gh:`352`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:404
+msgid ""
+"Support disabling ``HttpCompressionMiddleware`` using a flag setting (:gh:"
+"`359`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:405
+msgid ""
+"Support xml namespaces using ``iternodes`` parser in ``XMLFeedSpider`` (:gh:"
+"`12`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:406
+msgid "Support ``dont_cache`` request meta flag (:gh:`19`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:407
+msgid ""
+"Bugfix ``scrapy.utils.gz.gunzip`` broken by changes in python 2.7.4 (:commit:"
+"`4dc76e`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:408
+msgid "Bugfix url encoding on ``SgmlLinkExtractor`` (:gh:`24`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:409
+msgid ""
+"Bugfix ``TakeFirst`` processor shouldn't discard zero (0) value (:gh:`59`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:410
+msgid "Support nested items in xml exporter (:gh:`66`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:411
+msgid "Improve cookies handling performance (:gh:`77`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:412
+msgid "Log dupe filtered requests once (:gh:`105`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:413
+msgid ""
+"Split redirection middleware into status and meta based middlewares (:gh:"
+"`78`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:414
+msgid "Use HTTP1.1 as default downloader handler (:gh:`109` and :gh:`318`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:415
+msgid ""
+"Support xpath form selection on ``FormRequest.from_response`` (:gh:`185`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:416
+msgid "Bugfix unicode decoding error on ``SgmlLinkExtractor`` (:gh:`199`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:417
+msgid "Bugfix signal dispatching on pypi interpreter (:gh:`205`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:418
+msgid "Improve request delay and concurrency handling (:gh:`206`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:419
+msgid "Add RFC2616 cache policy to ``HttpCacheMiddleware`` (:gh:`212`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:420
+msgid "Allow customization of messages logged by engine (:gh:`214`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:421
+msgid ""
+"Multiples improvements to ``DjangoItem`` (:gh:`217`, :gh:`218`, :gh:`221`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:422
+msgid "Extend Scrapy commands using setuptools entry points (:gh:`260`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:423
+msgid "Allow spider ``allowed_domains`` value to be set/tuple (:gh:`261`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:424
+msgid "Support ``settings.getdict`` (:gh:`269`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:425
+msgid "Simplify internal ``scrapy.core.scraper`` slot handling (:gh:`271`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:426
+msgid "Added ``Item.copy`` (:gh:`290`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:427
+msgid "Collect idle downloader slots (:gh:`297`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:428
+msgid "Add ``ftp://`` scheme downloader handler (:gh:`329`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:429
+msgid ""
+"Added downloader benchmark webserver and spider tools :ref:`benchmarking`"
+msgstr ""
+
+#: ../../../news/0.x.rst:430
+msgid ""
+"Moved persistent (on disk) queues to a separate project (queuelib_) which "
+"Scrapy now depends on"
+msgstr ""
+
+#: ../../../news/0.x.rst:431
+msgid "Add Scrapy commands using external libraries (:gh:`260`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:432
+msgid "Added ``--pdb`` option to ``scrapy`` command line tool"
+msgstr ""
+
+#: ../../../news/0.x.rst:433
+msgid ""
+"Added :meth:`XPathSelector.remove_namespaces <scrapy.Selector."
+"remove_namespaces>` which allows to remove all namespaces from XML documents "
+"for convenience (to work with namespace-less XPaths). Documented in :ref:"
+"`topics-selectors`."
+msgstr ""
+
+#: ../../../news/0.x.rst:434
+msgid "Several improvements to spider contracts"
+msgstr ""
+
+#: ../../../news/0.x.rst:435
+msgid ""
+"New default middleware named MetaRefreshMiddleware that handles meta-refresh "
+"html tag redirections,"
+msgstr ""
+
+#: ../../../news/0.x.rst:436
+msgid ""
+"MetaRefreshMiddleware and RedirectMiddleware have different priorities to "
+"address #62"
+msgstr ""
+
+#: ../../../news/0.x.rst:437
+msgid "added from_crawler method to spiders"
+msgstr ""
+
+#: ../../../news/0.x.rst:438
+msgid "added system tests with mock server"
+msgstr ""
+
+#: ../../../news/0.x.rst:439
+msgid "more improvements to macOS compatibility (thanks Alex Cepoi)"
+msgstr ""
+
+#: ../../../news/0.x.rst:440
+msgid ""
+"several more cleanups to singletons and multi-spider support (thanks Nicolas "
+"Ramirez)"
+msgstr ""
+
+#: ../../../news/0.x.rst:441
+msgid "support custom download slots"
+msgstr ""
+
+#: ../../../news/0.x.rst:442
+msgid "added --spider option to \"shell\" command."
+msgstr ""
+
+#: ../../../news/0.x.rst:443
+msgid "log overridden settings when Scrapy starts"
+msgstr ""
+
+#: ../../../news/0.x.rst:445
+msgid ""
+"Thanks to everyone who contribute to this release. Here is a list of "
+"contributors sorted by number of commits::"
+msgstr ""
+
+#: ../../../news/0.x.rst:448
+msgid ""
+"130 Pablo Hoffman <pablo@...>\n"
+" 97 Daniel Graña <dangra@...>\n"
+" 20 Nicolás Ramírez <nramirez.uy@...>\n"
+" 13 Mikhail Korobov <kmike84@...>\n"
+" 12 Pedro Faustino <pedrobandim@...>\n"
+" 11 Steven Almeroth <sroth77@...>\n"
+"  5 Rolando Espinoza La fuente <darkrho@...>\n"
+"  4 Michal Danilak <mimino.coder@...>\n"
+"  4 Alex Cepoi <alex.cepoi@...>\n"
+"  4 Alexandr N Zamaraev (aka tonal) <tonal@...>\n"
+"  3 paul <paul.tremberth@...>\n"
+"  3 Martin Olveyra <molveyra@...>\n"
+"  3 Jordi Llonch <llonchj@...>\n"
+"  3 arijitchakraborty <myself.arijit@...>\n"
+"  2 Shane Evans <shane.evans@...>\n"
+"  2 joehillen <joehillen@...>\n"
+"  2 Hart <HartSimha@...>\n"
+"  2 Dan <ellisd23@...>\n"
+"  1 Zuhao Wan <wanzuhao@...>\n"
+"  1 whodatninja <blake@...>\n"
+"  1 vkrest <v.krestiannykov@...>\n"
+"  1 tpeng <pengtaoo@...>\n"
+"  1 Tom Mortimer-Jones <tom@...>\n"
+"  1 Rocio Aramberri <roschegel@...>\n"
+"  1 Pedro <pedro@...>\n"
+"  1 notsobad <wangxiaohugg@...>\n"
+"  1 Natan L <kuyanatan.nlao@...>\n"
+"  1 Mark Grey <mark.grey@...>\n"
+"  1 Luan <luanpab@...>\n"
+"  1 Libor Nenadál <libor.nenadal@...>\n"
+"  1 Juan M Uys <opyate@...>\n"
+"  1 Jonas Brunsgaard <jonas.brunsgaard@...>\n"
+"  1 Ilya Baryshev <baryshev@...>\n"
+"  1 Hasnain Lakhani <m.hasnain.lakhani@...>\n"
+"  1 Emanuel Schorsch <emschorsch@...>\n"
+"  1 Chris Tilden <chris.tilden@...>\n"
+"  1 Capi Etheriel <barraponto@...>\n"
+"  1 cacovsky <amarquesferraz@...>\n"
+"  1 Berend Iwema <berend@...>"
+msgstr ""
+
+#: ../../../news/0.x.rst:490
+msgid "Scrapy 0.16.5 (2013-05-30)"
+msgstr ""
+
+#: ../../../news/0.x.rst:492
+msgid ""
+"obey request method when Scrapy deploy is redirected to a new endpoint (:"
+"commit:`8c4fcee`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:493
+msgid ""
+"fix inaccurate downloader middleware documentation. refs #280 (:commit:"
+"`40667cb`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:494
+msgid ""
+"doc: remove links to diveintopython.org, which is no longer available. "
+"closes #246 (:commit:`bd58bfa`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:495
+msgid "Find form nodes in invalid html5 documents (:commit:`e3d6945`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:496
+msgid "Fix typo labeling attrs type bool instead of list (:commit:`a274276`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:499
+msgid "Scrapy 0.16.4 (2013-01-23)"
+msgstr ""
+
+#: ../../../news/0.x.rst:501
+msgid "fixes spelling errors in documentation (:commit:`6d2b3aa`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:502
+msgid "add doc about disabling an extension. refs #132 (:commit:`c90de33`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:503
+msgid ""
+"Fixed error message formatting. log.err() doesn't support cool formatting "
+"and when error occurred, the message was:    \"ERROR: Error processing "
+"%(item)s\" (:commit:`c16150c`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:504
+msgid "lint and improve images pipeline error logging (:commit:`56b45fc`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:505
+msgid "fixed doc typos (:commit:`243be84`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:506
+msgid ""
+"add documentation topics: Broad Crawls & Common Practices (:commit:`1fbb715`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:507
+msgid ""
+"fix bug in Scrapy parse command when spider is not specified explicitly. "
+"closes #209 (:commit:`c72e682`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:508
+msgid "Update docs/topics/commands.rst (:commit:`28eac7a`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:511
+msgid "Scrapy 0.16.3 (2012-12-07)"
+msgstr ""
+
+#: ../../../news/0.x.rst:513
+msgid ""
+"Remove concurrency limitation when using download delays and still ensure "
+"inter-request delays are enforced (:commit:`487b9b5`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:514
+msgid "add error details when image pipeline fails (:commit:`8232569`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:515
+msgid "improve macOS compatibility (:commit:`8dcf8aa`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:516
+msgid ""
+"setup.py: use README.rst to populate long_description (:commit:`7b5310d`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:517
+msgid "doc: removed obsolete references to ClientForm (:commit:`80f9bb6`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:518
+msgid "correct docs for default storage backend (:commit:`2aa491b`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:519
+msgid "doc: removed broken proxyhub link from FAQ (:commit:`bdf61c4`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:520
+msgid "Fixed docs typo in SpiderOpenCloseLogging example (:commit:`7184094`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:524
+msgid "Scrapy 0.16.2 (2012-11-09)"
+msgstr ""
+
+#: ../../../news/0.x.rst:526
+msgid "Scrapy contracts: python2.6 compat (:commit:`a4a9199`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:527
+msgid "Scrapy contracts verbose option (:commit:`ec41673`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:528
+msgid "proper unittest-like output for Scrapy contracts (:commit:`86635e4`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:529
+msgid "added open_in_browser to debugging doc (:commit:`c9b690d`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:530
+msgid ""
+"removed reference to global Scrapy stats from settings doc (:commit:"
+"`dd55067`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:531
+msgid "Fix SpiderState bug in Windows platforms (:commit:`58998f4`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:535
+msgid "Scrapy 0.16.1 (2012-10-26)"
+msgstr ""
+
+#: ../../../news/0.x.rst:537
+msgid ""
+"fixed LogStats extension, which got broken after a wrong merge before the "
+"0.16 release (:commit:`8c780fd`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:538
+msgid ""
+"better backward compatibility for scrapy.conf.settings (:commit:`3403089`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:539
+msgid ""
+"extended documentation on how to access crawler stats from extensions (:"
+"commit:`c4da0b5`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:540
+msgid ""
+"removed .hgtags (no longer needed now that Scrapy uses git) (:commit:"
+"`d52c188`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:541
+msgid "fix dashes under rst headers (:commit:`fa4f7f9`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:542
+msgid "set release date for 0.16.0 in news (:commit:`e292246`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:546
+msgid "Scrapy 0.16.0 (2012-10-18)"
+msgstr ""
+
+#: ../../../news/0.x.rst:548
+msgid "Scrapy changes:"
+msgstr ""
+
+#: ../../../news/0.x.rst:550
+msgid ""
+"added :ref:`topics-contracts`, a mechanism for testing spiders in a formal/"
+"reproducible way"
+msgstr ""
+
+#: ../../../news/0.x.rst:551
+msgid "added options ``-o`` and ``-t`` to the :command:`runspider` command"
+msgstr ""
+
+#: ../../../news/0.x.rst:552
+msgid ""
+"documented :doc:`topics/autothrottle` and added to extensions installed by "
+"default. You still need to enable it with :setting:`AUTOTHROTTLE_ENABLED`"
+msgstr ""
+
+#: ../../../news/0.x.rst:553
+msgid ""
+"major Stats Collection refactoring: removed separation of global/per-spider "
+"stats, removed stats-related signals (``stats_spider_opened``, etc). Stats "
+"are much simpler now, backward compatibility is kept on the Stats Collector "
+"API and signals."
+msgstr ""
+
+#: ../../../news/0.x.rst:554
+msgid "added a ``process_start_requests()`` method to spider middlewares"
+msgstr ""
+
+#: ../../../news/0.x.rst:555
+msgid ""
+"dropped Signals singleton. Signals should now be accessed through the "
+"Crawler.signals attribute. See the signals documentation for more info."
+msgstr ""
+
+#: ../../../news/0.x.rst:556
+msgid ""
+"dropped Stats Collector singleton. Stats can now be accessed through the "
+"Crawler.stats attribute. See the stats collection documentation for more "
+"info."
+msgstr ""
+
+#: ../../../news/0.x.rst:557
+msgid "documented :ref:`topics-api`"
+msgstr ""
+
+#: ../../../news/0.x.rst:558
+msgid "``lxml`` is now the default selectors backend instead of ``libxml2``"
+msgstr ""
+
+#: ../../../news/0.x.rst:559
+msgid ""
+"ported FormRequest.from_response() to use `lxml`_ instead of `ClientForm`_"
+msgstr ""
+
+#: ../../../news/0.x.rst:560
+msgid ""
+"removed modules: ``scrapy.xlib.BeautifulSoup`` and ``scrapy.xlib.ClientForm``"
+msgstr ""
+
+#: ../../../news/0.x.rst:561
+msgid ""
+"SitemapSpider: added support for sitemap urls ending in .xml and .xml.gz, "
+"even if they advertise a wrong content type (:commit:`10ed28b`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:562
+msgid ""
+"StackTraceDump extension: also dump trackref live references (:commit:"
+"`fe2ce93`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:563
+msgid "nested items now fully supported in JSON and JSONLines exporters"
+msgstr ""
+
+#: ../../../news/0.x.rst:564
+msgid ""
+"added :reqmeta:`cookiejar` Request meta key to support multiple cookie "
+"sessions per spider"
+msgstr ""
+
+#: ../../../news/0.x.rst:565
+msgid ""
+"decoupled encoding detection code to `w3lib.encoding`_, and ported Scrapy "
+"code to use that module"
+msgstr ""
+
+#: ../../../news/0.x.rst:566
+msgid ""
+"dropped support for Python 2.5. See https://www.zyte.com/blog/scrapy-0-15-"
+"dropping-support-for-python-2-5/"
+msgstr ""
+
+#: ../../../news/0.x.rst:567
+msgid "dropped support for Twisted 2.5"
+msgstr ""
+
+#: ../../../news/0.x.rst:568
+msgid "added :setting:`REFERER_ENABLED` setting, to control referer middleware"
+msgstr ""
+
+#: ../../../news/0.x.rst:569
+msgid "changed default user agent to: ``Scrapy/VERSION (+http://scrapy.org)``"
+msgstr ""
+
+#: ../../../news/0.x.rst:570
+msgid ""
+"removed (undocumented) ``HTMLImageLinkExtractor`` class from ``scrapy."
+"contrib.linkextractors.image``"
+msgstr ""
+
+#: ../../../news/0.x.rst:571
+msgid ""
+"removed per-spider settings (to be replaced by instantiating multiple "
+"crawler objects)"
+msgstr ""
+
+#: ../../../news/0.x.rst:572
+msgid ""
+"``USER_AGENT`` spider attribute will no longer work, use ``user_agent`` "
+"attribute instead"
+msgstr ""
+
+#: ../../../news/0.x.rst:573
+msgid ""
+"``DOWNLOAD_TIMEOUT`` spider attribute will no longer work, use "
+"``download_timeout`` attribute instead"
+msgstr ""
+
+#: ../../../news/0.x.rst:574
+msgid ""
+"removed ``ENCODING_ALIASES`` setting, as encoding auto-detection has been "
+"moved to the `w3lib`_ library"
+msgstr ""
+
+#: ../../../news/0.x.rst:575
+msgid "promoted :ref:`topics-djangoitem` to main contrib"
+msgstr ""
+
+#: ../../../news/0.x.rst:576
+msgid ""
+"LogFormatter method now return dicts(instead of strings) to support lazy "
+"formatting (:gh:`164`, :commit:`dcef7b0`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:577
+msgid ""
+"downloader handlers (:setting:`DOWNLOAD_HANDLERS` setting) now receive "
+"settings as the first argument of the ``__init__`` method"
+msgstr ""
+
+#: ../../../news/0.x.rst:578
+msgid ""
+"replaced memory usage accounting with (more portable) `resource`_ module, "
+"removed ``scrapy.utils.memory`` module"
+msgstr ""
+
+#: ../../../news/0.x.rst:579
+msgid "removed signal: ``scrapy.mail.mail_sent``"
+msgstr ""
+
+#: ../../../news/0.x.rst:580
+msgid ""
+"removed ``TRACK_REFS`` setting, now :ref:`trackrefs <topics-leaks-"
+"trackrefs>` is always enabled"
+msgstr ""
+
+#: ../../../news/0.x.rst:581
+msgid "DBM is now the default storage backend for HTTP cache middleware"
+msgstr ""
+
+#: ../../../news/0.x.rst:582
+msgid ""
+"number of log messages (per level) are now tracked through Scrapy stats "
+"(stat name: ``log_count/LEVEL``)"
+msgstr ""
+
+#: ../../../news/0.x.rst:583
+msgid ""
+"number received responses are now tracked through Scrapy stats (stat name: "
+"``response_received_count``)"
+msgstr ""
+
+#: ../../../news/0.x.rst:584
+msgid "removed ``scrapy.log.started`` attribute"
+msgstr ""
+
+#: ../../../news/0.x.rst:587
+msgid "Scrapy 0.14.4 (2012-05-15)"
+msgstr ""
+
+#: ../../../news/0.x.rst:589
+msgid "added precise to supported Ubuntu distros (:commit:`b7e46df`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:590
+msgid ""
+"fixed bug in json-rpc webservice reported in https://groups.google.com/forum/"
+"#!topic/scrapy-users/qgVBmFybNAQ/discussion. also removed no longer "
+"supported 'run' command from extras/scrapy-ws.py (:commit:`340fbdb`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:591
+msgid ""
+"meta tag attributes for content-type http equiv can be in any order. #123 (:"
+"commit:`0cb68af`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:592
+msgid ""
+"replace \"import Image\" by more standard \"from PIL import Image\". closes "
+"#88 (:commit:`4d17048`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:593
+msgid ""
+"return trial status as bin/runtests.sh exit value. #118 (:commit:`b7b2e7f`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:596
+msgid "Scrapy 0.14.3 (2012-04-19)"
+msgstr ""
+
+#: ../../../news/0.x.rst:598
+msgid "forgot to include pydispatch license. #118 (:commit:`fd85f9c`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:599
+msgid ""
+"include egg files used by testsuite in source distribution. #118 (:commit:"
+"`c897793`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:600
+msgid ""
+"update docstring in project template to avoid confusion with genspider "
+"command, which may be considered as an advanced feature. refs #107 (:commit:"
+"`2548dcc`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:601
+msgid ""
+"added note to docs/topics/firebug.rst about google directory being shut down "
+"(:commit:`668e352`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:602
+msgid ""
+"don't discard slot when empty, just save in another dict in order to recycle "
+"if needed again. (:commit:`8e9f607`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:603
+msgid ""
+"do not fail handling unicode xpaths in libxml2 backed selectors (:commit:"
+"`b830e95`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:604
+msgid ""
+"fixed minor mistake in Request objects documentation (:commit:`bf3c9ee`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:605
+msgid "fixed minor defect in link extractors documentation (:commit:`ba14f38`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:606
+msgid ""
+"removed some obsolete remaining code related to sqlite support in Scrapy (:"
+"commit:`0665175`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:609
+msgid "Scrapy 0.14.2 (2012-03-11)"
+msgstr ""
+
+#: ../../../news/0.x.rst:611
+msgid ""
+"move buffer pointing to start of file before computing checksum. refs #92 (:"
+"commit:`6a5bef2`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:612
+msgid ""
+"Compute image checksum before persisting images. closes #92 (:commit:"
+"`9817df1`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:613
+msgid "remove leaking references in cached failures (:commit:`673a120`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:614
+msgid ""
+"fixed bug in MemoryUsage extension: get_engine_status() takes exactly 1 "
+"argument (0 given) (:commit:`11133e9`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:615
+msgid ""
+"fixed struct.error on http compression middleware. closes #87 (:commit:"
+"`1423140`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:616
+msgid "ajax crawling wasn't expanding for unicode urls (:commit:`0de3fb4`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:617
+msgid ""
+"Catch ``start_requests()`` iterator errors. refs #83 (:commit:`454a21d`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:618
+msgid "Speed-up libxml2 XPathSelector (:commit:`2fbd662`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:619
+msgid "updated versioning doc according to recent changes (:commit:`0a070f5`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:620
+msgid "scrapyd: fixed documentation link (:commit:`2b4e4c3`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:621 ../../../news/0.x.rst:626
+msgid ""
+"extras/makedeb.py: no longer obtaining version from git (:commit:`caffe0e`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:624
+msgid "Scrapy 0.14.1 (2012-01-02)"
+msgstr ""
+
+#: ../../../news/0.x.rst:627
+msgid "bumped version to 0.14.1 (:commit:`6cb9e1c`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:628
+msgid "fixed reference to tutorial directory (:commit:`4b86bd6`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:629
+msgid ""
+"doc: removed duplicated callback argument from Request.replace() (:commit:"
+"`1aeccdd`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:630
+msgid "fixed formatting of scrapyd doc (:commit:`8bf19e6`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:631
+msgid ""
+"Dump stacks for all running threads and fix engine status dumped by "
+"StackTraceDump extension (:commit:`14a8e6e`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:632
+msgid ""
+"added comment about why we disable ssl on boto images upload (:commit:"
+"`5223575`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:633
+msgid ""
+"SSL handshaking hangs when doing too many parallel connections to S3 (:"
+"commit:`63d583d`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:634
+msgid "change tutorial to follow changes on dmoz site (:commit:`bcb3198`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:635
+msgid ""
+"Avoid _disconnectedDeferred AttributeError exception in Twisted>=11.1.0 (:"
+"commit:`98f3f87`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:636
+msgid "allow spider to set autothrottle max concurrency (:commit:`175a4b5`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:639
+msgid "Scrapy 0.14 (2011-12-31)"
+msgstr ""
+
+#: ../../../news/0.x.rst:642
+msgid "New features and settings"
+msgstr ""
+
+#: ../../../news/0.x.rst:644
+msgid "Support for AJAX crawlable urls"
+msgstr ""
+
+#: ../../../news/0.x.rst:645
+msgid ""
+"New persistent scheduler that stores requests on disk, allowing to suspend "
+"and resume crawls (:rev:`2737`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:646
+msgid ""
+"added ``-o`` option to ``scrapy crawl``, a shortcut for dumping scraped "
+"items into a file (or standard output using ``-``)"
+msgstr ""
+
+#: ../../../news/0.x.rst:647
+msgid ""
+"Added support for passing custom settings to Scrapyd ``schedule.json`` api (:"
+"rev:`2779`, :rev:`2783`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:648
+msgid ""
+"New ``ChunkedTransferMiddleware`` (enabled by default) to support `chunked "
+"transfer encoding`_ (:rev:`2769`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:649
+msgid "Add boto 2.0 support for S3 downloader handler (:rev:`2763`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:650
+msgid "Added `marshal`_ to formats supported by feed exports (:rev:`2744`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:651
+msgid ""
+"In request errbacks, offending requests are now received in ``failure."
+"request`` attribute (:rev:`2738`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:652
+msgid ""
+"Big downloader refactoring to support per domain/ip concurrency limits (:rev:"
+"`2732`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:653
+msgid ""
+"``CONCURRENT_REQUESTS_PER_SPIDER`` setting has been deprecated and replaced "
+"by:"
+msgstr ""
+
+#: ../../../news/0.x.rst:654
+msgid ""
+":setting:`CONCURRENT_REQUESTS`, :setting:`CONCURRENT_REQUESTS_PER_DOMAIN`, "
+"``CONCURRENT_REQUESTS_PER_IP``"
+msgstr ""
+
+#: ../../../news/0.x.rst:655
+msgid "check the documentation for more details"
+msgstr ""
+
+#: ../../../news/0.x.rst:656
+msgid "Added builtin caching DNS resolver (:rev:`2728`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:657
+msgid ""
+"Moved Amazon AWS-related components/extensions (SQS spider queue, SimpleDB "
+"stats collector) to a separate project: [scaws](https://github.com/"
+"scrapinghub/scaws) (:rev:`2706`, :rev:`2714`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:658
+msgid ""
+"Moved spider queues to scrapyd: ``scrapy.spiderqueue`` -> ``scrapyd."
+"spiderqueue`` (:rev:`2708`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:659
+msgid ""
+"Moved sqlite utils to scrapyd: ``scrapy.utils.sqlite`` -> ``scrapyd.sqlite`` "
+"(:rev:`2781`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:660
+msgid ""
+"Real support for returning iterators on ``start_requests()`` method. The "
+"iterator is now consumed during the crawl when the spider is getting idle (:"
+"rev:`2704`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:661
+msgid ""
+"Added :setting:`REDIRECT_ENABLED` setting to quickly enable/disable the "
+"redirect middleware (:rev:`2697`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:662
+msgid ""
+"Added :setting:`RETRY_ENABLED` setting to quickly enable/disable the retry "
+"middleware (:rev:`2694`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:663
+msgid "Added ``CloseSpider`` exception to manually close spiders (:rev:`2691`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:664
+msgid ""
+"Improved encoding detection by adding support for HTML5 meta charset "
+"declaration (:rev:`2690`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:665
+msgid ""
+"Refactored close spider behavior to wait for all downloads to finish and be "
+"processed by spiders, before closing the spider (:rev:`2688`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:666
+msgid ""
+"Added ``SitemapSpider`` (see documentation in Spiders page) (:rev:`2658`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:667
+msgid ""
+"Added ``LogStats`` extension for periodically logging basic stats (like "
+"crawled pages and scraped items) (:rev:`2657`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:668
+msgid ""
+"Make handling of gzipped responses more robust (#319, :rev:`2643`). Now "
+"Scrapy will try and decompress as much as possible from a gzipped response, "
+"instead of failing with an ``IOError``."
+msgstr ""
+
+#: ../../../news/0.x.rst:669
+msgid ""
+"Simplified !MemoryDebugger extension to use stats for dumping memory "
+"debugging info (:rev:`2639`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:670
+msgid ""
+"Added new command to edit spiders: ``scrapy edit`` (:rev:`2636`) and ``-e`` "
+"flag to ``genspider`` command that uses it (:rev:`2653`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:671
+msgid ""
+"Changed default representation of items to pretty-printed dicts. (:rev:"
+"`2631`). This improves default logging by making log more readable in the "
+"default case, for both Scraped and Dropped lines."
+msgstr ""
+
+#: ../../../news/0.x.rst:672
+msgid "Added :signal:`spider_error` signal (:rev:`2628`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:673
+msgid "Added :setting:`COOKIES_ENABLED` setting (:rev:`2625`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:674
+msgid ""
+"Stats are now dumped to Scrapy log (default value of :setting:`STATS_DUMP` "
+"setting has been changed to ``True``). This is to make Scrapy users more "
+"aware of Scrapy stats and the data that is collected there."
+msgstr ""
+
+#: ../../../news/0.x.rst:675
+msgid ""
+"Added support for dynamically adjusting download delay and maximum "
+"concurrent requests (:rev:`2599`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:676
+msgid "Added new DBM HTTP cache storage backend (:rev:`2576`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:677
+msgid "Added ``listjobs.json`` API to Scrapyd (:rev:`2571`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:678
+msgid "``CsvItemExporter``: added ``join_multivalued`` parameter (:rev:`2578`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:679
+msgid "Added namespace support to ``xmliter_lxml`` (:rev:`2552`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:680
+msgid ""
+"Improved cookies middleware by making ``COOKIES_DEBUG`` nicer and "
+"documenting it (:rev:`2579`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:681
+msgid "Several improvements to Scrapyd and Link extractors"
+msgstr ""
+
+#: ../../../news/0.x.rst:684
+msgid "Code rearranged and removed"
+msgstr ""
+
+#: ../../../news/0.x.rst:686
+msgid ""
+"Merged item passed and item scraped concepts, as they have often proved "
+"confusing in the past. This means: (:rev:`2630`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:687
+msgid "original item_scraped signal was removed"
+msgstr ""
+
+#: ../../../news/0.x.rst:688
+msgid "original item_passed signal was renamed to item_scraped"
+msgstr ""
+
+#: ../../../news/0.x.rst:689
+msgid "old log lines ``Scraped Item...`` were removed"
+msgstr ""
+
+#: ../../../news/0.x.rst:690
+msgid ""
+"old log lines ``Passed Item...`` were renamed to ``Scraped Item...`` lines "
+"and downgraded to ``DEBUG`` level"
+msgstr ""
+
+#: ../../../news/0.x.rst:691
+msgid ""
+"Reduced Scrapy codebase by striping part of Scrapy code into two new "
+"libraries:"
+msgstr ""
+
+#: ../../../news/0.x.rst:692
+msgid ""
+"`w3lib`_ (several functions from ``scrapy.utils.{http,markup,multipart,"
+"response,url}``, done in :rev:`2584`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:693
+msgid "`scrapely`_ (was ``scrapy.contrib.ibl``, done in :rev:`2586`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:694
+msgid ""
+"Removed unused function: ``scrapy.utils.request.request_info()`` (:rev:"
+"`2577`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:695
+msgid ""
+"Removed googledir project from ``examples/googledir``. There's now a new "
+"example project called ``dirbot`` available on GitHub: https://github.com/"
+"scrapy/dirbot"
+msgstr ""
+
+#: ../../../news/0.x.rst:696
+msgid "Removed support for default field values in Scrapy items (:rev:`2616`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:697
+msgid "Removed experimental crawlspider v2 (:rev:`2632`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:698
+msgid ""
+"Removed scheduler middleware to simplify architecture. Duplicates filter is "
+"now done in the scheduler itself, using the same dupe filtering class as "
+"before (``DUPEFILTER_CLASS`` setting) (:rev:`2640`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:699
+msgid ""
+"Removed support for passing urls to ``scrapy crawl`` command (use ``scrapy "
+"parse`` instead) (:rev:`2704`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:700
+msgid "Removed deprecated Execution Queue (:rev:`2704`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:701
+msgid ""
+"Removed (undocumented) spider context extension (from scrapy.contrib."
+"spidercontext) (:rev:`2780`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:702
+msgid ""
+"removed ``CONCURRENT_SPIDERS`` setting (use scrapyd maxproc instead) (:rev:"
+"`2789`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:703
+msgid ""
+"Renamed attributes of core components: downloader.sites -> downloader.slots, "
+"scraper.sites -> scraper.slots (:rev:`2717`, :rev:`2718`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:704
+msgid ""
+"Renamed setting ``CLOSESPIDER_ITEMPASSED`` to :setting:"
+"`CLOSESPIDER_ITEMCOUNT` (:rev:`2655`). Backward compatibility kept."
+msgstr ""
+
+#: ../../../news/0.x.rst:707
+msgid "Scrapy 0.12 (2011-01-02)"
+msgstr ""
+
+#: ../../../news/0.x.rst:709 ../../../news/0.x.rst:753
+#: ../../../news/0.x.rst:826 ../../../news/0.x.rst:866
+msgid ""
+"The numbers like #NNN reference tickets in the old issue tracker (Trac) "
+"which is no longer available."
+msgstr ""
+
+#: ../../../news/0.x.rst:712 ../../../news/0.x.rst:756
+#: ../../../news/0.x.rst:829
+msgid "New features and improvements"
+msgstr ""
+
+#: ../../../news/0.x.rst:714
+msgid ""
+"Passed item is now sent in the ``item`` argument of the :signal:`item_passed "
+"<item_scraped>` (#273)"
+msgstr ""
+
+#: ../../../news/0.x.rst:716
+msgid ""
+"Added verbose option to ``scrapy version`` command, useful for bug reports "
+"(#298)"
+msgstr ""
+
+#: ../../../news/0.x.rst:717
+msgid "HTTP cache now stored by default in the project data dir (#279)"
+msgstr ""
+
+#: ../../../news/0.x.rst:718
+msgid "Added project data storage directory (#276, #277)"
+msgstr ""
+
+#: ../../../news/0.x.rst:719
+msgid ""
+"Documented file structure of Scrapy projects (see command-line tool doc)"
+msgstr ""
+
+#: ../../../news/0.x.rst:720
+msgid "New lxml backend for XPath selectors (#147)"
+msgstr ""
+
+#: ../../../news/0.x.rst:721
+msgid "Per-spider settings (#245)"
+msgstr ""
+
+#: ../../../news/0.x.rst:722
+msgid "Support exit codes to signal errors in Scrapy commands (#248)"
+msgstr ""
+
+#: ../../../news/0.x.rst:723
+msgid "Added ``-c`` argument to ``scrapy shell`` command"
+msgstr ""
+
+#: ../../../news/0.x.rst:724
+msgid "Made ``libxml2`` optional (#260)"
+msgstr ""
+
+#: ../../../news/0.x.rst:725
+msgid "New ``deploy`` command (#261)"
+msgstr ""
+
+#: ../../../news/0.x.rst:726
+msgid "Added :setting:`CLOSESPIDER_PAGECOUNT` setting (#253)"
+msgstr ""
+
+#: ../../../news/0.x.rst:727
+msgid "Added :setting:`CLOSESPIDER_ERRORCOUNT` setting (#254)"
+msgstr ""
+
+#: ../../../news/0.x.rst:730
+msgid "Scrapyd changes"
+msgstr ""
+
+#: ../../../news/0.x.rst:732
+msgid "Scrapyd now uses one process per spider"
+msgstr ""
+
+#: ../../../news/0.x.rst:733
+msgid ""
+"It stores one log file per spider run, and rotate them keeping the latest 5 "
+"logs per spider (by default)"
+msgstr ""
+
+#: ../../../news/0.x.rst:734
+msgid ""
+"A minimal web ui was added, available at http://localhost:6800 by default"
+msgstr ""
+
+#: ../../../news/0.x.rst:735
+msgid ""
+"There is now a ``scrapy server`` command to start a Scrapyd server of the "
+"current project"
+msgstr ""
+
+#: ../../../news/0.x.rst:738 ../../../news/0.x.rst:814
+msgid "Changes to settings"
+msgstr ""
+
+#: ../../../news/0.x.rst:740
+msgid ""
+"added ``HTTPCACHE_ENABLED`` setting (False by default) to enable HTTP cache "
+"middleware"
+msgstr ""
+
+#: ../../../news/0.x.rst:741
+msgid ""
+"changed ``HTTPCACHE_EXPIRATION_SECS`` semantics: now zero means \"never "
+"expire\"."
+msgstr ""
+
+#: ../../../news/0.x.rst:744
+msgid "Deprecated/obsoleted functionality"
+msgstr ""
+
+#: ../../../news/0.x.rst:746
+msgid ""
+"Deprecated ``runserver`` command in favor of ``server`` command which starts "
+"a Scrapyd server. See also: Scrapyd changes"
+msgstr ""
+
+#: ../../../news/0.x.rst:747
+msgid ""
+"Deprecated ``queue`` command in favor of using Scrapyd ``schedule.json`` "
+"API. See also: Scrapyd changes"
+msgstr ""
+
+#: ../../../news/0.x.rst:748
+msgid ""
+"Removed the !LxmlItemLoader (experimental contrib which never graduated to "
+"main contrib)"
+msgstr ""
+
+#: ../../../news/0.x.rst:751
+msgid "Scrapy 0.10 (2010-09-11)"
+msgstr ""
+
+#: ../../../news/0.x.rst:758
+msgid ""
+"New Scrapy service called ``scrapyd`` for deploying Scrapy crawlers in "
+"production (#218) (documentation available)"
+msgstr ""
+
+#: ../../../news/0.x.rst:759
+msgid ""
+"Simplified Images pipeline usage which doesn't require subclassing your own "
+"images pipeline now (#217)"
+msgstr ""
+
+#: ../../../news/0.x.rst:760
+msgid "Scrapy shell now shows the Scrapy log by default (#206)"
+msgstr ""
+
+#: ../../../news/0.x.rst:761
+msgid ""
+"Refactored execution queue in a common base code and pluggable backends "
+"called \"spider queues\" (#220)"
+msgstr ""
+
+#: ../../../news/0.x.rst:762
+msgid ""
+"New persistent spider queue (based on SQLite) (#198), available by default, "
+"which allows to start Scrapy in server mode and then schedule spiders to run."
+msgstr ""
+
+#: ../../../news/0.x.rst:763
+msgid ""
+"Added documentation for Scrapy command-line tool and all its available sub-"
+"commands. (documentation available)"
+msgstr ""
+
+#: ../../../news/0.x.rst:764
+msgid "Feed exporters with pluggable backends (#197) (documentation available)"
+msgstr ""
+
+#: ../../../news/0.x.rst:765
+msgid "Deferred signals (#193)"
+msgstr ""
+
+#: ../../../news/0.x.rst:766
+msgid ""
+"Added two new methods to item pipeline open_spider(), close_spider() with "
+"deferred support (#195)"
+msgstr ""
+
+#: ../../../news/0.x.rst:767
+msgid "Support for overriding default request headers per spider (#181)"
+msgstr ""
+
+#: ../../../news/0.x.rst:768
+msgid ""
+"Replaced default Spider Manager with one with similar functionality but not "
+"depending on Twisted Plugins (#186)"
+msgstr ""
+
+#: ../../../news/0.x.rst:769
+msgid ""
+"Split Debian package into two packages - the library and the service (#187)"
+msgstr ""
+
+#: ../../../news/0.x.rst:770
+msgid "Scrapy log refactoring (#188)"
+msgstr ""
+
+#: ../../../news/0.x.rst:771
+msgid ""
+"New extension for keeping persistent spider contexts among different runs "
+"(#203)"
+msgstr ""
+
+#: ../../../news/0.x.rst:772
+msgid "Added ``dont_redirect`` request.meta key for avoiding redirects (#233)"
+msgstr ""
+
+#: ../../../news/0.x.rst:773
+msgid "Added ``dont_retry`` request.meta key for avoiding retries (#234)"
+msgstr ""
+
+#: ../../../news/0.x.rst:776
+msgid "Command-line tool changes"
+msgstr ""
+
+#: ../../../news/0.x.rst:778
+msgid ""
+"New ``scrapy`` command which replaces the old ``scrapy-ctl.py`` (#199) - "
+"there is only one global ``scrapy`` command now, instead of one ``scrapy-ctl."
+"py`` per project - Added ``scrapy.bat`` script for running more conveniently "
+"from Windows"
+msgstr ""
+
+#: ../../../news/0.x.rst:781
+msgid "Added bash completion to command-line tool (#210)"
+msgstr ""
+
+#: ../../../news/0.x.rst:782
+msgid "Renamed command ``start`` to ``runserver`` (#209)"
+msgstr ""
+
+#: ../../../news/0.x.rst:785 ../../../news/0.x.rst:847
+msgid "API changes"
+msgstr ""
+
+#: ../../../news/0.x.rst:787
+msgid ""
+"``url`` and ``body`` attributes of Request objects are now read-only (#230)"
+msgstr ""
+
+#: ../../../news/0.x.rst:788
+msgid ""
+"``Request.copy()`` and ``Request.replace()`` now also copies their "
+"``callback`` and ``errback`` attributes (#231)"
+msgstr ""
+
+#: ../../../news/0.x.rst:789
+msgid ""
+"Removed ``UrlFilterMiddleware`` from ``scrapy.contrib`` (already disabled by "
+"default)"
+msgstr ""
+
+#: ../../../news/0.x.rst:790
+msgid ""
+"Offsite middleware doesn't filter out any request coming from a spider that "
+"doesn't have a allowed_domains attribute (#225)"
+msgstr ""
+
+#: ../../../news/0.x.rst:791
+msgid ""
+"Removed Spider Manager ``load()`` method. Now spiders are loaded in the "
+"``__init__`` method itself."
+msgstr ""
+
+#: ../../../news/0.x.rst:792
+msgid "Changes to Scrapy Manager (now called \"Crawler\"):"
+msgstr ""
+
+#: ../../../news/0.x.rst:793
+msgid ""
+"``scrapy.core.manager.ScrapyManager`` class renamed to ``scrapy.crawler."
+"Crawler``"
+msgstr ""
+
+#: ../../../news/0.x.rst:794
+msgid ""
+"``scrapy.core.manager.scrapymanager`` singleton moved to ``scrapy.project."
+"crawler``"
+msgstr ""
+
+#: ../../../news/0.x.rst:795
+msgid ""
+"Moved module: ``scrapy.contrib.spidermanager`` to ``scrapy.spidermanager``"
+msgstr ""
+
+#: ../../../news/0.x.rst:796
+msgid ""
+"Spider Manager singleton moved from ``scrapy.spider.spiders`` to the "
+"``spiders`` attribute of ``scrapy.project.crawler`` singleton."
+msgstr ""
+
+#: ../../../news/0.x.rst:797
+msgid "moved Stats Collector classes: (#204)"
+msgstr ""
+
+#: ../../../news/0.x.rst:798
+msgid ""
+"``scrapy.stats.collector.StatsCollector`` to ``scrapy.statscol."
+"StatsCollector``"
+msgstr ""
+
+#: ../../../news/0.x.rst:799
+msgid ""
+"``scrapy.stats.collector.SimpledbStatsCollector`` to ``scrapy.contrib."
+"statscol.SimpledbStatsCollector``"
+msgstr ""
+
+#: ../../../news/0.x.rst:800
+msgid ""
+"default per-command settings are now specified in the ``default_settings`` "
+"attribute of command object class (#201)"
+msgstr ""
+
+#: ../../../news/0.x.rst:801
+msgid ""
+"changed arguments of Item pipeline ``process_item()`` method from ``(spider, "
+"item)`` to ``(item, spider)``"
+msgstr ""
+
+#: ../../../news/0.x.rst:802 ../../../news/0.x.rst:804
+#: ../../../news/0.x.rst:806
+msgid "backward compatibility kept (with deprecation warning)"
+msgstr ""
+
+#: ../../../news/0.x.rst:803
+msgid "moved ``scrapy.core.signals`` module to ``scrapy.signals``"
+msgstr ""
+
+#: ../../../news/0.x.rst:805
+msgid "moved ``scrapy.core.exceptions`` module to ``scrapy.exceptions``"
+msgstr ""
+
+#: ../../../news/0.x.rst:807
+msgid "added ``handles_request()`` class method to ``BaseSpider``"
+msgstr ""
+
+#: ../../../news/0.x.rst:808
+msgid ""
+"dropped ``scrapy.log.exc()`` function (use ``scrapy.log.err()`` instead)"
+msgstr ""
+
+#: ../../../news/0.x.rst:809
+msgid "dropped ``component`` argument of ``scrapy.log.msg()`` function"
+msgstr ""
+
+#: ../../../news/0.x.rst:810
+msgid "dropped ``scrapy.log.log_level`` attribute"
+msgstr ""
+
+#: ../../../news/0.x.rst:811
+msgid ""
+"Added ``from_settings()`` class methods to Spider Manager, and Item Pipeline "
+"Manager"
+msgstr ""
+
+#: ../../../news/0.x.rst:816
+msgid ""
+"Added ``HTTPCACHE_IGNORE_SCHEMES`` setting to ignore certain schemes on !"
+"HttpCacheMiddleware (#225)"
+msgstr ""
+
+#: ../../../news/0.x.rst:817
+msgid ""
+"Added ``SPIDER_QUEUE_CLASS`` setting which defines the spider queue to use "
+"(#220)"
+msgstr ""
+
+#: ../../../news/0.x.rst:818
+msgid "Added ``KEEP_ALIVE`` setting (#220)"
+msgstr ""
+
+#: ../../../news/0.x.rst:819
+msgid "Removed ``SERVICE_QUEUE`` setting (#220)"
+msgstr ""
+
+#: ../../../news/0.x.rst:820
+msgid "Removed ``COMMANDS_SETTINGS_MODULE`` setting (#201)"
+msgstr ""
+
+#: ../../../news/0.x.rst:821
+msgid ""
+"Renamed ``REQUEST_HANDLERS`` to ``DOWNLOAD_HANDLERS`` and make download "
+"handlers classes (instead of functions)"
+msgstr ""
+
+#: ../../../news/0.x.rst:824
+msgid "Scrapy 0.9 (2010-06-28)"
+msgstr ""
+
+#: ../../../news/0.x.rst:831
+msgid "Added SMTP-AUTH support to scrapy.mail"
+msgstr ""
+
+#: ../../../news/0.x.rst:832
+msgid "New settings added: ``MAIL_USER``, ``MAIL_PASS`` (:rev:`2065` | #149)"
+msgstr ""
+
+#: ../../../news/0.x.rst:833
+msgid ""
+"Added new scrapy-ctl view command - To view URL in the browser, as seen by "
+"Scrapy (:rev:`2039`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:834
+msgid ""
+"Added web service for controlling Scrapy process (this also deprecates the "
+"web console. (:rev:`2053` | #167)"
+msgstr ""
+
+#: ../../../news/0.x.rst:835
+msgid ""
+"Support for running Scrapy as a service, for production systems (:rev:"
+"`1988`, :rev:`2054`, :rev:`2055`, :rev:`2056`, :rev:`2057` | #168)"
+msgstr ""
+
+#: ../../../news/0.x.rst:836
+msgid ""
+"Added wrapper induction library (documentation only available in source code "
+"for now). (:rev:`2011`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:837
+msgid ""
+"Simplified and improved response encoding support (:rev:`1961`, :rev:`1969`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:838
+msgid "Added ``LOG_ENCODING`` setting (:rev:`1956`, documentation available)"
+msgstr ""
+
+#: ../../../news/0.x.rst:839
+msgid ""
+"Added ``RANDOMIZE_DOWNLOAD_DELAY`` setting (enabled by default) (:rev:"
+"`1923`, doc available)"
+msgstr ""
+
+#: ../../../news/0.x.rst:840
+msgid "``MailSender`` is no longer IO-blocking (:rev:`1955` | #146)"
+msgstr ""
+
+#: ../../../news/0.x.rst:841
+msgid ""
+"Linkextractors and new Crawlspider now handle relative base tag urls (:rev:"
+"`1960` | #148)"
+msgstr ""
+
+#: ../../../news/0.x.rst:842
+msgid ""
+"Several improvements to Item Loaders and processors (:rev:`2022`, :rev:"
+"`2023`, :rev:`2024`, :rev:`2025`, :rev:`2026`, :rev:`2027`, :rev:`2028`, :"
+"rev:`2029`, :rev:`2030`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:843
+msgid ""
+"Added support for adding variables to telnet console (:rev:`2047` | #165)"
+msgstr ""
+
+#: ../../../news/0.x.rst:844
+msgid "Support for requests without callbacks (:rev:`2050` | #166)"
+msgstr ""
+
+#: ../../../news/0.x.rst:849
+msgid "Change ``Spider.domain_name`` to ``Spider.name`` (SEP-012, :rev:`1975`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:850
+msgid "``Response.encoding`` is now the detected encoding (:rev:`1961`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:851
+msgid ""
+"``HttpErrorMiddleware`` now returns None or raises an exception (:rev:`2006` "
+"| #157)"
+msgstr ""
+
+#: ../../../news/0.x.rst:852
+msgid ""
+"``scrapy.command`` modules relocation (:rev:`2035`, :rev:`2036`, :rev:`2037`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:853
+msgid "Added ``ExecutionQueue`` for feeding spiders to scrape (:rev:`2034`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:854
+msgid "Removed ``ExecutionEngine`` singleton (:rev:`2039`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:855
+msgid ""
+"Ported ``S3ImagesStore`` (images pipeline) to use boto and threads (:rev:"
+"`2033`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:856
+msgid ""
+"Moved module: ``scrapy.management.telnet`` to ``scrapy.telnet`` (:rev:`2047`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:859
+msgid "Changes to default settings"
+msgstr ""
+
+#: ../../../news/0.x.rst:861
+msgid "Changed default ``SCHEDULER_ORDER`` to ``DFO`` (:rev:`1939`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:864
+msgid "Scrapy 0.8 (2009-12-12)"
+msgstr ""
+
+#: ../../../news/0.x.rst:869
+msgid "New features"
+msgstr ""
+
+#: ../../../news/0.x.rst:871
+msgid "Added DEFAULT_RESPONSE_ENCODING setting (:rev:`1809`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:872
+msgid ""
+"Added ``dont_click`` argument to ``FormRequest.from_response()`` method (:"
+"rev:`1813`, :rev:`1816`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:873
+msgid ""
+"Added ``clickdata`` argument to ``FormRequest.from_response()`` method (:rev:"
+"`1802`, :rev:`1803`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:874
+msgid ""
+"Added support for HTTP proxies (``HttpProxyMiddleware``) (:rev:`1781`, :rev:"
+"`1785`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:875
+msgid ""
+"Offsite spider middleware now logs messages when filtering out requests (:"
+"rev:`1841`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:878
+msgid "Backward-incompatible changes"
+msgstr ""
+
+#: ../../../news/0.x.rst:880
+msgid ""
+"Changed ``scrapy.utils.response.get_meta_refresh()`` signature (:rev:`1804`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:881
+msgid ""
+"Removed deprecated ``scrapy.item.ScrapedItem`` class - use ``scrapy.item."
+"Item instead`` (:rev:`1838`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:882
+msgid ""
+"Removed deprecated ``scrapy.xpath`` module - use ``scrapy.selector`` "
+"instead. (:rev:`1836`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:883
+msgid ""
+"Removed deprecated ``core.signals.domain_open`` signal - use ``core.signals."
+"domain_opened`` instead (:rev:`1822`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:884
+msgid "``log.msg()`` now receives a ``spider`` argument (:rev:`1822`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:885
+msgid ""
+"Old domain argument has been deprecated and will be removed in 0.9. For "
+"spiders, you should always use the ``spider`` argument and pass spider "
+"references. If you really want to pass a string, use the ``component`` "
+"argument instead."
+msgstr ""
+
+#: ../../../news/0.x.rst:886
+msgid ""
+"Changed core signals ``domain_opened``, ``domain_closed``, ``domain_idle``"
+msgstr ""
+
+#: ../../../news/0.x.rst:887
+msgid "Changed Item pipeline to use spiders instead of domains"
+msgstr ""
+
+#: ../../../news/0.x.rst:888
+msgid ""
+"The ``domain`` argument of  ``process_item()`` item pipeline method was "
+"changed to  ``spider``, the new signature is: ``process_item(spider, item)`` "
+"(:rev:`1827` | #105)"
+msgstr ""
+
+#: ../../../news/0.x.rst:889
+msgid ""
+"To quickly port your code (to work with Scrapy 0.8) just use ``spider."
+"domain_name`` where you previously used ``domain``."
+msgstr ""
+
+#: ../../../news/0.x.rst:890
+msgid ""
+"Changed Stats API to use spiders instead of domains (:rev:`1849` | #113)"
+msgstr ""
+
+#: ../../../news/0.x.rst:891
+msgid ""
+"``StatsCollector`` was changed to receive spider references (instead of "
+"domains) in its methods (``set_value``, ``inc_value``, etc)."
+msgstr ""
+
+#: ../../../news/0.x.rst:892
+msgid "added ``StatsCollector.iter_spider_stats()`` method"
+msgstr ""
+
+#: ../../../news/0.x.rst:893
+msgid "removed ``StatsCollector.list_domains()`` method"
+msgstr ""
+
+#: ../../../news/0.x.rst:894
+msgid ""
+"Also, Stats signals were renamed and now pass around spider references "
+"(instead of domains). Here's a summary of the changes:"
+msgstr ""
+
+#: ../../../news/0.x.rst:895
+msgid ""
+"To quickly port your code (to work with Scrapy 0.8) just use ``spider."
+"domain_name`` where you previously used ``domain``. ``spider_stats`` "
+"contains exactly the same data as ``domain_stats``."
+msgstr ""
+
+#: ../../../news/0.x.rst:896
+msgid ""
+"``CloseDomain`` extension moved to ``scrapy.contrib.closespider."
+"CloseSpider`` (:rev:`1833`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:897
+msgid "Its settings were also renamed:"
+msgstr ""
+
+#: ../../../news/0.x.rst:898
+msgid "``CLOSEDOMAIN_TIMEOUT`` to ``CLOSESPIDER_TIMEOUT``"
+msgstr ""
+
+#: ../../../news/0.x.rst:899
+msgid "``CLOSEDOMAIN_ITEMCOUNT`` to ``CLOSESPIDER_ITEMCOUNT``"
+msgstr ""
+
+#: ../../../news/0.x.rst:900
+msgid ""
+"Removed deprecated ``SCRAPYSETTINGS_MODULE`` environment variable - use "
+"``SCRAPY_SETTINGS_MODULE`` instead (:rev:`1840`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:901
+msgid ""
+"Renamed setting: ``REQUESTS_PER_DOMAIN`` to "
+"``CONCURRENT_REQUESTS_PER_SPIDER`` (:rev:`1830`, :rev:`1844`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:902
+msgid ""
+"Renamed setting: ``CONCURRENT_DOMAINS`` to ``CONCURRENT_SPIDERS`` (:rev:"
+"`1830`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:903
+msgid "Refactored HTTP Cache middleware"
+msgstr ""
+
+#: ../../../news/0.x.rst:904
+msgid ""
+"HTTP Cache middleware has been heavily refactored, retaining the same "
+"functionality except for the domain sectorization which was removed. (:rev:"
+"`1843` )"
+msgstr ""
+
+#: ../../../news/0.x.rst:905
+msgid ""
+"Renamed exception: ``DontCloseDomain`` to ``DontCloseSpider`` (:rev:`1859` | "
+"#120)"
+msgstr ""
+
+#: ../../../news/0.x.rst:906
+msgid ""
+"Renamed extension: ``DelayedCloseDomain`` to ``SpiderCloseDelay`` (:rev:"
+"`1861` | #121)"
+msgstr ""
+
+#: ../../../news/0.x.rst:907
+msgid ""
+"Removed obsolete ``scrapy.utils.markup.remove_escape_chars`` function - use "
+"``scrapy.utils.markup.replace_escape_chars`` instead (:rev:`1865`)"
+msgstr ""
+
+#: ../../../news/0.x.rst:910
+msgid "Scrapy 0.7 (2009-10-07)"
+msgstr ""
+
+#: ../../../news/0.x.rst:912
+msgid "First release of Scrapy."
+msgstr ""

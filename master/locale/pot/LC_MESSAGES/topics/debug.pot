@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:53+0000\n"
+"POT-Creation-Date: 2026-09-21 15:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgstr ""
 #: ../../../topics/debug.rst:7
 msgid ""
 "This document explains the most common techniques for debugging spiders. "
-"Consider the following Scrapy spider below:"
+"Consider the following Scrapy spider:"
 msgstr ""
 
 #: ../../../topics/debug.rst:11
@@ -63,9 +63,9 @@ msgstr ""
 
 #: ../../../topics/debug.rst:43
 msgid ""
-"Basically this is a simple spider which parses two pages of items (the "
-"start_urls). Items also have a details page with additional information, so "
-"we use the ``cb_kwargs`` functionality of :class:`~scrapy.Request` to pass a "
+"Basically, this is a simple spider that parses two pages of items (the start "
+"URLs). Items also have a details page with additional information, so we use "
+"the ``cb_kwargs`` functionality of :class:`~scrapy.Request` to pass a "
 "partially populated item."
 msgstr ""
 
@@ -76,9 +76,10 @@ msgstr ""
 #: ../../../topics/debug.rst:52
 msgid ""
 "The most basic way of checking the output of your spider is to use the :"
-"command:`parse` command. It allows to check the behaviour of different parts "
-"of the spider at the method level. It has the advantage of being flexible "
-"and simple to use, but does not allow debugging code inside a method."
+"command:`parse` command. It allows you to check the behaviour of different "
+"parts of the spider at the method level. It has the advantage of being "
+"flexible and simple to use, but it does not allow debugging code inside a "
+"method."
 msgstr ""
 
 #: ../../../topics/debug.rst:61
@@ -133,7 +134,7 @@ msgstr ""
 
 #: ../../../topics/debug.rst:93
 msgid ""
-"Checking items scraped from a single start_url, can also be easily achieved "
+"Checking items scraped from a single start URL can also be easily achieved "
 "using::"
 msgstr ""
 
@@ -147,10 +148,10 @@ msgstr ""
 
 #: ../../../topics/debug.rst:104
 msgid ""
-"While the :command:`parse` command is very useful for checking behaviour of "
-"a spider, it is of little help to check what happens inside a callback, "
-"besides showing the response received and the output. How to debug the "
-"situation when ``parse_details`` sometimes receives no item?"
+"While the :command:`parse` command is very useful for checking the behaviour "
+"of a spider, it is of little help when checking what happens inside a "
+"callback besides showing the response received and the output. How do you "
+"debug the situation when ``parse_details`` sometimes receives no item?"
 msgstr ""
 
 #: ../../../topics/debug.rst:111
@@ -177,12 +178,23 @@ msgid "See also: :ref:`topics-shell-inspect-response`."
 msgstr ""
 
 #: ../../../topics/debug.rst:130
-msgid "Open in browser"
+msgid "Scrapy MCP server"
 msgstr ""
 
 #: ../../../topics/debug.rst:132
 msgid ""
-"Sometimes you just want to see how a certain response looks in a browser, "
+"You can use the :ref:`Scrapy MCP server <using-mcp-server>` to connect a "
+"coding agent to a running crawl, so that it can check the progress of the "
+"crawl and investigate or even modify its runtime state."
+msgstr ""
+
+#: ../../../topics/debug.rst:138
+msgid "Open in browser"
+msgstr ""
+
+#: ../../../topics/debug.rst:140
+msgid ""
+"Sometimes you just want to see how a certain response looks in a browser; "
 "you can use the :func:`~scrapy.utils.response.open_in_browser` function for "
 "that:"
 msgstr ""
@@ -210,18 +222,26 @@ msgid ""
 "        open_in_browser(response)"
 msgstr ""
 
-#: ../../../topics/debug.rst:139
+#: ../../../../scrapy/utils/response.py:docstring of
+#: scrapy.utils.response.open_in_browser:17
+msgid ""
+"On the Windows Subsystem for Linux, set the ``BROWSER`` environment variable "
+"to `wslview <https://github.com/wslutilities/wslu>`_ to open the response in "
+"a Windows browser, which cannot read Linux paths otherwise."
+msgstr ""
+
+#: ../../../topics/debug.rst:147
 msgid "Logging"
 msgstr ""
 
-#: ../../../topics/debug.rst:141
+#: ../../../topics/debug.rst:149
 msgid ""
 "Logging is another useful option for getting information about your spider "
 "run. Although not as convenient, it comes with the advantage that the logs "
-"will be available in all future runs should they be necessary again:"
+"will be available in all future runs should you need them again:"
 msgstr ""
 
-#: ../../../topics/debug.rst:145
+#: ../../../topics/debug.rst:153
 msgid ""
 "def parse_details(self, response, item=None):\n"
 "    if item:\n"
@@ -231,21 +251,108 @@ msgid ""
 "        self.logger.warning(\"No item received for %s\", response.url)"
 msgstr ""
 
-#: ../../../topics/debug.rst:154
+#: ../../../topics/debug.rst:162
 msgid "For more information, check the :ref:`topics-logging` section."
 msgstr ""
 
-#: ../../../topics/debug.rst:159
+#: ../../../topics/debug.rst:167
+msgid "Inspecting live traffic"
+msgstr ""
+
+#: ../../../topics/debug.rst:169
+msgid ""
+"Sometimes it's important to see what exactly was sent to the server or "
+"received from it, such as header values, formatting and order (Scrapy cannot "
+"log this, as underlying HTTP libraries produce the final values for request "
+"headers and canonicalize response ones) or TLS handshake details. There are "
+"two ways to see and log the real traffic of a running spider:"
+msgstr ""
+
+#: ../../../topics/debug.rst:175
+msgid ""
+"Capture the traffic with a tool such as Wireshark_. As your requests likely "
+"use TLS, you will need to decrypt the traffic (see the `Wireshark TLS "
+"documentation`_ for detailed instructions). You will need the encryption key "
+"which you can save as described in :ref:`debug-tls`. As this way of "
+"capturing traffic is passive, it cannot interfere with the spider."
+msgstr ""
+
+#: ../../../topics/debug.rst:181
+msgid ""
+"Use mitmproxy_ between the spider and the server, as described below. This "
+"is easier to set up and in addition to inspecting the traffic allows "
+"modifying it, but it's not passive: there is now a connection between Scrapy "
+"and mitmproxy and another one between mitmproxy and the server instead of a "
+"direct connection between Scrapy and the server. Due to this, low-level "
+"connection behavior is different from normal crawls, which may change the "
+"server behavior, and you cannot easily use mitmproxy and regular proxies in "
+"the same crawl."
+msgstr ""
+
+#: ../../../topics/debug.rst:191
+msgid "Using mitmdump"
+msgstr ""
+
+#: ../../../topics/debug.rst:193
+msgid ""
+"You should refer to the mitmproxy documentation for more details, additional "
+"interception modes and advanced features but here is one simple way to use "
+"it. First, run a ``mitmdump`` instance (it will use the port 8080 by "
+"default), asking it to log the traffic details on the terminal (``--flow-"
+"detail 2`` will log headers but not bodies):"
+msgstr ""
+
+#: ../../../topics/debug.rst:199
+msgid "mitmdump --flow-detail 2"
+msgstr ""
+
+#: ../../../topics/debug.rst:203
+msgid ""
+"Then configure ``http://127.0.0.1:8080`` as a proxy in your spider using :"
+"class:`~scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware`:"
+msgstr ""
+
+#: ../../../topics/debug.rst:206
+msgid "https_proxy=http://127.0.0.1:8080 scrapy crawl myspider"
+msgstr ""
+
+#: ../../../topics/debug.rst:210
+msgid ""
+"To inspect only some requests, set their :reqmeta:`proxy` meta key instead."
+msgstr ""
+
+#: ../../../topics/debug.rst:219
+msgid "Decrypting TLS traffic"
+msgstr ""
+
+#: ../../../topics/debug.rst:221
+msgid ""
+"Scrapy writes the session keys of its HTTPS connections to the file that the "
+"``SSLKEYLOGFILE`` environment variable points to, using the `NSS key log "
+"format`_ that traffic analysis tools such as Wireshark understand."
+msgstr ""
+
+#: ../../../topics/debug.rst:227
+msgid "SSLKEYLOGFILE=/tmp/sslkeylog scrapy crawl myspider"
+msgstr ""
+
+#: ../../../topics/debug.rst:233
+msgid ""
+"Anyone who can read the key log file can decrypt the traffic of the "
+"connections recorded in it, including any credentials that they carry."
+msgstr ""
+
+#: ../../../topics/debug.rst:239
 msgid "Visual Studio Code"
 msgstr ""
 
-#: ../../../topics/debug.rst:163
+#: ../../../topics/debug.rst:243
 msgid ""
 "To debug spiders with Visual Studio Code you can use the following ``launch."
 "json``::"
 msgstr ""
 
-#: ../../../topics/debug.rst:165
+#: ../../../topics/debug.rst:245
 msgid ""
 "{\n"
 "    \"version\": \"0.1.0\",\n"
@@ -265,7 +372,7 @@ msgid ""
 "}"
 msgstr ""
 
-#: ../../../topics/debug.rst:183
+#: ../../../topics/debug.rst:263
 msgid ""
 "Also, make sure you enable \"User Uncaught Exceptions\", to catch exceptions "
 "in your Scrapy spider."

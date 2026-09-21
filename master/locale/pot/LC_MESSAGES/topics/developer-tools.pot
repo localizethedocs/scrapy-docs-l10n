@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:53+0000\n"
+"POT-Creation-Date: 2026-09-21 15:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,8 +24,8 @@ msgstr ""
 #: ../../../topics/developer-tools.rst:7
 msgid ""
 "Here is a general guide on how to use your browser's Developer Tools to ease "
-"the scraping process. Today almost all browsers come with built in "
-"`Developer Tools`_ and although we will use Firefox in this guide, the "
+"the scraping process. Today almost all browsers come with built-in "
+"`Developer Tools`_, and although we will use Firefox in this guide, the "
 "concepts are applicable to any other browser."
 msgstr ""
 
@@ -43,8 +43,8 @@ msgstr ""
 msgid ""
 "Since Developer Tools operate on a live browser DOM, what you'll actually "
 "see when inspecting the page source is not the original HTML, but a modified "
-"one after applying some browser clean up and executing JavaScript code.  "
-"Firefox, in particular, is known for adding ``<tbody>`` elements to tables.  "
+"one after applying some browser clean up and executing JavaScript code. "
+"Firefox, in particular, is known for adding ``<tbody>`` elements to tables. "
 "Scrapy, on the other hand, does not modify the original page HTML, so you "
 "won't be able to extract any data if you use ``<tbody>`` in your XPath "
 "expressions."
@@ -82,32 +82,32 @@ msgid ""
 "By far the most handy feature of the Developer Tools is the `Inspector` "
 "feature, which allows you to inspect the underlying HTML code of any "
 "webpage. To demonstrate the Inspector, let's look at the `quotes.toscrape."
-"com`_-site."
+"com`_ site."
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:49
+#: ../../../topics/developer-tools.rst:48
 msgid ""
 "On the site we have a total of ten quotes from various authors with specific "
 "tags, as well as the Top Ten Tags. Let's say we want to extract all the "
 "quotes on this page, without any meta-information about authors, tags, etc."
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:53
+#: ../../../topics/developer-tools.rst:52
 msgid ""
-"Instead of viewing the whole source code for the page, we can simply right "
+"Instead of viewing the whole source code for the page, we can simply right-"
 "click on a quote and select ``Inspect Element (Q)``, which opens up the "
 "`Inspector`. In it you should see something like this:"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:57
+#: ../../../topics/developer-tools.rst:56
 msgid "Firefox's Inspector-tool"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:62
+#: ../../../topics/developer-tools.rst:61
 msgid "The interesting part for us is this:"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:64
+#: ../../../topics/developer-tools.rst:63
 msgid ""
 "<div class=\"quote\" itemscope=\"\" itemtype=\"http://schema.org/"
 "CreativeWork\">\n"
@@ -117,7 +117,7 @@ msgid ""
 "</div>"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:72
+#: ../../../topics/developer-tools.rst:71
 msgid ""
 "If you hover over the first ``div`` directly above the ``span`` tag "
 "highlighted in the screenshot, you'll see that the corresponding section of "
@@ -125,33 +125,33 @@ msgid ""
 "find our quote text anywhere."
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:77
+#: ../../../topics/developer-tools.rst:76
 msgid ""
 "The advantage of the `Inspector` is that it automatically expands and "
 "collapses sections and tags of a webpage, which greatly improves "
 "readability. You can expand and collapse a tag by clicking on the arrow in "
-"front of it or by double clicking directly on the tag. If we expand the "
-"``span`` tag with the ``class= \"text\"`` we will see the quote-text we "
+"front of it or by double-clicking directly on the tag. If we expand the "
+"``span`` tag with the ``class=\"text\"`` attribute, we see the quote text we "
 "clicked on. The `Inspector` lets you copy XPaths to selected elements. Let's "
 "try it out."
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:84
+#: ../../../topics/developer-tools.rst:83
 msgid ""
 "First open the Scrapy shell at https://quotes.toscrape.com/ in a terminal:"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:86
+#: ../../../topics/developer-tools.rst:85
 msgid "$ scrapy shell \"https://quotes.toscrape.com/\""
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:90
+#: ../../../topics/developer-tools.rst:89
 msgid ""
 "Then, back to your web browser, right-click on the ``span`` tag, select "
 "``Copy > XPath`` and paste it in the Scrapy shell like so:"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:97
+#: ../../../topics/developer-tools.rst:96
 msgid ""
 ">>> response.xpath(\"/html/body/div/div[2]/div[1]/div[1]/span[1]/text()\")."
 "getall()\n"
@@ -159,25 +159,25 @@ msgid ""
 "be changed without changing our thinking.”']"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:102
+#: ../../../topics/developer-tools.rst:101
 msgid ""
-"Adding ``text()`` at the end we are able to extract the first quote with "
+"Adding ``text()`` at the end, we are able to extract the first quote with "
 "this basic selector. But this XPath is not really that clever. All it does "
 "is go down a desired path in the source code starting from ``html``. So "
 "let's see if we can refine our XPath a bit:"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:107
+#: ../../../topics/developer-tools.rst:106
 msgid ""
 "If we check the `Inspector` again we'll see that directly beneath our "
 "expanded ``div`` tag we have nine identical ``div`` tags, each with the same "
 "attributes as our first. If we expand any of them, we'll see the same "
-"structure as with our first quote: Two ``span`` tags and one ``div`` tag. We "
+"structure as with our first quote: two ``span`` tags and one ``div`` tag. We "
 "can expand each ``span`` tag with the ``class=\"text\"`` inside our ``div`` "
 "tags and see each quote:"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:114
+#: ../../../topics/developer-tools.rst:113
 msgid ""
 "<div class=\"quote\" itemscope=\"\" itemtype=\"http://schema.org/"
 "CreativeWork\">\n"
@@ -190,14 +190,14 @@ msgid ""
 "</div>"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:125
+#: ../../../topics/developer-tools.rst:124
 msgid ""
 "With this knowledge we can refine our XPath: Instead of a path to follow, "
 "we'll simply select all ``span`` tags with the ``class=\"text\"`` by using "
 "the `has-class-extension`_:"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:129
+#: ../../../topics/developer-tools.rst:128
 msgid ""
 ">>> response.xpath('//span[has-class(\"text\")]/text()').getall()\n"
 "['“The world as we have created it is a process of our thinking. It cannot "
@@ -209,7 +209,7 @@ msgid ""
 "...]"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:137
+#: ../../../topics/developer-tools.rst:136
 msgid ""
 "And with one simple, cleverer XPath we are able to extract all quotes from "
 "the page. We could have constructed a loop over our first XPath to increase "
@@ -218,19 +218,19 @@ msgid ""
 "were able to extract all quotes in one line."
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:143
+#: ../../../topics/developer-tools.rst:142
 msgid ""
 "The `Inspector` has a lot of other helpful features, such as searching in "
 "the source code or directly scrolling to an element you selected. Let's "
 "demonstrate a use case:"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:147
+#: ../../../topics/developer-tools.rst:146
 msgid ""
 "Say you want to find the ``Next`` button on the page. Type ``Next`` into the "
-"search bar on the top right of the `Inspector`. You should get two results. "
+"search bar on the top-right of the `Inspector`. You should get two results. "
 "The first is a ``li`` tag with the ``class=\"next\"``, the second the text "
-"of an ``a`` tag. Right click on the ``a`` tag and select ``Scroll into "
+"of an ``a`` tag. Right-click on the ``a`` tag and select ``Scroll into "
 "View``. If you hover over the tag, you'll see the button highlighted. From "
 "here we could easily create a :ref:`Link Extractor <topics-link-extractors>` "
 "to follow the pagination. On a simple site such as this, there may not be "
@@ -238,7 +238,7 @@ msgid ""
 "can be quite useful on complex sites."
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:157
+#: ../../../topics/developer-tools.rst:156
 msgid ""
 "Note that the search bar can also be used to search for and test CSS "
 "selectors. For example, you could search for ``span.text`` to find all quote "
@@ -246,56 +246,56 @@ msgid ""
 "tag with the ``class=\"text\"`` in the page."
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:165
-msgid "The Network-tool"
+#: ../../../topics/developer-tools.rst:164
+msgid "The Network tool"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:166
+#: ../../../topics/developer-tools.rst:165
 msgid ""
 "While scraping you may come across dynamic webpages where some parts of the "
 "page are loaded dynamically through multiple requests. While this can be "
-"quite tricky, the `Network`-tool in the Developer Tools greatly facilitates "
-"this task. To demonstrate the Network-tool, let's take a look at the page "
+"quite tricky, the `Network` tool in the Developer Tools greatly facilitates "
+"this task. To demonstrate the Network tool, let's take a look at the page "
 "`quotes.toscrape.com/scroll`_."
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:172
+#: ../../../topics/developer-tools.rst:171
 msgid ""
-"The page is quite similar to the basic `quotes.toscrape.com`_-page, but "
+"The page is quite similar to the basic `quotes.toscrape.com`_ page, but "
 "instead of the above-mentioned ``Next`` button, the page automatically loads "
 "new quotes when you scroll to the bottom. We could go ahead and try out "
 "different XPaths directly, but instead we'll check another quite useful "
 "command from the Scrapy shell:"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:180
+#: ../../../topics/developer-tools.rst:179
 msgid ""
 "$ scrapy shell \"quotes.toscrape.com/scroll\"\n"
 "(...)\n"
 ">>> view(response)"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:186
+#: ../../../topics/developer-tools.rst:185
 msgid ""
 "A browser window should open with the webpage but with one crucial "
 "difference: Instead of the quotes we just see a greenish bar with the word "
 "``Loading...``."
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:190
+#: ../../../topics/developer-tools.rst:189
 msgid "Response from quotes.toscrape.com/scroll"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:195
+#: ../../../topics/developer-tools.rst:194
 msgid ""
-"The ``view(response)`` command let's us view the response our shell or later "
+"The ``view(response)`` command lets us view the response our shell or later "
 "our spider receives from the server. Here we see that some basic template is "
-"loaded which includes the title, the login-button and the footer, but the "
+"loaded which includes the title, the login button and the footer, but the "
 "quotes are missing. This tells us that the quotes are being loaded from a "
-"different request than ``quotes.toscrape/scroll``."
+"different request than ``quotes.toscrape.com/scroll``."
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:202
+#: ../../../topics/developer-tools.rst:200
 msgid ""
 "If you click on the ``Network`` tab, you will probably only see two entries. "
 "The first thing we do is enable persistent logs by clicking on ``Persist "
@@ -304,59 +304,59 @@ msgid ""
 "default, since it gives us control on when to clear the logs."
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:209
+#: ../../../topics/developer-tools.rst:207
 msgid ""
 "If we reload the page now, you'll see the log get populated with six new "
 "requests."
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:212
+#: ../../../topics/developer-tools.rst:210
 msgid "Network tab with persistent logs and requests"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:217
+#: ../../../topics/developer-tools.rst:215
 msgid ""
 "Here we see every request that has been made when reloading the page and can "
 "inspect each request and its response. So let's find out where our quotes "
 "are coming from:"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:221
+#: ../../../topics/developer-tools.rst:219
 msgid ""
 "First click on the request with the name ``scroll``. On the right you can "
 "now inspect the request. In ``Headers`` you'll find details about the "
-"request headers, such as the URL, the method, the IP-address, and so on. "
+"request headers, such as the URL, the method, the IP address, and so on. "
 "We'll ignore the other tabs and click directly on ``Response``."
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:226
+#: ../../../topics/developer-tools.rst:224
 msgid ""
-"What you should see in the ``Preview`` pane is the rendered HTML-code, that "
-"is exactly what we saw when we called ``view(response)`` in the shell. "
-"Accordingly the ``type`` of the request in the log is ``html``. The other "
+"What you should see in the ``Preview`` pane is the rendered HTML code, "
+"exactly what we saw when we called ``view(response)`` in the shell. "
+"Accordingly, the ``type`` of the request in the log is ``html``. The other "
 "requests have types like ``css`` or ``js``, but what interests us is the one "
 "request called ``quotes?page=1`` with the type ``json``."
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:233
+#: ../../../topics/developer-tools.rst:230
 msgid ""
 "If we click on this request, we see that the request URL is ``https://quotes."
-"toscrape.com/api/quotes?page=1`` and the response is a JSON-object that "
+"toscrape.com/api/quotes?page=1`` and the response is a JSON object that "
 "contains our quotes. We can also right-click on the request and open ``Open "
 "in new tab`` to get a better overview."
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:238
-msgid "JSON-object returned from the quotes.toscrape API"
+#: ../../../topics/developer-tools.rst:235
+msgid "JSON object returned from the quotes.toscrape API"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:243
+#: ../../../topics/developer-tools.rst:240
 msgid ""
-"With this response we can now easily parse the JSON-object and also request "
+"With this response we can now easily parse the JSON object and also request "
 "each page to get every quote on the site:"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:246
+#: ../../../topics/developer-tools.rst:243
 msgid ""
 "import scrapy\n"
 "\n"
@@ -378,19 +378,19 @@ msgid ""
 "            yield scrapy.Request(url=url, callback=self.parse)"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:266
+#: ../../../topics/developer-tools.rst:263
 msgid ""
 "This spider starts at the first page of the quotes-API. With each response, "
 "we parse the ``response.text`` and assign it to ``data``. This lets us "
-"operate on the JSON-object like on a Python dictionary. We iterate through "
+"operate on the JSON object like on a Python dictionary. We iterate through "
 "the ``quotes`` and print out the ``quote[\"text\"]``. If the handy "
 "``has_next`` element is ``true`` (try loading `quotes.toscrape.com/api/"
-"quotes?page=10`_ in your browser or a page-number greater than 10), we "
+"quotes?page=10`_ in your browser or a page number greater than 10), we "
 "increment the ``page`` attribute and ``yield`` a new request, inserting the "
-"incremented page-number into our ``url``."
+"incremented page number into our ``url``."
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:278
+#: ../../../topics/developer-tools.rst:274
 msgid ""
 "In more complex websites, it could be difficult to easily reproduce the "
 "requests, as we could need to add ``headers`` or ``cookies`` to make it "
@@ -400,7 +400,7 @@ msgid ""
 "request:"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:285
+#: ../../../topics/developer-tools.rst:281
 msgid ""
 "from scrapy import Request\n"
 "\n"
@@ -420,7 +420,7 @@ msgid ""
 ")"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:299
+#: ../../../topics/developer-tools.rst:295
 msgid ""
 "Alternatively, if you want to know the arguments needed to recreate that "
 "request you can use the :func:`~scrapy.utils.curl.curl_to_request_kwargs` "
@@ -457,15 +457,15 @@ msgstr ""
 msgid "dictionary of Request kwargs"
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:305
+#: ../../../topics/developer-tools.rst:301
 msgid ""
 "Note that to translate a cURL command into a Scrapy request, you may use "
 "`curl2scrapy <https://michael-shub.github.io/curl2scrapy/>`_."
 msgstr ""
 
-#: ../../../topics/developer-tools.rst:308
+#: ../../../topics/developer-tools.rst:304
 msgid ""
-"As you can see, with a few inspections in the `Network`-tool we were able to "
+"As you can see, with a few inspections in the `Network` tool we were able to "
 "easily replicate the dynamic requests of the scrolling functionality of the "
 "page. Crawling dynamic pages can be quite daunting and pages can be very "
 "complex, but it (mostly) boils down to identifying the correct request and "

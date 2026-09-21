@@ -37,9 +37,9 @@
     "branch" : "master",
     "commit" : 
     {
-      "date" : "2026-07-27 12:19:12 +0200",
-      "hash" : "cec86f216e02072b2e9ed5b032810e061143277c",
-      "title" : "Remove remaining cross-imports in test modules. (#7782)"
+      "date" : "2026-09-21 17:15:31 +0200",
+      "hash" : "40dc142961080e37fdc2096ad1a79733bf932e45",
+      "title" : "Never fail decoding headers in to_unicode_dict() and to_tuple_list() (#8192)"
     }
   },
   "type" : "branch",

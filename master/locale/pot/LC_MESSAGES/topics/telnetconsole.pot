@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:53+0000\n"
+"POT-Creation-Date: 2026-09-21 15:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgstr ""
 #: ../../../topics/telnetconsole.rst:9
 msgid ""
 "Scrapy comes with a built-in telnet console for inspecting and controlling a "
-"Scrapy running process. The telnet console is just a regular python shell "
+"Scrapy running process. The telnet console is just a regular Python shell "
 "running inside the Scrapy process, so you can do literally anything from it."
 msgstr ""
 
@@ -58,8 +58,8 @@ msgid ""
 "``False``."
 msgstr ""
 
-#: ../../../topics/telnetconsole.rst:32 ../../../topics/telnetconsole.rst:195
-msgid ":ref:`security-telnet`"
+#: ../../../topics/telnetconsole.rst:32
+msgid ":ref:`security-telnet`, :ref:`using-mcp-server`"
 msgstr ""
 
 #: ../../../topics/telnetconsole.rst:37
@@ -243,8 +243,8 @@ msgid ""
 "engine.spider_is_idle()                         : False\n"
 "engine._slot.closing                            : False\n"
 "len(engine._slot.inprogress)                    : 16\n"
-"len(engine._slot.scheduler.dqs or [])           : 0\n"
-"len(engine._slot.scheduler.mqs)                 : 92\n"
+"len(engine.scheduler.dqs or [])                 : 0\n"
+"len(engine.scheduler.mqs)                       : 92\n"
 "len(engine.scraper.slot.queue)                  : 0\n"
 "len(engine.scraper.slot.active)                 : 0\n"
 "engine.scraper.slot.active_size                 : 0\n"
@@ -289,11 +289,44 @@ msgid ""
 "Connection closed by foreign host."
 msgstr ""
 
-#: ../../../topics/telnetconsole.rst:157
+#: ../../../topics/telnetconsole.rst:158
+msgid "Change concurrency and delays"
+msgstr ""
+
+#: ../../../topics/telnetconsole.rst:160
+msgid ""
+"The downloader checks its concurrency and delay attributes for every request "
+"it sends, so you can speed a crawl up or slow it down while it runs::"
+msgstr ""
+
+#: ../../../topics/telnetconsole.rst:163
+msgid ""
+"telnet localhost 6023\n"
+">>> downloader = engine.downloader\n"
+">>> downloader.total_concurrency = 32\n"
+">>> for slot in downloader.slots.values():\n"
+"...     slot.concurrency = 4\n"
+"...     slot.delay = 0.5\n"
+"...\n"
+">>>"
+msgstr ""
+
+#: ../../../topics/telnetconsole.rst:172
+msgid ""
+"``total_concurrency`` is :setting:`CONCURRENT_REQUESTS`, and ``slots`` maps "
+"the name of every :setting:`download slot <DOWNLOAD_SLOTS>` in use to an "
+"object whose ``concurrency`` and ``delay`` come from :setting:"
+"`CONCURRENT_REQUESTS_PER_DOMAIN` (or :setting:`CONCURRENT_REQUESTS_PER_IP`) "
+"and :setting:`DOWNLOAD_DELAY`. A slot created later, e.g. for a domain not "
+"visited yet, starts from those settings again, and :ref:`AutoThrottle "
+"<topics-autothrottle>` recalculates ``delay`` after every response."
+msgstr ""
+
+#: ../../../topics/telnetconsole.rst:184
 msgid "Telnet Console signals"
 msgstr ""
 
-#: ../../../topics/telnetconsole.rst:162
+#: ../../../topics/telnetconsole.rst:189
 msgid ""
 "Sent just before the telnet console is opened. You can hook up to this "
 "signal to add, remove or update the variables that will be available in the "
@@ -305,65 +338,69 @@ msgstr ""
 msgid "Parameters"
 msgstr ""
 
-#: ../../../topics/telnetconsole.rst:167
+#: ../../../topics/telnetconsole.rst:194
 msgid "the dict of telnet variables"
 msgstr ""
 
-#: ../../../topics/telnetconsole.rst:171
+#: ../../../topics/telnetconsole.rst:198
 msgid "Telnet settings"
 msgstr ""
 
-#: ../../../topics/telnetconsole.rst:173
+#: ../../../topics/telnetconsole.rst:200
 msgid "These are the settings that control the telnet console's behaviour:"
 msgstr ""
 
-#: ../../../topics/telnetconsole.rst:178
+#: ../../../topics/telnetconsole.rst:205
 msgid "TELNETCONSOLE_PORT"
 msgstr ""
 
-#: ../../../topics/telnetconsole.rst:180
+#: ../../../topics/telnetconsole.rst:207
 msgid "Default: ``[6023, 6073]``"
 msgstr ""
 
-#: ../../../topics/telnetconsole.rst:182
+#: ../../../topics/telnetconsole.rst:209
 msgid ""
 "The port range to use for the telnet console. If set to ``None``, a "
 "dynamically assigned port is used."
 msgstr ""
 
-#: ../../../topics/telnetconsole.rst:189
+#: ../../../topics/telnetconsole.rst:216
 msgid "TELNETCONSOLE_HOST"
 msgstr ""
 
-#: ../../../topics/telnetconsole.rst:191
+#: ../../../topics/telnetconsole.rst:218
 msgid "Default: ``'127.0.0.1'``"
 msgstr ""
 
-#: ../../../topics/telnetconsole.rst:193
+#: ../../../topics/telnetconsole.rst:220
 msgid "The interface the telnet console should listen on"
 msgstr ""
 
-#: ../../../topics/telnetconsole.rst:201
+#: ../../../topics/telnetconsole.rst:222
+msgid ":ref:`security-telnet`"
+msgstr ""
+
+#: ../../../topics/telnetconsole.rst:228
 msgid "TELNETCONSOLE_USERNAME"
 msgstr ""
 
-#: ../../../topics/telnetconsole.rst:203
+#: ../../../topics/telnetconsole.rst:230
 msgid "Default: ``'scrapy'``"
 msgstr ""
 
-#: ../../../topics/telnetconsole.rst:205
+#: ../../../topics/telnetconsole.rst:232
 msgid "The username used for the telnet console"
 msgstr ""
 
-#: ../../../topics/telnetconsole.rst:211
+#: ../../../topics/telnetconsole.rst:238
 msgid "TELNETCONSOLE_PASSWORD"
 msgstr ""
 
-#: ../../../topics/telnetconsole.rst:213
+#: ../../../topics/telnetconsole.rst:240
 msgid "Default: ``None``"
 msgstr ""
 
-#: ../../../topics/telnetconsole.rst:215
+#: ../../../topics/telnetconsole.rst:242
 msgid ""
 "The password used for the telnet console, default behaviour is to have it "
 "autogenerated"
