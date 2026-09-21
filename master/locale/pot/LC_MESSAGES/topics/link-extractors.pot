@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:53+0000\n"
+"POT-Creation-Date: 2026-09-21 15:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,33 +44,33 @@ msgstr ""
 msgid ""
 "You can also use link extractors in regular spiders. For example, you can "
 "instantiate :class:`LinkExtractor <scrapy.linkextractors.lxmlhtml."
-"LxmlLinkExtractor>` into a class variable in your spider, and use it from "
-"your spider callbacks:"
+"LxmlLinkExtractor>` as a class variable in your spider and use it from your "
+"spider callbacks:"
 msgstr ""
 
-#: ../../../topics/link-extractors.rst:23
+#: ../../../topics/link-extractors.rst:24
 msgid ""
 "def parse(self, response):\n"
 "    for link in self.link_extractor.extract_links(response):\n"
 "        yield Request(link.url, callback=self.parse)"
 msgstr ""
 
-#: ../../../topics/link-extractors.rst:32
+#: ../../../topics/link-extractors.rst:33
 msgid "Link extractor reference"
 msgstr ""
 
-#: ../../../topics/link-extractors.rst:37
+#: ../../../topics/link-extractors.rst:35
 msgid ""
 "The link extractor class is :class:`scrapy.linkextractors.lxmlhtml."
 "LxmlLinkExtractor`. For convenience it can also be imported as ``scrapy."
 "linkextractors.LinkExtractor``:"
 msgstr ""
 
-#: ../../../topics/link-extractors.rst:41
+#: ../../../topics/link-extractors.rst:39
 msgid "from scrapy.linkextractors import LinkExtractor"
 msgstr ""
 
-#: ../../../topics/link-extractors.rst:46
+#: ../../../topics/link-extractors.rst:44
 msgid "LxmlLinkExtractor"
 msgstr ""
 
@@ -89,7 +89,7 @@ msgstr ""
 #: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:4
 msgid ""
 "a single regular expression (or list of regular expressions) that the "
-"(absolute) urls must match in order to be extracted. If not given (or "
+"(absolute) URLs must match in order to be extracted. If not given (or "
 "empty), it will match all links."
 msgstr ""
 
@@ -97,23 +97,23 @@ msgstr ""
 #: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:9
 msgid ""
 "a single regular expression (or list of regular expressions) that the "
-"(absolute) urls must match in order to be excluded (i.e. not extracted). It "
-"has precedence over the ``allow`` parameter. If not given (or empty) it "
+"(absolute) URLs must match in order to be excluded (i.e. not extracted). It "
+"has precedence over the ``allow`` parameter. If not given (or empty), it "
 "won't exclude any links."
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
 #: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:15
 msgid ""
-"a single value or a list of string containing domains which will be "
-"considered for extracting the links"
+"a single value or a list of strings containing domains that will be "
+"considered for extracting the links."
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
 #: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:19
 msgid ""
-"a single value or a list of strings containing domains which won't be "
-"considered for extracting the links"
+"a single value or a list of strings containing domains that won't be "
+"considered for extracting the links."
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
@@ -127,21 +127,21 @@ msgstr ""
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
 #: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:29
 msgid ""
-"is an XPath (or list of XPath's) which defines regions inside the response "
-"where links should be extracted from. If given, only the text selected by "
-"those XPath will be scanned for links."
+"an XPath (or list of XPaths) that defines regions inside the response where "
+"links should be extracted. If given, only the text selected by those XPaths "
+"will be scanned for links."
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
-#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:35
+#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:34
 msgid ""
-"a CSS selector (or list of selectors) which defines regions inside the "
-"response where links should be extracted from. Has the same behaviour as "
+"a CSS selector (or list of selectors) that defines regions inside the "
+"response where links should be extracted. It has the same behaviour as "
 "``restrict_xpaths``."
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
-#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:40
+#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:39
 msgid ""
 "a single regular expression (or list of regular expressions) that the link's "
 "text must match in order to be extracted. If not given (or empty), it will "
@@ -150,23 +150,23 @@ msgid ""
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
-#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:47
+#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:46
 msgid ""
 "a tag or a list of tags to consider when extracting links. Defaults to "
 "``('a', 'area')``. Use ``'*'`` to consider every tag."
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
-#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:51
+#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:50
 msgid ""
-"an attribute or list of attributes which should be considered when looking "
+"an attribute or list of attributes that should be considered when looking "
 "for links to extract (only for those tags specified in the ``tags`` "
 "parameter). Defaults to ``('href',)``. Use ``'*'`` to consider every "
 "attribute."
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
-#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:57
+#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:56
 msgid ""
 "a tag or a list of tags that should not be considered when extracting links. "
 "It has precedence over the ``tags`` parameter, so it can be combined with "
@@ -175,7 +175,7 @@ msgid ""
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
-#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:57
+#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:56
 msgid ""
 "a tag or a list of tags that should not be considered when extracting links. "
 "It has precedence over the ``tags`` parameter, so it can be combined with "
@@ -184,7 +184,7 @@ msgid ""
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
-#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:65
+#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:64
 msgid ""
 "an attribute or a list of attributes that should not be considered when "
 "looking for links to extract. It has precedence over the ``attrs`` "
@@ -194,7 +194,7 @@ msgid ""
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
-#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:65
+#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:64
 msgid ""
 "an attribute or a list of attributes that should not be considered when "
 "looking for links to extract. It has precedence over the ``attrs`` "
@@ -203,24 +203,25 @@ msgid ""
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
-#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:74
+#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:73
 msgid ""
-"canonicalize each extracted url (using w3lib.url.canonicalize_url). Defaults "
+"canonicalize each extracted URL (using w3lib.url.canonicalize_url). Defaults "
 "to ``False``. Note that canonicalize_url is meant for duplicate checking; it "
-"can change the URL visible at server side, so the response can be different "
-"for requests with canonicalized and raw URLs. If you're using LinkExtractor "
-"to follow links it is more robust to keep the default ``canonicalize=False``."
+"can change the URL visible at the server side, so the response can be "
+"different for requests with canonicalized and raw URLs. If you're using "
+"LinkExtractor to follow links, it is more robust to keep the default "
+"``canonicalize=False``."
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
-#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:83
+#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:82
 msgid "whether duplicate filtering should be applied to extracted links."
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
-#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:87
+#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:86
 msgid ""
-"a function which receives each value extracted from the tag and attributes "
+"a function that receives each value extracted from the tag and attributes "
 "scanned and can modify the value and return a new one, or return ``None`` to "
 "ignore the link altogether. If not given, ``process_value`` defaults to "
 "``lambda x: x``.  .. highlight:: html  For example, to extract links from "
@@ -228,37 +229,41 @@ msgid ""
 "false\">Link text</a>  .. highlight:: python  You can use the following "
 "function in ``process_value``:  .. code-block:: python      def "
 "process_value(value):         m = re.search(r\"javascript:goToPage\\('(."
-"*?)'\", value)         if m:             return m.group(1)"
+"*?)'\", value)         if m:             return m.group(1)  "
+"``process_value`` is called before the filtering parameters, such as "
+"``allow`` and ``deny``, which match the value that it returns. To drop links "
+"based on their final URL, use the ``process_links`` parameter of :class:"
+"`~scrapy.spiders.Rule`, which only receives links that those parameters kept."
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
-#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:87
+#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:86
 msgid ""
-"a function which receives each value extracted from the tag and attributes "
+"a function that receives each value extracted from the tag and attributes "
 "scanned and can modify the value and return a new one, or return ``None`` to "
 "ignore the link altogether. If not given, ``process_value`` defaults to "
 "``lambda x: x``."
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
-#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:94
+#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:93
 msgid "For example, to extract links from this code::"
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
-#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:96
+#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:95
 msgid ""
 "<a href=\"javascript:goToPage('../other/page.html'); return false\">Link "
 "text</a>"
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
-#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:100
+#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:99
 msgid "You can use the following function in ``process_value``:"
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
-#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:102
+#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:101
 msgid ""
 "def process_value(value):\n"
 "    m = re.search(r\"javascript:goToPage\\('(.*?)'\", value)\n"
@@ -267,15 +272,24 @@ msgid ""
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
-#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:111
+#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:108
 msgid ""
-"whether to strip whitespaces from extracted attributes. According to HTML5 "
-"standard, leading and trailing whitespaces must be stripped from ``href`` "
-"attributes of ``<a>``, ``<area>`` and many other elements, ``src`` attribute "
-"of ``<img>``, ``<iframe>`` elements, etc., so LinkExtractor strips space "
-"chars by default. Set ``strip=False`` to turn it off (e.g. if you're "
-"extracting urls from elements or attributes which allow leading/trailing "
-"whitespaces)."
+"``process_value`` is called before the filtering parameters, such as "
+"``allow`` and ``deny``, which match the value that it returns. To drop links "
+"based on their final URL, use the ``process_links`` parameter of :class:"
+"`~scrapy.spiders.Rule`, which only receives links that those parameters kept."
+msgstr ""
+
+#: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
+#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:116
+msgid ""
+"whether to strip whitespaces from extracted attributes. According to the "
+"HTML5 standard, leading and trailing whitespaces must be stripped from "
+"``href`` attributes of ``<a>``, ``<area>`` and many other elements, the "
+"``src`` attribute of ``<img>`` and ``<iframe>`` elements, etc., so "
+"LinkExtractor strips space characters by default. Set ``strip=False`` to "
+"turn it off (for example, if you're extracting URLs from elements or "
+"attributes that allow leading or trailing whitespaces)."
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
@@ -299,7 +313,7 @@ msgid ""
 "otherwise they are returned."
 msgstr ""
 
-#: ../../../topics/link-extractors.rst:57
+#: ../../../topics/link-extractors.rst:51
 msgid "Link"
 msgstr ""
 

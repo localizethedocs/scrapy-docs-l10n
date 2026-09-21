@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:53+0000\n"
+"POT-Creation-Date: 2026-09-21 15:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,10 +29,11 @@ msgstr ""
 
 #: ../../../topics/item-pipeline.rst:10
 msgid ""
-"Each item pipeline component (sometimes referred as just \"Item Pipeline\") "
-"is a Python class that implements a simple method. They receive an item and "
-"perform an action over it, also deciding if the item should continue through "
-"the pipeline or be dropped and no longer processed."
+"Each item pipeline component (sometimes referred to as just \"Item "
+"Pipeline\") is a Python class that implements a simple method. Each "
+"component receives an item and performs an action on it while deciding "
+"whether the item should continue through the pipeline or be dropped and no "
+"longer processed."
 msgstr ""
 
 #: ../../../topics/item-pipeline.rst:15
@@ -67,7 +68,8 @@ msgid ""
 msgstr ""
 
 #: ../../../topics/item-pipeline.rst:31
-msgid "This method is called for every item pipeline component."
+msgid ""
+"Scrapy calls this method for every item processed by the pipeline component."
 msgstr ""
 
 #: ../../../topics/item-pipeline.rst:33
@@ -95,39 +97,59 @@ msgid "the scraped item"
 msgstr ""
 
 #: ../../../topics/item-pipeline.rst:44
-msgid "Additionally, they may also implement the following methods:"
+msgid "Additionally, a component may implement the following methods:"
 msgstr ""
 
 #: ../../../topics/item-pipeline.rst:48
 msgid "This method is called when the spider is opened."
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:52
-msgid "This method is called when the spider is closed."
+#: ../../../topics/item-pipeline.rst:50
+msgid "Added support for :exc:`~scrapy.exceptions.CloseSpider`."
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:54
+#: ../../../topics/item-pipeline.rst:53
+msgid ""
+"It may raise :exc:`~scrapy.exceptions.CloseSpider` to close the spider "
+"before it starts crawling, e.g. if a resource that the pipeline needs is "
+"unavailable."
+msgstr ""
+
+#: ../../../topics/item-pipeline.rst:59
+msgid ""
+"This method is called when the spider is closed, before the :signal:"
+"`spider_closed` signal is sent."
+msgstr ""
+
+#: ../../../topics/item-pipeline.rst:62
 msgid ""
 "Any of these methods may be defined as a coroutine function (``async def``)."
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:58
-msgid "Item pipeline example"
-msgstr ""
-
-#: ../../../topics/item-pipeline.rst:63
-msgid "Price validation and dropping items with no prices"
-msgstr ""
-
-#: ../../../topics/item-pipeline.rst:65
+#: ../../../topics/item-pipeline.rst:64
 msgid ""
-"Let's take a look at the following hypothetical pipeline that adjusts the "
-"``price`` attribute for those items that do not include VAT "
-"(``price_excludes_vat`` attribute), and drops those items which don't "
-"contain a price:"
+":meth:`open_spider` and :meth:`close_spider` run concurrently on all enabled "
+"item pipelines; only :meth:`process_item` follows the :setting:"
+"`ITEM_PIPELINES` order."
 msgstr ""
 
 #: ../../../topics/item-pipeline.rst:70
+msgid "Item pipeline example"
+msgstr ""
+
+#: ../../../topics/item-pipeline.rst:75
+msgid "Price validation and dropping items with no prices"
+msgstr ""
+
+#: ../../../topics/item-pipeline.rst:77
+msgid ""
+"Let's take a look at the following hypothetical pipeline that adjusts the "
+"``price`` attribute for those items that do not include VAT "
+"(``price_excludes_vat`` attribute), and drops those items that don't contain "
+"a price:"
+msgstr ""
+
+#: ../../../topics/item-pipeline.rst:82
 msgid ""
 "from itemadapter import ItemAdapter\n"
 "from scrapy.exceptions import DropItem\n"
@@ -146,18 +168,18 @@ msgid ""
 "            raise DropItem(\"Missing price\")"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:90
+#: ../../../topics/item-pipeline.rst:102
 msgid "Write items to a JSON lines file"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:92
+#: ../../../topics/item-pipeline.rst:104
 msgid ""
 "The following pipeline stores all scraped items (from all spiders) into a "
 "single ``items.jsonl`` file, containing one item per line serialized in JSON "
 "format:"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:96
+#: ../../../topics/item-pipeline.rst:108
 msgid ""
 "import json\n"
 "\n"
@@ -177,31 +199,31 @@ msgid ""
 "        return item"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:115
+#: ../../../topics/item-pipeline.rst:127
 msgid ""
-"The purpose of JsonWriterPipeline is just to introduce how to write item "
-"pipelines. If you really want to store all scraped items into a JSON file "
-"you should use the :ref:`Feed exports <topics-feed-exports>`."
+"The JsonWriterPipeline example simply introduces how to write item "
+"pipelines. If you really want to store all scraped items in a JSON file, you "
+"should use the :ref:`Feed exports <topics-feed-exports>`."
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:120
+#: ../../../topics/item-pipeline.rst:132
 msgid "Write items to MongoDB"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:122
+#: ../../../topics/item-pipeline.rst:134
 msgid ""
-"In this example we'll write items to MongoDB_ using pymongo_. MongoDB "
-"address and database name are specified in Scrapy settings; MongoDB "
+"In this example, we'll write items to MongoDB_ using pymongo_. The MongoDB "
+"address and database name are specified in the Scrapy settings; the MongoDB "
 "collection is specified in a class attribute."
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:126
+#: ../../../topics/item-pipeline.rst:138
 msgid ""
 "The main point of this example is to show how to :ref:`get the crawler <from-"
 "crawler>` and how to clean up the resources properly."
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:130
+#: ../../../topics/item-pipeline.rst:142
 msgid ""
 "import pymongo\n"
 "from itemadapter import ItemAdapter\n"
@@ -234,25 +256,25 @@ msgid ""
 "        return item"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:168
-msgid "Take screenshot of item"
+#: ../../../topics/item-pipeline.rst:180
+msgid "Take a screenshot of an item"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:170
+#: ../../../topics/item-pipeline.rst:182
 msgid ""
 "This example demonstrates how to use :doc:`coroutine syntax <coroutines>` in "
 "the :meth:`process_item` method."
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:173
+#: ../../../topics/item-pipeline.rst:185
 msgid ""
-"This item pipeline makes a request to a locally-running instance of Splash_ "
+"This item pipeline makes a request to a locally running instance of Splash_ "
 "to render a screenshot of the item URL. After the request response is "
 "downloaded, the item pipeline saves the screenshot to a file and adds the "
 "filename to the item."
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:178
+#: ../../../topics/item-pipeline.rst:190
 msgid ""
 "import hashlib\n"
 "from pathlib import Path\n"
@@ -264,8 +286,8 @@ msgid ""
 "\n"
 "\n"
 "class ScreenshotPipeline:\n"
-"    \"\"\"Pipeline that uses Splash to render screenshot of\n"
-"    every Scrapy item.\"\"\"\n"
+"    \"\"\"Pipeline that uses Splash to render a screenshot of every Scrapy\n"
+"    item.\"\"\"\n"
 "\n"
 "    SPLASH_URL = \"http://localhost:8050/render.png?url={}\"\n"
 "\n"
@@ -284,32 +306,33 @@ msgid ""
 "        response = await self.crawler.engine.download_async(request)\n"
 "\n"
 "        if response.status != 200:\n"
-"            # Error happened, return item.\n"
+"            # An error occurred, so return the item.\n"
 "            return item\n"
 "\n"
-"        # Save screenshot to file, filename will be hash of url.\n"
+"        # Save the screenshot to a file; the filename is the hash of the\n"
+"        # URL.\n"
 "        url = adapter[\"url\"]\n"
 "        url_hash = hashlib.md5(url.encode(\"utf8\")).hexdigest()\n"
 "        filename = f\"{url_hash}.png\"\n"
 "        Path(filename).write_bytes(response.body)\n"
 "\n"
-"        # Store filename in item.\n"
+"        # Store the filename in the item.\n"
 "        adapter[\"screenshot_filename\"] = filename\n"
 "        return item"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:226
+#: ../../../topics/item-pipeline.rst:239
 msgid "Duplicates filter"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:228
+#: ../../../topics/item-pipeline.rst:241
 msgid ""
-"A filter that looks for duplicate items, and drops those items that were "
-"already processed. Let's say that our items have a unique id, but our spider "
-"returns multiples items with the same id:"
+"This filter looks for duplicate items and drops those that were already "
+"processed. Let's say that our items have a unique id, but our spider returns "
+"multiple items with the same id:"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:232
+#: ../../../topics/item-pipeline.rst:245
 msgid ""
 "from itemadapter import ItemAdapter\n"
 "from scrapy.exceptions import DropItem\n"
@@ -328,17 +351,17 @@ msgid ""
 "            return item"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:254
+#: ../../../topics/item-pipeline.rst:267
 msgid "Activating an Item Pipeline component"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:256
+#: ../../../topics/item-pipeline.rst:269
 msgid ""
 "To activate an Item Pipeline component you must add its class to the :"
 "setting:`ITEM_PIPELINES` setting, like in the following example:"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:259
+#: ../../../topics/item-pipeline.rst:272
 msgid ""
 "ITEM_PIPELINES = {\n"
 "    \"myproject.pipelines.PricePipeline\": 300,\n"
@@ -346,18 +369,18 @@ msgid ""
 "}"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:266
+#: ../../../topics/item-pipeline.rst:279
 msgid ""
 "The integer values you assign to classes in this setting determine the order "
 "in which they run: items go through from lower valued to higher valued "
 "classes. It's customary to define these numbers in the 0-1000 range."
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:271
+#: ../../../topics/item-pipeline.rst:284
 msgid "A complete example"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:273
+#: ../../../topics/item-pipeline.rst:286
 msgid ""
 "The examples above show item pipeline components on their own. In a project, "
 "a pipeline is one of four pieces that work together: the :ref:`item <topics-"
@@ -366,18 +389,18 @@ msgid ""
 "setting that enables the pipeline."
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:279
+#: ../../../topics/item-pipeline.rst:292
 msgid ""
 "The following example wires those pieces together to validate the price of "
 "books scraped from `books.toscrape.com`_, reusing the ``PricePipeline`` "
 "from :ref:`price-pipeline-example` above."
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:283
+#: ../../../topics/item-pipeline.rst:296
 msgid "Define the item in ``myproject/items.py``:"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:285
+#: ../../../topics/item-pipeline.rst:298
 msgid ""
 "from dataclasses import dataclass\n"
 "\n"
@@ -388,13 +411,13 @@ msgid ""
 "    price: float"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:295
+#: ../../../topics/item-pipeline.rst:308
 msgid ""
 "Yield instances of that item from your spider, e.g. in ``myproject/spiders/"
 "books.py``:"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:299
+#: ../../../topics/item-pipeline.rst:312
 msgid ""
 "import scrapy\n"
 "\n"
@@ -414,35 +437,80 @@ msgid ""
 "            )"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:317
+#: ../../../topics/item-pipeline.rst:330
 msgid ""
 "Put the ``PricePipeline`` shown earlier in ``myproject/pipelines.py``, and "
 "enable it in ``myproject/settings.py``:"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:320
+#: ../../../topics/item-pipeline.rst:333
 msgid ""
 "ITEM_PIPELINES = {\n"
 "    \"myproject.pipelines.PricePipeline\": 300,\n"
 "}"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:326
+#: ../../../topics/item-pipeline.rst:339
 msgid ""
 "With these pieces in place, every ``BookItem`` that ``BooksSpider`` yields "
 "passes through ``PricePipeline`` before it reaches the :ref:`feed exports "
 "<topics-feed-exports>` or any other output."
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:334
+#: ../../../topics/item-pipeline.rst:349
+msgid "Testing an item pipeline"
+msgstr ""
+
+#: ../../../topics/item-pipeline.rst:351
+msgid ""
+"To send the items from a single URL through your item pipelines, use the :"
+"command:`parse` command with the ``--pipelines`` option::"
+msgstr ""
+
+#: ../../../topics/item-pipeline.rst:354
+msgid "scrapy parse --pipelines \"https://books.toscrape.com/\""
+msgstr ""
+
+#: ../../../topics/item-pipeline.rst:356
+msgid ""
+"To test specific item data instead, add a callback that builds an item out "
+"of its keyword arguments:"
+msgstr ""
+
+#: ../../../topics/item-pipeline.rst:360
+msgid ""
+"class BooksSpider(scrapy.Spider):\n"
+"    # ...\n"
+"\n"
+"    def parse_item(self, response, **fields):\n"
+"        yield BookItem(**fields)"
+msgstr ""
+
+#: ../../../topics/item-pipeline.rst:368
+msgid "and pass those keyword arguments in the command line::"
+msgstr ""
+
+#: ../../../topics/item-pipeline.rst:370
+msgid ""
+"scrapy parse --pipelines -c parse_item --cbkwargs '{\"title\": \"Test\", "
+"\"price\": 10}' \"https://books.toscrape.com/\""
+msgstr ""
+
+#: ../../../topics/item-pipeline.rst:372
+msgid ""
+"Pass any URL that your spider handles; it is downloaded even though the "
+"callback ignores it."
+msgstr ""
+
+#: ../../../topics/item-pipeline.rst:377
 msgid "Common pitfalls"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:337
+#: ../../../topics/item-pipeline.rst:380
 msgid "The pipeline does not run"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:339
+#: ../../../topics/item-pipeline.rst:382
 msgid ""
 "A pipeline component only runs if its class is listed in the :setting:"
 "`ITEM_PIPELINES` setting, normally in your project's :file:`settings.py` "
@@ -450,19 +518,19 @@ msgid ""
 "elsewhere has no effect."
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:344
+#: ../../../topics/item-pipeline.rst:387
 msgid ""
 "To confirm that Scrapy loaded your pipeline, look for a line like this near "
 "the start of the crawl log::"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:347
+#: ../../../topics/item-pipeline.rst:390
 msgid ""
 "[scrapy.middleware] INFO: Enabled item pipelines:\n"
 "['myproject.pipelines.PricePipeline']"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:350
+#: ../../../topics/item-pipeline.rst:393
 msgid ""
 "If your pipeline is missing from that list, check that its import path "
 "matches the :setting:`ITEM_PIPELINES` entry, and that the setting is not "
@@ -470,30 +538,30 @@ msgid ""
 "by a redefinition of :setting:`ITEM_PIPELINES` in :file:`settings.py`."
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:356
+#: ../../../topics/item-pipeline.rst:399
 msgid "The item is not returned"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:358
+#: ../../../topics/item-pipeline.rst:401
 msgid ""
 ":meth:`process_item` must return the item (or raise :exc:`~scrapy.exceptions."
 "DropItem`). A common mistake is to modify the item but forget to return it:"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:362
+#: ../../../topics/item-pipeline.rst:405
 msgid ""
 "def process_item(self, item):\n"
 "    ItemAdapter(item)[\"price\"] *= 1.15\n"
 "    # Bug: returns None, so the next component gets None instead of the item."
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:368
+#: ../../../topics/item-pipeline.rst:411
 msgid ""
 "Return the item so that the next component, and the rest of Scrapy, can keep "
 "processing it:"
 msgstr ""
 
-#: ../../../topics/item-pipeline.rst:371
+#: ../../../topics/item-pipeline.rst:414
 msgid ""
 "def process_item(self, item):\n"
 "    ItemAdapter(item)[\"price\"] *= 1.15\n"
