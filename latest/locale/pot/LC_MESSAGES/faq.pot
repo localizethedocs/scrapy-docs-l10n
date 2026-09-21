@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:52+0000\n"
+"POT-Creation-Date: 2026-09-21 15:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -143,7 +143,7 @@ msgid "How can I scrape an item with attributes in different pages?"
 msgstr ""
 
 #: ../../../faq.rst:100
-msgid "See :ref:`topics-request-response-ref-request-callback-arguments`."
+msgid "See :ref:`callback-data`."
 msgstr ""
 
 #: ../../../faq.rst:103
@@ -200,14 +200,14 @@ msgstr ""
 #: ../../../faq.rst:138
 msgid ""
 "If your domain names are similar enough, use your own regular expression "
-"instead joining the strings in :attr:`~scrapy.Spider.allowed_domains` into a "
-"complex regular expression."
+"instead of joining the strings in :attr:`~scrapy.Spider.allowed_domains` "
+"into a complex regular expression."
 msgstr ""
 
 #: ../../../faq.rst:142
 msgid ""
 "If you can meet the installation requirements, use pyre2_ instead of "
-"Python’s re_ to compile your URL-filtering regular expression. See :issue:"
+"Python’s re_ to compile your URL-filtering regular expression. See :gh:"
 "`1908`."
 msgstr ""
 
@@ -329,105 +329,107 @@ msgstr ""
 
 #: ../../../faq.rst:223
 msgid ""
-"999 is a custom response status code used by Yahoo sites to throttle "
+"999 is a custom response status code used by some sites to throttle "
 "requests. Try slowing down the crawling speed by using a download delay of "
-"``2`` (or higher) in your spider:"
+"``2`` (or higher) for the affected domains, with the :setting:"
+"`DOWNLOAD_SLOTS` setting:"
 msgstr ""
 
 #: ../../../faq.rst:227
 msgid ""
-"from scrapy.spiders import CrawlSpider\n"
-"\n"
-"\n"
-"class MySpider(CrawlSpider):\n"
-"    name = \"myspider\"\n"
-"\n"
-"    download_delay = 2\n"
-"\n"
-"    # [ ... rest of the spider code ... ]"
+"DOWNLOAD_SLOTS = {\n"
+"    \"example.com\": {\"delay\": 2},\n"
+"}"
 msgstr ""
 
-#: ../../../faq.rst:239
+#: ../../../faq.rst:233
 msgid ""
 "Or by setting a global download delay in your project with the :setting:"
 "`DOWNLOAD_DELAY` setting."
 msgstr ""
 
-#: ../../../faq.rst:243
+#: ../../../faq.rst:237
 msgid "Can I call ``pdb.set_trace()`` from my spiders to debug them?"
 msgstr ""
 
-#: ../../../faq.rst:245
+#: ../../../faq.rst:239
 msgid ""
 "Yes, but you can also use the Scrapy shell which allows you to quickly "
 "analyze (and even modify) the response being processed by your spider, which "
 "is, quite often, more useful than plain old ``pdb.set_trace()``."
 msgstr ""
 
-#: ../../../faq.rst:249
+#: ../../../faq.rst:243
 msgid "For more info see :ref:`topics-shell-inspect-response`."
 msgstr ""
 
-#: ../../../faq.rst:252
+#: ../../../faq.rst:245
+msgid ""
+"You can also :ref:`connect to live crawls <connect-live-crawl>`, which is "
+"the best way to debug running spiders without adding breakpoints to their "
+"code in advance."
+msgstr ""
+
+#: ../../../faq.rst:250
 msgid "Simplest way to dump all my scraped items into a JSON/CSV/XML file?"
 msgstr ""
 
-#: ../../../faq.rst:254
+#: ../../../faq.rst:252
 msgid "To dump into a JSON file::"
 msgstr ""
 
-#: ../../../faq.rst:256
+#: ../../../faq.rst:254
 msgid "scrapy crawl myspider -O items.json"
 msgstr ""
 
-#: ../../../faq.rst:258
+#: ../../../faq.rst:256
 msgid "To dump into a CSV file::"
 msgstr ""
 
-#: ../../../faq.rst:260
+#: ../../../faq.rst:258
 msgid "scrapy crawl myspider -O items.csv"
 msgstr ""
 
-#: ../../../faq.rst:262
+#: ../../../faq.rst:260
 msgid "To dump into an XML file::"
 msgstr ""
 
-#: ../../../faq.rst:264
+#: ../../../faq.rst:262
 msgid "scrapy crawl myspider -O items.xml"
 msgstr ""
 
-#: ../../../faq.rst:266
+#: ../../../faq.rst:264
 msgid "For more information see :ref:`topics-feed-exports`"
 msgstr ""
 
-#: ../../../faq.rst:269
+#: ../../../faq.rst:267
 msgid "What's this huge cryptic ``__VIEWSTATE`` parameter used in some forms?"
 msgstr ""
 
-#: ../../../faq.rst:271
+#: ../../../faq.rst:269
 msgid ""
 "The ``__VIEWSTATE`` parameter is used in sites built with ASP.NET/VB.NET. "
 "For more info on how it works see `this page`_. Also, here's an `example "
 "spider`_ which scrapes one of these sites."
 msgstr ""
 
-#: ../../../faq.rst:279
+#: ../../../faq.rst:277
 msgid "What's the best way to parse big XML/CSV data feeds?"
 msgstr ""
 
-#: ../../../faq.rst:281
+#: ../../../faq.rst:279
 msgid ""
 "Parsing big feeds with XPath selectors can be problematic since they need to "
 "build the DOM of the entire feed in memory, and this can be quite slow and "
 "consume a lot of memory."
 msgstr ""
 
-#: ../../../faq.rst:285
+#: ../../../faq.rst:283
 msgid ""
 "In order to avoid parsing all the entire feed at once in memory, you can use "
 "the :func:`~scrapy.utils.iterators.xmliter_lxml` and :func:`~scrapy.utils."
 "iterators.csviter` functions. In fact, this is what :class:`~scrapy.spiders."
-"XMLFeedSpider` uses."
+"XMLFeedSpider` and :class:`~scrapy.spiders.CSVFeedSpider` use."
 msgstr ""
 
 #: ../../../../scrapy/utils/iterators.py:docstring of
@@ -459,51 +461,51 @@ msgstr ""
 msgid "quotechar is the character used to enclosure fields on the given obj."
 msgstr ""
 
-#: ../../../faq.rst:295
+#: ../../../faq.rst:294
 msgid "Does Scrapy manage cookies automatically?"
 msgstr ""
 
-#: ../../../faq.rst:297
+#: ../../../faq.rst:296
 msgid ""
 "Yes, Scrapy receives and keeps track of cookies sent by servers, and sends "
 "them back on subsequent requests, like any regular web browser does."
 msgstr ""
 
-#: ../../../faq.rst:300
-msgid "For more info see :ref:`topics-request-response` and :ref:`cookies-mw`."
+#: ../../../faq.rst:299
+msgid "For more info see :ref:`cookies`."
 msgstr ""
 
-#: ../../../faq.rst:303
+#: ../../../faq.rst:302
 msgid "How can I see the cookies being sent and received from Scrapy?"
 msgstr ""
 
-#: ../../../faq.rst:305
+#: ../../../faq.rst:304
 msgid "Enable the :setting:`COOKIES_DEBUG` setting."
 msgstr ""
 
-#: ../../../faq.rst:308
+#: ../../../faq.rst:307
 msgid "How can I instruct a spider to stop itself?"
 msgstr ""
 
-#: ../../../faq.rst:310
+#: ../../../faq.rst:309
 msgid ""
 "Raise the :exc:`~scrapy.exceptions.CloseSpider` exception from a callback. "
 "For more info see: :exc:`~scrapy.exceptions.CloseSpider`."
 msgstr ""
 
-#: ../../../faq.rst:314
+#: ../../../faq.rst:313
 msgid "How can I prevent my Scrapy bot from getting banned?"
 msgstr ""
 
-#: ../../../faq.rst:316
+#: ../../../faq.rst:315
 msgid "See :ref:`bans`."
 msgstr ""
 
-#: ../../../faq.rst:319
+#: ../../../faq.rst:318
 msgid "Should I use spider arguments or settings to configure my spider?"
 msgstr ""
 
-#: ../../../faq.rst:321
+#: ../../../faq.rst:320
 msgid ""
 "Both :ref:`spider arguments <spiderargs>` and :ref:`settings <topics-"
 "settings>` can be used to configure your spider. There is no strict rule "
@@ -514,7 +516,7 @@ msgid ""
 "a spider)."
 msgstr ""
 
-#: ../../../faq.rst:328
+#: ../../../faq.rst:327
 msgid ""
 "To illustrate with an example, assuming you have a spider that needs to log "
 "into a site to scrape data, and you only want to scrape data from a certain "
@@ -523,20 +525,20 @@ msgid ""
 "a spider argument."
 msgstr ""
 
-#: ../../../faq.rst:335
+#: ../../../faq.rst:334
 msgid ""
-"I'm scraping a XML document and my XPath selector doesn't return any items"
+"I'm scraping an XML document and my XPath selector doesn't return any items"
 msgstr ""
 
-#: ../../../faq.rst:337
+#: ../../../faq.rst:336
 msgid "You may need to remove namespaces. See :ref:`removing-namespaces`."
 msgstr ""
 
-#: ../../../faq.rst:343
+#: ../../../faq.rst:342
 msgid "How to split an item into multiple items in an item pipeline?"
 msgstr ""
 
-#: ../../../faq.rst:345
+#: ../../../faq.rst:344
 msgid ""
 ":ref:`Item pipelines <topics-item-pipeline>` cannot yield multiple items per "
 "input item. :ref:`Create a spider middleware <custom-spider-middleware>` "
@@ -544,7 +546,7 @@ msgid ""
 "process_spider_output` method for this purpose. For example:"
 msgstr ""
 
-#: ../../../faq.rst:351
+#: ../../../faq.rst:350
 msgid ""
 "from copy import deepcopy\n"
 "\n"
@@ -556,10 +558,11 @@ msgid ""
 "    def process_spider_output(self, response, result):\n"
 "        for item_or_request in result:\n"
 "            if isinstance(item_or_request, Request):\n"
+"                yield item_or_request\n"
 "                continue\n"
-"            adapter = ItemAdapter(item)\n"
+"            adapter = ItemAdapter(item_or_request)\n"
 "            for _ in range(adapter[\"multiply_by\"]):\n"
-"                yield deepcopy(item)"
+"                yield deepcopy(item_or_request)"
 msgstr ""
 
 #: ../../../faq.rst:369
@@ -585,16 +588,17 @@ msgstr ""
 #: ../../../faq.rst:384
 msgid ""
 "This issue `has been reported`_ to appear when running broad crawls in "
-"macOS, where the default Twisted reactor is :class:`twisted.internet."
-"selectreactor.SelectReactor`. Switching to a different reactor is possible "
-"by using the :setting:`TWISTED_REACTOR` setting."
+"macOS, where the default Twisted reactor was :class:`twisted.internet."
+"selectreactor.SelectReactor` at that time. If you have switched to this "
+"reactor using the :setting:`TWISTED_REACTOR` setting you can switch to a "
+"different one in the same way."
 msgstr ""
 
-#: ../../../faq.rst:392
+#: ../../../faq.rst:393
 msgid "How can I cancel the download of a given response?"
 msgstr ""
 
-#: ../../../faq.rst:394
+#: ../../../faq.rst:395
 msgid ""
 "In some situations, it might be useful to stop the download of a certain "
 "response. For instance, sometimes you can determine whether or not you need "
@@ -606,14 +610,13 @@ msgid ""
 "download` topic for additional information and examples."
 msgstr ""
 
-#: ../../../faq.rst:406
+#: ../../../faq.rst:407
 msgid "How can I make a blank request?"
 msgstr ""
 
-#: ../../../faq.rst:408
+#: ../../../faq.rst:409
 msgid ""
 "from scrapy import Request\n"
-"\n"
 "\n"
 "blank_request = Request(\"data:,\")"
 msgstr ""
@@ -636,5 +639,5 @@ msgid ""
 "This may happen if your Scrapy project has a spider module with a name that "
 "conflicts with the name of one of the `Python standard library modules`_, "
 "such as ``csv.py`` or ``os.py``, or any `Python package`_ that you have "
-"installed. See :issue:`2680`."
+"installed. See :gh:`2680`."
 msgstr ""
