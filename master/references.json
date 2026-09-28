@@ -37,9 +37,9 @@
     "branch" : "master",
     "commit" : 
     {
-      "date" : "2026-07-27 12:19:12 +0200",
-      "hash" : "cec86f216e02072b2e9ed5b032810e061143277c",
-      "title" : "Remove remaining cross-imports in test modules. (#7782)"
+      "date" : "2026-09-28 20:30:00 +0500",
+      "hash" : "5d789b24f994bcdfca97c34d976c73739e064849",
+      "title" : "Drop the StatsCollector.__getattribute__() shim (#8243)"
     }
   },
   "type" : "branch",

@@ -1,0 +1,264 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-28 17:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/extraction.rst:5
+msgid "Extracting clean content and values"
+msgstr ""
+
+#: ../../../topics/extraction.rst:7
+msgid ""
+"Sometimes what you want out of a page is the page itself, without "
+"navigation, ads or footers, as the input of a search index, a summarizer or "
+"a retrieval-augmented generation (RAG) pipeline. See :ref:`clean-content`."
+msgstr ""
+
+#: ../../../topics/extraction.rst:11
+msgid ""
+"Sometimes you know which parts of the page you want, you have already :ref:"
+"`selected <topics-selectors>` them, and what you have is a string that is "
+"not a value yet: a price with a currency symbol on it, a date written in "
+"Spanish, a phone number written however its owner felt like. See :ref:"
+"`parsing-values`."
+msgstr ""
+
+#: ../../../topics/extraction.rst:20
+msgid "Clean content"
+msgstr ""
+
+#: ../../../topics/extraction.rst:22
+msgid ""
+"Trafilatura_ turns HTML into text or markdown, dropping boilerplate. Call it "
+"on :attr:`response.text <scrapy.http.TextResponse.text>` from a callback:"
+msgstr ""
+
+#: ../../../topics/extraction.rst:26
+msgid ""
+"import scrapy\n"
+"import trafilatura\n"
+"\n"
+"\n"
+"class ContentSpider(scrapy.Spider):\n"
+"    name = \"content\"\n"
+"    allowed_domains = [\"quotes.toscrape.com\"]\n"
+"    start_urls = [\"https://quotes.toscrape.com/\"]\n"
+"\n"
+"    def parse(self, response):\n"
+"        yield {\n"
+"            \"url\": response.url,\n"
+"            \"content\": trafilatura.extract(response.text, "
+"output_format=\"markdown\"),\n"
+"        }\n"
+"        yield from response.follow_all(css=\"a\", callback=self.parse)"
+msgstr ""
+
+#: ../../../topics/extraction.rst:44
+msgid ""
+"Save that as :file:`content.py` and write the whole crawl to a JSON Lines "
+"file:"
+msgstr ""
+
+#: ../../../topics/extraction.rst:47
+msgid "scrapy runspider content.py -O content.jsonl"
+msgstr ""
+
+#: ../../../topics/extraction.rst:51
+msgid ""
+"Title, author, date and site name come from a second call, which roughly "
+"triples the time spent on each page, so ask for them only if you need them:"
+msgstr ""
+
+#: ../../../topics/extraction.rst:55
+msgid ""
+"metadata = trafilatura.extract_metadata(response.text)\n"
+"yield {\n"
+"    \"url\": response.url,\n"
+"    \"title\": metadata.title,\n"
+"    \"date\": metadata.date,\n"
+"    \"content\": trafilatura.extract(response.text, "
+"output_format=\"markdown\"),\n"
+"}"
+msgstr ""
+
+#: ../../../topics/extraction.rst:66
+msgid "Where the content is not prose"
+msgstr ""
+
+#: ../../../topics/extraction.rst:68
+msgid ""
+"Trafilatura is tuned for articles, and it keeps what it is confident about. "
+"On a product page or a listing, where most of the page is not prose, it "
+"often returns a fraction of what you were after, or nothing at all."
+msgstr ""
+
+#: ../../../topics/extraction.rst:72
+msgid ""
+"There the answer is to :ref:`select <topics-selectors>` the parts you want. "
+"For a part that is itself rich content, such as a product description or the "
+"body of a post, clear-html_ normalizes the selected node into clean HTML or "
+"text, keeping embedded images and videos:"
+msgstr ""
+
+#: ../../../topics/extraction.rst:79
+msgid ""
+">>> from clear_html import clean_node, cleaned_node_to_html\n"
+">>> from clear_html import cleaned_node_to_text\n"
+">>> node = clean_node(response.css(\"article\")[0].root, response.url)\n"
+">>> cleaned_node_to_html(node)\n"
+"'<article>\\n\\n<p>Hi <strong>there</strong></p>\\n\\n</article>'\n"
+">>> cleaned_node_to_text(node)\n"
+"'Hi there'"
+msgstr ""
+
+#: ../../../topics/extraction.rst:92
+msgid "Pages you cannot download as they are"
+msgstr ""
+
+#: ../../../topics/extraction.rst:94
+msgid ""
+"If the content is not in the HTML that Scrapy downloads, it is loaded "
+"dynamically; see :ref:`topics-dynamic-content`."
+msgstr ""
+
+#: ../../../topics/extraction.rst:97
+msgid ""
+"If the website answers your requests with an error page or a challenge "
+"instead of the content, see :ref:`bans`."
+msgstr ""
+
+#: ../../../topics/extraction.rst:100
+msgid ""
+"`Zyte API`_ covers both, and through `scrapy-zyte-api`_ it can also return "
+"the content already structured: its article extraction gives you the text of "
+"an article and a simplified HTML version of its body, which markdownify_ "
+"turns into markdown:"
+msgstr ""
+
+#: ../../../topics/extraction.rst:107
+msgid ""
+">>> from markdownify import markdownify\n"
+">>> article = response.raw_api_response[\"article\"]\n"
+">>> markdownify(article[\"articleBodyHtml\"])\n"
+"'Hi **there**'"
+msgstr ""
+
+#: ../../../topics/extraction.rst:119
+msgid "Parsing values"
+msgstr ""
+
+#: ../../../topics/extraction.rst:121
+msgid ""
+"The following libraries turn a selected string into a value. They also work "
+"as :ref:`input processors <topics-loaders-processors>`."
+msgstr ""
+
+#: ../../../topics/extraction.rst:126
+msgid ""
+"extruct_ reads JSON-LD, microdata, RDFa, Open Graph and Dublin Core out of a "
+"page, which is often the cheapest source of a title, an author or a date:"
+msgstr ""
+
+#: ../../../topics/extraction.rst:130
+msgid ""
+">>> import extruct\n"
+">>> data = extruct.extract(response.text, base_url=response.url)\n"
+">>> data[\"opengraph\"][0][\"properties\"]\n"
+"[('og:title', 'Hi there')]"
+msgstr ""
+
+#: ../../../topics/extraction.rst:137
+msgid ""
+"dateparser_ reads a date written in prose, in any of the languages it "
+"supports:"
+msgstr ""
+
+#: ../../../topics/extraction.rst:140
+msgid ""
+">>> import dateparser\n"
+">>> dateparser.parse(\"12 de octubre de 2025\")\n"
+"datetime.datetime(2025, 10, 12, 0, 0)"
+msgstr ""
+
+#: ../../../topics/extraction.rst:146
+msgid "`price-parser`_ separates the amount of a price from its currency:"
+msgstr ""
+
+#: ../../../topics/extraction.rst:148
+msgid ""
+">>> from price_parser import Price\n"
+">>> Price.fromstring(\"1.199,00 €\")\n"
+"Price(amount=Decimal('1199.00'), currency='€')"
+msgstr ""
+
+#: ../../../topics/extraction.rst:154
+msgid "For numbers written out in words, use `number-parser`_ instead."
+msgstr ""
+
+#: ../../../topics/extraction.rst:156
+msgid ""
+"`zyte-parsers`_ parses fields out of a selected node: breadcrumbs, GTIN, "
+"rating, review count, brand and, building on `price-parser`_, price."
+msgstr ""
+
+#: ../../../topics/extraction.rst:159
+msgid ""
+">>> from zyte_parsers import extract_breadcrumbs\n"
+">>> extract_breadcrumbs(response.css(\"nav\")[0], base_url=response.url)\n"
+"(Breadcrumb(name='Books', url='https://example.com/books'),)"
+msgstr ""
+
+#: ../../../topics/extraction.rst:165
+msgid ""
+"phonenumbers_ turns a phone number as written into E.164, given the region "
+"it belongs to:"
+msgstr ""
+
+#: ../../../topics/extraction.rst:168
+msgid ""
+">>> import phonenumbers\n"
+">>> number = phonenumbers.parse(\"0664 123 4567\", \"AT\")\n"
+">>> phonenumbers.format_number(number, phonenumbers.PhoneNumberFormat.E164)\n"
+"'+436641234567'"
+msgstr ""
+
+#: ../../../topics/extraction.rst:175
+msgid "ftfy_ repairs text that reached you as mojibake:"
+msgstr ""
+
+#: ../../../topics/extraction.rst:177
+msgid ""
+">>> import ftfy\n"
+">>> ftfy.fix_text(\"The Mona Lisa doesnâ€™t have eyebrows.\")\n"
+"\"The Mona Lisa doesn't have eyebrows.\""
+msgstr ""
+
+#: ../../../topics/extraction.rst:183
+msgid "py3langid_ tells you which language a text is in:"
+msgstr ""
+
+#: ../../../topics/extraction.rst:185
+msgid ""
+">>> import py3langid\n"
+">>> py3langid.classify(\"Dieser Text ist auf Deutsch geschrieben.\")\n"
+"('de', -154.48843383789062)"
+msgstr ""
+
+#: ../../../topics/extraction.rst:193
+msgid ""
+"To parse a value out of JavaScript code in the page, see :ref:`topics-"
+"parsing-javascript`."
+msgstr ""
