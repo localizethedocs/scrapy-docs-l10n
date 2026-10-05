@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:53+0000\n"
+"POT-Creation-Date: 2026-10-05 17:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,26 +30,52 @@ msgstr ""
 #: ../../../../scrapy/exceptions.py:docstring of
 #: scrapy.exceptions.CloseSpider:1
 msgid ""
-"Raised from a :ref:`spider callback <topics-spiders>` to request the spider "
-"to be closed/stopped."
+"Raised from a :ref:`spider callback <topics-spiders>`, a :ref:`downloader "
+"middleware <topics-downloader-middleware>`, or while the spider is starting, "
+"to request the spider to be closed/stopped."
 msgstr ""
 
 #: ../../../../scrapy/exceptions.py:docstring of
-#: scrapy.exceptions.CloseSpider:4
-msgid "*reason* is a string with the reason for closing."
-msgstr ""
-
-#: ../../../../scrapy/exceptions.py:docstring of
-#: scrapy.exceptions.CloseSpider:6
-msgid "For example:"
+#: scrapy.exceptions.CloseSpider:5
+msgid "Added support for raising it while the spider is starting."
 msgstr ""
 
 #: ../../../../scrapy/exceptions.py:docstring of
 #: scrapy.exceptions.CloseSpider:8
+msgid "Added support for raising it from a downloader middleware."
+msgstr ""
+
+#: ../../../../scrapy/exceptions.py:docstring of
+#: scrapy.exceptions.CloseSpider:11
+msgid "The *error* parameter."
+msgstr ""
+
+#: ../../../../scrapy/exceptions.py:docstring of
+#: scrapy.exceptions.CloseSpider:14
+msgid ""
+"*reason* is a string with the reason for closing. *error*, keyword-only, "
+"marks the crawl as failed, which commands such as :command:`crawl` report "
+"through their process exit code."
+msgstr ""
+
+#: ../../../../scrapy/exceptions.py:docstring of
+#: scrapy.exceptions.CloseSpider:18
+msgid "For example:"
+msgstr ""
+
+#: ../../../../scrapy/exceptions.py:docstring of
+#: scrapy.exceptions.CloseSpider:20
 msgid ""
 "def parse_page(self, response):\n"
 "    if \"Bandwidth exceeded\" in response.text:\n"
 "        raise CloseSpider(\"bandwidth_exceeded\")"
+msgstr ""
+
+#: ../../../../scrapy/exceptions.py:docstring of
+#: scrapy.exceptions.DecompressionError:1
+msgid ""
+"Raised by :class:`~scrapy.downloadermiddlewares.httpcompression."
+"HttpCompressionMiddleware` when a response body cannot be decompressed."
 msgstr ""
 
 #: ../../../../scrapy/exceptions.py:docstring of
@@ -151,7 +177,7 @@ msgid ""
 "exception, which is in turn stored as the ``value`` attribute of the "
 "received :class:`~twisted.python.failure.Failure` object. This means that in "
 "an errback defined as ``def errback(self, failure)``, the response can be "
-"accessed though ``failure.value.response``."
+"accessed through ``failure.value.response``."
 msgstr ""
 
 #: ../../../../scrapy/exceptions.py:docstring of
