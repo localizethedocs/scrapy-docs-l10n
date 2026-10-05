@@ -37,9 +37,9 @@
     "branch" : "master",
     "commit" : 
     {
-      "date" : "2026-07-27 12:19:12 +0200",
-      "hash" : "cec86f216e02072b2e9ed5b032810e061143277c",
-      "title" : "Remove remaining cross-imports in test modules. (#7782)"
+      "date" : "2026-10-05 13:32:21 +0500",
+      "hash" : "948e8e31dff916d8793478de2a58f7a4dbc98a06",
+      "title" : "Run errback output through the spider middlewares on download errors (#7992)"
     }
   },
   "type" : "branch",

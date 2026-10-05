@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:53+0000\n"
+"POT-Creation-Date: 2026-10-05 17:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: ../../../topics/addons.rst:7
 msgid ""
-"Scrapy's add-on system is a framework which unifies managing and configuring "
+"Scrapy's add-on system is a framework that unifies managing and configuring "
 "components that extend Scrapy's core functionality, such as middlewares, "
 "extensions, or pipelines. It provides users with a plug-and-play experience "
 "in Scrapy extension management, and grants extensive configuration control "
@@ -124,7 +124,7 @@ msgstr ""
 msgid ""
 "If the ``update_settings`` method raises :exc:`scrapy.exceptions."
 "NotConfigured`, the add-on will be skipped. This makes it easy to enable an "
-"add-on only when some conditions are met."
+"add-on only when certain conditions are met."
 msgstr ""
 
 #: ../../../topics/addons.rst:83
@@ -207,10 +207,28 @@ msgid ""
 msgstr ""
 
 #: ../../../topics/addons.rst:144
+msgid ""
+"Log the versions of the packages the add-on uses, unless the user has set :"
+"setting:`LOG_VERSIONS`:"
+msgstr ""
+
+#: ../../../topics/addons.rst:147
+msgid ""
+"from scrapy.settings import SETTINGS_PRIORITIES\n"
+"\n"
+"\n"
+"class MyAddon:\n"
+"    def update_settings(self, settings):\n"
+"        if settings.getpriority(\"LOG_VERSIONS\") == "
+"SETTINGS_PRIORITIES[\"default\"]:\n"
+"            settings.add_to_list(\"LOG_VERSIONS\", \"boto\")"
+msgstr ""
+
+#: ../../../topics/addons.rst:157
 msgid "Check dependencies:"
 msgstr ""
 
-#: ../../../topics/addons.rst:146
+#: ../../../topics/addons.rst:159
 msgid ""
 "class MyAddon:\n"
 "    def update_settings(self, settings):\n"
@@ -221,11 +239,11 @@ msgid ""
 "        ..."
 msgstr ""
 
-#: ../../../topics/addons.rst:156
+#: ../../../topics/addons.rst:169
 msgid "Access the crawler instance:"
 msgstr ""
 
-#: ../../../topics/addons.rst:158
+#: ../../../topics/addons.rst:171
 msgid ""
 "class MyAddon:\n"
 "    def __init__(self, crawler) -> None:\n"
@@ -239,11 +257,11 @@ msgid ""
 "    def update_settings(self, settings): ..."
 msgstr ""
 
-#: ../../../topics/addons.rst:171
+#: ../../../topics/addons.rst:184
 msgid "Use a fallback component:"
 msgstr ""
 
-#: ../../../topics/addons.rst:173
+#: ../../../topics/addons.rst:186
 msgid ""
 "from scrapy.utils.misc import build_from_crawler, load_object\n"
 "\n"
