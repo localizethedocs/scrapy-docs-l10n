@@ -1,0 +1,258 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2008-2013, Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy 0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-09 06:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/practices.rst:5
+msgid "Common Practices"
+msgstr ""
+
+#: ../../../topics/practices.rst:7
+msgid ""
+"This section documents common practices when using Scrapy. These are things "
+"that cover many topics and don't often fall into any other specific section."
+msgstr ""
+
+#: ../../../topics/practices.rst:13
+msgid "Run Scrapy from a script"
+msgstr ""
+
+#: ../../../topics/practices.rst:15
+msgid ""
+"You can use the :ref:`API <topics-api>` to run Scrapy from a script, instead "
+"of the typical way of running Scrapy via ``scrapy crawl``."
+msgstr ""
+
+#: ../../../topics/practices.rst:18
+msgid ""
+"Remember that Scrapy is built on top of the Twisted asynchronous networking "
+"library, so you need to run it inside the Twisted reactor."
+msgstr ""
+
+#: ../../../topics/practices.rst:21
+msgid ""
+"Note that you will also have to shutdown the Twisted reactor yourself after "
+"the spider is finished. This can be achieved by connecting a handler to the "
+"``signals.spider_closed`` signal."
+msgstr ""
+
+#: ../../../topics/practices.rst:25
+msgid ""
+"What follows is a working example of how to do that, using the "
+"`testspiders`_ project as example."
+msgstr ""
+
+#: ../../../topics/practices.rst:30
+msgid ""
+"from twisted.internet import reactor\n"
+"from scrapy.crawler import Crawler\n"
+"from scrapy import log, signals\n"
+"from testspiders.spiders.followall import FollowAllSpider\n"
+"from scrapy.utils.project import get_project_settings\n"
+"\n"
+"spider = FollowAllSpider(domain='scrapinghub.com')\n"
+"settings = get_project_settings()\n"
+"crawler = Crawler(settings)\n"
+"crawler.signals.connect(reactor.stop, signal=signals.spider_closed)\n"
+"crawler.configure()\n"
+"crawler.crawl(spider)\n"
+"crawler.start()\n"
+"log.start()\n"
+"reactor.run() # the script will block here until the spider_closed signal "
+"was sent"
+msgstr ""
+
+#: ../../../topics/practices.rst:46
+msgid "`Twisted Reactor Overview`_."
+msgstr ""
+
+#: ../../../topics/practices.rst:49
+msgid "Running multiple spiders in the same process"
+msgstr ""
+
+#: ../../../topics/practices.rst:51
+msgid ""
+"By default, Scrapy runs a single spider per process when you run ``scrapy "
+"crawl``. However, Scrapy supports running multiple spiders per process using "
+"the :ref:`internal API <topics-api>`."
+msgstr ""
+
+#: ../../../topics/practices.rst:55
+msgid "Here is an example, using the `testspiders`_ project:"
+msgstr ""
+
+#: ../../../topics/practices.rst:59
+msgid ""
+"from twisted.internet import reactor\n"
+"from scrapy.crawler import Crawler\n"
+"from scrapy import log\n"
+"from testspiders.spiders.followall import FollowAllSpider\n"
+"from scrapy.utils.project import get_project_settings\n"
+"\n"
+"def setup_crawler(domain):\n"
+"    spider = FollowAllSpider(domain=domain)\n"
+"    settings = get_project_settings()\n"
+"    crawler = Crawler(settings)\n"
+"    crawler.configure()\n"
+"    crawler.crawl(spider)\n"
+"    crawler.start()\n"
+"\n"
+"for domain in ['scrapinghub.com', 'insophia.com']:\n"
+"    setup_crawler(domain)\n"
+"log.start()\n"
+"reactor.run()"
+msgstr ""
+
+#: ../../../topics/practices.rst:78
+msgid ":ref:`run-from-script`."
+msgstr ""
+
+#: ../../../topics/practices.rst:83
+msgid "Distributed crawls"
+msgstr ""
+
+#: ../../../topics/practices.rst:85
+msgid ""
+"Scrapy doesn't provide any built-in facility for running crawls in a "
+"distribute (multi-server) manner. However, there are some ways to distribute "
+"crawls, which vary depending on how you plan to distribute them."
+msgstr ""
+
+#: ../../../topics/practices.rst:89
+msgid ""
+"If you have many spiders, the obvious way to distribute the load is to setup "
+"many Scrapyd instances and distribute spider runs among those."
+msgstr ""
+
+#: ../../../topics/practices.rst:92
+msgid ""
+"If you instead want to run a single (big) spider through many machines, what "
+"you usually do is partition the urls to crawl and send them to each separate "
+"spider. Here is a concrete example:"
+msgstr ""
+
+#: ../../../topics/practices.rst:96
+msgid ""
+"First, you prepare the list of urls to crawl and put them into separate "
+"files/urls::"
+msgstr ""
+
+#: ../../../topics/practices.rst:99
+msgid ""
+"http://somedomain.com/urls-to-crawl/spider1/part1.list\n"
+"http://somedomain.com/urls-to-crawl/spider1/part2.list\n"
+"http://somedomain.com/urls-to-crawl/spider1/part3.list"
+msgstr ""
+
+#: ../../../topics/practices.rst:103
+msgid ""
+"Then you fire a spider run on 3 different Scrapyd servers. The spider would "
+"receive a (spider) argument ``part`` with the number of the partition to "
+"crawl::"
+msgstr ""
+
+#: ../../../topics/practices.rst:107
+msgid ""
+"curl http://scrapy1.mycompany.com:6800/schedule.json -d project=myproject -d "
+"spider=spider1 -d part=1\n"
+"curl http://scrapy2.mycompany.com:6800/schedule.json -d project=myproject -d "
+"spider=spider1 -d part=2\n"
+"curl http://scrapy3.mycompany.com:6800/schedule.json -d project=myproject -d "
+"spider=spider1 -d part=3"
+msgstr ""
+
+#: ../../../topics/practices.rst:114
+msgid "Avoiding getting banned"
+msgstr ""
+
+#: ../../../topics/practices.rst:116
+msgid ""
+"Some websites implement certain measures to prevent bots from crawling them, "
+"with varying degrees of sophistication. Getting around those measures can be "
+"difficult and tricky, and may sometimes require special infrastructure. "
+"Please consider contacting `commercial support`_ if in doubt."
+msgstr ""
+
+#: ../../../topics/practices.rst:121
+msgid ""
+"Here are some tips to keep in mind when dealing with these kind of sites:"
+msgstr ""
+
+#: ../../../topics/practices.rst:123
+msgid ""
+"rotate your user agent from a pool of well-known ones from browsers (google "
+"around to get a list of them)"
+msgstr ""
+
+#: ../../../topics/practices.rst:125
+msgid ""
+"disable cookies (see :setting:`COOKIES_ENABLED`) as some sites may use "
+"cookies to spot bot behaviour"
+msgstr ""
+
+#: ../../../topics/practices.rst:127
+msgid ""
+"use download delays (2 or higher). See :setting:`DOWNLOAD_DELAY` setting."
+msgstr ""
+
+#: ../../../topics/practices.rst:128
+msgid ""
+"if possible, use `Google cache`_ to fetch pages, instead of hitting the "
+"sites directly"
+msgstr ""
+
+#: ../../../topics/practices.rst:130
+msgid ""
+"use a pool of rotating IPs. For example, the free `Tor project`_ or paid "
+"services like `ProxyMesh`_"
+msgstr ""
+
+#: ../../../topics/practices.rst:132
+msgid ""
+"use a highly distributed downloader that circumvents bans internally, so you "
+"can just focus on parsing clean pages. One example of such downloaders is "
+"`Crawlera`_"
+msgstr ""
+
+#: ../../../topics/practices.rst:136
+msgid ""
+"If you are still unable to prevent your bot getting banned, consider "
+"contacting `commercial support`_."
+msgstr ""
+
+#: ../../../topics/practices.rst:150
+msgid "Dynamic Creation of Item Classes"
+msgstr ""
+
+#: ../../../topics/practices.rst:152
+msgid ""
+"For applications in which the structure of item class is to be determined by "
+"user input, or other changing conditions, you can dynamically create item "
+"classes instead of manually coding them."
+msgstr ""
+
+#: ../../../topics/practices.rst:159
+msgid ""
+"from scrapy.item import DictItem, Field\n"
+"\n"
+"def create_item_class(class_name, field_list):\n"
+"    field_dict = {}\n"
+"    for field_name in field_list:\n"
+"        field_dict[field_name] = Field()\n"
+"\n"
+"    return type(class_name, (DictItem,), field_dict)"
+msgstr ""
