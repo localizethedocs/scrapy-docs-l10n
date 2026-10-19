@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:53+0000\n"
+"POT-Creation-Date: 2026-10-19 16:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -155,11 +155,17 @@ msgstr ""
 
 #: ../../../topics/practices.rst:111
 msgid ""
+"Exceptions that interrupt a crawl reach the code that awaits that task or "
+"that adds callbacks to that Deferred, which is where you should handle them."
+msgstr ""
+
+#: ../../../topics/practices.rst:114
+msgid ""
 "Here's an example of using :class:`~scrapy.crawler.AsyncCrawlerRunner` "
 "together with simple reactor management code:"
 msgstr ""
 
-#: ../../../topics/practices.rst:114
+#: ../../../topics/practices.rst:117
 msgid ""
 "import scrapy\n"
 "from scrapy.crawler import AsyncCrawlerRunner\n"
@@ -180,18 +186,18 @@ msgid ""
 "    await runner.crawl(MySpider)  # completes when the spider finishes\n"
 "\n"
 "\n"
-"install_reactor(\"twisted.internet.asyncioreactor.AsyncioSelectorReactor\")\n"
+"install_reactor()\n"
 "react(deferred_f_from_coro_f(crawl))"
 msgstr ""
 
-#: ../../../topics/practices.rst:138
+#: ../../../topics/practices.rst:141
 msgid ""
 "Same example but using :class:`~scrapy.crawler.CrawlerRunner` and a "
 "different reactor (:class:`~scrapy.crawler.AsyncCrawlerRunner` only works "
 "with :class:`~twisted.internet.asyncioreactor.AsyncioSelectorReactor`):"
 msgstr ""
 
-#: ../../../topics/practices.rst:142
+#: ../../../topics/practices.rst:145
 msgid ""
 "import scrapy\n"
 "from scrapy.crawler import CrawlerRunner\n"
@@ -220,21 +226,21 @@ msgid ""
 "react(crawl)"
 msgstr ""
 
-#: ../../../topics/practices.rst:169
+#: ../../../topics/practices.rst:172
 msgid ":doc:`twisted:core/howto/reactor-basics`"
 msgstr ""
 
-#: ../../../topics/practices.rst:171
+#: ../../../topics/practices.rst:174
 msgid ""
 "And here are examples of using these classes with :setting:"
 "`TWISTED_REACTOR_ENABLED` set to ``False``."
 msgstr ""
 
-#: ../../../topics/practices.rst:174
+#: ../../../topics/practices.rst:177
 msgid "Simple usage of :class:`~scrapy.crawler.AsyncCrawlerProcess`:"
 msgstr ""
 
-#: ../../../topics/practices.rst:176
+#: ../../../topics/practices.rst:179
 msgid ""
 "import scrapy\n"
 "from scrapy.crawler import AsyncCrawlerProcess\n"
@@ -255,13 +261,13 @@ msgid ""
 "process.start()  # the script will block here until the crawling is finished"
 msgstr ""
 
-#: ../../../topics/practices.rst:196
+#: ../../../topics/practices.rst:199
 msgid ""
 "With ``TWISTED_REACTOR_ENABLED=False`` you can use several instances of :"
 "class:`~scrapy.crawler.AsyncCrawlerProcess` in the same process:"
 msgstr ""
 
-#: ../../../topics/practices.rst:199
+#: ../../../topics/practices.rst:202
 msgid ""
 "import scrapy\n"
 "from scrapy.crawler import AsyncCrawlerProcess\n"
@@ -289,12 +295,12 @@ msgid ""
 "process2.start()"
 msgstr ""
 
-#: ../../../topics/practices.rst:226
+#: ../../../topics/practices.rst:229
 msgid ""
 "Using :func:`asyncio.run` with :class:`~scrapy.crawler.AsyncCrawlerRunner`:"
 msgstr ""
 
-#: ../../../topics/practices.rst:228
+#: ../../../topics/practices.rst:231
 msgid ""
 "import asyncio\n"
 "\n"
@@ -318,11 +324,11 @@ msgid ""
 "asyncio.run(main())"
 msgstr ""
 
-#: ../../../topics/practices.rst:253
+#: ../../../topics/practices.rst:256
 msgid "Running spiders inside existing applications"
 msgstr ""
 
-#: ../../../topics/practices.rst:255
+#: ../../../topics/practices.rst:258
 msgid ""
 "You may want to run Scrapy spiders inside an existing application. In simple "
 "cases (e.g. task queues that spawn a process for every task, or applications "
@@ -332,14 +338,14 @@ msgid ""
 "and limitations."
 msgstr ""
 
-#: ../../../topics/practices.rst:262
+#: ../../../topics/practices.rst:265
 msgid ""
 "If the application runs its own Twisted reactor, you can use :class:`~scrapy."
 "crawler.AsyncCrawlerRunner` or :class:`~scrapy.crawler.CrawlerRunner` to run "
 "spiders using this reactor, see :ref:`run-from-script` for examples."
 msgstr ""
 
-#: ../../../topics/practices.rst:267
+#: ../../../topics/practices.rst:270
 msgid ""
 "If the application doesn't run a Twisted reactor or an asyncio event loop "
 "(for example, a Django web app deployed with a WSGI server such as uWSGI), "
@@ -348,7 +354,7 @@ msgid ""
 "an asyncio event loop for every spider run:"
 msgstr ""
 
-#: ../../../topics/practices.rst:273
+#: ../../../topics/practices.rst:276
 msgid ""
 "import scrapy\n"
 "from django.http import HttpResponse\n"
@@ -368,7 +374,7 @@ msgid ""
 "    return HttpResponse(\"Crawling finished\")"
 msgstr ""
 
-#: ../../../topics/practices.rst:291
+#: ../../../topics/practices.rst:294
 msgid ""
 "If the application runs its own asyncio event loop (for example, a Django "
 "web app deployed with an ASGI server such as uvicorn), you can use :class:"
@@ -376,7 +382,7 @@ msgid ""
 "set to ``False``, so that Scrapy uses the existing event loop:"
 msgstr ""
 
-#: ../../../topics/practices.rst:297
+#: ../../../topics/practices.rst:300
 msgid ""
 "import scrapy\n"
 "from django.http import HttpResponse\n"
@@ -395,17 +401,17 @@ msgid ""
 "    return HttpResponse(\"Crawling finished\")"
 msgstr ""
 
-#: ../../../topics/practices.rst:314 ../../../topics/practices.rst:352
+#: ../../../topics/practices.rst:317 ../../../topics/practices.rst:355
 msgid ""
 "Running Scrapy without a Twisted reactor is experimental and has some "
 "limitations, described in :ref:`asyncio-without-reactor`."
 msgstr ""
 
-#: ../../../topics/practices.rst:320
+#: ../../../topics/practices.rst:323
 msgid "Running spiders in Jupyter notebooks"
 msgstr ""
 
-#: ../../../topics/practices.rst:322
+#: ../../../topics/practices.rst:325
 msgid ""
 "You can run Scrapy spiders in Jupyter notebooks. You need to use :class:"
 "`~scrapy.crawler.AsyncCrawlerRunner` with :setting:`TWISTED_REACTOR_ENABLED` "
@@ -417,7 +423,7 @@ msgid ""
 "separate cells:"
 msgstr ""
 
-#: ../../../topics/practices.rst:331
+#: ../../../topics/practices.rst:334
 msgid ""
 "from scrapy import Spider\n"
 "from scrapy.crawler import AsyncCrawlerRunner\n"
@@ -439,22 +445,31 @@ msgid ""
 "await runner.crawl(BooksSpider)"
 msgstr ""
 
-#: ../../../topics/practices.rst:358
+#: ../../../topics/practices.rst:361
 msgid "Running multiple spiders in the same process"
 msgstr ""
 
-#: ../../../topics/practices.rst:360
+#: ../../../topics/practices.rst:363
 msgid ""
 "By default, Scrapy runs a single spider per process when you run ``scrapy "
 "crawl``. However, Scrapy supports running multiple spiders per process using "
 "the :ref:`internal API <topics-api>`."
 msgstr ""
 
-#: ../../../topics/practices.rst:364
+#: ../../../topics/practices.rst:367
+msgid ""
+"Each call to ``crawl()`` creates its own :class:`~scrapy.crawler.Crawler`, "
+"with its own instances of the downloader and spider middlewares and its own "
+"resolved :ref:`settings <topics-settings>`, including :ref:`spider settings "
+"<spider-settings>`. Nothing from one of these is shared with the other "
+"spiders running in the same process."
+msgstr ""
+
+#: ../../../topics/practices.rst:373
 msgid "Here is an example that runs multiple spiders simultaneously:"
 msgstr ""
 
-#: ../../../topics/practices.rst:366
+#: ../../../topics/practices.rst:375
 msgid ""
 "import scrapy\n"
 "from scrapy.crawler import AsyncCrawlerProcess\n"
@@ -479,11 +494,11 @@ msgid ""
 "finished"
 msgstr ""
 
-#: ../../../topics/practices.rst:389
+#: ../../../topics/practices.rst:398
 msgid "Same example using :class:`~scrapy.crawler.AsyncCrawlerRunner`:"
 msgstr ""
 
-#: ../../../topics/practices.rst:391
+#: ../../../topics/practices.rst:400
 msgid ""
 "import scrapy\n"
 "from scrapy.crawler import AsyncCrawlerRunner\n"
@@ -511,17 +526,17 @@ msgid ""
 "    await runner.join()  # completes when both spiders finish\n"
 "\n"
 "\n"
-"install_reactor(\"twisted.internet.asyncioreactor.AsyncioSelectorReactor\")\n"
+"install_reactor()\n"
 "react(deferred_f_from_coro_f(crawl))"
 msgstr ""
 
-#: ../../../topics/practices.rst:423
+#: ../../../topics/practices.rst:432
 msgid ""
 "Same example but running the spiders sequentially by awaiting until each one "
 "finishes before starting the next one:"
 msgstr ""
 
-#: ../../../topics/practices.rst:426
+#: ../../../topics/practices.rst:435
 msgid ""
 "import scrapy\n"
 "from scrapy.crawler import AsyncCrawlerRunner\n"
@@ -548,11 +563,11 @@ msgid ""
 "    await runner.crawl(MySpider2)\n"
 "\n"
 "\n"
-"install_reactor(\"twisted.internet.asyncioreactor.AsyncioSelectorReactor\")\n"
+"install_reactor()\n"
 "react(deferred_f_from_coro_f(crawl))"
 msgstr ""
 
-#: ../../../topics/practices.rst:456
+#: ../../../topics/practices.rst:465
 msgid ""
 "When running multiple spiders in the same process, :ref:`logging settings "
 "<logging-settings>` and :ref:`reactor settings <reactor-settings>` should "
@@ -560,55 +575,73 @@ msgid ""
 "crawler-settings>` cannot be defined per spider."
 msgstr ""
 
-#: ../../../topics/practices.rst:461
+#: ../../../topics/practices.rst:470
+msgid ""
+"Every other setting applies to each crawler separately. This includes "
+"concurrency and politeness settings, such as :setting:"
+"`CONCURRENT_REQUESTS`, :setting:`CONCURRENT_REQUESTS_PER_DOMAIN` and :"
+"setting:`DOWNLOAD_DELAY`, and :ref:`AutoThrottle <topics-autothrottle>` also "
+"throttles each crawler separately. When crawling simultaneously, divide "
+"those values by the number of crawlers to keep the combined load on your "
+"hardware and on target websites unchanged."
+msgstr ""
+
+#: ../../../topics/practices.rst:478
+msgid ""
+"Because of this, running the same spider several times in the same process "
+"multiplies those limits instead of increasing crawling capacity. To crawl "
+"faster, raise :setting:`CONCURRENT_REQUESTS` on a single crawler."
+msgstr ""
+
+#: ../../../topics/practices.rst:482
 msgid ":ref:`run-from-script`."
 msgstr ""
 
-#: ../../../topics/practices.rst:468
+#: ../../../topics/practices.rst:489
 msgid "Distributed crawls"
 msgstr ""
 
-#: ../../../topics/practices.rst:470
+#: ../../../topics/practices.rst:491
 msgid ""
 "Scrapy doesn't provide any built-in facility for running crawls in a "
 "distributed (multi-server) manner. However, there are some ways to "
 "distribute crawls, which vary depending on how you plan to distribute them."
 msgstr ""
 
-#: ../../../topics/practices.rst:474
+#: ../../../topics/practices.rst:495
 msgid ""
 "If you have many spiders, the obvious way to distribute the load is to setup "
 "many Scrapyd instances and distribute spider runs among those."
 msgstr ""
 
-#: ../../../topics/practices.rst:477
+#: ../../../topics/practices.rst:498
 msgid ""
 "If you instead want to run a single (big) spider through many machines, what "
 "you usually do is partition the URLs to crawl and send them to each separate "
 "spider. Here is a concrete example:"
 msgstr ""
 
-#: ../../../topics/practices.rst:481
+#: ../../../topics/practices.rst:502
 msgid ""
 "First, you prepare the list of URLs to crawl and put them into separate "
 "files/urls::"
 msgstr ""
 
-#: ../../../topics/practices.rst:484
+#: ../../../topics/practices.rst:505
 msgid ""
 "http://somedomain.com/urls-to-crawl/spider1/part1.list\n"
 "http://somedomain.com/urls-to-crawl/spider1/part2.list\n"
 "http://somedomain.com/urls-to-crawl/spider1/part3.list"
 msgstr ""
 
-#: ../../../topics/practices.rst:488
+#: ../../../topics/practices.rst:509
 msgid ""
 "Then you fire a spider run on 3 different Scrapyd servers. The spider would "
 "receive a (spider) argument ``part`` with the number of the partition to "
 "crawl::"
 msgstr ""
 
-#: ../../../topics/practices.rst:492
+#: ../../../topics/practices.rst:513
 msgid ""
 "curl http://scrapy1.mycompany.com:6800/schedule.json -d project=myproject -d "
 "spider=spider1 -d part=1\n"
@@ -618,11 +651,11 @@ msgid ""
 "spider=spider1 -d part=3"
 msgstr ""
 
-#: ../../../topics/practices.rst:499
+#: ../../../topics/practices.rst:520
 msgid "Reducing startup time in large projects"
 msgstr ""
 
-#: ../../../topics/practices.rst:501
+#: ../../../topics/practices.rst:522
 msgid ""
 "When running a spider with ``scrapy crawl``, Scrapy loads all modules listed "
 "in :setting:`SPIDER_MODULES` to find the target spider. In large projects "
@@ -630,97 +663,132 @@ msgid ""
 "usage."
 msgstr ""
 
-#: ../../../topics/practices.rst:505
+#: ../../../topics/practices.rst:526
 msgid ""
 "To avoid loading every spider module, override :setting:`SPIDER_MODULES` on "
 "the command line to point only to the module that contains the spider you "
 "want to run:"
 msgstr ""
 
-#: ../../../topics/practices.rst:509
+#: ../../../topics/practices.rst:530
 msgid "scrapy crawl myspider -s SPIDER_MODULES=myproject.spiders.myspider"
 msgstr ""
 
-#: ../../../topics/practices.rst:513
+#: ../../../topics/practices.rst:534
 msgid ""
 "Because :setting:`SPIDER_MODULES` is a list setting, you can include "
 "multiple modules by separating them with commas."
 msgstr ""
 
-#: ../../../topics/practices.rst:519
+#: ../../../topics/practices.rst:540
 msgid "Avoiding getting banned"
-msgstr ""
-
-#: ../../../topics/practices.rst:521
-msgid ""
-"Some websites implement certain measures to prevent bots from crawling them, "
-"with varying degrees of sophistication. Getting around those measures can be "
-"difficult and tricky, and may sometimes require special infrastructure. "
-"Please consider contacting `commercial support`_ if in doubt."
-msgstr ""
-
-#: ../../../topics/practices.rst:526
-msgid ""
-"Here are some tips to keep in mind when dealing with these kinds of sites:"
-msgstr ""
-
-#: ../../../topics/practices.rst:528
-msgid ""
-"rotate your user agent from a pool of well-known ones from browsers (Google "
-"around to get a list of them)"
-msgstr ""
-
-#: ../../../topics/practices.rst:530
-msgid ""
-"disable cookies (see :setting:`COOKIES_ENABLED`) as some sites may use "
-"cookies to spot bot behaviour"
-msgstr ""
-
-#: ../../../topics/practices.rst:532
-msgid ""
-"use download delays (2 or higher). See :setting:`DOWNLOAD_DELAY` setting."
-msgstr ""
-
-#: ../../../topics/practices.rst:533
-msgid ""
-"if possible, use `Common Crawl`_ to fetch pages, instead of hitting the "
-"sites directly"
-msgstr ""
-
-#: ../../../topics/practices.rst:535
-msgid ""
-"use a pool of rotating IPs. For example, the free `Tor project`_ or paid "
-"services like `ProxyMesh`_. An open source alternative is `scrapoxy`_, a "
-"super proxy that you can attach your own proxies to."
-msgstr ""
-
-#: ../../../topics/practices.rst:538
-msgid ""
-"for HTTPS websites, if blocking appears related to TLS behavior, consider "
-"adjusting the :setting:`DOWNLOAD_TLS_MIN_VERSION` and :setting:"
-"`DOWNLOAD_TLS_MAX_VERSION` settings, since some websites may respond "
-"differently depending on the TLS method used by the client."
 msgstr ""
 
 #: ../../../topics/practices.rst:542
 msgid ""
-"use a ban avoidance service, such as `Zyte API`_, which provides a `Scrapy "
-"plugin <https://github.com/scrapy-plugins/scrapy-zyte-api>`__ and additional "
-"features, like `AI web scraping <https://www.zyte.com/ai-web-scraping/>`__"
+"Websites tell regular visitors and crawlers apart by how their traffic "
+"looks: the headers it carries, how fast it arrives, how many requests come "
+"from the same place. Traffic that stands out can be blocked even when the "
+"crawling itself would be welcome."
 msgstr ""
 
-#: ../../../topics/practices.rst:546
+#: ../../../topics/practices.rst:547
 msgid ""
-"If you are still unable to prevent your bot getting banned, consider "
-"contacting `commercial support`_."
+"Where the website allows crawling, the most effective thing you can do is "
+"make yourself known: set :setting:`USER_AGENT` to a value that identifies "
+"you and lets its owners reach you, so that they can ask you to adjust your "
+"crawler rather than block it."
 msgstr ""
 
 #: ../../../topics/practices.rst:552
+msgid ""
+"Where that is not enough, the following make your traffic resemble that of a "
+"regular visitor:"
+msgstr ""
+
+#: ../../../topics/practices.rst:555
+msgid ""
+"rotate your user agent among those of common browsers, so that your requests "
+"do not all look alike (search the web for an up-to-date list)"
+msgstr ""
+
+#: ../../../topics/practices.rst:557
+msgid ""
+"disable cookies (see :setting:`COOKIES_ENABLED`), so that a session "
+"identifier does not tie all your requests together"
+msgstr ""
+
+#: ../../../topics/practices.rst:559
+msgid ""
+"space out your requests, 2 seconds apart or more, with the :setting:"
+"`DOWNLOAD_DELAY` setting, to keep your pace closer to that of a person "
+"browsing"
+msgstr ""
+
+#: ../../../topics/practices.rst:562
+msgid ""
+"where possible, read pages from `Common Crawl`_, which sends no traffic to "
+"the website at all"
+msgstr ""
+
+#: ../../../topics/practices.rst:564
+msgid ""
+"spread your requests over a pool of IP addresses, so that none of them "
+"accounts for your whole crawl. For example, the free `Tor project`_ or paid "
+"services like `ProxyMesh`_."
+msgstr ""
+
+#: ../../../topics/practices.rst:567
+msgid ""
+"match the TLS behavior of a browser: some websites respond differently "
+"depending on the TLS version of the client, which you can adjust with the :"
+"setting:`DOWNLOAD_TLS_MIN_VERSION` and :setting:`DOWNLOAD_TLS_MAX_VERSION` "
+"settings."
+msgstr ""
+
+#: ../../../topics/practices.rst:571
+msgid ""
+"let a service take care of all of the above, such as `Zyte API`_, which "
+"provides a `Scrapy plugin <https://github.com/scrapy-plugins/scrapy-zyte-"
+"api>`__ and additional features, like `AI web scraping <https://www.zyte.com/"
+"ai-web-scraping/>`__"
+msgstr ""
+
+#: ../../../topics/practices.rst:576
+msgid ""
+"If your crawler still gets blocked, consider contacting `commercial "
+"support`_."
+msgstr ""
+
+#: ../../../topics/practices.rst:581
 msgid "Static analysis"
 msgstr ""
 
-#: ../../../topics/practices.rst:554
+#: ../../../topics/practices.rst:583
 msgid ""
 "Consider using :doc:`scrapy-lint <scrapy-lint:index>`, a linter for Scrapy "
 "projects that detects common mistakes and anti-patterns."
+msgstr ""
+
+#: ../../../topics/practices.rst:589
+msgid "Connecting to live crawls"
+msgstr ""
+
+#: ../../../topics/practices.rst:591
+msgid ""
+"It's useful to be able to connect to live long-running crawls, either to "
+"check their progress in detail or to investigate problems with them. Scrapy "
+"provides the following tools for this:"
+msgstr ""
+
+#: ../../../topics/practices.rst:595
+msgid ""
+":ref:`Telnet console <topics-telnetconsole>`: connect to a crawl process "
+"with a telnet client and execute Python code inside it."
+msgstr ""
+
+#: ../../../topics/practices.rst:597
+msgid ""
+":ref:`Scrapy MCP server <using-mcp-server>`: point a coding agent to a crawl "
+"process so that it can execute Python code inside it."
 msgstr ""
