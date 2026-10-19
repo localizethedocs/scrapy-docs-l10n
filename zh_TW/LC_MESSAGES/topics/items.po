@@ -1,0 +1,321 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2008-2013, Scrapy developers
+# This file is distributed under the same license as the Scrapy package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Scrapy 0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-09 06:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../topics/items.rst:5
+msgid "Items"
+msgstr "項目"
+
+#: ../../../topics/items.rst:10
+msgid ""
+"The main goal in scraping is to extract structured data from unstructured "
+"sources, typically, web pages. Scrapy provides the :class:`Item` class for "
+"this purpose."
+msgstr ""
+
+#: ../../../topics/items.rst:14
+msgid ""
+":class:`Item` objects are simple containers used to collect the scraped "
+"data. They provide a `dictionary-like`_ API with a convenient syntax for "
+"declaring their available fields."
+msgstr ""
+
+#: ../../../topics/items.rst:23
+msgid "Declaring Items"
+msgstr ""
+
+#: ../../../topics/items.rst:25
+msgid ""
+"Items are declared using a simple class definition syntax and :class:`Field` "
+"objects. Here is an example::"
+msgstr ""
+
+#: ../../../topics/items.rst:28
+msgid ""
+"import scrapy\n"
+"\n"
+"class Product(scrapy.Item):\n"
+"    name = scrapy.Field()\n"
+"    price = scrapy.Field()\n"
+"    stock = scrapy.Field()\n"
+"    last_updated = scrapy.Field(serializer=str)"
+msgstr ""
+
+#: ../../../topics/items.rst:36
+msgid ""
+"Those familiar with `Django`_ will notice that Scrapy Items are declared "
+"similar to `Django Models`_, except that Scrapy Items are much simpler as "
+"there is no concept of different field types."
+msgstr ""
+
+#: ../../../topics/items.rst:46
+msgid "Item Fields"
+msgstr ""
+
+#: ../../../topics/items.rst:48
+msgid ""
+":class:`Field` objects are used to specify metadata for each field. For "
+"example, the serializer function for the ``last_updated`` field illustrated "
+"in the example above."
+msgstr ""
+
+#: ../../../topics/items.rst:52
+msgid ""
+"You can specify any kind of metadata for each field. There is no restriction "
+"on the values accepted by :class:`Field` objects. For this same reason, "
+"there is no reference list of all available metadata keys. Each key defined "
+"in :class:`Field` objects could be used by a different components, and only "
+"those components know about it. You can also define and use any other :class:"
+"`Field` key in your project too, for your own needs. The main goal of :class:"
+"`Field` objects is to provide a way to define all field metadata in one "
+"place. Typically, those components whose behaviour depends on each field use "
+"certain field keys to configure that behaviour. You must refer to their "
+"documentation to see which metadata keys are used by each component."
+msgstr ""
+
+#: ../../../topics/items.rst:63
+msgid ""
+"It's important to note that the :class:`Field` objects used to declare the "
+"item do not stay assigned as class attributes. Instead, they can be accessed "
+"through the :attr:`Item.fields` attribute."
+msgstr ""
+
+#: ../../../topics/items.rst:67
+msgid "And that's all you need to know about declaring items."
+msgstr ""
+
+#: ../../../topics/items.rst:70
+msgid "Working with Items"
+msgstr ""
+
+#: ../../../topics/items.rst:72
+msgid ""
+"Here are some examples of common tasks performed with items, using the "
+"``Product`` item :ref:`declared above  <topics-items-declaring>`. You will "
+"notice the API is very similar to the `dict API`_."
+msgstr ""
+
+#: ../../../topics/items.rst:77
+msgid "Creating items"
+msgstr "建立項目"
+
+#: ../../../topics/items.rst:81
+msgid ""
+">>> product = Product(name='Desktop PC', price=1000)\n"
+">>> print product\n"
+"Product(name='Desktop PC', price=1000)"
+msgstr ""
+
+#: ../../../topics/items.rst:86
+msgid "Getting field values"
+msgstr "獲取欄位值"
+
+#: ../../../topics/items.rst:90
+msgid ""
+">>> product['name']\n"
+"Desktop PC\n"
+">>> product.get('name')\n"
+"Desktop PC\n"
+"\n"
+">>> product['price']\n"
+"1000\n"
+"\n"
+">>> product['last_updated']\n"
+"Traceback (most recent call last):\n"
+"    ...\n"
+"KeyError: 'last_updated'\n"
+"\n"
+">>> product.get('last_updated', 'not set')\n"
+"not set\n"
+"\n"
+">>> product['lala'] # getting unknown field\n"
+"Traceback (most recent call last):\n"
+"    ...\n"
+"KeyError: 'lala'\n"
+"\n"
+">>> product.get('lala', 'unknown field')\n"
+"'unknown field'\n"
+"\n"
+">>> 'name' in product  # is name field populated?\n"
+"True\n"
+"\n"
+">>> 'last_updated' in product  # is last_updated populated?\n"
+"False\n"
+"\n"
+">>> 'last_updated' in product.fields  # is last_updated a declared field?\n"
+"True\n"
+"\n"
+">>> 'lala' in product.fields  # is lala a declared field?\n"
+"False"
+msgstr ""
+
+#: ../../../topics/items.rst:127
+msgid "Setting field values"
+msgstr "設定欄位值"
+
+#: ../../../topics/items.rst:131
+msgid ""
+">>> product['last_updated'] = 'today'\n"
+">>> product['last_updated']\n"
+"today\n"
+"\n"
+">>> product['lala'] = 'test' # setting unknown field\n"
+"Traceback (most recent call last):\n"
+"    ...\n"
+"KeyError: 'Product does not support field: lala'"
+msgstr ""
+
+#: ../../../topics/items.rst:141
+msgid "Accessing all populated values"
+msgstr ""
+
+#: ../../../topics/items.rst:143
+msgid "To access all populated values, just use the typical `dict API`_::"
+msgstr ""
+
+#: ../../../topics/items.rst:145
+msgid ""
+">>> product.keys()\n"
+"['price', 'name']\n"
+"\n"
+">>> product.items()\n"
+"[('price', 1000), ('name', 'Desktop PC')]"
+msgstr ""
+">>> product.keys()\n"
+"['price', 'name']\n"
+"\n"
+">>> product.items()\n"
+"[('price', 1000), ('name', 'Desktop PC')]"
+
+#: ../../../topics/items.rst:152
+msgid "Other common tasks"
+msgstr ""
+
+#: ../../../topics/items.rst:154
+msgid "Copying items::"
+msgstr ""
+
+#: ../../../topics/items.rst:156
+msgid ""
+">>> product2 = Product(product)\n"
+">>> print product2\n"
+"Product(name='Desktop PC', price=1000)\n"
+"\n"
+">>> product3 = product2.copy()\n"
+">>> print product3\n"
+"Product(name='Desktop PC', price=1000)"
+msgstr ""
+
+#: ../../../topics/items.rst:164
+msgid "Creating dicts from items::"
+msgstr ""
+
+#: ../../../topics/items.rst:166
+msgid ""
+">>> dict(product) # create a dict from all populated values\n"
+"{'price': 1000, 'name': 'Desktop PC'}"
+msgstr ""
+
+#: ../../../topics/items.rst:169
+msgid "Creating items from dicts::"
+msgstr ""
+
+#: ../../../topics/items.rst:171
+msgid ""
+">>> Product({'name': 'Laptop PC', 'price': 1500})\n"
+"Product(price=1500, name='Laptop PC')\n"
+"\n"
+">>> Product({'name': 'Laptop PC', 'lala': 1500}) # warning: unknown field in "
+"dict\n"
+"Traceback (most recent call last):\n"
+"    ...\n"
+"KeyError: 'Product does not support field: lala'"
+msgstr ""
+
+#: ../../../topics/items.rst:180
+msgid "Extending Items"
+msgstr ""
+
+#: ../../../topics/items.rst:182
+msgid ""
+"You can extend Items (to add more fields or to change some metadata for some "
+"fields) by declaring a subclass of your original Item."
+msgstr ""
+
+#: ../../../topics/items.rst:185
+msgid "For example::"
+msgstr ""
+
+#: ../../../topics/items.rst:187
+msgid ""
+"class DiscountedProduct(Product):\n"
+"    discount_percent = scrapy.Field(serializer=str)\n"
+"    discount_expiration_date = scrapy.Field()"
+msgstr ""
+
+#: ../../../topics/items.rst:191
+msgid ""
+"You can also extend field metadata by using the previous field metadata and "
+"appending more values, or changing existing values, like this::"
+msgstr ""
+
+#: ../../../topics/items.rst:194
+msgid ""
+"class SpecificProduct(Product):\n"
+"    name = scrapy.Field(Product.fields['name'], serializer=my_serializer)"
+msgstr ""
+
+#: ../../../topics/items.rst:197
+msgid ""
+"That adds (or replaces) the ``serializer`` metadata key for the ``name`` "
+"field, keeping all the previously existing metadata values."
+msgstr ""
+
+#: ../../../topics/items.rst:201
+msgid "Item objects"
+msgstr "項目物件"
+
+#: ../../../topics/items.rst:205
+msgid "Return a new Item optionally initialized from the given argument."
+msgstr ""
+
+#: ../../../topics/items.rst:207
+msgid ""
+"Items replicate the standard `dict API`_, including its constructor. The "
+"only additional attribute provided by Items is:"
+msgstr ""
+
+#: ../../../topics/items.rst:212
+msgid ""
+"A dictionary containing *all declared fields* for this Item, not only those "
+"populated. The keys are the field names and the values are the :class:"
+"`Field` objects used in the :ref:`Item declaration <topics-items-declaring>`."
+msgstr ""
+
+#: ../../../topics/items.rst:220
+msgid "Field objects"
+msgstr ""
+
+#: ../../../topics/items.rst:224
+msgid ""
+"The :class:`Field` class is just an alias to the built-in `dict`_ class and "
+"doesn't provide any extra functionality or attributes. In other words, :"
+"class:`Field` objects are plain-old Python dicts. A separate class is used "
+"to support the :ref:`item declaration syntax <topics-items-declaring>` based "
+"on class attributes."
+msgstr ""
