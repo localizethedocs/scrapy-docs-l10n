@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Scrapy latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-27 11:52+0000\n"
+"POT-Creation-Date: 2026-10-26 15:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,11 +27,13 @@ msgstr ""
 
 #: ../../../topics/link-extractors.rst:9
 msgid ""
-"The ``__init__`` method of :class:`~scrapy.linkextractors.lxmlhtml."
-"LxmlLinkExtractor` takes settings that determine which links may be "
-"extracted. :class:`LxmlLinkExtractor.extract_links <scrapy.linkextractors."
-"lxmlhtml.LxmlLinkExtractor.extract_links>` returns a list of matching :class:"
-"`~scrapy.link.Link` objects from a :class:`~scrapy.http.Response` object."
+"The ``__init__`` method "
+"of :class:`~scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor` takes settings "
+"that determine which links may be "
+"extracted. :class:`LxmlLinkExtractor.extract_links "
+"<scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor.extract_links>` returns a "
+"list of matching :class:`~scrapy.link.Link` objects from "
+"a :class:`~scrapy.http.Response` object."
 msgstr ""
 
 #: ../../../topics/link-extractors.rst:16
@@ -43,9 +45,9 @@ msgstr ""
 #: ../../../topics/link-extractors.rst:19
 msgid ""
 "You can also use link extractors in regular spiders. For example, you can "
-"instantiate :class:`LinkExtractor <scrapy.linkextractors.lxmlhtml."
-"LxmlLinkExtractor>` into a class variable in your spider, and use it from "
-"your spider callbacks:"
+"instantiate :class:`LinkExtractor "
+"<scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor>` into a class variable in "
+"your spider, and use it from your spider callbacks:"
 msgstr ""
 
 #: ../../../topics/link-extractors.rst:23
@@ -61,16 +63,17 @@ msgstr ""
 
 #: ../../../topics/link-extractors.rst:37
 msgid ""
-"The link extractor class is :class:`scrapy.linkextractors.lxmlhtml."
-"LxmlLinkExtractor`. For convenience it can also be imported as ``scrapy."
-"linkextractors.LinkExtractor``::"
+"The link extractor class "
+"is :class:`scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor`. For "
+"convenience it can also be imported as "
+"``scrapy.linkextractors.LinkExtractor``:"
 msgstr ""
 
 #: ../../../topics/link-extractors.rst:41
 msgid "from scrapy.linkextractors import LinkExtractor"
 msgstr ""
 
-#: ../../../topics/link-extractors.rst:44
+#: ../../../topics/link-extractors.rst:46
 msgid "LxmlLinkExtractor"
 msgstr ""
 
@@ -120,8 +123,8 @@ msgstr ""
 #: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:23
 msgid ""
 "a single value or list of strings containing extensions that should be "
-"ignored when extracting links. If not given, it will default to :data:"
-"`scrapy.linkextractors.IGNORED_EXTENSIONS`."
+"ignored when extracting links. If not given, it will default "
+"to :data:`scrapy.linkextractors.IGNORED_EXTENSIONS`."
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
@@ -227,8 +230,13 @@ msgid ""
 "this code::      <a href=\"javascript:goToPage('../other/page.html'); return "
 "false\">Link text</a>  .. highlight:: python  You can use the following "
 "function in ``process_value``:  .. code-block:: python      def "
-"process_value(value):         m = re.search(r\"javascript:goToPage\\('(."
-"*?)'\", value)         if m:             return m.group(1)"
+"process_value(value):         m = re.search(r\"javascript:goToPage\\"
+"('(.*?)'\", value)         if m:             return m.group(1)  "
+"``process_value`` is called before the filtering parameters, such as "
+"``allow`` and ``deny``, which match the value that it returns. To drop links "
+"based on their final URL, use the ``process_links`` parameter "
+"of :class:`~scrapy.spiders.Rule`, which only receives links that those "
+"parameters kept."
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
@@ -267,7 +275,17 @@ msgid ""
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
-#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:111
+#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:109
+msgid ""
+"``process_value`` is called before the filtering parameters, such as "
+"``allow`` and ``deny``, which match the value that it returns. To drop links "
+"based on their final URL, use the ``process_links`` parameter "
+"of :class:`~scrapy.spiders.Rule`, which only receives links that those "
+"parameters kept."
+msgstr ""
+
+#: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
+#: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:117
 msgid ""
 "whether to strip whitespaces from extracted attributes. According to HTML5 "
 "standard, leading and trailing whitespaces must be stripped from ``href`` "
@@ -281,8 +299,8 @@ msgstr ""
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
 #: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor.extract_links:1
 msgid ""
-"Returns a list of :class:`~scrapy.link.Link` objects from the specified :"
-"class:`response <scrapy.http.Response>`."
+"Returns a list of :class:`~scrapy.link.Link` objects from the "
+"specified :class:`response <scrapy.http.Response>`."
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
@@ -299,7 +317,7 @@ msgid ""
 "otherwise they are returned."
 msgstr ""
 
-#: ../../../topics/link-extractors.rst:55
+#: ../../../topics/link-extractors.rst:57
 msgid "Link"
 msgstr ""
 
