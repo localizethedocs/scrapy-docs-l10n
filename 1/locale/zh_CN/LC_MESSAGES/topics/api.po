@@ -50,8 +50,9 @@ msgstr ""
 
 #: ../../../topics/api.rst:33
 msgid ""
-"The Crawler object must be instantiated with a :class:`scrapy.spiders."
-"Spider` subclass and a :class:`scrapy.settings.Settings` object."
+"The Crawler object must be instantiated with "
+"a :class:`scrapy.spiders.Spider` subclass and "
+"a :class:`scrapy.settings.Settings` object."
 msgstr ""
 
 #: ../../../topics/api.rst:39
@@ -168,8 +169,8 @@ msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of scrapy.crawler.CrawlerRunner:4
 msgid ""
-"The CrawlerRunner object must be instantiated with a :class:`~scrapy."
-"settings.Settings` object."
+"The CrawlerRunner object must be instantiated with "
+"a :class:`~scrapy.settings.Settings` object."
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of scrapy.crawler.CrawlerProcess:17
@@ -309,15 +310,15 @@ msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of scrapy.crawler.CrawlerProcess:7
 msgid ""
-"This utility should be a better fit than :class:`~scrapy.crawler."
-"CrawlerRunner` if you aren't running another Twisted `reactor`_ within your "
-"application."
+"This utility should be a better fit "
+"than :class:`~scrapy.crawler.CrawlerRunner` if you aren't running another "
+"Twisted `reactor`_ within your application."
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of scrapy.crawler.CrawlerProcess:11
 msgid ""
-"The CrawlerProcess object must be instantiated with a :class:`~scrapy."
-"settings.Settings` object."
+"The CrawlerProcess object must be instantiated with "
+"a :class:`~scrapy.settings.Settings` object."
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of scrapy.crawler.CrawlerProcess:14
@@ -327,9 +328,9 @@ msgstr "是否安装 root 日志处理程序(默认：True)"
 #: ../../../../scrapy/crawler.py:docstring of
 #: scrapy.crawler.CrawlerProcess.start:1
 msgid ""
-"This method starts a Twisted `reactor`_, adjusts its pool size to :setting:"
-"`REACTOR_THREADPOOL_MAXSIZE`, and installs a DNS cache based on :setting:"
-"`DNSCACHE_ENABLED` and :setting:`DNSCACHE_SIZE`."
+"This method starts a Twisted `reactor`_, adjusts its pool size "
+"to :setting:`REACTOR_THREADPOOL_MAXSIZE`, and installs a DNS cache based "
+"on :setting:`DNSCACHE_ENABLED` and :setting:`DNSCACHE_SIZE`."
 msgstr ""
 
 #: ../../../../scrapy/crawler.py:docstring of
@@ -358,8 +359,8 @@ msgstr "设置在废件中默认设置优先级的关键名称和优先级的字
 msgid ""
 "Each item defines a settings entry point, giving it a code name for "
 "identification and an integer priority. Greater priorities take more "
-"precedence over lesser ones when setting and retrieving values in the :class:"
-"`~scrapy.settings.Settings` class."
+"precedence over lesser ones when setting and retrieving values in "
+"the :class:`~scrapy.settings.Settings` class."
 msgstr ""
 
 #: ../../../topics/api.rst:134
@@ -382,9 +383,9 @@ msgstr ""
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.get_settings_priority:1
 msgid ""
-"Small helper function that looks up a given string priority in the :attr:"
-"`~scrapy.settings.SETTINGS_PRIORITIES` dictionary and returns its numerical "
-"value, or directly returns a given numerical priority."
+"Small helper function that looks up a given string priority in "
+"the :attr:`~scrapy.settings.SETTINGS_PRIORITIES` dictionary and returns its "
+"numerical value, or directly returns a given numerical priority."
 msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
@@ -402,10 +403,10 @@ msgstr "此对象储存内部组件配置的 Scrapy 设置，可以用于任何�
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.Settings:4
 msgid ""
-"It is a direct subclass and supports all methods of :class:`~scrapy.settings."
-"BaseSettings`. Additionally, after instantiation of this class, the new "
-"object will have the global default settings described on :ref:`topics-"
-"settings-ref` already populated."
+"It is a direct subclass and supports all methods "
+"of :class:`~scrapy.settings.BaseSettings`. Additionally, after instantiation "
+"of this class, the new object will have the global default settings "
+"described on :ref:`topics-settings-ref` already populated."
 msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
@@ -424,19 +425,20 @@ msgid ""
 "argument, and they would take the ``priority`` level (unless ``values`` is "
 "already an instance of :class:`~scrapy.settings.BaseSettings`, in which case "
 "the existing priority levels will be kept).  If the ``priority`` argument is "
-"a string, the priority name will be looked up in :attr:`~scrapy.settings."
-"SETTINGS_PRIORITIES`. Otherwise, a specific integer should be provided."
+"a string, the priority name will be looked up "
+"in :attr:`~scrapy.settings.SETTINGS_PRIORITIES`. Otherwise, a specific "
+"integer should be provided."
 msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings:13
 msgid ""
-"Once the object is created, new settings can be loaded or updated with the :"
-"meth:`~scrapy.settings.BaseSettings.set` method, and can be accessed with "
-"the square bracket notation of dictionaries, or with the :meth:`~scrapy."
-"settings.BaseSettings.get` method of the instance and its value conversion "
-"variants. When requesting a stored key, the value with the highest priority "
-"will be retrieved."
+"Once the object is created, new settings can be loaded or updated with "
+"the :meth:`~scrapy.settings.BaseSettings.set` method, and can be accessed "
+"with the square bracket notation of dictionaries, or with "
+"the :meth:`~scrapy.settings.BaseSettings.get` method of the instance and its "
+"value conversion variants. When requesting a stored key, the value with the "
+"highest priority will be retrieved."
 msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
@@ -556,11 +558,11 @@ msgstr "例如，环境变量设置为 ``'0'`` 时返回的 ``False`` 。"
 msgid ""
 "Get a setting value as a dictionary. If the setting original type is a "
 "dictionary, a copy of it will be returned. If it is a string it will be "
-"evaluated as a JSON dictionary. In the case that it is a :class:`~scrapy."
-"settings.BaseSettings` instance itself, it will be converted to a "
-"dictionary, containing all its current settings values as they would be "
-"returned by :meth:`~scrapy.settings.BaseSettings.get`, and losing all "
-"information about priority and mutability."
+"evaluated as a JSON dictionary. In the case that it is "
+"a :class:`~scrapy.settings.BaseSettings` instance itself, it will be "
+"converted to a dictionary, containing all its current settings values as "
+"they would be returned by :meth:`~scrapy.settings.BaseSettings.get`, and "
+"losing all information about priority and mutability."
 msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
@@ -583,8 +585,8 @@ msgstr ""
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.getlist:4
 msgid ""
-"For example, settings populated through environment variables set to ``'one,"
-"two'`` will return a list ['one', 'two'] when using this method."
+"For example, settings populated through environment variables set to "
+"``'one,two'`` will return a list ['one', 'two'] when using this method."
 msgstr ""
 "例如，通过环境变量填充的设置设置设置为 ``'one,two'`` 时，会返回一个列表"
 "['one','2']。"
@@ -613,8 +615,9 @@ msgstr "字典设置的名称"
 #: scrapy.settings.BaseSettings.maxpriority:1
 msgid ""
 "Return the numerical value of the highest priority present throughout all "
-"settings, or the numerical value for ``default`` from :attr:`~scrapy."
-"settings.SETTINGS_PRIORITIES` if there are no settings stored."
+"settings, or the numerical value for ``default`` "
+"from :attr:`~scrapy.settings.SETTINGS_PRIORITIES` if there are no settings "
+"stored."
 msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
@@ -638,8 +641,8 @@ msgstr "要与设置关联的值"
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.set:13
 msgid ""
-"the priority of the setting. Should be a key of :attr:`~scrapy.settings."
-"SETTINGS_PRIORITIES` or an integer"
+"the priority of the setting. Should be a key "
+"of :attr:`~scrapy.settings.SETTINGS_PRIORITIES` or an integer"
 msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
@@ -650,9 +653,9 @@ msgstr "从具有特定优先级的模块存储设置。"
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.setmodule:3
 msgid ""
-"This is a helper function that calls :meth:`~scrapy.settings.BaseSettings."
-"set` for every globally declared uppercase variable of ``module`` with the "
-"provided ``priority``."
+"This is a helper function that "
+"calls :meth:`~scrapy.settings.BaseSettings.set` for every globally declared "
+"uppercase variable of ``module`` with the provided ``priority``."
 msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
@@ -664,8 +667,8 @@ msgstr "模块或模块路径"
 #: scrapy.settings.BaseSettings.setmodule:10
 #: scrapy.settings.BaseSettings.update:17
 msgid ""
-"the priority of the settings. Should be a key of :attr:`~scrapy.settings."
-"SETTINGS_PRIORITIES` or an integer"
+"the priority of the settings. Should be a key "
+"of :attr:`~scrapy.settings.SETTINGS_PRIORITIES` or an integer"
 msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
@@ -676,18 +679,19 @@ msgstr "存储具有特定优先级的密钥/值对。"
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.update:3
 msgid ""
-"This is a helper function that calls :meth:`~scrapy.settings.BaseSettings."
-"set` for every item of ``values`` with the provided ``priority``."
+"This is a helper function that "
+"calls :meth:`~scrapy.settings.BaseSettings.set` for every item of ``values`` "
+"with the provided ``priority``."
 msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
 #: scrapy.settings.BaseSettings.update:7
 msgid ""
 "If ``values`` is a string, it is assumed to be JSON-encoded and parsed into "
-"a dict with ``json.loads()`` first. If it is a :class:`~scrapy.settings."
-"BaseSettings` instance, the per-key priorities will be used and the "
-"``priority`` parameter ignored. This allows inserting/updating settings with "
-"different priorities with a single command."
+"a dict with ``json.loads()`` first. If it is "
+"a :class:`~scrapy.settings.BaseSettings` instance, the per-key priorities "
+"will be used and the ``priority`` parameter ignored. This allows inserting/"
+"updating settings with different priorities with a single command."
 msgstr ""
 
 #: ../../../../scrapy/settings/__init__.py:docstring of
@@ -707,10 +711,10 @@ msgstr ""
 
 #: ../../../topics/api.rst:167
 msgid ""
-"Custom spider loaders can be employed by specifying their path in the :"
-"setting:`SPIDER_LOADER_CLASS` project setting. They must fully implement "
-"the :class:`scrapy.interfaces.ISpiderLoader` interface to guarantee an "
-"errorless execution."
+"Custom spider loaders can be employed by specifying their path in "
+"the :setting:`SPIDER_LOADER_CLASS` project setting. They must fully "
+"implement the :class:`scrapy.interfaces.ISpiderLoader` interface to "
+"guarantee an errorless execution."
 msgstr ""
 
 #: ../../../topics/api.rst:174
@@ -825,10 +829,10 @@ msgstr "统计数据收集器 API"
 
 #: ../../../topics/api.rst:218
 msgid ""
-"There are several Stats Collectors available under the :mod:`scrapy."
-"statscollectors` module and they all implement the Stats Collector API "
-"defined by the :class:`~scrapy.statscollectors.StatsCollector` class (which "
-"they all inherit from)."
+"There are several Stats Collectors available under "
+"the :mod:`scrapy.statscollectors` module and they all implement the Stats "
+"Collector API defined by the :class:`~scrapy.statscollectors.StatsCollector` "
+"class (which they all inherit from)."
 msgstr ""
 
 #: ../../../topics/api.rst:230

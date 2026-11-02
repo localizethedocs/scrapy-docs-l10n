@@ -23,11 +23,11 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:10
 msgid ""
-"Item Loaders provide a convenient mechanism for populating scraped :ref:"
-"`Items <topics-items>`. Even though Items can be populated using their own "
-"dictionary-like API, Item Loaders provide a much more convenient API for "
-"populating them from a scraping process, by automating some common tasks "
-"like parsing the raw extracted data before assigning it."
+"Item Loaders provide a convenient mechanism for populating "
+"scraped :ref:`Items <topics-items>`. Even though Items can be populated "
+"using their own dictionary-like API, Item Loaders provide a much more "
+"convenient API for populating them from a scraping process, by automating "
+"some common tasks like parsing the raw extracted data before assigning it."
 msgstr ""
 
 #: ../../../topics/loaders.rst:16
@@ -54,16 +54,16 @@ msgid ""
 "To use an Item Loader, you must first instantiate it. You can either "
 "instantiate it with a dict-like object (e.g. Item or dict) or without one, "
 "in which case an Item is automatically instantiated in the Item Loader "
-"constructor using the Item class specified in the :attr:`ItemLoader."
-"default_item_class` attribute."
+"constructor using the Item class specified in "
+"the :attr:`ItemLoader.default_item_class` attribute."
 msgstr ""
 
 #: ../../../topics/loaders.rst:33
 msgid ""
-"Then, you start collecting values into the Item Loader, typically using :ref:"
-"`Selectors <topics-selectors>`. You can add more than one value to the same "
-"item field; the Item Loader will know how to \"join\" those values later "
-"using a proper processing function."
+"Then, you start collecting values into the Item Loader, typically "
+"using :ref:`Selectors <topics-selectors>`. You can add more than one value "
+"to the same item field; the Item Loader will know how to \"join\" those "
+"values later using a proper processing function."
 msgstr ""
 
 #: ../../../topics/loaders.rst:38
@@ -77,8 +77,8 @@ msgstr ""
 #: ../../../topics/loaders.rst:44
 msgid ""
 "Here is a typical Item Loader usage in a :ref:`Spider <topics-spiders>`, "
-"using the :ref:`Product item <topics-items-declaring>` declared in the :ref:"
-"`Items chapter <topics-items>`::"
+"using the :ref:`Product item <topics-items-declaring>` declared in "
+"the :ref:`Items chapter <topics-items>`::"
 msgstr ""
 
 #: ../../../topics/loaders.rst:48
@@ -129,8 +129,9 @@ msgstr ""
 msgid ""
 "Finally, when all data is collected, the :meth:`ItemLoader.load_item` method "
 "is called which actually returns the item populated with the data previously "
-"extracted and collected with the :meth:`~ItemLoader.add_xpath`, :meth:"
-"`~ItemLoader.add_css`, and :meth:`~ItemLoader.add_value` calls."
+"extracted and collected with "
+"the :meth:`~ItemLoader.add_xpath`, :meth:`~ItemLoader.add_css`, "
+"and :meth:`~ItemLoader.add_value` calls."
 msgstr ""
 
 #: ../../../topics/loaders.rst:83
@@ -141,14 +142,15 @@ msgstr ""
 msgid ""
 "An Item Loader contains one input processor and one output processor for "
 "each (item) field. The input processor processes the extracted data as soon "
-"as it's received (through the :meth:`~ItemLoader.add_xpath`, :meth:"
-"`~ItemLoader.add_css` or :meth:`~ItemLoader.add_value` methods) and the "
-"result of the input processor is collected and kept inside the ItemLoader. "
-"After collecting all data, the :meth:`ItemLoader.load_item` method is called "
-"to populate and get the populated :class:`~scrapy.item.Item` object.  That's "
-"when the output processor is called with the data previously collected (and "
-"processed using the input processor). The result of the output processor is "
-"the final value that gets assigned to the item."
+"as it's received (through "
+"the :meth:`~ItemLoader.add_xpath`, :meth:`~ItemLoader.add_css` "
+"or :meth:`~ItemLoader.add_value` methods) and the result of the input "
+"processor is collected and kept inside the ItemLoader. After collecting all "
+"data, the :meth:`ItemLoader.load_item` method is called to populate and get "
+"the populated :class:`~scrapy.item.Item` object.  That's when the output "
+"processor is called with the data previously collected (and processed using "
+"the input processor). The result of the output processor is the final value "
+"that gets assigned to the item."
 msgstr ""
 
 #: ../../../topics/loaders.rst:96
@@ -295,9 +297,9 @@ msgstr ""
 msgid ""
 "As you can see, input processors are declared using the ``_in`` suffix while "
 "output processors are declared using the ``_out`` suffix. And you can also "
-"declare a default input/output processors using the :attr:`ItemLoader."
-"default_input_processor` and :attr:`ItemLoader.default_output_processor` "
-"attributes."
+"declare a default input/output processors using "
+"the :attr:`ItemLoader.default_input_processor` "
+"and :attr:`ItemLoader.default_output_processor` attributes."
 msgstr ""
 
 #: ../../../topics/loaders.rst:197
@@ -361,8 +363,8 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:237
 msgid ""
-"Item Loader defaults: :meth:`ItemLoader.default_input_processor` and :meth:"
-"`ItemLoader.default_output_processor` (least precedence)"
+"Item Loader defaults: :meth:`ItemLoader.default_input_processor` "
+"and :meth:`ItemLoader.default_output_processor` (least precedence)"
 msgstr ""
 
 #: ../../../topics/loaders.rst:240
@@ -409,8 +411,8 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:267
 msgid ""
-"By modifying the currently active Item Loader context (:attr:`~ItemLoader."
-"context` attribute)::"
+"By modifying the currently active Item Loader context "
+"(:attr:`~ItemLoader.context` attribute)::"
 msgstr ""
 
 #: ../../../topics/loaders.rst:270
@@ -432,8 +434,8 @@ msgstr ""
 #: ../../../topics/loaders.rst:278
 msgid ""
 "On Item Loader declaration, for those input/output processors that support "
-"instantiating them with an Item Loader context. :class:`~processor."
-"MapCompose` is one of them::"
+"instantiating them with an Item Loader "
+"context. :class:`~processor.MapCompose` is one of them::"
 msgstr ""
 
 #: ../../../topics/loaders.rst:282
@@ -449,15 +451,15 @@ msgstr ""
 #: ../../../topics/loaders.rst:291
 msgid ""
 "Return a new Item Loader for populating the given Item. If no item is given, "
-"one is instantiated automatically using the class in :attr:"
-"`default_item_class`."
+"one is instantiated automatically using the class "
+"in :attr:`default_item_class`."
 msgstr ""
 
 #: ../../../topics/loaders.rst:295
 msgid ""
-"When instantiated with a ``selector`` or a ``response`` parameters the :"
-"class:`ItemLoader` class provides convenient mechanisms for extracting data "
-"from web pages using :ref:`selectors <topics-selectors>`."
+"When instantiated with a ``selector`` or a ``response`` parameters "
+"the :class:`ItemLoader` class provides convenient mechanisms for extracting "
+"data from web pages using :ref:`selectors <topics-selectors>`."
 msgstr ""
 
 #: ../../../topics/loaders.rst:0
@@ -466,21 +468,23 @@ msgstr "参数"
 
 #: ../../../topics/loaders.rst:299
 msgid ""
-"The item instance to populate using subsequent calls to :meth:`~ItemLoader."
-"add_xpath`, :meth:`~ItemLoader.add_css`, or :meth:`~ItemLoader.add_value`."
+"The item instance to populate using subsequent calls "
+"to :meth:`~ItemLoader.add_xpath`, :meth:`~ItemLoader.add_css`, "
+"or :meth:`~ItemLoader.add_value`."
 msgstr ""
 
 #: ../../../topics/loaders.rst:304
 msgid ""
-"The selector to extract data from, when using the :meth:`add_xpath` (resp. :"
-"meth:`add_css`) or :meth:`replace_xpath` (resp. :meth:`replace_css`) method."
+"The selector to extract data from, when using the :meth:`add_xpath` "
+"(resp. :meth:`add_css`) or :meth:`replace_xpath` (resp. :meth:`replace_css`) "
+"method."
 msgstr ""
 
 #: ../../../topics/loaders.rst:309
 msgid ""
-"The response used to construct the selector using the :attr:"
-"`default_selector_class`, unless the selector argument is given, in which "
-"case this argument is ignored."
+"The response used to construct the selector using "
+"the :attr:`default_selector_class`, unless the selector argument is given, "
+"in which case this argument is ignored."
 msgstr ""
 
 #: ../../../topics/loaders.rst:314
@@ -506,8 +510,9 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:326
 msgid ""
-"a regular expression to use for extracting data from the given value using :"
-"meth:`~scrapy.utils.misc.extract_regex` method, applied before processors"
+"a regular expression to use for extracting data from the given value "
+"using :meth:`~scrapy.utils.misc.extract_regex` method, applied before "
+"processors"
 msgstr ""
 
 #: ../../../topics/loaders.rst:331 ../../../topics/loaders.rst:351
@@ -733,10 +738,10 @@ msgstr ""
 
 #: ../../../topics/loaders.rst:517
 msgid ""
-"The class used to construct the :attr:`selector` of this :class:"
-"`ItemLoader`, if only a response is given in the constructor. If a selector "
-"is given in the constructor this attribute is ignored. This attribute is "
-"sometimes overridden in subclasses."
+"The class used to construct the :attr:`selector` of "
+"this :class:`ItemLoader`, if only a response is given in the constructor. If "
+"a selector is given in the constructor this attribute is ignored. This "
+"attribute is sometimes overridden in subclasses."
 msgstr ""
 
 #: ../../../topics/loaders.rst:524
@@ -1039,11 +1044,11 @@ msgstr ""
 #: ../../../topics/loaders.rst:740
 msgid ""
 "This processor provides a convenient way to compose functions that only work "
-"with single values (instead of iterables). For this reason the :class:"
-"`MapCompose` processor is typically used as input processor, since data is "
-"often extracted using the :meth:`~scrapy.selector.Selector.extract` method "
-"of :ref:`selectors <topics-selectors>`, which returns a list of unicode "
-"strings."
+"with single values (instead of iterables). For this reason "
+"the :class:`MapCompose` processor is typically used as input processor, "
+"since data is often extracted using "
+"the :meth:`~scrapy.selector.Selector.extract` method of :ref:`selectors "
+"<topics-selectors>`, which returns a list of unicode strings."
 msgstr ""
 
 #: ../../../topics/loaders.rst:747
@@ -1064,15 +1069,15 @@ msgstr ""
 #: ../../../topics/loaders.rst:757
 msgid ""
 "As with the Compose processor, functions can receive Loader contexts, and "
-"constructor keyword arguments are used as default context values. See :class:"
-"`Compose` processor for more info."
+"constructor keyword arguments are used as default context values. "
+"See :class:`Compose` processor for more info."
 msgstr ""
 
 #: ../../../topics/loaders.rst:763
 msgid ""
 "Queries the value using the json path provided to the constructor and "
-"returns the output. Requires jmespath (https://github.com/jmespath/jmespath."
-"py) to run. This processor takes only one input at a time."
+"returns the output. Requires jmespath (https://github.com/jmespath/"
+"jmespath.py) to run. This processor takes only one input at a time."
 msgstr ""
 
 #: ../../../topics/loaders.rst:769

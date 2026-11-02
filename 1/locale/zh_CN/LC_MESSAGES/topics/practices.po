@@ -45,10 +45,10 @@ msgstr ""
 
 #: ../../../topics/practices.rst:21
 msgid ""
-"The first utility you can use to run your spiders is :class:`scrapy.crawler."
-"CrawlerProcess`. This class will start a Twisted reactor for you, "
-"configuring the logging and setting shutdown handlers. This class is the one "
-"used by all Scrapy commands."
+"The first utility you can use to run your spiders "
+"is :class:`scrapy.crawler.CrawlerProcess`. This class will start a Twisted "
+"reactor for you, configuring the logging and setting shutdown handlers. This "
+"class is the one used by all Scrapy commands."
 msgstr ""
 
 #: ../../../topics/practices.rst:26
@@ -75,18 +75,19 @@ msgstr ""
 
 #: ../../../topics/practices.rst:45
 msgid ""
-"Define settings within dictionary in CrawlerProcess. Make sure to check :"
-"class:`~scrapy.crawler.CrawlerProcess` documentation to get acquainted with "
-"its usage details."
+"Define settings within dictionary in CrawlerProcess. Make sure to "
+"check :class:`~scrapy.crawler.CrawlerProcess` documentation to get "
+"acquainted with its usage details."
 msgstr ""
 
 #: ../../../topics/practices.rst:48
 msgid ""
 "If you are inside a Scrapy project there are some additional helpers you can "
 "use to import those components within the project. You can automatically "
-"import your spiders passing their name to :class:`~scrapy.crawler."
-"CrawlerProcess`, and use ``get_project_settings`` to get a :class:`~scrapy."
-"settings.Settings` instance with your project settings."
+"import your spiders passing their name "
+"to :class:`~scrapy.crawler.CrawlerProcess`, and use ``get_project_settings`` "
+"to get a :class:`~scrapy.settings.Settings` instance with your project "
+"settings."
 msgstr ""
 
 #: ../../../topics/practices.rst:54
@@ -127,8 +128,8 @@ msgstr ""
 msgid ""
 "Note that you will also have to shutdown the Twisted reactor yourself after "
 "the spider is finished. This can be achieved by adding callbacks to the "
-"deferred returned by the :meth:`CrawlerRunner.crawl <scrapy.crawler."
-"CrawlerRunner.crawl>` method."
+"deferred returned by the :meth:`CrawlerRunner.crawl "
+"<scrapy.crawler.CrawlerRunner.crawl>` method."
 msgstr ""
 
 #: ../../../topics/practices.rst:83

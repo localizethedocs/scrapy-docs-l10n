@@ -73,11 +73,11 @@ msgstr ""
 
 #: ../../../topics/item-pipeline.rst:30
 msgid ""
-"This method is called for every item pipeline component. :meth:"
-"`process_item` must either: return a dict with data, return an :class:"
-"`~scrapy.item.Item` (or any descendant class) object, return a `Twisted "
-"Deferred`_ or raise :exc:`~scrapy.exceptions.DropItem` exception. Dropped "
-"items are no longer processed by further pipeline components."
+"This method is called for every item pipeline "
+"component. :meth:`process_item` must either: return a dict with data, return "
+"an :class:`~scrapy.item.Item` (or any descendant class) object, return a "
+"`Twisted Deferred`_ or raise :exc:`~scrapy.exceptions.DropItem` exception. "
+"Dropped items are no longer processed by further pipeline components."
 msgstr ""
 
 #: ../../../topics/item-pipeline.rst:0
@@ -114,8 +114,8 @@ msgstr ""
 
 #: ../../../topics/item-pipeline.rst:60
 msgid ""
-"If present, this classmethod is called to create a pipeline instance from a :"
-"class:`~scrapy.crawler.Crawler`. It must return a new instance of the "
+"If present, this classmethod is called to create a pipeline instance from "
+"a :class:`~scrapy.crawler.Crawler`. It must return a new instance of the "
 "pipeline. Crawler object provides access to all Scrapy core components like "
 "settings and signals; it is a way for pipeline to access them and hook its "
 "functionality into Scrapy."
@@ -327,8 +327,8 @@ msgstr ""
 
 #: ../../../topics/item-pipeline.rst:240
 msgid ""
-"To activate an Item Pipeline component you must add its class to the :"
-"setting:`ITEM_PIPELINES` setting, like in the following example::"
+"To activate an Item Pipeline component you must add its class to "
+"the :setting:`ITEM_PIPELINES` setting, like in the following example::"
 msgstr ""
 
 #: ../../../topics/item-pipeline.rst:243

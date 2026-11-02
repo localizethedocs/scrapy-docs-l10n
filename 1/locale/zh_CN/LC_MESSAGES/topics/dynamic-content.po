@@ -37,8 +37,8 @@ msgstr ""
 #: ../../../topics/dynamic-content.rst:15
 msgid ""
 "If you fail to do that, and you can nonetheless access the desired data "
-"through the :ref:`DOM <topics-livedom>` from your web browser, see :ref:"
-"`topics-javascript-rendering`."
+"through the :ref:`DOM <topics-livedom>` from your web browser, "
+"see :ref:`topics-javascript-rendering`."
 msgstr ""
 
 #: ../../../topics/dynamic-content.rst:22
@@ -72,9 +72,9 @@ msgstr ""
 
 #: ../../../topics/dynamic-content.rst:37
 msgid ""
-"If the data turns out to come from the original URL itself, you must :ref:"
-"`inspect the source code of the webpage <topics-inspecting-source>` to "
-"determine where the data is located."
+"If the data turns out to come from the original URL itself, you "
+"must :ref:`inspect the source code of the webpage <topics-inspecting-"
+"source>` to determine where the data is located."
 msgstr ""
 
 #: ../../../topics/dynamic-content.rst:41
@@ -89,8 +89,9 @@ msgstr ""
 
 #: ../../../topics/dynamic-content.rst:49
 msgid ""
-"Sometimes you need to inspect the source code of a webpage (not the :ref:"
-"`DOM <topics-livedom>`) to determine where some desired data is located."
+"Sometimes you need to inspect the source code of a webpage (not "
+"the :ref:`DOM <topics-livedom>`) to determine where some desired data is "
+"located."
 msgstr ""
 
 #: ../../../topics/dynamic-content.rst:52
@@ -118,17 +119,17 @@ msgstr ""
 
 #: ../../../topics/dynamic-content.rst:64
 msgid ""
-"If they get a response with the desired data, modify your Scrapy :class:"
-"`~scrapy.http.Request` to match that of the other HTTP client. For example, "
-"try using the same user-agent string (:setting:`USER_AGENT`) or the same :"
-"attr:`~scrapy.http.Request.headers`."
+"If they get a response with the desired data, modify your "
+"Scrapy :class:`~scrapy.http.Request` to match that of the other HTTP client. "
+"For example, try using the same user-agent string (:setting:`USER_AGENT`) or "
+"the same :attr:`~scrapy.http.Request.headers`."
 msgstr ""
 
 #: ../../../topics/dynamic-content.rst:69
 msgid ""
 "If they also get a response without the desired data, you’ll need to take "
-"steps to make your request more similar to that of the web browser. See :ref:"
-"`topics-reproducing-requests`."
+"steps to make your request more similar to that of the web browser. "
+"See :ref:`topics-reproducing-requests`."
 msgstr ""
 
 #: ../../../topics/dynamic-content.rst:76
@@ -157,11 +158,12 @@ msgstr ""
 
 #: ../../../topics/dynamic-content.rst:88
 msgid ""
-"As all major browsers allow to export the requests in `cURL <https://curl."
-"haxx.se/>`_ format, Scrapy incorporates the method :meth:`~scrapy.http."
-"Request.from_curl()` to generate an equivalent :class:`~scrapy.http.Request` "
-"from a cURL command. To get more information visit :ref:`request from curl "
-"<requests-from-curl>` inside the network tool section."
+"As all major browsers allow to export the requests in `cURL <https://"
+"curl.haxx.se/>`_ format, Scrapy incorporates the "
+"method :meth:`~scrapy.http.Request.from_curl()` to generate an "
+"equivalent :class:`~scrapy.http.Request` from a cURL command. To get more "
+"information visit :ref:`request from curl <requests-from-curl>` inside the "
+"network tool section."
 msgstr ""
 
 #: ../../../topics/dynamic-content.rst:95
@@ -204,8 +206,8 @@ msgstr ""
 
 #: ../../../topics/dynamic-content.rst:118
 msgid ""
-"If the response is JSON, use `json.loads`_ to load the desired data from :"
-"attr:`response.text <scrapy.http.TextResponse.text>`::"
+"If the response is JSON, use `json.loads`_ to load the desired data "
+"from :attr:`response.text <scrapy.http.TextResponse.text>`::"
 msgstr ""
 
 #: ../../../topics/dynamic-content.rst:121
@@ -238,9 +240,9 @@ msgstr ""
 #: ../../../topics/dynamic-content.rst:138
 msgid ""
 "If the response is an image or another format based on images (e.g. PDF), "
-"read the response as bytes from :attr:`response.body <scrapy.http."
-"TextResponse.body>` and use an OCR solution to extract the desired data as "
-"text."
+"read the response as bytes from :attr:`response.body "
+"<scrapy.http.TextResponse.body>` and use an OCR solution to extract the "
+"desired data as text."
 msgstr ""
 
 #: ../../../topics/dynamic-content.rst:143
@@ -258,8 +260,8 @@ msgstr ""
 
 #: ../../../topics/dynamic-content.rst:150
 msgid ""
-"Otherwise, you might need to convert the SVG code into a raster image, and :"
-"ref:`handle that raster image <topics-parsing-images>`."
+"Otherwise, you might need to convert the SVG code into a raster image, "
+"and :ref:`handle that raster image <topics-parsing-images>`."
 msgstr ""
 
 #: ../../../topics/dynamic-content.rst:156
@@ -274,8 +276,8 @@ msgstr ""
 
 #: ../../../topics/dynamic-content.rst:161
 msgid ""
-"If the JavaScript code is in a JavaScript file, simply read :attr:`response."
-"text <scrapy.http.TextResponse.text>`."
+"If the JavaScript code is in a JavaScript file, simply "
+"read :attr:`response.text <scrapy.http.TextResponse.text>`."
 msgstr ""
 
 #: ../../../topics/dynamic-content.rst:164
@@ -319,8 +321,8 @@ msgstr ""
 
 #: ../../../topics/dynamic-content.rst:185
 msgid ""
-"For example, if the JavaScript code contains ``var data = {field: \"value\"};"
-"`` you can extract that data as follows::"
+"For example, if the JavaScript code contains ``var data = {field: "
+"\"value\"};`` you can extract that data as follows::"
 msgstr ""
 
 #: ../../../topics/dynamic-content.rst:188
@@ -372,8 +374,8 @@ msgstr ""
 msgid ""
 "If you need something beyond what Splash offers, such as interacting with "
 "the DOM on-the-fly from Python code instead of using a previously-written "
-"script, or handling multiple web browser windows, you might need to :ref:"
-"`use a headless browser <topics-headless-browsing>` instead."
+"script, or handling multiple web browser windows, you might need "
+"to :ref:`use a headless browser <topics-headless-browsing>` instead."
 msgstr ""
 
 #: ../../../topics/dynamic-content.rst:229

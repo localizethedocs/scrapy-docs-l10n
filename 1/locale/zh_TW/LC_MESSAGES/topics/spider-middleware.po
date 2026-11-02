@@ -35,9 +35,9 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:17
 msgid ""
-"To activate a spider middleware component, add it to the :setting:"
-"`SPIDER_MIDDLEWARES` setting, which is a dict whose keys are the middleware "
-"class path and their values are the middleware orders."
+"To activate a spider middleware component, add it to "
+"the :setting:`SPIDER_MIDDLEWARES` setting, which is a dict whose keys are "
+"the middleware class path and their values are the middleware orders."
 msgstr ""
 
 #: ../../../topics/spider-middleware.rst:21
@@ -53,33 +53,34 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:27
 msgid ""
-"The :setting:`SPIDER_MIDDLEWARES` setting is merged with the :setting:"
-"`SPIDER_MIDDLEWARES_BASE` setting defined in Scrapy (and not meant to be "
-"overridden) and then sorted by order to get the final sorted list of enabled "
-"middlewares: the first middleware is the one closer to the engine and the "
-"last is the one closer to the spider. In other words, the :meth:`~scrapy."
-"spidermiddlewares.SpiderMiddleware.process_spider_input` method of each "
-"middleware will be invoked in increasing middleware order (100, 200, "
-"300, ...), and the :meth:`~scrapy.spidermiddlewares.SpiderMiddleware."
-"process_spider_output` method of each middleware will be invoked in "
-"decreasing order."
+"The :setting:`SPIDER_MIDDLEWARES` setting is merged with "
+"the :setting:`SPIDER_MIDDLEWARES_BASE` setting defined in Scrapy (and not "
+"meant to be overridden) and then sorted by order to get the final sorted "
+"list of enabled middlewares: the first middleware is the one closer to the "
+"engine and the last is the one closer to the spider. In other words, "
+"the :meth:`~scrapy.spidermiddlewares.SpiderMiddleware.process_spider_input` "
+"method of each middleware will be invoked in increasing middleware order "
+"(100, 200, 300, ...), and "
+"the :meth:`~scrapy.spidermiddlewares.SpiderMiddleware.process_spider_output` "
+"method of each middleware will be invoked in decreasing order."
 msgstr ""
 
 #: ../../../topics/spider-middleware.rst:38
 msgid ""
-"To decide which order to assign to your middleware see the :setting:"
-"`SPIDER_MIDDLEWARES_BASE` setting and pick a value according to where you "
-"want to insert the middleware. The order does matter because each middleware "
-"performs a different action and your middleware could depend on some "
-"previous (or subsequent) middleware being applied."
+"To decide which order to assign to your middleware see "
+"the :setting:`SPIDER_MIDDLEWARES_BASE` setting and pick a value according to "
+"where you want to insert the middleware. The order does matter because each "
+"middleware performs a different action and your middleware could depend on "
+"some previous (or subsequent) middleware being applied."
 msgstr ""
 
 #: ../../../topics/spider-middleware.rst:44
 msgid ""
-"If you want to disable a builtin middleware (the ones defined in :setting:"
-"`SPIDER_MIDDLEWARES_BASE`, and enabled by default) you must define it in "
-"your project :setting:`SPIDER_MIDDLEWARES` setting and assign ``None`` as "
-"its value.  For example, if you want to disable the off-site middleware::"
+"If you want to disable a builtin middleware (the ones defined "
+"in :setting:`SPIDER_MIDDLEWARES_BASE`, and enabled by default) you must "
+"define it in your project :setting:`SPIDER_MIDDLEWARES` setting and assign "
+"``None`` as its value.  For example, if you want to disable the off-site "
+"middleware::"
 msgstr ""
 
 #: ../../../topics/spider-middleware.rst:49
@@ -108,10 +109,10 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:65
 msgid ""
-"The main entry point is the ``from_crawler`` class method, which receives a :"
-"class:`~scrapy.crawler.Crawler` instance. The :class:`~scrapy.crawler."
-"Crawler` object gives you access, for example, to the :ref:`settings <topics-"
-"settings>`."
+"The main entry point is the ``from_crawler`` class method, which receives "
+"a :class:`~scrapy.crawler.Crawler` instance. "
+"The :class:`~scrapy.crawler.Crawler` object gives you access, for example, "
+"to the :ref:`settings <topics-settings>`."
 msgstr ""
 
 #: ../../../topics/spider-middleware.rst:75
@@ -137,9 +138,9 @@ msgid ""
 "If it raises an exception, Scrapy won't bother calling any other spider "
 "middleware :meth:`process_spider_input` and will call the request errback if "
 "there is one, otherwise it will start the :meth:`process_spider_exception` "
-"chain. The output of the errback is chained back in the other direction for :"
-"meth:`process_spider_output` to process it, or :meth:"
-"`process_spider_exception` if it raised an exception."
+"chain. The output of the errback is chained back in the other direction "
+"for :meth:`process_spider_output` to process it, "
+"or :meth:`process_spider_exception` if it raised an exception."
 msgstr ""
 
 #: ../../../topics/spider-middleware.rst:0
@@ -162,8 +163,8 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:104
 msgid ""
-":meth:`process_spider_output` must return an iterable of :class:`~scrapy."
-"http.Request`, dict or :class:`~scrapy.item.Item` objects."
+":meth:`process_spider_output` must return an iterable "
+"of :class:`~scrapy.http.Request`, dict or :class:`~scrapy.item.Item` objects."
 msgstr ""
 
 #: ../../../topics/spider-middleware.rst:108
@@ -187,8 +188,8 @@ msgstr ""
 #: ../../../topics/spider-middleware.rst:125
 msgid ""
 ":meth:`process_spider_exception` should return either ``None`` or an "
-"iterable of :class:`~scrapy.http.Request`, dict or :class:`~scrapy.item."
-"Item` objects."
+"iterable of :class:`~scrapy.http.Request`, dict "
+"or :class:`~scrapy.item.Item` objects."
 msgstr ""
 
 #: ../../../topics/spider-middleware.rst:129
@@ -202,8 +203,8 @@ msgstr ""
 #: ../../../topics/spider-middleware.rst:134
 msgid ""
 "If it returns an iterable the :meth:`process_spider_output` pipeline kicks "
-"in, starting from the next spider middleware, and no other :meth:"
-"`process_spider_exception` will be called."
+"in, starting from the next spider middleware, and no "
+"other :meth:`process_spider_exception` will be called."
 msgstr ""
 
 #: ../../../topics/spider-middleware.rst:138
@@ -277,8 +278,8 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:199
 msgid ""
-"For a list of the components enabled by default (and their orders) see the :"
-"setting:`SPIDER_MIDDLEWARES_BASE` setting."
+"For a list of the components enabled by default (and their orders) see "
+"the :setting:`SPIDER_MIDDLEWARES_BASE` setting."
 msgstr ""
 
 #: ../../../topics/spider-middleware.rst:203
@@ -346,8 +347,8 @@ msgstr ""
 msgid ""
 "If you still want to process response codes outside that range, you can "
 "specify which response codes the spider is able to handle using the "
-"``handle_httpstatus_list`` spider attribute or :setting:"
-"`HTTPERROR_ALLOWED_CODES` setting."
+"``handle_httpstatus_list`` spider attribute "
+"or :setting:`HTTPERROR_ALLOWED_CODES` setting."
 msgstr ""
 
 #: ../../../topics/spider-middleware.rst:250
@@ -364,10 +365,11 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:260
 msgid ""
-"The ``handle_httpstatus_list`` key of :attr:`Request.meta <scrapy.http."
-"Request.meta>` can also be used to specify which response codes to allow on "
-"a per-request basis. You can also set the meta key ``handle_httpstatus_all`` "
-"to ``True`` if you want to allow any response code for a request."
+"The ``handle_httpstatus_list`` key of :attr:`Request.meta "
+"<scrapy.http.Request.meta>` can also be used to specify which response codes "
+"to allow on a per-request basis. You can also set the meta key "
+"``handle_httpstatus_all`` to ``True`` if you want to allow any response code "
+"for a request."
 msgstr ""
 
 #: ../../../topics/spider-middleware.rst:265
@@ -421,9 +423,9 @@ msgstr ""
 msgid ""
 "This middleware filters out every request whose host names aren't in the "
 "spider's :attr:`~scrapy.spiders.Spider.allowed_domains` attribute. All "
-"subdomains of any domain in the list are also allowed. E.g. the rule ``www."
-"example.org`` will also allow ``bob.www.example.org`` but not ``www2.example."
-"com`` nor ``example.com``."
+"subdomains of any domain in the list are also allowed. E.g. the rule "
+"``www.example.org`` will also allow ``bob.www.example.org`` but not "
+"``www2.example.com`` nor ``example.com``."
 msgstr ""
 
 #: ../../../topics/spider-middleware.rst:309
@@ -435,8 +437,8 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:313
 msgid ""
-"DEBUG: Filtered offsite request to 'www.othersite.com': <GET http://www."
-"othersite.com/some/page.html>"
+"DEBUG: Filtered offsite request to 'www.othersite.com': <GET http://"
+"www.othersite.com/some/page.html>"
 msgstr ""
 
 #: ../../../topics/spider-middleware.rst:315
@@ -450,9 +452,9 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:321
 msgid ""
-"If the spider doesn't define an :attr:`~scrapy.spiders.Spider."
-"allowed_domains` attribute, or the attribute is empty, the offsite "
-"middleware will allow all requests."
+"If the spider doesn't define "
+"an :attr:`~scrapy.spiders.Spider.allowed_domains` attribute, or the "
+"attribute is empty, the offsite middleware will allow all requests."
 msgstr ""
 
 #: ../../../topics/spider-middleware.rst:325
@@ -594,8 +596,7 @@ msgid "`\"strict-origin-when-cross-origin\"`_"
 msgstr ""
 
 #: ../../../topics/spider-middleware.rst:391
-msgid ""
-":class:`scrapy.spidermiddlewares.referer.StrictOriginWhenCrossOriginPolicy`"
+msgid ":class:`scrapy.spidermiddlewares.referer.StrictOriginWhenCrossOriginPolicy`"
 msgstr ""
 
 #: ../../../topics/spider-middleware.rst:392
@@ -679,8 +680,8 @@ msgstr ""
 
 #: ../../../topics/spider-middleware.rst:412
 msgid ""
-"However, it is NOT Scrapy's default referrer policy (see :class:"
-"`DefaultReferrerPolicy`)."
+"However, it is NOT Scrapy's default referrer policy "
+"(see :class:`DefaultReferrerPolicy`)."
 msgstr ""
 
 #: ../../../../scrapy/spidermiddlewares/referer.py:docstring of

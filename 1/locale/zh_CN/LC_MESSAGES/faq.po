@@ -34,11 +34,11 @@ msgstr ""
 
 #: ../../../faq.rst:15
 msgid ""
-"Scrapy provides a built-in mechanism for extracting data (called :ref:"
-"`selectors <topics-selectors>`) but you can easily use `BeautifulSoup`_ (or "
-"`lxml`_) instead, if you feel more comfortable working with them. After all, "
-"they're just parsing libraries which can be imported and used from any "
-"Python code."
+"Scrapy provides a built-in mechanism for extracting data "
+"(called :ref:`selectors <topics-selectors>`) but you can easily use "
+"`BeautifulSoup`_ (or `lxml`_) instead, if you feel more comfortable working "
+"with them. After all, they're just parsing libraries which can be imported "
+"and used from any Python code."
 msgstr ""
 
 #: ../../../faq.rst:21
@@ -147,8 +147,8 @@ msgstr ""
 #: ../../../faq.rst:102
 msgid ""
 "Yes. Support for HTTP proxies is provided (since Scrapy 0.8) through the "
-"HTTP Proxy downloader middleware. See :class:`~scrapy.downloadermiddlewares."
-"httpproxy.HttpProxyMiddleware`."
+"HTTP Proxy downloader middleware. "
+"See :class:`~scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware`."
 msgstr ""
 
 #: ../../../faq.rst:107
@@ -201,12 +201,12 @@ msgstr ""
 
 #: ../../../faq.rst:141
 msgid ""
-"While pending requests are below the configured values of :setting:"
-"`CONCURRENT_REQUESTS`, :setting:`CONCURRENT_REQUESTS_PER_DOMAIN` or :setting:"
-"`CONCURRENT_REQUESTS_PER_DOMAIN`, those requests are sent concurrently. As a "
-"result, the first few requests of a crawl rarely follow the desired order. "
-"Lowering those settings to ``1`` enforces the desired order, but it "
-"significantly slows down the crawl as a whole."
+"While pending requests are below the configured values "
+"of :setting:`CONCURRENT_REQUESTS`, :setting:`CONCURRENT_REQUESTS_PER_DOMAIN` "
+"or :setting:`CONCURRENT_REQUESTS_PER_DOMAIN`, those requests are sent "
+"concurrently. As a result, the first few requests of a crawl rarely follow "
+"the desired order. Lowering those settings to ``1`` enforces the desired "
+"order, but it significantly slows down the crawl as a whole."
 msgstr ""
 
 #: ../../../faq.rst:150
@@ -219,8 +219,8 @@ msgstr ""
 
 #: ../../../faq.rst:154
 msgid ""
-"Also, Python has a builtin memory leak issue which is described in :ref:"
-"`topics-leaks-without-leaks`."
+"Also, Python has a builtin memory leak issue which is described "
+"in :ref:`topics-leaks-without-leaks`."
 msgstr ""
 
 #: ../../../faq.rst:158
@@ -296,8 +296,8 @@ msgstr ""
 
 #: ../../../faq.rst:200
 msgid ""
-"For more info see: :class:`~scrapy.spidermiddlewares.offsite."
-"OffsiteMiddleware`."
+"For more info "
+"see: :class:`~scrapy.spidermiddlewares.offsite.OffsiteMiddleware`."
 msgstr ""
 
 #: ../../../faq.rst:204
@@ -352,8 +352,8 @@ msgstr ""
 
 #: ../../../faq.rst:236
 msgid ""
-"Or by setting a global download delay in your project with the :setting:"
-"`DOWNLOAD_DELAY` setting."
+"Or by setting a global download delay in your project with "
+"the :setting:`DOWNLOAD_DELAY` setting."
 msgstr ""
 
 #: ../../../faq.rst:240
@@ -428,9 +428,9 @@ msgstr ""
 #: ../../../faq.rst:282
 msgid ""
 "In order to avoid parsing all the entire feed at once in memory, you can use "
-"the :func:`~scrapy.utils.iterators.xmliter_lxml` and :func:`~scrapy.utils."
-"iterators.csviter` functions. In fact, this is what :class:`~scrapy.spiders."
-"XMLFeedSpider` uses."
+"the :func:`~scrapy.utils.iterators.xmliter_lxml` "
+"and :func:`~scrapy.utils.iterators.csviter` functions. In fact, this is "
+"what :class:`~scrapy.spiders.XMLFeedSpider` uses."
 msgstr ""
 
 #: ../../../../scrapy/utils/iterators.py:docstring of
@@ -543,8 +543,9 @@ msgstr ""
 msgid ""
 ":ref:`Item pipelines <topics-item-pipeline>` cannot yield multiple items per "
 "input item. :ref:`Create a spider middleware <custom-spider-middleware>` "
-"instead, and use its :meth:`~scrapy.spidermiddlewares.SpiderMiddleware."
-"process_spider_output` method for this puspose. For example::"
+"instead, and use "
+"its :meth:`~scrapy.spidermiddlewares.SpiderMiddleware.process_spider_output` "
+"method for this puspose. For example::"
 msgstr ""
 
 #: ../../../faq.rst:347

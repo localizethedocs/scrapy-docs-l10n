@@ -64,8 +64,8 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:31
 msgid ""
-"But you can also extend the supported format through the :setting:"
-"`FEED_EXPORTERS` setting."
+"But you can also extend the supported format through "
+"the :setting:`FEED_EXPORTERS` setting."
 msgstr ""
 
 #: ../../../topics/feed-exports.rst:37
@@ -112,10 +112,10 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:59
 msgid ""
-"To specify columns to export and their order use :setting:"
-"`FEED_EXPORT_FIELDS`. Other feed exporters can also use this option, but it "
-"is important for CSV because unlike many other export formats CSV uses a "
-"fixed header."
+"To specify columns to export and their order "
+"use :setting:`FEED_EXPORT_FIELDS`. Other feed exporters can also use this "
+"option, but it is important for CSV because unlike many other export formats "
+"CSV uses a fixed header."
 msgstr ""
 
 #: ../../../topics/feed-exports.rst:67
@@ -215,8 +215,8 @@ msgstr ""
 #: ../../../topics/feed-exports.rst:121
 msgid ""
 "Any other named parameter gets replaced by the spider attribute of the same "
-"name. For example, ``%(site_id)s`` would get replaced by the ``spider."
-"site_id`` attribute the moment the feed is being created."
+"name. For example, ``%(site_id)s`` would get replaced by the "
+"``spider.site_id`` attribute the moment the feed is being created."
 msgstr ""
 
 #: ../../../topics/feed-exports.rst:125
@@ -292,8 +292,8 @@ msgstr ""
 msgid ""
 "FTP supports two different connection modes: `active or passive <https://"
 "stackoverflow.com/a/1699163>`_. Scrapy uses the passive connection mode by "
-"default. To use the active connection mode instead, set the :setting:"
-"`FEED_STORAGE_FTP_ACTIVE` setting to ``True``."
+"default. To use the active connection mode instead, set "
+"the :setting:`FEED_STORAGE_FTP_ACTIVE` setting to ``True``."
 msgstr ""
 
 #: ../../../topics/feed-exports.rst:175
@@ -479,10 +479,10 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:276
 msgid ""
-"If an exporter requires a fixed set of fields (this is the case for :ref:"
-"`CSV <topics-feed-format-csv>` export format) and FEED_EXPORT_FIELDS is "
-"empty or None, then Scrapy tries to infer field names from the exported data "
-"- currently it uses field names from the first item."
+"If an exporter requires a fixed set of fields (this is the case "
+"for :ref:`CSV <topics-feed-format-csv>` export format) and "
+"FEED_EXPORT_FIELDS is empty or None, then Scrapy tries to infer field names "
+"from the exported data - currently it uses field names from the first item."
 msgstr ""
 
 #: ../../../topics/feed-exports.rst:284

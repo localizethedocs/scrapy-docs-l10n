@@ -94,12 +94,13 @@ msgid ""
 "on the values accepted by :class:`Field` objects. For this same reason, "
 "there is no reference list of all available metadata keys. Each key defined "
 "in :class:`Field` objects could be used by a different component, and only "
-"those components know about it. You can also define and use any other :class:"
-"`Field` key in your project too, for your own needs. The main goal of :class:"
-"`Field` objects is to provide a way to define all field metadata in one "
-"place. Typically, those components whose behaviour depends on each field use "
-"certain field keys to configure that behaviour. You must refer to their "
-"documentation to see which metadata keys are used by each component."
+"those components know about it. You can also define and use any "
+"other :class:`Field` key in your project too, for your own needs. The main "
+"goal of :class:`Field` objects is to provide a way to define all field "
+"metadata in one place. Typically, those components whose behaviour depends "
+"on each field use certain field keys to configure that behaviour. You must "
+"refer to their documentation to see which metadata keys are used by each "
+"component."
 msgstr ""
 
 #: ../../../topics/items.rst:73
@@ -250,10 +251,10 @@ msgstr ""
 
 #: ../../../topics/items.rst:185
 msgid ""
-"To create a shallow copy of an item, you can either call :meth:`~scrapy.item."
-"Item.copy` on an existing item (``product2 = product.copy()``) or "
-"instantiate your item class from an existing item (``product2 = "
-"Product(product)``)."
+"To create a shallow copy of an item, you can either "
+"call :meth:`~scrapy.item.Item.copy` on an existing item (``product2 = "
+"product.copy()``) or instantiate your item class from an existing item "
+"(``product2 = Product(product)``)."
 msgstr ""
 
 #: ../../../topics/items.rst:190
@@ -358,8 +359,9 @@ msgstr ""
 #: ../../../topics/items.rst:249
 msgid ""
 "A dictionary containing *all declared fields* for this Item, not only those "
-"populated. The keys are the field names and the values are the :class:"
-"`Field` objects used in the :ref:`Item declaration <topics-items-declaring>`."
+"populated. The keys are the field names and the values are "
+"the :class:`Field` objects used in the :ref:`Item declaration <topics-items-"
+"declaring>`."
 msgstr ""
 
 #: ../../../topics/items.rst:257
@@ -369,10 +371,10 @@ msgstr ""
 #: ../../../topics/items.rst:261
 msgid ""
 "The :class:`Field` class is just an alias to the built-in `dict`_ class and "
-"doesn't provide any extra functionality or attributes. In other words, :"
-"class:`Field` objects are plain-old Python dicts. A separate class is used "
-"to support the :ref:`item declaration syntax <topics-items-declaring>` based "
-"on class attributes."
+"doesn't provide any extra functionality or attributes. In other "
+"words, :class:`Field` objects are plain-old Python dicts. A separate class "
+"is used to support the :ref:`item declaration syntax <topics-items-"
+"declaring>` based on class attributes."
 msgstr ""
 
 #: ../../../topics/items.rst:271
@@ -385,10 +387,10 @@ msgstr ""
 
 #: ../../../../scrapy/item.py:docstring of scrapy.item.BaseItem:3
 msgid ""
-"In Scrapy, an object is considered an *item* if it is an instance of either :"
-"class:`BaseItem` or :class:`dict`. For example, when the output of a spider "
-"callback is evaluated, only instances of :class:`BaseItem` or :class:`dict` "
-"are passed to :ref:`item pipelines <topics-item-pipeline>`."
+"In Scrapy, an object is considered an *item* if it is an instance of "
+"either :class:`BaseItem` or :class:`dict`. For example, when the output of a "
+"spider callback is evaluated, only instances of :class:`BaseItem` "
+"or :class:`dict` are passed to :ref:`item pipelines <topics-item-pipeline>`."
 msgstr ""
 
 #: ../../../../scrapy/item.py:docstring of scrapy.item.BaseItem:8
@@ -399,8 +401,8 @@ msgstr ""
 
 #: ../../../../scrapy/item.py:docstring of scrapy.item.BaseItem:11
 msgid ""
-"Unlike instances of :class:`dict`, instances of :class:`BaseItem` may be :"
-"ref:`tracked <topics-leaks-trackrefs>` to debug memory leaks."
+"Unlike instances of :class:`dict`, instances of :class:`BaseItem` may "
+"be :ref:`tracked <topics-leaks-trackrefs>` to debug memory leaks."
 msgstr ""
 
 #: ../../../../scrapy/item.py:docstring of scrapy.item.ItemMeta:1

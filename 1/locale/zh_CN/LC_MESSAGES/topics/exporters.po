@@ -175,8 +175,9 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:112
 msgid ""
-"Make sure you call the base class :meth:`~BaseItemExporter."
-"serialize_field()` method after your custom code."
+"Make sure you call the base "
+"class :meth:`~BaseItemExporter.serialize_field()` method after your custom "
+"code."
 msgstr ""
 
 #: ../../../topics/exporters.rst:117
@@ -224,8 +225,8 @@ msgstr ""
 #: ../../../topics/exporters.rst:147
 msgid ""
 "These features can be configured through the constructor arguments which "
-"populate their respective instance attributes: :attr:`fields_to_export`, :"
-"attr:`export_empty_fields`, :attr:`encoding`, :attr:`indent`."
+"populate their respective instance "
+"attributes: :attr:`fields_to_export`, :attr:`export_empty_fields`, :attr:`encoding`, :attr:`indent`."
 msgstr ""
 
 #: ../../../topics/exporters.rst:153
@@ -257,8 +258,8 @@ msgstr "参数"
 
 #: ../../../topics/exporters.rst:167
 msgid ""
-"the field being serialized. If a raw dict is being exported (not :class:`~."
-"Item`) *field* value is an empty dict."
+"the field being serialized. If a raw dict is being exported "
+"(not :class:`~.Item`) *field* value is an empty dict."
 msgstr ""
 
 #: ../../../topics/exporters.rst:171
@@ -272,8 +273,9 @@ msgstr "正在序列化的值"
 #: ../../../topics/exporters.rst:178
 msgid ""
 "Signal the beginning of the exporting process. Some exporters may use this "
-"to generate some required header (for example, the :class:"
-"`XmlItemExporter`). You must call this method before exporting any items."
+"to generate some required header (for example, "
+"the :class:`XmlItemExporter`). You must call this method before exporting "
+"any items."
 msgstr ""
 
 #: ../../../topics/exporters.rst:185
@@ -347,8 +349,8 @@ msgstr "PythonItemExporter"
 #: ../../../../scrapy/exporters.py:docstring of
 #: scrapy.exporters.PythonItemExporter:1
 msgid ""
-"This is a base class for item exporters that extends :class:"
-"`BaseItemExporter` with support for nested items."
+"This is a base class for item exporters that "
+"extends :class:`BaseItemExporter` with support for nested items."
 msgstr ""
 
 #: ../../../../scrapy/exporters.py:docstring of
@@ -388,8 +390,8 @@ msgstr "导出的 XML 中每个元素的名称。"
 #: ../../../topics/exporters.rst:249 ../../../topics/exporters.rst:337
 #: ../../../topics/exporters.rst:354
 msgid ""
-"The additional keyword arguments of this constructor are passed to the :"
-"class:`BaseItemExporter` constructor."
+"The additional keyword arguments of this constructor are passed to "
+"the :class:`BaseItemExporter` constructor."
 msgstr ""
 
 #: ../../../topics/exporters.rst:252 ../../../topics/exporters.rst:314
@@ -473,10 +475,10 @@ msgstr "CsvItemExporter"
 
 #: ../../../topics/exporters.rst:292
 msgid ""
-"Exports Items in CSV format to the given file-like object. If the :attr:"
-"`fields_to_export` attribute is set, it will be used to define the CSV "
-"columns and their order. The :attr:`export_empty_fields` attribute has no "
-"effect on this exporter."
+"Exports Items in CSV format to the given file-like object. If "
+"the :attr:`fields_to_export` attribute is set, it will be used to define the "
+"CSV columns and their order. The :attr:`export_empty_fields` attribute has "
+"no effect on this exporter."
 msgstr ""
 
 #: ../../../topics/exporters.rst:300
@@ -494,10 +496,10 @@ msgstr "用于加入多值字段的字符(或字符)，如果找到的话。"
 
 #: ../../../topics/exporters.rst:309
 msgid ""
-"The additional keyword arguments of this constructor are passed to the :"
-"class:`BaseItemExporter` constructor, and the leftover arguments to the `csv."
-"writer`_ constructor, so you can use any ``csv.writer`` constructor argument "
-"to customize this exporter."
+"The additional keyword arguments of this constructor are passed to "
+"the :class:`BaseItemExporter` constructor, and the leftover arguments to the "
+"`csv.writer`_ constructor, so you can use any ``csv.writer`` constructor "
+"argument to customize this exporter."
 msgstr ""
 
 #: ../../../topics/exporters.rst:316
@@ -573,9 +575,9 @@ msgid ""
 "well for large amounts of data since incremental (aka. stream-mode) parsing "
 "is not well supported (if at all) among JSON parsers (on any language), and "
 "most of them just parse the entire object in memory. If you want the power "
-"and simplicity of JSON with a more stream-friendly format, consider using :"
-"class:`JsonLinesItemExporter` instead, or splitting the output in multiple "
-"chunks."
+"and simplicity of JSON with a more stream-friendly format, consider "
+"using :class:`JsonLinesItemExporter` instead, or splitting the output in "
+"multiple chunks."
 msgstr ""
 
 #: ../../../topics/exporters.rst:396
@@ -618,6 +620,6 @@ msgstr ""
 #: scrapy.exporters.MarshalItemExporter:4
 msgid ""
 "The file-like object to use for exporting the data. Its ``write`` method "
-"should accept :class:`bytes` (a disk file opened in binary mode, a :class:"
-"`~io.BytesIO` object, etc)"
+"should accept :class:`bytes` (a disk file opened in binary mode, "
+"a :class:`~io.BytesIO` object, etc)"
 msgstr ""

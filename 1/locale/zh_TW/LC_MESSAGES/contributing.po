@@ -46,9 +46,9 @@ msgstr ""
 
 #: ../../../contributing.rst:21
 msgid ""
-"Submit patches for new functionalities and/or bug fixes. Please read :ref:"
-"`writing-patches` and `Submitting patches`_ below for details on how to "
-"write and submit a patch."
+"Submit patches for new functionalities and/or bug fixes. Please "
+"read :ref:`writing-patches` and `Submitting patches`_ below for details on "
+"how to write and submit a patch."
 msgstr ""
 
 #: ../../../contributing.rst:25

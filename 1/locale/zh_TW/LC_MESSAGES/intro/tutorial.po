@@ -142,10 +142,10 @@ msgstr ""
 #: ../../../intro/tutorial.rst:79
 msgid ""
 "Spiders are classes that you define and that Scrapy uses to scrape "
-"information from a website (or a group of websites). They must subclass :"
-"class:`~scrapy.spiders.Spider` and define the initial requests to make, "
-"optionally how to follow links in the pages, and how to parse the downloaded "
-"page content to extract data."
+"information from a website (or a group of websites). They must "
+"subclass :class:`~scrapy.spiders.Spider` and define the initial requests to "
+"make, optionally how to follow links in the pages, and how to parse the "
+"downloaded page content to extract data."
 msgstr ""
 
 #: ../../../intro/tutorial.rst:85
@@ -181,8 +181,8 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:110
 msgid ""
-"As you can see, our Spider subclasses :class:`scrapy.Spider <scrapy.spiders."
-"Spider>` and defines some attributes and methods:"
+"As you can see, our Spider subclasses :class:`scrapy.Spider "
+"<scrapy.spiders.Spider>` and defines some attributes and methods:"
 msgstr ""
 
 #: ../../../intro/tutorial.rst:113
@@ -393,10 +393,10 @@ msgstr ""
 #: ../../../intro/tutorial.rst:246
 msgid ""
 "The result of running ``response.css('title')`` is a list-like object "
-"called :class:`~scrapy.selector.SelectorList`, which represents a list of :"
-"class:`~scrapy.selector.Selector` objects that wrap around XML/HTML elements "
-"and allow you to run further queries to fine-grain the selection or extract "
-"the data."
+"called :class:`~scrapy.selector.SelectorList`, which represents a list "
+"of :class:`~scrapy.selector.Selector` objects that wrap around XML/HTML "
+"elements and allow you to run further queries to fine-grain the selection or "
+"extract the data."
 msgstr ""
 
 #: ../../../intro/tutorial.rst:252
@@ -449,9 +449,9 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:277
 msgid ""
-"However, using ``.get()`` directly on a :class:`~scrapy.selector."
-"SelectorList` instance avoids an ``IndexError`` and returns ``None`` when it "
-"doesn't find any element matching the selection."
+"However, using ``.get()`` directly on "
+"a :class:`~scrapy.selector.SelectorList` instance avoids an ``IndexError`` "
+"and returns ``None`` when it doesn't find any element matching the selection."
 msgstr ""
 
 #: ../../../intro/tutorial.rst:281
@@ -463,9 +463,10 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:285
 msgid ""
-"Besides the :meth:`~scrapy.selector.SelectorList.getall` and :meth:`~scrapy."
-"selector.SelectorList.get` methods, you can also use the :meth:`~scrapy."
-"selector.SelectorList.re` method to extract using `regular expressions`_::"
+"Besides the :meth:`~scrapy.selector.SelectorList.getall` "
+"and :meth:`~scrapy.selector.SelectorList.get` methods, you can also use "
+"the :meth:`~scrapy.selector.SelectorList.re` method to extract using "
+"`regular expressions`_::"
 msgstr ""
 
 #: ../../../intro/tutorial.rst:290
@@ -870,11 +871,11 @@ msgstr ""
 #: ../../../intro/tutorial.rst:552
 msgid ""
 "Now, after extracting the data, the ``parse()`` method looks for the link to "
-"the next page, builds a full absolute URL using the :meth:`~scrapy.http."
-"Response.urljoin` method (since the links can be relative) and yields a new "
-"request to the next page, registering itself as callback to handle the data "
-"extraction for the next page and to keep the crawling going through all the "
-"pages."
+"the next page, builds a full absolute URL using "
+"the :meth:`~scrapy.http.Response.urljoin` method (since the links can be "
+"relative) and yields a new request to the next page, registering itself as "
+"callback to handle the data extraction for the next page and to keep the "
+"crawling going through all the pages."
 msgstr ""
 
 #: ../../../intro/tutorial.rst:559
@@ -904,8 +905,8 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:577
 msgid ""
-"As a shortcut for creating Request objects you can use :meth:`response."
-"follow <scrapy.http.TextResponse.follow>`::"
+"As a shortcut for creating Request objects you can "
+"use :meth:`response.follow <scrapy.http.TextResponse.follow>`::"
 msgstr ""
 
 #: ../../../intro/tutorial.rst:580
@@ -1115,8 +1116,8 @@ msgstr ""
 #: ../../../intro/tutorial.rst:727
 msgid ""
 "If you pass the ``tag=humor`` argument to this spider, you'll notice that it "
-"will only visit URLs from the ``humor`` tag, such as ``http://quotes."
-"toscrape.com/tag/humor``."
+"will only visit URLs from the ``humor`` tag, such as ``http://"
+"quotes.toscrape.com/tag/humor``."
 msgstr ""
 
 #: ../../../intro/tutorial.rst:731
@@ -1131,8 +1132,9 @@ msgstr ""
 #: ../../../intro/tutorial.rst:736
 msgid ""
 "This tutorial covered only the basics of Scrapy, but there's a lot of other "
-"features not mentioned here. Check the :ref:`topics-whatelse` section in :"
-"ref:`intro-overview` chapter for a quick overview of the most important ones."
+"features not mentioned here. Check the :ref:`topics-whatelse` section "
+"in :ref:`intro-overview` chapter for a quick overview of the most important "
+"ones."
 msgstr ""
 
 #: ../../../intro/tutorial.rst:740

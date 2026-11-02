@@ -135,8 +135,8 @@ msgstr ""
 
 #: ../../../topics/logging.rst:69
 msgid ""
-"You can use a different logger just by getting its name with the ``logging."
-"getLogger`` function::"
+"You can use a different logger just by getting its name with the "
+"``logging.getLogger`` function::"
 msgstr ""
 
 #: ../../../topics/logging.rst:72
@@ -170,8 +170,8 @@ msgstr ""
 
 #: ../../../topics/logging.rst:89
 msgid ""
-"Module logging, `Loggers <https://docs.python.org/2/library/logging."
-"html#logger-objects>`_"
+"Module logging, `Loggers <https://docs.python.org/2/library/"
+"logging.html#logger-objects>`_"
 msgstr ""
 
 #: ../../../topics/logging.rst:90
@@ -283,12 +283,13 @@ msgstr ""
 
 #: ../../../topics/logging.rst:155
 msgid ""
-"The first couple of settings define a destination for log messages. If :"
-"setting:`LOG_FILE` is set, messages sent through the root logger will be "
-"redirected to a file named :setting:`LOG_FILE` with encoding :setting:"
-"`LOG_ENCODING`. If unset and :setting:`LOG_ENABLED` is ``True``, log "
-"messages will be displayed on the standard error. Lastly, if :setting:"
-"`LOG_ENABLED` is ``False``, there won't be any visible log output."
+"The first couple of settings define a destination for log messages. "
+"If :setting:`LOG_FILE` is set, messages sent through the root logger will be "
+"redirected to a file named :setting:`LOG_FILE` with "
+"encoding :setting:`LOG_ENCODING`. If unset and :setting:`LOG_ENABLED` is "
+"``True``, log messages will be displayed on the standard error. Lastly, "
+"if :setting:`LOG_ENABLED` is ``False``, there won't be any visible log "
+"output."
 msgstr ""
 
 #: ../../../topics/logging.rst:162
@@ -302,10 +303,10 @@ msgstr ""
 msgid ""
 ":setting:`LOG_FORMAT` and :setting:`LOG_DATEFORMAT` specify formatting "
 "strings used as layouts for all messages. Those strings can contain any "
-"placeholders listed in `logging's logrecord attributes docs <https://docs."
-"python.org/2/library/logging.html#logrecord-attributes>`_ and `datetime's "
-"strftime and strptime directives <https://docs.python.org/2/library/datetime."
-"html#strftime-and-strptime-behavior>`_ respectively."
+"placeholders listed in `logging's logrecord attributes docs <https://"
+"docs.python.org/2/library/logging.html#logrecord-attributes>`_ and "
+"`datetime's strftime and strptime directives <https://docs.python.org/2/"
+"library/datetime.html#strftime-and-strptime-behavior>`_ respectively."
 msgstr ""
 
 #: ../../../topics/logging.rst:174
@@ -351,8 +352,8 @@ msgstr ""
 
 #: ../../../topics/logging.rst:193
 msgid ""
-"Module `logging.handlers <https://docs.python.org/2/library/logging.handlers."
-"html>`_"
+"Module `logging.handlers <https://docs.python.org/2/library/"
+"logging.handlers.html>`_"
 msgstr ""
 
 #: ../../../topics/logging.rst:194
@@ -365,9 +366,9 @@ msgstr ""
 
 #: ../../../topics/logging.rst:201
 msgid ""
-"A custom log format can be set for different actions by extending :class:"
-"`~scrapy.logformatter.LogFormatter` class and making :setting:"
-"`LOG_FORMATTER` point to your new class."
+"A custom log format can be set for different actions by "
+"extending :class:`~scrapy.logformatter.LogFormatter` class and "
+"making :setting:`LOG_FORMATTER` point to your new class."
 msgstr ""
 
 #: ../../../../scrapy/logformatter.py:docstring of
@@ -433,8 +434,8 @@ msgid ""
 "class PoliteLogFormatter(logformatter.LogFormatter):\n"
 "    def dropped(self, item, exception, response, spider):\n"
 "        return {\n"
-"            'level': logging.INFO, # lowering the level from logging."
-"WARNING\n"
+"            'level': logging.INFO, # lowering the level from "
+"logging.WARNING\n"
 "            'msg': u\"Dropped: %(exception)s\" + os.linesep + \"%(item)s\",\n"
 "            'args': {\n"
 "                'exception': exception,\n"
@@ -485,10 +486,10 @@ msgstr ""
 
 #: ../../../topics/logging.rst:221
 msgid ""
-"The first thing to note is a logger name - it is in brackets: ``[scrapy."
-"spidermiddlewares.httperror]``. If you get just ``[scrapy]`` then :setting:"
-"`LOG_SHORT_NAMES` is likely set to True; set it to False and re-run the "
-"crawl."
+"The first thing to note is a logger name - it is in brackets: "
+"``[scrapy.spidermiddlewares.httperror]``. If you get just ``[scrapy]`` "
+"then :setting:`LOG_SHORT_NAMES` is likely set to True; set it to False and "
+"re-run the crawl."
 msgstr ""
 
 #: ../../../topics/logging.rst:226
@@ -515,8 +516,8 @@ msgstr ""
 
 #: ../../../topics/logging.rst:242
 msgid ""
-"If you run this spider again then INFO messages from ``scrapy."
-"spidermiddlewares.httperror`` logger will be gone."
+"If you run this spider again then INFO messages from "
+"``scrapy.spidermiddlewares.httperror`` logger will be gone."
 msgstr ""
 
 #: ../../../topics/logging.rst:246
@@ -575,10 +576,11 @@ msgstr ""
 
 #: ../../../topics/logging.rst:253
 msgid ""
-"``configure_logging`` is automatically called when using Scrapy commands or :"
-"class:`~scrapy.crawler.CrawlerProcess`, but needs to be called explicitly "
-"when running custom scripts using :class:`~scrapy.crawler.CrawlerRunner`. In "
-"that case, its usage is not required but it's recommended."
+"``configure_logging`` is automatically called when using Scrapy commands "
+"or :class:`~scrapy.crawler.CrawlerProcess`, but needs to be called "
+"explicitly when running custom scripts "
+"using :class:`~scrapy.crawler.CrawlerRunner`. In that case, its usage is not "
+"required but it's recommended."
 msgstr ""
 
 #: ../../../topics/logging.rst:258

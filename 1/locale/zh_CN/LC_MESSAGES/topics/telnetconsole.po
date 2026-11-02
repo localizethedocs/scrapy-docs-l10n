@@ -48,8 +48,8 @@ msgid ""
 "Intended usage is connecting to a running Scrapy spider locally (spider "
 "process and telnet client are on the same machine) or over a secure "
 "connection (VPN, SSH tunnel). Please avoid using telnet console over "
-"insecure connections, or disable it completely using :setting:"
-"`TELNETCONSOLE_ENABLED` option."
+"insecure connections, or disable it completely "
+"using :setting:`TELNETCONSOLE_ENABLED` option."
 msgstr ""
 
 #: ../../../topics/telnetconsole.rst:32
@@ -58,9 +58,9 @@ msgstr ""
 
 #: ../../../topics/telnetconsole.rst:34
 msgid ""
-"The telnet console listens in the TCP port defined in the :setting:"
-"`TELNETCONSOLE_PORT` setting, which defaults to ``6023``. To access the "
-"console you need to type::"
+"The telnet console listens in the TCP port defined in "
+"the :setting:`TELNETCONSOLE_PORT` setting, which defaults to ``6023``. To "
+"access the console you need to type::"
 msgstr ""
 
 #: ../../../topics/telnetconsole.rst:38
@@ -88,8 +88,9 @@ msgstr ""
 
 #: ../../../topics/telnetconsole.rst:51
 msgid ""
-"Default Username and Password can be overriden by the settings :setting:"
-"`TELNETCONSOLE_USERNAME` and :setting:`TELNETCONSOLE_PASSWORD`."
+"Default Username and Password can be overriden by the "
+"settings :setting:`TELNETCONSOLE_USERNAME` "
+"and :setting:`TELNETCONSOLE_PASSWORD`."
 msgstr ""
 
 #: ../../../topics/telnetconsole.rst:55

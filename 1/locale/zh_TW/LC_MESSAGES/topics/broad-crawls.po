@@ -85,9 +85,9 @@ msgstr ""
 
 #: ../../../topics/broad-crawls.rst:47
 msgid ""
-"Scrapy’s default scheduler priority queue is ``'scrapy.pqueues."
-"ScrapyPriorityQueue'``. It works best during single-domain crawl. It does "
-"not work well with crawling many different domains in parallel"
+"Scrapy’s default scheduler priority queue is "
+"``'scrapy.pqueues.ScrapyPriorityQueue'``. It works best during single-domain "
+"crawl. It does not work well with crawling many different domains in parallel"
 msgstr ""
 
 #: ../../../topics/broad-crawls.rst:51
@@ -107,16 +107,16 @@ msgstr ""
 msgid ""
 "Concurrency is the number of requests that are processed in parallel. There "
 "is a global limit (:setting:`CONCURRENT_REQUESTS`) and an additional limit "
-"that can be set either per domain (:setting:"
-"`CONCURRENT_REQUESTS_PER_DOMAIN`) or per IP (:setting:"
-"`CONCURRENT_REQUESTS_PER_IP`)."
+"that can be set either per domain "
+"(:setting:`CONCURRENT_REQUESTS_PER_DOMAIN`) or per IP "
+"(:setting:`CONCURRENT_REQUESTS_PER_IP`)."
 msgstr ""
 
 #: ../../../topics/broad-crawls.rst:65
 msgid ""
 "The scheduler priority queue :ref:`recommended for broad crawls <broad-"
-"crawls-scheduler-priority-queue>` does not support :setting:"
-"`CONCURRENT_REQUESTS_PER_IP`."
+"crawls-scheduler-priority-queue>` does not "
+"support :setting:`CONCURRENT_REQUESTS_PER_IP`."
 msgstr ""
 
 #: ../../../topics/broad-crawls.rst:69
@@ -307,8 +307,8 @@ msgstr ""
 
 #: ../../../topics/broad-crawls.rst:181
 msgid ""
-"Scrapy handles (1) automatically; to handle (2) enable :ref:"
-"`AjaxCrawlMiddleware <ajaxcrawl-middleware>`::"
+"Scrapy handles (1) automatically; to handle (2) "
+"enable :ref:`AjaxCrawlMiddleware <ajaxcrawl-middleware>`::"
 msgstr ""
 
 #: ../../../topics/broad-crawls.rst:184

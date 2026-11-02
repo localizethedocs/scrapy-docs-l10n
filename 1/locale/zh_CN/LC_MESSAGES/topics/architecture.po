@@ -62,22 +62,23 @@ msgstr ""
 
 #: ../../../topics/architecture.rst:35
 msgid ""
-"The :ref:`Engine <component-engine>` schedules the Requests in the :ref:"
-"`Scheduler <component-scheduler>` and asks for the next Requests to crawl."
+"The :ref:`Engine <component-engine>` schedules the Requests in "
+"the :ref:`Scheduler <component-scheduler>` and asks for the next Requests to "
+"crawl."
 msgstr ""
 
 #: ../../../topics/architecture.rst:39
 msgid ""
-"The :ref:`Scheduler <component-scheduler>` returns the next Requests to the :"
-"ref:`Engine <component-engine>`."
+"The :ref:`Scheduler <component-scheduler>` returns the next Requests to "
+"the :ref:`Engine <component-engine>`."
 msgstr ""
 
 #: ../../../topics/architecture.rst:42
 msgid ""
-"The :ref:`Engine <component-engine>` sends the Requests to the :ref:"
-"`Downloader <component-downloader>`, passing through the :ref:`Downloader "
-"Middlewares <component-downloader-middleware>` (see :meth:`~scrapy."
-"downloadermiddlewares.DownloaderMiddleware.process_request`)."
+"The :ref:`Engine <component-engine>` sends the Requests to "
+"the :ref:`Downloader <component-downloader>`, passing through "
+"the :ref:`Downloader Middlewares <component-downloader-middleware>` "
+"(see :meth:`~scrapy.downloadermiddlewares.DownloaderMiddleware.process_request`)."
 msgstr ""
 
 #: ../../../topics/architecture.rst:47
@@ -85,17 +86,17 @@ msgid ""
 "Once the page finishes downloading the :ref:`Downloader <component-"
 "downloader>` generates a Response (with that page) and sends it to the "
 "Engine, passing through the :ref:`Downloader Middlewares <component-"
-"downloader-middleware>` (see :meth:`~scrapy.downloadermiddlewares."
-"DownloaderMiddleware.process_response`)."
+"downloader-middleware>` "
+"(see :meth:`~scrapy.downloadermiddlewares.DownloaderMiddleware.process_response`)."
 msgstr ""
 
 #: ../../../topics/architecture.rst:53
 msgid ""
-"The :ref:`Engine <component-engine>` receives the Response from the :ref:"
-"`Downloader <component-downloader>` and sends it to the :ref:`Spider "
-"<component-spiders>` for processing, passing through the :ref:`Spider "
-"Middleware <component-spider-middleware>` (see :meth:`~scrapy."
-"spidermiddlewares.SpiderMiddleware.process_spider_input`)."
+"The :ref:`Engine <component-engine>` receives the Response from "
+"the :ref:`Downloader <component-downloader>` and sends it to "
+"the :ref:`Spider <component-spiders>` for processing, passing through "
+"the :ref:`Spider Middleware <component-spider-middleware>` "
+"(see :meth:`~scrapy.spidermiddlewares.SpiderMiddleware.process_spider_input`)."
 msgstr ""
 
 #: ../../../topics/architecture.rst:59
@@ -103,22 +104,22 @@ msgid ""
 "The :ref:`Spider <component-spiders>` processes the Response and returns "
 "scraped items and new Requests (to follow) to the :ref:`Engine <component-"
 "engine>`, passing through the :ref:`Spider Middleware <component-spider-"
-"middleware>` (see :meth:`~scrapy.spidermiddlewares.SpiderMiddleware."
-"process_spider_output`)."
+"middleware>` "
+"(see :meth:`~scrapy.spidermiddlewares.SpiderMiddleware.process_spider_output`)."
 msgstr ""
 
 #: ../../../topics/architecture.rst:65
 msgid ""
 "The :ref:`Engine <component-engine>` sends processed items to :ref:`Item "
-"Pipelines <component-pipelines>`, then send processed Requests to the :ref:"
-"`Scheduler <component-scheduler>` and asks for possible next Requests to "
-"crawl."
+"Pipelines <component-pipelines>`, then send processed Requests to "
+"the :ref:`Scheduler <component-scheduler>` and asks for possible next "
+"Requests to crawl."
 msgstr ""
 
 #: ../../../topics/architecture.rst:70
 msgid ""
-"The process repeats (from step 1) until there are no more requests from the :"
-"ref:`Scheduler <component-scheduler>`."
+"The process repeats (from step 1) until there are no more requests from "
+"the :ref:`Scheduler <component-scheduler>`."
 msgstr ""
 
 #: ../../../topics/architecture.rst:74

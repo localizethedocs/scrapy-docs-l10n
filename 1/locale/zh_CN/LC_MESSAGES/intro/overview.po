@@ -135,12 +135,12 @@ msgstr ""
 
 #: ../../../intro/overview.rst:85
 msgid ""
-"Here you notice one of the main advantages about Scrapy: requests are :ref:"
-"`scheduled and processed asynchronously <topics-architecture>`.  This means "
-"that Scrapy doesn't need to wait for a request to be finished and processed, "
-"it can send another request or do other things in the meantime. This also "
-"means that other requests can keep going even if some request fails or an "
-"error happens while handling it."
+"Here you notice one of the main advantages about Scrapy: requests "
+"are :ref:`scheduled and processed asynchronously <topics-architecture>`.  "
+"This means that Scrapy doesn't need to wait for a request to be finished and "
+"processed, it can send another request or do other things in the meantime. "
+"This also means that other requests can keep going even if some request "
+"fails or an error happens while handling it."
 msgstr ""
 
 #: ../../../intro/overview.rst:92
@@ -205,8 +205,8 @@ msgstr ""
 msgid ""
 ":ref:`Strong extensibility support <extending-scrapy>`, allowing you to plug "
 "in your own functionality using :ref:`signals <topics-signals>` and a well-"
-"defined API (middlewares, :ref:`extensions <topics-extensions>`, and :ref:"
-"`pipelines <topics-item-pipeline>`)."
+"defined API (middlewares, :ref:`extensions <topics-extensions>`, "
+"and :ref:`pipelines <topics-item-pipeline>`)."
 msgstr ""
 
 #: ../../../intro/overview.rst:137
@@ -258,7 +258,8 @@ msgstr ""
 
 #: ../../../intro/overview.rst:158
 msgid ""
-"The next steps for you are to :ref:`install Scrapy <intro-install>`, :ref:"
-"`follow through the tutorial <intro-tutorial>` to learn how to create a full-"
-"blown Scrapy project and `join the community`_. Thanks for your interest!"
+"The next steps for you are to :ref:`install Scrapy <intro-"
+"install>`, :ref:`follow through the tutorial <intro-tutorial>` to learn how "
+"to create a full-blown Scrapy project and `join the community`_. Thanks for "
+"your interest!"
 msgstr ""
