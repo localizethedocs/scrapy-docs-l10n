@@ -27,11 +27,13 @@ msgstr ""
 
 #: ../../../topics/link-extractors.rst:9
 msgid ""
-"The ``__init__`` method of :class:`~scrapy.linkextractors.lxmlhtml."
-"LxmlLinkExtractor` takes settings that determine which links may be "
-"extracted. :class:`LxmlLinkExtractor.extract_links <scrapy.linkextractors."
-"lxmlhtml.LxmlLinkExtractor.extract_links>` returns a list of matching :class:"
-"`~scrapy.link.Link` objects from a :class:`~scrapy.http.Response` object."
+"The ``__init__`` method "
+"of :class:`~scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor` takes settings "
+"that determine which links may be "
+"extracted. :class:`LxmlLinkExtractor.extract_links "
+"<scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor.extract_links>` returns a "
+"list of matching :class:`~scrapy.link.Link` objects from "
+"a :class:`~scrapy.http.Response` object."
 msgstr ""
 
 #: ../../../topics/link-extractors.rst:16
@@ -43,9 +45,9 @@ msgstr ""
 #: ../../../topics/link-extractors.rst:19
 msgid ""
 "You can also use link extractors in regular spiders. For example, you can "
-"instantiate :class:`LinkExtractor <scrapy.linkextractors.lxmlhtml."
-"LxmlLinkExtractor>` into a class variable in your spider, and use it from "
-"your spider callbacks:"
+"instantiate :class:`LinkExtractor "
+"<scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor>` into a class variable in "
+"your spider, and use it from your spider callbacks:"
 msgstr ""
 
 #: ../../../topics/link-extractors.rst:23
@@ -61,9 +63,10 @@ msgstr ""
 
 #: ../../../topics/link-extractors.rst:37
 msgid ""
-"The link extractor class is :class:`scrapy.linkextractors.lxmlhtml."
-"LxmlLinkExtractor`. For convenience it can also be imported as ``scrapy."
-"linkextractors.LinkExtractor``::"
+"The link extractor class "
+"is :class:`scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor`. For "
+"convenience it can also be imported as "
+"``scrapy.linkextractors.LinkExtractor``::"
 msgstr ""
 
 #: ../../../topics/link-extractors.rst:41
@@ -120,8 +123,8 @@ msgstr ""
 #: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor:23
 msgid ""
 "a single value or list of strings containing extensions that should be "
-"ignored when extracting links. If not given, it will default to :data:"
-"`scrapy.linkextractors.IGNORED_EXTENSIONS`."
+"ignored when extracting links. If not given, it will default "
+"to :data:`scrapy.linkextractors.IGNORED_EXTENSIONS`."
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
@@ -227,8 +230,8 @@ msgid ""
 "this code::      <a href=\"javascript:goToPage('../other/page.html'); return "
 "false\">Link text</a>  .. highlight:: python  You can use the following "
 "function in ``process_value``:  .. code-block:: python      def "
-"process_value(value):         m = re.search(r\"javascript:goToPage\\('(."
-"*?)'\", value)         if m:             return m.group(1)"
+"process_value(value):         m = re.search(r\"javascript:goToPage\\"
+"('(.*?)'\", value)         if m:             return m.group(1)"
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
@@ -281,8 +284,8 @@ msgstr ""
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of
 #: scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor.extract_links:1
 msgid ""
-"Returns a list of :class:`~scrapy.link.Link` objects from the specified :"
-"class:`response <scrapy.http.Response>`."
+"Returns a list of :class:`~scrapy.link.Link` objects from the "
+"specified :class:`response <scrapy.http.Response>`."
 msgstr ""
 
 #: ../../../../scrapy/linkextractors/lxmlhtml.py:docstring of

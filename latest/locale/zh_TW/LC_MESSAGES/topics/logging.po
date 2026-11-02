@@ -137,8 +137,8 @@ msgstr ""
 
 #: ../../../topics/logging.rst:77
 msgid ""
-"You can use a different logger just by getting its name with the ``logging."
-"getLogger`` function:"
+"You can use a different logger just by getting its name with the "
+"``logging.getLogger`` function:"
 msgstr ""
 
 #: ../../../topics/logging.rst:80
@@ -289,14 +289,15 @@ msgstr ""
 
 #: ../../../topics/logging.rst:174
 msgid ""
-"The first couple of settings define a destination for log messages. If :"
-"setting:`LOG_FILE` is set, messages sent through the root logger will be "
-"redirected to a file named :setting:`LOG_FILE` with encoding :setting:"
-"`LOG_ENCODING`. If unset and :setting:`LOG_ENABLED` is ``True``, log "
-"messages will be displayed on the standard error. If :setting:`LOG_FILE` is "
-"set and :setting:`LOG_FILE_APPEND` is ``False``, the file will be "
-"overwritten (discarding the output from previous runs, if any). Lastly, if :"
-"setting:`LOG_ENABLED` is ``False``, there won't be any visible log output."
+"The first couple of settings define a destination for log messages. "
+"If :setting:`LOG_FILE` is set, messages sent through the root logger will be "
+"redirected to a file named :setting:`LOG_FILE` with "
+"encoding :setting:`LOG_ENCODING`. If unset and :setting:`LOG_ENABLED` is "
+"``True``, log messages will be displayed on the standard error. "
+"If :setting:`LOG_FILE` is set and :setting:`LOG_FILE_APPEND` is ``False``, "
+"the file will be overwritten (discarding the output from previous runs, if "
+"any). Lastly, if :setting:`LOG_ENABLED` is ``False``, there won't be any "
+"visible log output."
 msgstr ""
 
 #: ../../../topics/logging.rst:183
@@ -329,8 +330,8 @@ msgstr ""
 #: ../../../topics/logging.rst:200
 msgid ""
 "Scrapy's :setting:`LOG_FILE` setting writes logs to a single file. It does "
-"not rotate log files automatically, but you can use Python's standard :mod:"
-"`logging.handlers` module when running Scrapy from a script."
+"not rotate log files automatically, but you can use Python's "
+"standard :mod:`logging.handlers` module when running Scrapy from a script."
 msgstr ""
 
 #: ../../../topics/logging.rst:204
@@ -357,8 +358,8 @@ msgid ""
 "    encoding=settings.get(\"LOG_ENCODING\"),\n"
 ")\n"
 "handler.setFormatter(\n"
-"    logging.Formatter(settings.get(\"LOG_FORMAT\"), settings."
-"get(\"LOG_DATEFORMAT\"))\n"
+"    logging.Formatter(settings.get(\"LOG_FORMAT\"), "
+"settings.get(\"LOG_DATEFORMAT\"))\n"
 ")\n"
 "\n"
 "root_logger = logging.getLogger()\n"
@@ -417,9 +418,9 @@ msgstr ""
 
 #: ../../../topics/logging.rst:262
 msgid ""
-"A custom log format can be set for different actions by extending :class:"
-"`~scrapy.logformatter.LogFormatter` class and making :setting:"
-"`LOG_FORMATTER` point to your new class."
+"A custom log format can be set for different actions by "
+"extending :class:`~scrapy.logformatter.LogFormatter` class and "
+"making :setting:`LOG_FORMATTER` point to your new class."
 msgstr ""
 
 #: ../../../../scrapy/logformatter.py:docstring of
@@ -485,10 +486,10 @@ msgid ""
 "class PoliteLogFormatter(logformatter.LogFormatter):\n"
 "    def dropped(self, item, exception, response, spider):\n"
 "        return {\n"
-"            \"level\": logging.INFO,  # lowering the level from logging."
-"WARNING\n"
-"            \"msg\": \"Dropped: %(exception)s\" + os.linesep + "
-"\"%(item)s\",\n"
+"            \"level\": logging.INFO,  # lowering the level from "
+"logging.WARNING\n"
+"            \"msg\": \"Dropped: %(exception)s\" + os.linesep + \"%"
+"(item)s\",\n"
 "            \"args\": {\n"
 "                \"exception\": exception,\n"
 "                \"item\": item,\n"
@@ -557,10 +558,10 @@ msgstr ""
 
 #: ../../../topics/logging.rst:285
 msgid ""
-"The first thing to note is a logger name - it is in brackets: ``[scrapy."
-"spidermiddlewares.httperror]``. If you get just ``[scrapy]`` then :setting:"
-"`LOG_SHORT_NAMES` is likely set to True; set it to False and re-run the "
-"crawl."
+"The first thing to note is a logger name - it is in brackets: "
+"``[scrapy.spidermiddlewares.httperror]``. If you get just ``[scrapy]`` "
+"then :setting:`LOG_SHORT_NAMES` is likely set to True; set it to False and "
+"re-run the crawl."
 msgstr ""
 
 #: ../../../topics/logging.rst:290
@@ -587,8 +588,8 @@ msgstr ""
 
 #: ../../../topics/logging.rst:308
 msgid ""
-"If you run this spider again then INFO messages from ``scrapy."
-"spidermiddlewares.httperror`` logger will be gone."
+"If you run this spider again then INFO messages from "
+"``scrapy.spidermiddlewares.httperror`` logger will be gone."
 msgstr ""
 
 #: ../../../topics/logging.rst:311
@@ -707,10 +708,11 @@ msgstr ""
 
 #: ../../../topics/logging.rst:370
 msgid ""
-"``configure_logging`` is automatically called when using Scrapy commands or :"
-"class:`~scrapy.crawler.CrawlerProcess`, but needs to be called explicitly "
-"when running custom scripts using :class:`~scrapy.crawler.CrawlerRunner`. In "
-"that case, its usage is not required but it's recommended."
+"``configure_logging`` is automatically called when using Scrapy commands "
+"or :class:`~scrapy.crawler.CrawlerProcess`, but needs to be called "
+"explicitly when running custom scripts "
+"using :class:`~scrapy.crawler.CrawlerRunner`. In that case, its usage is not "
+"required but it's recommended."
 msgstr ""
 
 #: ../../../topics/logging.rst:375
@@ -723,8 +725,9 @@ msgstr ""
 #: ../../../topics/logging.rst:378
 msgid ""
 "Note that :class:`~scrapy.crawler.CrawlerProcess` automatically calls "
-"``configure_logging``, so it is recommended to only use :func:`logging."
-"basicConfig` together with :class:`~scrapy.crawler.CrawlerRunner`."
+"``configure_logging``, so it is recommended to only "
+"use :func:`logging.basicConfig` together "
+"with :class:`~scrapy.crawler.CrawlerRunner`."
 msgstr ""
 
 #: ../../../topics/logging.rst:382

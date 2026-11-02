@@ -47,9 +47,9 @@ msgstr ""
 
 #: ../../../contributing.rst:22
 msgid ""
-"Submit patches for new functionalities and/or bug fixes. Please read :ref:"
-"`writing-patches` and `Submitting patches`_ below for details on how to "
-"write and submit a patch."
+"Submit patches for new functionalities and/or bug fixes. Please "
+"read :ref:`writing-patches` and `Submitting patches`_ below for details on "
+"how to write and submit a patch."
 msgstr ""
 
 #: ../../../contributing.rst:26
@@ -463,10 +463,10 @@ msgstr ""
 #: ../../../contributing.rst:296
 msgid ""
 "For reference documentation of API members (classes, methods, etc.) use "
-"docstrings and make sure that the Sphinx documentation uses the :mod:"
-"`~sphinx.ext.autodoc` extension to pull the docstrings. API reference "
-"documentation should follow docstring conventions (`PEP 257`_) and be IDE-"
-"friendly: short, to the point, and it may provide short examples."
+"docstrings and make sure that the Sphinx documentation uses "
+"the :mod:`~sphinx.ext.autodoc` extension to pull the docstrings. API "
+"reference documentation should follow docstring conventions (`PEP 257`_) and "
+"be IDE-friendly: short, to the point, and it may provide short examples."
 msgstr ""
 
 #: ../../../contributing.rst:302
@@ -478,16 +478,17 @@ msgstr ""
 
 #: ../../../contributing.rst:306
 msgid ""
-"In any case, if something is covered in a docstring, use the :mod:`~sphinx."
-"ext.autodoc` extension to pull the docstring into the documentation instead "
-"of duplicating the docstring in files within the ``docs/`` directory."
+"In any case, if something is covered in a docstring, use "
+"the :mod:`~sphinx.ext.autodoc` extension to pull the docstring into the "
+"documentation instead of duplicating the docstring in files within the "
+"``docs/`` directory."
 msgstr ""
 
 #: ../../../contributing.rst:311
 msgid ""
-"Documentation updates that cover new or modified features must use Sphinx’s :"
-"rst:dir:`versionadded` and :rst:dir:`versionchanged` directives. Use "
-"``VERSION`` as version, we will replace it with the actual version right "
+"Documentation updates that cover new or modified features must use "
+"Sphinx’s :rst:dir:`versionadded` and :rst:dir:`versionchanged` directives. "
+"Use ``VERSION`` as version, we will replace it with the actual version right "
 "before the corresponding release. When we release a new major or minor "
 "version of Scrapy, we remove these directives if they are older than 3 years."
 msgstr ""
@@ -506,8 +507,8 @@ msgstr ""
 #: ../../../contributing.rst:326
 msgid ""
 "Tests are implemented using the :doc:`Twisted unit-testing framework "
-"<twisted:development/test-standard>`. Running tests requires :doc:`tox <tox:"
-"index>`."
+"<twisted:development/test-standard>`. Running tests requires :doc:`tox "
+"<tox:index>`."
 msgstr ""
 
 #: ../../../contributing.rst:333
@@ -543,9 +544,9 @@ msgstr ""
 
 #: ../../../contributing.rst:349
 msgid ""
-"You can also specify a comma-separated list of environments, and use :ref:"
-"`tox’s parallel mode <tox:parallel_mode>` to run the tests on multiple "
-"environments in parallel::"
+"You can also specify a comma-separated list of environments, and "
+"use :ref:`tox’s parallel mode <tox:parallel_mode>` to run the tests on "
+"multiple environments in parallel::"
 msgstr ""
 
 #: ../../../contributing.rst:353

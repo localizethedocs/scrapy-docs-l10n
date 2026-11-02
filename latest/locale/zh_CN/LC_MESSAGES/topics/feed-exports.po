@@ -70,8 +70,8 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:34
 msgid ""
-"But you can also extend the supported format through the :setting:"
-"`FEED_EXPORTERS` setting."
+"But you can also extend the supported format through "
+"the :setting:`FEED_EXPORTERS` setting."
 msgstr ""
 
 #: ../../../topics/feed-exports.rst:40
@@ -119,10 +119,10 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:66
 msgid ""
-"To specify columns to export, their order and their column names, use :"
-"setting:`FEED_EXPORT_FIELDS`. Other feed exporters can also use this option, "
-"but it is important for CSV because unlike many other export formats CSV "
-"uses a fixed header."
+"To specify columns to export, their order and their column names, "
+"use :setting:`FEED_EXPORT_FIELDS`. Other feed exporters can also use this "
+"option, but it is important for CSV because unlike many other export formats "
+"CSV uses a fixed header."
 msgstr ""
 
 #: ../../../topics/feed-exports.rst:74
@@ -227,8 +227,8 @@ msgstr ""
 #: ../../../topics/feed-exports.rst:129
 msgid ""
 "Any other named parameter gets replaced by the spider attribute of the same "
-"name. For example, ``%(site_id)s`` would get replaced by the ``spider."
-"site_id`` attribute the moment the feed is being created."
+"name. For example, ``%(site_id)s`` would get replaced by the "
+"``spider.site_id`` attribute the moment the feed is being created."
 msgstr ""
 
 #: ../../../topics/feed-exports.rst:133
@@ -310,8 +310,8 @@ msgstr ""
 msgid ""
 "FTP supports two different connection modes: `active or passive <https://"
 "stackoverflow.com/a/1699163>`_. Scrapy uses the passive connection mode by "
-"default. To use the active connection mode instead, set the :setting:"
-"`FEED_STORAGE_FTP_ACTIVE` setting to ``True``."
+"default. To use the active connection mode instead, set "
+"the :setting:`FEED_STORAGE_FTP_ACTIVE` setting to ``True``."
 msgstr ""
 
 #: ../../../topics/feed-exports.rst:183 ../../../topics/feed-exports.rst:225
@@ -498,16 +498,16 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:308
 msgid ""
-"The ``item_classes`` option is implemented by the :class:`~scrapy.extensions."
-"feedexport.ItemFilter` class, which is the default value of the "
-"``item_filter`` :ref:`feed option <feed-options>`."
+"The ``item_classes`` option is implemented by "
+"the :class:`~scrapy.extensions.feedexport.ItemFilter` class, which is the "
+"default value of the ``item_filter`` :ref:`feed option <feed-options>`."
 msgstr ""
 
 #: ../../../topics/feed-exports.rst:311
 msgid ""
-"You can create your own custom filtering class by implementing :class:"
-"`~scrapy.extensions.feedexport.ItemFilter`'s method ``accepts`` and taking "
-"``feed_options`` as an argument."
+"You can create your own custom filtering class by "
+"implementing :class:`~scrapy.extensions.feedexport.ItemFilter`'s method "
+"``accepts`` and taking ``feed_options`` as an argument."
 msgstr ""
 
 #: ../../../topics/feed-exports.rst:314
@@ -528,8 +528,9 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:328
 msgid ""
-"You can assign your custom filtering class to the ``item_filter`` :ref:"
-"`option of a feed <feed-options>`. See :setting:`FEEDS` for examples."
+"You can assign your custom filtering class to the "
+"``item_filter`` :ref:`option of a feed <feed-options>`. See :setting:`FEEDS` "
+"for examples."
 msgstr ""
 
 #: ../../../topics/feed-exports.rst:332
@@ -833,8 +834,8 @@ msgid ""
 "        'format': 'csv',\n"
 "        'fields': ['price', 'name'],\n"
 "        'item_filter': 'myproject.filters.MyCustomFilter2',\n"
-"        'postprocessing': [MyPlugin1, 'scrapy.extensions.postprocessing."
-"GzipPlugin'],\n"
+"        'postprocessing': [MyPlugin1, "
+"'scrapy.extensions.postprocessing.GzipPlugin'],\n"
 "        'gzip_compresslevel': 5,\n"
 "    },\n"
 "}"
@@ -1209,8 +1210,8 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:706
 msgid ""
-"scrapy crawl spidername -o \"dirname/%(batch_id)d-filename%(batch_time)s."
-"json\""
+"scrapy crawl spidername -o \"dirname/%(batch_id)d-filename%"
+"(batch_time)s.json\""
 msgstr ""
 
 #: ../../../topics/feed-exports.rst:708
@@ -1249,18 +1250,19 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:735
 msgid ""
-"Return a :class:`dict` of key-value pairs to apply to the feed URI using :"
-"ref:`printf-style string formatting <python:old-string-formatting>`."
+"Return a :class:`dict` of key-value pairs to apply to the feed URI "
+"using :ref:`printf-style string formatting <python:old-string-formatting>`."
 msgstr ""
 
 #: ../../../topics/feed-exports.rst:738
 msgid ""
 "default key-value pairs  Specifically:  -   ``batch_id``: ID of the file "
-"batch. See     :setting:`FEED_EXPORT_BATCH_ITEM_COUNT`.      If :setting:"
-"`FEED_EXPORT_BATCH_ITEM_COUNT` is ``0``, ``batch_id``     is always ``1``.  "
-"-   ``batch_time``: UTC date and time, in ISO format with ``:``     replaced "
-"with ``-``.      See :setting:`FEED_EXPORT_BATCH_ITEM_COUNT`.  -   ``time``: "
-"``batch_time``, with microseconds set to ``0``."
+"batch. See     :setting:`FEED_EXPORT_BATCH_ITEM_COUNT`.      "
+"If :setting:`FEED_EXPORT_BATCH_ITEM_COUNT` is ``0``, ``batch_id``     is "
+"always ``1``.  -   ``batch_time``: UTC date and time, in ISO format with "
+"``:``     replaced with ``-``.      "
+"See :setting:`FEED_EXPORT_BATCH_ITEM_COUNT`.  -   ``time``: ``batch_time``, "
+"with microseconds set to ``0``."
 msgstr ""
 
 #: ../../../topics/feed-exports.rst:738
@@ -1273,8 +1275,8 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:742
 msgid ""
-"``batch_id``: ID of the file batch. See :setting:"
-"`FEED_EXPORT_BATCH_ITEM_COUNT`."
+"``batch_id``: ID of the file batch. "
+"See :setting:`FEED_EXPORT_BATCH_ITEM_COUNT`."
 msgstr ""
 
 #: ../../../topics/feed-exports.rst:745

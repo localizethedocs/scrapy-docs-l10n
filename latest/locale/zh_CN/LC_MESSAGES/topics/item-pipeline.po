@@ -229,8 +229,7 @@ msgid ""
 "        self.client.close()\n"
 "\n"
 "    def process_item(self, item):\n"
-"        self.db[self.collection_name].insert_one(ItemAdapter(item)."
-"asdict())\n"
+"        self.db[self.collection_name].insert_one(ItemAdapter(item).asdict())\n"
 "        return item"
 msgstr ""
 
@@ -334,8 +333,8 @@ msgstr ""
 
 #: ../../../topics/item-pipeline.rst:256
 msgid ""
-"To activate an Item Pipeline component you must add its class to the :"
-"setting:`ITEM_PIPELINES` setting, like in the following example:"
+"To activate an Item Pipeline component you must add its class to "
+"the :setting:`ITEM_PIPELINES` setting, like in the following example:"
 msgstr ""
 
 #: ../../../topics/item-pipeline.rst:259
@@ -409,8 +408,8 @@ msgid ""
 "        for book in response.css(\"article.product_pod\"):\n"
 "            yield BookItem(\n"
 "                title=book.css(\"h3 a::attr(title)\").get(),\n"
-"                price=float(book.css(\"p.price_color::text\")."
-"re_first(r\"[\\d.]+\")),\n"
+"                price=float(book.css(\"p.price_color::text\").re_first(r\"[\\d.]"
+"+\")),\n"
 "            )"
 msgstr ""
 
@@ -444,10 +443,10 @@ msgstr ""
 
 #: ../../../topics/item-pipeline.rst:339
 msgid ""
-"A pipeline component only runs if its class is listed in the :setting:"
-"`ITEM_PIPELINES` setting, normally in your project's :file:`settings.py` "
-"file (see :ref:`activating-item-pipeline`). Adding it to the spider or "
-"elsewhere has no effect."
+"A pipeline component only runs if its class is listed in "
+"the :setting:`ITEM_PIPELINES` setting, normally in your "
+"project's :file:`settings.py` file (see :ref:`activating-item-pipeline`). "
+"Adding it to the spider or elsewhere has no effect."
 msgstr ""
 
 #: ../../../topics/item-pipeline.rst:344
@@ -476,8 +475,9 @@ msgstr ""
 
 #: ../../../topics/item-pipeline.rst:358
 msgid ""
-":meth:`process_item` must return the item (or raise :exc:`~scrapy.exceptions."
-"DropItem`). A common mistake is to modify the item but forget to return it:"
+":meth:`process_item` must return the item (or "
+"raise :exc:`~scrapy.exceptions.DropItem`). A common mistake is to modify the "
+"item but forget to return it:"
 msgstr ""
 
 #: ../../../topics/item-pipeline.rst:362

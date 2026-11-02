@@ -61,8 +61,8 @@ msgstr ""
 #: ../../../topics/security.rst:34
 msgid ""
 "Never pass response data to functions that can execute code or otherwise act "
-"on their input in an unsafe way, such as :func:`eval`, :func:`exec`, or :"
-"func:`pickle.loads`, and be careful when writing response data to paths "
+"on their input in an unsafe way, such as :func:`eval`, :func:`exec`, "
+"or :func:`pickle.loads`, and be careful when writing response data to paths "
 "derived from the response itself."
 msgstr ""
 
@@ -117,18 +117,19 @@ msgstr ""
 
 #: ../../../topics/security.rst:74
 msgid ""
-"You can restrict the TLS protocol versions that Scrapy accepts through the :"
-"setting:`DOWNLOAD_TLS_MIN_VERSION` and :setting:`DOWNLOAD_TLS_MAX_VERSION` "
-"settings, e.g. to reject obsolete protocol versions."
+"You can restrict the TLS protocol versions that Scrapy accepts through "
+"the :setting:`DOWNLOAD_TLS_MIN_VERSION` "
+"and :setting:`DOWNLOAD_TLS_MAX_VERSION` settings, e.g. to reject obsolete "
+"protocol versions."
 msgstr ""
 
 #: ../../../topics/security.rst:78
 msgid ""
-"By default Scrapy uses the OpenSSL ``DEFAULT`` cipher list (:setting:"
-"`DOWNLOADER_CLIENT_TLS_CIPHERS`), which favors compatibility and still "
-"allows some older, weaker ciphers. Set it to ``None`` to instead use the "
-"curated cipher list of the underlying TLS implementation (Twisted), which "
-"excludes weak ciphers:"
+"By default Scrapy uses the OpenSSL ``DEFAULT`` cipher list "
+"(:setting:`DOWNLOADER_CLIENT_TLS_CIPHERS`), which favors compatibility and "
+"still allows some older, weaker ciphers. Set it to ``None`` to instead use "
+"the curated cipher list of the underlying TLS implementation (Twisted), "
+"which excludes weak ciphers:"
 msgstr ""
 
 #: ../../../topics/security.rst:84
@@ -199,9 +200,9 @@ msgstr ""
 
 #: ../../../topics/security.rst:129
 msgid ""
-"By default Scrapy enables download handlers for the ``file://`` and ``data:"
-"`` schemes (see :setting:`DOWNLOAD_HANDLERS_BASE`). The ``file://`` handler "
-"reads arbitrary files from the local filesystem, limited only by the "
+"By default Scrapy enables download handlers for the ``file://`` and "
+"``data:`` schemes (see :setting:`DOWNLOAD_HANDLERS_BASE`). The ``file://`` "
+"handler reads arbitrary files from the local filesystem, limited only by the "
 "permissions of the process running Scrapy."
 msgstr ""
 
@@ -247,19 +248,19 @@ msgstr ""
 
 #: ../../../topics/security.rst:160
 msgid ""
-"Scrapy enables the :ref:`telnet console <topics-telnetconsole>` by default (:"
-"setting:`TELNETCONSOLE_ENABLED`). The telnet console is a Python shell "
+"Scrapy enables the :ref:`telnet console <topics-telnetconsole>` by default "
+"(:setting:`TELNETCONSOLE_ENABLED`). The telnet console is a Python shell "
 "running inside the Scrapy process, so anyone who can connect to it can run "
 "arbitrary code in that process."
 msgstr ""
 
 #: ../../../topics/security.rst:165
 msgid ""
-"By default the console binds to ``127.0.0.1`` (:setting:"
-"`TELNETCONSOLE_HOST`) and is protected by a username (:setting:"
-"`TELNETCONSOLE_USERNAME`, default ``scrapy``) and an automatically generated "
-"password (:setting:`TELNETCONSOLE_PASSWORD`), so it is only reachable from "
-"the local machine."
+"By default the console binds to ``127.0.0.1`` "
+"(:setting:`TELNETCONSOLE_HOST`) and is protected by a username "
+"(:setting:`TELNETCONSOLE_USERNAME`, default ``scrapy``) and an automatically "
+"generated password (:setting:`TELNETCONSOLE_PASSWORD`), so it is only "
+"reachable from the local machine."
 msgstr ""
 
 #: ../../../topics/security.rst:173
@@ -303,11 +304,11 @@ msgstr ""
 
 #: ../../../topics/security.rst:198
 msgid ""
-"HTTP authentication credentials set through :class:`~scrapy."
-"downloadermiddlewares.httpauth.HttpAuthMiddleware` are only sent to the "
-"domain set in :setting:`HTTPAUTH_DOMAIN`. Leave this set to the intended "
-"domain rather than ``None`` so that credentials are not sent to every domain "
-"you crawl."
+"HTTP authentication credentials set "
+"through :class:`~scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware` "
+"are only sent to the domain set in :setting:`HTTPAUTH_DOMAIN`. Leave this "
+"set to the intended domain rather than ``None`` so that credentials are not "
+"sent to every domain you crawl."
 msgstr ""
 
 #: ../../../topics/security.rst:204

@@ -23,10 +23,10 @@ msgstr ""
 
 #: ../../../topics/asyncio.rst:7
 msgid ""
-"Scrapy supports :mod:`asyncio` natively. New projects created with :command:"
-"`scrapy startproject` have asyncio enabled by default, and you can use :mod:"
-"`asyncio` and :mod:`asyncio`-powered libraries in any :doc:`coroutine "
-"<coroutines>`."
+"Scrapy supports :mod:`asyncio` natively. New projects created "
+"with :command:`scrapy startproject` have asyncio enabled by default, and you "
+"can use :mod:`asyncio` and :mod:`asyncio`-powered libraries in "
+"any :doc:`coroutine <coroutines>`."
 msgstr ""
 
 #: ../../../topics/asyncio.rst:12
@@ -48,21 +48,22 @@ msgstr ""
 #: ../../../topics/asyncio.rst:24
 msgid ""
 "The :setting:`TWISTED_REACTOR` setting controls which Twisted reactor Scrapy "
-"uses. Its default value is ``'twisted.internet.asyncioreactor."
-"AsyncioSelectorReactor'``, which enables :mod:`asyncio` support."
+"uses. Its default value is "
+"``'twisted.internet.asyncioreactor.AsyncioSelectorReactor'``, which "
+"enables :mod:`asyncio` support."
 msgstr ""
 
 #: ../../../topics/asyncio.rst:29
 msgid ""
-"If you are using :class:`~scrapy.crawler.AsyncCrawlerRunner` or :class:"
-"`~scrapy.crawler.CrawlerRunner`, you also need to install the :class:"
-"`~twisted.internet.asyncioreactor.AsyncioSelectorReactor` reactor manually. "
-"You can do that using :func:`~scrapy.utils.reactor.install_reactor`:"
+"If you are using :class:`~scrapy.crawler.AsyncCrawlerRunner` "
+"or :class:`~scrapy.crawler.CrawlerRunner`, you also need to install "
+"the :class:`~twisted.internet.asyncioreactor.AsyncioSelectorReactor` reactor "
+"manually. You can do that "
+"using :func:`~scrapy.utils.reactor.install_reactor`:"
 msgstr ""
 
 #: ../../../topics/asyncio.rst:36
-msgid ""
-"install_reactor(\"twisted.internet.asyncioreactor.AsyncioSelectorReactor\")"
+msgid "install_reactor(\"twisted.internet.asyncioreactor.AsyncioSelectorReactor\")"
 msgstr ""
 
 #: ../../../topics/asyncio.rst:44
@@ -124,8 +125,8 @@ msgstr ""
 
 #: ../../../topics/asyncio.rst:86
 msgid ""
-"Coroutine functions can await on Deferreds by wrapping them into :class:"
-"`asyncio.Future` objects. Scrapy provides two helpers for this:"
+"Coroutine functions can await on Deferreds by wrapping them "
+"into :class:`asyncio.Future` objects. Scrapy provides two helpers for this:"
 msgstr ""
 
 #: ../../../../scrapy/utils/defer.py:docstring of
@@ -186,8 +187,8 @@ msgstr ""
 #: scrapy.utils.defer.maybe_deferred_to_future:7
 msgid ""
 "When :ref:`using the asyncio reactor <install-asyncio>`, or :ref:`not using "
-"a reactor at all <asyncio-without-reactor>`, you can only await on :class:"
-"`asyncio.Future` objects."
+"a reactor at all <asyncio-without-reactor>`, you can only await "
+"on :class:`asyncio.Future` objects."
 msgstr ""
 
 #: ../../../../scrapy/utils/defer.py:docstring of
@@ -217,10 +218,10 @@ msgstr ""
 
 #: ../../../topics/asyncio.rst:92
 msgid ""
-"If you don't need to support reactors other than the default :class:"
-"`~twisted.internet.asyncioreactor.AsyncioSelectorReactor`, you can use :func:"
-"`~scrapy.utils.defer.deferred_to_future`, otherwise you should use :func:"
-"`~scrapy.utils.defer.maybe_deferred_to_future`."
+"If you don't need to support reactors other than the "
+"default :class:`~twisted.internet.asyncioreactor.AsyncioSelectorReactor`, "
+"you can use :func:`~scrapy.utils.defer.deferred_to_future`, otherwise you "
+"should use :func:`~scrapy.utils.defer.maybe_deferred_to_future`."
 msgstr ""
 
 #: ../../../topics/asyncio.rst:97
@@ -265,10 +266,10 @@ msgstr ""
 #: ../../../../scrapy/utils/defer.py:docstring of
 #: scrapy.utils.defer.ensure_awaitable:3
 msgid ""
-"For a :class:`~twisted.internet.defer.Deferred` object, use :func:"
-"`maybe_deferred_to_future` to wrap it into a suitable object. For an "
-"awaitable object of a different type, return it as is. For any other value, "
-"return a coroutine that completes with that value."
+"For a :class:`~twisted.internet.defer.Deferred` object, "
+"use :func:`maybe_deferred_to_future` to wrap it into a suitable object. For "
+"an awaitable object of a different type, return it as is. For any other "
+"value, return a coroutine that completes with that value."
 msgstr ""
 
 #: ../../../topics/asyncio.rst:114
@@ -278,8 +279,8 @@ msgstr ""
 #: ../../../topics/asyncio.rst:116
 msgid ""
 "If you are writing a :ref:`component <topics-components>` that requires "
-"asyncio to work, use :func:`scrapy.utils.asyncio.is_asyncio_available` to :"
-"ref:`enforce it as a requirement <enforce-component-requirements>`. For "
+"asyncio to work, use :func:`scrapy.utils.asyncio.is_asyncio_available` "
+"to :ref:`enforce it as a requirement <enforce-component-requirements>`. For "
 "example:"
 msgstr ""
 
@@ -314,26 +315,28 @@ msgstr ""
 msgid ""
 "This function returns ``True`` if there is a running asyncio event loop. If "
 "there is no such loop, it returns ``True`` if the Twisted reactor that is "
-"installed is :class:`~twisted.internet.asyncioreactor."
-"AsyncioSelectorReactor`, returns ``False`` if a different reactor is "
-"installed, and raises a :exc:`RuntimeError` if no reactor is installed."
+"installed "
+"is :class:`~twisted.internet.asyncioreactor.AsyncioSelectorReactor`, returns "
+"``False`` if a different reactor is installed, and raises "
+"a :exc:`RuntimeError` if no reactor is installed."
 msgstr ""
 
 #: ../../../../scrapy/utils/asyncio.py:docstring of
 #: scrapy.utils.asyncio.is_asyncio_available:12
 msgid ""
 "Code that doesn't directly require a Twisted reactor should use this "
-"function while code that requires :class:`~twisted.internet.asyncioreactor."
-"AsyncioSelectorReactor` should use :func:`~scrapy.utils.reactor."
-"is_asyncio_reactor_installed`."
+"function while code that "
+"requires :class:`~twisted.internet.asyncioreactor.AsyncioSelectorReactor` "
+"should use :func:`~scrapy.utils.reactor.is_asyncio_reactor_installed`."
 msgstr ""
 
 #: ../../../../scrapy/utils/asyncio.py:docstring of
 #: scrapy.utils.asyncio.is_asyncio_available:17
 msgid ""
 "When this returns ``True``, an asyncio loop is installed and used by Scrapy. "
-"It's possible to call functions that require it, such as :func:`asyncio."
-"sleep`, and await on :class:`asyncio.Future` objects in Scrapy-related code."
+"It's possible to call functions that require it, such "
+"as :func:`asyncio.sleep`, and await on :class:`asyncio.Future` objects in "
+"Scrapy-related code."
 msgstr ""
 
 #: ../../../../scrapy/utils/asyncio.py:docstring of
@@ -365,8 +368,8 @@ msgstr ""
 #: ../../../../scrapy/utils/reactor.py:docstring of
 #: scrapy.utils.reactor.is_asyncio_reactor_installed:1
 msgid ""
-"Check whether the installed reactor is :class:`~twisted.internet."
-"asyncioreactor.AsyncioSelectorReactor`."
+"Check whether the installed reactor "
+"is :class:`~twisted.internet.asyncioreactor.AsyncioSelectorReactor`."
 msgstr ""
 
 #: ../../../../scrapy/utils/reactor.py:docstring of
@@ -416,15 +419,17 @@ msgstr ""
 #: ../../../topics/asyncio.rst:157
 msgid ""
 "A Twisted reactor, once stopped, cannot be started again. This prevents, for "
-"example, using several instances of :class:`~scrapy.crawler."
-"AsyncCrawlerProcess` in the same process when they use a reactor, but with "
-"``TWISTED_REACTOR_ENABLED=False`` it becomes possible."
+"example, using several instances "
+"of :class:`~scrapy.crawler.AsyncCrawlerProcess` in the same process when "
+"they use a reactor, but with ``TWISTED_REACTOR_ENABLED=False`` it becomes "
+"possible."
 msgstr ""
 
 #: ../../../topics/asyncio.rst:162
 msgid ""
-"There may be limitations imposed by :class:`~twisted.internet.asyncioreactor."
-"AsyncioSelectorReactor` and related Twisted code, such as the requirement of "
+"There may be limitations imposed "
+"by :class:`~twisted.internet.asyncioreactor.AsyncioSelectorReactor` and "
+"related Twisted code, such as the requirement of "
 "using :class:`~asyncio.SelectorEventLoop` on Windows (see :ref:`asyncio-"
 "windows`), that do not apply if the reactor is not used."
 msgstr ""
@@ -455,11 +460,11 @@ msgstr ""
 
 #: ../../../topics/asyncio.rst:181
 msgid ""
-"The default HTTP(S) download handler, :class:`~scrapy.core.downloader."
-"handlers.http11.HTTP11DownloadHandler` (this is likely the biggest "
-"difference; Scrapy provides an HTTP(S) download handler that doesn't require "
-"a reactor and will be used instead of it: :class:`~scrapy.core.downloader."
-"handlers._httpx.HttpxDownloadHandler`)"
+"The default HTTP(S) download "
+"handler, :class:`~scrapy.core.downloader.handlers.http11.HTTP11DownloadHandler` "
+"(this is likely the biggest difference; Scrapy provides an HTTP(S) download "
+"handler that doesn't require a reactor and will be used instead of "
+"it: :class:`~scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler`)"
 msgstr ""
 
 #: ../../../topics/asyncio.rst:186
@@ -476,9 +481,10 @@ msgstr ""
 
 #: ../../../topics/asyncio.rst:189
 msgid ""
-":class:`~scrapy.crawler.CrawlerRunner` and :class:`~scrapy.crawler."
-"CrawlerProcess` (:class:`~scrapy.crawler.AsyncCrawlerProcess` and :class:"
-"`~scrapy.crawler.AsyncCrawlerRunner` are available)"
+":class:`~scrapy.crawler.CrawlerRunner` "
+"and :class:`~scrapy.crawler.CrawlerProcess` "
+"(:class:`~scrapy.crawler.AsyncCrawlerProcess` "
+"and :class:`~scrapy.crawler.AsyncCrawlerRunner` are available)"
 msgstr ""
 
 #: ../../../topics/asyncio.rst:193
@@ -495,9 +501,9 @@ msgstr ""
 msgid ""
 "Note that importing Twisted modules and, among other things, creating and "
 "using :class:`~twisted.internet.defer.Deferred` objects doesn't require a "
-"reactor, so code that uses :class:`~twisted.internet.defer.Deferred`, :class:"
-"`~twisted.python.failure.Failure` and some other Twisted APIs will not "
-"necessarily stop working."
+"reactor, so code that "
+"uses :class:`~twisted.internet.defer.Deferred`, :class:`~twisted.python.failure.Failure` "
+"and some other Twisted APIs will not necessarily stop working."
 msgstr ""
 
 #: ../../../topics/asyncio.rst:204
@@ -517,8 +523,8 @@ msgstr ""
 #: ../../../topics/asyncio.rst:210
 msgid ""
 "The ``\"http\"`` and ``\"https\"`` keys in :setting:`DOWNLOAD_HANDLERS_BASE` "
-"are set to ``\"scrapy.core.downloader.handlers._httpx."
-"HttpxDownloadHandler\"``."
+"are set to "
+"``\"scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler\"``."
 msgstr ""
 
 #: ../../../topics/asyncio.rst:212
@@ -530,15 +536,15 @@ msgstr ""
 msgid ""
 "Thus, :class:`~scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler` "
 "is used by default for making HTTP(S) requests. Please refer to its "
-"documentation for its differences and limitations compared to :class:"
-"`~scrapy.core.downloader.handlers.http11.HTTP11DownloadHandler`."
+"documentation for its differences and limitations compared "
+"to :class:`~scrapy.core.downloader.handlers.http11.HTTP11DownloadHandler`."
 msgstr ""
 
 #: ../../../topics/asyncio.rst:219
 msgid ""
-"Additionally, :class:`~scrapy.crawler.AsyncCrawlerProcess` will install a :"
-"term:`meta path finder` that prevents :mod:`twisted.internet.reactor` from "
-"being imported."
+"Additionally, :class:`~scrapy.crawler.AsyncCrawlerProcess` will install "
+"a :term:`meta path finder` that prevents :mod:`twisted.internet.reactor` "
+"from being imported."
 msgstr ""
 
 #: ../../../topics/asyncio.rst:226
@@ -557,18 +563,18 @@ msgstr ""
 
 #: ../../../topics/asyncio.rst:233
 msgid ""
-"Using :meth:`reactor.callLater() <twisted.internet.base.ReactorBase."
-"callLater>` for sleeping or delayed calls. You can use :meth:`asyncio.loop."
-"call_later` instead."
+"Using :meth:`reactor.callLater() "
+"<twisted.internet.base.ReactorBase.callLater>` for sleeping or delayed "
+"calls. You can use :meth:`asyncio.loop.call_later` instead."
 msgstr ""
 
 #: ../../../topics/asyncio.rst:236
 msgid ""
-"Using :func:`twisted.internet.threads.deferToThread`, :meth:`reactor."
-"callFromThread() <twisted.internet.base.ReactorBase.callFromThread>` and "
-"related APIs to execute code in other threads. You can use :func:`asyncio."
-"to_thread`, :meth:`asyncio.loop.call_soon_threadsafe` and related APIs "
-"instead."
+"Using :func:`twisted.internet.threads.deferToThread`, :meth:`reactor.callFromThread() "
+"<twisted.internet.base.ReactorBase.callFromThread>` and related APIs to "
+"execute code in other threads. You can "
+"use :func:`asyncio.to_thread`, :meth:`asyncio.loop.call_soon_threadsafe` and "
+"related APIs instead."
 msgstr ""
 
 #: ../../../topics/asyncio.rst:241
@@ -581,24 +587,24 @@ msgstr ""
 #: ../../../topics/asyncio.rst:244
 msgid ""
 "Using Twisted network client and server APIs (:meth:`reactor.connectTCP() "
-"<twisted.internet.interfaces.IReactorTCP.connectTCP>`, :meth:`reactor."
-"listenTCP() <twisted.internet.interfaces.IReactorTCP.listenTCP>`, :mod:"
-"`twisted.web.client`, :mod:`twisted.mail.smtp` etc.). You can use other "
-"built-in or 3rd-party libraries for this."
+"<twisted.internet.interfaces.IReactorTCP.connectTCP>`, :meth:`reactor.listenTCP() "
+"<twisted.internet.interfaces.IReactorTCP.listenTCP>`, :mod:`twisted.web.client`, :mod:`twisted.mail.smtp` "
+"etc.). You can use other built-in or 3rd-party libraries for this."
 msgstr ""
 
 #: ../../../topics/asyncio.rst:250
 msgid ""
-"Using :class:`~scrapy.crawler.CrawlerProcess` or :class:`~scrapy.crawler."
-"CrawlerRunner`. You should use :class:`~scrapy.crawler.AsyncCrawlerProcess` "
+"Using :class:`~scrapy.crawler.CrawlerProcess` "
+"or :class:`~scrapy.crawler.CrawlerRunner`. You should "
+"use :class:`~scrapy.crawler.AsyncCrawlerProcess` "
 "or :class:`~scrapy.crawler.AsyncCrawlerRunner` respectively instead."
 msgstr ""
 
 #: ../../../topics/asyncio.rst:254
 msgid ""
-"Checking whether ``asyncio`` support is available with :func:`scrapy.utils."
-"reactor.is_asyncio_reactor_installed`. You should use :func:`scrapy.utils."
-"asyncio.is_asyncio_available` instead."
+"Checking whether ``asyncio`` support is available "
+"with :func:`scrapy.utils.reactor.is_asyncio_reactor_installed`. You should "
+"use :func:`scrapy.utils.asyncio.is_asyncio_available` instead."
 msgstr ""
 
 #: ../../../topics/asyncio.rst:258
@@ -613,9 +619,10 @@ msgstr ""
 #: ../../../../scrapy/utils/asyncio.py:docstring of
 #: scrapy.utils.asyncio.call_later:3
 msgid ""
-"This uses either :meth:`asyncio.loop.call_later` or :meth:`reactor."
-"callLater() <twisted.internet.base.ReactorBase.callLater>`, depending on "
-"whether asyncio support is available."
+"This uses either :meth:`asyncio.loop.call_later` "
+"or :meth:`reactor.callLater() "
+"<twisted.internet.base.ReactorBase.callLater>`, depending on whether asyncio "
+"support is available."
 msgstr ""
 
 #: ../../../../scrapy/utils/asyncio.py:docstring of
@@ -626,9 +633,10 @@ msgstr ""
 #: ../../../../scrapy/utils/asyncio.py:docstring of
 #: scrapy.utils.asyncio.create_looping_call:3
 msgid ""
-"This creates an instance of :class:`~scrapy.utils.asyncio."
-"AsyncioLoopingCall` or :class:`~twisted.internet.task.LoopingCall`, "
-"depending on whether asyncio support is available."
+"This creates an instance "
+"of :class:`~scrapy.utils.asyncio.AsyncioLoopingCall` "
+"or :class:`~twisted.internet.task.LoopingCall`, depending on whether asyncio "
+"support is available."
 msgstr ""
 
 #: ../../../../scrapy/utils/asyncio.py:docstring of
@@ -659,8 +667,9 @@ msgstr ""
 #: ../../../../scrapy/utils/asyncio.py:docstring of
 #: scrapy.utils.asyncio.run_in_thread:3
 msgid ""
-"This uses either :func:`asyncio.to_thread` or :func:`twisted.internet."
-"threads.deferToThread`, depending on whether asyncio support is available."
+"This uses either :func:`asyncio.to_thread` "
+"or :func:`twisted.internet.threads.deferToThread`, depending on whether "
+"asyncio support is available."
 msgstr ""
 
 #: ../../../topics/asyncio.rst:265
@@ -674,8 +683,8 @@ msgstr ""
 #: ../../../../scrapy/utils/reactorless.py:docstring of
 #: scrapy.utils.reactorless.is_reactorless:1
 msgid ""
-"Check if we are running in the reactorless mode, i.e. with :setting:"
-"`TWISTED_REACTOR_ENABLED` set to ``False``."
+"Check if we are running in the reactorless mode, i.e. "
+"with :setting:`TWISTED_REACTOR_ENABLED` set to ``False``."
 msgstr ""
 
 #: ../../../../scrapy/utils/reactorless.py:docstring of
@@ -729,10 +738,10 @@ msgstr ""
 
 #: ../../../topics/asyncio.rst:295
 msgid ""
-"**RuntimeError: We expected a Twisted reactor to be installed but it isn't:"
-"** Scrapy is configured to run with a reactor and not to install one, but a "
-"reactor wasn't installed before the Scrapy code is executed. If you are "
-"trying to set :setting:`TWISTED_REACTOR_ENABLED` via :ref:`per-spider "
+"**RuntimeError: We expected a Twisted reactor to be installed but it "
+"isn't:** Scrapy is configured to run with a reactor and not to install one, "
+"but a reactor wasn't installed before the Scrapy code is executed. If you "
+"are trying to set :setting:`TWISTED_REACTOR_ENABLED` via :ref:`per-spider "
 "settings <spider-settings>`, it's currently unsupported."
 msgstr ""
 
@@ -751,9 +760,9 @@ msgstr ""
 #: ../../../topics/asyncio.rst:312
 msgid ""
 "The Windows implementation of :mod:`asyncio` can use two event loop "
-"implementations, :class:`~asyncio.ProactorEventLoop` (default) and :class:"
-"`~asyncio.SelectorEventLoop`. However, only :class:`~asyncio."
-"SelectorEventLoop` works with Twisted."
+"implementations, :class:`~asyncio.ProactorEventLoop` (default) "
+"and :class:`~asyncio.SelectorEventLoop`. However, "
+"only :class:`~asyncio.SelectorEventLoop` works with Twisted."
 msgstr ""
 
 #: ../../../topics/asyncio.rst:317
@@ -765,8 +774,8 @@ msgstr ""
 
 #: ../../../topics/asyncio.rst:321
 msgid ""
-"Other libraries you use may require :class:`~asyncio.ProactorEventLoop`, e."
-"g. because it supports subprocesses (this is the case with `playwright`_), "
+"Other libraries you use may require :class:`~asyncio.ProactorEventLoop`, "
+"e.g. because it supports subprocesses (this is the case with `playwright`_), "
 "so you cannot use them together with Scrapy on Windows (but you should be "
 "able to use them on WSL or native Linux)."
 msgstr ""
@@ -798,8 +807,8 @@ msgid ""
 "use a different reactor by setting the :setting:`TWISTED_REACTOR` setting to "
 "its import path (e.g. ``'twisted.internet.epollreactor.EPollReactor'``) or "
 "to ``None``, which will use the default reactor for your platform. If you "
-"are using :class:`~scrapy.crawler.AsyncCrawlerRunner` or :class:`~scrapy."
-"crawler.AsyncCrawlerProcess` you also need to switch to their Deferred-based "
-"counterparts: :class:`~scrapy.crawler.CrawlerRunner` or :class:`~scrapy."
-"crawler.CrawlerProcess` respectively."
+"are using :class:`~scrapy.crawler.AsyncCrawlerRunner` "
+"or :class:`~scrapy.crawler.AsyncCrawlerProcess` you also need to switch to "
+"their Deferred-based counterparts: :class:`~scrapy.crawler.CrawlerRunner` "
+"or :class:`~scrapy.crawler.CrawlerProcess` respectively."
 msgstr ""

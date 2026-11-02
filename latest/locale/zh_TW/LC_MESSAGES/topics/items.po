@@ -91,8 +91,8 @@ msgstr ""
 
 #: ../../../../scrapy/item.py:docstring of scrapy.item.Item:16
 msgid ""
-"Unlike instances of :class:`dict`, instances of :class:`Item` may be :ref:"
-"`tracked <topics-leaks-trackrefs>` to debug memory leaks."
+"Unlike instances of :class:`dict`, instances of :class:`Item` may "
+"be :ref:`tracked <topics-leaks-trackrefs>` to debug memory leaks."
 msgstr ""
 
 #: ../../../../scrapy/item.py:docstring of scrapy.item.Item.deepcopy:1
@@ -102,8 +102,9 @@ msgstr ""
 #: ../../../../scrapy/item.py:docstring of scrapy.Item.fields:1
 msgid ""
 "A dictionary containing *all declared fields* for this Item, not only those "
-"populated. The keys are the field names and the values are the :class:"
-"`Field` objects used in the :ref:`Item declaration <topics-items-declaring>`."
+"populated. The keys are the field names and the values are "
+"the :class:`Field` objects used in the :ref:`Item declaration <topics-items-"
+"declaring>`."
 msgstr ""
 
 #: ../../../../scrapy/item.py:docstring of scrapy.Item.fields:6
@@ -148,8 +149,8 @@ msgstr ""
 
 #: ../../../topics/items.rst:64
 msgid ""
-":mod:`trackref` tracks :class:`Item` objects to help find memory leaks (see :"
-"ref:`topics-leaks-trackrefs`)."
+":mod:`trackref` tracks :class:`Item` objects to help find memory leaks "
+"(see :ref:`topics-leaks-trackrefs`)."
 msgstr ""
 
 #: ../../../topics/items.rst:67 ../../../topics/items.rst:94
@@ -227,8 +228,8 @@ msgstr ""
 
 #: ../../../topics/items.rst:121
 msgid ""
-"define custom field :ref:`metadata <attrs:metadata>`, which can be used to :"
-"ref:`customize serialization <topics-exporters-field-serialization>`."
+"define custom field :ref:`metadata <attrs:metadata>`, which can be used "
+"to :ref:`customize serialization <topics-exporters-field-serialization>`."
 msgstr ""
 
 #: ../../../topics/items.rst:124
@@ -272,9 +273,9 @@ msgstr ""
 
 #: ../../../topics/items.rst:154
 msgid ""
-"define custom field metadata through `pydantic.Field <https://docs.pydantic."
-"dev/latest/concepts/fields/>`_, which can be used to :ref:`customize "
-"serialization <topics-exporters-field-serialization>`."
+"define custom field metadata through `pydantic.Field <https://"
+"docs.pydantic.dev/latest/concepts/fields/>`_, which can be used "
+"to :ref:`customize serialization <topics-exporters-field-serialization>`."
 msgstr ""
 
 #: ../../../topics/items.rst:158
@@ -315,8 +316,8 @@ msgstr ""
 
 #: ../../../topics/items.rst:186
 msgid ""
-"Item subclasses are declared using a simple class definition syntax and :"
-"class:`Field` objects. Here is an example:"
+"Item subclasses are declared using a simple class definition syntax "
+"and :class:`Field` objects. Here is an example:"
 msgstr ""
 
 #: ../../../topics/items.rst:189
@@ -365,12 +366,13 @@ msgid ""
 "on the values accepted by :class:`Field` objects. For this same reason, "
 "there is no reference list of all available metadata keys. Each key defined "
 "in :class:`Field` objects could be used by a different component, and only "
-"those components know about it. You can also define and use any other :class:"
-"`Field` key in your project too, for your own needs. The main goal of :class:"
-"`Field` objects is to provide a way to define all field metadata in one "
-"place. Typically, those components whose behaviour depends on each field use "
-"certain field keys to configure that behaviour. You must refer to their "
-"documentation to see which metadata keys are used by each component."
+"those components know about it. You can also define and use any "
+"other :class:`Field` key in your project too, for your own needs. The main "
+"goal of :class:`Field` objects is to provide a way to define all field "
+"metadata in one place. Typically, those components whose behaviour depends "
+"on each field use certain field keys to configure that behaviour. You must "
+"refer to their documentation to see which metadata keys are used by each "
+"component."
 msgstr ""
 
 #: ../../../topics/items.rst:229
@@ -577,9 +579,10 @@ msgstr ""
 
 #: ../../../topics/items.rst:360
 msgid ""
-"To create a shallow copy of an item, you can either call :meth:`~scrapy.Item."
-"copy` on an existing item (``product2 = product.copy()``) or instantiate "
-"your item class from an existing item (``product2 = Product(product)``)."
+"To create a shallow copy of an item, you can either "
+"call :meth:`~scrapy.Item.copy` on an existing item (``product2 = "
+"product.copy()``) or instantiate your item class from an existing item "
+"(``product2 = Product(product)``)."
 msgstr ""
 
 #: ../../../topics/items.rst:365
@@ -660,8 +663,9 @@ msgstr "支援所有項目型別"
 msgid ""
 "In code that receives an item, such as methods of :ref:`item pipelines "
 "<topics-item-pipeline>` or :ref:`spider middlewares <topics-spider-"
-"middleware>`, it is a good practice to use the :class:`~itemadapter."
-"ItemAdapter` class to write code that works for any supported item type."
+"middleware>`, it is a good practice to use "
+"the :class:`~itemadapter.ItemAdapter` class to write code that works for any "
+"supported item type."
 msgstr ""
 
 #: ../../../topics/items.rst:430
