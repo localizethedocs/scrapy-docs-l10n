@@ -149,9 +149,9 @@ msgstr "我们的第一个蜘蛛。"
 #: ../../../intro/tutorial.rst:79
 msgid ""
 "Spiders are classes that you define and that Scrapy uses to scrape "
-"information from a website (or a group of websites). They must subclass :"
-"class:`~scrapy.Spider` and define the initial requests to be made, and "
-"optionally, how to follow links in pages and parse the downloaded page "
+"information from a website (or a group of websites). They must "
+"subclass :class:`~scrapy.Spider` and define the initial requests to be made, "
+"and optionally, how to follow links in pages and parse the downloaded page "
 "content to extract data."
 msgstr ""
 
@@ -306,8 +306,8 @@ msgid ""
 "Scrapy sends the first :class:`scrapy.Request <scrapy.Request>` objects "
 "yielded by the :meth:`~scrapy.Spider.start` spider method. Upon receiving a "
 "response for each one, Scrapy calls the callback method associated with the "
-"request (in this case, the ``parse`` method) with a :class:`~scrapy.http."
-"Response` object."
+"request (in this case, the ``parse`` method) with "
+"a :class:`~scrapy.http.Response` object."
 msgstr ""
 
 #: ../../../intro/tutorial.rst:175
@@ -316,11 +316,12 @@ msgstr "``start`` 方法的快捷方式"
 
 #: ../../../intro/tutorial.rst:177
 msgid ""
-"Instead of implementing a :meth:`~scrapy.Spider.start` method that yields :"
-"class:`~scrapy.Request` objects from URLs, you can define a :attr:`~scrapy."
-"Spider.start_urls` class attribute with a list of URLs. This list will then "
-"be used by the default implementation of :meth:`~scrapy.Spider.start` to "
-"create the initial requests for your spider."
+"Instead of implementing a :meth:`~scrapy.Spider.start` method that "
+"yields :class:`~scrapy.Request` objects from URLs, you can define "
+"a :attr:`~scrapy.Spider.start_urls` class attribute with a list of URLs. "
+"This list will then be used by the default implementation "
+"of :meth:`~scrapy.Spider.start` to create the initial requests for your "
+"spider."
 msgstr ""
 
 #: ../../../intro/tutorial.rst:184
@@ -441,8 +442,8 @@ msgstr ""
 #: ../../../intro/tutorial.rst:257
 msgid ""
 "The result of running ``response.css('title')`` is a list-like object "
-"called :class:`~scrapy.selector.SelectorList`, which represents a list of :"
-"class:`~scrapy.Selector` objects that wrap around XML/HTML elements and "
+"called :class:`~scrapy.selector.SelectorList`, which represents a list "
+"of :class:`~scrapy.Selector` objects that wrap around XML/HTML elements and "
 "allow you to run further queries to refine the selection or extract the data."
 msgstr ""
 
@@ -528,9 +529,9 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:306
 msgid ""
-"You might want to use ``.get()`` directly on the :class:`~scrapy.selector."
-"SelectorList` instance instead, which returns ``None`` if there are no "
-"results:"
+"You might want to use ``.get()`` directly on "
+"the :class:`~scrapy.selector.SelectorList` instance instead, which returns "
+"``None`` if there are no results:"
 msgstr ""
 
 #: ../../../intro/tutorial.rst:310
@@ -549,10 +550,10 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:318
 msgid ""
-"Besides the :meth:`~scrapy.selector.SelectorList.getall` and :meth:`~scrapy."
-"selector.SelectorList.get` methods, you can also use the :meth:`~scrapy."
-"selector.SelectorList.re` method to extract using :doc:`regular expressions "
-"<library/re>`:"
+"Besides the :meth:`~scrapy.selector.SelectorList.getall` "
+"and :meth:`~scrapy.selector.SelectorList.get` methods, you can also use "
+"the :meth:`~scrapy.selector.SelectorList.re` method to extract "
+"using :doc:`regular expressions <library/re>`:"
 msgstr ""
 
 #: ../../../intro/tutorial.rst:323
@@ -1058,11 +1059,11 @@ msgstr ""
 #: ../../../intro/tutorial.rst:620
 msgid ""
 "Now, after extracting the data, the ``parse()`` method looks for the link to "
-"the next page, builds a full absolute URL using the :meth:`~scrapy.http."
-"Response.urljoin` method (since the links can be relative) and yields a new "
-"request to the next page, registering itself as callback to handle the data "
-"extraction for the next page and to keep the crawling going through all the "
-"pages."
+"the next page, builds a full absolute URL using "
+"the :meth:`~scrapy.http.Response.urljoin` method (since the links can be "
+"relative) and yields a new request to the next page, registering itself as "
+"callback to handle the data extraction for the next page and to keep the "
+"crawling going through all the pages."
 msgstr ""
 
 #: ../../../intro/tutorial.rst:627
@@ -1098,8 +1099,8 @@ msgstr "创建请求的快捷方式"
 
 #: ../../../intro/tutorial.rst:645
 msgid ""
-"As a shortcut for creating Request objects you can use :meth:`response."
-"follow <scrapy.http.TextResponse.follow>`:"
+"As a shortcut for creating Request objects you can "
+"use :meth:`response.follow <scrapy.http.TextResponse.follow>`:"
 msgstr ""
 
 #: ../../../intro/tutorial.rst:648
@@ -1170,8 +1171,9 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:693
 msgid ""
-"To create multiple requests from an iterable, you can use :meth:`response."
-"follow_all <scrapy.http.TextResponse.follow_all>` instead:"
+"To create multiple requests from an iterable, you can "
+"use :meth:`response.follow_all <scrapy.http.TextResponse.follow_all>` "
+"instead:"
 msgstr ""
 
 #: ../../../intro/tutorial.rst:696
@@ -1212,8 +1214,8 @@ msgid ""
 "\n"
 "    def parse(self, response):\n"
 "        author_page_links = response.css(\".author + a\")\n"
-"        yield from response.follow_all(author_page_links, self."
-"parse_author)\n"
+"        yield from response.follow_all(author_page_links, "
+"self.parse_author)\n"
 "\n"
 "        pagination_links = response.css(\"li.next a\")\n"
 "        yield from response.follow_all(pagination_links, self.parse)\n"
@@ -1264,9 +1266,9 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:747
 msgid ""
-"Here we're passing callbacks to :meth:`response.follow_all <scrapy.http."
-"TextResponse.follow_all>` as positional arguments to make the code shorter; "
-"it also works for :class:`~scrapy.Request`."
+"Here we're passing callbacks to :meth:`response.follow_all "
+"<scrapy.http.TextResponse.follow_all>` as positional arguments to make the "
+"code shorter; it also works for :class:`~scrapy.Request`."
 msgstr ""
 
 #: ../../../intro/tutorial.rst:752
@@ -1364,8 +1366,8 @@ msgstr ""
 #: ../../../intro/tutorial.rst:817
 msgid ""
 "If you pass the ``tag=humor`` argument to this spider, you'll notice that it "
-"will only visit URLs from the ``humor`` tag, such as ``https://quotes."
-"toscrape.com/tag/humor``."
+"will only visit URLs from the ``humor`` tag, such as ``https://"
+"quotes.toscrape.com/tag/humor``."
 msgstr ""
 "如果你将 ``tag=humor`` 参数传递给这个蜘蛛，你会注意到，它只会访问 ``humor`` "
 "标签中的 URL，例如``https://quotes.toscrape.com/tag/humor`` 。"

@@ -56,11 +56,10 @@ msgstr ""
 
 #: ../../../topics/coroutines.rst:29
 msgid ""
-"The :meth:`~scrapy.downloadermiddlewares.DownloaderMiddleware."
-"process_request`, :meth:`~scrapy.downloadermiddlewares.DownloaderMiddleware."
-"process_response`, and :meth:`~scrapy.downloadermiddlewares."
-"DownloaderMiddleware.process_exception` methods of :ref:`downloader "
-"middlewares <topics-downloader-middleware-custom>`."
+"The :meth:`~scrapy.downloadermiddlewares.DownloaderMiddleware.process_request`, :meth:`~scrapy.downloadermiddlewares.DownloaderMiddleware.process_response`, "
+"and :meth:`~scrapy.downloadermiddlewares.DownloaderMiddleware.process_exception` "
+"methods of :ref:`downloader middlewares <topics-downloader-middleware-"
+"custom>`."
 msgstr ""
 
 #: ../../../topics/coroutines.rst:37
@@ -92,8 +91,8 @@ msgstr ""
 
 #: ../../../topics/coroutines.rst:61
 msgid ""
-"In addition to native coroutine APIs Scrapy has some APIs that return a :"
-"class:`~twisted.internet.defer.Deferred` object or take a user-supplied "
+"In addition to native coroutine APIs Scrapy has some APIs that return "
+"a :class:`~twisted.internet.defer.Deferred` object or take a user-supplied "
 "function that returns a :class:`~twisted.internet.defer.Deferred` object. "
 "These APIs are also asynchronous but don't yet support native ``async def`` "
 "syntax. In the future we plan to add support for the ``async def`` syntax to "
@@ -112,26 +111,27 @@ msgstr ""
 
 #: ../../../topics/coroutines.rst:73
 msgid ""
-":meth:`~scrapy.crawler.Crawler.crawl_async` (coroutine-based) and :meth:"
-"`~scrapy.crawler.Crawler.crawl` (Deferred-based): the former may be "
-"inconvenient to use in Deferred-based code so both are available, this may "
-"change in a future Scrapy version."
+":meth:`~scrapy.crawler.Crawler.crawl_async` (coroutine-based) "
+"and :meth:`~scrapy.crawler.Crawler.crawl` (Deferred-based): the former may "
+"be inconvenient to use in Deferred-based code so both are available, this "
+"may change in a future Scrapy version."
 msgstr ""
 
 #: ../../../topics/coroutines.rst:78
 msgid ""
-":class:`scrapy.crawler.AsyncCrawlerRunner` and its subclass :class:`scrapy."
-"crawler.AsyncCrawlerProcess` (coroutine-based) and :class:`scrapy.crawler."
-"CrawlerRunner` and its subclass :class:`scrapy.crawler.CrawlerProcess` "
-"(Deferred-based): the former doesn't support non-default reactors and so the "
-"latter should be used with those."
+":class:`scrapy.crawler.AsyncCrawlerRunner` and its "
+"subclass :class:`scrapy.crawler.AsyncCrawlerProcess` (coroutine-based) "
+"and :class:`scrapy.crawler.CrawlerRunner` and its "
+"subclass :class:`scrapy.crawler.CrawlerProcess` (Deferred-based): the former "
+"doesn't support non-default reactors and so the latter should be used with "
+"those."
 msgstr ""
 
 #: ../../../topics/coroutines.rst:85
 msgid ""
-"The following user-supplied methods can return :class:`~twisted.internet."
-"defer.Deferred` objects (the methods that can also return coroutines are "
-"listed in :ref:`coroutine-support`):"
+"The following user-supplied methods can "
+"return :class:`~twisted.internet.defer.Deferred` objects (the methods that "
+"can also return coroutines are listed in :ref:`coroutine-support`):"
 msgstr ""
 
 #: ../../../topics/coroutines.rst:89
@@ -188,8 +188,8 @@ msgstr ""
 
 #: ../../../topics/coroutines.rst:115
 msgid ""
-"Custom storages used by subclasses of :class:`scrapy.pipelines.files."
-"FilesPipeline`:"
+"Custom storages used by subclasses "
+"of :class:`scrapy.pipelines.files.FilesPipeline`:"
 msgstr ""
 
 #: ../../../topics/coroutines.rst:118
@@ -203,9 +203,9 @@ msgstr ""
 #: ../../../topics/coroutines.rst:122
 msgid ""
 "In most cases you can use these APIs in code that otherwise uses coroutines, "
-"by wrapping a :class:`~twisted.internet.defer.Deferred` object into a :class:"
-"`~asyncio.Future` object or vice versa. See :ref:`asyncio-await-dfd` for "
-"more information about this."
+"by wrapping a :class:`~twisted.internet.defer.Deferred` object into "
+"a :class:`~asyncio.Future` object or vice versa. See :ref:`asyncio-await-"
+"dfd` for more information about this."
 msgstr ""
 
 #: ../../../topics/coroutines.rst:127
@@ -269,9 +269,10 @@ msgstr ""
 #: ../../../topics/coroutines.rst:173
 msgid ""
 "Coroutines may be used to call asynchronous code. This includes other "
-"coroutines, functions that return Deferreds and functions that return :term:"
-"`awaitable objects <awaitable>` such as :class:`~asyncio.Future`. This means "
-"you can use many useful Python libraries providing such code:"
+"coroutines, functions that return Deferreds and functions that "
+"return :term:`awaitable objects <awaitable>` such "
+"as :class:`~asyncio.Future`. This means you can use many useful Python "
+"libraries providing such code:"
 msgstr ""
 
 #: ../../../topics/coroutines.rst:179
@@ -296,9 +297,9 @@ msgstr ""
 
 #: ../../../topics/coroutines.rst:197
 msgid ""
-"Many libraries that use coroutines, such as `aio-libs`_, require the :mod:"
-"`asyncio` loop and to use them you need to :doc:`enable asyncio support in "
-"Scrapy<asyncio>`."
+"Many libraries that use coroutines, such as `aio-libs`_, require "
+"the :mod:`asyncio` loop and to use them you need to :doc:`enable asyncio "
+"support in Scrapy<asyncio>`."
 msgstr ""
 
 #: ../../../topics/coroutines.rst:201
@@ -313,8 +314,8 @@ msgstr ""
 
 #: ../../../topics/coroutines.rst:206
 msgid ""
-"requesting data from websites, databases and other services (in :meth:"
-"`~scrapy.Spider.start`, callbacks, pipelines and middlewares);"
+"requesting data from websites, databases and other services "
+"(in :meth:`~scrapy.Spider.start`, callbacks, pipelines and middlewares);"
 msgstr ""
 
 #: ../../../topics/coroutines.rst:209
@@ -323,15 +324,16 @@ msgstr ""
 
 #: ../../../topics/coroutines.rst:210
 msgid ""
-"delaying the spider initialization until some external event (in the :signal:"
-"`spider_opened` handler);"
+"delaying the spider initialization until some external event (in "
+"the :signal:`spider_opened` handler);"
 msgstr ""
 
 #: ../../../topics/coroutines.rst:212
 msgid ""
-"calling asynchronous Scrapy methods like :meth:`ExecutionEngine."
-"download_async() <scrapy.core.engine.ExecutionEngine.download_async>` (see :"
-"ref:`the screenshot pipeline example <ScreenshotPipeline>`)."
+"calling asynchronous Scrapy methods "
+"like :meth:`ExecutionEngine.download_async() "
+"<scrapy.core.engine.ExecutionEngine.download_async>` (see :ref:`the "
+"screenshot pipeline example <ScreenshotPipeline>`)."
 msgstr ""
 
 #: ../../../topics/coroutines.rst:223

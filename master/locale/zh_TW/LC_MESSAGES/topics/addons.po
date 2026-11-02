@@ -48,8 +48,8 @@ msgstr ""
 
 #: ../../../topics/addons.rst:23
 msgid ""
-"This is an example where two add-ons are enabled in a project's ``settings."
-"py``:"
+"This is an example where two add-ons are enabled in a project's "
+"``settings.py``:"
 msgstr ""
 
 #: ../../../topics/addons.rst:28
@@ -72,11 +72,11 @@ msgstr ""
 
 #: ../../../topics/addons.rst:44
 msgid ""
-"This method is called during the initialization of the :class:`~scrapy."
-"crawler.Crawler`. Here, you should perform dependency checks (e.g. for "
-"external Python libraries) and update the :class:`~scrapy.settings.Settings` "
-"object as wished, e.g. enable components for this add-on or set required "
-"configuration of other extensions."
+"This method is called during the initialization of "
+"the :class:`~scrapy.crawler.Crawler`. Here, you should perform dependency "
+"checks (e.g. for external Python libraries) and update "
+"the :class:`~scrapy.settings.Settings` object as wished, e.g. enable "
+"components for this add-on or set required configuration of other extensions."
 msgstr ""
 
 #: ../../../topics/addons.rst:0
@@ -96,8 +96,9 @@ msgstr ""
 
 #: ../../../topics/addons.rst:62
 msgid ""
-"The settings set by the add-on should use the ``addon`` priority (see :ref:"
-"`populating-settings` and :func:`scrapy.settings.BaseSettings.set`):"
+"The settings set by the add-on should use the ``addon`` priority "
+"(see :ref:`populating-settings` "
+"and :func:`scrapy.settings.BaseSettings.set`):"
 msgstr ""
 
 #: ../../../topics/addons.rst:65
@@ -116,15 +117,15 @@ msgstr ""
 #: ../../../topics/addons.rst:74
 msgid ""
 "When editing the value of a setting instead of overriding it entirely, it is "
-"usually best to leave its priority unchanged. For example, when editing a :"
-"ref:`component priority dictionary <component-priority-dictionaries>`."
+"usually best to leave its priority unchanged. For example, when editing "
+"a :ref:`component priority dictionary <component-priority-dictionaries>`."
 msgstr ""
 
 #: ../../../topics/addons.rst:78
 msgid ""
-"If the ``update_settings`` method raises :exc:`scrapy.exceptions."
-"NotConfigured`, the add-on will be skipped. This makes it easy to enable an "
-"add-on only when some conditions are met."
+"If the ``update_settings`` method "
+"raises :exc:`scrapy.exceptions.NotConfigured`, the add-on will be skipped. "
+"This makes it easy to enable an add-on only when some conditions are met."
 msgstr ""
 
 #: ../../../topics/addons.rst:83
@@ -148,10 +149,11 @@ msgstr ""
 #: ../../../topics/addons.rst:95
 msgid ""
 "The custom component (e.g. ``MyDownloadHandler``) shouldn't inherit from the "
-"default Scrapy one (e.g. ``scrapy.core.downloader.handlers.http11."
-"HTTP11DownloadHandler``), but instead be able to load the class of the "
-"fallback component from a special setting (e.g. "
-"``MY_FALLBACK_DOWNLOAD_HANDLER``), create an instance of it and use it."
+"default Scrapy one (e.g. "
+"``scrapy.core.downloader.handlers.http11.HTTP11DownloadHandler``), but "
+"instead be able to load the class of the fallback component from a special "
+"setting (e.g. ``MY_FALLBACK_DOWNLOAD_HANDLER``), create an instance of it "
+"and use it."
 msgstr ""
 
 #: ../../../topics/addons.rst:101
@@ -211,10 +213,10 @@ msgstr ""
 msgid ""
 "When editing a :ref:`component priority dictionary <component-priority-"
 "dictionaries>` setting, like :setting:`ITEM_PIPELINES`, consider using "
-"setting methods like :meth:`~scrapy.settings.BaseSettings."
-"replace_in_component_priority_dict`, :meth:`~scrapy.settings.BaseSettings."
-"set_in_component_priority_dict` and :meth:`~scrapy.settings.BaseSettings."
-"setdefault_in_component_priority_dict` to avoid mistakes."
+"setting methods "
+"like :meth:`~scrapy.settings.BaseSettings.replace_in_component_priority_dict`, :meth:`~scrapy.settings.BaseSettings.set_in_component_priority_dict` "
+"and :meth:`~scrapy.settings.BaseSettings.setdefault_in_component_priority_dict` "
+"to avoid mistakes."
 msgstr ""
 
 #: ../../../topics/addons.rst:144

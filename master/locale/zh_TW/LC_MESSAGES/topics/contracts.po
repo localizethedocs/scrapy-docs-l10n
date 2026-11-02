@@ -167,8 +167,8 @@ msgstr ""
 #: ../../../topics/contracts.rst:48
 msgid ""
 "If you find you need more power than the built-in Scrapy contracts you can "
-"create and load your own contracts in the project by using the :setting:"
-"`SPIDER_CONTRACTS` setting:"
+"create and load your own contracts in the project by using "
+"the :setting:`SPIDER_CONTRACTS` setting:"
 msgstr ""
 
 #: ../../../topics/contracts.rst:52
@@ -238,9 +238,10 @@ msgstr ""
 
 #: ../../../topics/contracts.rst:78
 msgid ""
-"Raise :class:`~scrapy.exceptions.ContractFail` from :class:`~scrapy."
-"contracts.Contract.pre_process` or :class:`~scrapy.contracts.Contract."
-"post_process` if expectations are not met:"
+"Raise :class:`~scrapy.exceptions.ContractFail` "
+"from :class:`~scrapy.contracts.Contract.pre_process` "
+"or :class:`~scrapy.contracts.Contract.post_process` if expectations are not "
+"met:"
 msgstr ""
 
 #: ../../../../scrapy/exceptions.py:docstring of

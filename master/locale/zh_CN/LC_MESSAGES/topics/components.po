@@ -23,8 +23,8 @@ msgstr ""
 
 #: ../../../topics/components.rst:7
 msgid ""
-"A Scrapy component is any class whose objects are built using :func:`~scrapy."
-"utils.misc.build_from_crawler`."
+"A Scrapy component is any class whose objects are built "
+"using :func:`~scrapy.utils.misc.build_from_crawler`."
 msgstr ""
 
 #: ../../../topics/components.rst:10
@@ -118,8 +118,8 @@ msgstr ""
 #: ../../../topics/components.rst:59
 msgid ""
 "*args* and *kwargs* are component-specific arguments that some components "
-"receive. However, most components do not get any arguments, and instead :ref:"
-"`use settings <component-settings>`."
+"receive. However, most components do not get any arguments, and "
+"instead :ref:`use settings <component-settings>`."
 msgstr ""
 
 #: ../../../topics/components.rst:63
@@ -130,9 +130,9 @@ msgstr ""
 
 #: ../../../topics/components.rst:66
 msgid ""
-"The *crawler* object provides access to all Scrapy core components like :ref:"
-"`settings <topics-settings>` and :ref:`signals <topics-signals>`, allowing "
-"the component to access them and hook its functionality into Scrapy."
+"The *crawler* object provides access to all Scrapy core components "
+"like :ref:`settings <topics-settings>` and :ref:`signals <topics-signals>`, "
+"allowing the component to access them and hook its functionality into Scrapy."
 msgstr ""
 
 #: ../../../topics/components.rst:74
@@ -145,10 +145,11 @@ msgstr ""
 
 #: ../../../topics/components.rst:78
 msgid ""
-"Components can read any setting from the :attr:`~scrapy.crawler.Crawler."
-"settings` attribute of the :class:`~scrapy.crawler.Crawler` object they can :"
-"ref:`get for initialization <from-crawler>`. That includes both built-in and "
-"custom settings."
+"Components can read any setting from "
+"the :attr:`~scrapy.crawler.Crawler.settings` attribute of "
+"the :class:`~scrapy.crawler.Crawler` object they can :ref:`get for "
+"initialization <from-crawler>`. That includes both built-in and custom "
+"settings."
 msgstr ""
 
 #: ../../../topics/components.rst:83
@@ -190,8 +191,8 @@ msgid ""
 "boolean setting called ``<PREFIX>_ENABLED`` (e.g. ``WARC_CACHING_ENABLED``) "
 "to allow toggling that component on and off without changing the component "
 "priority dictionary setting. You can usually check the value of such a "
-"setting during initialization, and if ``False``, raise :exc:`~scrapy."
-"exceptions.NotConfigured`."
+"setting during initialization, and if ``False``, "
+"raise :exc:`~scrapy.exceptions.NotConfigured`."
 msgstr ""
 
 #: ../../../topics/components.rst:114
@@ -228,15 +229,15 @@ msgid ""
 "middleware>`, you should raise :exc:`~scrapy.exceptions.NotConfigured`, "
 "passing a description of the issue as a parameter to the exception so that "
 "it is printed in the logs, for the user to see. For other components, feel "
-"free to raise whatever other exception feels right to you; for example, :exc:"
-"`RuntimeError` would make sense for a Scrapy version mismatch, while :exc:"
-"`ValueError` may be better if the issue is the value of a setting."
+"free to raise whatever other exception feels right to you; for "
+"example, :exc:`RuntimeError` would make sense for a Scrapy version mismatch, "
+"while :exc:`ValueError` may be better if the issue is the value of a setting."
 msgstr ""
 
 #: ../../../topics/components.rst:142
 msgid ""
-"If your requirement is a minimum Scrapy version, you may use :attr:`scrapy."
-"__version__` to enforce your requirement. For example:"
+"If your requirement is a minimum Scrapy version, you may "
+"use :attr:`scrapy.__version__` to enforce your requirement. For example:"
 msgstr ""
 
 #: ../../../topics/components.rst:145

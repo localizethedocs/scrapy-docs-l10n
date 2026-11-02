@@ -42,8 +42,8 @@ msgid ""
 "them in a similar mapping. When Scrapy needs to download a request it "
 "extracts the scheme from its URL, finds the handler for this scheme, passes "
 "the request to it and gets a response from it.  If there is no handler for "
-"the scheme, the request is not downloaded and a :exc:`~scrapy.exceptions."
-"NotSupported` exception is raised."
+"the scheme, the request is not downloaded and "
+"a :exc:`~scrapy.exceptions.NotSupported` exception is raised."
 msgstr ""
 
 #: ../../../topics/download-handlers.rst:24
@@ -98,8 +98,8 @@ msgstr ""
 msgid ""
 "Additionally, some of the Scrapy settings, like :setting:`DOWNLOAD_MAXSIZE`, "
 "are honored by the default HTTP(S) handler but not necessarily by "
-"alternative ones. The same may apply to other Scrapy features, e.g. the :"
-"signal:`bytes_received` and :signal:`headers_received` signals."
+"alternative ones. The same may apply to other Scrapy features, e.g. "
+"the :signal:`bytes_received` and :signal:`headers_received` signals."
 msgstr ""
 
 #: ../../../topics/download-handlers.rst:66
@@ -432,8 +432,8 @@ msgstr ""
 #: ../../../topics/download-handlers.rst:221
 #: ../../../topics/download-handlers.rst:270
 msgid ""
-"IPv6 support requires setting :setting:`TWISTED_DNS_RESOLVER` to ``scrapy."
-"resolver.CachingHostnameResolver``."
+"IPv6 support requires setting :setting:`TWISTED_DNS_RESOLVER` to "
+"``scrapy.resolver.CachingHostnameResolver``."
 msgstr ""
 
 #: ../../../topics/download-handlers.rst:224
@@ -448,8 +448,8 @@ msgstr ""
 
 #: ../../../topics/download-handlers.rst:229
 msgid ""
-"No support for HTTP/2 Cleartext (h2c), since no major browser supports "
-"HTTP/2 unencrypted (refer `http2 faq`_)."
+"No support for HTTP/2 Cleartext (h2c), since no major browser supports HTTP/"
+"2 unencrypted (refer `http2 faq`_)."
 msgstr ""
 
 #: ../../../topics/download-handlers.rst:232
@@ -527,10 +527,10 @@ msgstr ""
 #: ../../../topics/download-handlers.rst:301
 msgid ""
 "DOWNLOAD_HANDLERS = {\n"
-"    \"http\": \"scrapy.core.downloader.handlers._httpx."
-"HttpxDownloadHandler\",\n"
-"    \"https\": \"scrapy.core.downloader.handlers._httpx."
-"HttpxDownloadHandler\",\n"
+"    \"http\": "
+"\"scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler\",\n"
+"    \"https\": "
+"\"scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler\",\n"
 "}"
 msgstr ""
 

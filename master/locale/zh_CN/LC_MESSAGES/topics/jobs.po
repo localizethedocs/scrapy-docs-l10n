@@ -53,8 +53,8 @@ msgstr ""
 
 #: ../../../topics/jobs.rst:25
 msgid ""
-"To enable persistence support, define a *job directory* through the :setting:"
-"`JOBDIR` setting."
+"To enable persistence support, define a *job directory* through "
+"the :setting:`JOBDIR` setting."
 msgstr ""
 
 #: ../../../topics/jobs.rst:28
@@ -180,13 +180,13 @@ msgstr ""
 #: ../../../topics/jobs.rst:107
 msgid ""
 "Because requests are serialized with :mod:`pickle`, the objects you store on "
-"a request, such as the values of its :attr:`~scrapy.Request.cb_kwargs` and :"
-"attr:`~scrapy.Request.meta` dictionaries, are deep-copied when the request "
-"is written to and later read back from the job directory. As a result, the "
-"callback receives a *copy* of those objects rather than the original ones, "
-"and changes made to the copy are not reflected in the original object. Keep "
-"this in mind if you rely on sharing mutable state through ``cb_kwargs`` or "
-"``meta``."
+"a request, such as the values of its :attr:`~scrapy.Request.cb_kwargs` "
+"and :attr:`~scrapy.Request.meta` dictionaries, are deep-copied when the "
+"request is written to and later read back from the job directory. As a "
+"result, the callback receives a *copy* of those objects rather than the "
+"original ones, and changes made to the copy are not reflected in the "
+"original object. Keep this in mind if you rely on sharing mutable state "
+"through ``cb_kwargs`` or ``meta``."
 msgstr ""
 
 #: ../../../topics/jobs.rst:119
@@ -196,10 +196,10 @@ msgstr ""
 #: ../../../topics/jobs.rst:121
 msgid ""
 "The contents of a job directory depend on the components used during the "
-"job. Components known to write in the job directory include the :ref:"
-"`scheduler <topics-scheduler>` and the :class:`~scrapy.extensions."
-"spiderstate.SpiderState` extension. See the reference documentation of the "
-"corresponding components for details."
+"job. Components known to write in the job directory include "
+"the :ref:`scheduler <topics-scheduler>` and "
+"the :class:`~scrapy.extensions.spiderstate.SpiderState` extension. See the "
+"reference documentation of the corresponding components for details."
 msgstr ""
 
 #: ../../../topics/jobs.rst:127
@@ -227,8 +227,9 @@ msgstr ""
 msgid ""
 ":class:`~scrapy.core.scheduler.Scheduler` creates the ``requests.queue/`` "
 "directory and the ``active.json`` file, the latter containing the state data "
-"returned by :meth:`DownloaderAwarePriorityQueue.close() <scrapy.pqueues."
-"DownloaderAwarePriorityQueue.close>` the last time the job was paused."
+"returned by :meth:`DownloaderAwarePriorityQueue.close() "
+"<scrapy.pqueues.DownloaderAwarePriorityQueue.close>` the last time the job "
+"was paused."
 msgstr ""
 
 #: ../../../topics/jobs.rst:148
@@ -245,10 +246,10 @@ msgstr ""
 
 #: ../../../topics/jobs.rst:154
 msgid ""
-":class:`scrapy.squeues.PickleFifoDiskQueue`, a subclass of :class:`queuelib."
-"FifoDiskQueue` that uses :mod:`pickle` to serialize :class:`dict` "
-"representations of :class:`scrapy.Request` objects, creates the ``info."
-"json`` and ``q{00000}`` files."
+":class:`scrapy.squeues.PickleFifoDiskQueue`, a subclass "
+"of :class:`queuelib.FifoDiskQueue` that uses :mod:`pickle` to "
+"serialize :class:`dict` representations of :class:`scrapy.Request` objects, "
+"creates the ``info.json`` and ``q{00000}`` files."
 msgstr ""
 
 #: ../../../topics/jobs.rst:159
@@ -259,6 +260,6 @@ msgstr ""
 
 #: ../../../topics/jobs.rst:162
 msgid ""
-":class:`~scrapy.extensions.spiderstate.SpiderState` creates the ``spider."
-"state`` file."
+":class:`~scrapy.extensions.spiderstate.SpiderState` creates the "
+"``spider.state`` file."
 msgstr ""
