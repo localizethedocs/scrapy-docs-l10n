@@ -250,8 +250,7 @@ msgid ""
 "        self.client.close()\n"
 "\n"
 "    def process_item(self, item):\n"
-"        self.db[self.collection_name].insert_one(ItemAdapter(item)."
-"asdict())\n"
+"        self.db[self.collection_name].insert_one(ItemAdapter(item).asdict())\n"
 "        return item"
 msgstr ""
 
@@ -355,8 +354,8 @@ msgstr ""
 
 #: ../../../topics/item-pipeline.rst:252
 msgid ""
-"To activate an Item Pipeline component you must add its class to the :"
-"setting:`ITEM_PIPELINES` setting, like in the following example:"
+"To activate an Item Pipeline component you must add its class to "
+"the :setting:`ITEM_PIPELINES` setting, like in the following example:"
 msgstr ""
 
 #: ../../../topics/item-pipeline.rst:255

@@ -75,10 +75,11 @@ msgstr ""
 
 #: ../../../topics/debug.rst:52
 msgid ""
-"The most basic way of checking the output of your spider is to use the :"
-"command:`parse` command. It allows to check the behaviour of different parts "
-"of the spider at the method level. It has the advantage of being flexible "
-"and simple to use, but does not allow debugging code inside a method."
+"The most basic way of checking the output of your spider is to use "
+"the :command:`parse` command. It allows to check the behaviour of different "
+"parts of the spider at the method level. It has the advantage of being "
+"flexible and simple to use, but does not allow debugging code inside a "
+"method."
 msgstr ""
 
 #: ../../../topics/debug.rst:61
@@ -241,8 +242,8 @@ msgstr ""
 
 #: ../../../topics/debug.rst:163
 msgid ""
-"To debug spiders with Visual Studio Code you can use the following ``launch."
-"json``::"
+"To debug spiders with Visual Studio Code you can use the following "
+"``launch.json``::"
 msgstr ""
 
 #: ../../../topics/debug.rst:165

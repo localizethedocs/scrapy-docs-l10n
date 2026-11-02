@@ -36,9 +36,9 @@ msgstr "激活下载器中间件"
 
 #: ../../../topics/downloader-middleware.rst:16
 msgid ""
-"To activate a downloader middleware component, add it to the :setting:"
-"`DOWNLOADER_MIDDLEWARES` setting, which is a dict whose keys are the "
-"middleware class paths and their values are the middleware orders."
+"To activate a downloader middleware component, add it to "
+"the :setting:`DOWNLOADER_MIDDLEWARES` setting, which is a dict whose keys "
+"are the middleware class paths and their values are the middleware orders."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:20
@@ -56,33 +56,34 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:28
 msgid ""
-"The :setting:`DOWNLOADER_MIDDLEWARES` setting is merged with the :setting:"
-"`DOWNLOADER_MIDDLEWARES_BASE` setting defined in Scrapy (and not meant to be "
-"overridden) and then sorted by order to get the final sorted list of enabled "
-"middlewares: the first middleware is the one closer to the engine and the "
-"last is the one closer to the downloader. In other words, the :meth:`~scrapy."
-"downloadermiddlewares.DownloaderMiddleware.process_request` method of each "
-"middleware will be invoked in increasing middleware order (100, 200, "
-"300, ...) and the :meth:`~scrapy.downloadermiddlewares.DownloaderMiddleware."
-"process_response` method of each middleware will be invoked in decreasing "
-"order."
+"The :setting:`DOWNLOADER_MIDDLEWARES` setting is merged with "
+"the :setting:`DOWNLOADER_MIDDLEWARES_BASE` setting defined in Scrapy (and "
+"not meant to be overridden) and then sorted by order to get the final sorted "
+"list of enabled middlewares: the first middleware is the one closer to the "
+"engine and the last is the one closer to the downloader. In other words, "
+"the :meth:`~scrapy.downloadermiddlewares.DownloaderMiddleware.process_request` "
+"method of each middleware will be invoked in increasing middleware order "
+"(100, 200, 300, ...) and "
+"the :meth:`~scrapy.downloadermiddlewares.DownloaderMiddleware.process_response` "
+"method of each middleware will be invoked in decreasing order."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:38
 msgid ""
-"To decide which order to assign to your middleware see the :setting:"
-"`DOWNLOADER_MIDDLEWARES_BASE` setting and pick a value according to where "
-"you want to insert the middleware. The order does matter because each "
-"middleware performs a different action and your middleware could depend on "
-"some previous (or subsequent) middleware being applied."
+"To decide which order to assign to your middleware see "
+"the :setting:`DOWNLOADER_MIDDLEWARES_BASE` setting and pick a value "
+"according to where you want to insert the middleware. The order does matter "
+"because each middleware performs a different action and your middleware "
+"could depend on some previous (or subsequent) middleware being applied."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:44
 msgid ""
-"If you want to disable a built-in middleware (the ones defined in :setting:"
-"`DOWNLOADER_MIDDLEWARES_BASE` and enabled by default) you must define it in "
-"your project's :setting:`DOWNLOADER_MIDDLEWARES` setting and assign ``None`` "
-"as its value.  For example, if you want to disable the user-agent middleware:"
+"If you want to disable a built-in middleware (the ones defined "
+"in :setting:`DOWNLOADER_MIDDLEWARES_BASE` and enabled by default) you must "
+"define it in your project's :setting:`DOWNLOADER_MIDDLEWARES` setting and "
+"assign ``None`` as its value.  For example, if you want to disable the user-"
+"agent middleware:"
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:49
@@ -129,9 +130,9 @@ msgstr "每个请求都需要这个方法来下载中间件。"
 
 #: ../../../topics/downloader-middleware.rst:79
 msgid ""
-":meth:`process_request` should either: return ``None``, return a :class:"
-"`~scrapy.http.Response` object, return a :class:`~scrapy.Request` object, or "
-"raise :exc:`~scrapy.exceptions.IgnoreRequest`."
+":meth:`process_request` should either: return ``None``, return "
+"a :class:`~scrapy.http.Response` object, return a :class:`~scrapy.Request` "
+"object, or raise :exc:`~scrapy.exceptions.IgnoreRequest`."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:83
@@ -154,19 +155,19 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:92
 msgid ""
-"If it returns a :class:`~scrapy.Request` object, Scrapy will stop calling :"
-"meth:`process_request` methods and reschedule the returned request. Once the "
-"newly returned request is performed, the appropriate middleware chain will "
-"be called on the downloaded response."
+"If it returns a :class:`~scrapy.Request` object, Scrapy will stop "
+"calling :meth:`process_request` methods and reschedule the returned request. "
+"Once the newly returned request is performed, the appropriate middleware "
+"chain will be called on the downloaded response."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:97
 msgid ""
-"If it raises an :exc:`~scrapy.exceptions.IgnoreRequest` exception, the :meth:"
-"`process_exception` methods of installed downloader middleware will be "
-"called. If none of them handle the exception, the errback function of the "
-"request (``Request.errback``) is called. If no code handles the raised "
-"exception, it is ignored and not logged (unlike other exceptions)."
+"If it raises an :exc:`~scrapy.exceptions.IgnoreRequest` exception, "
+"the :meth:`process_exception` methods of installed downloader middleware "
+"will be called. If none of them handle the exception, the errback function "
+"of the request (``Request.errback``) is called. If no code handles the "
+"raised exception, it is ignored and not logged (unlike other exceptions)."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:0
@@ -179,9 +180,9 @@ msgstr "正在处理请求"
 
 #: ../../../topics/downloader-middleware.rst:108
 msgid ""
-":meth:`process_response` should either: return a :class:`~scrapy.http."
-"Response` object, return a :class:`~scrapy.Request` object or raise a :exc:"
-"`~scrapy.exceptions.IgnoreRequest` exception."
+":meth:`process_response` should either: return "
+"a :class:`~scrapy.http.Response` object, return a :class:`~scrapy.Request` "
+"object or raise a :exc:`~scrapy.exceptions.IgnoreRequest` exception."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:112
@@ -195,8 +196,8 @@ msgstr ""
 msgid ""
 "If it returns a :class:`~scrapy.Request` object, the middleware chain is "
 "halted and the returned request is rescheduled to be downloaded in the "
-"future. This is the same behavior as if a request is returned from :meth:"
-"`process_request`."
+"future. This is the same behavior as if a request is returned "
+"from :meth:`process_request`."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:120
@@ -219,14 +220,15 @@ msgstr "正在处理的响应"
 msgid ""
 "Scrapy calls :meth:`process_exception` when a :ref:`download handler <topics-"
 "download-handlers>` or a :meth:`process_request` (from a downloader "
-"middleware) raises an exception (including an :exc:`~scrapy.exceptions."
-"IgnoreRequest` exception)."
+"middleware) raises an exception (including "
+"an :exc:`~scrapy.exceptions.IgnoreRequest` exception)."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:137
 msgid ""
-":meth:`process_exception` should return: either ``None``, a :class:`~scrapy."
-"http.Response` object, or a :class:`~scrapy.Request` object."
+":meth:`process_exception` should return: either ``None``, "
+"a :class:`~scrapy.http.Response` object, or a :class:`~scrapy.Request` "
+"object."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:140
@@ -239,18 +241,18 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:144
 msgid ""
-"If it returns a :class:`~scrapy.http.Response` object, the :meth:"
-"`process_response` method chain of installed middleware is started, and "
-"Scrapy won't bother calling any other :meth:`process_exception` methods of "
-"middleware."
+"If it returns a :class:`~scrapy.http.Response` object, "
+"the :meth:`process_response` method chain of installed middleware is "
+"started, and Scrapy won't bother calling any other :meth:`process_exception` "
+"methods of middleware."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:148
 msgid ""
 "If it returns a :class:`~scrapy.Request` object, the returned request is "
-"rescheduled to be downloaded in the future. This stops the execution of :"
-"meth:`process_exception` methods of the middleware the same as returning a "
-"response would."
+"rescheduled to be downloaded in the future. This stops the execution "
+"of :meth:`process_exception` methods of the middleware the same as returning "
+"a response would."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:153
@@ -275,8 +277,8 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:169
 msgid ""
-"For a list of the components enabled by default (and their orders) see the :"
-"setting:`DOWNLOADER_MIDDLEWARES_BASE` setting."
+"For a list of the components enabled by default (and their orders) see "
+"the :setting:`DOWNLOADER_MIDDLEWARES_BASE` setting."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:175
@@ -296,17 +298,18 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:187
 msgid ""
-"When non-UTF8 encoded byte sequences are passed to a :class:`~scrapy."
-"Request`, the ``CookiesMiddleware`` will log a warning. Refer to :ref:"
-"`topics-logging-advanced-customization` to customize the logging behaviour."
+"When non-UTF8 encoded byte sequences are passed to "
+"a :class:`~scrapy.Request`, the ``CookiesMiddleware`` will log a warning. "
+"Refer to :ref:`topics-logging-advanced-customization` to customize the "
+"logging behaviour."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:192
 msgid ""
-"Cookies set via the ``Cookie`` header are not considered by the :ref:"
-"`cookies-mw`. If you need to set cookies for a request, use the :class:"
-"`Request.cookies <scrapy.Request>` parameter. This is a known current "
-"limitation that is being worked on."
+"Cookies set via the ``Cookie`` header are not considered by "
+"the :ref:`cookies-mw`. If you need to set cookies for a request, use "
+"the :class:`Request.cookies <scrapy.Request>` parameter. This is a known "
+"current limitation that is being worked on."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:197
@@ -339,12 +342,12 @@ msgstr "例如："
 #: ../../../topics/downloader-middleware.rst:214
 msgid ""
 "for i, url in enumerate(urls):\n"
-"    yield scrapy.Request(url, meta={\"cookiejar\": i}, callback=self."
-"parse_page)"
+"    yield scrapy.Request(url, meta={\"cookiejar\": i}, "
+"callback=self.parse_page)"
 msgstr ""
 "对于i, 枚举中的 url (url):\n"
-"    yow scrapy.Request(url, meta={\"cookiejar\": i}, callback=self."
-"parse_page)"
+"    yow scrapy.Request(url, meta={\"cookiejar\": i}, "
+"callback=self.parse_page)"
 
 #: ../../../topics/downloader-middleware.rst:219
 msgid ""
@@ -400,8 +403,8 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:248
 msgid ""
-"For more detailed information see the ``cookies`` parameter in :class:"
-"`~scrapy.Request`."
+"For more detailed information see the ``cookies`` parameter "
+"in :class:`~scrapy.Request`."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:254
@@ -435,8 +438,8 @@ msgid ""
 "Sending cookies to: <GET http://www.diningcity.com/netherlands/index.html>\n"
 "        Cookie: clientlanguage_nl=en_EN\n"
 "2011-04-06 14:35:14-0300 [scrapy.downloadermiddlewares.cookies] DEBUG: "
-"Received cookies from: <200 http://www.diningcity.com/netherlands/index."
-"html>\n"
+"Received cookies from: <200 http://www.diningcity.com/netherlands/"
+"index.html>\n"
 "        Set-Cookie: JSESSIONID=B~FA4DC0C496C8762AE4F1A620EAB34F38; Path=/\n"
 "        Set-Cookie: ip_isocode=US\n"
 "        Set-Cookie: clientlanguage_nl=en_EN; Expires=Thu, 07-Apr-2011 "
@@ -446,9 +449,9 @@ msgid ""
 "[...]"
 msgstr ""
 "2011-04-06 14:35:10-0300 [scrapy.core.engine] 信息: Spider opened<GET http://"
-"www.diningcity.com/netherlands/index.html>011-04-06 14:35:10-0300 [scrapy."
-"downloadermiddlewares.cookies] DEBUG: 发送cookie 到 <GET http://www."
-"diningcity.com/netherlands/index.html>\n"
+"www.diningcity.com/netherlands/index.html>011-04-06 14:35:10-0300 "
+"[scrapy.downloadermiddlewares.cookies] DEBUG: 发送cookie 到 <GET http://"
+"www.diningcity.com/netherlands/index.html>\n"
 "        Cookie: clientlanguage_nl=en_EN\n"
 "2011-04-06 14:35:14-0300 [scrapy.downloadermiddlewares.cookies] DEBUG: 接收"
 "cookies from : <200 http://www. iningcity.com/neterslands/index。 tml>\n"
@@ -466,8 +469,8 @@ msgstr "默认Headers中间件"
 
 #: ../../../topics/downloader-middleware.rst:282
 msgid ""
-"This middleware sets all default requests headers specified in the :setting:"
-"`DEFAULT_REQUEST_HEADERS` setting."
+"This middleware sets all default requests headers specified in "
+"the :setting:`DEFAULT_REQUEST_HEADERS` setting."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:286
@@ -476,15 +479,15 @@ msgstr "下载超时中件"
 
 #: ../../../topics/downloader-middleware.rst:293
 msgid ""
-"This middleware sets the download timeout for requests specified in the :"
-"setting:`DOWNLOAD_TIMEOUT` setting."
+"This middleware sets the download timeout for requests specified in "
+"the :setting:`DOWNLOAD_TIMEOUT` setting."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:298
 msgid ""
-"You can also set download timeout per-request using the :reqmeta:"
-"`download_timeout` :attr:`.Request.meta` key; this is supported even when "
-"DownloadTimeoutMiddleware is disabled."
+"You can also set download timeout per-request using "
+"the :reqmeta:`download_timeout` :attr:`.Request.meta` key; this is supported "
+"even when DownloadTimeoutMiddleware is disabled."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:303
@@ -563,9 +566,9 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:363
 msgid ""
-"You can change the HTTP cache storage backend with the :setting:"
-"`HTTPCACHE_STORAGE` setting. Or you can also :ref:`implement your own "
-"storage backend. <httpcache-storage-custom>`"
+"You can change the HTTP cache storage backend with "
+"the :setting:`HTTPCACHE_STORAGE` setting. Or you can also :ref:`implement "
+"your own storage backend. <httpcache-storage-custom>`"
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:366
@@ -588,8 +591,8 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:376
 msgid ""
-"You can also avoid caching a response on every policy using :reqmeta:"
-"`dont_cache` meta key equals ``True``."
+"You can also avoid caching a response on every policy "
+"using :reqmeta:`dont_cache` meta key equals ``True``."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:384
@@ -714,24 +717,24 @@ msgid ""
 "``Pragma: no-cache`` support https://www.w3.org/Protocols/rfc2616/rfc2616-"
 "sec14.html#sec14.9.1"
 msgstr ""
-"``Pragma: no-cache`` 支持 https://www.w3.org/Protocols/rfc2616/rfc2616-sec14."
-"html#sec14.9.1"
+"``Pragma: no-cache`` 支持 https://www.w3.org/Protocols/rfc2616/rfc2616-"
+"sec14.html#sec14.9.1"
 
 #: ../../../topics/downloader-middleware.rst:439
 msgid ""
-"``Vary`` header support https://www.w3.org/Protocols/rfc2616/rfc2616-sec13."
-"html#sec13.6"
+"``Vary`` header support https://www.w3.org/Protocols/rfc2616/rfc2616-"
+"sec13.html#sec13.6"
 msgstr ""
-"``Vary`` header 支持 https://www.w3.org/Protocols/rfc2616/rfc2616-sec13."
-"html#sec13.6"
+"``Vary`` header 支持 https://www.w3.org/Protocols/rfc2616/rfc2616-"
+"sec13.html#sec13.6"
 
 #: ../../../topics/downloader-middleware.rst:440
 msgid ""
 "Invalidation after updates or deletes https://www.w3.org/Protocols/rfc2616/"
 "rfc2616-sec13.html#sec13.10"
 msgstr ""
-"更新后无效或删除https://www.w3.org/Protocols/rfc2616/rfc2616-sec13."
-"html#sec13.10"
+"更新后无效或删除https://www.w3.org/Protocols/rfc2616/rfc2616-"
+"sec13.html#sec13.10"
 
 #: ../../../topics/downloader-middleware.rst:441
 msgid "... probably others .."
@@ -783,10 +786,10 @@ msgstr "``picked_meta`` - ``meta`` 中相同的元数据，但是为了更有效
 
 #: ../../../topics/downloader-middleware.rst:470
 msgid ""
-"The directory name is made from the request fingerprint (see ``scrapy.utils."
-"request.fingerprint``), and one level of subdirectories is used to avoid "
-"creating too many files into the same directory (which is inefficient in "
-"many file systems). An example directory could be::"
+"The directory name is made from the request fingerprint (see "
+"``scrapy.utils.request.fingerprint``), and one level of subdirectories is "
+"used to avoid creating too many files into the same directory (which is "
+"inefficient in many file systems). An example directory could be::"
 msgstr ""
 "目录名称来自请求指纹(见``scrapy.utils.request)。 cinerprint``，一个层次的子目"
 "录被用来避免将太多的文件创建到同一个目录中(在许多文件系统中效率不高)。 一个示"
@@ -808,8 +811,8 @@ msgstr "一个 DBM_ 存储后端也可用于 HTTP 缓存中级设备。"
 
 #: ../../../topics/downloader-middleware.rst:486
 msgid ""
-"By default, it uses the :mod:`dbm`, but you can change it with the :setting:"
-"`HTTPCACHE_DBM_MODULE` setting."
+"By default, it uses the :mod:`dbm`, but you can change it with "
+"the :setting:`HTTPCACHE_DBM_MODULE` setting."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:492
@@ -834,8 +837,8 @@ msgstr "已打开的 spider"
 
 #: ../../../topics/downloader-middleware.rst:511
 msgid ""
-"This method gets called after a spider has been closed. It handles the :"
-"signal:`close_spider <spider_closed>` signal."
+"This method gets called after a spider has been closed. It handles "
+"the :signal:`close_spider <spider_closed>` signal."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:514
@@ -1106,8 +1109,8 @@ msgstr "HttpProxyMiddleware"
 
 #: ../../../topics/downloader-middleware.rst:728
 msgid ""
-"This middleware sets the HTTP proxy to use for requests, by setting the :"
-"reqmeta:`proxy` meta value for :class:`~scrapy.Request` objects."
+"This middleware sets the HTTP proxy to use for requests, by setting "
+"the :reqmeta:`proxy` meta value for :class:`~scrapy.Request` objects."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:731
@@ -1131,19 +1134,19 @@ msgstr "``no_proxy``"
 #: ../../../topics/downloader-middleware.rst:738
 msgid ""
 "You can also set the meta key :reqmeta:`proxy` per-request, to a value like "
-"``http://some_proxy_server:port`` or ``http://username:"
-"password@some_proxy_server:port``. Keep in mind this value will take "
-"precedence over ``http_proxy``/``https_proxy`` environment variables, and it "
-"will also ignore ``no_proxy`` environment variable."
+"``http://some_proxy_server:port`` or ``http://"
+"username:password@some_proxy_server:port``. Keep in mind this value will "
+"take precedence over ``http_proxy``/``https_proxy`` environment variables, "
+"and it will also ignore ``no_proxy`` environment variable."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:745
 msgid ""
 "Handling of this meta key needs to be implemented inside the :ref:`download "
 "handler <topics-download-handlers>`, so it's not guaranteed to be supported "
-"by all 3rd-party handlers. It's currently unsupported by :class:`~scrapy."
-"core.downloader.handlers.http2.H2DownloadHandler` and :class:`~scrapy.core."
-"downloader.handlers._httpx.HttpxDownloadHandler`."
+"by all 3rd-party handlers. It's currently unsupported "
+"by :class:`~scrapy.core.downloader.handlers.http2.H2DownloadHandler` "
+"and :class:`~scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler`."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:753
@@ -1152,9 +1155,9 @@ msgid ""
 "``https://`` one. While both kinds of proxy URLs can be used with both HTTP "
 "and HTTPS destination URLs, the specifics of the network exchange are "
 "different for all 4 cases and it's possible that HTTPS proxies are fully or "
-"partially unsupported by a given download handler. Currently, :class:"
-"`~scrapy.core.downloader.handlers.http11.HTTP11DownloadHandler` supports "
-"HTTPS proxies only for HTTP destinations."
+"partially unsupported by a given download handler. "
+"Currently, :class:`~scrapy.core.downloader.handlers.http11.HTTP11DownloadHandler` "
+"supports HTTPS proxies only for HTTP destinations."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:762
@@ -1179,8 +1182,8 @@ msgstr "默认： ``\"latin-1\"``"
 
 #: ../../../topics/downloader-middleware.rst:779
 msgid ""
-"The default encoding for proxy authentication on :class:"
-"`HttpProxyMiddleware`."
+"The default encoding for proxy authentication "
+"on :class:`HttpProxyMiddleware`."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:782
@@ -1212,8 +1215,8 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:803
 msgid ""
-"DEBUG: Filtered offsite request to 'offsite.example': <GET http://offsite."
-"example/some/page.html>"
+"DEBUG: Filtered offsite request to 'offsite.example': <GET http://"
+"offsite.example/some/page.html>"
 msgstr ""
 "DEBUG: 已过滤的离站请求为“offsite.example”: <GET http://offsite.example/some/"
 "page.html>"
@@ -1272,8 +1275,9 @@ msgstr ""
 msgid ""
 "The format of a reason depends on the middleware that handled the "
 "corresponding redirect. For example, :class:`RedirectMiddleware` indicates "
-"the triggering response status code as an integer, while :class:"
-"`MetaRefreshMiddleware` always uses the ``'meta refresh'`` string as reason."
+"the triggering response status code as an integer, "
+"while :class:`MetaRefreshMiddleware` always uses the ``'meta refresh'`` "
+"string as reason."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:848
@@ -1322,10 +1326,11 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:870
 msgid ""
-"The ``handle_httpstatus_list`` key of :attr:`Request.meta <scrapy.Request."
-"meta>` can also be used to specify which response codes to allow on a per-"
-"request basis. You can also set the meta key ``handle_httpstatus_all`` to "
-"``True`` if you want to allow any response code for a request."
+"The ``handle_httpstatus_list`` key of :attr:`Request.meta "
+"<scrapy.Request.meta>` can also be used to specify which response codes to "
+"allow on a per-request basis. You can also set the meta key "
+"``handle_httpstatus_all`` to ``True`` if you want to allow any response code "
+"for a request."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:878
@@ -1386,9 +1391,10 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:913
 msgid ""
-"This middleware obey :setting:`REDIRECT_MAX_TIMES` setting, :reqmeta:"
-"`dont_redirect`, :reqmeta:`redirect_urls` and :reqmeta:`redirect_reasons` "
-"request meta keys as described for :class:`RedirectMiddleware`"
+"This middleware obey :setting:`REDIRECT_MAX_TIMES` "
+"setting, :reqmeta:`dont_redirect`, :reqmeta:`redirect_urls` "
+"and :reqmeta:`redirect_reasons` request meta keys as described "
+"for :class:`RedirectMiddleware`"
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:919
@@ -1480,8 +1486,8 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:981
 msgid ""
-"To retry requests from a spider callback, you can use the :func:"
-"`get_retry_request` function:"
+"To retry requests from a spider callback, you can use "
+"the :func:`get_retry_request` function:"
 msgstr ""
 
 #: ../../../../scrapy/downloadermiddlewares/retry.py:docstring of
@@ -1516,8 +1522,8 @@ msgstr ""
 msgid ""
 "*spider* is the :class:`~scrapy.Spider` instance which is asking for the "
 "retry request. It is used to access the :ref:`settings <topics-settings>` "
-"and :ref:`stats <topics-stats>`, and to provide extra logging context (see :"
-"func:`logging.debug`)."
+"and :ref:`stats <topics-stats>`, and to provide extra logging context "
+"(see :func:`logging.debug`)."
 msgstr ""
 
 #: ../../../../scrapy/downloadermiddlewares/retry.py:docstring of
@@ -1532,9 +1538,9 @@ msgstr ""
 msgid ""
 "*max_retry_times* is a number that determines the maximum number of times "
 "that *request* can be retried. If not specified or ``None``, the number is "
-"read from the :reqmeta:`max_retry_times` meta key of the request. If the :"
-"reqmeta:`max_retry_times` meta key is not defined or ``None``, the number is "
-"read from the :setting:`RETRY_TIMES` setting."
+"read from the :reqmeta:`max_retry_times` meta key of the request. If "
+"the :reqmeta:`max_retry_times` meta key is not defined or ``None``, the "
+"number is read from the :setting:`RETRY_TIMES` setting."
 msgstr ""
 
 #: ../../../../scrapy/downloadermiddlewares/retry.py:docstring of
@@ -1583,10 +1589,10 @@ msgstr "除第一次下载外，重试的最大次数。"
 
 #: ../../../topics/downloader-middleware.rst:1007
 msgid ""
-"Maximum number of retries can also be specified per-request using :reqmeta:"
-"`max_retry_times` attribute of :attr:`Request.meta <scrapy.Request.meta>`. "
-"When initialized, the :reqmeta:`max_retry_times` meta key takes higher "
-"precedence over the :setting:`RETRY_TIMES` setting."
+"Maximum number of retries can also be specified per-request "
+"using :reqmeta:`max_retry_times` attribute of :attr:`Request.meta "
+"<scrapy.Request.meta>`. When initialized, the :reqmeta:`max_retry_times` "
+"meta key takes higher precedence over the :setting:`RETRY_TIMES` setting."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:1015
@@ -1645,11 +1651,11 @@ msgstr "每个列表条目可以是异常类型或导入路径作为字符串。
 
 #: ../../../topics/downloader-middleware.rst:1050
 msgid ""
-"An exception will not be caught when the exception type is not in :setting:"
-"`RETRY_EXCEPTIONS` or when the maximum number of retries for a request has "
-"been exceeded (see :setting:`RETRY_TIMES`). To learn about uncaught "
-"exception propagation, see :meth:`~scrapy.downloadermiddlewares."
-"DownloaderMiddleware.process_exception`."
+"An exception will not be caught when the exception type is not "
+"in :setting:`RETRY_EXCEPTIONS` or when the maximum number of retries for a "
+"request has been exceeded (see :setting:`RETRY_TIMES`). To learn about "
+"uncaught exception propagation, "
+"see :meth:`~scrapy.downloadermiddlewares.DownloaderMiddleware.process_exception`."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:1059
@@ -1692,9 +1698,9 @@ msgstr ""
 msgid ""
 "The :setting:`ROBOTSTXT_USER_AGENT` setting can be used to specify the user "
 "agent string to use for matching in the robots.txt_ file. If it is ``None``, "
-"the User-Agent header you are sending with the request or the :setting:"
-"`USER_AGENT` setting (in that order) will be used for determining the user "
-"agent to use in the robots.txt_ file."
+"the User-Agent header you are sending with the request or "
+"the :setting:`USER_AGENT` setting (in that order) will be used for "
+"determining the user agent to use in the robots.txt_ file."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:1091
@@ -1727,8 +1733,8 @@ msgstr ""
 #: ../../../topics/downloader-middleware.rst:1104
 msgid ""
 "If :attr:`Request.meta <scrapy.Request.meta>` has ``dont_obey_robotstxt`` "
-"key set to True the request will be ignored by this middleware even if :"
-"setting:`ROBOTSTXT_OBEY` is enabled."
+"key set to True the request will be ignored by this middleware even "
+"if :setting:`ROBOTSTXT_OBEY` is enabled."
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:1109
@@ -1778,8 +1784,8 @@ msgstr "在 Python 中实现"
 
 #: ../../../topics/downloader-middleware.rst:1134
 msgid ""
-"is compliant with `Google's Robots.txt Specification <https://developers."
-"google.com/crawling/docs/robots-txt/robots-txt-spec>`_"
+"is compliant with `Google's Robots.txt Specification <https://"
+"developers.google.com/crawling/docs/robots-txt/robots-txt-spec>`_"
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:1137
@@ -1810,11 +1816,11 @@ msgstr "是 Python 内置的 robots.txt_ 解析器"
 #: ../../../topics/downloader-middleware.rst:1152
 #: ../../../topics/downloader-middleware.rst:1174
 msgid ""
-"is compliant with `Martijn Koster's 1996 draft specification <https://www."
-"robotstxt.org/norobots-rfc.txt>`_"
+"is compliant with `Martijn Koster's 1996 draft specification <https://"
+"www.robotstxt.org/norobots-rfc.txt>`_"
 msgstr ""
-"符合`Martijn Koster1996年规格草案 <https://www.robotstxt.org/norobots-rfc."
-"txt>`_"
+"符合`Martijn Koster1996年规格草案 <https://www.robotstxt.org/norobots-"
+"rfc.txt>`_"
 
 #: ../../../topics/downloader-middleware.rst:1155
 msgid "lacks support for wildcard matching (before Python 3.14.5)"
@@ -1866,8 +1872,8 @@ msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:1186
 msgid ""
-"Set :setting:`ROBOTSTXT_PARSER` setting to ``scrapy.robotstxt."
-"RerpRobotParser``"
+"Set :setting:`ROBOTSTXT_PARSER` setting to "
+"``scrapy.robotstxt.RerpRobotParser``"
 msgstr ""
 
 #: ../../../topics/downloader-middleware.rst:1192

@@ -53,8 +53,8 @@ msgstr ""
 
 #: ../../../topics/jobs.rst:25
 msgid ""
-"To enable persistence support, define a *job directory* through the :setting:"
-"`JOBDIR` setting."
+"To enable persistence support, define a *job directory* through "
+"the :setting:`JOBDIR` setting."
 msgstr ""
 
 #: ../../../topics/jobs.rst:28
@@ -184,10 +184,10 @@ msgstr ""
 #: ../../../topics/jobs.rst:112
 msgid ""
 "The contents of a job directory depend on the components used during the "
-"job. Components known to write in the job directory include the :ref:"
-"`scheduler <topics-scheduler>` and the :class:`~scrapy.extensions."
-"spiderstate.SpiderState` extension. See the reference documentation of the "
-"corresponding components for details."
+"job. Components known to write in the job directory include "
+"the :ref:`scheduler <topics-scheduler>` and "
+"the :class:`~scrapy.extensions.spiderstate.SpiderState` extension. See the "
+"reference documentation of the corresponding components for details."
 msgstr ""
 
 #: ../../../topics/jobs.rst:118
@@ -215,8 +215,9 @@ msgstr ""
 msgid ""
 ":class:`~scrapy.core.scheduler.Scheduler` creates the ``requests.queue/`` "
 "directory and the ``active.json`` file, the latter containing the state data "
-"returned by :meth:`DownloaderAwarePriorityQueue.close() <scrapy.pqueues."
-"DownloaderAwarePriorityQueue.close>` the last time the job was paused."
+"returned by :meth:`DownloaderAwarePriorityQueue.close() "
+"<scrapy.pqueues.DownloaderAwarePriorityQueue.close>` the last time the job "
+"was paused."
 msgstr ""
 
 #: ../../../topics/jobs.rst:139
@@ -233,10 +234,10 @@ msgstr ""
 
 #: ../../../topics/jobs.rst:145
 msgid ""
-":class:`scrapy.squeues.PickleLifoDiskQueue`, a subclass of :class:`queuelib."
-"LifoDiskQueue` that uses :mod:`pickle` to serialize :class:`dict` "
-"representations of :class:`scrapy.Request` objects, creates the ``info."
-"json`` and ``q{00000}`` files."
+":class:`scrapy.squeues.PickleLifoDiskQueue`, a subclass "
+"of :class:`queuelib.LifoDiskQueue` that uses :mod:`pickle` to "
+"serialize :class:`dict` representations of :class:`scrapy.Request` objects, "
+"creates the ``info.json`` and ``q{00000}`` files."
 msgstr ""
 
 #: ../../../topics/jobs.rst:150
@@ -247,6 +248,6 @@ msgstr ""
 
 #: ../../../topics/jobs.rst:153
 msgid ""
-":class:`~scrapy.extensions.spiderstate.SpiderState` creates the ``spider."
-"state`` file."
+":class:`~scrapy.extensions.spiderstate.SpiderState` creates the "
+"``spider.state`` file."
 msgstr ""

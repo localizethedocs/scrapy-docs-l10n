@@ -34,11 +34,11 @@ msgstr ""
 
 #: ../../../faq.rst:15
 msgid ""
-"Scrapy provides a built-in mechanism for extracting data (called :ref:"
-"`selectors <topics-selectors>`) but you can easily use `BeautifulSoup`_ (or "
-"`lxml`_) instead, if you feel more comfortable working with them. After all, "
-"they're just parsing libraries which can be imported and used from any "
-"Python code."
+"Scrapy provides a built-in mechanism for extracting data "
+"(called :ref:`selectors <topics-selectors>`) but you can easily use "
+"`BeautifulSoup`_ (or `lxml`_) instead, if you feel more comfortable working "
+"with them. After all, they're just parsing libraries which can be imported "
+"and used from any Python code."
 msgstr ""
 
 #: ../../../faq.rst:21
@@ -123,8 +123,8 @@ msgstr ""
 #: ../../../faq.rst:85
 msgid ""
 "Yes. Support for HTTP proxies is provided (since Scrapy 0.8) through the "
-"HTTP Proxy downloader middleware. See :class:`~scrapy.downloadermiddlewares."
-"httpproxy.HttpProxyMiddleware`."
+"HTTP Proxy downloader middleware. "
+"See :class:`~scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware`."
 msgstr ""
 
 #: ../../../faq.rst:90
@@ -161,8 +161,8 @@ msgstr ""
 
 #: ../../../faq.rst:113
 msgid ""
-"Also, Python has a builtin memory leak issue which is described in :ref:"
-"`topics-leaks-without-leaks`."
+"Also, Python has a builtin memory leak issue which is described "
+"in :ref:`topics-leaks-without-leaks`."
 msgstr ""
 
 #: ../../../faq.rst:117
@@ -179,11 +179,11 @@ msgstr ""
 
 #: ../../../faq.rst:124
 msgid ""
-"If you have a spider with a long list of :attr:`~scrapy.Spider."
-"allowed_domains` (e.g. 50,000+), consider replacing the default :class:"
-"`~scrapy.downloadermiddlewares.offsite.OffsiteMiddleware` downloader "
-"middleware with a :ref:`custom downloader middleware <topics-downloader-"
-"middleware-custom>` that requires less memory. For example:"
+"If you have a spider with a long list "
+"of :attr:`~scrapy.Spider.allowed_domains` (e.g. 50,000+), consider replacing "
+"the default :class:`~scrapy.downloadermiddlewares.offsite.OffsiteMiddleware` "
+"downloader middleware with a :ref:`custom downloader middleware <topics-"
+"downloader-middleware-custom>` that requires less memory. For example:"
 msgstr ""
 
 #: ../../../faq.rst:130
@@ -196,20 +196,21 @@ msgstr ""
 #: ../../../faq.rst:134
 msgid ""
 "If you can meet the installation requirements, use pyre2_ instead of "
-"Python’s re_ to compile your URL-filtering regular expression. See :issue:"
-"`1908`."
+"Python’s re_ to compile your URL-filtering regular expression. "
+"See :issue:`1908`."
 msgstr ""
 
 #: ../../../faq.rst:138
 msgid ""
-"See also `other suggestions at StackOverflow <https://stackoverflow.com/"
-"q/36440681>`__."
+"See also `other suggestions at StackOverflow <https://stackoverflow.com/q/"
+"36440681>`__."
 msgstr ""
 
 #: ../../../faq.rst:141
 msgid ""
-"Remember to disable :class:`scrapy.downloadermiddlewares.offsite."
-"OffsiteMiddleware` when you enable your custom implementation:"
+"Remember to "
+"disable :class:`scrapy.downloadermiddlewares.offsite.OffsiteMiddleware` when "
+"you enable your custom implementation:"
 msgstr ""
 
 #: ../../../faq.rst:145
@@ -278,10 +279,10 @@ msgstr ""
 
 #: ../../../faq.rst:189
 msgid ""
-"Those messages are thrown by :class:`~scrapy.downloadermiddlewares.offsite."
-"OffsiteMiddleware`, which is a downloader middleware (enabled by default) "
-"whose purpose is to filter out requests to domains outside the ones covered "
-"by the spider."
+"Those messages are thrown "
+"by :class:`~scrapy.downloadermiddlewares.offsite.OffsiteMiddleware`, which "
+"is a downloader middleware (enabled by default) whose purpose is to filter "
+"out requests to domains outside the ones covered by the spider."
 msgstr ""
 
 #: ../../../faq.rst:195
@@ -338,8 +339,8 @@ msgstr ""
 
 #: ../../../faq.rst:231
 msgid ""
-"Or by setting a global download delay in your project with the :setting:"
-"`DOWNLOAD_DELAY` setting."
+"Or by setting a global download delay in your project with "
+"the :setting:`DOWNLOAD_DELAY` setting."
 msgstr ""
 
 #: ../../../faq.rst:235
@@ -414,9 +415,9 @@ msgstr ""
 #: ../../../faq.rst:277
 msgid ""
 "In order to avoid parsing all the entire feed at once in memory, you can use "
-"the :func:`~scrapy.utils.iterators.xmliter_lxml` and :func:`~scrapy.utils."
-"iterators.csviter` functions. In fact, this is what :class:`~scrapy.spiders."
-"XMLFeedSpider` uses."
+"the :func:`~scrapy.utils.iterators.xmliter_lxml` "
+"and :func:`~scrapy.utils.iterators.csviter` functions. In fact, this is "
+"what :class:`~scrapy.spiders.XMLFeedSpider` uses."
 msgstr ""
 
 #: ../../../../scrapy/utils/iterators.py:docstring of
@@ -529,8 +530,9 @@ msgstr ""
 msgid ""
 ":ref:`Item pipelines <topics-item-pipeline>` cannot yield multiple items per "
 "input item. :ref:`Create a spider middleware <custom-spider-middleware>` "
-"instead, and use its :meth:`~scrapy.spidermiddlewares.SpiderMiddleware."
-"process_spider_output` method for this purpose. For example:"
+"instead, and use "
+"its :meth:`~scrapy.spidermiddlewares.SpiderMiddleware.process_spider_output` "
+"method for this purpose. For example:"
 msgstr ""
 
 #: ../../../faq.rst:343
@@ -557,10 +559,10 @@ msgstr ""
 
 #: ../../../faq.rst:363
 msgid ""
-"Yes, by setting :setting:`TWISTED_DNS_RESOLVER` to ``scrapy.resolver."
-"CachingHostnameResolver``. Note that by doing so, you lose the ability to "
-"set a specific timeout for DNS requests (the value of the :setting:"
-"`DNS_TIMEOUT` setting is ignored)."
+"Yes, by setting :setting:`TWISTED_DNS_RESOLVER` to "
+"``scrapy.resolver.CachingHostnameResolver``. Note that by doing so, you lose "
+"the ability to set a specific timeout for DNS requests (the value of "
+"the :setting:`DNS_TIMEOUT` setting is ignored)."
 msgstr ""
 
 #: ../../../faq.rst:371
@@ -572,9 +574,10 @@ msgstr ""
 #: ../../../faq.rst:373
 msgid ""
 "This issue `has been reported`_ to appear when running broad crawls in "
-"macOS, where the default Twisted reactor is :class:`twisted.internet."
-"selectreactor.SelectReactor`. Switching to a different reactor is possible "
-"by using the :setting:`TWISTED_REACTOR` setting."
+"macOS, where the default Twisted reactor "
+"is :class:`twisted.internet.selectreactor.SelectReactor`. Switching to a "
+"different reactor is possible by using the :setting:`TWISTED_REACTOR` "
+"setting."
 msgstr ""
 
 #: ../../../faq.rst:381
@@ -587,10 +590,11 @@ msgid ""
 "response. For instance, sometimes you can determine whether or not you need "
 "the full contents of a response by inspecting its headers or the first bytes "
 "of its body. In that case, you could save resources by attaching a handler "
-"to the :class:`~scrapy.signals.bytes_received` or :class:`~scrapy.signals."
-"headers_received` signals and raising a :exc:`~scrapy.exceptions."
-"StopDownload` exception. Please refer to the :ref:`topics-stop-response-"
-"download` topic for additional information and examples."
+"to the :class:`~scrapy.signals.bytes_received` "
+"or :class:`~scrapy.signals.headers_received` signals and raising "
+"a :exc:`~scrapy.exceptions.StopDownload` exception. Please refer to "
+"the :ref:`topics-stop-response-download` topic for additional information "
+"and examples."
 msgstr ""
 
 #: ../../../faq.rst:395

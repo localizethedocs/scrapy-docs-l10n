@@ -78,10 +78,10 @@ msgstr ""
 msgid ""
 "The leak could also come from a custom middleware, pipeline or extension "
 "that you have written, if you are not releasing the (previously allocated) "
-"resources properly. For example, allocating resources on :signal:"
-"`spider_opened` but not releasing them on :signal:`spider_closed` may cause "
-"problems if you're running :ref:`multiple spiders per process <run-multiple-"
-"spiders>`."
+"resources properly. For example, allocating resources "
+"on :signal:`spider_opened` but not releasing them on :signal:`spider_closed` "
+"may cause problems if you're running :ref:`multiple spiders per process <run-"
+"multiple-spiders>`."
 msgstr ""
 
 #: ../../../topics/leaks.rst:48
@@ -90,12 +90,12 @@ msgstr ""
 
 #: ../../../topics/leaks.rst:50
 msgid ""
-"By default Scrapy keeps the request queue in memory; it includes :class:"
-"`~scrapy.Request` objects and all objects referenced in Request attributes "
-"(e.g. in :attr:`~scrapy.Request.cb_kwargs` and :attr:`~scrapy.Request."
-"meta`). While not necessarily a leak, this can take a lot of memory. "
-"Enabling :ref:`persistent job queue <topics-jobs>` could help keeping memory "
-"usage in control."
+"By default Scrapy keeps the request queue in memory; it "
+"includes :class:`~scrapy.Request` objects and all objects referenced in "
+"Request attributes (e.g. in :attr:`~scrapy.Request.cb_kwargs` "
+"and :attr:`~scrapy.Request.meta`). While not necessarily a leak, this can "
+"take a lot of memory. Enabling :ref:`persistent job queue <topics-jobs>` "
+"could help keeping memory usage in control."
 msgstr ""
 
 #: ../../../topics/leaks.rst:61
@@ -137,8 +137,9 @@ msgid ""
 "As you can see, that report also shows the \"age\" of the oldest object in "
 "each class. If you're running multiple spiders per process chances are you "
 "can figure out which spider is leaking by looking at the oldest request or "
-"response. You can get the oldest object of each class using the :func:"
-"`~scrapy.utils.trackref.get_oldest` function (from the telnet console)."
+"response. You can get the oldest object of each class using "
+"the :func:`~scrapy.utils.trackref.get_oldest` function (from the telnet "
+"console)."
 msgstr ""
 
 #: ../../../topics/leaks.rst:94
@@ -183,8 +184,8 @@ msgstr ""
 
 #: ../../../topics/leaks.rst:111
 msgid ""
-"return Request(f\"http://www.somenastyspider.com/product.php?"
-"pid={product_id}\",\n"
+"return Request(f\"http://www.somenastyspider.com/product.php?pid={product_id}"
+"\",\n"
 "               callback=self.parse, cb_kwargs={'referer': response})"
 msgstr ""
 
@@ -264,10 +265,11 @@ msgstr ""
 
 #: ../../../topics/leaks.rst:166
 msgid ""
-"If your project has too many spiders executed in parallel, the output of :"
-"func:`prefs` can be difficult to read. For this reason, that function has a "
-"``ignore`` argument which can be used to ignore a particular class (and all "
-"its subclasses). For example, this won't show any live references to spiders:"
+"If your project has too many spiders executed in parallel, the output "
+"of :func:`prefs` can be difficult to read. For this reason, that function "
+"has a ``ignore`` argument which can be used to ignore a particular class "
+"(and all its subclasses). For example, this won't show any live references "
+"to spiders:"
 msgstr ""
 
 #: ../../../topics/leaks.rst:172

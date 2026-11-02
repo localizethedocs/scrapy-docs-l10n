@@ -117,10 +117,10 @@ msgstr ""
 
 #: ../../../topics/media-pipeline.rst:64
 msgid ""
-"Using the :class:`ImagesPipeline` is a lot like using the :class:"
-"`FilesPipeline`, except the default field names used are different: you use "
-"``image_urls`` for the image URLs of an item and it will populate an "
-"``images`` field for the information about the downloaded images."
+"Using the :class:`ImagesPipeline` is a lot like using "
+"the :class:`FilesPipeline`, except the default field names used are "
+"different: you use ``image_urls`` for the image URLs of an item and it will "
+"populate an ``images`` field for the information about the downloaded images."
 msgstr ""
 
 #: ../../../topics/media-pipeline.rst:69
@@ -142,8 +142,8 @@ msgstr ""
 
 #: ../../../topics/media-pipeline.rst:87
 msgid ""
-"To enable your media pipeline you must first add it to your project :setting:"
-"`ITEM_PIPELINES` setting."
+"To enable your media pipeline you must first add it to your "
+"project :setting:`ITEM_PIPELINES` setting."
 msgstr ""
 
 #: ../../../topics/media-pipeline.rst:90
@@ -344,8 +344,8 @@ msgstr ""
 
 #: ../../../topics/media-pipeline.rst:207
 msgid ""
-"``<FILE_NAME>`` is the file name assigned to the file.  For more info see :"
-"ref:`topics-file-naming`."
+"``<FILE_NAME>`` is the file name assigned to the file.  For more info "
+"see :ref:`topics-file-naming`."
 msgstr ""
 
 #: ../../../topics/media-pipeline.rst:213
@@ -372,8 +372,8 @@ msgstr ""
 
 #: ../../../topics/media-pipeline.rst:224
 msgid ""
-"If ``username`` and ``password`` are not provided, they are taken from the :"
-"setting:`FTP_USER` and :setting:`FTP_PASSWORD` settings respectively."
+"If ``username`` and ``password`` are not provided, they are taken from "
+"the :setting:`FTP_USER` and :setting:`FTP_PASSWORD` settings respectively."
 msgstr ""
 
 #: ../../../topics/media-pipeline.rst:227
@@ -389,9 +389,9 @@ msgstr ""
 
 #: ../../../topics/media-pipeline.rst:239
 msgid ""
-"If botocore_ >= 1.13.45 is installed, :setting:`FILES_STORE` and :setting:"
-"`IMAGES_STORE` can represent an Amazon S3 bucket. Scrapy will automatically "
-"upload the files to the bucket."
+"If botocore_ >= 1.13.45 is installed, :setting:`FILES_STORE` "
+"and :setting:`IMAGES_STORE` can represent an Amazon S3 bucket. Scrapy will "
+"automatically upload the files to the bucket."
 msgstr ""
 
 #: ../../../topics/media-pipeline.rst:243
@@ -405,9 +405,10 @@ msgstr ""
 #: ../../../topics/media-pipeline.rst:249
 msgid ""
 "You can modify the Access Control List (ACL) policy used for the stored "
-"files, which is defined by the :setting:`FILES_STORE_S3_ACL` and :setting:"
-"`IMAGES_STORE_S3_ACL` settings. By default, the ACL is set to ``private``. "
-"To make the files publicly available use the ``public-read`` policy:"
+"files, which is defined by the :setting:`FILES_STORE_S3_ACL` "
+"and :setting:`IMAGES_STORE_S3_ACL` settings. By default, the ACL is set to "
+"``private``. To make the files publicly available use the ``public-read`` "
+"policy:"
 msgstr ""
 
 #: ../../../topics/media-pipeline.rst:255
@@ -455,8 +456,8 @@ msgstr ""
 
 #: ../../../topics/media-pipeline.rst:295
 msgid ""
-"For example, these are valid :setting:`IMAGES_STORE` and :setting:"
-"`GCS_PROJECT_ID` settings:"
+"For example, these are valid :setting:`IMAGES_STORE` "
+"and :setting:`GCS_PROJECT_ID` settings:"
 msgstr ""
 
 #: ../../../topics/media-pipeline.rst:297
@@ -472,11 +473,11 @@ msgstr ""
 #: ../../../topics/media-pipeline.rst:306
 msgid ""
 "You can modify the Access Control List (ACL) policy used for the stored "
-"files, which is defined by the :setting:`FILES_STORE_GCS_ACL` and :setting:"
-"`IMAGES_STORE_GCS_ACL` settings. By default, the ACL is set to ``''`` (empty "
-"string) which means that Cloud Storage applies the bucket's default object "
-"ACL to the object. To make the files publicly available use the "
-"``publicRead`` policy:"
+"files, which is defined by the :setting:`FILES_STORE_GCS_ACL` "
+"and :setting:`IMAGES_STORE_GCS_ACL` settings. By default, the ACL is set to "
+"``''`` (empty string) which means that Cloud Storage applies the bucket's "
+"default object ACL to the object. To make the files publicly available use "
+"the ``publicRead`` policy:"
 msgstr ""
 
 #: ../../../topics/media-pipeline.rst:313
@@ -512,8 +513,8 @@ msgid ""
 "When using :ref:`item types <item-types>` for which fields are defined "
 "beforehand, you must define both the URLs field and the results field. For "
 "example, when using the images pipeline, items must define both the "
-"``image_urls`` and the ``images`` field. For instance, using the :class:"
-"`~scrapy.Item` class:"
+"``image_urls`` and the ``images`` field. For instance, using "
+"the :class:`~scrapy.Item` class:"
 msgstr ""
 
 #: ../../../topics/media-pipeline.rst:342
@@ -535,8 +536,8 @@ msgstr ""
 
 #: ../../../topics/media-pipeline.rst:355
 msgid ""
-"For the Files Pipeline, set :setting:`FILES_URLS_FIELD` and/or :setting:"
-"`FILES_RESULT_FIELD` settings:"
+"For the Files Pipeline, set :setting:`FILES_URLS_FIELD` and/"
+"or :setting:`FILES_RESULT_FIELD` settings:"
 msgstr ""
 
 #: ../../../topics/media-pipeline.rst:358
@@ -547,8 +548,8 @@ msgstr ""
 
 #: ../../../topics/media-pipeline.rst:363
 msgid ""
-"For the Images Pipeline, set :setting:`IMAGES_URLS_FIELD` and/or :setting:"
-"`IMAGES_RESULT_FIELD` settings:"
+"For the Images Pipeline, set :setting:`IMAGES_URLS_FIELD` and/"
+"or :setting:`IMAGES_RESULT_FIELD` settings:"
 msgstr ""
 
 #: ../../../topics/media-pipeline.rst:366
@@ -584,9 +585,9 @@ msgstr ""
 #: ../../../topics/media-pipeline.rst:392
 msgid ""
 "The Image Pipeline avoids downloading files that were downloaded recently. "
-"To adjust this retention delay use the :setting:`FILES_EXPIRES` setting (or :"
-"setting:`IMAGES_EXPIRES`, in case of Images Pipeline), which specifies the "
-"delay in number of days:"
+"To adjust this retention delay use the :setting:`FILES_EXPIRES` setting "
+"(or :setting:`IMAGES_EXPIRES`, in case of Images Pipeline), which specifies "
+"the delay in number of days:"
 msgstr ""
 
 #: ../../../topics/media-pipeline.rst:397
@@ -697,8 +698,8 @@ msgstr ""
 #: ../../../topics/media-pipeline.rst:469
 msgid ""
 "When using the Images Pipeline, you can drop images which are too small, by "
-"specifying the minimum allowed size in the :setting:`IMAGES_MIN_HEIGHT` and :"
-"setting:`IMAGES_MIN_WIDTH` settings."
+"specifying the minimum allowed size in the :setting:`IMAGES_MIN_HEIGHT` "
+"and :setting:`IMAGES_MIN_WIDTH` settings."
 msgstr ""
 
 #: ../../../topics/media-pipeline.rst:473
@@ -759,16 +760,17 @@ msgstr ""
 #: ../../../topics/media-pipeline.rst:667
 msgid ""
 "This method is called once per downloaded item. It returns the download path "
-"of the file originating from the specified :class:`response <scrapy.http."
-"Response>`."
+"of the file originating from the specified :class:`response "
+"<scrapy.http.Response>`."
 msgstr ""
 
 #: ../../../topics/media-pipeline.rst:518
 #: ../../../topics/media-pipeline.rst:671
 msgid ""
-"In addition to ``response``, this method receives the original :class:"
-"`request <scrapy.Request>`, :class:`info <scrapy.pipelines.media."
-"MediaPipeline.SpiderInfo>` and :class:`item <scrapy.Item>`"
+"In addition to ``response``, this method receives the "
+"original :class:`request <scrapy.Request>`, :class:`info "
+"<scrapy.pipelines.media.MediaPipeline.SpiderInfo>` and :class:`item "
+"<scrapy.Item>`"
 msgstr ""
 
 #: ../../../topics/media-pipeline.rst:523
@@ -782,8 +784,8 @@ msgstr ""
 msgid ""
 "For example, if file URLs end like regular paths (e.g. ``https://example.com/"
 "a/b/c/foo.png``), you can use the following approach to download all files "
-"into the ``files`` folder with their original filenames (e.g. ``files/foo."
-"png``):"
+"into the ``files`` folder with their original filenames (e.g. ``files/"
+"foo.png``):"
 msgstr ""
 
 #: ../../../topics/media-pipeline.rst:530
@@ -816,8 +818,9 @@ msgstr ""
 #: ../../../topics/media-pipeline.rst:550
 msgid ""
 "As seen on the workflow, the pipeline will get the URLs of the images to "
-"download from the item. In order to do this, you can override the :meth:"
-"`~get_media_requests` method and return a Request for each file URL:"
+"download from the item. In order to do this, you can override "
+"the :meth:`~get_media_requests` method and return a Request for each file "
+"URL:"
 msgstr ""
 
 #: ../../../topics/media-pipeline.rst:555
@@ -834,9 +837,9 @@ msgstr ""
 #: ../../../topics/media-pipeline.rst:565
 msgid ""
 "Those requests will be processed by the pipeline and, when they have "
-"finished downloading, the results will be sent to the :meth:"
-"`~item_completed` method, as a list of 2-element tuples. Each tuple will "
-"contain ``(success, file_info_or_error)`` where:"
+"finished downloading, the results will be sent to "
+"the :meth:`~item_completed` method, as a list of 2-element tuples. Each "
+"tuple will contain ``(success, file_info_or_error)`` where:"
 msgstr ""
 
 #: ../../../topics/media-pipeline.rst:570
@@ -895,8 +898,8 @@ msgstr ""
 #: ../../../topics/media-pipeline.rst:596
 msgid ""
 "The list of tuples received by :meth:`~item_completed` is guaranteed to "
-"retain the same order of the requests returned from the :meth:"
-"`~get_media_requests` method."
+"retain the same order of the requests returned from "
+"the :meth:`~get_media_requests` method."
 msgstr ""
 
 #: ../../../topics/media-pipeline.rst:600
@@ -910,8 +913,8 @@ msgid ""
 "        True,\n"
 "        {\n"
 "            \"checksum\": \"2b00042f7481c7b056c4b410d28f33cf\",\n"
-"            \"path\": \"full/0a79c461a4062ac383dc4fade7bc09f1384a3910."
-"jpg\",\n"
+"            \"path\": \"full/"
+"0a79c461a4062ac383dc4fade7bc09f1384a3910.jpg\",\n"
 "            \"url\": \"http://www.example.com/files/product1.pdf\",\n"
 "            \"status\": \"downloaded\",\n"
 "        },\n"
@@ -1020,9 +1023,10 @@ msgstr ""
 
 #: ../../../topics/media-pipeline.rst:707
 msgid ""
-"In addition to ``response``, this method receives the original :class:"
-"`request <scrapy.Request>`, ``thumb_id``, :class:`info <scrapy.pipelines."
-"media.MediaPipeline.SpiderInfo>` and :class:`item <scrapy.Item>`."
+"In addition to ``response``, this method receives the "
+"original :class:`request <scrapy.Request>`, ``thumb_id``, :class:`info "
+"<scrapy.pipelines.media.MediaPipeline.SpiderInfo>` and :class:`item "
+"<scrapy.Item>`."
 msgstr ""
 
 #: ../../../topics/media-pipeline.rst:713

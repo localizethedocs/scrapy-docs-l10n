@@ -149,12 +149,12 @@ msgid ""
 "        ext = cls(item_count)\n"
 "\n"
 "        # connect the extension object to signals\n"
-"        crawler.signals.connect(ext.spider_opened, signal=signals."
-"spider_opened)\n"
-"        crawler.signals.connect(ext.spider_closed, signal=signals."
-"spider_closed)\n"
-"        crawler.signals.connect(ext.item_scraped, signal=signals."
-"item_scraped)\n"
+"        crawler.signals.connect(ext.spider_opened, "
+"signal=signals.spider_opened)\n"
+"        crawler.signals.connect(ext.spider_closed, "
+"signal=signals.spider_closed)\n"
+"        crawler.signals.connect(ext.item_scraped, "
+"signal=signals.item_scraped)\n"
 "\n"
 "        # return the extension object\n"
 "        return ext\n"
@@ -226,8 +226,8 @@ msgstr ""
 #: ../../../topics/extensions.rst:160
 msgid ""
 "The telnet console must be enabled by the :setting:`TELNETCONSOLE_ENABLED` "
-"setting, and the server will listen in the port specified in :setting:"
-"`TELNETCONSOLE_PORT`."
+"setting, and the server will listen in the port specified "
+"in :setting:`TELNETCONSOLE_PORT`."
 msgstr ""
 
 #: ../../../topics/extensions.rst:167
@@ -245,14 +245,14 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:178
 msgid ""
-"sends a :signal:`memusage_warning_reached` signal when it exceeds :setting:"
-"`MEMUSAGE_WARNING_MB`"
+"sends a :signal:`memusage_warning_reached` signal when it "
+"exceeds :setting:`MEMUSAGE_WARNING_MB`"
 msgstr ""
 
 #: ../../../topics/extensions.rst:180
 msgid ""
-"closes the spider with the `\"memusage_exceeded\"` reason when it exceeds :"
-"setting:`MEMUSAGE_LIMIT_MB`"
+"closes the spider with the `\"memusage_exceeded\"` reason when it "
+"exceeds :setting:`MEMUSAGE_LIMIT_MB`"
 msgstr ""
 
 #: ../../../topics/extensions.rst:183
@@ -315,9 +315,9 @@ msgstr ""
 
 #: ../../../topics/extensions.rst:222
 msgid ""
-"When your spider closes (:signal:`spider_closed`), the contents of its :attr:"
-"`~scrapy.Spider.state` attribute are serialized into a file named ``spider."
-"state`` in the :setting:`JOBDIR` folder."
+"When your spider closes (:signal:`spider_closed`), the contents of "
+"its :attr:`~scrapy.Spider.state` attribute are serialized into a file named "
+"``spider.state`` in the :setting:`JOBDIR` folder."
 msgstr ""
 
 #: ../../../topics/extensions.rst:225

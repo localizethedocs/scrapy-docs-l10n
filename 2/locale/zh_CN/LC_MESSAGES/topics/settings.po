@@ -58,8 +58,8 @@ msgstr ""
 
 #: ../../../topics/settings.rst:27
 msgid ""
-"The value of ``SCRAPY_SETTINGS_MODULE`` should be in Python path syntax, e."
-"g. ``myproject.settings``. Note that the settings module should be on the "
+"The value of ``SCRAPY_SETTINGS_MODULE`` should be in Python path syntax, "
+"e.g. ``myproject.settings``. Note that the settings module should be on the "
 "Python :ref:`import search path <tut-searchpath>`."
 msgstr ""
 
@@ -182,9 +182,9 @@ msgstr ""
 
 #: ../../../topics/settings.rst:109
 msgid ""
-"It's also possible to modify the settings in the :meth:`~scrapy.Spider."
-"from_crawler` method, e.g. based on :ref:`spider arguments <spiderargs>` or "
-"other logic:"
+"It's also possible to modify the settings in "
+"the :meth:`~scrapy.Spider.from_crawler` method, e.g. based on :ref:`spider "
+"arguments <spiderargs>` or other logic:"
 msgstr ""
 
 #: ../../../topics/settings.rst:113
@@ -212,8 +212,9 @@ msgstr ""
 
 #: ../../../topics/settings.rst:135
 msgid ""
-"Scrapy projects include a settings module, usually a file called ``settings."
-"py``, where you should populate most settings that apply to all your spiders."
+"Scrapy projects include a settings module, usually a file called "
+"``settings.py``, where you should populate most settings that apply to all "
+"your spiders."
 msgstr ""
 
 #: ../../../topics/settings.rst:139
@@ -339,9 +340,9 @@ msgstr ""
 #: ../../../topics/settings.rst:226
 msgid ""
 "The ``settings`` attribute is set in the base Spider class after the spider "
-"is initialized.  If you want to use settings before the initialization (e."
-"g., in your spider's ``__init__()`` method), you'll need to override the :"
-"meth:`~scrapy.Spider.from_crawler` method."
+"is initialized.  If you want to use settings before the initialization "
+"(e.g., in your spider's ``__init__()`` method), you'll need to override "
+"the :meth:`~scrapy.Spider.from_crawler` method."
 msgstr ""
 
 #: ../../../topics/settings.rst:231
@@ -355,8 +356,8 @@ msgid ""
 "The ``settings`` object can be used like a :class:`dict` (e.g. "
 "``settings[\"LOG_ENABLED\"]``). However, to support non-string setting "
 "values, which may be passed from the command line as strings, it is "
-"recommended to use one of the methods provided by the :class:`~scrapy."
-"settings.Settings` API."
+"recommended to use one of the methods provided by "
+"the :class:`~scrapy.settings.Settings` API."
 msgstr ""
 
 #: ../../../topics/settings.rst:243
@@ -365,9 +366,9 @@ msgstr ""
 
 #: ../../../topics/settings.rst:245
 msgid ""
-"A **component priority dictionary** is a :class:`dict` where keys are :ref:"
-"`components <topics-components>` and values are component priorities. For "
-"example:"
+"A **component priority dictionary** is a :class:`dict` where keys "
+"are :ref:`components <topics-components>` and values are component "
+"priorities. For example:"
 msgstr ""
 
 #: ../../../topics/settings.rst:250
@@ -401,10 +402,10 @@ msgid ""
 "A component with priority 1 goes *before* a component with priority 2. What "
 "going before entails, however, depends on the corresponding setting. For "
 "example, in the :setting:`DOWNLOADER_MIDDLEWARES` setting, components have "
-"their :meth:`~scrapy.downloadermiddlewares.DownloaderMiddleware."
-"process_request` method executed before that of later components, but have "
-"their :meth:`~scrapy.downloadermiddlewares.DownloaderMiddleware."
-"process_response` method executed after that of later components."
+"their :meth:`~scrapy.downloadermiddlewares.DownloaderMiddleware.process_request` "
+"method executed before that of later components, but have "
+"their :meth:`~scrapy.downloadermiddlewares.DownloaderMiddleware.process_response` "
+"method executed after that of later components."
 msgstr ""
 
 #: ../../../topics/settings.rst:276
@@ -414,10 +415,10 @@ msgstr ""
 #: ../../../topics/settings.rst:278
 msgid ""
 "Some component priority dictionaries get merged with some built-in value. "
-"For example, :setting:`DOWNLOADER_MIDDLEWARES` is merged with :setting:"
-"`DOWNLOADER_MIDDLEWARES_BASE`. This is where :data:`None` comes in handy, "
-"allowing you to disable a component from the base setting in the regular "
-"setting:"
+"For example, :setting:`DOWNLOADER_MIDDLEWARES` is merged "
+"with :setting:`DOWNLOADER_MIDDLEWARES_BASE`. This is where :data:`None` "
+"comes in handy, allowing you to disable a component from the base setting in "
+"the regular setting:"
 msgstr ""
 
 #: ../../../topics/settings.rst:284
@@ -442,8 +443,8 @@ msgstr ""
 
 #: ../../../topics/settings.rst:301
 msgid ""
-"**Pre-crawler settings** are settings used before the :class:`~scrapy."
-"crawler.Crawler` object is created."
+"**Pre-crawler settings** are settings used before "
+"the :class:`~scrapy.crawler.Crawler` object is created."
 msgstr ""
 
 #: ../../../topics/settings.rst:304
@@ -461,8 +462,8 @@ msgstr ""
 #: ../../../topics/settings.rst:309
 msgid ""
 ":setting:`SPIDER_LOADER_CLASS` and settings used by the corresponding spider "
-"loader class, e.g. :setting:`SPIDER_MODULES` and :setting:"
-"`SPIDER_LOADER_WARN_ONLY` for the default spider loader class."
+"loader class, e.g. :setting:`SPIDER_MODULES` "
+"and :setting:`SPIDER_LOADER_WARN_ONLY` for the default spider loader class."
 msgstr ""
 
 #: ../../../topics/settings.rst:316
@@ -471,8 +472,8 @@ msgstr ""
 
 #: ../../../topics/settings.rst:318
 msgid ""
-"**Reactor settings** are settings tied to the :doc:`Twisted reactor <twisted:"
-"core/howto/reactor-basics>`."
+"**Reactor settings** are settings tied to the :doc:`Twisted reactor "
+"<twisted:core/howto/reactor-basics>`."
 msgstr ""
 
 #: ../../../topics/settings.rst:321
@@ -492,15 +493,15 @@ msgstr ""
 
 #: ../../../topics/settings.rst:332
 msgid ""
-":setting:`ASYNCIO_EVENT_LOOP` (not possible to set per-spider when using :"
-"class:`~scrapy.crawler.AsyncCrawlerProcess`, see below)"
+":setting:`ASYNCIO_EVENT_LOOP` (not possible to set per-spider when "
+"using :class:`~scrapy.crawler.AsyncCrawlerProcess`, see below)"
 msgstr ""
 
 #: ../../../topics/settings.rst:335
 msgid ""
 ":setting:`TWISTED_DNS_RESOLVER` and settings used by the corresponding "
-"component, e.g. :setting:`DNSCACHE_ENABLED`, :setting:`DNSCACHE_SIZE` and :"
-"setting:`DNS_TIMEOUT` for the default one."
+"component, e.g. :setting:`DNSCACHE_ENABLED`, :setting:`DNSCACHE_SIZE` "
+"and :setting:`DNS_TIMEOUT` for the default one."
 msgstr ""
 
 #: ../../../topics/settings.rst:339
@@ -509,8 +510,8 @@ msgstr ""
 
 #: ../../../topics/settings.rst:341
 msgid ""
-":setting:`TWISTED_REACTOR` (ignored when using :class:`~scrapy.crawler."
-"AsyncCrawlerProcess`, see below)"
+":setting:`TWISTED_REACTOR` (ignored when "
+"using :class:`~scrapy.crawler.AsyncCrawlerProcess`, see below)"
 msgstr ""
 
 #: ../../../topics/settings.rst:344
@@ -522,23 +523,25 @@ msgstr ""
 
 #: ../../../topics/settings.rst:348
 msgid ""
-"There is an additional restriction for :setting:`TWISTED_REACTOR` and :"
-"setting:`ASYNCIO_EVENT_LOOP` when using :class:`~scrapy.crawler."
-"AsyncCrawlerProcess`: when this class is instantiated, it installs :class:"
-"`~twisted.internet.asyncioreactor.AsyncioSelectorReactor`, ignoring the "
-"value of :setting:`TWISTED_REACTOR` and using the value of :setting:"
-"`ASYNCIO_EVENT_LOOP` that was passed to :meth:`AsyncCrawlerProcess."
-"__init__() <scrapy.crawler.AsyncCrawlerProcess.__init__>`. If a different "
-"value for :setting:`TWISTED_REACTOR` or :setting:`ASYNCIO_EVENT_LOOP` is "
-"provided later, e.g. in :ref:`per-spider settings <spider-settings>`, an "
-"exception will be raised."
+"There is an additional restriction for :setting:`TWISTED_REACTOR` "
+"and :setting:`ASYNCIO_EVENT_LOOP` when "
+"using :class:`~scrapy.crawler.AsyncCrawlerProcess`: when this class is "
+"instantiated, it "
+"installs :class:`~twisted.internet.asyncioreactor.AsyncioSelectorReactor`, "
+"ignoring the value of :setting:`TWISTED_REACTOR` and using the value "
+"of :setting:`ASYNCIO_EVENT_LOOP` that was passed "
+"to :meth:`AsyncCrawlerProcess.__init__() "
+"<scrapy.crawler.AsyncCrawlerProcess.__init__>`. If a different value "
+"for :setting:`TWISTED_REACTOR` or :setting:`ASYNCIO_EVENT_LOOP` is provided "
+"later, e.g. in :ref:`per-spider settings <spider-settings>`, an exception "
+"will be raised."
 msgstr ""
 
 #: ../../../topics/settings.rst:360
 msgid ""
 "All of these settings, except for :setting:`ASYNCIO_EVENT_LOOP`, are only "
-"used when the Twisted reactor is used, i.e. when :setting:"
-"`TWISTED_REACTOR_ENABLED` is ``True``."
+"used when the Twisted reactor is used, i.e. "
+"when :setting:`TWISTED_REACTOR_ENABLED` is ``True``."
 msgstr ""
 
 #: ../../../topics/settings.rst:367
@@ -676,24 +679,25 @@ msgstr ""
 
 #: ../../../topics/settings.rst:472
 msgid ""
-"If you are installing the asyncio reactor manually using the :func:`~scrapy."
-"utils.reactor.install_reactor` function, you can use the ``event_loop_path`` "
-"parameter to indicate the import path of the event loop class to be used."
+"If you are installing the asyncio reactor manually using "
+"the :func:`~scrapy.utils.reactor.install_reactor` function, you can use the "
+"``event_loop_path`` parameter to indicate the import path of the event loop "
+"class to be used."
 msgstr ""
 
 #: ../../../topics/settings.rst:476
 msgid ""
-"Note that the event loop class must inherit from :class:`asyncio."
-"AbstractEventLoop`."
+"Note that the event loop class must inherit "
+"from :class:`asyncio.AbstractEventLoop`."
 msgstr ""
 
 #: ../../../topics/settings.rst:478
 msgid ""
 "Please be aware that, when using a non-default event loop (either defined "
-"via :setting:`ASYNCIO_EVENT_LOOP` or installed with :func:`~scrapy.utils."
-"reactor.install_reactor`), Scrapy will call :func:`asyncio.set_event_loop`, "
-"which will set the specified event loop as the current loop for the current "
-"OS thread."
+"via :setting:`ASYNCIO_EVENT_LOOP` or installed "
+"with :func:`~scrapy.utils.reactor.install_reactor`), Scrapy will "
+"call :func:`asyncio.set_event_loop`, which will set the specified event loop "
+"as the current loop for the current OS thread."
 msgstr ""
 
 #: ../../../topics/settings.rst:487
@@ -728,8 +732,8 @@ msgstr "默认值： ``100``"
 
 #: ../../../topics/settings.rst:504
 msgid ""
-"Maximum number of concurrent items (per response) to process in parallel in :"
-"ref:`item pipelines <topics-item-pipeline>`."
+"Maximum number of concurrent items (per response) to process in parallel "
+"in :ref:`item pipelines <topics-item-pipeline>`."
 msgstr ""
 
 #: ../../../topics/settings.rst:510
@@ -762,8 +766,8 @@ msgstr ""
 
 #: ../../../topics/settings.rst:527
 msgid ""
-"See also: :ref:`topics-autothrottle` and its :setting:"
-"`AUTOTHROTTLE_TARGET_CONCURRENCY` option."
+"See also: :ref:`topics-autothrottle` and "
+"its :setting:`AUTOTHROTTLE_TARGET_CONCURRENCY` option."
 msgstr ""
 
 #: ../../../topics/settings.rst:534
@@ -796,8 +800,8 @@ msgstr ""
 #: ../../../topics/settings.rst:549
 msgid ""
 "When writing an item pipeline, you can force a different log level by "
-"setting :attr:`scrapy.exceptions.DropItem.log_level` in your :exc:`scrapy."
-"exceptions.DropItem` exception. For example:"
+"setting :attr:`scrapy.exceptions.DropItem.log_level` in "
+"your :exc:`scrapy.exceptions.DropItem` exception. For example:"
 msgstr ""
 
 #: ../../../topics/settings.rst:553
@@ -839,25 +843,24 @@ msgstr ""
 #: ../../../topics/settings.rst:581
 msgid ""
 "{\n"
-"    \"Accept\": \"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;"
-"q=0.8\",\n"
+"    \"Accept\": \"text/html,application/xhtml+xml,application/xml;q=0.9,*/"
+"*;q=0.8\",\n"
 "    \"Accept-Language\": \"en\",\n"
 "}"
 msgstr ""
 
 #: ../../../topics/settings.rst:588
 msgid ""
-"The default headers used for Scrapy HTTP Requests. They're populated in the :"
-"class:`~scrapy.downloadermiddlewares.defaultheaders."
-"DefaultHeadersMiddleware`."
+"The default headers used for Scrapy HTTP Requests. They're populated in "
+"the :class:`~scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware`."
 msgstr ""
 
 #: ../../../topics/settings.rst:591
 msgid ""
-"Cookies set via the ``Cookie`` header are not considered by the :ref:"
-"`cookies-mw`. If you need to set cookies for a request, use the :class:"
-"`Request.cookies <scrapy.Request>` parameter. This is a known current "
-"limitation that is being worked on."
+"Cookies set via the ``Cookie`` header are not considered by "
+"the :ref:`cookies-mw`. If you need to set cookies for a request, use "
+"the :class:`Request.cookies <scrapy.Request>` parameter. This is a known "
+"current limitation that is being worked on."
 msgstr ""
 
 #: ../../../topics/settings.rst:599
@@ -886,8 +889,8 @@ msgstr ""
 
 #: ../../../topics/settings.rst:617
 msgid ""
-"An integer that is used to adjust the :attr:`~scrapy.Request.priority` of a :"
-"class:`~scrapy.Request` based on its depth."
+"An integer that is used to adjust the :attr:`~scrapy.Request.priority` of "
+"a :class:`~scrapy.Request` based on its depth."
 msgstr ""
 
 #: ../../../topics/settings.rst:620
@@ -908,8 +911,8 @@ msgstr ""
 #: ../../../topics/settings.rst:633
 msgid ""
 "This setting adjusts priority **in the opposite way** compared to other "
-"priority settings :setting:`REDIRECT_PRIORITY_ADJUST` and :setting:"
-"`RETRY_PRIORITY_ADJUST`."
+"priority settings :setting:`REDIRECT_PRIORITY_ADJUST` "
+"and :setting:`RETRY_PRIORITY_ADJUST`."
 msgstr ""
 
 #: ../../../topics/settings.rst:640
@@ -949,11 +952,11 @@ msgstr ""
 
 #: ../../../topics/settings.rst:659
 msgid ""
-"This setting is only used by :class:`~scrapy.resolver."
-"CachingThreadedResolver` and :class:`~scrapy.resolver."
-"CachingHostnameResolver`. It has no effect when :setting:"
-"`TWISTED_REACTOR_ENABLED` is ``False``, and may have no effect either when :"
-"setting:`DNS_RESOLVER` is set to a different resolver."
+"This setting is only used "
+"by :class:`~scrapy.resolver.CachingThreadedResolver` "
+"and :class:`~scrapy.resolver.CachingHostnameResolver`. It has no effect "
+"when :setting:`TWISTED_REACTOR_ENABLED` is ``False``, and may have no effect "
+"either when :setting:`DNS_RESOLVER` is set to a different resolver."
 msgstr ""
 
 #: ../../../topics/settings.rst:668
@@ -978,12 +981,12 @@ msgstr ""
 
 #: ../../../topics/settings.rst:681
 msgid ""
-"The class to be used by Twisted to resolve DNS names. The default ``scrapy."
-"resolver.CachingThreadedResolver`` supports specifying a timeout for DNS "
-"requests via the :setting:`DNS_TIMEOUT` setting, but works only with IPv4 "
-"addresses. Scrapy provides an alternative resolver, ``scrapy.resolver."
-"CachingHostnameResolver``, which supports IPv4/IPv6 addresses but does not "
-"take the :setting:`DNS_TIMEOUT` setting into account."
+"The class to be used by Twisted to resolve DNS names. The default "
+"``scrapy.resolver.CachingThreadedResolver`` supports specifying a timeout "
+"for DNS requests via the :setting:`DNS_TIMEOUT` setting, but works only with "
+"IPv4 addresses. Scrapy provides an alternative resolver, "
+"``scrapy.resolver.CachingHostnameResolver``, which supports IPv4/IPv6 "
+"addresses but does not take the :setting:`DNS_TIMEOUT` setting into account."
 msgstr ""
 
 #: ../../../topics/settings.rst:689
@@ -1006,10 +1009,10 @@ msgstr ""
 
 #: ../../../topics/settings.rst:701
 msgid ""
-"This setting is only used by :class:`~scrapy.resolver."
-"CachingThreadedResolver`. It has no effect when :setting:"
-"`TWISTED_REACTOR_ENABLED` is ``False``, and may have no effect either when :"
-"setting:`DNS_RESOLVER` is set to a different resolver."
+"This setting is only used "
+"by :class:`~scrapy.resolver.CachingThreadedResolver`. It has no effect "
+"when :setting:`TWISTED_REACTOR_ENABLED` is ``False``, and may have no effect "
+"either when :setting:`DNS_RESOLVER` is set to a different resolver."
 msgstr ""
 
 #: ../../../topics/settings.rst:709
@@ -1051,8 +1054,8 @@ msgstr ""
 msgid ""
 "Handling of this setting needs to be implemented inside the :ref:`download "
 "handler <topics-download-handlers>`, so it's not guaranteed to be supported "
-"by all 3rd-party handlers. It's currently unsupported by :class:`~scrapy."
-"core.downloader.handlers._httpx.HttpxDownloadHandler`."
+"by all 3rd-party handlers. It's currently unsupported "
+"by :class:`~scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler`."
 msgstr ""
 
 #: ../../../topics/settings.rst:743
@@ -1135,15 +1138,15 @@ msgid ""
 "    \"scrapy.downloadermiddlewares.offsite.OffsiteMiddleware\": 50,\n"
 "    \"scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware\": 100,\n"
 "    \"scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware\": 300,\n"
-"    \"scrapy.downloadermiddlewares.downloadtimeout."
-"DownloadTimeoutMiddleware\": 350,\n"
-"    \"scrapy.downloadermiddlewares.defaultheaders."
-"DefaultHeadersMiddleware\": 400,\n"
+"    \"scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware\": "
+"350,\n"
+"    \"scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware\": "
+"400,\n"
 "    \"scrapy.downloadermiddlewares.useragent.UserAgentMiddleware\": 500,\n"
 "    \"scrapy.downloadermiddlewares.retry.RetryMiddleware\": 550,\n"
 "    \"scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware\": 580,\n"
-"    \"scrapy.downloadermiddlewares.httpcompression."
-"HttpCompressionMiddleware\": 590,\n"
+"    \"scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware\": "
+"590,\n"
 "    \"scrapy.downloadermiddlewares.redirect.RedirectMiddleware\": 600,\n"
 "    \"scrapy.downloadermiddlewares.cookies.CookiesMiddleware\": 700,\n"
 "    \"scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware\": 750,\n"
@@ -1156,9 +1159,9 @@ msgstr ""
 msgid ""
 "A dict containing the downloader middlewares enabled by default in Scrapy. "
 "Low orders are closer to the engine, high orders are closer to the "
-"downloader. You should never modify this setting in your project, modify :"
-"setting:`DOWNLOADER_MIDDLEWARES` instead.  For more info see :ref:`topics-"
-"downloader-middleware-setting`."
+"downloader. You should never modify this setting in your project, "
+"modify :setting:`DOWNLOADER_MIDDLEWARES` instead.  For more info "
+"see :ref:`topics-downloader-middleware-setting`."
 msgstr ""
 
 #: ../../../topics/settings.rst:830
@@ -1211,8 +1214,9 @@ msgid ""
 "time of a domain is lower than :setting:`DOWNLOAD_DELAY`, the effective "
 "concurrency for that domain is 1. When testing throttling configurations, it "
 "usually makes sense to lower :setting:`CONCURRENT_REQUESTS_PER_DOMAIN` "
-"first, and only increase :setting:`DOWNLOAD_DELAY` once :setting:"
-"`CONCURRENT_REQUESTS_PER_DOMAIN` is 1 but a higher throttling is desired."
+"first, and only increase :setting:`DOWNLOAD_DELAY` "
+"once :setting:`CONCURRENT_REQUESTS_PER_DOMAIN` is 1 but a higher throttling "
+"is desired."
 msgstr ""
 
 #: ../../../topics/settings.rst:869
@@ -1266,16 +1270,17 @@ msgstr ""
 
 #: ../../../topics/settings.rst:904
 msgid ""
-"If set, built-in HTTP download handlers use this value by default. Set the :"
-"reqmeta:`bindaddress` request meta key to override it for a specific request."
+"If set, built-in HTTP download handlers use this value by default. Set "
+"the :reqmeta:`bindaddress` request meta key to override it for a specific "
+"request."
 msgstr ""
 
 #: ../../../topics/settings.rst:910
 msgid ""
 "Handling of this setting needs to be implemented inside the :ref:`download "
 "handler <topics-download-handlers>`, so it's not guaranteed to be supported "
-"by all 3rd-party handlers. Specifying the port is unsupported by :class:"
-"`~scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler`."
+"by all 3rd-party handlers. Specifying the port is unsupported "
+"by :class:`~scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler`."
 msgstr ""
 
 #: ../../../topics/settings.rst:918
@@ -1299,13 +1304,13 @@ msgstr ""
 #: ../../../topics/settings.rst:934
 msgid ""
 "{\n"
-"    \"data\": \"scrapy.core.downloader.handlers.datauri."
-"DataURIDownloadHandler\",\n"
+"    \"data\": "
+"\"scrapy.core.downloader.handlers.datauri.DataURIDownloadHandler\",\n"
 "    \"file\": \"scrapy.core.downloader.handlers.file.FileDownloadHandler\",\n"
-"    \"http\": \"scrapy.core.downloader.handlers.http11."
-"HTTP11DownloadHandler\",\n"
-"    \"https\": \"scrapy.core.downloader.handlers.http11."
-"HTTP11DownloadHandler\",\n"
+"    \"http\": "
+"\"scrapy.core.downloader.handlers.http11.HTTP11DownloadHandler\",\n"
+"    \"https\": "
+"\"scrapy.core.downloader.handlers.http11.HTTP11DownloadHandler\",\n"
 "    \"s3\": \"scrapy.core.downloader.handlers.s3.S3DownloadHandler\",\n"
 "    \"ftp\": \"scrapy.core.downloader.handlers.ftp.FTPDownloadHandler\",\n"
 "}"
@@ -1318,13 +1323,13 @@ msgstr ""
 #: ../../../topics/settings.rst:947
 msgid ""
 "{\n"
-"    \"data\": \"scrapy.core.downloader.handlers.datauri."
-"DataURIDownloadHandler\",\n"
+"    \"data\": "
+"\"scrapy.core.downloader.handlers.datauri.DataURIDownloadHandler\",\n"
 "    \"file\": \"scrapy.core.downloader.handlers.file.FileDownloadHandler\",\n"
-"    \"http\": \"scrapy.core.downloader.handlers._httpx."
-"HttpxDownloadHandler\",\n"
-"    \"https\": \"scrapy.core.downloader.handlers._httpx."
-"HttpxDownloadHandler\",\n"
+"    \"http\": "
+"\"scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler\",\n"
+"    \"https\": "
+"\"scrapy.core.downloader.handlers._httpx.HttpxDownloadHandler\",\n"
 "    \"s3\": \"scrapy.core.downloader.handlers.s3.S3DownloadHandler\",\n"
 "    \"ftp\": None,\n"
 "}"
@@ -1404,8 +1409,8 @@ msgstr ""
 
 #: ../../../topics/settings.rst:1011
 msgid ""
-"This timeout can be per-request using the :reqmeta:`download_timeout` :attr:"
-"`.Request.meta` key."
+"This timeout can be per-request using "
+"the :reqmeta:`download_timeout` :attr:`.Request.meta` key."
 msgstr ""
 
 #: ../../../topics/settings.rst:1024
@@ -1435,8 +1440,8 @@ msgstr ""
 
 #: ../../../topics/settings.rst:1039
 msgid ""
-"This limit can be set per-request using the :reqmeta:`download_maxsize` :"
-"attr:`.Request.meta` key."
+"This limit can be set per-request using "
+"the :reqmeta:`download_maxsize` :attr:`.Request.meta` key."
 msgstr ""
 
 #: ../../../topics/settings.rst:1044 ../../../topics/settings.rst:1068
@@ -1462,8 +1467,8 @@ msgstr ""
 
 #: ../../../topics/settings.rst:1063
 msgid ""
-"This limit can be set per-request using the :reqmeta:`download_warnsize` :"
-"attr:`.Request.meta` key."
+"This limit can be set per-request using "
+"the :reqmeta:`download_warnsize` :attr:`.Request.meta` key."
 msgstr ""
 
 #: ../../../topics/settings.rst:1075
@@ -1474,16 +1479,16 @@ msgstr ""
 msgid ""
 "Whether or not to fail on broken responses, that is, when the declared "
 "``Content-Length`` does not match content sent by the server or a chunked "
-"response was not properly finished. If ``True``, these responses raise a :"
-"exc:`~scrapy.exceptions.ResponseDataLossError` exception. If ``False``, "
+"response was not properly finished. If ``True``, these responses raise "
+"a :exc:`~scrapy.exceptions.ResponseDataLossError` exception. If ``False``, "
 "these responses are passed through and the flag ``dataloss`` is added to the "
 "response, i.e.: ``'dataloss' in response.flags`` is ``True``."
 msgstr ""
 
 #: ../../../topics/settings.rst:1086
 msgid ""
-"Optionally, this can be set per-request basis by using the :reqmeta:"
-"`download_fail_on_dataloss` Request.meta key to ``False``."
+"Optionally, this can be set per-request basis by using "
+"the :reqmeta:`download_fail_on_dataloss` Request.meta key to ``False``."
 msgstr ""
 
 #: ../../../topics/settings.rst:1091
@@ -1499,10 +1504,11 @@ msgstr ""
 
 #: ../../../topics/settings.rst:1107
 msgid ""
-"This setting is ignored by the :class:`~scrapy.core.downloader.handlers."
-"http2.H2DownloadHandler` :ref:`download handler <topics-download-handlers>`. "
-"In case of a data loss error, the corresponding HTTP/2 connection may be "
-"corrupted, affecting other requests that use the same connection; hence, a "
+"This setting is ignored by "
+"the :class:`~scrapy.core.downloader.handlers.http2.H2DownloadHandler` :ref:`download "
+"handler <topics-download-handlers>`. In case of a data loss error, the "
+"corresponding HTTP/2 connection may be corrupted, affecting other requests "
+"that use the same connection; hence, a "
 "``ResponseFailed([InvalidBodyLengthError])`` failure is always raised for "
 "every request that was using that connection."
 msgstr ""
@@ -1546,11 +1552,11 @@ msgstr ""
 
 #: ../../../topics/settings.rst:1144
 msgid ""
-"To change how duplicates are checked, you can point :setting:"
-"`DUPEFILTER_CLASS` to a custom subclass of :class:`~scrapy.dupefilters."
-"RFPDupeFilter` that overrides its ``__init__`` method to use a :ref:"
-"`different request fingerprinting class <custom-request-fingerprinter>`. For "
-"example:"
+"To change how duplicates are checked, you can "
+"point :setting:`DUPEFILTER_CLASS` to a custom subclass "
+"of :class:`~scrapy.dupefilters.RFPDupeFilter` that overrides its "
+"``__init__`` method to use a :ref:`different request fingerprinting class "
+"<custom-request-fingerprinter>`. For example:"
 msgstr ""
 
 #: ../../../topics/settings.rst:1149
@@ -1639,9 +1645,9 @@ msgstr ""
 #: scrapy.dupefilters.RFPDupeFilter:1
 msgid ""
 "Duplicate request filtering class (:setting:`DUPEFILTER_CLASS`) that filters "
-"out requests with the canonical (:func:`w3lib.url.canonicalize_url`) :attr:"
-"`~scrapy.http.Request.url`, :attr:`~scrapy.http.Request.method` and :attr:"
-"`~scrapy.http.Request.body`."
+"out requests with the canonical "
+"(:func:`w3lib.url.canonicalize_url`) :attr:`~scrapy.http.Request.url`, :attr:`~scrapy.http.Request.method` "
+"and :attr:`~scrapy.http.Request.body`."
 msgstr ""
 
 #: ../../../../scrapy/dupefilters.py:docstring of
@@ -1688,8 +1694,8 @@ msgstr ""
 #: ../../../topics/settings.rst:1232
 msgid ""
 "The editor to use for editing spiders with the :command:`edit` command. "
-"Additionally, if the ``EDITOR`` environment variable is set, the :command:"
-"`edit` command will prefer it over the default setting."
+"Additionally, if the ``EDITOR`` environment variable is set, "
+"the :command:`edit` command will prefer it over the default setting."
 msgstr ""
 
 #: ../../../topics/settings.rst:1239
@@ -1765,16 +1771,17 @@ msgstr ""
 #: ../../../topics/settings.rst:1298
 msgid ""
 "If ``False``, :ref:`Scrapy commands that need a CrawlerProcess <topics-"
-"commands-crawlerprocess>` will decide between using :class:`scrapy.crawler."
-"AsyncCrawlerProcess` and :class:`scrapy.crawler.CrawlerProcess` based on the "
-"value of the :setting:`TWISTED_REACTOR` setting, but ignoring its value in :"
-"ref:`per-spider settings <spider-settings>`."
+"commands-crawlerprocess>` will decide between "
+"using :class:`scrapy.crawler.AsyncCrawlerProcess` "
+"and :class:`scrapy.crawler.CrawlerProcess` based on the value of "
+"the :setting:`TWISTED_REACTOR` setting, but ignoring its value in :ref:`per-"
+"spider settings <spider-settings>`."
 msgstr ""
 
 #: ../../../topics/settings.rst:1305
 msgid ""
-"If ``True``, these commands will always use :class:`~scrapy.crawler."
-"CrawlerProcess`."
+"If ``True``, these commands will always "
+"use :class:`~scrapy.crawler.CrawlerProcess`."
 msgstr ""
 
 #: ../../../topics/settings.rst:1308
@@ -1877,8 +1884,8 @@ msgstr ""
 
 #: ../../../topics/settings.rst:1415
 msgid ""
-"A string indicating the directory for storing the state of a crawl when :ref:"
-"`pausing and resuming crawls <topics-jobs>`."
+"A string indicating the directory for storing the state of a crawl "
+"when :ref:`pausing and resuming crawls <topics-jobs>`."
 msgstr ""
 
 #: ../../../topics/settings.rst:1422
@@ -2045,8 +2052,8 @@ msgstr ""
 
 #: ../../../topics/settings.rst:1545
 msgid ""
-"The interval (in seconds) between each logging printout of the stats by :"
-"class:`~scrapy.extensions.logstats.LogStats`."
+"The interval (in seconds) between each logging printout of the stats "
+"by :class:`~scrapy.extensions.logstats.LogStats`."
 msgstr ""
 
 #: ../../../topics/settings.rst:1551
@@ -2089,8 +2096,8 @@ msgstr ""
 msgid ""
 "Whether to enable the memory usage extension. This extension keeps track of "
 "a peak memory used by the process (it writes it to stats). It can also "
-"optionally shutdown the Scrapy process when it exceeds a memory limit (see :"
-"setting:`MEMUSAGE_LIMIT_MB`)."
+"optionally shutdown the Scrapy process when it exceeds a memory limit "
+"(see :setting:`MEMUSAGE_LIMIT_MB`)."
 msgstr ""
 
 #: ../../../topics/settings.rst:1586 ../../../topics/settings.rst:1601
@@ -2116,9 +2123,9 @@ msgstr ""
 #: ../../../topics/settings.rst:1612
 msgid ""
 "The :ref:`Memory usage extension <topics-extensions-ref-memusage>` checks "
-"the current memory usage, versus the limits set by :setting:"
-"`MEMUSAGE_LIMIT_MB` and :setting:`MEMUSAGE_WARNING_MB`, at fixed time "
-"intervals."
+"the current memory usage, versus the limits set "
+"by :setting:`MEMUSAGE_LIMIT_MB` and :setting:`MEMUSAGE_WARNING_MB`, at fixed "
+"time intervals."
 msgstr ""
 
 #: ../../../topics/settings.rst:1617
@@ -2131,9 +2138,9 @@ msgstr ""
 
 #: ../../../topics/settings.rst:1630
 msgid ""
-"The maximum amount of memory to allow (in megabytes) before sending a :"
-"signal:`memusage_warning_reached` signal (if :setting:`MEMUSAGE_ENABLED` is "
-"``True``). If zero, no signal will be sent."
+"The maximum amount of memory to allow (in megabytes) before sending "
+"a :signal:`memusage_warning_reached` signal (if :setting:`MEMUSAGE_ENABLED` "
+"is ``True``). If zero, no signal will be sent."
 msgstr ""
 
 #: ../../../topics/settings.rst:1639
@@ -2161,9 +2168,9 @@ msgstr ""
 
 #: ../../../topics/settings.rst:1656
 msgid ""
-"If enabled, Scrapy will wait a random amount of time (between 0.5 * :setting:"
-"`DOWNLOAD_DELAY` and 1.5 * :setting:`DOWNLOAD_DELAY`) while fetching "
-"requests from the same website."
+"If enabled, Scrapy will wait a random amount of time (between 0.5 "
+"* :setting:`DOWNLOAD_DELAY` and 1.5 * :setting:`DOWNLOAD_DELAY`) while "
+"fetching requests from the same website."
 msgstr ""
 
 #: ../../../topics/settings.rst:1659
@@ -2266,9 +2273,9 @@ msgstr ""
 #: ../../../topics/settings.rst:1728
 msgid ""
 "The user agent string to use for matching in the robots.txt file. If "
-"``None``, the User-Agent header you are sending with the request or the :"
-"setting:`USER_AGENT` setting (in that order) will be used for determining "
-"the user agent to use in the robots.txt file."
+"``None``, the User-Agent header you are sending with the request or "
+"the :setting:`USER_AGENT` setting (in that order) will be used for "
+"determining the user agent to use in the robots.txt file."
 msgstr ""
 
 #: ../../../topics/settings.rst:1736
@@ -2321,8 +2328,9 @@ msgstr ""
 #: ../../../topics/settings.rst:1769
 msgid ""
 "Type of disk queue that will be used by the scheduler. Other available types "
-"are ``scrapy.squeues.PickleFifoDiskQueue``, ``scrapy.squeues."
-"MarshalFifoDiskQueue``, ``scrapy.squeues.MarshalLifoDiskQueue``."
+"are ``scrapy.squeues.PickleFifoDiskQueue``, "
+"``scrapy.squeues.MarshalFifoDiskQueue``, "
+"``scrapy.squeues.MarshalLifoDiskQueue``."
 msgstr ""
 
 #: ../../../topics/settings.rst:1778
@@ -2357,9 +2365,9 @@ msgstr ""
 
 #: ../../../topics/settings.rst:1797
 msgid ""
-":class:`~scrapy.pqueues.DownloaderAwarePriorityQueue` works better than :"
-"class:`~scrapy.pqueues.ScrapyPriorityQueue` when you crawl many different "
-"domains in parallel."
+":class:`~scrapy.pqueues.DownloaderAwarePriorityQueue` works better "
+"than :class:`~scrapy.pqueues.ScrapyPriorityQueue` when you crawl many "
+"different domains in parallel."
 msgstr ""
 
 #: ../../../topics/settings.rst:1805
@@ -2456,8 +2464,9 @@ msgstr ""
 #: ../../../topics/settings.rst:1883
 msgid ""
 "A dict containing the Scrapy contracts enabled by default in Scrapy. You "
-"should never modify this setting in your project, modify :setting:"
-"`SPIDER_CONTRACTS` instead. For more info see :ref:`topics-contracts`."
+"should never modify this setting in your project, "
+"modify :setting:`SPIDER_CONTRACTS` instead. For more info see :ref:`topics-"
+"contracts`."
 msgstr ""
 
 #: ../../../topics/settings.rst:1887
@@ -2484,8 +2493,8 @@ msgstr ""
 
 #: ../../../topics/settings.rst:1904
 msgid ""
-"The class that will be used for loading spiders, which must implement the :"
-"ref:`topics-api-spiderloader`."
+"The class that will be used for loading spiders, which must implement "
+"the :ref:`topics-api-spiderloader`."
 msgstr ""
 
 #: ../../../topics/settings.rst:1910
@@ -2494,10 +2503,11 @@ msgstr ""
 
 #: ../../../topics/settings.rst:1914
 msgid ""
-"By default, when Scrapy tries to import spider classes from :setting:"
-"`SPIDER_MODULES`, it will fail loudly if there is any ``ImportError`` or "
-"``SyntaxError`` exception. But you can choose to silence this exception and "
-"turn it into a simple warning by setting ``SPIDER_LOADER_WARN_ONLY = True``."
+"By default, when Scrapy tries to import spider classes "
+"from :setting:`SPIDER_MODULES`, it will fail loudly if there is any "
+"``ImportError`` or ``SyntaxError`` exception. But you can choose to silence "
+"this exception and turn it into a simple warning by setting "
+"``SPIDER_LOADER_WARN_ONLY = True``."
 msgstr ""
 
 #: ../../../topics/settings.rst:1922
@@ -2603,9 +2613,9 @@ msgstr ""
 
 #: ../../../topics/settings.rst:2003
 msgid ""
-"The directory where to look for templates when creating new projects with :"
-"command:`startproject` command and new spiders with :command:`genspider` "
-"command."
+"The directory where to look for templates when creating new projects "
+"with :command:`startproject` command and new spiders "
+"with :command:`genspider` command."
 msgstr ""
 
 #: ../../../topics/settings.rst:2007
@@ -2635,13 +2645,14 @@ msgid ""
 "If this is set to ``False``, Scrapy will use the asyncio event loop directly "
 "and will not attempt to install or use a reactor. Features that require a "
 "reactor won't be available, but Twisted APIs that don't require a reactor, "
-"including :class:`~twisted.internet.defer.Deferred` and :class:`~twisted."
-"python.failure.Failure`, will still be available. On the other hand, "
-"limitations related to Twisted reactors (such as not being able to start a "
-"reactor in the same process where a reactor was previously started and "
-"stopped) will not apply. This mode is currently experimental and may not be "
-"suitable for production use. It may also not be supported by 3rd-party code. "
-"See :ref:`asyncio-without-reactor` for more information about this mode."
+"including :class:`~twisted.internet.defer.Deferred` "
+"and :class:`~twisted.python.failure.Failure`, will still be available. On "
+"the other hand, limitations related to Twisted reactors (such as not being "
+"able to start a reactor in the same process where a reactor was previously "
+"started and stopped) will not apply. This mode is currently experimental and "
+"may not be suitable for production use. It may also not be supported by 3rd-"
+"party code. See :ref:`asyncio-without-reactor` for more information about "
+"this mode."
 msgstr ""
 
 #: ../../../topics/settings.rst:2035
@@ -2663,17 +2674,17 @@ msgstr ""
 #: ../../../topics/settings.rst:2048
 msgid ""
 "Scrapy will install this reactor if no other reactor is installed yet, such "
-"as when the ``scrapy`` CLI program is invoked or when using the :class:"
-"`~scrapy.crawler.AsyncCrawlerProcess` class or the :class:`~scrapy.crawler."
-"CrawlerProcess` class."
+"as when the ``scrapy`` CLI program is invoked or when using "
+"the :class:`~scrapy.crawler.AsyncCrawlerProcess` class or "
+"the :class:`~scrapy.crawler.CrawlerProcess` class."
 msgstr ""
 
 #: ../../../topics/settings.rst:2053
 msgid ""
 "If you are using the :class:`~scrapy.crawler.AsyncCrawlerRunner` class or "
 "the :class:`~scrapy.crawler.CrawlerRunner` class, you also need to install "
-"the correct reactor manually. You can do that using :func:`~scrapy.utils."
-"reactor.install_reactor`:"
+"the correct reactor manually. You can do that "
+"using :func:`~scrapy.utils.reactor.install_reactor`:"
 msgstr ""
 
 #: ../../../../scrapy/utils/reactor.py:docstring of
@@ -2686,18 +2697,18 @@ msgstr ""
 
 #: ../../../topics/settings.rst:2060
 msgid ""
-"If a reactor is already installed, :func:`~scrapy.utils.reactor."
-"install_reactor` has no effect."
+"If a reactor is already "
+"installed, :func:`~scrapy.utils.reactor.install_reactor` has no effect."
 msgstr ""
 
 #: ../../../topics/settings.rst:2063
 msgid ""
 ":class:`~scrapy.crawler.AsyncCrawlerRunner` and other similar classes raise "
-"an exception if the installed reactor does not match the :setting:"
-"`TWISTED_REACTOR` setting; therefore, having top-level :mod:`~twisted."
-"internet.reactor` imports in project files and imported third-party "
-"libraries will make Scrapy raise an exception when it checks which reactor "
-"is installed."
+"an exception if the installed reactor does not match "
+"the :setting:`TWISTED_REACTOR` setting; therefore, having top-"
+"level :mod:`~twisted.internet.reactor` imports in project files and imported "
+"third-party libraries will make Scrapy raise an exception when it checks "
+"which reactor is installed."
 msgstr ""
 
 #: ../../../topics/settings.rst:2070
@@ -2774,8 +2785,8 @@ msgstr ""
 
 #: ../../../topics/settings.rst:2136
 msgid ""
-"The default value was changed from ``None`` to ``\"twisted.internet."
-"asyncioreactor.AsyncioSelectorReactor\"``."
+"The default value was changed from ``None`` to "
+"``\"twisted.internet.asyncioreactor.AsyncioSelectorReactor\"``."
 msgstr ""
 
 #: ../../../topics/settings.rst:2140
@@ -2802,8 +2813,8 @@ msgstr ""
 msgid ""
 "This setting can act as a stopping condition in case of URLs of ever-"
 "increasing length, which may be caused for example by a programming error "
-"either in the target server or in your code. See also :setting:"
-"`REDIRECT_MAX_TIMES` and :setting:`DEPTH_LIMIT`."
+"either in the target server or in your code. See "
+"also :setting:`REDIRECT_MAX_TIMES` and :setting:`DEPTH_LIMIT`."
 msgstr ""
 
 #: ../../../topics/settings.rst:2159
@@ -2827,9 +2838,10 @@ msgstr ""
 #: ../../../topics/settings.rst:2173
 msgid ""
 "The default User-Agent to use when crawling, unless overridden. This user "
-"agent is also used by :class:`~scrapy.downloadermiddlewares.robotstxt."
-"RobotsTxtMiddleware` if :setting:`ROBOTSTXT_USER_AGENT` setting is ``None`` "
-"and there is no overriding User-Agent header specified for the request."
+"agent is also used "
+"by :class:`~scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware` "
+"if :setting:`ROBOTSTXT_USER_AGENT` setting is ``None`` and there is no "
+"overriding User-Agent header specified for the request."
 msgstr ""
 
 #: ../../../topics/settings.rst:2181

@@ -67,9 +67,9 @@ msgstr ""
 
 #: ../../../topics/contracts.rst:43
 msgid ""
-"This contract (``@cb_kwargs``) sets the :attr:`cb_kwargs <scrapy.Request."
-"cb_kwargs>` attribute for the sample request. It must be a valid JSON "
-"dictionary. ::"
+"This contract (``@cb_kwargs``) sets the :attr:`cb_kwargs "
+"<scrapy.Request.cb_kwargs>` attribute for the sample request. It must be a "
+"valid JSON dictionary. ::"
 msgstr ""
 
 #: ../../../topics/contracts.rst:47
@@ -117,8 +117,8 @@ msgstr ""
 #: ../../../topics/contracts.rst:76
 msgid ""
 "If you find you need more power than the built-in Scrapy contracts you can "
-"create and load your own contracts in the project by using the :setting:"
-"`SPIDER_CONTRACTS` setting:"
+"create and load your own contracts in the project by using "
+"the :setting:`SPIDER_CONTRACTS` setting:"
 msgstr ""
 
 #: ../../../topics/contracts.rst:80
@@ -173,9 +173,10 @@ msgstr ""
 
 #: ../../../topics/contracts.rst:120
 msgid ""
-"Raise :class:`~scrapy.exceptions.ContractFail` from :class:`~scrapy."
-"contracts.Contract.pre_process` or :class:`~scrapy.contracts.Contract."
-"post_process` if expectations are not met:"
+"Raise :class:`~scrapy.exceptions.ContractFail` "
+"from :class:`~scrapy.contracts.Contract.pre_process` "
+"or :class:`~scrapy.contracts.Contract.post_process` if expectations are not "
+"met:"
 msgstr ""
 
 #: ../../../../scrapy/exceptions.py:docstring of
