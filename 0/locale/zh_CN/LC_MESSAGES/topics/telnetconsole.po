@@ -42,9 +42,9 @@ msgstr ""
 
 #: ../../../topics/telnetconsole.rst:24
 msgid ""
-"The telnet console listens in the TCP port defined in the :setting:"
-"`TELNETCONSOLE_PORT` setting, which defaults to ``6023``. To access the "
-"console you need to type::"
+"The telnet console listens in the TCP port defined in "
+"the :setting:`TELNETCONSOLE_PORT` setting, which defaults to ``6023``. To "
+"access the console you need to type::"
 msgstr ""
 
 #: ../../../topics/telnetconsole.rst:28

@@ -224,8 +224,8 @@ msgstr ""
 #: ../../../contributing.rst:126
 msgid ""
 "**Don't** use docstrings for documenting classes, or methods which are "
-"already documented in the official (sphinx) documentation. For example, the :"
-"meth:`ItemLoader.add_value` method should be documented in the sphinx "
+"already documented in the official (sphinx) documentation. For example, "
+"the :meth:`ItemLoader.add_value` method should be documented in the sphinx "
 "documentation, not its docstring."
 msgstr ""
 

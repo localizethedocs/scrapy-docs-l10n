@@ -91,10 +91,10 @@ msgid ""
 "     @classmethod\n"
 "     def from_crawler(cls, crawler):\n"
 "         pipeline = cls()\n"
-"         crawler.signals.connect(pipeline.spider_opened, signals."
-"spider_opened)\n"
-"         crawler.signals.connect(pipeline.spider_closed, signals."
-"spider_closed)\n"
+"         crawler.signals.connect(pipeline.spider_opened, "
+"signals.spider_opened)\n"
+"         crawler.signals.connect(pipeline.spider_closed, "
+"signals.spider_closed)\n"
 "         return pipeline\n"
 "\n"
 "    def spider_opened(self, spider):\n"
@@ -175,8 +175,9 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:115
 msgid ""
-"Make sure you call the base class :meth:`~BaseItemExporter."
-"serialize_field()` method after your custom code."
+"Make sure you call the base "
+"class :meth:`~BaseItemExporter.serialize_field()` method after your custom "
+"code."
 msgstr ""
 
 #: ../../../topics/exporters.rst:120
@@ -222,8 +223,8 @@ msgstr ""
 #: ../../../topics/exporters.rst:150
 msgid ""
 "These features can be configured through the constructor arguments which "
-"populate their respective instance attributes: :attr:`fields_to_export`, :"
-"attr:`export_empty_fields`, :attr:`encoding`."
+"populate their respective instance "
+"attributes: :attr:`fields_to_export`, :attr:`export_empty_fields`, :attr:`encoding`."
 msgstr ""
 
 #: ../../../topics/exporters.rst:156
@@ -265,8 +266,9 @@ msgstr ""
 #: ../../../topics/exporters.rst:180
 msgid ""
 "Signal the beginning of the exporting process. Some exporters may use this "
-"to generate some required header (for example, the :class:"
-"`XmlItemExporter`). You must call this method before exporting any items."
+"to generate some required header (for example, "
+"the :class:`XmlItemExporter`). You must call this method before exporting "
+"any items."
 msgstr ""
 
 #: ../../../topics/exporters.rst:187
@@ -327,8 +329,8 @@ msgstr ""
 #: ../../../topics/exporters.rst:230 ../../../topics/exporters.rst:316
 #: ../../../topics/exporters.rst:332
 msgid ""
-"The additional keyword arguments of this constructor are passed to the :"
-"class:`BaseItemExporter` constructor."
+"The additional keyword arguments of this constructor are passed to "
+"the :class:`BaseItemExporter` constructor."
 msgstr ""
 
 #: ../../../topics/exporters.rst:233 ../../../topics/exporters.rst:294
@@ -391,10 +393,10 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:273
 msgid ""
-"Exports Items in CSV format to the given file-like object. If the :attr:"
-"`fields_to_export` attribute is set, it will be used to define the CSV "
-"columns and their order. The :attr:`export_empty_fields` attribute has no "
-"effect on this exporter."
+"Exports Items in CSV format to the given file-like object. If "
+"the :attr:`fields_to_export` attribute is set, it will be used to define the "
+"CSV columns and their order. The :attr:`export_empty_fields` attribute has "
+"no effect on this exporter."
 msgstr ""
 
 #: ../../../topics/exporters.rst:280
@@ -412,10 +414,10 @@ msgstr ""
 
 #: ../../../topics/exporters.rst:289
 msgid ""
-"The additional keyword arguments of this constructor are passed to the :"
-"class:`BaseItemExporter` constructor, and the leftover arguments to the `csv."
-"writer`_ constructor, so you can use any `csv.writer` constructor argument "
-"to customize this exporter."
+"The additional keyword arguments of this constructor are passed to "
+"the :class:`BaseItemExporter` constructor, and the leftover arguments to the "
+"`csv.writer`_ constructor, so you can use any `csv.writer` constructor "
+"argument to customize this exporter."
 msgstr ""
 
 #: ../../../topics/exporters.rst:296
@@ -491,9 +493,9 @@ msgid ""
 "well for large amounts of data since incremental (aka. stream-mode) parsing "
 "is not well supported (if at all) among JSON parsers (on any language), and "
 "most of them just parse the entire object in memory. If you want the power "
-"and simplicity of JSON with a more stream-friendly format, consider using :"
-"class:`JsonLinesItemExporter` instead, or splitting the output in multiple "
-"chunks."
+"and simplicity of JSON with a more stream-friendly format, consider "
+"using :class:`JsonLinesItemExporter` instead, or splitting the output in "
+"multiple chunks."
 msgstr ""
 
 #: ../../../topics/exporters.rst:373

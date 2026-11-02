@@ -50,10 +50,10 @@ msgstr ""
 
 #: ../../../topics/webservice.rst:26
 msgid ""
-"The web service contains several resources, defined in the :setting:"
-"`WEBSERVICE_RESOURCES` setting. Each resource provides a different "
-"functionality. See :ref:`topics-webservice-resources-ref` for a list of "
-"resources available by default."
+"The web service contains several resources, defined in "
+"the :setting:`WEBSERVICE_RESOURCES` setting. Each resource provides a "
+"different functionality. See :ref:`topics-webservice-resources-ref` for a "
+"list of resources available by default."
 msgstr ""
 
 #: ../../../topics/webservice.rst:31
@@ -121,8 +121,9 @@ msgstr ""
 
 #: ../../../topics/webservice.rst:84
 msgid ""
-"You can access the extension manager JSON-RPC resource through the :ref:"
-"`topics-webservice-crawler` at: http://localhost:6080/crawler/spiders"
+"You can access the extension manager JSON-RPC resource through "
+"the :ref:`topics-webservice-crawler` at: http://localhost:6080/crawler/"
+"spiders"
 msgstr ""
 
 #: ../../../topics/webservice.rst:88
@@ -242,9 +243,9 @@ msgstr ""
 #: ../../../topics/webservice.rst:168
 msgid ""
 "The list of web service resources available by default in Scrapy. You "
-"shouldn't change this setting in your project, change :setting:"
-"`WEBSERVICE_RESOURCES` instead. If you want to disable some resource set its "
-"value to ``None`` in :setting:`WEBSERVICE_RESOURCES`."
+"shouldn't change this setting in your project, "
+"change :setting:`WEBSERVICE_RESOURCES` instead. If you want to disable some "
+"resource set its value to ``None`` in :setting:`WEBSERVICE_RESOURCES`."
 msgstr ""
 
 #: ../../../topics/webservice.rst:174
@@ -260,9 +261,9 @@ msgstr ""
 
 #: ../../../topics/webservice.rst:180
 msgid ""
-"To write a web service resource you should subclass the :class:"
-"`JsonResource` or :class:`JsonRpcResource` classes and implement the :class:"
-"`renderGET` method."
+"To write a web service resource you should subclass "
+"the :class:`JsonResource` or :class:`JsonRpcResource` classes and implement "
+"the :class:`renderGET` method."
 msgstr ""
 
 #: ../../../topics/webservice.rst:185

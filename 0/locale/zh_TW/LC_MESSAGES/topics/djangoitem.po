@@ -30,9 +30,9 @@ msgstr ""
 
 #: ../../../topics/djangoitem.rst:11
 msgid ""
-"Besides of getting the model fields defined on your item, :class:"
-"`DjangoItem` provides a method to create and populate a Django model "
-"instance with the item data."
+"Besides of getting the model fields defined on your "
+"item, :class:`DjangoItem` provides a method to create and populate a Django "
+"model instance with the item data."
 msgstr ""
 
 #: ../../../topics/djangoitem.rst:16
@@ -95,8 +95,8 @@ msgstr ""
 
 #: ../../../topics/djangoitem.rst:48
 msgid ""
-"To obtain the Django model from the item, we call the extra method :meth:"
-"`~DjangoItem.save` of the :class:`DjangoItem`::"
+"To obtain the Django model from the item, we call the extra "
+"method :meth:`~DjangoItem.save` of the :class:`DjangoItem`::"
 msgstr ""
 
 #: ../../../topics/djangoitem.rst:51
@@ -153,8 +153,8 @@ msgstr ""
 
 #: ../../../topics/djangoitem.rst:87
 msgid ""
-"fields added to the item won't be taken into account when doing a :meth:"
-"`~DjangoItem.save`"
+"fields added to the item won't be taken into account when doing "
+"a :meth:`~DjangoItem.save`"
 msgstr ""
 
 #: ../../../topics/djangoitem.rst:89

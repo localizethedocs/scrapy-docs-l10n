@@ -39,8 +39,8 @@ msgstr ""
 msgid ""
 "Both :class:`Request` and :class:`Response` classes have subclasses which "
 "add functionality not required in the base classes. These are described "
-"below in :ref:`topics-request-response-ref-request-subclasses` and :ref:"
-"`topics-request-response-ref-response-subclasses`."
+"below in :ref:`topics-request-response-ref-request-subclasses` "
+"and :ref:`topics-request-response-ref-response-subclasses`."
 msgstr ""
 
 #: ../../../topics/request-response.rst:25
@@ -101,12 +101,13 @@ msgstr ""
 #: ../../../topics/request-response.rst:64
 msgid ""
 "the request cookies. These can be sent in two forms.  1. Using a dict::      "
-"request_with_cookies = Request(url=\"http://www.example."
-"com\",                                    cookies={'currency': 'USD', "
-"'country': 'UY'}) 2. Using a list of dicts::      request_with_cookies = "
-"Request(url=\"http://www.example.com\",                                    "
-"cookies=[{'name': 'currency',                                             "
-"'value': 'USD',                                             'domain': "
+"request_with_cookies = Request(url=\"http://"
+"www.example.com\",                                    cookies={'currency': "
+"'USD', 'country': 'UY'}) 2. Using a list of dicts::      "
+"request_with_cookies = Request(url=\"http://"
+"www.example.com\",                                    cookies=[{'name': "
+"'currency',                                             'value': "
+"'USD',                                             'domain': "
 "'example.com',                                             'path': '/"
 "currency'}])  The latter form allows for customizing the ``domain`` and "
 "``path`` attributes of the cookie. This is only useful if the cookies are "
@@ -162,8 +163,8 @@ msgid ""
 "cookies for that domain and will be sent again in future requests. That's "
 "the typical behaviour of any regular web browser. However, if, for some "
 "reason, you want to avoid merging with existing cookies you can instruct "
-"Scrapy to do so by setting the ``dont_merge_cookies`` key in the :attr:"
-"`Request.meta`."
+"Scrapy to do so by setting the ``dont_merge_cookies`` key in "
+"the :attr:`Request.meta`."
 msgstr ""
 
 #: ../../../topics/request-response.rst:89
@@ -221,8 +222,8 @@ msgstr ""
 
 #: ../../../topics/request-response.rst:127
 msgid ""
-"This attribute is read-only. To change the URL of a Request use :meth:"
-"`replace`."
+"This attribute is read-only. To change the URL of a Request "
+"use :meth:`replace`."
 msgstr ""
 
 #: ../../../topics/request-response.rst:132
@@ -241,8 +242,8 @@ msgstr ""
 
 #: ../../../topics/request-response.rst:143
 msgid ""
-"This attribute is read-only. To change the body of a Request use :meth:"
-"`replace`."
+"This attribute is read-only. To change the body of a Request "
+"use :meth:`replace`."
 msgstr ""
 
 #: ../../../topics/request-response.rst:148
@@ -493,8 +494,8 @@ msgstr ""
 
 #: ../../../topics/request-response.rst:318
 msgid ""
-"The other parameters of this class method are passed directly to the :class:"
-"`FormRequest` constructor."
+"The other parameters of this class method are passed directly to "
+"the :class:`FormRequest` constructor."
 msgstr ""
 
 #: ../../../topics/request-response.rst:321
@@ -537,8 +538,9 @@ msgid ""
 "``<input type=\"hidden\">`` elements, such as session related data or "
 "authentication tokens (for login pages). When scraping, you'll want these "
 "fields to be automatically pre-populated and only override a couple of them, "
-"such as the user name and password. You can use the :meth:`FormRequest."
-"from_response` method for this job. Here's an example spider which uses it::"
+"such as the user name and password. You can use "
+"the :meth:`FormRequest.from_response` method for this job. Here's an example "
+"spider which uses it::"
 msgstr ""
 
 #: ../../../topics/request-response.rst:354
@@ -614,8 +616,8 @@ msgstr ""
 
 #: ../../../topics/request-response.rst:413
 msgid ""
-"This attribute is read-only. To change the URL of a Response use :meth:"
-"`replace`."
+"This attribute is read-only. To change the URL of a Response "
+"use :meth:`replace`."
 msgstr ""
 
 #: ../../../topics/request-response.rst:418
@@ -631,14 +633,15 @@ msgstr ""
 #: ../../../topics/request-response.rst:427
 msgid ""
 "A str containing the body of this Response. Keep in mind that Response.body "
-"is always a str. If you want the unicode version use :meth:`TextResponse."
-"body_as_unicode` (only available in :class:`TextResponse` and subclasses)."
+"is always a str. If you want the unicode version "
+"use :meth:`TextResponse.body_as_unicode` (only available "
+"in :class:`TextResponse` and subclasses)."
 msgstr ""
 
 #: ../../../topics/request-response.rst:432
 msgid ""
-"This attribute is read-only. To change the body of a Response use :meth:"
-"`replace`."
+"This attribute is read-only. To change the body of a Response "
+"use :meth:`replace`."
 msgstr ""
 
 #: ../../../topics/request-response.rst:437
@@ -670,8 +673,8 @@ msgstr ""
 
 #: ../../../topics/request-response.rst:455
 msgid ""
-"A shortcut to the :attr:`Request.meta` attribute of the :attr:`Response."
-"request` object (ie. ``self.request.meta``)."
+"A shortcut to the :attr:`Request.meta` attribute of "
+"the :attr:`Response.request` object (ie. ``self.request.meta``)."
 msgstr ""
 
 #: ../../../topics/request-response.rst:458
@@ -720,9 +723,9 @@ msgstr ""
 
 #: ../../../topics/request-response.rst:494
 msgid ""
-":class:`TextResponse` objects adds encoding capabilities to the base :class:"
-"`Response` class, which is meant to be used only for binary data, such as "
-"images, sounds or any media file."
+":class:`TextResponse` objects adds encoding capabilities to the "
+"base :class:`Response` class, which is meant to be used only for binary "
+"data, such as images, sounds or any media file."
 msgstr ""
 
 #: ../../../topics/request-response.rst:498
@@ -767,8 +770,8 @@ msgstr ""
 #: ../../../topics/request-response.rst:523
 msgid ""
 "the encoding declared in the response body. The TextResponse class doesn't "
-"provide any special functionality for this. However, the :class:"
-"`HtmlResponse` and :class:`XmlResponse` classes do."
+"provide any special functionality for this. However, "
+"the :class:`HtmlResponse` and :class:`XmlResponse` classes do."
 msgstr ""
 
 #: ../../../topics/request-response.rst:527

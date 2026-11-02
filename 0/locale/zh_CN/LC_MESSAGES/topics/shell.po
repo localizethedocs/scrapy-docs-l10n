@@ -117,8 +117,9 @@ msgstr ""
 #: ../../../topics/shell.rst:67
 msgid ""
 "The Scrapy shell automatically creates some convenient objects from the "
-"downloaded page, like the :class:`~scrapy.http.Response` object and the :"
-"class:`~scrapy.selector.Selector` objects (for both HTML and XML content)."
+"downloaded page, like the :class:`~scrapy.http.Response` object and "
+"the :class:`~scrapy.selector.Selector` objects (for both HTML and XML "
+"content)."
 msgstr ""
 
 #: ../../../topics/shell.rst:72
@@ -131,9 +132,9 @@ msgstr ""
 
 #: ../../../topics/shell.rst:76
 msgid ""
-"``spider`` - the Spider which is known to handle the URL, or a :class:"
-"`~scrapy.spider.Spider` object if there is no spider found for the current "
-"URL"
+"``spider`` - the Spider which is known to handle the URL, or "
+"a :class:`~scrapy.spider.Spider` object if there is no spider found for the "
+"current URL"
 msgstr ""
 
 #: ../../../topics/shell.rst:80
@@ -300,10 +301,10 @@ msgstr ""
 
 #: ../../../topics/shell.rst:195
 msgid ""
-"2014-01-23 17:48:31-0400 [myspider] DEBUG: Crawled (200) <GET http://example."
-"com> (referer: None)\n"
-"2014-01-23 17:48:31-0400 [myspider] DEBUG: Crawled (200) <GET http://example."
-"org> (referer: None)\n"
+"2014-01-23 17:48:31-0400 [myspider] DEBUG: Crawled (200) <GET http://"
+"example.com> (referer: None)\n"
+"2014-01-23 17:48:31-0400 [myspider] DEBUG: Crawled (200) <GET http://"
+"example.org> (referer: None)\n"
 "[s] Available Scrapy objects:\n"
 "[s]   crawler    <scrapy.crawler.Crawler object at 0x1e16b50>\n"
 "...\n"
@@ -343,8 +344,8 @@ msgstr ""
 #: ../../../topics/shell.rst:218
 msgid ""
 ">>> ^D\n"
-"2014-01-23 17:50:03-0400 [myspider] DEBUG: Crawled (200) <GET http://example."
-"net> (referer: None)\n"
+"2014-01-23 17:50:03-0400 [myspider] DEBUG: Crawled (200) <GET http://"
+"example.net> (referer: None)\n"
 "..."
 msgstr ""
 

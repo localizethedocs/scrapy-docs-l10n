@@ -83,14 +83,14 @@ msgstr "參數"
 
 #: ../../../topics/email.rst:46
 msgid ""
-"the SMTP host to use for sending the emails. If omitted, the :setting:"
-"`MAIL_HOST` setting will be used."
+"the SMTP host to use for sending the emails. If omitted, "
+"the :setting:`MAIL_HOST` setting will be used."
 msgstr ""
 
 #: ../../../topics/email.rst:50
 msgid ""
-"the address used to send emails (in the ``From:`` header). If omitted, the :"
-"setting:`MAIL_FROM` setting will be used."
+"the address used to send emails (in the ``From:`` header). If omitted, "
+"the :setting:`MAIL_FROM` setting will be used."
 msgstr ""
 
 #: ../../../topics/email.rst:54
@@ -159,10 +159,10 @@ msgstr ""
 
 #: ../../../topics/email.rst:111
 msgid ""
-"These settings define the default constructor values of the :class:"
-"`MailSender` class, and can be used to configure e-mail notifications in "
-"your project without writing any code (for those extensions and code that "
-"uses :class:`MailSender`)."
+"These settings define the default constructor values of "
+"the :class:`MailSender` class, and can be used to configure e-mail "
+"notifications in your project without writing any code (for those extensions "
+"and code that uses :class:`MailSender`)."
 msgstr ""
 
 #: ../../../topics/email.rst:118

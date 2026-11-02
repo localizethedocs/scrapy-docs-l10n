@@ -46,8 +46,8 @@ msgstr ""
 
 #: ../../../experimental/index.rst:22
 msgid ""
-"You can also add Scrapy commands from an external library by adding `scrapy."
-"commands` section into entry_points in the `setup.py`."
+"You can also add Scrapy commands from an external library by adding "
+"`scrapy.commands` section into entry_points in the `setup.py`."
 msgstr ""
 
 #: ../../../experimental/index.rst:24

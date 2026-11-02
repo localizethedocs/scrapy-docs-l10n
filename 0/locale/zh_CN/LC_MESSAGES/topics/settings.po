@@ -58,8 +58,8 @@ msgstr ""
 
 #: ../../../topics/settings.rst:25
 msgid ""
-"The value of ``SCRAPY_SETTINGS_MODULE`` should be in Python path syntax, e."
-"g. ``myproject.settings``. Note that the settings module should be on the "
+"The value of ``SCRAPY_SETTINGS_MODULE`` should be in Python path syntax, "
+"e.g. ``myproject.settings``. Note that the settings module should be on the "
 "Python `import search path`_."
 msgstr ""
 
@@ -319,17 +319,17 @@ msgstr "默认值: ``0``"
 #: ../../../topics/settings.rst:198
 msgid ""
 "The maximum number of concurrent (ie. simultaneous) requests that will be "
-"performed to any single IP. If non-zero, the :setting:"
-"`CONCURRENT_REQUESTS_PER_DOMAIN` setting is ignored, and this one is used "
-"instead. In other words, concurrency limits will be applied per IP, not per "
-"domain."
+"performed to any single IP. If non-zero, "
+"the :setting:`CONCURRENT_REQUESTS_PER_DOMAIN` setting is ignored, and this "
+"one is used instead. In other words, concurrency limits will be applied per "
+"IP, not per domain."
 msgstr ""
 
 #: ../../../topics/settings.rst:204
 msgid ""
-"This setting also affects :setting:`DOWNLOAD_DELAY`: if :setting:"
-"`CONCURRENT_REQUESTS_PER_IP` is non-zero, download delay is enforced per IP, "
-"not per domain."
+"This setting also affects :setting:`DOWNLOAD_DELAY`: "
+"if :setting:`CONCURRENT_REQUESTS_PER_IP` is non-zero, download delay is "
+"enforced per IP, not per domain."
 msgstr ""
 
 #: ../../../topics/settings.rst:212
@@ -359,17 +359,16 @@ msgstr ""
 #: ../../../topics/settings.rst:226
 msgid ""
 "{\n"
-"    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;"
-"q=0.8',\n"
+"    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/"
+"*;q=0.8',\n"
 "    'Accept-Language': 'en',\n"
 "}"
 msgstr ""
 
 #: ../../../topics/settings.rst:231
 msgid ""
-"The default headers used for Scrapy HTTP Requests. They're populated in the :"
-"class:`~scrapy.contrib.downloadermiddleware.defaultheaders."
-"DefaultHeadersMiddleware`."
+"The default headers used for Scrapy HTTP Requests. They're populated in "
+"the :class:`~scrapy.contrib.downloadermiddleware.defaultheaders.DefaultHeadersMiddleware`."
 msgstr ""
 
 #: ../../../topics/settings.rst:237
@@ -472,17 +471,17 @@ msgid ""
 "    'scrapy.contrib.downloadermiddleware.robotstxt.RobotsTxtMiddleware': "
 "100,\n"
 "    'scrapy.contrib.downloadermiddleware.httpauth.HttpAuthMiddleware': 300,\n"
-"    'scrapy.contrib.downloadermiddleware.downloadtimeout."
-"DownloadTimeoutMiddleware': 350,\n"
+"    'scrapy.contrib.downloadermiddleware.downloadtimeout.DownloadTimeoutMiddleware': "
+"350,\n"
 "    'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware': "
 "400,\n"
 "    'scrapy.contrib.downloadermiddleware.retry.RetryMiddleware': 500,\n"
-"    'scrapy.contrib.downloadermiddleware.defaultheaders."
-"DefaultHeadersMiddleware': 550,\n"
+"    'scrapy.contrib.downloadermiddleware.defaultheaders.DefaultHeadersMiddleware': "
+"550,\n"
 "    'scrapy.contrib.downloadermiddleware.redirect.MetaRefreshMiddleware': "
 "580,\n"
-"    'scrapy.contrib.downloadermiddleware.httpcompression."
-"HttpCompressionMiddleware': 590,\n"
+"    'scrapy.contrib.downloadermiddleware.httpcompression.HttpCompressionMiddleware': "
+"590,\n"
 "    'scrapy.contrib.downloadermiddleware.redirect.RedirectMiddleware': 600,\n"
 "    'scrapy.contrib.downloadermiddleware.cookies.CookiesMiddleware': 700,\n"
 "    'scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware': "
@@ -498,9 +497,9 @@ msgstr ""
 #: ../../../topics/settings.rst:326
 msgid ""
 "A dict containing the downloader middlewares enabled by default in Scrapy. "
-"You should never modify this setting in your project, modify :setting:"
-"`DOWNLOADER_MIDDLEWARES` instead.  For more info see :ref:`topics-downloader-"
-"middleware-setting`."
+"You should never modify this setting in your project, "
+"modify :setting:`DOWNLOADER_MIDDLEWARES` instead.  For more info "
+"see :ref:`topics-downloader-middleware-setting`."
 msgstr ""
 
 #: ../../../topics/settings.rst:334
@@ -579,8 +578,8 @@ msgstr ""
 #: ../../../topics/settings.rst:389
 msgid ""
 "A dict containing the request download handlers enabled by default in "
-"Scrapy. You should never modify this setting in your project, modify :"
-"setting:`DOWNLOAD_HANDLERS` instead."
+"Scrapy. You should never modify this setting in your project, "
+"modify :setting:`DOWNLOAD_HANDLERS` instead."
 msgstr ""
 
 #: ../../../topics/settings.rst:393
@@ -905,8 +904,8 @@ msgstr ""
 
 #: ../../../topics/settings.rst:678
 msgid ""
-"If enabled, Scrapy will wait a random amount of time (between 0.5 and 1.5 * :"
-"setting:`DOWNLOAD_DELAY`) while fetching requests from the same website."
+"If enabled, Scrapy will wait a random amount of time (between 0.5 and 1.5 "
+"* :setting:`DOWNLOAD_DELAY`) while fetching requests from the same website."
 msgstr ""
 
 #: ../../../topics/settings.rst:682
@@ -1018,8 +1017,9 @@ msgstr ""
 #: ../../../topics/settings.rst:767
 msgid ""
 "A dict containing the scrapy contracts enabled by default in Scrapy. You "
-"should never modify this setting in your project, modify :setting:"
-"`SPIDER_CONTRACTS` instead. For more info see :ref:`topics-contracts`."
+"should never modify this setting in your project, "
+"modify :setting:`SPIDER_CONTRACTS` instead. For more info see :ref:`topics-"
+"contracts`."
 msgstr ""
 
 #: ../../../topics/settings.rst:774
@@ -1050,9 +1050,9 @@ msgstr ""
 #: ../../../topics/settings.rst:796
 msgid ""
 "A dict containing the spider middlewares enabled by default in Scrapy. You "
-"should never modify this setting in your project, modify :setting:"
-"`SPIDER_MIDDLEWARES` instead. For more info see :ref:`topics-spider-"
-"middleware-setting`."
+"should never modify this setting in your project, "
+"modify :setting:`SPIDER_MIDDLEWARES` instead. For more info see :ref:`topics-"
+"spider-middleware-setting`."
 msgstr ""
 
 #: ../../../topics/settings.rst:804
@@ -1105,8 +1105,8 @@ msgstr ""
 
 #: ../../../topics/settings.rst:843
 msgid ""
-"Send Scrapy stats after spiders finish scraping. See :class:`~scrapy.contrib."
-"statsmailer.StatsMailer` for more info."
+"Send Scrapy stats after spiders finish scraping. "
+"See :class:`~scrapy.contrib.statsmailer.StatsMailer` for more info."
 msgstr ""
 
 #: ../../../topics/settings.rst:849
@@ -1144,8 +1144,8 @@ msgstr ""
 
 #: ../../../topics/settings.rst:874
 msgid ""
-"The directory where to look for templates when creating new projects with :"
-"command:`startproject` command."
+"The directory where to look for templates when creating new projects "
+"with :command:`startproject` command."
 msgstr ""
 
 #: ../../../topics/settings.rst:880

@@ -741,9 +741,9 @@ msgstr ""
 
 #: ../../../topics/commands.rst:483
 msgid ""
-"You can also add your custom project commands by using the :setting:"
-"`COMMANDS_MODULE` setting. See the Scrapy commands in `scrapy/commands`_ for "
-"examples on how to implement your commands."
+"You can also add your custom project commands by using "
+"the :setting:`COMMANDS_MODULE` setting. See the Scrapy commands in `scrapy/"
+"commands`_ for examples on how to implement your commands."
 msgstr ""
 
 #: ../../../topics/commands.rst:491

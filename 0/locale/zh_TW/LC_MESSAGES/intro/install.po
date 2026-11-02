@@ -144,9 +144,9 @@ msgstr ""
 
 #: ../../../intro/install.rst:61
 msgid ""
-"zope.interface: download the egg from `zope.interface pypi page <http://pypi."
-"python.org/pypi/zope.interface>`_ and install it by running ``easy_install "
-"file.egg``"
+"zope.interface: download the egg from `zope.interface pypi page <http://"
+"pypi.python.org/pypi/zope.interface>`_ and install it by running "
+"``easy_install file.egg``"
 msgstr ""
 
 #: ../../../intro/install.rst:62

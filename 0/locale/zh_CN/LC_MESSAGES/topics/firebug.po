@@ -26,8 +26,8 @@ msgid ""
 "Google Directory, the example website used in this guide is no longer "
 "available as it `has been shut down by Google`_. The concepts in this guide "
 "are still valid though. If you want to update this guide to use a new "
-"(working) site, your contribution will be more than welcome!. See :ref:"
-"`topics-contributing` for information on how to do so."
+"(working) site, your contribution will be more than welcome!. "
+"See :ref:`topics-contributing` for information on how to do so."
 msgstr ""
 
 #: ../../../topics/firebug.rst:14
@@ -37,9 +37,9 @@ msgstr ""
 #: ../../../topics/firebug.rst:16
 msgid ""
 "This document explains how to use `Firebug`_ (a Firefox add-on) to make the "
-"scraping process easier and more fun. For other useful Firefox add-ons see :"
-"ref:`topics-firefox-addons`. There are some caveats with using Firefox add-"
-"ons to inspect pages, see :ref:`topics-firefox-livedom`."
+"scraping process easier and more fun. For other useful Firefox add-ons "
+"see :ref:`topics-firefox-addons`. There are some caveats with using Firefox "
+"add-ons to inspect pages, see :ref:`topics-firefox-livedom`."
 msgstr ""
 
 #: ../../../topics/firebug.rst:21
@@ -123,10 +123,10 @@ msgstr ""
 
 #: ../../../topics/firebug.rst:77
 msgid ""
-"The :class:`~scrapy.contrib.spiders.Rule` object instructs :class:`~scrapy."
-"contrib.spiders.CrawlSpider` based spiders how to follow the category links. "
-"``parse_category`` will be a method of the spider which will process and "
-"extract data from those pages."
+"The :class:`~scrapy.contrib.spiders.Rule` object "
+"instructs :class:`~scrapy.contrib.spiders.CrawlSpider` based spiders how to "
+"follow the category links. ``parse_category`` will be a method of the spider "
+"which will process and extract data from those pages."
 msgstr ""
 
 #: ../../../topics/firebug.rst:82

@@ -234,8 +234,8 @@ msgstr ""
 
 #: ../../../topics/broad-crawls.rst:134
 msgid ""
-"Scrapy handles (1) automatically; to handle (2) enable :ref:"
-"`AjaxCrawlMiddleware <ajaxcrawl-middleware>`::"
+"Scrapy handles (1) automatically; to handle (2) "
+"enable :ref:`AjaxCrawlMiddleware <ajaxcrawl-middleware>`::"
 msgstr ""
 
 #: ../../../topics/broad-crawls.rst:137

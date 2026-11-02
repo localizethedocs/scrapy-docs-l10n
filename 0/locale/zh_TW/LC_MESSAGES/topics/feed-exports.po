@@ -64,8 +64,8 @@ msgstr ""
 
 #: ../../../topics/feed-exports.rst:31
 msgid ""
-"But you can also extend the supported format through the :setting:"
-"`FEED_EXPORTERS` setting."
+"But you can also extend the supported format through "
+"the :setting:`FEED_EXPORTERS` setting."
 msgstr ""
 
 #: ../../../topics/feed-exports.rst:37
@@ -206,8 +206,8 @@ msgstr ""
 #: ../../../topics/feed-exports.rst:116
 msgid ""
 "Any other named parameter gets replaced by the spider attribute of the same "
-"name. For example, ``%(site_id)s`` would get replaced by the ``spider."
-"site_id`` attribute the moment the feed is being created."
+"name. For example, ``%(site_id)s`` would get replaced by the "
+"``spider.site_id`` attribute the moment the feed is being created."
 msgstr ""
 
 #: ../../../topics/feed-exports.rst:120

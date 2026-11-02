@@ -103,8 +103,8 @@ msgstr ""
 #: ../../../topics/contracts.rst:63
 msgid ""
 "If you find you need more power than the built-in scrapy contracts you can "
-"create and load your own contracts in the project by using the :setting:"
-"`SPIDER_CONTRACTS` setting::"
+"create and load your own contracts in the project by using "
+"the :setting:`SPIDER_CONTRACTS` setting::"
 msgstr ""
 
 #: ../../../topics/contracts.rst:67
@@ -135,8 +135,8 @@ msgstr ""
 
 #: ../../../topics/contracts.rst:88
 msgid ""
-"This receives a ``dict`` as an argument containing default arguments for :"
-"class:`~scrapy.http.Request` object. Must return the same or a modified "
+"This receives a ``dict`` as an argument containing default arguments "
+"for :class:`~scrapy.http.Request` object. Must return the same or a modified "
 "version of it."
 msgstr ""
 

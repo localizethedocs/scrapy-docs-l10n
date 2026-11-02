@@ -23,15 +23,15 @@ msgstr ""
 
 #: ../../../topics/logging.rst:7
 msgid ""
-"Scrapy provides a logging facility which can be used through the :mod:"
-"`scrapy.log` module. The current underlying implementation uses `Twisted "
-"logging`_ but this may change in the future."
+"Scrapy provides a logging facility which can be used through "
+"the :mod:`scrapy.log` module. The current underlying implementation uses "
+"`Twisted logging`_ but this may change in the future."
 msgstr ""
 
 #: ../../../topics/logging.rst:13
 msgid ""
-"The logging service must be explicitly started through the :func:`scrapy.log."
-"start` function."
+"The logging service must be explicitly started through "
+"the :func:`scrapy.log.start` function."
 msgstr ""
 
 #: ../../../topics/logging.rst:18
@@ -93,10 +93,10 @@ msgstr ""
 
 #: ../../../topics/logging.rst:45
 msgid ""
-"The recommended way to log from spiders is by using the Spider :meth:"
-"`~scrapy.spider.Spider.log` method, which already populates the ``spider`` "
-"argument of the :func:`scrapy.log.msg` function. The other arguments are "
-"passed directly to the :func:`~scrapy.log.msg` function."
+"The recommended way to log from spiders is by using the "
+"Spider :meth:`~scrapy.spider.Spider.log` method, which already populates the "
+"``spider`` argument of the :func:`scrapy.log.msg` function. The other "
+"arguments are passed directly to the :func:`~scrapy.log.msg` function."
 msgstr ""
 
 #: ../../../topics/logging.rst:51
@@ -122,8 +122,9 @@ msgstr ""
 
 #: ../../../topics/logging.rst:66
 msgid ""
-"the minimum logging level to log. Available values are: :data:`CRITICAL`, :"
-"data:`ERROR`, :data:`WARNING`, :data:`INFO` and :data:`DEBUG`."
+"the minimum logging level to log. Available values "
+"are: :data:`CRITICAL`, :data:`ERROR`, :data:`WARNING`, :data:`INFO` "
+"and :data:`DEBUG`."
 msgstr ""
 
 #: ../../../topics/logging.rst:70

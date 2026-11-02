@@ -27,8 +27,8 @@ msgstr ""
 
 #: ../../../news.rst:9
 msgid ""
-"Use a mutable mapping to proxy deprecated settings.overrides and settings."
-"defaults attribute (:commit:`e5e8133`)"
+"Use a mutable mapping to proxy deprecated settings.overrides and "
+"settings.defaults attribute (:commit:`e5e8133`)"
 msgstr ""
 
 #: ../../../news.rst:10
@@ -50,8 +50,8 @@ msgstr ""
 
 #: ../../../news.rst:17
 msgid ""
-"Fix deprecated CrawlerSettings and increase backwards compatibility with ."
-"defaults attribute (:commit:`8e3f20a`)"
+"Fix deprecated CrawlerSettings and increase backwards compatibility "
+"with .defaults attribute (:commit:`8e3f20a`)"
 msgstr ""
 
 #: ../../../news.rst:22
@@ -72,14 +72,14 @@ msgstr ""
 
 #: ../../../news.rst:29
 msgid ""
-"Add new lxml based LinkExtractor to replace unmantained SgmlLinkExtractor (:"
-"issue:`559`, :issue:`761`, :issue:`763`)"
+"Add new lxml based LinkExtractor to replace unmantained SgmlLinkExtractor "
+"(:issue:`559`, :issue:`761`, :issue:`763`)"
 msgstr ""
 
 #: ../../../news.rst:31
 msgid ""
-"Cleanup settings API - part of per-spider settings **GSoC project** (:issue:"
-"`737`)"
+"Cleanup settings API - part of per-spider settings **GSoC project** "
+"(:issue:`737`)"
 msgstr ""
 
 #: ../../../news.rst:32
@@ -100,8 +100,8 @@ msgstr ""
 
 #: ../../../news.rst:36
 msgid ""
-"Restore filesystem based cache as default for http cache middleware (:issue:"
-"`541`, :issue:`500`, :issue:`571`)"
+"Restore filesystem based cache as default for http cache middleware "
+"(:issue:`541`, :issue:`500`, :issue:`571`)"
 msgstr ""
 
 #: ../../../news.rst:38
@@ -134,28 +134,26 @@ msgstr ""
 
 #: ../../../news.rst:45
 msgid ""
-"Replace unencodeable codepoints with html entities in SGMLLinkExtractor (:"
-"issue:`565`)"
+"Replace unencodeable codepoints with html entities in SGMLLinkExtractor "
+"(:issue:`565`)"
 msgstr ""
 
 #: ../../../news.rst:46
 msgid ""
-"Converted SEP documents to rst format (:issue:`629`, :issue:`630`, :issue:"
-"`638`, :issue:`632`, :issue:`636`, :issue:`640`, :issue:`635`, :issue:"
-"`634`, :issue:`639`, :issue:`637`, :issue:`631`, :issue:`633`, :issue:"
-"`641`, :issue:`642`)"
+"Converted SEP documents to rst format "
+"(:issue:`629`, :issue:`630`, :issue:`638`, :issue:`632`, :issue:`636`, :issue:`640`, :issue:`635`, :issue:`634`, :issue:`639`, :issue:`637`, :issue:`631`, :issue:`633`, :issue:`641`, :issue:`642`)"
 msgstr ""
 
 #: ../../../news.rst:50
 msgid ""
-"Tests and docs for clickdata's nr index in FormRequest (:issue:`646`, :issue:"
-"`645`)"
+"Tests and docs for clickdata's nr index in FormRequest "
+"(:issue:`646`, :issue:`645`)"
 msgstr ""
 
 #: ../../../news.rst:51
 msgid ""
-"Allow to disable a downloader handler just like any other component (:issue:"
-"`650`)"
+"Allow to disable a downloader handler just like any other component "
+"(:issue:`650`)"
 msgstr ""
 
 #: ../../../news.rst:52
@@ -165,8 +163,8 @@ msgstr ""
 
 #: ../../../news.rst:53
 msgid ""
-"Log error responses if they are not handled by spider callbacks (:issue:"
-"`612`, :issue:`656`)"
+"Log error responses if they are not handled by spider callbacks "
+"(:issue:`612`, :issue:`656`)"
 msgstr ""
 
 #: ../../../news.rst:55
@@ -193,8 +191,8 @@ msgstr ""
 
 #: ../../../news.rst:60
 msgid ""
-"Infer exporter's output format from filename extensions (:issue:`546`, :"
-"issue:`659`, :issue:`760`)"
+"Infer exporter's output format from filename extensions "
+"(:issue:`546`, :issue:`659`, :issue:`760`)"
 msgstr ""
 
 #: ../../../news.rst:62
@@ -254,10 +252,8 @@ msgstr ""
 
 #: ../../../news.rst:76
 msgid ""
-"Multiple documentation enhancemens and fixes (:issue:`575`, :issue:`587`, :"
-"issue:`590`, :issue:`596`, :issue:`610`, :issue:`617`, :issue:`618`, :issue:"
-"`627`, :issue:`613`, :issue:`643`, :issue:`654`, :issue:`675`, :issue:"
-"`663`, :issue:`711`, :issue:`714`)"
+"Multiple documentation enhancemens and fixes "
+"(:issue:`575`, :issue:`587`, :issue:`590`, :issue:`596`, :issue:`610`, :issue:`617`, :issue:`618`, :issue:`627`, :issue:`613`, :issue:`643`, :issue:`654`, :issue:`675`, :issue:`663`, :issue:`711`, :issue:`714`)"
 msgstr ""
 
 #: ../../../news.rst:82 ../../../news.rst:225
@@ -266,8 +262,8 @@ msgstr ""
 
 #: ../../../news.rst:84
 msgid ""
-"Encode unicode URL value when creating Links in RegexLinkExtractor (:issue:"
-"`561`)"
+"Encode unicode URL value when creating Links in RegexLinkExtractor "
+"(:issue:`561`)"
 msgstr ""
 
 #: ../../../news.rst:85
@@ -282,8 +278,8 @@ msgstr ""
 
 #: ../../../news.rst:88
 msgid ""
-"Fix wrong checks on subclassing of deprecated classes (:issue:`581`, :issue:"
-"`584`)"
+"Fix wrong checks on subclassing of deprecated classes "
+"(:issue:`581`, :issue:`584`)"
 msgstr ""
 
 #: ../../../news.rst:90
@@ -305,8 +301,8 @@ msgstr ""
 
 #: ../../../news.rst:94
 msgid ""
-"Fix default value of attrs argument in SgmlLinkExtractor to be tuple (:issue:"
-"`661`)"
+"Fix default value of attrs argument in SgmlLinkExtractor to be tuple "
+"(:issue:`661`)"
 msgstr ""
 
 #: ../../../news.rst:95
@@ -361,8 +357,8 @@ msgstr ""
 
 #: ../../../news.rst:114
 msgid ""
-"Fix wrong checks on subclassing of deprecated classes. closes #581 (:commit:"
-"`46d98d6`)"
+"Fix wrong checks on subclassing of deprecated classes. closes #581 "
+"(:commit:`46d98d6`)"
 msgstr ""
 
 #: ../../../news.rst:115
@@ -382,8 +378,8 @@ msgstr ""
 
 #: ../../../news.rst:118
 msgid ""
-"BaseSgmlLinkExtractor: Added unit test of a link with an inner tag (:commit:"
-"`c1cb418`)"
+"BaseSgmlLinkExtractor: Added unit test of a link with an inner tag "
+"(:commit:`c1cb418`)"
 msgstr ""
 
 #: ../../../news.rst:119
@@ -398,14 +394,14 @@ msgstr ""
 
 #: ../../../news.rst:121
 msgid ""
-"replace unencodeable codepoints with html entities. fixes #562 and #285 (:"
-"commit:`5f87b17`)"
+"replace unencodeable codepoints with html entities. fixes #562 and #285 "
+"(:commit:`5f87b17`)"
 msgstr ""
 
 #: ../../../news.rst:122
 msgid ""
-"RegexLinkExtractor: encode URL unicode value when creating Links (:commit:"
-"`d0ee545`)"
+"RegexLinkExtractor: encode URL unicode value when creating Links "
+"(:commit:`d0ee545`)"
 msgstr ""
 
 #: ../../../news.rst:123
@@ -463,8 +459,8 @@ msgstr ""
 
 #: ../../../news.rst:135
 msgid ""
-"fix typos in news.rst and remove (not released yet) header (:commit:"
-"`b7f58f4`)"
+"fix typos in news.rst and remove (not released yet) header "
+"(:commit:`b7f58f4`)"
 msgstr ""
 
 #: ../../../news.rst:138
@@ -484,14 +480,14 @@ msgstr ""
 
 #: ../../../news.rst:146
 msgid ""
-"Add a middleware to crawl ajax crawleable pages as defined by google (:issue:"
-"`343`)"
+"Add a middleware to crawl ajax crawleable pages as defined by google "
+"(:issue:`343`)"
 msgstr ""
 
 #: ../../../news.rst:147
 msgid ""
-"Rename scrapy.spider.BaseSpider to scrapy.spider.Spider (:issue:`510`, :"
-"issue:`519`)"
+"Rename scrapy.spider.BaseSpider to scrapy.spider.Spider "
+"(:issue:`510`, :issue:`519`)"
 msgstr ""
 
 #: ../../../news.rst:148
@@ -537,8 +533,8 @@ msgstr ""
 
 #: ../../../news.rst:158
 msgid ""
-"Add a way to skip default Referer header set by RefererMiddleware (:issue:"
-"`475`)"
+"Add a way to skip default Referer header set by RefererMiddleware "
+"(:issue:`475`)"
 msgstr ""
 
 #: ../../../news.rst:159
@@ -555,9 +551,8 @@ msgstr ""
 
 #: ../../../news.rst:162
 msgid ""
-"Improve and correct documentation (:issue:`527`, :issue:`524`, :issue:"
-"`521`, :issue:`517`, :issue:`512`, :issue:`505`, :issue:`502`, :issue:"
-"`489`, :issue:`465`, :issue:`460`, :issue:`425`, :issue:`536`)"
+"Improve and correct documentation "
+"(:issue:`527`, :issue:`524`, :issue:`521`, :issue:`517`, :issue:`512`, :issue:`505`, :issue:`502`, :issue:`489`, :issue:`465`, :issue:`460`, :issue:`425`, :issue:`536`)"
 msgstr ""
 
 #: ../../../news.rst:167
@@ -574,8 +569,8 @@ msgstr ""
 
 #: ../../../news.rst:171
 msgid ""
-"Do not try to call `body_as_unicode()` on a non-TextResponse instance (:"
-"issue:`462`)"
+"Do not try to call `body_as_unicode()` on a non-TextResponse instance "
+"(:issue:`462`)"
 msgstr ""
 
 #: ../../../news.rst:172
@@ -625,8 +620,8 @@ msgstr ""
 
 #: ../../../news.rst:190
 msgid ""
-"include_package_data is required to build wheels from published sources (:"
-"commit:`5ba1ad5`)"
+"include_package_data is required to build wheels from published sources "
+"(:commit:`5ba1ad5`)"
 msgstr ""
 
 #: ../../../news.rst:191
@@ -666,32 +661,32 @@ msgstr ""
 
 #: ../../../news.rst:205
 msgid ""
-"Paved the road for Python 3.3+ (:issue:`435`, :issue:`436`, :issue:`431`, :"
-"issue:`452`)"
+"Paved the road for Python 3.3+ "
+"(:issue:`435`, :issue:`436`, :issue:`431`, :issue:`452`)"
 msgstr ""
 
 #: ../../../news.rst:206
 msgid ""
-"New item exporter using native python types with nesting support (:issue:"
-"`366`)"
+"New item exporter using native python types with nesting support "
+"(:issue:`366`)"
 msgstr ""
 
 #: ../../../news.rst:207
 msgid ""
-"Tune HTTP1.1 pool size so it matches concurrency defined by settings (:"
-"commit:`b43b5f575`)"
+"Tune HTTP1.1 pool size so it matches concurrency defined by settings "
+"(:commit:`b43b5f575`)"
 msgstr ""
 
 #: ../../../news.rst:208
 msgid ""
-"scrapy.mail.MailSender now can connect over TLS or upgrade using STARTTLS (:"
-"issue:`327`)"
+"scrapy.mail.MailSender now can connect over TLS or upgrade using STARTTLS "
+"(:issue:`327`)"
 msgstr ""
 
 #: ../../../news.rst:209
 msgid ""
-"New FilesPipeline with functionality factored out from ImagesPipeline (:"
-"issue:`370`, :issue:`409`)"
+"New FilesPipeline with functionality factored out from ImagesPipeline "
+"(:issue:`370`, :issue:`409`)"
 msgstr ""
 
 #: ../../../news.rst:210
@@ -709,8 +704,8 @@ msgstr ""
 
 #: ../../../news.rst:213
 msgid ""
-"Remove multi spider support from multiple core components (:issue:`422`, :"
-"issue:`421`, :issue:`420`, :issue:`419`, :issue:`423`, :issue:`418`)"
+"Remove multi spider support from multiple core components "
+"(:issue:`422`, :issue:`421`, :issue:`420`, :issue:`419`, :issue:`423`, :issue:`418`)"
 msgstr ""
 
 #: ../../../news.rst:215
@@ -725,8 +720,8 @@ msgstr ""
 
 #: ../../../news.rst:217
 msgid ""
-"Pylinted, pep8 and removed old-style exceptions from source (:issue:`430`, :"
-"issue:`432`)"
+"Pylinted, pep8 and removed old-style exceptions from source "
+"(:issue:`430`, :issue:`432`)"
 msgstr ""
 
 #: ../../../news.rst:218
@@ -745,14 +740,14 @@ msgstr ""
 
 #: ../../../news.rst:221
 msgid ""
-"Do not submit `reset` type inputs in FormRequest.from_response (:commit:"
-"`b326b87`)"
+"Do not submit `reset` type inputs in FormRequest.from_response "
+"(:commit:`b326b87`)"
 msgstr ""
 
 #: ../../../news.rst:222
 msgid ""
-"Do not silence download errors when request errback raises an exception (:"
-"commit:`684cfc0`)"
+"Do not silence download errors when request errback raises an exception "
+"(:commit:`684cfc0`)"
 msgstr ""
 
 #: ../../../news.rst:227
@@ -787,8 +782,8 @@ msgstr ""
 
 #: ../../../news.rst:234
 msgid ""
-"Improve best practices docs (:issue:`399`, :issue:`400`, :issue:`401`, :"
-"issue:`402`)"
+"Improve best practices docs "
+"(:issue:`399`, :issue:`400`, :issue:`401`, :issue:`402`)"
 msgstr ""
 
 #: ../../../news.rst:235
@@ -880,8 +875,8 @@ msgstr ""
 
 #: ../../../news.rst:285
 msgid ""
-"Fix AlreadyCalledError replacing a request in shell command. closes #407 (:"
-"commit:`b1d8919`)"
+"Fix AlreadyCalledError replacing a request in shell command. closes #407 "
+"(:commit:`b1d8919`)"
 msgstr ""
 
 #: ../../../news.rst:286
@@ -902,8 +897,8 @@ msgstr ""
 
 #: ../../../news.rst:293
 msgid ""
-"increase unittest timeouts to decrease travis false positive failures (:"
-"commit:`912202e`)"
+"increase unittest timeouts to decrease travis false positive failures "
+"(:commit:`912202e`)"
 msgstr ""
 
 #: ../../../news.rst:294
@@ -912,8 +907,8 @@ msgstr ""
 
 #: ../../../news.rst:295
 msgid ""
-"Fix permission and set umask before generating sdist tarball (:commit:"
-"`06149e0`)"
+"Fix permission and set umask before generating sdist tarball "
+"(:commit:`06149e0`)"
 msgstr ""
 
 #: ../../../news.rst:298
@@ -954,8 +949,8 @@ msgstr ""
 
 #: ../../../news.rst:311
 msgid ""
-"do no include ResponseFailed if http11 handler is not enabled (:commit:"
-"`6cbe684`)"
+"do no include ResponseFailed if http11 handler is not enabled "
+"(:commit:`6cbe684`)"
 msgstr ""
 
 #: ../../../news.rst:312
@@ -1022,14 +1017,14 @@ msgstr ""
 
 #: ../../../news.rst:329
 msgid ""
-"Support disabling `HttpCompressionMiddleware` using a flag setting (:issue:"
-"`359`)"
+"Support disabling `HttpCompressionMiddleware` using a flag setting "
+"(:issue:`359`)"
 msgstr ""
 
 #: ../../../news.rst:330
 msgid ""
-"Support xml namespaces using `iternodes` parser in `XMLFeedSpider` (:issue:"
-"`12`)"
+"Support xml namespaces using `iternodes` parser in `XMLFeedSpider` "
+"(:issue:`12`)"
 msgstr ""
 
 #: ../../../news.rst:331
@@ -1038,8 +1033,8 @@ msgstr ""
 
 #: ../../../news.rst:332
 msgid ""
-"Bugfix `scrapy.utils.gz.gunzip` broken by changes in python 2.7.4 (:commit:"
-"`4dc76e`)"
+"Bugfix `scrapy.utils.gz.gunzip` broken by changes in python 2.7.4 "
+"(:commit:`4dc76e`)"
 msgstr ""
 
 #: ../../../news.rst:333
@@ -1065,8 +1060,8 @@ msgstr ""
 
 #: ../../../news.rst:338
 msgid ""
-"Split redirection middleware into status and meta based middlewares (:issue:"
-"`78`)"
+"Split redirection middleware into status and meta based middlewares "
+"(:issue:`78`)"
 msgstr ""
 
 #: ../../../news.rst:339
@@ -1101,8 +1096,8 @@ msgstr ""
 
 #: ../../../news.rst:346
 msgid ""
-"Multiples improvements to `DjangoItem` (:issue:`217`, :issue:`218`, :issue:"
-"`221`)"
+"Multiples improvements to `DjangoItem` "
+"(:issue:`217`, :issue:`218`, :issue:`221`)"
 msgstr ""
 
 #: ../../../news.rst:347
@@ -1260,14 +1255,14 @@ msgstr ""
 
 #: ../../../news.rst:417
 msgid ""
-"obey request method when scrapy deploy is redirected to a new endpoint (:"
-"commit:`8c4fcee`)"
+"obey request method when scrapy deploy is redirected to a new endpoint "
+"(:commit:`8c4fcee`)"
 msgstr ""
 
 #: ../../../news.rst:418
 msgid ""
-"fix inaccurate downloader middleware documentation. refs #280 (:commit:"
-"`40667cb`)"
+"fix inaccurate downloader middleware documentation. refs #280 "
+"(:commit:`40667cb`)"
 msgstr ""
 
 #: ../../../news.rst:419
@@ -1299,8 +1294,8 @@ msgstr ""
 #: ../../../news.rst:428
 msgid ""
 "Fixed error message formatting. log.err() doesn't support cool formatting "
-"and when error occurred, the message was:    \"ERROR: Error processing "
-"%(item)s\" (:commit:`c16150c`)"
+"and when error occurred, the message was:    \"ERROR: Error processing %"
+"(item)s\" (:commit:`c16150c`)"
 msgstr ""
 
 #: ../../../news.rst:429
@@ -1387,8 +1382,8 @@ msgstr ""
 
 #: ../../../news.rst:455
 msgid ""
-"removed reference to global scrapy stats from settings doc (:commit:"
-"`dd55067`)"
+"removed reference to global scrapy stats from settings doc "
+"(:commit:`dd55067`)"
 msgstr ""
 
 #: ../../../news.rst:456
@@ -1412,14 +1407,14 @@ msgstr ""
 
 #: ../../../news.rst:464
 msgid ""
-"extended documentation on how to access crawler stats from extensions (:"
-"commit:`c4da0b5`)"
+"extended documentation on how to access crawler stats from extensions "
+"(:commit:`c4da0b5`)"
 msgstr ""
 
 #: ../../../news.rst:465
 msgid ""
-"removed .hgtags (no longer needed now that scrapy uses git) (:commit:"
-"`d52c188`)"
+"removed .hgtags (no longer needed now that scrapy uses git) "
+"(:commit:`d52c188`)"
 msgstr ""
 
 #: ../../../news.rst:466
@@ -1464,14 +1459,14 @@ msgstr ""
 
 #: ../../../news.rst:479
 msgid ""
-"added :meth:`~scrapy.contrib.spidermiddleware.SpiderMiddleware."
-"process_start_requests` method to spider middlewares"
+"added :meth:`~scrapy.contrib.spidermiddleware.SpiderMiddleware.process_start_requests` "
+"method to spider middlewares"
 msgstr ""
 
 #: ../../../news.rst:480 ../../../news.rst:481
 msgid ""
-"dropped Signals singleton. Signals should now be accesed through the Crawler."
-"signals attribute. See the signals documentation for more info."
+"dropped Signals singleton. Signals should now be accesed through the "
+"Crawler.signals attribute. See the signals documentation for more info."
 msgstr ""
 
 #: ../../../news.rst:482
@@ -1507,8 +1502,8 @@ msgstr ""
 
 #: ../../../news.rst:488
 msgid ""
-"StackTraceDump extension: also dump trackref live references (:commit:"
-"`fe2ce93`)"
+"StackTraceDump extension: also dump trackref live references "
+"(:commit:`fe2ce93`)"
 msgstr ""
 
 #: ../../../news.rst:489
@@ -1547,8 +1542,8 @@ msgstr ""
 
 #: ../../../news.rst:496
 msgid ""
-"removed (undocumented) ``HTMLImageLinkExtractor`` class from ``scrapy."
-"contrib.linkextractors.image``"
+"removed (undocumented) ``HTMLImageLinkExtractor`` class from "
+"``scrapy.contrib.linkextractors.image``"
 msgstr ""
 
 #: ../../../news.rst:497
@@ -1644,8 +1639,8 @@ msgstr ""
 
 #: ../../../news.rst:517
 msgid ""
-"meta tag attributes for content-type http equiv can be in any order. #123 (:"
-"commit:`0cb68af`)"
+"meta tag attributes for content-type http equiv can be in any order. #123 "
+"(:commit:`0cb68af`)"
 msgstr ""
 
 #: ../../../news.rst:518
@@ -1669,15 +1664,15 @@ msgstr ""
 
 #: ../../../news.rst:525
 msgid ""
-"include egg files used by testsuite in source distribution. #118 (:commit:"
-"`c897793`)"
+"include egg files used by testsuite in source distribution. #118 "
+"(:commit:`c897793`)"
 msgstr ""
 
 #: ../../../news.rst:526
 msgid ""
 "update docstring in project template to avoid confusion with genspider "
-"command, which may be considered as an advanced feature. refs #107 (:commit:"
-"`2548dcc`)"
+"command, which may be considered as an advanced feature. refs #107 "
+"(:commit:`2548dcc`)"
 msgstr ""
 
 #: ../../../news.rst:527
@@ -1694,8 +1689,8 @@ msgstr ""
 
 #: ../../../news.rst:529
 msgid ""
-"do not fail handling unicode xpaths in libxml2 backed selectors (:commit:"
-"`b830e95`)"
+"do not fail handling unicode xpaths in libxml2 backed selectors "
+"(:commit:`b830e95`)"
 msgstr ""
 
 #: ../../../news.rst:530
@@ -1709,8 +1704,8 @@ msgstr ""
 
 #: ../../../news.rst:532
 msgid ""
-"removed some obsolete remaining code related to sqlite support in scrapy (:"
-"commit:`0665175`)"
+"removed some obsolete remaining code related to sqlite support in scrapy "
+"(:commit:`0665175`)"
 msgstr ""
 
 #: ../../../news.rst:535
@@ -1719,14 +1714,14 @@ msgstr ""
 
 #: ../../../news.rst:537
 msgid ""
-"move buffer pointing to start of file before computing checksum. refs #92 (:"
-"commit:`6a5bef2`)"
+"move buffer pointing to start of file before computing checksum. refs #92 "
+"(:commit:`6a5bef2`)"
 msgstr ""
 
 #: ../../../news.rst:538
 msgid ""
-"Compute image checksum before persisting images. closes #92 (:commit:"
-"`9817df1`)"
+"Compute image checksum before persisting images. closes #92 "
+"(:commit:`9817df1`)"
 msgstr ""
 
 #: ../../../news.rst:539
@@ -1741,8 +1736,8 @@ msgstr ""
 
 #: ../../../news.rst:541
 msgid ""
-"fixed struct.error on http compression middleware. closes #87 (:commit:"
-"`1423140`)"
+"fixed struct.error on http compression middleware. closes #87 "
+"(:commit:`1423140`)"
 msgstr ""
 
 #: ../../../news.rst:542
@@ -1784,8 +1779,8 @@ msgstr ""
 
 #: ../../../news.rst:555
 msgid ""
-"doc: removed duplicated callback argument from Request.replace() (:commit:"
-"`1aeccdd`)"
+"doc: removed duplicated callback argument from Request.replace() "
+"(:commit:`1aeccdd`)"
 msgstr ""
 
 #: ../../../news.rst:556
@@ -1800,14 +1795,14 @@ msgstr ""
 
 #: ../../../news.rst:558
 msgid ""
-"added comment about why we disable ssl on boto images upload (:commit:"
-"`5223575`)"
+"added comment about why we disable ssl on boto images upload "
+"(:commit:`5223575`)"
 msgstr ""
 
 #: ../../../news.rst:559
 msgid ""
-"SSL handshaking hangs when doing too many parallel connections to S3 (:"
-"commit:`63d583d`)"
+"SSL handshaking hangs when doing too many parallel connections to S3 "
+"(:commit:`63d583d`)"
 msgstr ""
 
 #: ../../../news.rst:560
@@ -1816,8 +1811,8 @@ msgstr ""
 
 #: ../../../news.rst:561
 msgid ""
-"Avoid _disconnectedDeferred AttributeError exception in Twisted>=11.1.0 (:"
-"commit:`98f3f87`)"
+"Avoid _disconnectedDeferred AttributeError exception in Twisted>=11.1.0 "
+"(:commit:`98f3f87`)"
 msgstr ""
 
 #: ../../../news.rst:562
@@ -1850,8 +1845,8 @@ msgstr ""
 
 #: ../../../news.rst:573
 msgid ""
-"Added support for passing custom settings to Scrapyd ``schedule.json`` api (:"
-"rev:`2779`, :rev:`2783`)"
+"Added support for passing custom settings to Scrapyd ``schedule.json`` api "
+"(:rev:`2779`, :rev:`2783`)"
 msgstr ""
 
 #: ../../../news.rst:574
@@ -1870,14 +1865,14 @@ msgstr ""
 
 #: ../../../news.rst:577
 msgid ""
-"In request errbacks, offending requests are now received in `failure."
-"request` attribute (:rev:`2738`)"
+"In request errbacks, offending requests are now received in "
+"`failure.request` attribute (:rev:`2738`)"
 msgstr ""
 
 #: ../../../news.rst:580
 msgid ""
-"Big downloader refactoring to support per domain/ip concurrency limits (:rev:"
-"`2732`)"
+"Big downloader refactoring to support per domain/ip concurrency limits "
+"(:rev:`2732`)"
 msgstr ""
 
 #: ../../../news.rst:579
@@ -1887,9 +1882,7 @@ msgid ""
 msgstr ""
 
 #: ../../../news.rst:580
-msgid ""
-":setting:`CONCURRENT_REQUESTS`, :setting:`CONCURRENT_REQUESTS_PER_DOMAIN`, :"
-"setting:`CONCURRENT_REQUESTS_PER_IP`"
+msgid ":setting:`CONCURRENT_REQUESTS`, :setting:`CONCURRENT_REQUESTS_PER_DOMAIN`, :setting:`CONCURRENT_REQUESTS_PER_IP`"
 msgstr ""
 
 #: ../../../news.rst:581
@@ -1909,21 +1902,21 @@ msgstr ""
 
 #: ../../../news.rst:584
 msgid ""
-"Moved spider queues to scrapyd: `scrapy.spiderqueue` -> `scrapyd."
-"spiderqueue` (:rev:`2708`)"
+"Moved spider queues to scrapyd: `scrapy.spiderqueue` -> "
+"`scrapyd.spiderqueue` (:rev:`2708`)"
 msgstr ""
 
 #: ../../../news.rst:585
 msgid ""
-"Moved sqlite utils to scrapyd: `scrapy.utils.sqlite` -> `scrapyd.sqlite` (:"
-"rev:`2781`)"
+"Moved sqlite utils to scrapyd: `scrapy.utils.sqlite` -> `scrapyd.sqlite` "
+"(:rev:`2781`)"
 msgstr ""
 
 #: ../../../news.rst:586
 msgid ""
 "Real support for returning iterators on `start_requests()` method. The "
-"iterator is now consumed during the crawl when the spider is getting idle (:"
-"rev:`2704`)"
+"iterator is now consumed during the crawl when the spider is getting idle "
+"(:rev:`2704`)"
 msgstr ""
 
 #: ../../../news.rst:587
@@ -1986,9 +1979,9 @@ msgstr ""
 
 #: ../../../news.rst:597
 msgid ""
-"Changed default representation of items to pretty-printed dicts. (:rev:"
-"`2631`). This improves default logging by making log more readable in the "
-"default case, for both Scraped and Dropped lines."
+"Changed default representation of items to pretty-printed dicts. "
+"(:rev:`2631`). This improves default logging by making log more readable in "
+"the default case, for both Scraped and Dropped lines."
 msgstr ""
 
 #: ../../../news.rst:598
@@ -2074,8 +2067,8 @@ msgstr ""
 
 #: ../../../news.rst:618
 msgid ""
-"`w3lib`_ (several functions from ``scrapy.utils.{http,markup,multipart,"
-"response,url}``, done in :rev:`2584`)"
+"`w3lib`_ (several functions from ``scrapy.utils."
+"{http,markup,multipart,response,url}``, done in :rev:`2584`)"
 msgstr ""
 
 #: ../../../news.rst:619
@@ -2121,14 +2114,14 @@ msgstr ""
 
 #: ../../../news.rst:627
 msgid ""
-"Removed (undocumented) spider context extension (from scrapy.contrib."
-"spidercontext) (:rev:`2780`)"
+"Removed (undocumented) spider context extension (from "
+"scrapy.contrib.spidercontext) (:rev:`2780`)"
 msgstr ""
 
 #: ../../../news.rst:628
 msgid ""
-"removed ``CONCURRENT_SPIDERS`` setting (use scrapyd maxproc instead) (:rev:"
-"`2789`)"
+"removed ``CONCURRENT_SPIDERS`` setting (use scrapyd maxproc instead) "
+"(:rev:`2789`)"
 msgstr ""
 
 #: ../../../news.rst:629
@@ -2139,8 +2132,9 @@ msgstr ""
 
 #: ../../../news.rst:630
 msgid ""
-"Renamed setting ``CLOSESPIDER_ITEMPASSED`` to :setting:"
-"`CLOSESPIDER_ITEMCOUNT` (:rev:`2655`). Backwards compatibility kept."
+"Renamed setting ``CLOSESPIDER_ITEMPASSED`` "
+"to :setting:`CLOSESPIDER_ITEMCOUNT` (:rev:`2655`). Backwards compatibility "
+"kept."
 msgstr ""
 
 #: ../../../news.rst:633
@@ -2160,8 +2154,8 @@ msgstr ""
 
 #: ../../../news.rst:640
 msgid ""
-"Passed item is now sent in the ``item`` argument of the :signal:"
-"`item_passed` (#273)"
+"Passed item is now sent in the ``item`` argument of "
+"the :signal:`item_passed` (#273)"
 msgstr ""
 
 #: ../../../news.rst:641
@@ -2423,14 +2417,14 @@ msgstr ""
 
 #: ../../../news.rst:718
 msgid ""
-"``scrapy.core.manager.ScrapyManager`` class renamed to ``scrapy.crawler."
-"Crawler``"
+"``scrapy.core.manager.ScrapyManager`` class renamed to "
+"``scrapy.crawler.Crawler``"
 msgstr ""
 
 #: ../../../news.rst:719
 msgid ""
-"``scrapy.core.manager.scrapymanager`` singleton moved to ``scrapy.project."
-"crawler``"
+"``scrapy.core.manager.scrapymanager`` singleton moved to "
+"``scrapy.project.crawler``"
 msgstr ""
 
 #: ../../../news.rst:720
@@ -2450,14 +2444,14 @@ msgstr ""
 
 #: ../../../news.rst:723
 msgid ""
-"``scrapy.stats.collector.StatsCollector`` to ``scrapy.statscol."
-"StatsCollector``"
+"``scrapy.stats.collector.StatsCollector`` to "
+"``scrapy.statscol.StatsCollector``"
 msgstr ""
 
 #: ../../../news.rst:724
 msgid ""
-"``scrapy.stats.collector.SimpledbStatsCollector`` to ``scrapy.contrib."
-"statscol.SimpledbStatsCollector``"
+"``scrapy.stats.collector.SimpledbStatsCollector`` to "
+"``scrapy.contrib.statscol.SimpledbStatsCollector``"
 msgstr ""
 
 #: ../../../news.rst:725
@@ -2563,8 +2557,8 @@ msgstr ""
 
 #: ../../../news.rst:760
 msgid ""
-"Support for running Scrapy as a service, for production systems (:rev:"
-"`1988`, :rev:`2054`, :rev:`2055`, :rev:`2056`, :rev:`2057` | #168)"
+"Support for running Scrapy as a service, for production systems "
+"(:rev:`1988`, :rev:`2054`, :rev:`2055`, :rev:`2056`, :rev:`2057` | #168)"
 msgstr ""
 
 #: ../../../news.rst:761
@@ -2584,8 +2578,8 @@ msgstr ""
 
 #: ../../../news.rst:764
 msgid ""
-"Added ``RANDOMIZE_DOWNLOAD_DELAY`` setting (enabled by default) (:rev:"
-"`1923`, doc available)"
+"Added ``RANDOMIZE_DOWNLOAD_DELAY`` setting (enabled by default) "
+"(:rev:`1923`, doc available)"
 msgstr ""
 
 #: ../../../news.rst:765
@@ -2594,15 +2588,14 @@ msgstr ""
 
 #: ../../../news.rst:766
 msgid ""
-"Linkextractors and new Crawlspider now handle relative base tag urls (:rev:"
-"`1960` | #148)"
+"Linkextractors and new Crawlspider now handle relative base tag urls "
+"(:rev:`1960` | #148)"
 msgstr ""
 
 #: ../../../news.rst:767
 msgid ""
-"Several improvements to Item Loaders and processors (:rev:`2022`, :rev:"
-"`2023`, :rev:`2024`, :rev:`2025`, :rev:`2026`, :rev:`2027`, :rev:`2028`, :"
-"rev:`2029`, :rev:`2030`)"
+"Several improvements to Item Loaders and processors "
+"(:rev:`2022`, :rev:`2023`, :rev:`2024`, :rev:`2025`, :rev:`2026`, :rev:`2027`, :rev:`2028`, :rev:`2029`, :rev:`2030`)"
 msgstr ""
 
 #: ../../../news.rst:768
@@ -2643,8 +2636,8 @@ msgstr ""
 
 #: ../../../news.rst:780
 msgid ""
-"Ported ``S3ImagesStore`` (images pipeline) to use boto and threads (:rev:"
-"`2033`)"
+"Ported ``S3ImagesStore`` (images pipeline) to use boto and threads "
+"(:rev:`2033`)"
 msgstr ""
 
 #: ../../../news.rst:781
@@ -2674,26 +2667,26 @@ msgstr ""
 
 #: ../../../news.rst:797
 msgid ""
-"Added ``dont_click`` argument to ``FormRequest.from_response()`` method (:"
-"rev:`1813`, :rev:`1816`)"
+"Added ``dont_click`` argument to ``FormRequest.from_response()`` method "
+"(:rev:`1813`, :rev:`1816`)"
 msgstr ""
 
 #: ../../../news.rst:798
 msgid ""
-"Added ``clickdata`` argument to ``FormRequest.from_response()`` method (:rev:"
-"`1802`, :rev:`1803`)"
+"Added ``clickdata`` argument to ``FormRequest.from_response()`` method "
+"(:rev:`1802`, :rev:`1803`)"
 msgstr ""
 
 #: ../../../news.rst:799
 msgid ""
-"Added support for HTTP proxies (``HttpProxyMiddleware``) (:rev:`1781`, :rev:"
-"`1785`)"
+"Added support for HTTP proxies (``HttpProxyMiddleware``) "
+"(:rev:`1781`, :rev:`1785`)"
 msgstr ""
 
 #: ../../../news.rst:800
 msgid ""
-"Offiste spider middleware now logs messages when filtering out requests (:"
-"rev:`1841`)"
+"Offiste spider middleware now logs messages when filtering out requests "
+"(:rev:`1841`)"
 msgstr ""
 
 #: ../../../news.rst:803
@@ -2707,8 +2700,8 @@ msgstr ""
 
 #: ../../../news.rst:806
 msgid ""
-"Removed deprecated ``scrapy.item.ScrapedItem`` class - use ``scrapy.item."
-"Item instead`` (:rev:`1838`)"
+"Removed deprecated ``scrapy.item.ScrapedItem`` class - use "
+"``scrapy.item.Item instead`` (:rev:`1838`)"
 msgstr ""
 
 #: ../../../news.rst:807
@@ -2719,8 +2712,8 @@ msgstr ""
 
 #: ../../../news.rst:808
 msgid ""
-"Removed deprecated ``core.signals.domain_open`` signal - use ``core.signals."
-"domain_opened`` instead (:rev:`1822`)"
+"Removed deprecated ``core.signals.domain_open`` signal - use "
+"``core.signals.domain_opened`` instead (:rev:`1822`)"
 msgstr ""
 
 #: ../../../news.rst:809
@@ -2753,8 +2746,8 @@ msgstr ""
 
 #: ../../../news.rst:814
 msgid ""
-"To quickly port your code (to work with Scrapy 0.8) just use ``spider."
-"domain_name`` where you previously used ``domain``."
+"To quickly port your code (to work with Scrapy 0.8) just use "
+"``spider.domain_name`` where you previously used ``domain``."
 msgstr ""
 
 #: ../../../news.rst:819
@@ -2784,15 +2777,15 @@ msgstr ""
 
 #: ../../../news.rst:820
 msgid ""
-"To quickly port your code (to work with Scrapy 0.8) just use ``spider."
-"domain_name`` where you previously used ``domain``. ``spider_stats`` "
-"contains exactly the same data as ``domain_stats``."
+"To quickly port your code (to work with Scrapy 0.8) just use "
+"``spider.domain_name`` where you previously used ``domain``. "
+"``spider_stats`` contains exactly the same data as ``domain_stats``."
 msgstr ""
 
 #: ../../../news.rst:823
 msgid ""
-"``CloseDomain`` extension moved to ``scrapy.contrib.closespider."
-"CloseSpider`` (:rev:`1833`)"
+"``CloseDomain`` extension moved to "
+"``scrapy.contrib.closespider.CloseSpider`` (:rev:`1833`)"
 msgstr ""
 
 #: ../../../news.rst:823
@@ -2821,8 +2814,8 @@ msgstr ""
 
 #: ../../../news.rst:827
 msgid ""
-"Renamed setting: ``CONCURRENT_DOMAINS`` to ``CONCURRENT_SPIDERS`` (:rev:"
-"`1830`)"
+"Renamed setting: ``CONCURRENT_DOMAINS`` to ``CONCURRENT_SPIDERS`` "
+"(:rev:`1830`)"
 msgstr ""
 
 #: ../../../news.rst:828
@@ -2832,8 +2825,8 @@ msgstr ""
 #: ../../../news.rst:829
 msgid ""
 "HTTP Cache middleware has been heavilty refactored, retaining the same "
-"functionality except for the domain sectorization which was removed. (:rev:"
-"`1843` )"
+"functionality except for the domain sectorization which was removed. "
+"(:rev:`1843` )"
 msgstr ""
 
 #: ../../../news.rst:830
@@ -2844,8 +2837,8 @@ msgstr ""
 
 #: ../../../news.rst:831
 msgid ""
-"Renamed extension: ``DelayedCloseDomain`` to ``SpiderCloseDelay`` (:rev:"
-"`1861` | #121)"
+"Renamed extension: ``DelayedCloseDomain`` to ``SpiderCloseDelay`` "
+"(:rev:`1861` | #121)"
 msgstr ""
 
 #: ../../../news.rst:832

@@ -87,8 +87,8 @@ msgstr ""
 msgid ""
 "The leak could also come from a custom middleware, pipeline or extension "
 "that you have written, if you are not releasing the (previously allocated) "
-"resources properly. For example, if you're allocating resources on :signal:"
-"`spider_opened` but not releasing them on :signal:`spider_closed`."
+"resources properly. For example, if you're allocating resources "
+"on :signal:`spider_opened` but not releasing them on :signal:`spider_closed`."
 msgstr ""
 
 #: ../../../topics/leaks.rst:53
@@ -421,14 +421,14 @@ msgstr ""
 
 #: ../../../topics/leaks.rst:267
 msgid ""
-"`Python Memory Management Part 2 <http://evanjones.ca/python-memory-part2."
-"html>`_"
+"`Python Memory Management Part 2 <http://evanjones.ca/python-memory-"
+"part2.html>`_"
 msgstr ""
 
 #: ../../../topics/leaks.rst:268
 msgid ""
-"`Python Memory Management Part 3 <http://evanjones.ca/python-memory-part3."
-"html>`_"
+"`Python Memory Management Part 3 <http://evanjones.ca/python-memory-"
+"part3.html>`_"
 msgstr ""
 
 #: ../../../topics/leaks.rst:270

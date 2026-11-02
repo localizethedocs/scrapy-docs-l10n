@@ -48,8 +48,9 @@ msgstr ""
 msgid ""
 "Link extractors are used in the :class:`~scrapy.contrib.spiders.CrawlSpider` "
 "class (available in Scrapy), through a set of rules, but you can also use it "
-"in your spiders, even if you don't subclass from :class:`~scrapy.contrib."
-"spiders.CrawlSpider`, as its purpose is very simple: to extract links."
+"in your spiders, even if you don't subclass "
+"from :class:`~scrapy.contrib.spiders.CrawlSpider`, as its purpose is very "
+"simple: to extract links."
 msgstr ""
 
 #: ../../../topics/link-extractors.rst:31
@@ -58,14 +59,14 @@ msgstr ""
 
 #: ../../../topics/link-extractors.rst:36
 msgid ""
-"Link extractors classes bundled with Scrapy are provided in the :mod:`scrapy."
-"contrib.linkextractors` module."
+"Link extractors classes bundled with Scrapy are provided in "
+"the :mod:`scrapy.contrib.linkextractors` module."
 msgstr ""
 
 #: ../../../topics/link-extractors.rst:39
 msgid ""
-"The default link extractor is ``LinkExtractor``, which is the same as :class:"
-"`~.LxmlLinkExtractor`::"
+"The default link extractor is ``LinkExtractor``, which is the same "
+"as :class:`~.LxmlLinkExtractor`::"
 msgstr ""
 
 #: ../../../topics/link-extractors.rst:42

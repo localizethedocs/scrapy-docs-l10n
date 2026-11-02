@@ -47,8 +47,8 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:17
 msgid ""
-"Writing a :ref:`spider <topics-spiders>` to crawl a site and extract :ref:"
-"`Items <topics-items>`"
+"Writing a :ref:`spider <topics-spiders>` to crawl a site and "
+"extract :ref:`Items <topics-items>`"
 msgstr ""
 
 #: ../../../intro/tutorial.rst:19
@@ -143,9 +143,9 @@ msgstr ""
 #: ../../../intro/tutorial.rst:71
 msgid ""
 "They are declared by creating a :class:`scrapy.Item <scrapy.item.Item>` "
-"class and defining its attributes as :class:`scrapy.Field <scrapy.item."
-"Field>` objects, like you will in an ORM (don't worry if you're not familiar "
-"with ORMs, you will see that this is an easy task)."
+"class and defining its attributes as :class:`scrapy.Field "
+"<scrapy.item.Field>` objects, like you will in an ORM (don't worry if you're "
+"not familiar with ORMs, you will see that this is an easy task)."
 msgstr ""
 
 #: ../../../intro/tutorial.rst:76
@@ -192,8 +192,8 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:100
 msgid ""
-"To create a Spider, you must subclass :class:`scrapy.Spider <scrapy.spider."
-"Spider>` and define the three main mandatory attributes:"
+"To create a Spider, you must subclass :class:`scrapy.Spider "
+"<scrapy.spider.Spider>` and define the three main mandatory attributes:"
 msgstr ""
 
 #: ../../../intro/tutorial.rst:103
@@ -233,8 +233,8 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:123
 msgid ""
-"This is the code for our first Spider; save it in a file named ``dmoz_spider."
-"py`` under the ``tutorial/spiders`` directory::"
+"This is the code for our first Spider; save it in a file named "
+"``dmoz_spider.py`` under the ``tutorial/spiders`` directory::"
 msgstr ""
 
 #: ../../../intro/tutorial.rst:126
@@ -286,10 +286,11 @@ msgid ""
 "2014-01-23 18:13:07-0400 [scrapy] INFO: Enabled spider middlewares: ...\n"
 "2014-01-23 18:13:07-0400 [scrapy] INFO: Enabled item pipelines: ...\n"
 "2014-01-23 18:13:07-0400 [dmoz] INFO: Spider opened\n"
-"2014-01-23 18:13:08-0400 [dmoz] DEBUG: Crawled (200) <GET http://www.dmoz."
-"org/Computers/Programming/Languages/Python/Resources/> (referer: None)\n"
-"2014-01-23 18:13:09-0400 [dmoz] DEBUG: Crawled (200) <GET http://www.dmoz."
-"org/Computers/Programming/Languages/Python/Books/> (referer: None)\n"
+"2014-01-23 18:13:08-0400 [dmoz] DEBUG: Crawled (200) <GET http://"
+"www.dmoz.org/Computers/Programming/Languages/Python/Resources/> (referer: "
+"None)\n"
+"2014-01-23 18:13:09-0400 [dmoz] DEBUG: Crawled (200) <GET http://"
+"www.dmoz.org/Computers/Programming/Languages/Python/Books/> (referer: None)\n"
 "2014-01-23 18:13:09-0400 [dmoz] INFO: Closing spider (finished)"
 msgstr ""
 
@@ -320,9 +321,9 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:178
 msgid ""
-"These Requests are scheduled, then executed, and :class:`scrapy.http."
-"Response` objects are returned and then fed back to the spider, through the :"
-"meth:`~scrapy.spider.Spider.parse` method."
+"These Requests are scheduled, then executed, "
+"and :class:`scrapy.http.Response` objects are returned and then fed back to "
+"the spider, through the :meth:`~scrapy.spider.Spider.parse` method."
 msgstr ""
 
 #: ../../../intro/tutorial.rst:183
@@ -427,9 +428,9 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:241
 msgid ""
-"To illustrate the use of Selectors we're going to use the built-in :ref:"
-"`Scrapy shell <topics-shell>`, which also requires IPython (an extended "
-"Python console) installed on your system."
+"To illustrate the use of Selectors we're going to use the built-"
+"in :ref:`Scrapy shell <topics-shell>`, which also requires IPython (an "
+"extended Python console) installed on your system."
 msgstr ""
 
 #: ../../../intro/tutorial.rst:245
@@ -458,8 +459,8 @@ msgstr ""
 msgid ""
 "[ ... Scrapy log here ... ]\n"
 "\n"
-"2014-01-23 17:11:42-0400 [default] DEBUG: Crawled (200) <GET http://www.dmoz."
-"org/Computers/Programming/Languages/Python/Books/> (referer: None)\n"
+"2014-01-23 17:11:42-0400 [default] DEBUG: Crawled (200) <GET http://"
+"www.dmoz.org/Computers/Programming/Languages/Python/Books/> (referer: None)\n"
 "[s] Available Scrapy objects:\n"
 "[s]   crawler    <scrapy.crawler.Crawler object at 0x3636b50>\n"
 "[s]   item       {}\n"
@@ -489,8 +490,8 @@ msgstr ""
 msgid ""
 "More important, if you type ``response.selector`` you will access a selector "
 "object you can use to query the response, and convenient shortcuts like "
-"``response.xpath()`` and ``response.css()`` mapping to ``response.selector."
-"xpath()`` and ``response.selector.css()``"
+"``response.xpath()`` and ``response.css()`` mapping to "
+"``response.selector.xpath()`` and ``response.selector.css()``"
 msgstr ""
 
 #: ../../../intro/tutorial.rst:284
@@ -532,8 +533,8 @@ msgid ""
 "You could type ``response.body`` in the console, and inspect the source code "
 "to figure out the XPaths you need to use. However, inspecting the raw HTML "
 "code there could become a very tedious task. To make this an easier task, "
-"you can use some Firefox extensions like Firebug. For more information see :"
-"ref:`topics-firebug` and :ref:`topics-firefox`."
+"you can use some Firefox extensions like Firebug. For more information "
+"see :ref:`topics-firebug` and :ref:`topics-firefox`."
 msgstr ""
 
 #: ../../../intro/tutorial.rst:312
@@ -652,9 +653,9 @@ msgstr ""
 
 #: ../../../intro/tutorial.rst:385
 msgid ""
-"Spiders are expected to return their scraped data inside :class:`~scrapy."
-"item.Item` objects. So, in order to return the data we've scraped so far, "
-"the final code for our Spider would be like this::"
+"Spiders are expected to return their scraped data "
+"inside :class:`~scrapy.item.Item` objects. So, in order to return the data "
+"we've scraped so far, the final code for our Spider would be like this::"
 msgstr ""
 
 #: ../../../intro/tutorial.rst:389
@@ -749,12 +750,14 @@ msgstr ""
 #: ../../../intro/tutorial.rst:444
 msgid ""
 "This tutorial covers only the basics of Scrapy, but there's a lot of other "
-"features not mentioned here. Check the :ref:`topics-whatelse` section in :"
-"ref:`intro-overview` chapter for a quick overview of the most important ones."
+"features not mentioned here. Check the :ref:`topics-whatelse` section "
+"in :ref:`intro-overview` chapter for a quick overview of the most important "
+"ones."
 msgstr ""
 
 #: ../../../intro/tutorial.rst:448
 msgid ""
-"Then, we recommend you continue by playing with an example project (see :ref:"
-"`intro-examples`), and then continue with the section :ref:`section-basics`."
+"Then, we recommend you continue by playing with an example project "
+"(see :ref:`intro-examples`), and then continue with the "
+"section :ref:`section-basics`."
 msgstr ""

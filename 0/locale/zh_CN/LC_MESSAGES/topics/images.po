@@ -30,9 +30,9 @@ msgstr ""
 
 #: ../../../topics/images.rst:13
 msgid ""
-"This pipeline, called the Images Pipeline and implemented in the :class:"
-"`ImagesPipeline` class, provides a convenient way for downloading and "
-"storing images locally with some additional features:"
+"This pipeline, called the Images Pipeline and implemented in "
+"the :class:`ImagesPipeline` class, provides a convenient way for downloading "
+"and storing images locally with some additional features:"
 msgstr ""
 
 #: ../../../topics/images.rst:17
@@ -143,8 +143,8 @@ msgstr ""
 
 #: ../../../topics/images.rst:88
 msgid ""
-"To enable your images pipeline you must first add it to your project :"
-"setting:`ITEM_PIPELINES` setting::"
+"To enable your images pipeline you must first add it to your "
+"project :setting:`ITEM_PIPELINES` setting::"
 msgstr ""
 
 #: ../../../topics/images.rst:91
@@ -343,8 +343,9 @@ msgstr ""
 #: ../../../topics/images.rst:224
 msgid ""
 "As seen on the workflow, the pipeline will get the URLs of the images to "
-"download from the item. In order to do this, you must override the :meth:"
-"`~get_media_requests` method and return a Request for each image URL::"
+"download from the item. In order to do this, you must override "
+"the :meth:`~get_media_requests` method and return a Request for each image "
+"URL::"
 msgstr ""
 
 #: ../../../topics/images.rst:229
@@ -357,9 +358,9 @@ msgstr ""
 #: ../../../topics/images.rst:233
 msgid ""
 "Those requests will be processed by the pipeline and, when they have "
-"finished downloading, the results will be sent to the :meth:"
-"`~item_completed` method, as a list of 2-element tuples. Each tuple will "
-"contain ``(success, image_info_or_failure)`` where:"
+"finished downloading, the results will be sent to "
+"the :meth:`~item_completed` method, as a list of 2-element tuples. Each "
+"tuple will contain ``(success, image_info_or_failure)`` where:"
 msgstr ""
 
 #: ../../../topics/images.rst:238
@@ -393,8 +394,8 @@ msgstr ""
 #: ../../../topics/images.rst:253
 msgid ""
 "The list of tuples received by :meth:`~item_completed` is guaranteed to "
-"retain the same order of the requests returned from the :meth:"
-"`~get_media_requests` method."
+"retain the same order of the requests returned from "
+"the :meth:`~get_media_requests` method."
 msgstr ""
 
 #: ../../../topics/images.rst:257

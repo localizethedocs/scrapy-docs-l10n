@@ -206,8 +206,8 @@ msgstr ""
 
 #: ../../../topics/item-pipeline.rst:133
 msgid ""
-"To activate an Item Pipeline component you must add its class to the :"
-"setting:`ITEM_PIPELINES` setting, like in the following example::"
+"To activate an Item Pipeline component you must add its class to "
+"the :setting:`ITEM_PIPELINES` setting, like in the following example::"
 msgstr ""
 
 #: ../../../topics/item-pipeline.rst:136

@@ -50,8 +50,8 @@ msgstr ""
 
 #: ../../../topics/api.rst:33
 msgid ""
-"The Crawler object must be instantiated with a :class:`scrapy.settings."
-"Settings` object."
+"The Crawler object must be instantiated with "
+"a :class:`scrapy.settings.Settings` object."
 msgstr ""
 
 #: ../../../topics/api.rst:38
@@ -170,8 +170,8 @@ msgstr ""
 msgid ""
 "Each item defines a settings entry point, giving it a code name for "
 "identification and an integer priority. Greater priorities take more "
-"precedence over lesser ones when setting and retrieving values in the :class:"
-"`~scrapy.settings.Settings` class."
+"precedence over lesser ones when setting and retrieving values in "
+"the :class:`~scrapy.settings.Settings` class."
 msgstr ""
 
 #: ../../../topics/api.rst:128
@@ -206,19 +206,19 @@ msgstr ""
 msgid ""
 "Additional values can be passed on initialization with the ``values`` "
 "argument, and they would take the ``priority`` level.  If the latter "
-"argument is a string, the priority name will be looked up in :attr:`~scrapy."
-"settings.SETTINGS_PRIORITIES`. Otherwise, a expecific integer should be "
-"provided."
+"argument is a string, the priority name will be looked up "
+"in :attr:`~scrapy.settings.SETTINGS_PRIORITIES`. Otherwise, a expecific "
+"integer should be provided."
 msgstr ""
 
 #: ../../../topics/api.rst:153
 msgid ""
-"Once the object is created, new settings can be loaded or updated with the :"
-"meth:`~scrapy.settings.Settings.set` method, and can be accessed with the "
-"square bracket notation of dictionaries, or with the :meth:`~scrapy.settings."
-"Settings.get` method of the instance and its value conversion variants.  "
-"When requesting a stored key, the value with the highest priority will be "
-"retrieved."
+"Once the object is created, new settings can be loaded or updated with "
+"the :meth:`~scrapy.settings.Settings.set` method, and can be accessed with "
+"the square bracket notation of dictionaries, or with "
+"the :meth:`~scrapy.settings.Settings.get` method of the instance and its "
+"value conversion variants.  When requesting a stored key, the value with the "
+"highest priority will be retrieved."
 msgstr ""
 
 #: ../../../topics/api.rst:162
@@ -248,8 +248,8 @@ msgstr ""
 
 #: ../../../topics/api.rst:174
 msgid ""
-"the priority of the setting. Should be a key of :attr:`~scrapy.settings."
-"SETTINGS_PRIORITIES` or an integer"
+"the priority of the setting. Should be a key "
+"of :attr:`~scrapy.settings.SETTINGS_PRIORITIES` or an integer"
 msgstr ""
 
 #: ../../../topics/api.rst:180
@@ -268,8 +268,8 @@ msgstr ""
 
 #: ../../../topics/api.rst:189 ../../../topics/api.rst:204
 msgid ""
-"the priority of the settings. Should be a key of :attr:`~scrapy.settings."
-"SETTINGS_PRIORITIES` or an integer"
+"the priority of the settings. Should be a key "
+"of :attr:`~scrapy.settings.SETTINGS_PRIORITIES` or an integer"
 msgstr ""
 
 #: ../../../topics/api.rst:195
@@ -326,8 +326,8 @@ msgstr ""
 
 #: ../../../topics/api.rst:258
 msgid ""
-"For example, settings populated through environment variables set to ``'one,"
-"two'`` will return a list ['one', 'two'] when using this method."
+"For example, settings populated through environment variables set to "
+"``'one,two'`` will return a list ['one', 'two'] when using this method."
 msgstr ""
 
 #: ../../../topics/api.rst:270
@@ -394,10 +394,10 @@ msgstr ""
 
 #: ../../../topics/api.rst:326
 msgid ""
-"There are several Stats Collectors available under the :mod:`scrapy."
-"statscol` module and they all implement the Stats Collector API defined by "
-"the :class:`~scrapy.statscol.StatsCollector` class (which they all inherit "
-"from)."
+"There are several Stats Collectors available under "
+"the :mod:`scrapy.statscol` module and they all implement the Stats Collector "
+"API defined by the :class:`~scrapy.statscol.StatsCollector` class (which "
+"they all inherit from)."
 msgstr ""
 
 #: ../../../topics/api.rst:338
